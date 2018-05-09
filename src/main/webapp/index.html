@@ -21,7 +21,6 @@
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/checkbox.css">
     <link rel="stylesheet" href="content/css/font-style.css">
-    <link rel="stylesheet" href="content/css/AdminLTE.css">
     <link rel="stylesheet" href="content/css/_all-skins.css">
     <link rel="stylesheet" href="content/css/main.css">
     <!-- endbuild -->
@@ -40,16 +39,27 @@
         <div ui-view="content" class="position-relative"  ng-style="style()" resize ng-show="!vm.isAuthenticated() || (vm.isAuthenticated() && vm.account.authorities.indexOf('ROLE_ADMIN') == -1)">
         </div>
 
-        <div class="footer" ng-cloak >
-            <div class="container">
-            <span class="pte-footer-com">© 2017 Trung tâm luyện thi PTE MAGIC |  All rights reserved.</span>
-                <div class="pte-connect">
-                    <span class="pte-footer-com">Connect with Us:</span>
-                    <i class="pte-icon-footer pte-color-fff fab fa-facebook-f"></i>
-                    <i class="pte-color-fff fab fa-youtube"></i>
+        <section class="footer">
+            <div class="hr">
+                <hr>
+            </div>
+            <div class="bottom-footer">
+                <div class="container">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="company">
+                            <span>Trụ sở chính: 35 Hai Bà Trưng, Q.Hoàn Kiếm, Hà Nội</span>
+                        </div>
+                        <div class="address-phone text-center">
+                            Tel: <span class="tel">(84.4) 3826 2614</span> - Fax: <span class="tel">(84.4) 3825 7188</span> - Email: bvvn@baoviet.com.vn
+                        </div>
+                        <div class="dmca">
+                            <span>© 2016 Baoviet Insurance, All Rights Reserved</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <!-- End .bottom-footer -->
+        </section>
         <noscript>
             <h1>You must enable javascript to view this page.</h1>
         </noscript>
