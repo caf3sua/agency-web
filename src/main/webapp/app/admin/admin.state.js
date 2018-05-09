@@ -10,14 +10,7 @@
     function stateConfig ($stateProvider) {
         $stateProvider.state('admin', {
             abstract: true,
-            parent: 'app',
-            views: {
-                'navbar@': {
-                    templateUrl: 'app/layouts/navbar/navbar_admin.html',
-                    controller: 'NavbarController',
-                    controllerAs: 'vm'
-                }
-            },
+            parent: 'app'
         });
     }
 })();
