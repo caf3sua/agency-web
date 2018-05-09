@@ -1,0 +1,14 @@
+<div class="col-md-12 text-center">
+	<span>{{vm.txtInfoCountdown}}</span>
+	<timer countdown="vm.countdownTimebreak" interval="1000" finish-callback="vm.startNewPart()">{{mminutes}}:{{sseconds}}</timer></span>
+</div>
+
+<div class="col-md-12 text-center">
+	Time break
+</div>
+<div class="col-md-12"  ng-class="vm.selectedQuestion.type == 'TIME_BREAK' ? 'pte-timeBreak':''">
+    <div class="text-center pte-text-question" ng-bind-html="vm.trustAsHtml(vm.selectedQuestion.description)"></div>
+    <div class="text-center">
+        <button class="pte-test-answer" ng-click="vm.startNewPart()" ng-show="vm.btnEnable">{{vm.btnTxt}}</button>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+<nav class="navbar navbar-fixed-top  navbar-default" role="navigation">
+    <div class="pte-header-one">
+        <div class="container">
+            <div style="padding: 0 10px;">
+                <span class="pte-text-email-header">Emai: ptemagic@gmail.com </span>
+                <span class="pte-text-numberPhone-header">|   Hotline: +61 466 253 357 - 0869 608 673</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a class="pte-logo-desktop  hidden-xs" href="#/" ng-click="vm.collapseNavbar()">
+            <img class="logo-img" src="content/images/logo.png" alt="logo"/>
+        </a>
+    </div>
+    <div class="pte-header-two">
+        <div class="container">
+            <div class="navbar-header hidden-lg hidden-md hidden-sm">
+                <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo " href="#/" ng-click="vm.collapseNavbar()">
+                    <img class="logo-img" src="content/images/logo.png" alt="logo"/>
+                </a>
+            </div>
+            <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ui-sref-active="active" id="Home" ng-click="vm.delActive()">
+                        <a ui-sref="home" ng-click="vm.collapseNavbar()">
+                            <span class="" data-translate="global.menu.home">Home</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+                    <li  ui-sref-active="active" uib-dropdown class="dropdown pointer checkActive" ng-switch-when="true" id="PRACTICE" >
+                        <a class="dropdown-toggle" uib-dropdown-toggle ng-click="vm.showActive('PRACTICE')">
+                                <span class="" >
+                                    SẢN PHẨM
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu" uib-dropdown-menu>
+                            <li ui-sref-active="active"><a ui-sref="product.car"><span>Bảo hiểm ô tô</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.bvp"><span>Bảo hiểm bảo việt an gia</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.kcare"><span>Bảo hiểm bệnh ung thư</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.tvc"><span>Bảo hiểm du lịch quốc tế</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.tvi"><span>Bảo hiểm du lịch trong nước</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.moto"><span>Bảo hiểm xe máy</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.home"><span>Bảo hiểm nhà tư nhân</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.khc"><span>Bảo hiểm kết hợp con người</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.tnc"><span>Bảo hiểm tai nạn con người</span></a></li>
+                            <li ui-sref-active="active"><a ui-sref="product.hhvc"><span>Bảo hiểm Hàng hóa vận chuyển nội địa</span></a></li>
+                        </ul>
+                    </li>
+
+					<!-- LOGGED -->
+                    <li ui-sref-active="active" uib-dropdown class="dropdown pointer checkActive pte-margin-left-user" id="USER" ng-switch-when="true">
+                        <a  class="dropdown-toggle" uib-dropdown-toggle  ng-click="vm.showActive('USER')">
+                            <span>
+                                 <span class="icon-user"></span>
+                                <span class="colorf9db01" title="{{vm.user.fullName}}">{{vm.user.fullName | lmto : 4}}</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active" uib-dropdown class="dropdown pointer checkActive" ng-switch-when="true">
+                        <a ng-click="vm.logout()" class="dropdown-toggle" uib-dropdown-toggle >
+                            <span>
+                                <span class="pte-icon-sign icon-sign_out">
+                                     <span class="">SIGN OUT</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!-- NOT LOGIN -->
+                    <li ui-sref-active="active" uib-dropdown class="dropdown pointer" ng-switch-when="false">
+                        <a ng-click="vm.login()" class="dropdown-toggle" uib-dropdown-toggle >
+                            <span>
+                                <span class="pte-icon-sign icon-sign_out">
+                                      <span class="" >SIGN IN</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="pte-join-free" ng-switch-when="false">
+                        <a ng-click="vm.register()" class="dropdown-toggle padding0" uib-dropdown-toggle>
+                            <span>
+                                <span class="pte-text-join">Join</span>
+                                <span class="pte-text-free">Free</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

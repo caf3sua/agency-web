@@ -1,0 +1,71 @@
+<div class="content-wrapper pte-table-user">
+    <div  class="col-md-12">
+        <h2 data-translate="userManagement.home.title">Users</h2>
+    </div>
+    <jhi-alert></jhi-alert>
+      <!-- <div class="col-md-12 text-right no-padding-left" >
+          <button class="btn btn-primary" ui-sref="user-management.new">
+              <span class="glyphicon glyphicon-flash"></span> <span data-translate="userManagement.home.createLabel">Create a new User</span>
+          </button>
+      </div> -->
+    <div class="col-md-12 table-responsive ">
+        <table class="jh-table table table-striped  table-bordered table-hover">
+
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id" class="text-center"><span data-translate="global.field.id">ID</span><span class="glyphicon glyphicon-sort"></span></th>
+                <!-- <th jh-sort-by="login"><span data-translate="userManagement.login">Login</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                <th jh-sort-by="email"  class="text-center"><span data-translate="userManagement.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <!-- <th  jh-sort-by="langKey"> <span data-translate="userManagement.langKey">Lang Key</span> <span class="glyphicon glyphicon-sort"></span></th>   -->
+                <th  class="text-center"><span data-translate="userManagement.profiles">Profiles</span></th>
+                <th  class="text-center" jh-sort-by="createdDate"><span data-translate="userManagement.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <!-- <th jh-sort-by="lastModifiedBy"><span data-translate="userManagement.lastModifiedBy">Last Modified By</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                <!-- <th jh-sort-by="lastModifiedDate"><span data-translate="userManagement.lastModifiedDate">Last Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                <th  class="text-center" ><span  data-translate="userManagement.action">Action</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.users track by user.id">
+                <td class="text-right"><a ui-sref="user-management-detail({login:user.login})">{{user.id}}</a></td>
+                <!-- <td>{{user.login}}</td> -->
+                <td class="text-center">{{user.email}}</td>
+                <!-- <td>{{user.langKey}}</td> -->
+                <td>
+                    <div ng-repeat="authority in user.authorities">
+                        <span class="label label-info">{{ authority }}</span>
+                    </div>
+                </td>
+                <td class="text-right">{{user.createdDate | date:'dd/MM/yy HH:mm'}}</td>
+                <!-- <td>{{user.lastModifiedBy}}</td>
+                <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</td> -->
+                <td class="text-center">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="user-management-detail({login:user.login})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="user-management.edit({login:user.login})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="user-management.delete({login:user.login})"
+                                class="btn btn-danger btn-sm" ng-disabled="vm.currentAccount.login === user.login">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

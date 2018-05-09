@@ -1,0 +1,156 @@
+<div class="col-md-12 pte-margin-bottom-10">
+    <p class="pte-test-type-question-two-des-down" data-translate="pteMagicApp.QuestionType.description.{{vm.selectedQuestion.type}}">Description</p>
+</div>
+<div
+         ng-show="vm.questionGroup == 'READING' || vm.questionGroup == 'LISTENING'"
+         ng-class="(
+         vm.selectedQuestion.type == 'LISTENING_SUMMARIZE_SPOKEN_TEXT' ||
+         vm.selectedQuestion.type == 'LISTENING_FIB_L' ||
+         vm.selectedQuestion.type == 'LISTENING_DICTATION' ||
+         vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_INCORRECT_WORD' ||
+         vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_CORRECT_SUMMARY' ||
+         vm.selectedQuestion.type == 'LISTENING_MCQ_L_MULTIPLE_ANSWER' ||
+         vm.selectedQuestion.type == 'LISTENING_MCQ_L_SINGLE_ANSWER' ||
+         vm.selectedQuestion.type == 'LISTENING_SELECT_MISSING_WORD'
+          ? 'col-md-12':'col-md-6')"
+        >
+        <p class="pte-test-content-question" ng-show="vm.selectedQuestion.type != 'LISTENING_FIB_L'">{{vm.selectedQuestion.text}}</p>
+        <!-- Record audio -->
+        <div ng-show="vm.selectedQuestion.audioLink">
+            <!-- https://storage.googleapis.com/pte-magic/WFD1.mp3 -->
+            <div class="container-audio pte-width-audio-speaking">
+                <div class="text-left pte-margin-bottom-30">
+                    <span>Status : </span>
+                    <span ng-show="vm.checkAudioSeconds">Begining in {{vm.countAudio}} seconds</span>
+                    <span ng-show="vm.checkStatusPlay">{{vm.txtStatusAudio}}</span>
+                </div>
+                <div ng-include="'app/partial/partial.audio.html'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="vm.selectedQuestion.type == 'LISTENING_SUMMARIZE_SPOKEN_TEXT' || vm.selectedQuestion.type == 'LISTENING_DICTATION'" >
+        <div class="position-relative">
+            <textarea  ng-model="vm.Text" spellcheck="false"   ng-change="vm.UpdateLengths()" id="areaTextWriting" class="pte-input-writing" rows="10" placeholder="Writing at here"></textarea>
+            <span class="pte-word-count" ng-model="vm.WordsLength">
+               Word count ({{vm.WordsLength}})
+            </span>
+        </div>
+    </div>
+    <div
+         ng-show="
+         (vm.questionGroup == 'LISTENING'
+         || vm.selectedQuestion.type == 'LISTENING_FIB_L'
+
+         || vm.selectedQuestion.type == 'LISTENING_MCQ_L_MULTIPLE_ANSWER'
+         )
+         && vm.selectedQuestion.type != 'LISTENING_SUMMARIZE_SPOKEN_TEXT'
+         && vm.selectedQuestion.type != 'LISTENING_SELECT_MISSING_WORD'
+         && vm.selectedQuestion.type != 'LISTENING_DICTATION'
+         && vm.selectedQuestion.type != 'LISTENING_HIGHLIGHT_CORRECT_SUMMARY'
+         && vm.selectedQuestion.type != 'LISTENING_MCQ_L_SINGLE_ANSWER'"
+         ng-class="
+         vm.selectedQuestion.type == 'LISTENING_FIB_L' ||
+         vm.selectedQuestion.type == 'LISTENING_MCQ_L_SINGLE_ANSWER' ||
+         vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_INCORRECT_WORD' ||
+         vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_CORRECT_SUMMARY' ||
+         vm.selectedQuestion.type == 'LISTENING_SELECT_MISSING_WORD' ||
+         vm.selectedQuestion.type == 'LISTENING_MCQ_L_MULTIPLE_ANSWER'  ? 'col-md-12':'col-md-6'"
+    >
+        <div class="pte-test-content-question" ng-bind-html="vm.trustAsHtml(vm.selectedQuestion.description)"></div>
+
+        <div class="padding-left30">
+
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerA">
+                <input type="checkbox" name="answerA" id="answerA" value="true" >
+                <label for="answerA" class="line-height-30 pte-checkBox-multiple">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerA}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerB">
+                <input type="checkbox" name="answerB" id="answerB" value="true">
+                <label for="answerB" class="line-height-30 pte-checkBox-multiple">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerB}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerC">
+                <input type="checkbox" name="answerC" id="answerC" value="true">
+                <label for="answerC" class="line-height-30 pte-checkBox-multiple">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerC}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerD">
+                <input type="checkbox" name="answerD" id="answerD" value="true">
+                <label for="answerD" class="line-height-30 pte-checkBox-multiple">
+                    <p class="margin-left30 pte-text-answer ">{{vm.selectedQuestion.answerD}}</p>
+                </label>
+            </div>
+			<div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerE">
+                   <input type="checkbox" name="answerE" id="answerE" value="true">
+                   <label for="answerE" class="line-height-30 pte-checkBox-multiple">
+                       <p class="margin-left30 pte-text-answer ">{{vm.selectedQuestion.answerE}}</p>
+                   </label>
+           </div>
+       </div>
+
+
+    </div>
+    <div class=" "
+         ng-show="
+         ( vm.questionGroup == 'LISTENING'
+         || vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_CORRECT_SUMMARY'
+         || vm.selectedQuestion.type == 'LISTENING_SELECT_MISSING_WORD'
+         || vm.selectedQuestion.type != 'LISTENING_MCQ_L_SINGLE_ANSWER'
+         )
+         && vm.selectedQuestion.type != 'LISTENING_FIB_L'
+         && vm.selectedQuestion.type != 'LISTENING_DICTATION'
+         && vm.selectedQuestion.type != 'LISTENING_SUMMARIZE_SPOKEN_TEXT'
+         && vm.selectedQuestion.type != 'LISTENING_MCQ_L_MULTIPLE_ANSWER'
+         && vm.selectedQuestion.type != 'LISTENING_HIGHLIGHT_INCORRECT_WORD'"
+         ng-class="
+            vm.selectedQuestion.type == 'LISTENING_MCQ_L_SINGLE_ANSWER' ||
+            vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_CORRECT_SUMMARY' ||
+            vm.selectedQuestion.type == 'LISTENING_SELECT_MISSING_WORD' ||
+            vm.selectedQuestion.type == 'LISTENING_HIGHLIGHT_INCORRECT_WORD' ||
+            vm.selectedQuestion.type == 'LISTENING_MCQ_L_MULTIPLE_ANSWER'  ? 'col-md-12':'col-md-6'"
+         >
+
+        <div class="pte-test-content-question" ng-bind-html="vm.trustAsHtml(vm.selectedQuestion.description)"></div>
+        <div class="padding-left30">
+
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerA">
+                <input type="radio" name="answer" id="answerA1" value="true" >
+                <label for="answerA1" class="line-height-30">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerA}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerB">
+                <input type="radio" name="answer" id="answerB1" value="true">
+                <label for="answerB1" class="line-height-30">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerB}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerC">
+                <input type="radio" name="answer" id="answerC1" value="true">
+                <label for="answerC1" class="line-height-30">
+                    <p class="margin-left30 pte-text-answer">{{vm.selectedQuestion.answerC}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerD">
+                <input type="radio" name="answer" id="answerD1" value="true">
+                <label for="answerD1" class="line-height-30">
+                    <p class="margin-left30 pte-text-answer ">{{vm.selectedQuestion.answerD}}</p>
+                </label>
+            </div>
+            <div class="checkbox checkbox-success" ng-show="vm.selectedQuestion.answerE">
+                <input type="radio" name="answer" id="answerE1" value="true">
+                <label for="answerE1" class="line-height-30">
+                    <p class="margin-left30 pte-text-answer ">{{vm.selectedQuestion.answerE}}</p>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <!--<div class="text-right">-->
+            <!--<button class="pte-test-answer" ng-click="vm.answer()" ng-show="vm.btnEnable">{{vm.btnTxt}}</button>-->
+        <!--</div>-->
+    </div>
