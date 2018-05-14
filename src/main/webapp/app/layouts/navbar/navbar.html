@@ -1,92 +1,16 @@
-<nav class="navbar navbar-fixed-top  navbar-default " ng-show="!vm.isAuthenticated() || (vm.isAuthenticated() && vm.user.authorities.indexOf('ROLE_ADMIN') == -1)" role="navigation">
-    <div class="pte-header-two">
-        <div class="container">
-            <!--<a class="pte-logo-desktop  hidden-xs" href="#/" ng-click="vm.collapseNavbar()">-->
-            <!--<img class="logo-img" src="content/images/logo.png" alt="logo"/>-->
-            <!--</a>-->
-            <div class="navbar-header ">
-                <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand logo " href="#/" ng-click="vm.collapseNavbar()">
-                    <img class="logo-img" src="content/images/logo.png" alt="logo"/>
-                </a>
-            </div>
-            <div class="navbar-collapse position-relative" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
-                <ul class="nav navbar-nav navbar-left">
-                    <li  ui-sref-active="active" uib-dropdown class="dropdown pointer checkActive" >
-                        <a class="dropdown-toggle" uib-dropdown-toggle >
-                                <span class="" >
-                                   Sản phẩm
-                                </span>
-                        </a>
-                        <ul class="dropdown-menu animated fadeInup" uib-dropdown-menu>
-                            <li><a ui-sref="product.bvStep">Bảo hiểm ô tô</a></li>
-                            <li><a ui-sref="bvAngia">Bảo hiểm bảo việt an gia</a></li>
-                            <li><a ui-sref="bhUngThu">Bảo hiểm bệnh ung thư</a></li>
-                            <li><a ui-sref="bhDuLich">Bảo hiểm du lịch</a></li>
-                            <li><a ui-sref="bhXeMay">Bảo hiểm xe máy</a></li>
-                            <li><a ui-sref="bhNhaTuNhan">Bảo hiểm nhà tư nhân</a></li>
-                            <li><a href="/KHC">Bảo hiểm kết hợp con người</a></li>
-                            <li><a href="/TNC">Bảo hiểm tai nạn con người</a></li>
-                            <li><a href="/HHVC">Bảo hiểm Hàng hóa vận chuyển nội địa</a></li>
-                        </ul>
-                    </li>
-                    <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                    <li ui-sref-active="active">
-                        <a ui-sref="about">
-                            <span class="" >Quản lý ấn chỉ</span>
-                        </a>
-                    </li>
-                    <li  ui-sref-active="active" uib-dropdown class="dropdown pointer checkActive" id="PRACTICE" >
-                        <a class="dropdown-toggle" uib-dropdown-toggle >
-                                <span class="" >
-                                    QUẢN LÝ YCBH
-                                </span>
-                        </a>
-                    </li>
-
-
-
-                    <li class="bv-user-from hidden-xs hidden-sm hidden-md">
-                        <div class="register-login right-header">
-                            <div>
-                                <div class="dropdown name">
-                                    <p class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Chào, Cao Thị Hòa
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                    </p>
-                                    <ul class="dropdown-menu dropdown-customer" aria-labelledby="dropdownMenu2">
-                                        <li><a href="ChangePassword.aspx"><i class="fa fa-unlock-alt" aria-hidden="true"></i>Thay đổi mật khẩu</a></li>
-                                        <li>
-                                            <a href="Login.aspx?action=exit"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!--Shoping cart-->
-                                <div class="dropdown" style="display: table; display: -moz-box;">
-
-                                    <a id="cart-dropdown" class="cart-online" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="window.location='/?action=e4fb14c849f827b13515e074218dc729';">
-                                        <span class="number-product">0</span>
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    </a>
-
-                                </div>
-                                <div class="hotline">
-                                    <i class="fas fa-phone-square" aria-hidden="true"></i>
-                                    <div class="number"><a href="tel:+1900558899">1900 55 88 99</a></div>
-                                </div>
-                                <!--End shopping car-->
-
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+<nav class="navbar navbar-fixed-top  navbar-default background-fff" ng-show="!vm.isAuthenticated() || (vm.isAuthenticated() && vm.user.authorities.indexOf('ROLE_ADMIN') == -1)" role="navigation">
+    <div class="container margin-top-10">
+        <div class="pull-left">
+            <img src="../../../content/images/logo.png">
+        </div>
+        <div class="dropdown pull-right">
+            <button class="btn dropdown-toggle bv-dropdown-header" type="button" data-toggle="dropdown">Bạn đang đăng nhâp dưới tên Đại lý A
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+            </ul>
         </div>
     </div>
 </nav>
