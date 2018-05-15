@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/kcare/kcare.html',
-                    controller: 'KcareController',
+                    controller: 'ProductKcareController',
                     controllerAs: 'vm'
                 }
             },

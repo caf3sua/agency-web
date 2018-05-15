@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/hhvc/hhvc.html',
-                    controller: 'HhvcController',
+                    controller: 'ProductHhvcController',
                     controllerAs: 'vm'
                 }
             },

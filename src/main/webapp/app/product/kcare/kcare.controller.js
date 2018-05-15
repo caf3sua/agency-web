@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('KcareController', KcareController);
+        .controller('ProductKcareController', ProductKcareController);
 
-    KcareController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function KcareController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductKcareController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

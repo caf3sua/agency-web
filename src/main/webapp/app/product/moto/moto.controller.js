@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('MotoController', MotoController);
+        .controller('ProductMotoController', ProductMotoController);
 
-    MotoController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductMotoController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function MotoController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductMotoController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/bvp/bvp.html',
-                    controller: 'BvpController',
+                    controller: 'ProductBvpController',
                     controllerAs: 'vm'
                 }
             },

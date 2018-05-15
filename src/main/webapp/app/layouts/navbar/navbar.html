@@ -6,7 +6,7 @@
         <div class="navbar-collapse margin-top-20" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
             <div class="dropdown pull-right" ng-switch="vm.isAuthenticated()">
                 <div ng-switch-when="true">
-                    <button class="btn dropdown-toggle bv-dropdown-header" type="button" data-toggle="dropdown"> Bạn đang đăng nhâp dưới tên Đại lý A
+                    <button class="btn dropdown-toggle bv-dropdown-header" type="button" data-toggle="dropdown"> Bạn đang đăng nhâp dưới tên <strong>{{vm.user.ten}}</strong>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">

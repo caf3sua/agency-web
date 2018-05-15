@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/khc/khc.html',
-                    controller: 'KhcController',
+                    controller: 'ProductKhcController',
                     controllerAs: 'vm'
                 }
             },

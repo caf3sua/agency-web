@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/car/car.html',
-                    controller: 'CarController',
+                    controller: 'ProductCarController',
                     controllerAs: 'vm'
                 }
             },
