@@ -1,3 +1,7 @@
 <div ng-cloak>
-    Body content
+	<!-- No login -->
+    <div ng-if="!vm.isAuthenticated()" ng-include="'app/partial/partial.home.no.login.html'"></div>
+    
+    <!-- Logged-in -->
+    <div ng-if="vm.isAuthenticated()" ng-include="'app/partial/partial.home.loggedin.html'"></div>
 </div>

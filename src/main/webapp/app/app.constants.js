@@ -13,6 +13,6 @@
         	, "COUNT_DOWN_TIME_BREAK" : 600 // 600
         })
         .constant('API_SERVICE_PREFIX', "api,management")
-        .constant('API_SERVICE_URL', "http://localhost:9090")
+        .constant('API_SERVICE_URL', "http://appuat.baoviet.com.vn:7778")
 ;
 })();
