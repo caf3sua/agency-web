@@ -353,3 +353,42 @@ body {
 .margin-right-70{
     margin-right: 70px;
 }
+.margin-top-165{
+    margin-top: 165px;
+}
+.bv-text-nav-step{
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #0371b6;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+.bv-subtext-nav-step{
+    font-size: 10px;
+    font-family: Roboto;
+    font-weight: normal;
+    color: #292929;
+    white-space: nowrap;
+}
+.bv-block-header{
+    border-left: 1px solid #ccc;
+    padding: 8px 12px;
+    width: 100%;
+}
+.bv-block-header:last-child{
+    border-right: 1px solid #ccc;
+    padding: 8px 12px;
+    width: 100%;
+}
+
+.bv-block-header-icon{
+    text-align: right;
+    color: #b4cfe4;
+}
+.bv-block-header-icon>i{
+    font-size: 30px;
+}
+.border-bottom-2ea4ee{
+    border-bottom: 5px solid #2ea4ee;
+}
