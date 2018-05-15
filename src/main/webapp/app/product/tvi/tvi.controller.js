@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('TviController', TviController);
+        .controller('ProductTviController', ProductTviController);
 
-    TviController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function TviController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductTviController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

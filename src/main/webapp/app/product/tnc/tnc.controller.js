@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('TncController', TncController);
+        .controller('ProductTncController', ProductTncController);
 
-    TncController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductTncController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function TncController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductTncController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

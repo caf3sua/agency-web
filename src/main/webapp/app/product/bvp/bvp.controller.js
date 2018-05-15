@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('BvpController', BvpController);
+        .controller('ProductBvpController', ProductBvpController);
 
-    BvpController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductBvpController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function BvpController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductBvpController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

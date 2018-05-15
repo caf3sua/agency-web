@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('HomeController', HomeController);
+        .controller('ProductHomeController', ProductHomeController);
 
-    HomeController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function HomeController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductHomeController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/tvi/tvi.html',
-                    controller: 'TviController',
+                    controller: 'ProductTviController',
                     controllerAs: 'vm'
                 }
             },

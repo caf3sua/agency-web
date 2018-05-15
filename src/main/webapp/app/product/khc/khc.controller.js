@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .controller('KhcController', KhcController);
+        .controller('ProductKhcController', ProductKhcController);
 
-    KhcController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductKhcController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function KhcController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductKhcController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {

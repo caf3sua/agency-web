@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/tnc/tnc.html',
-                    controller: 'TncController',
+                    controller: 'ProductTncController',
                     controllerAs: 'vm'
                 }
             },

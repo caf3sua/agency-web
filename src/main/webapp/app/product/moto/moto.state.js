@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/product/moto/moto.html',
-                    controller: 'MotoController',
+                    controller: 'ProductMotoController',
                     controllerAs: 'vm'
                 }
             },
