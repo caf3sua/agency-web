@@ -1,64 +1,8 @@
-
-<div class="container  margin-top-165">
-    <div class="col-md-12 padding0">
-        <p class="bv-tile-templateSummary">
-            Đơn hàng chờ giải quyết
-        </p>
-    </div>
-    <div class="col-md-12 padding0">
-        <div class="col-md-6">
-            <div>
-                <p>Danh sách đơn hàng chờ giải quyết</p>
-            </div>
-            <div>
-                <p>6</p>
-            </div>
-            <div>
-                <table style="width:100%">
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <p>BVP.HN.01</p>
-                            <p>20/02/2018</p>
-                        </td>
-                        <td>
-                            <p>Vũ Hoàng Chiến</p>
-                            <p>095516446546</p>
-                        </td>
-                        <td>
-                            <i class="fas fa-phone-volume"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            <p>BVP.HN.02</p>
-                            <p>20/02/2018</p>
-                        </td>
-                        <td>
-                            <p>Vũ Nam Phong</p>
-                            <p>095516446546</p>
-                        </td>
-                        <td>
-                            <i class="fas fa-phone-volume"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="col-md-6">
-
-        </div>
-    </div>
-</div>
-
 <div ng-cloak>
-	<!-- No login -->
-    <div ng-if="!vm.isAuthenticated()" ng-include="'app/partial/partial.home.no.login.html'"></div>
+	<!--&lt;!&ndash; No login &ndash;&gt;-->
+    <!--<div ng-if="!vm.isAuthenticated()" ng-include="'app/partial/partial.home.no.login.html'"></div>-->
     
     <!-- Logged-in -->
-    <div ng-if="vm.isAuthenticated()" ng-include="'app/partial/partial.home.loggedin.html'"></div>
+    <div ng-include="'app/partial/partial.home.loggedin.html'"></div>
 </div>
 
