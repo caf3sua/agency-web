@@ -1,3 +1,4 @@
+
 <div class="container  margin-top-165">
     <div class="col-md-12 padding0">
         <p class="bv-tile-templateSummary">
@@ -52,3 +53,12 @@
         </div>
     </div>
 </div>
+
+<div ng-cloak>
+	<!-- No login -->
+    <div ng-if="!vm.isAuthenticated()" ng-include="'app/partial/partial.home.no.login.html'"></div>
+    
+    <!-- Logged-in -->
+    <div ng-if="vm.isAuthenticated()" ng-include="'app/partial/partial.home.loggedin.html'"></div>
+</div>
+

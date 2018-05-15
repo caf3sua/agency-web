@@ -10,6 +10,7 @@
     function HomeController ($scope, Principal, LoginService, $state, $rootScope) {
         var vm = this;
 
+        vm.isAuthenticated = Principal.isAuthenticated;
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;

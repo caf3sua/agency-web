@@ -6,13 +6,13 @@
         .constant('VERSION', "0.0.1-SNAPSHOT")
         .constant('DEBUG_INFO_ENABLED', true)
         .constant('BUILD_TIMESTAMP', "")
-        .constant('PTE_SETTINGS', {
+        .constant('AGENCY_SETTINGS', {
         	"COUNT_DOWN_TIME_SPEAKING_DESCRIBE_IMAGE" : 25
         	, "COUNT_DOWN_TIME_SPEAKING_OTHER" : 30
             , "COUNT_DOWN_TIME_SPEAKING_READ_ALOUD" : 40
         	, "COUNT_DOWN_TIME_BREAK" : 600 // 600
         })
         .constant('API_SERVICE_PREFIX', "api,management")
-        .constant('API_SERVICE_URL', "http://localhost:9090")
+        .constant('API_SERVICE_URL', "http://appuat.baoviet.com.vn:7778")
 ;
 })();

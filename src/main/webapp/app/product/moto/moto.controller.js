@@ -5,10 +5,24 @@
         .module('pteMagicApp')
         .controller('MotoController', MotoController);
 
-    MotoController.$inject = ['$scope', 'Principal', 'LoginService', '$state', '$rootScope'];
+    MotoController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function MotoController ($scope, Principal, LoginService, $state, $rootScope) {
-        var vm = this;
+    function MotoController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    	var vm = this;
+
+        angular.element(document).ready(function () {
+        });
+
+    	// Init controller
+  		(function initController() {
+  			// instantiate base controller
+  		    $controller('AgencyBaseController', { vm: vm, $scope: $scope });
+  		})();
+  		
+  		// Properties & function declare
+  		
+  		
+  		// Function
 
     }
 })();

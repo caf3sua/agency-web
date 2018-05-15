@@ -1,1075 +1,380 @@
-<section class="page-service step" style="margin-top: 90px">
-    <div class="container">
-        <div id="MainContent_updatePanel">
-
-            <input type="hidden" name="ctl00$MainContent$hdId" id="MainContent_hdId">
+<div class="container display-flex" style="margin-top: 90px">
+    <div class="bv-step-1 display-flex" id="bv-step-1">
+        <div class="bv-step-title text-center" ng-click="vm.closeOpenStepOne()">
+            <p class="fas {{vm.typeArrowOne}}"></p>
+            <p>1</p>
+            <p>Tính phí</p>
+        </div>
+        <div class="bv-step-content" id="bv-step-1-content">
+            <div class="text-header-sp">
+                <p>Thông tin gói</p>
+            </div>
             <div class="">
-                <ul>
-                    <li id="MainContent_premium" class="tab-permium active"><i class="fa fa-calculator" aria-hidden="true"></i><span class="op">Tính phí</span><i class="fa fa-caret-right" aria-hidden="true"></i></li>
-                    <li id="MainContent_infor" class="tab-infor"><i class="fa fa-user-md" aria-hidden="true"></i><span class="op">Thông tin bảo hiểm</span><i class="fa fa-caret-right" aria-hidden="true"></i></li>
-                    <li id="MainContent_receiver" class="tab-receiver"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="op">Thông tin giao hàng</span><i class="fa fa-caret-right" aria-hidden="true"></i></li>
-                    <li id="MainContent_sumary" class="tab-sumary"><i class="fa fa-money" aria-hidden="true"></i><span class="op">Tóm tắt đơn hàng</span></li>
-                </ul>
+                <p class="bv-title-from">Chon nhóm loại xe</p>
+                <select class="bv-select-box form-control">
+                    <option>Xe oto chở người không kinh doanh vận tải</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
             </div>
-            <!-- End Tab Header -->
-            <div id="MainContent_premiumContent" style="">
-                <div class="tit-step">Bước 1: Tính phí</div>
-                <div class="bv-tu">
-                    <div class="col-md-8 charge">
-                        <div class="content-step">
-                            <div class="clearfix"></div>
-                            <div class="form-group">
-                                <label for="number-persion" class="col-sm-6">Số người tham gia:&nbsp;(<span class="start">*</span>)</label>
-                                <div class="col-sm-6">
-                                    <input name="ctl00$MainContent$txtSoNguoiThamGia" type="number" maxlength="2" onchange="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$txtSoNguoiThamGia\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="MainContent_txtSoNguoiThamGia" class="form-control" min="1" max="20" style="width:98%;">
-
-                                </div>
-                                <div class="tooltip">
-                                    <div class="naoTooltip-wrap">
-                                        <i class="fa fa-question-circle"></i>
-                                        <div class="naoTooltip nt-right-top nt-small" style="left: 35px; top: 0px;">* Số người tham gia bảo hiểm</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div id="MainContent_note">
-                                <p style="margin-left: 20px; font-size: 13px; font-style: italic">Bảo hiểm Bảo Việt không nhận bảo hiểm và không chịu trách nhiệm đối với các đối tượng sau:</p>
-                                <p style="margin-left: 20px; font-size: 13px; font-style: italic">- Những người bị bệnh thần kinh, tâm thần, phong. </p>
-                                <p style="margin-left: 20px; font-size: 13px; font-style: italic">- Những ngươi bị tàn phế hoặc thương tật vĩnh viễn từ 50% trở lên.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="form-group">
-                                <label for="group-byke" class="col-sm-6">Số tiền bảo hiểm:&nbsp;(<span class="start">*</span>)</label>
-                                <div class="select-style col-sm-6">
-                                    <select name="ctl00$MainContent$cboSoTienBaoHiem" onchange="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$cboSoTienBaoHiem\',\'\')', 0)" id="MainContent_cboSoTienBaoHiem" class="form-control" displaymode="DropDownList" style="width:98%;">
-                                        <option selected="selected" value="0">-- Chọn mức bảo hiểm --</option>
-                                        <option value="2">20,000,000 VNĐ</option>
-                                        <option value="3">30,000,000 VNĐ</option>
-                                        <option value="4">40,000,000 VNĐ</option>
-                                        <option value="5">50,000,000 VNĐ</option>
-                                        <option value="6">60,000,000 VNĐ</option>
-                                        <option value="7">70,000,000 VNĐ</option>
-                                        <option value="8">80,000,000 VNĐ</option>
-                                        <option value="9">90,000,000 VNĐ</option>
-                                        <option value="10">100,000,000 VNĐ</option>
-
-                                    </select>
-
-                                </div>
-                                <div class="tooltip">
-                                    <div class="naoTooltip-wrap">
-                                        <i class="fa fa-question-circle"></i>
-                                        <div class="naoTooltip nt-right-top nt-small" style="left: 35px; top: 0px;">* Chọn mức bảo hiểm</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="form-group">
-                                <label for="group-byke" class="col-sm-6">Thời hạn bảo hiểm :&nbsp;(<span class="start">*</span>)</label>
-                                <div class="col-sm-6">
-                                    <table>
-                                        <tbody><tr>
-                                            <td>Từ </td>
-                                            <td>
-                                                <input name="ctl00$MainContent$thoihantu" type="text" value="21/04/2018" maxlength="10" onchange="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$thoihantu\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="MainContent_thoihantu" class="fromOneYear hasDatepicker" readonly="readonly"><button type="button" class="ui-datepicker-trigger"><img src="content/images/icon_date.png" alt="..." title="..." class="img-responsive center-block"></button>
-                                            </td>
-                                            <td>&nbsp;Đến</td>
-                                            <td>
-                                                <input name="ctl00$MainContent$thoihanden" type="text" value="20/04/2019" id="MainContent_thoihanden" class="toOneYear hasDatepicker" disabled=""><button type="button" class="ui-datepicker-trigger" disabled=""><img src="content/images/icon_date.png" alt="..." title="..." class="img-responsive center-block"></button>
-                                            </td>
-                                        </tr>
-                                        </tbody></table>
-
-                                </div>
-                                <div class="tooltip">
-                                    <div class="naoTooltip-wrap">
-                                        <i class="fa fa-question-circle"></i>
-                                        <div class="naoTooltip nt-right-top nt-small" style="left: 35px; top: 0px;">* Ngày bắt đầu tham gia phải lớn hơn ngày hiện tại 1 ngày. Thời hạn bảo hiểm là 1 năm. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Giam phi-->
-                            <div class="clearfix"></div>
-
-
-                            <div class="clearfix"></div>
-                            <!--end giam phi-->
-
-
+            <div class="margin-top-10">
+                <p class="bv-title-from">Đối tượng đượng bảo hiểm</p>
+            </div>
+            <div class=" display-flex">
+                <div class="cntr margin-right-5">
+                    <label for="cbx" class="label-cbx">
+                        <input id="cbx" type="checkbox" class="invisible">
+                        <div class="checkbox">
+                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                <polyline points="4 11 8 15 16 6"></polyline>
+                            </svg>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="continue">
-                            <a onclick="CallFacebookPixelStep1();" id="MainContent_btnStep1Continue" href="javascript:__doPostBack('ctl00$MainContent$btnStep1Continue','')"><h3>Tiếp tục<i class="fa fa-angle-right" aria-hidden="true"></i></h3></a>
+                        <span>Mới</span>
+                    </label>
+                </div>
+                <div class="cntr">
+                    <label for="cbx1" class="label-cbx">
+                        <input id="cbx1" type="checkbox" class="invisible">
+                        <div class="checkbox">
+                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                <polyline points="4 11 8 15 16 6"></polyline>
+                            </svg>
                         </div>
-                    </div>
+                        <span>Tái tục</span>
+                    </label>
                 </div>
             </div>
-            <!-- End premiumContent -->
-            <div id="MainContent_inforContent" style="display:none;">
-                <div class="tit-step">Bước 2: Thông tin bảo hiểm</div>
-                <div class="bv-tu">
-                    <div class="col-md-8 charge">
-                        <div class="content-step step2">
-
-                            <div class="clearfix"></div>
-                            <div class="tit-step">THÔNG TIN NGƯỜI ĐƯỢC BẢO HIỂM</div>
-                            <div class="form-group">
-                                <input type="hidden" id="MainContent_dgvSoNguoiThamGia_clientState" name="MainContent_dgvSoNguoiThamGia_clientState" value="[[[[null,-1,null]],[[[[[0]],[],null],[null,null],[null]],[[[[2]],[],null],[null,null],[null]],[[[[&quot;RowSelectors&quot;]],[],[]],[{},[]],null],[[[[&quot;Selection&quot;,1,0,1,2,null,null]],[],[]],[{},[]],null]],null],[{},[{},{}]],[]]"><div id="MainContent_dgvSoNguoiThamGia" class="ig_Control igg_Control" style="height: 240px; width: 100%; overflow: hidden; visibility: inherit;" tabindex="0"><table cellpadding="0" cellspacing="0" border="0" data-ig="x:1640739929.0:mkr:outerTbl.hdn" style="table-layout: fixed; width: 100%; visibility: inherit;" mkr="outerTbl.hdn"><colgroup><col style="width:100%;"><col data-ig="x:1640739929.1:mkr:vsb:sub:vScrWidth" style="width:15px;" sub="vScrWidth" mkr="vsb"></colgroup><tbody><tr><td><table cellpadding="0" cellspacing="0" border="0" data-ig="x:1640739929.2:mkr:contentTbl" style="table-layout:fixed;width:100%;" mkr="contentTbl"><tbody data-ig="x:1640739929.3:mkr:headingArea" mkr="headingArea"><tr data-ig="x:1640739929.12:mkr:header" class="ig_Header igg_Header" mkr="header" _ehh_id_click="_ehh_id_1"><td><div style="overflow:hidden;"><table data-ig="x:1640739929.13:mkr:headerContent.hdn" cellpadding="0" border="0" style="table-layout: fixed; width: 100%; visibility: inherit;" cellspacing="0" mkr="headerContent.hdn"><tbody><tr data-ig="x:1640739929.14:mkr:columnHeaderRow" mkr="columnHeaderRow" _ehh_id_mousedown="_ehh_id_5"><th class="ig_Header igg_RowSelector igg_HeaderRowSelector"></th></tr></tbody></table></div></td></tr></tbody><tbody><tr><td style="vertical-align:top;"><div style="position: absolute;"><div id="MainContent_dgvSoNguoiThamGia_eppool" style="position: absolute; width: 1px; z-index: 1;">	<input type="hidden"></div></div><div data-ig="x:1640739929.4:mkr:container" style="overflow:hidden;height:216px;" mkr="container" _ehh_id_click="_ehh_id_0" _ehh_id_keydown="_ehh_id_2" _ehh_id_mousemove="_ehh_id_3" _ehh_id_mousedown="_ehh_id_4"><table cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed; width: 100%; visibility: inherit;" data-ig="x:1640739929.5:mkr:dataTbl.hdn" mkr="dataTbl.hdn"><tbody data-ig="x:1640739929.16:mkr:rows:nw:1" class="ig_Item igg_Item" nw="1" mkr="rows"></tbody></table></div></td></tr></tbody><tbody data-ig="x:1640739929.6:mkr:footingArea" mkr="footingArea"></tbody></table></td><td data-ig="x:1640739929.7:mkr:vsb" style="display:none;vertical-align:top;" mkr="vsb"><div data-ig="x:1640739929.8:mkr:vScrBar" style="overflow-x:hidden;overflow-y:scroll;height:216px;" mkr="vScrBar"><div style="width:1px;"></div></div></td></tr><tr data-ig="x:1640739929.9:mkr:hScrHeight" style="height:15px;display:none;" mkr="hScrHeight"><td><div data-ig="x:1640739929.10:mkr:hScrBar" style="overflow-x:scroll;overflow-y:hidden;width:100%;height:15px;" mkr="hScrBar"><div style="height:1px;"></div></div></td><td data-ig="x:1640739929.11:mkr:vsb" class="igg_ScrollbarIntersection" style="margin:0px;padding:0px;display:none;" mkr="vsb"></td></tr></tbody></table></div>
-
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="form-group">
-                                <div style="border-top: solid 1px #dddddd;">
-                                    <div class="checkbox">
-                                        <label class="respon-civil">
-                                            <input id="MainContent_chkCamDoan" type="checkbox" name="ctl00$MainContent$chkCamDoan" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$chkCamDoan\',\'\')', 0)">
-                                            <i class="fa fa-square-o" aria-hidden="true"></i>
-                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <strong>Tôi cam kết và đồng ý rằng:&nbsp;(<span class="start">*</span>) </strong>
-                                        </label>
-                                    </div>
-                                    <p>- Tất cả những thông tin khai nêu trên là đúng và sẽ thông báo cho Bảo Hiểm Bảo Việt khi có bất kỳ thông tin nào thay đổi. </p>
-                                    <p>- Đơn bảo hiểm sẽ là cơ sở của hợp đồng giữa tôi và Bảo Hiểm Bảo Việt và tôi sẽ chấp nhận tất cả các điều khoản mà Bảo Hiểm Bảo Việt qui định trong đơn bảo hiểm và nộp phí bảo hiểm đúng theo quy định.</p>
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="continue">
-                            <a id="MainContent_LinkButton1" href="javascript:__doPostBack('ctl00$MainContent$LinkButton1','')"><h3 class="prev"><i class="fa fa-angle-left left" aria-hidden="true"></i>Quay lại</h3></a>
-                            <a onclick="CallFacebookPixelStep2();" id="MainContent_LinkButton2" href="javascript:__doPostBack('ctl00$MainContent$LinkButton2','')"><h3>Tiếp tục<i class="fa fa-angle-right right" aria-hidden="true"></i></h3></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .col-md-8 -->
+            <div class="margin-top-5">
+                <input type="text" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" />
             </div>
-            <!-- End inforContent -->
-            <div id="MainContent_receiverContent" style="display:none;">
-                <div class="tit-step">Bước 3: Thông tin giao hàng</div>
-                <div class="bv-tu">
-
-                    <div class="col-md-8 charge">
-                        <div class="content-step step2">
-                            <div id="MainContent_receiveusContent_UpdatePanelReceiveus">
-
-                                <div class="tit-step">Phương thức nhận đơn bảo hiểm</div>
-                                <br>
-                                <div id="recieveType" class="radio">
-
-                                    <label class="respon-civil">
-                                        <input id="MainContent_receiveusContent_chkReceiveMethod" type="checkbox" name="ctl00$MainContent$receiveusContent$chkReceiveMethod">
-                                        Nhận giấy chứng nhận bảo hiểm gửi qua đường bưu điện
-                                    </label>
-                                    <label>
-                                        <div id="receiveBC" class="des-method">
-                                            <p>Bảo Việt sẽ giao bản cứng Giấy chứng nhận bảo hiểm cho Quý khách trong khoảng thời gian sau kể từ thời điểm quý khách thanh toán đủ phí bảo hiểm:</p>
-                                            <p>- Hà Nội và Trung tâm tỉnh/Thành phố khác: 2-4 ngày</p>
-                                            <p>- Khu vực còn lại: 4-5 ngày</p>
-                                        </div>
-                                        <span id="MainContent_receiveusContent_RFV123" class="error" style="font-weight:700;display:none;">Vui lòng lựa chọn phương thức nhận đơn bảo hiểm</span>
-                                    </label>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="accordion-wrapper">
-                                    <div class="ac-pane info_bv">
-                                        <a href="#" class="ac-title">
-                            <span style="font-size: 21px">Thông tin hóa đơn giá trị gia tăng
-                            </span><i class="fa"></i>
-                                        </a>
-                                        <div class="ac-content" style="float: left; width: 100%; background-color: transparent !important">
-                                            <div class="clearfix"></div>
-                                            <div class="form-group">
-                                                <label for="group-byke" class="col-sm-6">Họ và tên người mua:</label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$txtHoTenNguoiMua" type="text" maxlength="60" id="MainContent_receiveusContent_txtHoTenNguoiMua" class="col-sm-6 form-control">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="form-group">
-                                                <label for="group-byke" class="col-sm-6">Tên đơn vị:</label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$txtTenDonVi" type="text" maxlength="60" id="MainContent_receiveusContent_txtTenDonVi" class="col-sm-6 form-control">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="form-group">
-                                                <label for="group-byke" class="col-sm-6">Mã số thuế:</label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$txtMaSoThue" type="text" maxlength="60" id="MainContent_receiveusContent_txtMaSoThue" class="col-sm-6 form-control">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label id="MainContent_receiveusContent_addrCty_addresslabel" for="address" class="col-sm-6">Địa chỉ đơn vị:</label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$addrCty$txtAdress" type="text" maxlength="60" id="MainContent_receiveusContent_addrCty_txtAdress" class="col-sm-6 form-control" placeholder="VD: 35 Hai Bà Trưng">
-                                                    <div id="MainContent_receiveusContent_addrCty_txtErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                        Bạn phải nhập đầy đủ thông tin
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="form-group">
-                                                <label for="group-byke" class="col-sm-6">Tên phường/ xã:
-                                                </label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$addrCty$txtDistrict" type="text" maxlength="60" id="MainContent_receiveusContent_addrCty_txtDistrict" class="form-control ui-autocomplete-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" autocomplete="off">
-                                                    <div id="MainContent_receiveusContent_addrCty_txtDistrictErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                        Tên phường xã không tồn tại!
-                                                    </div>
-                                                    <input type="hidden" name="ctl00$MainContent$receiveusContent$addrCty$hdPostCode" id="MainContent_receiveusContent_addrCty_hdPostCode">
-                                                    <input type="hidden" name="ctl00$MainContent$receiveusContent$addrCty$hdProvince" id="MainContent_receiveusContent_addrCty_hdProvince">
-                                                </div>
-                                            </div>
-                                            <span id="MainContent_receiveusContent_addrCty_validatorRequiredAddress" style="display:none;"></span>
-                                            <span id="MainContent_receiveusContent_addrCty_validatorRequiredDistrict" style="display:none;"></span>
-                                            <div class="clearfix"></div>
-
-                                            <script lang="JavaScript">
-                                                function requiredAddressMainContent_receiveusContent_addrCty_txtAdress(oSrc, args) {
-                                                    args.IsValid = true;
-                                                    $("#MainContent_receiveusContent_addrCty_txtErr").hide();
-
-                                                    if ($("#MainContent_receiveusContent_addrCty_txtDistrict").val() == "")
-                                                    {
-                                                        $("#MainContent_receiveusContent_addrCty_txtDistrict").css("background-color", "#eeff00");
-                                                        args.IsValid = false;
-                                                    }
-                                                    if ($("#MainContent_receiveusContent_addrCty_txtAdress").val() == "") {
-                                                        $("#MainContent_receiveusContent_addrCty_txtAdress").css("background-color", "#eeff00");
-                                                        args.IsValid = false;
-                                                    }
-                                                }
-                                            </script>
-                                            <span id="MainContent_receiveusContent_lblErrAddrCty" class="error" style="font-weight:bold;"></span>
-                                            <div class="clearfix"></div>
-                                            <div class="form-group">
-                                                <label for="group-byke" class="col-sm-6">Số tài khoản:</label>
-                                                <div class="col-sm-6">
-                                                    <input name="ctl00$MainContent$receiveusContent$txtSoTaiKhoan" type="text" maxlength="60" id="MainContent_receiveusContent_txtSoTaiKhoan" class="col-sm-6 form-control">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix"></div>
-                                <div class="tit-step">Thông tin nhận đơn bảo hiểm</div>
-
-                                <div class="checkbox">
-                                    <label class="info-name">
-                                        <input onclick="defaultValueForReceiver(this);" type="checkbox">
-                                        <i class="fa fa-square-o" aria-hidden="true"></i>
-                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                        <strong>Điền thông tin của tài khoản Đăng nhập</strong>
-                                        <p style="padding-top: 5px; font-size: 15px;">Bỏ chọn ô này để xóa thông tin</p>
-                                    </label>
-                                </div>
-
-                                <div class="clearfix"></div>
-                                <div id="MainContent_receiveusContent_idbancung">
-                                    <div class="form-group">
-                                        <label for="mail" class="col-sm-6">Email người nhận: (<span class="start">*</span>)</label>
-                                        <div class="col-sm-5">
-                                            <input name="ctl00$MainContent$receiveusContent$txtEmail" type="text" id="MainContent_receiveusContent_txtEmail" class="col-sm-6 form-control" onblur="CallServerSide(this.id);">
-                                            <div>
-
-                                <span id="MainContent_receiveusContent_EmailEditorValidator1" class="error" style="white-space:nowrap;display:none;">
-                        Invalid E-Mail</span>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-1" style="padding-top: 5px; padding-left: 5px; padding-right: 0px;">
-                                            <button id="MainContent_receiveusContent_btnSearch" type="button" class="btn btn-info btn-lg" style="display: block; height: 38px; padding-top: 5px;" data-toggle="modal" data-target="#myModalSearch"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                            <button id="MainContent_receiveusContent_btnEdit" type="button" class="btn btn-info btn-lg" style="display: none; height: 38px; padding-top: 5px;" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit" aria-hidden="true"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="form-group">
-                                        <label for="group-byke" class="col-sm-6">Họ và tên người nhận: (<span class="start">*</span>)</label>
-                                        <div class="col-sm-6">
-                                            <input name="ctl00$MainContent$receiveusContent$txtTenNguoiNhan" type="text" maxlength="60" readonly="readonly" id="MainContent_receiveusContent_txtTenNguoiNhan" class="col-sm-6 form-control">
-                                            <div>
-                                                <span id="MainContent_receiveusContent_ctl01" class="error" onservervalidate="Receiveus_ServerValidate" style="font-weight:700;display:none;">Cần nhập Họ và tên người nhận</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div id="MainContent_receiveusContent_diachiNguoiNhan" style="display: none;">
-
-                                        <div class="form-group">
-                                            <label id="MainContent_receiveusContent_adDiaChiNguoiNhan_addresslabel" for="address" class="col-sm-6">Địa chỉ người nhận: (<span style="color: red;">*</span>)</label>
-                                            <div class="col-sm-6">
-                                                <input name="ctl00$MainContent$receiveusContent$adDiaChiNguoiNhan$txtAdress" type="text" maxlength="60" id="MainContent_receiveusContent_adDiaChiNguoiNhan_txtAdress" class="col-sm-6 form-control" placeholder="VD: 35 Hai Bà Trưng">
-                                                <div id="MainContent_receiveusContent_adDiaChiNguoiNhan_txtErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                    Bạn phải nhập đầy đủ thông tin
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="form-group">
-                                            <label for="group-byke" class="col-sm-6">Tên phường/ xã:
-                                            </label>
-                                            <div class="col-sm-6">
-                                                <input name="ctl00$MainContent$receiveusContent$adDiaChiNguoiNhan$txtDistrict" type="text" maxlength="60" id="MainContent_receiveusContent_adDiaChiNguoiNhan_txtDistrict" class="form-control ui-autocomplete-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" autocomplete="off">
-                                                <div id="MainContent_receiveusContent_adDiaChiNguoiNhan_txtDistrictErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                    Tên phường xã không tồn tại!
-                                                </div>
-                                                <input type="hidden" name="ctl00$MainContent$receiveusContent$adDiaChiNguoiNhan$hdPostCode" id="MainContent_receiveusContent_adDiaChiNguoiNhan_hdPostCode">
-                                                <input type="hidden" name="ctl00$MainContent$receiveusContent$adDiaChiNguoiNhan$hdProvince" id="MainContent_receiveusContent_adDiaChiNguoiNhan_hdProvince">
-                                            </div>
-                                        </div>
-                                        <span id="MainContent_receiveusContent_adDiaChiNguoiNhan_validatorRequiredAddress" style="display:none;"></span>
-                                        <span id="MainContent_receiveusContent_adDiaChiNguoiNhan_validatorRequiredDistrict" style="display:none;"></span>
-                                        <div class="clearfix"></div>
-
-                                        <script lang="JavaScript">
-                                            function requiredAddressMainContent_receiveusContent_adDiaChiNguoiNhan_txtAdress(oSrc, args) {
-                                                args.IsValid = true;
-                                                $("#MainContent_receiveusContent_adDiaChiNguoiNhan_txtErr").hide();
-
-                                                if ($("#MainContent_receiveusContent_adDiaChiNguoiNhan_txtDistrict").val() == "")
-                                                {
-                                                    $("#MainContent_receiveusContent_adDiaChiNguoiNhan_txtDistrict").css("background-color", "#eeff00");
-                                                    args.IsValid = false;
-                                                }
-                                                if ($("#MainContent_receiveusContent_adDiaChiNguoiNhan_txtAdress").val() == "") {
-                                                    $("#MainContent_receiveusContent_adDiaChiNguoiNhan_txtAdress").css("background-color", "#eeff00");
-                                                    args.IsValid = false;
-                                                }
-                                            }
-                                        </script>
-                                    </div>
-                                    <span id="MainContent_receiveusContent_LabelDiaChiNguoiNhan" class="error" style="font-weight:bold;"></span>
-                                    <div class="form-group">
-                                        <span id="MainContent_receiveusContent_lblDiaChiNguoiNhan" class="col-sm-6" style="padding-left: 20px; padding-top: 11px;">Địa chỉ người nhận: (<span class="start">*</span>)</span>
-                                        <div class="col-sm-6">
-                                            <input name="ctl00$MainContent$receiveusContent$txtDiaChiNguoiNhan" type="text" readonly="readonly" id="MainContent_receiveusContent_txtDiaChiNguoiNhan" class="col-sm-6 form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone" class="col-sm-6">Số điện thoại liên hệ: (<span class="start">*</span>)</label>
-                                        <div class="col-sm-6">
-                                            <input name="ctl00$MainContent$receiveusContent$txtMobile" type="text" readonly="readonly" id="MainContent_receiveusContent_txtMobile" class="col-sm-6 form-control">
-                                            <div>
-                                                <span id="MainContent_receiveusContent_ctl02" class="error" onservervalidate="Receiveus_ServerValidate" style="font-weight:700;display:none;">Vui lòng cập nhật điện thoại liên hệ</span>
-                                                <span id="MainContent_receiveusContent_ctl03" class="error" style="white-space:nowrap;display:none;">
-                        Không đúng định dạng Mobile</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="group-byke" class="col-sm-6">Công ty cấp đơn(<span class="start">*</span>)</label>
-                                        <div class="select-style col-sm-6">
-                                            <select name="ctl00$MainContent$receiveusContent$cboCongtybh" onchange="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$receiveusContent$cboCongtybh\',\'\')', 0)" id="MainContent_receiveusContent_cboCongtybh" class="form-control">
-                                                <option selected="selected" value="">--- Cần lựa chọn công ty cấp đơn ---</option>
-                                                <option value="PARTY_BVTCT20060215171605821000581478">Bảo Việt An Giang</option>
-                                                <option value="PARTY_BVTCT20060301165134371000993855">Bảo Việt Bắc Giang</option>
-                                                <option value="PARTY_BVTCT20060307151606400000393257">Bảo Việt Bắc Cạn</option>
-                                                <option value="PARTY_BVTCT20060313095429540000880642">Bảo Việt Bạc Liêu</option>
-                                                <option value="PARTY_BVTCT20060323105446600000038723">Bảo Việt Bắc Ninh</option>
-                                                <option value="PARTY_IJ315868
-">Bảo Việt Bến Thành</option>
-                                                <option value="PARTY_20060506165854896000017515">Bảo Việt Bến Tre</option>
-                                                <option value="PARTY_20060506170037504000247404">Bảo Việt Bình Định</option>
-                                                <option value="PARTY_BVTCT20060321185710110000789626">Bảo Việt Bình Dương</option>
-                                                <option value="PARTY_20060506170222268000966037">Bảo Việt Bình Phước</option>
-                                                <option value="PARTY_20060506170414954000003733">Bảo Việt Bình Thuận</option>
-                                                <option value="PARTY_20060506170805233000957859">Bảo Việt Cà Mau</option>
-                                                <option value="PARTY_20060506170916497000499618">Bảo Việt Cần Thơ</option>
-                                                <option value="PARTY_20060506170539594000109196">Bảo Việt Cao Bằng</option>
-                                                <option value="PARTY_20060506171216808000534785">Bảo Việt Đà Nẵng</option>
-                                                <option value="PARTY_20060506171100855000459613">Bảo Việt Đắc Lắc</option>
-                                                <option value="PARTY_20060508160608856649642608">Bảo Việt Đắc Nông</option>
-                                                <option value="PARTY_20060509161616410603417270">Bảo Việt Điện Biên</option>
-                                                <option value="PARTY_IJ250743">Bảo Việt Đình Vũ</option>
-                                                <option value="PARTY_BVPROP17053116184559281434253">Bảo Việt Đông Bắc</option>
-                                                <option value="PARTY_20060506172535235000123038">Bảo Việt Đông Đô</option>
-                                                <option value="PARTY_20060509155724896808151597">Bảo Việt Đồng Nai</option>
-                                                <option value="PARTY_20060506171547789000342750">Bảo Việt Đồng Tháp</option>
-                                                <option value="PARTY_BVPROP0809090909544604113386">Bảo Việt Gia Định</option>
-                                                <option value="PARTY_20060506171713491000400793">Bảo Việt Gia Lai</option>
-                                                <option value="PARTY_20060506171842646000019827">Bảo Việt Hà Giang</option>
-                                                <option value="PARTY_20060506172351189000935364">Bảo Việt Hà Nam</option>
-                                                <option value="PARTY_BVTCT20060310095359930000922039">Bảo Việt Hà Nội</option>
-                                                <option value="PARTY_IJ250754">Bảo Việt Hà Thành</option>
-                                                <option value="PARTY_20060509160418691364890533">Bảo Việt Hà Tĩnh</option>
-                                                <option value="PARTY_20060506173144214000823796">Bảo Việt Hải Dương</option>
-                                                <option value="PARTY_20060506173246682000511925">Bảo Việt Hải Phòng</option>
-                                                <option value="PARTY_20060510091544376432030990">Bảo Việt Hậu Giang</option>
-                                                <option value="PARTY_20060506173422447000527938">Bảo Việt Hòa Bình</option>
-                                                <option value="PARTY_20060506173549586000411247">Bảo Việt Hưng Yên</option>
-                                                <option value="PARTY_20060412155729662325816035">Bảo Việt Khánh Hòa</option>
-                                                <option value="PARTY_20060506173713648000573822">Bảo Việt Kiên Giang</option>
-                                                <option value="PARTY_20060506164907591000514781">Bảo Việt Kon Tum</option>
-                                                <option value="PARTY_20060510091056210372621293">Bảo Việt Lai Châu</option>
-                                                <option value="PARTY_20060506170347752000757583">Bảo Việt Lâm Đồng</option>
-                                                <option value="PARTY_20060506171010044000162670">Bảo Việt Lạng Sơn</option>
-                                                <option value="PARTY_20060509161253096034487722">Bảo Việt Lào Cai</option>
-                                                <option value="PARTY_20060506170815436000681792">Bảo Việt Long An</option>
-                                                <option value="PARTY_IJ250751">Bảo Việt Mỹ Đình</option>
-                                                <option value="PARTY_BVPROP2007060603391547600001">Bảo Việt Nam Bình Dương</option>
-                                                <option value="PARTY_20060506171403400000294922">Bảo Việt Nam Định</option>
-                                                <option value="PARTY_20060506172223237000960102">Bảo Việt Nghệ An</option>
-                                                <option value="PARTY_20060506171639414000623352">Bảo Việt Ninh Bình</option>
-                                                <option value="PARTY_20060506172039129000158575">Bảo Việt NinhThuận</option>
-                                                <option value="PARTY_BVPROP17041809294058154075848">Bảo Việt Phú Mỹ</option>
-                                                <option value="PARTY_IJ253355">Bảo Việt Phú Quốc</option>
-                                                <option value="PARTY_20060506172945138000464212">Bảo Việt Phú Thọ</option>
-                                                <option value="PARTY_20060506173256385000522707">Bảo Việt Phú Yên</option>
-                                                <option value="PARTY_20060506173610555000217403">Bảo Việt Quảng Bình</option>
-                                                <option value="PARTY_20060506173758007000802834">Bảo Việt Quảng Nam</option>
-                                                <option value="PARTY_20060506174224034000617269">Bảo Việt Quảng Ngãi</option>
-                                                <option value="PARTY_20060506174040442000522814">Bảo Việt Quảng Ninh</option>
-                                                <option value="PARTY_20060506174352440000698166">Bảo Việt Quảng Trị</option>
-                                                <option value="PARTY_BVTCT20060322162904642000439702">Bảo Việt Sài Gòn</option>
-                                                <option value="PARTY_20060506174930904000105940">Bảo Việt Sóc Trăng</option>
-                                                <option value="PARTY_20060506174517048000575227">Bảo Việt Sơn La</option>
-                                                <option value="PARTY_IJ289555">Bảo Việt Sơn Tây</option>
-                                                <option value="PARTY_BVPROP11091414410517128203991">Bảo Việt Tp. Hồ Chí Minh</option>
-                                                <option value="PARTY_20060506180154269000227957">Bảo Việt Thừa Thiên Huế</option>
-                                                <option value="PARTY_20060506175155808000818113">Bảo Việt Tây Ninh</option>
-                                                <option value="PARTY_20060506175327807000803469">Bảo Việt Thái Bình</option>
-                                                <option value="PARTY_20060506175716367000089283">Bảo Việt Thái Nguyên</option>
-                                                <option value="PARTY_IJ250757">Bảo Việt Thăng Long</option>
-                                                <option value="PARTY_BVTCT20060221110250803000798882">Bảo Việt Thanh Hóa</option>
-                                                <option value="PARTY_20060506180023458000887721">Bảo Việt Tiền Giang</option>
-                                                <option value="PARTY_20060506180614079000843254">Bảo Việt Trà Vinh</option>
-                                                <option value="PARTY_IJ250759">Bảo Việt Tràng An</option>
-                                                <option value="PARTY_BVPROP060807160203695736007001">TRỤ SỞ CHÍNH</option>
-                                                <option value="PARTY_20060506180414877000130389">Bảo Việt Tuyên Quang</option>
-                                                <option value="PARTY_20060506180752077000419991">Bảo Việt Vĩnh Long</option>
-                                                <option value="PARTY_20060506180923529000625645">Bảo Việt Vĩnh Phúc</option>
-                                                <option value="PARTY_20060508155812363939481115">Bảo Việt Vũng Tàu</option>
-                                                <option value="PARTY_20060506181116215000147930">Bảo Việt Yên Bái</option>
-
-                                            </select>
-
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="continue">
-                                    <a id="MainContent_receiveusContent_cmdBack3" usebrowserdefaults="False" autosubmit="True" href="javascript:__doPostBack('ctl00$MainContent$receiveusContent$cmdBack3','')"><h3 class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i>QUAY LẠI</h3></a>
-
-                                    <a onclick="CallFacebookPixelsReceived;" id="MainContent_receiveusContent_cmdContinueReceive" usebrowserdefaults="False" autosubmit="True" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MainContent$receiveusContent$cmdContinueReceive", "", true, "receive", "", false, true))'><h3>TIẾP TỤC<i class="fa fa-angle-right" aria-hidden="true"></i></h3></a>
-                                </div>
-                                <div class="container">
-                                    <!-- Modal Edit -->
-                                    <div class="modal" id="myModalEdit" role="dialog">
-                                        <div class="modal-dialog">
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                                    <h4 class="modal-title" style="text-align: center"><b>Thông tin khách hàng</b></h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div>
-                                                        <div id="MainContent_receiveusContent_UpdatePanel1">
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12">Email: (<span class="start">*</span>)</label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <input name="ctl00$MainContent$receiveusContent$txtEmailModalEdit" type="text" readonly="readonly" id="MainContent_receiveusContent_txtEmailModalEdit" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12">Họ Tên: (<span class="start">*</span>)</label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <input name="ctl00$MainContent$receiveusContent$txtHoTenModalEdit" type="text" id="MainContent_receiveusContent_txtHoTenModalEdit" class="form-control">
-                                                                    <div>
-                                                                        <span id="MainContent_receiveusContent_ctl06" class="error" style="font-weight:700;display:none;">Vui lòng nhập họ tên</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12 modal-edit">Năm sinh: (<span class="start">*</span>)</label>
-                                                                <input name="ctl00$MainContent$receiveusContent$txtNamSinhModalEdit" type="text" id="MainContent_receiveusContent_txtNamSinhModalEdit" class="modal-datetime dateBirthDay hasDatepicker"><button type="button" class="ui-datepicker-trigger"><img src="content/images/icon_date.png" alt="..." title="..." class="img-responsive center-block"></button>
-                                                                <div>
-                                                                    <span id="MainContent_receiveusContent_ctl07" class="error" style="font-weight:700;display:none;">Vui lòng nhập năm sinh</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12 modal-edit">Giới Tính: (<span class="start">*</span>)</label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <table id="MainContent_receiveusContent_rdGioiTinhModalEdit">
-                                                                        <tbody><tr>
-                                                                            <td><input id="MainContent_receiveusContent_rdGioiTinhModalEdit_0" type="radio" name="ctl00$MainContent$receiveusContent$rdGioiTinhModalEdit" value="1" checked="checked"><label for="MainContent_receiveusContent_rdGioiTinhModalEdit_0">Nam</label></td><td><input id="MainContent_receiveusContent_rdGioiTinhModalEdit_1" type="radio" name="ctl00$MainContent$receiveusContent$rdGioiTinhModalEdit" value="2"><label for="MainContent_receiveusContent_rdGioiTinhModalEdit_1">Nữ</label></td>
-                                                                        </tr>
-                                                                        </tbody></table>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div>
-
-                                                                <div class="form-group">
-                                                                    <label id="MainContent_receiveusContent_adDiaChiModalEdit_addresslabel" for="address" style="padding-top:11px;" class="col-md-3 col-sm-12">Địa chỉ: (<span style="color: red;">*</span>)</label>
-                                                                    <div class="col-md-3 col-sm-12">
-                                                                        <input name="ctl00$MainContent$receiveusContent$adDiaChiModalEdit$txtAdress" type="text" maxlength="60" id="MainContent_receiveusContent_adDiaChiModalEdit_txtAdress" class="form-control" placeholder="VD: 35 Hai Bà Trưng">
-                                                                        <div id="MainContent_receiveusContent_adDiaChiModalEdit_txtErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                                            Bạn phải nhập đầy đủ thông tin
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <div class="form-group">
-                                                                    <label for="group-byke" style="padding-top:11px;" class="col-md-3 col-sm-12">Tên phường/ xã:
-                                                                    </label>
-                                                                    <div class="col-md-9 col-sm-12">
-                                                                        <input name="ctl00$MainContent$receiveusContent$adDiaChiModalEdit$txtDistrict" type="text" maxlength="60" id="MainContent_receiveusContent_adDiaChiModalEdit_txtDistrict" class="form-control ui-autocomplete-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" autocomplete="off">
-                                                                        <div id="MainContent_receiveusContent_adDiaChiModalEdit_txtDistrictErr" style="color: rgb(255, 51, 0); font: normal 12px verdana; font-style: italic; display: none;">
-                                                                            Tên phường xã không tồn tại!
-                                                                        </div>
-                                                                        <input type="hidden" name="ctl00$MainContent$receiveusContent$adDiaChiModalEdit$hdPostCode" id="MainContent_receiveusContent_adDiaChiModalEdit_hdPostCode">
-                                                                        <input type="hidden" name="ctl00$MainContent$receiveusContent$adDiaChiModalEdit$hdProvince" id="MainContent_receiveusContent_adDiaChiModalEdit_hdProvince">
-                                                                    </div>
-                                                                </div>
-                                                                <span id="MainContent_receiveusContent_adDiaChiModalEdit_validatorRequiredAddress" style="display:none;"></span>
-                                                                <span id="MainContent_receiveusContent_adDiaChiModalEdit_validatorRequiredDistrict" style="display:none;"></span>
-                                                                <div class="clearfix"></div>
-
-                                                                <script lang="JavaScript">
-                                                                    function requiredAddressMainContent_receiveusContent_adDiaChiModalEdit_txtAdress(oSrc, args) {
-                                                                        args.IsValid = true;
-                                                                        $("#MainContent_receiveusContent_adDiaChiModalEdit_txtErr").hide();
-
-                                                                        if ($("#MainContent_receiveusContent_adDiaChiModalEdit_txtDistrict").val() == "")
-                                                                        {
-                                                                            $("#MainContent_receiveusContent_adDiaChiModalEdit_txtDistrict").css("background-color", "#eeff00");
-                                                                            args.IsValid = false;
-                                                                        }
-                                                                        if ($("#MainContent_receiveusContent_adDiaChiModalEdit_txtAdress").val() == "") {
-                                                                            $("#MainContent_receiveusContent_adDiaChiModalEdit_txtAdress").css("background-color", "#eeff00");
-                                                                            args.IsValid = false;
-                                                                        }
-                                                                    }
-                                                                </script>
-                                                                <span id="MainContent_receiveusContent_lbDiaChiModalEdit" class="error" style="font-weight:bold;"></span>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12">Số điện thoại: (<span class="start">*</span>)</label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <input name="ctl00$MainContent$receiveusContent$txtSoDienThoaiModalEdit" type="text" id="MainContent_receiveusContent_txtSoDienThoaiModalEdit" class="form-control">
-                                                                    <div>
-                                                                        <span id="MainContent_receiveusContent_ctl08" class="error" style="font-weight:700;display:none;">Vui lòng nhập số điện thoại</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" name="ctl00$MainContent$receiveusContent$btnUpdateModalEdit" value="Cập nhật" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent$receiveusContent$btnUpdateModalEdit&quot;, &quot;&quot;, true, &quot;receiveModalEdit&quot;, &quot;&quot;, false, false))" id="MainContent_receiveusContent_btnUpdateModalEdit" class="btn btn-success" icon="Disk" cls="btn btn-primary" autosubmit="True">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal Search -->
-                                    <div class="modal" id="myModalSearch" role="dialog">
-                                        <div class="modal-dialog">
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                                    <h4 class="modal-title" style="text-align: center"><b>Tìm kiếm thông tin khách hàng</b></h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div style="padding: 10px;">
-                                                        <div id="MainContent_receiveusContent_UpdatePanel2">
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12">Họ Tên: </label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <input name="ctl00$MainContent$receiveusContent$txtNameSearch" type="text" id="MainContent_receiveusContent_txtNameSearch" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 col-sm-12">Số điện thoại: </label>
-                                                                <div class="col-md-9 col-sm-12">
-                                                                    <input name="ctl00$MainContent$receiveusContent$txtPhoneSearch" type="text" id="MainContent_receiveusContent_txtPhoneSearch" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group" style="padding: 15px;">
-                                                                <input type="submit" name="ctl00$MainContent$receiveusContent$btnSearchContact" value="Search" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent$receiveusContent$btnSearchContact&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="MainContent_receiveusContent_btnSearchContact" class="btn btn-success float-right" icon="Find" cls="btn btn-primary">
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <div class="row" style="overflow: auto;">
-                                                                <div>
-
-                                                                </div>
-                                                                <div class="form-group" style="padding: 15px;">
-                                                                    <input type="submit" name="ctl00$MainContent$receiveusContent$btnPrevious" value="Previous" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent$receiveusContent$btnPrevious&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="MainContent_receiveusContent_btnPrevious" class="col-sm-4 btn btn-primary" icon="Previous" cls="btn btn-primary" style="width:75px;">
-                                                                    <div class="col-sm-4">
-                                                                        <span class="col-sm-3" style="margin-top: 5px;">Page: </span>
-                                                                        <span id="MainContent_receiveusContent_lbPageNum" class="col-sm-3" style="margin-top: 5px;"></span>
-                                                                        <span class="col-sm-3" style="margin-top: 5px;">of: </span>
-                                                                        <span id="MainContent_receiveusContent_lbTotalPage" class="col-sm-3" style="margin-top: 5px;"></span>
-                                                                    </div>
-                                                                    <input type="submit" name="ctl00$MainContent$receiveusContent$btnNext" value="Next" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent$receiveusContent$btnNext&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="MainContent_receiveusContent_btnNext" class="col-sm-4 btn btn-primary float-right" icon="Next" cls="btn btn-primary" style="width:75px;">
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <style type="text/css">
-                            .glyphicon {
-                                position: relative;
-                                top: 1px;
-                                display: inline-block;
-                                font-family: 'Glyphicons Halflings';
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 1;
-                                -webkit-font-smoothing: antialiased;
-                                -moz-osx-font-smoothing: grayscale;
-                            }
-
-                            .glyphicon-search:before {
-                                content: "\e003";
-                            }
-
-                            .modal-edit {
-                                padding-top: 11px !important;
-                                padding-left: 20px !important;
-                                margin-left: 0px !important;
-                                margin-top: 0px !important;
-                                margin-bottom: 5px !important;
-                            }
-
-                            .modal-datetime {
-                                padding-top: 11px !important;
-                                padding-left: 20px !important;
-                                margin: 0px !important;
-                                width: auto !important;
-                                margin-left: 15px !important;
-                                margin-top: 5px !important;
-                            }
-
-                            .hiddencol {
-                                display: none;
-                            }
-
-                            .float-right {
-                                float: right;
-                            }
-
-                            .hideGridColumn {
-                                display: none;
-                            }
-
-                            .header-SearchContactModal {
-                                background-color: #f4f4f4;
-                                color: #000;
-                                border: none 0px transparent;
-                                height: 50px;
-                                text-align: center;
-                                font-size: 16px;
-                            }
-
-                            .pager-SearchContactModal {
-                                background-color: #f4f4f4;
-                                color: #000;
-                                height: 30px;
-                            }
-
-                            .grid-SearchContactModal {
-                                border: solid 1px #fff;
-                            }
-
-                            .grid-SearchContactModal td {
-                                padding: 10px 3px;
-                                font-style: normal;
-                            }
-
-                            .grid-SearchContactModal th {
-                                padding: 5px;
-                            }
-
-                            .rows-SearchContactModal {
-                                color: #000;
-                                text-align: left;
-                            }
-
-                            .td-stt {
-                                text-align: center;
-                            }
-                        </style>
-                        <script type="text/javascript">
-                            function selectRow(email) {
-                                console.log(email);
-                            }
-                            function showModalSearch() {
-                                $('#myModalSearch').modal('show');
-                            }
-                            function showModalEdit() {
-                                $('#myModalEdit').modal('show');
-                            }
-                            function CallServerSide(controlid) {
-                                setTimeout(__doPostBack(controlid, ''), 0);
-                            }
-                        </script>
-                        <script type="text/javascript">
-                            function display(id) {
-                                document.getElementById(id).style.display = '';
-                            };
-
-                            function IsValidReceiveUs() {
-                                return Page_ClientValidate('receive');
-                            }
-                            function CallFacebookPixelsReceived() {
-                                if (IsValidReceiveUs() === true) {
-                                    /* Ants Insight goal tracking function */
-                                    adx_analytic.trackingGoal('584056215', 1, 'event');
-                                    ga('send', 'event', 'Thongtingiaohang', 'click');
-                                    var url = window.location.href.toUpperCase();
-                                    if (url.indexOf("/CAR") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-o-to');
-                                    else if (url.indexOf("/SKTD") !== -1)
-                                        fbq('track', 'CV03-pagebao-viet-an-gia');
-                                    else if (url.indexOf("/KCR") !== -1)
-                                        fbq('track', 'CV03-bao-viet-benh-ung-thu');
-                                    else if (url.indexOf("/FLEXI") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-du-lich');
-                                    else if (url.indexOf("/MOTOR") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-xe-may');
-                                    else if (url.indexOf("/HOME") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-nha-tu-nhan');
-                                    else if (url.indexOf("/KHC") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-ket-hop-con-nguoi');
-                                    else if (url.indexOf("/TNC") !== -1)
-                                        fbq('track', 'CV03-bao-hiem-tai-nan-con-nguoi');
-                                }
-                            }
-                        </script>
-                    </div>
-
-                </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Loại bảo hiểm</p>
             </div>
-            <!-- End receiverContent -->
-            <div id="MainContent_sumaryContent" style="display:none;">
-                <div class="tit-step">Bước 4: Tóm tắt đơn hàng</div>
-                <div class="bv-tu">
-
-
-                    <div class="col-md-8 charge">
-                        <div class="content-step step2 sum-product">
-
-
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="continue">
-                            <a id="MainContent_payusContent_cmdBack" usebrowserdefaults="False" href="javascript:__doPostBack('ctl00$MainContent$payusContent$cmdBack','')">
-                                <h3 class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i>Quay lại</h3>
-                            </a>
-
-                            <a onclick="CallFacebookPixelsPayUs();" id="MainContent_payusContent_cmdAddToCart" usebrowserdefaults="False" autosubmit="True" href="javascript:__doPostBack('ctl00$MainContent$payusContent$cmdAddToCart','')">
-                                <h3>Đặt hàng<i class="fa fa-angle-right" aria-hidden="true"></i></h3>
-                            </a>
-                        </div>
+            <div class="cntr margin-top-5">
+                <label for="cbx2" class="label-cbx">
+                    <input id="cbx2" type="checkbox" class="invisible">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
                     </div>
-                    <!-- End .col-md-8 -->
-                    <script>
-
-
-                        function IsValidPayUs() {
-                            return Page_ClientValidate('vlGroupPay');
-                        }
-                        function CallFacebookPixelsPayUs() {
-                            if (IsValidReceiveUs() === true) {
-                                //Ants Insight goal tracking function
-                                adx_analytic.trackingGoal('584056216', 1, 'event');
-                                ga('send', 'event', 'Dathang', 'click');
-                                var url = window.location.href.toUpperCase();
-                                if (url.indexOf("/CAR") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-o-to');
-                                else if (url.indexOf("/SKTD") !== -1)
-                                    fbq('track', 'CV04-pagebao-viet-an-gia');
-                                else if (url.indexOf("/KCR") !== -1)
-                                    fbq('track', 'CV04-bao-viet-benh-ung-thu');
-                                else if (url.indexOf("/FLEXI") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-du-lich');
-                                else if (url.indexOf("/MOTOR") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-xe-may');
-                                else if (url.indexOf("/HOME") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-nha-tu-nhan');
-                                else if (url.indexOf("/KHC") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-ket-hop-con-nguoi');
-                                else if (url.indexOf("/TNC") !== -1)
-                                    fbq('track', 'CV04-bao-hiem-tai-nan-con-nguoi');
-                            }
-                        }
-                    </script>
-
-
-
-                </div>
+                    <span>Bảo hiểm trách nhiệm dân sự bắt buộc</span>
+                </label>
             </div>
-            <!-- End sumaryContent -->
-            <div class="col-md-4" style="position: relative;">
-
-                <div class="info-cart">
-                    <div class="header-cart">
-                        <h2>Thông tin giỏ hàng</h2>
-
-                        <a href="/CartList">
-                            <span class="number-product">5</span>
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </a>
-                    </div>
-
-                    <!-- End .header-cart -->
-
-                    <div class="content-cart content">
-
-                        <table>
-
-                            <tbody><tr>
-                                <td>
-                                    <div class="tooltip">
-                                        <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i><strong>1</strong>.VP.CAR.18.49</a>
-
-                                        <span class="tooltiptext" data-placement="top">Biển số xe: 1<br>- Tên chủ xe: 1<br>- Thời hạn bảo hiểm:18/01/2018 - 17/01/2019<br></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    480,700
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="tooltip">
-                                        <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i><strong>2</strong>.VP.CAR.18.50</a>
-
-                                        <span class="tooltiptext" data-placement="top">Biển số xe: 1<br>- Tên chủ xe: 1<br>- Thời hạn bảo hiểm:18/01/2018 - 17/01/2019<br></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    480,700
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="tooltip">
-                                        <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i><strong>3</strong>.VP.CAR.18.67</a>
-
-                                        <span class="tooltiptext" data-placement="top">Biển số xe: A9898888<br>- Tên chủ xe: A9898888<br>- Thời hạn bảo hiểm:31/03/2018 - 30/03/2019<br></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    480,700
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="tooltip">
-                                        <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i><strong>4</strong>.VP.CAR.18.47</a>
-
-                                        <span class="tooltiptext" data-placement="top">Biển số xe: 1<br>- Tên chủ xe: 1<br>- Thời hạn bảo hiểm:18/01/2018 - 17/01/2019<br></span>
-                                    </div>
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="tooltip">
-                                        <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i><strong>5</strong>.VP.CAR.18.48</a>
-
-                                        <span class="tooltiptext" data-placement="top">Biển số xe: 1<br>- Tên chủ xe: 1<br>- Thời hạn bảo hiểm:18/01/2018 - 17/01/2019<br></span>
-                                    </div>
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-
-                            </tbody></table>
-                    </div>
-                    <div class="footer-cart">
-                        <div class="table">
-                            <table>
-                                <tbody><tr>
-                                    <td>Tổng cộng</td>
-                                    <td>1,442,100 VNĐ</td>
-                                </tr>
-                                </tbody></table>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .info-cart -->
-
-                <div class="clearfix"></div>
-                <div class="info-order">
-                    <div class="header-order">
-                        <div class="tit-order">
-                            Thông tin đơn hàng
-                            <div class="des-order">Sản phẩm: Bảo hiểm tai nạn con người</div>
-                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <!-- End .header-order -->
-                    <div class="content-order">
-                        <p><i class="fa fa-cog" aria-hidden="true"></i><span>Số người tham gia: </span></p>
-
-                        <p class="pe-ta"><i class="fa fa-flickr" aria-hidden="true"></i><span>Thời hạn bảo hiểm: 21/04/2018 - 20/04/2019</span></p>
-                        <p class="sum-su">
-                            <i class="fa fa-usd" aria-hidden="true"></i><span>Tổng phí bảo hiểm:  VND</span>
-                        </p>
-
-
-                        <p class="sum-su">
-                            <i class="fa fa-usd" aria-hidden="true"></i><span>Tổng số tiền thanh toán:  VND</span>
-                        </p>
-                    </div>
-                    <!-- End .content-order -->
-                </div>
-                <!-- End .info-order -->
+            <div class="margin-top-5">
+                <select class="bv-select-box form-control">
+                    <option>Loại xe dưới 6 chỗ ngồi</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
             </div>
-            <!-- End .col-md-4 -->
-
-        </div>
-        <div class="clearfix"></div>
-
-        <div class="info-suca tab_wrapper first_tab _side">
-            <ul class="tab_list">
-                <li rel="tab_1">
-                    <a href="#info-product" role="tab" data-toggle="tab">
-                        <img alt="" src="content/images/icon-infp-product.png" class="img-responsive center-block">
-                        Thông tin sản phẩm</a>
-                </li>
-                <li rel="tab_2"><a href="#rule-insurrance" role="tab" data-toggle="tab">
-                    <img alt="" src="content/images/icon-rule.png" class="img-responsive center-block">
-                    Quy tắc bảo hiểm</a>
-                </li>
-                <li rel="tab_3"><a href="#interest" role="tab" data-toggle="tab">
-                    <img alt="" src="content/images/bieu-phi.png" class="img-responsive center-block">
-                    Biểu phí</a>
-                </li>
-                <li rel="tab_4"><a href="#tariff" role="tab" data-toggle="tab">
-
-                    <img alt="" src="content/images/quyen-loi.png" class="img-responsive center-block">
-                    Quyền lợi bảo hiểm</a>
-                </li>
-                <li rel="tab_5"><a href="#repost-insurrance" role="tab" data-toggle="tab">
-                    <img alt="" src="content/images/docs.png" style="padding: 15.5px;" class="img-responsive center-block">
-                    Tài liệu biểu mẫu</a>
-                </li>
-            </ul>
-            <!--div class="clearfix"></div-->
-            <div class="content_wrapper tab-content">
-                <div title="tab_1" class="accordian_header tab_1 undefined">
-
-
-                    Thông tin sản phẩm
-                    <span class="arrow"></span></div><div role="tabpanel" class="tab_content tab-pane first tab_1" id="info-product" title="tab_1">
-                <div class="page-service">
-                    <div class="container" style=" width: 100%;">
-                        <div class="content">
-                            <div class="content-support" style="background-color: #fff;box-shadow: 3px 4px 10px -6px #ccc;padding: 21px; ">
-                                <!--//Thông tin sản phẩm-->
-
-                            </div>
-                        </div>
+            <div class="cntr margin-top-5">
+                <label for="cbx3" class="label-cbx">
+                    <input id="cbx3" type="checkbox" class="invisible">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
                     </div>
-                </div>
+                    <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
+                </label>
             </div>
-                <div title="tab_2" class="accordian_header tab_2 undefined">
-
-                    Quy tắc bảo hiểm
-                    <span class="arrow"></span></div><div role="tabpanel" class="tab_content tab-pane tab_2" id="rule-insurrance" title="tab_2">
-                <div class="page-service">
-                    <div class="container" style=" width: 100%;">
-                        <div class="content">
-                            <div class="content-support" style="background-color: #fff;box-shadow: 3px 4px 10px -6px #ccc;padding: 21px; float: left; width: 100%;">
-                                <!--//Bản quy tắc bảo hiểm-->
-
-
-                            </div>
-                        </div>
+            <div class="cntr margin-top-5">
+                <label for="cbx4" class="label-cbx">
+                    <input id="cbx4" type="checkbox" class="invisible">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
                     </div>
-                </div>
+                    <span>Bảo hiểm tai nạn người ngồi trên xe</span>
+                </label>
             </div>
-                <div title="tab_3" class="accordian_header tab_3 undefined">
-
-                    Biểu phí
-                    <span class="arrow"></span></div><div role="tabpanel" class="tab_content tab-pane tab_3" id="interest" title="tab_3">
-                <div class="page-service">
-                    <div class="container" style=" width: 100%;">
-                        <div class="content">
-                            <div class="content-support" style="background-color: #fff;box-shadow: 3px 4px 10px -6px #ccc;padding: 21px;">
-                                <!--// Phí bảo hiểm-->
-
-                            </div>
-                        </div>
+            <div class="cntr margin-top-5">
+                <label for="cbx5" class="label-cbx">
+                    <input id="cbx5" type="checkbox" class="invisible">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
                     </div>
-                </div>
-            </div>
-                <div title="tab_4" class="accordian_header tab_4 undefined">
-
-
-                    Quyền lợi bảo hiểm
-                    <span class="arrow"></span></div><div role="tabpanel" class="tab_content tab-pane tab_4" id="tariff" title="tab_4">
-                <div class="page-service">
-                    <div class="container" style=" width: 100%;">
-                        <div class="content">
-                            <div class="content-support" style="background-color: #fff;box-shadow: 3px 4px 10px -6px #ccc;padding: 21px;float: left; width: 100%;">
-                                <!--//Phạm vi bảo hiểm-->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <div title="tab_5" class="accordian_header tab_5 undefined">
-
-                    Tài liệu biểu mẫu
-                    <span class="arrow"></span></div><div role="tabpanel" class="tab_content tab-pane last tab_5" id="repost-insurrance" title="tab_5">
-                <div class="page-service">
-                    <div class="container" style="width: 100%;">
-                        <div class="content">
-                            <div class="content-support" style="background-color: #fff;box-shadow: 3px 4px 10px -6px #ccc;padding: 21px; float: left; width: 100%;">
-                                <!--Tài liệu, biểu mẫu-->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <span>Bảo hiểm vật chất xe</span>
+                </label>
             </div>
         </div>
-
     </div>
-</section>
+    <div class="bv-step-2 display-flex" id="bv-step-2" ng-click="vm.closeOpenStepTwo()">
+        <div class="bv-step-title text-center">
+            <p class="fas {{ vm.typeArrowTwo }}"></p>
+            <p>2</p>
+            <p>Thông tin bảo hiểm</p>
+        </div>
+        <div class="bv-step-content">
+            <div class="text-header-sp">
+                <p>Thông tin gói</p>
+            </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Tên chủ xe</p>
+            </div>
+            <div class="margin-top-5">
+                <input type="text" class="bv-input" placeholder="Tên chủ xe theo đăng ký xe" />
+            </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Địa chỉ</p>
+            </div>
+            <div class="margin-top-5">
+                <input type="text" class="bv-input" placeholder="Địa chỉ theo đăng ký xe" />
+            </div>
+            <div class="margin-top-5">
+                <input type="text" class="bv-input" placeholder="Địa chỉ theo đăng ký xe" />
+            </div>
+            <div class="margin-top-20 text-header-sp">
+                <p>Thông tin xe</p>
+            </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Biển kiểm soát</p>
+            </div>
+            <div class="margin-top-5">
+                <input type="text" class="bv-input" placeholder="Biển kiểm soát" />
+            </div>
+            <div class=" display-flex margin-top-5">
+                <div class="margin-right-5">
+                    <input type="text" class="bv-input" placeholder="Số khung" />
+                </div>
+                <div class="">
+                    <input type="text" class="bv-input" placeholder="Số máy" />
+                </div>
+            </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Thời gian bảo hiểm</p>
+            </div>
+            <div class=" display-flex margin-top-5">
+                <div class="margin-right-5">
+                    <input type="text" class="bv-input" placeholder="Từ ngày" />
+                </div>
+                <div class="">
+                    <input type="text" class="bv-input" placeholder="Đến ngày" />
+                </div>
+            </div>
+            <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
+                <p>Thông tin giao hàng</p>
+            </div>
+            <div class="cntr margin-top-5">
+                <label for="cbx6" class="label-cbx">
+                    <input id="cbx6" type="checkbox" class="invisible">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+                    </div>
+                    <span>Theo thông tin chủ xe</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="bv-step-3-default display-flex" id="bv-step-3" ng-click="vm.closeOpenStepThree()">
+        <div class="bv-step-title text-center">
+            <p class="fas {{ vm.typeArrowThree }}"></p>
+            <p>3</p>
+        </div>
+        <div class="bv-step-content">
+            <div class="display-flex">
+                <div class="border-right-ccc bv-pading-30 width-100">
+                    <div class="text-header-sp" style="margin-bottom: 10px">
+                        <p>Thông tin chủ xe</p>
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Tên chủ xe</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Tạ Minh Anh</p>
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Địa chỉ</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">368 Lý Thường Kiệt,Phường Tràng Tiền,Quận Hoàn Kiếm,Thành phố Hà Nội</p>
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Điện thoại</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">098545465</p>
+                    </div>
+                </div>
+                <div class="border-right-ccc bv-pading-30 width-100">
+                    <div class="text-header-sp" style="margin-bottom: 10px">
+                        <p>Thông tin về tham gia bảo hiểm</p>
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Biển số</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">29D1 553392</p>
+                    </div>
+                    <div class="display-flex">
+                        <div class="margin-right-30">
+                            <div class="">
+                                <p class="bv-title-from">Số khung</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">65464556</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="-10">
+                                <p class="bv-title-from">Số máy</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">65464556</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="bv-title-from">Loại xe</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Dưới 6 chỗ ngồi</p>
+                    </div>
+                    <div class="">
+                        <p class="bv-title-from">Mục đích sử dụng</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Xe oto chở người không kinh doanh vận tải</p>
+                    </div>
+                </div>
+                <div class="width-100 bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>Thời gian bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Xe oto chở người không kinh doanh vận tải</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="bv-pading-30 margin-top-20 text-header-sp" style="margin-bottom: 10px">
+                    <p>Mức trách nhiệm và phí bảo hiểm</p>
+                </div>
+                <div style="background: #fafafa">
+                    <div class="bv-pading-table-templateSummary">
+                        <table class="width-100 ">
+                            <thead>
+                            <tr>
+                                <th class="bv-title-from">Phạm vi bảo hiểm</th>
+                                <th class="bv-title-from">Mức trách nhiệm</th>
+                                <th class="bv-title-from">Phí bảo hiểm(Đã bao gồm VAT)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="bv-tile-templateSummary">Bảo hiểm trách nhiệm dân sự bắt buộc</p></td>
+                                    <td>
+                                        <div class="bv-tile-templateSummary">
+                                            <p class="margin-bottom-0">
+                                                Mức trách nhiệm đối với người thứ 3
+                                            </p>
+                                            <p class="margin-bottom-0">
+                                                - Về người:100,000,000 VND/người/vụ
+                                            </p>
+                                            <p class="margin-bottom-0">
+                                                - Về tài sản:100,000,000 VND/vụ
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="bv-tile-templateSummary">
+                                            <span>480,700</span><span>VND</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="bv-tile-templateSummary">Bảo hiểm tai nạn người ngồi trên xe</p></td>
+                                    <td>
+                                        <div class="bv-tile-templateSummary">
+                                            <p class="margin-bottom-0">
+                                               Số người: 5 người
+                                            </p>
+                                            <p class="margin-bottom-0">
+                                                - Về người:100,000,000 VND/người/vụ
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="bv-tile-templateSummary">
+                                            <span>480,700</span><span>VND</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <p class="bv-title-from">Tổng phí bảo hiểm</p>
+                                </td>
+                                <td>
+                                    <p class="bv-tile-templateSummary"><span>530,700</span><span>VND</span></p></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="bv-pading-30">
+                <div class="text-header-sp">
+                    <p>Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
+                </div>
+                <div class="display-flex">
+                    <div class="margin-right-70">
+                        <div class="margin-top-10">
+                            <p class="bv-title-from">Loại bảo hiểm</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">Tạ Minh Anh</p>
+                        </div>
+                    </div>
+                    <div class="margin-right-70">
+                        <div class="margin-top-10">
+                            <p class="bv-title-from">Số điện thoại</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">0964564644</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="margin-top-10">
+                            <p class="bv-title-from">Email</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">minhta@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bv-title-from">
+                    <p>Địa chỉ người nhận</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">386 Lý Thường Kiệt,Phường Tràng Tiền,Quận Hoàn Kiếm,Thành phố Hà Nội</p>
+                </div>
+                <div class="bv-title-from">
+                    <p>Hình thức giao nhận</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">Gửi tới địa chỉ người nhận</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
