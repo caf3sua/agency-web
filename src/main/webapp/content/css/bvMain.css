@@ -353,8 +353,8 @@ body {
 .margin-right-70{
     margin-right: 70px;
 }
-.margin-top-165{
-    margin-top: 165px;
+.margin-top-195{
+    margin-top: 195px;
 }
 .bv-text-nav-step{
     font-size: 16px;
@@ -676,3 +676,8 @@ body {
     padding: 2px;
 }
 /*end notlogin*/
+.bv-drop-menu-header{
+    right: 0;
+    left: inherit;
+    top: 25px;
+}
