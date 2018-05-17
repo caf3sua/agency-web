@@ -10,7 +10,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu bv-drop-menu-header">
-                        <li><a href="#"><i class="fas fa-sign-out-alt margin-right-5"></i>Logout</a></li>
+                    	<li><a href="#" ui-sref="password"><i class="fas fa-unlock margin-right-5"></i>Thay đổi mật khẩu</a></li>
+                        <li><a href="#" ng-click="vm.logout()"><i class="fas fa-sign-out-alt margin-right-5"></i>Đăng xuất</a></li>
                     </ul>
                 </div>
                 <div ng-switch-when="false">
