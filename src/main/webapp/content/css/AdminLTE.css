@@ -87,7 +87,7 @@ body {
 }
 .content-wrapper {
   min-height: 100%;
-  background-color: #fff;
+  background-color: #ecf0f5;
   z-index: 800;
 }
 .main-footer {
@@ -199,6 +199,7 @@ a:focus {
   border: none;
   min-height: 50px;
   border-radius: 0;
+    border-bottom: 1px solid #ccc;
 }
 .layout-top-nav .main-header .navbar {
   margin-left: 0;
@@ -246,14 +247,13 @@ a:focus {
   }
 }
 .main-header .sidebar-toggle {
-    float: left;
-    background-color: transparent;
-    background-image: none;
-    padding: 18px 15px;
+  float: left;
+  background-color: transparent;
+  background-image: none;
+    padding: 16px 16px;
+  font-family: fontAwesome;
 }
-.main-header .sidebar-toggle:before {
-  content: "\f0c9";
-}
+
 .main-header .sidebar-toggle:hover {
   color: #fff;
 }
@@ -411,10 +411,11 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 50px;
+    padding-top: 65px;
   min-height: 100%;
   width: 230px;
   z-index: 810;
+    border-right: 1px solid #ccc;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -458,7 +459,7 @@ a:focus {
 .user-panel {
   position: relative;
   width: 100%;
-  padding: 10px 10px;
+  padding: 10px;
   overflow: hidden;
 }
 .user-panel:before,
@@ -475,11 +476,14 @@ a:focus {
   height: auto;
 }
 .user-panel > .info {
-  padding: 5px 5px 5px 5px;
+  padding: 5px 5px 5px 15px;
+  line-height: 1;
+  position: absolute;
+  left: 55px;
 }
 .user-panel > .info > p {
   font-weight: 600;
-  margin-bottom: 0px;
+  margin-bottom: 9px;
 }
 .user-panel > .info > a {
   text-decoration: none;

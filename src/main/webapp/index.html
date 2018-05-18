@@ -20,23 +20,24 @@
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/checkbox.css">
     <link rel="stylesheet" href="content/css/font-style.css">
-    <link rel="stylesheet" href="content/css/_all-skins.css">
     <link rel="stylesheet" href="content/css/bvCheckbox.css">
+    <link rel="stylesheet" href="content/css/AdminLTE.css">
+
     <link rel="stylesheet" href="content/css/bvMain.css">
     <!-- endbuild -->
     <link rel="shortcut icon" sizes="196x196" href="content/images/logo-favicon.jpeg">
     <link rel="manifest" href="manifest.webapp" />
 </head>
 <!--oncontextmenu="return false" onselectstart='return false;'-->
-<body class="hold-transition skin-blue sidebar-mini"  ng-app="pteMagicApp" ng-strict-di>
-    <div>
+<body class="hold-transition bv-check-menu skin-blue sidebar-mini"  ng-app="pteMagicApp" ng-strict-di>
+    <div class="wrapper">
         <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div ui-view="navbar" ng-cloak></div>
         <!--<div class="content-wrapper" ui-view="content" ng-style="style()" resize ng-show="(vm.isAuthenticated() && vm.user.authorities.indexOf('ROLE_ADMIN') > 0)">-->
         <!--</div>-->
-        <div ui-view="content" class="position-relative"  ng-show="!vm.isAuthenticated() || (vm.isAuthenticated() && vm.account.authorities.indexOf('ROLE_ADMIN') == -1)">
+        <div ui-view="content" class="content-wrapper"  ng-show="!vm.isAuthenticated() || (vm.isAuthenticated() && vm.account.authorities.indexOf('ROLE_ADMIN') == -1)">
         </div>
 
         <section class="footer">
@@ -57,8 +58,13 @@
         </noscript>
     </div>
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="content/js/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- endbuild -->
+    <script src="content/js/adminlte.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="content/js/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -79,7 +85,6 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script src="bower_components/angular-timer/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/angular-timer/dist/assets/js/angular-timer-bower.js"></script>
     <script src="bower_components/angular-timer/dist/assets/js/angular-timer-all.min.js"></script>
     <script src="bower_components/angular-audio/app/angular.audio.js"></script>
@@ -90,7 +95,6 @@
 	<script src="content/audio_recorder/main.js"></script> -->
 
     <!-- endinject -->
-    <!-- endbuild -->
 
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
