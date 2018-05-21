@@ -396,31 +396,35 @@ body {
     padding: 0;
 }
 .bv-home-block-left{
-    padding: 30px 0;
+    padding: 7px 0 21px 0;
     border: 1px solid #ccc;
     margin-right: 5px;
     width: 100%;
+    background: #fff;
 }
 .bv-home-block-right{
-    padding: 30px 0;
+    padding: 7px 0 21px 0;
     border: 1px solid #ccc;
     margin-left: 5px;
     width: 100%;
+    background: #fff;
 }
 .padding030{
-    padding: 0 30px;
+    padding: 0 5px 0 30px;
 }
 .bv-home-block-left-title{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 300;
     font-family: Roboto;
     margin: 0;
+    margin-bottom: 20px;
 }
 .bv-home-block-left-number{
-    font-size: 90px;
-    font-weight: 300;
+    font-size: 30px;
+    font-weight: normal;
     font-family: Roboto;
     margin: 0;
+    margin-top: 13px;
 }
 .bv-home-block-left-table tr:nth-child(odd){
     background-color: #f9f9f9;
@@ -456,9 +460,8 @@ body {
 }
 .bv-table-arrow-icon{
     float: right;
-    font-size: 65px;
+    font-size: 20px;
     color: #ccc;
-    margin-top: 25px;
 }
 .bv-blockTwo-left{
     width: 100%;
@@ -773,10 +776,129 @@ body {
     font-weight: normal;
     color: #000;
 }
+.bv-background-home{
+    padding: 25px 50px;
+    background: #f8f9fd;
+}
+.bv-title-home{
+    font-size: 30px;
+    color: #0371b6;
+    font-family: Roboto;
+    font-weight: 300;
+    text-align: left;
+}
+.bv-border-bottom-b4cfe4{
+    border-bottom: 1px solid #b4cfe4;
+}
+.bv-btn-header-title{
+    display: inline-block;
+    border: 1px solid #b4cfe4;
+    padding: 7px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.bv-btn-header-title i:hover{
+    color: #fff;
+}
+.bv-btn-header-title:hover i{
+    color: #fff;
+}
+.bv-btn-header-title:hover{
+    background: #0371b6;
+    border: 1px solid #0371b6;
+    color: #fff;
+}
+.bv-btn-header-title>i{
+    font-size: 17px;
+    color: #0371b6;
+    margin-right: 5px;
+}
+.bv-btn-header-title>span{
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: normal;
+}
+.bv-block-two-button{
+    text-align: center;
+    padding: 15px;
+}
+.bv-block-two-button-style{
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Roboto;
+    color: #000;
+    background: transparent;
+    border-color: transparent;;
+}
+.bv-text-header-home{
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 300;
+    color: #000;
+}
+.bv-icon-order{
+    font-size: 50px;
+    padding: 10px 20px;
+    text-align: center;
+    color: #b4cfe4;
+    border-right: 1px solid #ccc;
+}
+.bv-icon-order-blockOne{
+    padding: 20px 30px 0 20px;
+}
+.bv-icon-order-blockOne>.bv-icon-order-blockOne-number{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Roboto;
+}
+.bv-icon-order-blockOne>p{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 14px;
+}
+.bv-icon-order-blockTwo{
+    padding: 20px 140px  0 20px;;
+}
+.bv-icon-order-blockTwo>.bv-icon-order-blockTwo-number{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Roboto;
+}
+.bv-icon-order-blockTwo>p{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 14px;
+}
+.bv-block-three{
+    border: 1px solid #ccc;
+}
+.bv-color-29af00{
+    color: #29af00;
+}
+.bv-color-ff0000{
+    color: #ff0000;
+}
+.bv-btn-groud-header{
+    text-align: right;
+}
+.bv-table-sub-text{
+    font-size: 14px;
+}
+.bv-home-block-three{
+    display: flex;
+}
+.bv-promotion>img{
+    width: 100%;
+    height: 100%;
+}
 @media (min-width:1200px) and (max-width:1300px) {
+    .bv-logo{
+        margin-left: 10px;
+    }
     .bv-menu-tab-user {
         padding: 10px 10px !important;
-        border-left: 1px solid #ccc;
         color: #000;
     }
     .bv-menu-tab-user>div {
@@ -815,7 +937,78 @@ body {
         font-family: fontAwesome;
     }
 }
+.table > tbody > tr > td{
+    border-top:1px solid #ccc ;
+}
 @media (min-width:992px) and (max-width:1200px) {
+    .bv-table-icon {
+        font-size: 15px;
+        color: #bdbdbd;
+    }
+    .bv-table-arrow-icon {
+        float: right;
+        font-size: 15px;
+        color: #ccc;
+    }
+    .bv-table-text-colorBlack {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+    }
+    .bv-table-sub-text{
+        font-size: 10px;
+    }
+    .bv-home-block-left-number {
+        font-size: 20px;
+        font-weight: normal;
+        font-family: Roboto;
+        margin: 0;
+        margin-top: 13px;
+    }
+    .bv-home-block-left-title {
+        font-size: 11px;
+        font-weight: 300;
+        font-family: Roboto;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .bv-home-table-stt {
+        font-size: 15px;
+        font-family: Roboto;
+        font-weight: 600;
+        color: #ededed;
+        text-align: center;
+        padding: 13px 10px;
+    }
+    .bv-table-text-colorBlue {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #0567b2;
+        margin: 0;
+    }
+    .bv-icon-order-blockTwo {
+        padding: 5px 5px 0 5px;
+    }
+    .bv-icon-order-blockOne {
+        padding: 5px 5px 0 5px;
+    }
+    .bv-title-home {
+        font-size: 30px;
+        color: #0371b6;
+        font-family: Roboto;
+        font-weight: 300;
+        text-align: center;
+    }
+    .bv-btn-groud-header{
+        text-align: center;
+    }
+    .bv-border-bottom-b4cfe4 {
+        border-bottom: 1px solid #b4cfe4;
+        padding-bottom: 10px;
+    }
     .bv-menu-tab>span {
         font-size: 14px;
         font-family: Roboto;
@@ -826,6 +1019,127 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .bv-table-icon {
+        font-size: 15px;
+        color: #bdbdbd;
+    }
+    .bv-table-arrow-icon {
+        float: right;
+        font-size: 15px;
+        color: #ccc;
+    }
+    .bv-table-text-colorBlack {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+    }
+    .bv-table-sub-text{
+        font-size: 10px;
+    }
+    .bv-home-block-left-number {
+        font-size: 20px;
+        font-weight: normal;
+        font-family: Roboto;
+        margin: 0;
+        margin-top: 13px;
+    }
+    .bv-home-block-left-title {
+        font-size: 11px;
+        font-weight: 300;
+        font-family: Roboto;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .bv-home-table-stt {
+        font-size: 15px;
+        font-family: Roboto;
+        font-weight: 600;
+        color: #ededed;
+        text-align: center;
+        padding: 10px 5px;
+    }
+    .bv-table-text-colorBlue {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #0567b2;
+        margin: 0;
+    }
+    .bv-icon-order-blockOne>p {
+        font-family: Roboto;
+        font-weight: 300;
+        font-size: 9px;
+    }
+    .bv-icon-order-blockTwo>.bv-icon-order-blockTwo-number {
+        font-size: 15px;
+        font-weight: bold;
+        font-family: Roboto;
+    }
+    .bv-icon-order-blockOne>.bv-icon-order-blockOne-number {
+        font-size: 15px;
+        font-weight: bold;
+        font-family: Roboto;
+    }
+    .bv-icon-order-blockOne {
+        padding: 5px 0px 0 2px;
+    }
+    .bv-icon-order-blockTwo {
+        padding: 5px 0px 0 0px;
+    }
+    .bv-icon-order {
+        font-size: 30px;
+        padding: 10px 15px;
+        text-align: center;
+        color: #b4cfe4;
+        border-right: 1px solid #ccc;
+    }
+    .bv-icon-order-blockTwo>p {
+        font-family: Roboto;
+        font-weight: 300;
+        font-size: 9px;
+    }
+    .bv-block-two-button-style {
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: Roboto;
+        color: #000;
+        background: transparent;
+        border-color: transparent;
+    }
+    .bv-btn-header-title>i {
+        font-size: 14px;
+        color: #0371b6;
+        margin-right: 5px;
+    }
+    .bv-btn-header-title {
+        display: inline-block;
+        border: 1px solid #b4cfe4;
+        padding: 5px 9px;
+        border-radius: 15px;
+    }
+    .bv-btn-header-title>span {
+        font-size: 10px;
+        font-family: Roboto;
+        font-weight: normal;
+    }
+    .bv-title-home {
+        font-size: 30px;
+        color: #0371b6;
+        font-family: Roboto;
+        font-weight: 300;
+        text-align: center;
+    }
+    .bv-btn-groud-header{
+        text-align: center;
+    }
+    .bv-border-bottom-b4cfe4 {
+        border-bottom: 1px solid #b4cfe4;
+        padding-bottom: 10px;
+    }
     .bv-menu-tab>span {
         font-size: 14px;
         font-family: Roboto;
@@ -842,6 +1156,110 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-home-block-three{
+        display: block;
+    }
+    .bv-home-block-right {
+        padding: 7px 0 21px 0;
+        border: 1px solid #ccc;
+        margin-left: 0px;
+        width: 100%;
+        background: #fff;
+        margin-top: 10px;
+    }
+    .bv-table-icon {
+        font-size: 15px;
+        color: #bdbdbd;
+    }
+    .bv-table-arrow-icon {
+        float: right;
+        font-size: 15px;
+        color: #ccc;
+    }
+    .bv-table-text-colorBlack {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+    }
+    .bv-table-sub-text{
+        font-size: 10px;
+    }
+    .bv-home-block-left-number {
+        font-size: 20px;
+        font-weight: normal;
+        font-family: Roboto;
+        margin: 0;
+        margin-top: 13px;
+    }
+    .bv-home-block-left-title {
+        font-size: 11px;
+        font-weight: 300;
+        font-family: Roboto;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .bv-home-table-stt {
+        font-size: 15px;
+        font-family: Roboto;
+        font-weight: 600;
+        color: #ededed;
+        text-align: center;
+        padding: 13px 10px;
+    }
+    .bv-table-text-colorBlue {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #0567b2;
+        margin: 0;
+    }
+    .bv-block-two-button {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .bv-block-two-button-style {
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: normal;
+        font-family: Roboto;
+        color: #000;
+        background: transparent;
+        border-color: transparent;
+    }
+    .bv-btn-header-title>i {
+        font-size: 11px;
+        color: #0371b6;
+        margin-right: 1px;
+    }
+    .bv-btn-header-title {
+        display: inline-block;
+        border: 1px solid #b4cfe4;
+        padding: 4px 5px;
+        border-radius: 15px;
+    }
+    .bv-btn-header-title>span {
+        font-size: 10px;
+        font-family: Roboto;
+        font-weight: normal;
+    }
+    .bv-title-home {
+        font-size: 30px;
+        color: #0371b6;
+        font-family: Roboto;
+        font-weight: 300;
+        text-align: center;
+    }
+    .bv-btn-groud-header{
+        text-align: center;
+    }
+    .bv-border-bottom-b4cfe4 {
+        border-bottom: 1px solid #b4cfe4;
+        padding-bottom: 10px;
+    }
     .bv-menu-tab>span {
         font-size: 14px;
         font-family: Roboto;
@@ -931,6 +1349,110 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-home-block-three{
+        display: block;
+    }
+    .bv-home-block-right {
+        padding: 7px 0 21px 0;
+        border: 1px solid #ccc;
+        margin-left: 0px;
+        width: 100%;
+        background: #fff;
+        margin-top: 10px;
+    }
+    .bv-table-icon {
+        font-size: 15px;
+        color: #bdbdbd;
+    }
+    .bv-table-arrow-icon {
+        float: right;
+        font-size: 15px;
+        color: #ccc;
+    }
+    .bv-table-text-colorBlack {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+    }
+    .bv-table-sub-text{
+        font-size: 10px;
+    }
+    .bv-home-block-left-number {
+        font-size: 20px;
+        font-weight: normal;
+        font-family: Roboto;
+        margin: 0;
+        margin-top: 13px;
+    }
+    .bv-home-block-left-title {
+        font-size: 11px;
+        font-weight: 300;
+        font-family: Roboto;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .bv-home-table-stt {
+        font-size: 15px;
+        font-family: Roboto;
+        font-weight: 600;
+        color: #ededed;
+        text-align: center;
+        padding: 13px 10px;
+    }
+    .bv-table-text-colorBlue {
+        font-size: 11px;
+        font-family: Roboto;
+        font-weight: bold;
+        color: #0567b2;
+        margin: 0;
+    }
+    .bv-block-two-button {
+        text-align: center;
+        padding: 10px;
+    }
+    .bv-block-two-button-style {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: normal;
+        font-family: Roboto;
+        color: #000;
+        background: transparent;
+        border-color: transparent;
+    }
+    .bv-btn-header-title>i {
+        font-size: 15px;
+        color: #0371b6;
+        margin-right: 0px;
+    }
+    .bv-btn-header-title {
+        display: inline-block;
+        border: 1px solid #b4cfe4;
+        padding: 4px 5px;
+        border-radius: 15px;
+    }
+    .bv-btn-header-title>span {
+        font-size: 10px;
+        font-family: Roboto;
+        font-weight: normal;
+        display: none;
+    }
+    .bv-title-home {
+        font-size: 30px;
+        color: #0371b6;
+        font-family: Roboto;
+        font-weight: 300;
+        text-align: center;
+    }
+    .bv-btn-groud-header{
+        text-align: center;
+    }
+    .bv-border-bottom-b4cfe4 {
+        border-bottom: 1px solid #b4cfe4;
+        padding-bottom: 10px;
+    }
     .bv-menu-tab>span {
         font-size: 14px;
         font-family: Roboto;
