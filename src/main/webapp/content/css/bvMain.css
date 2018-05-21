@@ -107,6 +107,7 @@ body {
     min-height: 100vh;
     padding: 15px;
     outline: none;
+    max-width: 68px;
 }
 .bv-step-title>p:nth-child(1){
     font-size: 45px;
@@ -121,19 +122,17 @@ body {
     text-align: left;
 }
 .bv-step-title>p:nth-child(3){
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
-    width: 40px;
     text-align: left;
 }
 .bv-step-2 .bv-step-title>p:nth-child(3){
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
-    width: 55px;
     text-align: left;
 }
 .bv-step-content{
-    min-width: 450px;
+    width: 100%;
     padding: 30px;
     border: 1px solid #dfdfe0;
     background: #fff;
@@ -147,7 +146,7 @@ body {
     background: #fff;
 }
 .bv-step-3>.bv-step-content{
-    min-width: 900px;
+    width: 100%;
     padding: 25px 0px;
     border: 1px solid #dfdfe0;
     background: #fff;
@@ -178,7 +177,7 @@ body {
     box-shadow: 1px 0px 5px 0px #fff;
 }
 .OpenStepTwo>.bv-step-content{
-    min-width: 900px;
+    min-width: 775px;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
     animation-name: example;
@@ -210,19 +209,16 @@ body {
     text-align: left;
 }
 .closeStepOne>.bv-step-title>p:nth-child(3){
-    font-size: 20px;
+    font-size: 16px;
     color: #ebebeb;
-    width: 40px;
     text-align: left;
 }
 .OpenStepTwo>.bv-step-title>p:nth-child(3){
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
-    width: 55px;
     text-align: left;
 }
 .closeStepTwo>.bv-step-title{
-    padding: 15px 20px;
     text-align: center;
     border: 1px solid #dfdfe0;
     box-shadow: 1px 0px 5px 0px #dfdfe0;
@@ -243,7 +239,7 @@ body {
     text-align: left;
 }
 .closeStepTwo>.bv-step-title>p:nth-child(3){
-    font-size: 20px;
+    font-size: 16px;
     color: #ebebeb;
     width: 40px;
     text-align: left;
@@ -260,7 +256,7 @@ body {
     box-shadow: 1px 0px 5px 0px #fff;
 }
 .OpenStepOne>.bv-step-content{
-    min-width: 900px;
+    width: 100%;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
     animation-name: example;
@@ -892,6 +888,48 @@ body {
 .bv-promotion>img{
     width: 100%;
     height: 100%;
+}
+.bv-background-sp{
+    padding: 25px 50px;
+    background: #f8f9fd;
+}
+.widthStep1{
+    width: 49%;
+}
+.widthStep2{
+    width: 49%;
+}
+.widthStep3{
+    width: 7%;
+}
+.widthStep98{
+    width: 98%;
+}
+.bv-btn-step2{
+    width: 100%;
+    background: #0371b6;
+    border: 1px solid #0371b6;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+.bv-btn-step3{
+    background: #0371b6;
+    border: 1px solid #0371b6;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px 80px;
+    font-size: 12px;
+    float: right;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-block;
+}
+.display-inline-block{
+    display: inline-block;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{

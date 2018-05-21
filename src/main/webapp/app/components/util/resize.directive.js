@@ -12,7 +12,7 @@
             var w = angular.element($window);
             scope.getWindowDimensions = function () {
                 return {
-                    'h': w.height()
+                    'w': w.width()
                 };
             };
             scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
@@ -21,7 +21,7 @@
 
                 scope.style = function () {
                     return {
-                        'min-height': (newValue.h) + 'px',
+                        'min-width': (newValue.w) + 'px',
                     };
 
                 };
