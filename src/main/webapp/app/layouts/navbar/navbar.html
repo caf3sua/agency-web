@@ -10,8 +10,8 @@
         <a class="bv-logo">
             <img src="../../../content/images/logo.png">
         </a>
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+        <div class="navbar-custom-menu" ng-switch="vm.isAuthenticated()">
+            <ul class="nav navbar-nav" ng-switch-when="true">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">
@@ -23,75 +23,28 @@
                     </a>
                     <ul class="dropdown-menu" >
                         <li>
-                            <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.login()">Đăng nhập</a>
+                            <a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>
                         </li>
                         <li>
-                            <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.register()">Đăng ký</a>
+                            <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.logout()">Đăng xuất</a>
                         </li>
-                    </ul>
-                    <ul class="dropdown-menu bv-drop-menu-header">
-                    	<li><a href="#" ui-sref="password"><i class="fas fa-unlock margin-right-5"></i>Thay đổi mật khẩu</a></li>
-                        <li><a href="#" ng-click="vm.logout()"><i class="fas fa-sign-out-alt margin-right-5"></i>Đăng xuất</a></li>
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
             </ul>
+            <div class="nav navbar-nav" ng-switch-when="false">
+                <!-- User Account: style can be found in dropdown.less -->
+                    <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.login()">
+                        <span class=""> Đăng nhập  </span>
+                    </a>
+                    <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.register()">
+                        <span class=""> Đăng ký </span>
+                    </a>
+                <!-- Control Sidebar Toggle Button -->
+            </div>
         </div>
     </nav>
 </header>
-<aside class="main-sidebar">
-    <section class="sidebar">
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview ">
-                <a href="#" class="bv-left-menu">
-                    <i class="fas fa-tachometer-alt"></i> <span>Trang chủ</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#"  class="bv-left-menu">
-                    <i class="fas fa-users"></i>
-                    <span>Khách hàng</span>
-                </a>
-            </li>
-            <li class="active treeview">
-                <a href="pages/widgets.html"  class="bv-left-menu">
-                    <i class="fas fa-users"></i>
-                     <span>Sản phẩm</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Bảo hiểm ô tô</a></li>
-                    <li><a href="#">Bảo hiểm An Gia</a></li>
-                    <li><a href="#">Bảo hiểm bệnh ung thư</a></li>
-                    <li><a href="#">Bảo hiểm du lich quốc tế</a></li>
-                    <li><a href="#">Bảo hiểm xe máy</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"  class="bv-left-menu">
-                    <i class="fa fa-laptop"></i>
-                    <span>Tài liệu</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#"  class="bv-left-menu">
-                    <i class="fa fa-edit"></i> <span>Khuyến mãi</span>
-                </a>
 
-            </li>
-            <li class="treeview">
-                <a href="#"  class="bv-left-menu">
-                    <i class="fa fa-table"></i> <span>Ấn chỉ</span>
-                </a>
-
-            </li>
-            <li>
-                <a href="pages/calendar.html"  class="bv-left-menu">
-                    <i class="fa fa-calendar"></i> <span>Báo cáo</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- /.sidebar -->
-</aside>
+<!-- Aside left -->
+<div ng-if="vm.isAuthenticated()" ng-include="'app/partial/aside.left.html'"></div>
