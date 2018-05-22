@@ -3,11 +3,11 @@
 
     angular
         .module('pteMagicApp')
-        .factory('Car', Car);
+        .factory('CarService', CarService);
 
-    Car.$inject = ['$resource'];
+    CarService.$inject = ['$resource'];
 
-    function Car ($resource) {
+    function CarService ($resource) {
         var service = $resource('api/users/:login', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {

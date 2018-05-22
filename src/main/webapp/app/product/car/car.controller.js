@@ -20,9 +20,25 @@
   		})();
   		
   		// Properties & function declare
+  		vm.productCar = {};
+  		vm.enableOptions = enableOptions;
   		
   		
   		// Function
-  		
+  		function enableOptions(checkBox) {
+  			console.log(vm.productCar)
+  			switch(checkBox.id) {
+  				case 'INSURANCE_TARGET':
+  					break;
+  				case 'INSURANCE_TYPE_FORCE':
+  					break;
+  				case 'INSURANCE_TYPE_VOLUNTEER':
+  					break;
+  				case 'INSURANCE_TYPE_ACCIDENT':
+  					break;
+  				case 'INSURANCE_TYPE_RESOURCE':
+  					break;
+  			}
+  		}
     }
 })();
