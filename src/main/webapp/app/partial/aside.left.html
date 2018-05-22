@@ -9,26 +9,22 @@
                 </a>
             </li>
             <li class="treeview">
-                <a ui-sref="product.khc"  class="bv-left-menu">
+                <a ui-sref="contact"  class="bv-left-menu">
                     <i class="fas fa-users"></i>
                     <span>Khách hàng</span>
                 </a>
             </li>
             <li class="active treeview">
-                <a href="pages/widgets.html"  class="bv-left-menu">
+                <a class="bv-left-menu">
                     <i class="fas fa-users"></i>
                      <span>Sản phẩm</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a ui-sref="product.car" >Bảo hiểm ô tô</a></li>
-                    <li><a href="#">Bảo hiểm An Gia</a></li>
-                    <li><a href="#">Bảo hiểm bệnh ung thư</a></li>
-                    <li><a href="#">Bảo hiểm du lich quốc tế</a></li>
-                    <li><a href="#">Bảo hiểm xe máy</a></li>
+                    <li ng-repeat="item in vm.menuProduct"><a ui-sref="{{item.sref}}">{{item.name}}</a></li>
                 </ul>
             </li>
             <li class="treeview">
-                <a ui-sref="product.gh"  class="bv-left-menu">
+                <a ui-sref="cart"  class="bv-left-menu">
                     <i class="fas fa-cart-plus"></i>
                     <span>Giỏ hàng</span>
                 </a>
