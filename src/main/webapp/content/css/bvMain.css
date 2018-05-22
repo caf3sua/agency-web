@@ -423,7 +423,7 @@ body {
     margin: 0;
     margin-top: 13px;
 }
-.bv-home-block-left-table tr:nth-child(odd){
+.bv-home-block-left-table tr:nth-child(even){
     background-color: #f9f9f9;
 }
 .bv-home-table-stt{
@@ -432,7 +432,7 @@ body {
     font-weight: 600;
     color: #ededed;
     text-align: center;
-    padding: 13px 10px;
+    padding: 13px 0px;
 }
 .bv-table-text-colorBlue{
     font-size: 16px;
@@ -954,6 +954,93 @@ body {
 .margin-top30{
     margin-top: 30px;
 }
+.bv-select-box-kh{
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #e0e1e5;
+    border-radius: 5px;
+    height: 52px;
+}
+.table > tbody > tr > td{
+    vertical-align: middle;
+}
+.table > tbody > tr > td>p{
+    margin: 0;
+}
+.table > thead > tr > th {
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: Roboto;
+}
+.table > tbody > tr > td{
+    border-top:1px solid #ccc ;
+}
+.bv-table-kh > tbody > tr > td{
+    border-top: none;
+}
+.bv-table-kh{
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.bv-result-search-dh{
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 300;
+}
+.bv-detail-icon-table{
+    display: inline-block;
+    border: 1px solid #ccc;
+    background: #ccc;
+    border-radius: 100%;
+    padding: 4px 4px 1px 4px;
+    text-align: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.bv-detail-icon-table>i{
+    font-size: 17px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.bv-detail-text-table{
+    font-size: 12px;
+    font-family: Roboto;
+    font-weight: normal;
+}
+.bv-kh-padding-left{
+    padding-left: 20px;
+}
+.wrapper {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.bv-gh-checkbox{
+    text-align: center;
+}
+
+.bv-gh-checkbox>i{
+    color: #d8d46f;
+    font-size: 29px;
+}
+.bv-gh-warning{
+    text-align: center;
+}
+.bv-gh-warning>i{
+    color: #c35353;
+    font-size: 29px;
+}
+.bv-gh-clock{
+    text-align: center;
+}
+.bv-gh-clock>i{
+    color: #68a451;
+    font-size: 29px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{
         margin-left: 10px;
@@ -998,10 +1085,24 @@ body {
         font-family: fontAwesome;
     }
 }
-.table > tbody > tr > td{
-    border-top:1px solid #ccc ;
-}
 @media (min-width:992px) and (max-width:1200px) {
+    .table-responsive > .table > thead > tr > th, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tfoot > tr > td {
+        white-space: nowrap;
+    }
+    .table-responsive > .table {
+        margin-bottom: 0;
+    }
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
     .bv-table-icon {
         font-size: 15px;
         color: #bdbdbd;
@@ -1080,6 +1181,26 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .table-responsive > .table > thead > tr > th, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tfoot > tr > td {
+        white-space: nowrap;
+    }
+    .table-responsive > .table {
+        margin-bottom: 0;
+    }
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .bv-kh-padding-left{
+        padding-left: 0px;
+    }
     .widthStep98 {
         width: 100%;
     }
@@ -1227,6 +1348,9 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-kh-padding-left{
+        padding-left: 0px;
+    }
     .widthStep98 {
         width: 100%;
     }
@@ -1405,6 +1529,9 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-kh-padding-left{
+        padding-left: 0px;
+    }
     .widthStep98 {
         width: 100%;
     }
