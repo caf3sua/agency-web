@@ -13,6 +13,15 @@
 .label-cbx input:checked + .checkbox svg polyline {
   stroke-dashoffset: 0;
 }
+.label-cbx input:radio + .checkbox {
+    border-color: #0371b6;
+}
+.label-cbx input:radio + .checkbox svg path {
+    fill: #0371b6;
+}
+.label-cbx input:radio + .checkbox svg polyline {
+    stroke-dashoffset: 0;
+}
 .label-cbx:hover .checkbox svg path {
   stroke-dashoffset: 0;
 }
@@ -80,5 +89,8 @@
     margin-top: 20px;
 }
 .label-cbx input:checked + .checkbox + span {
+    color: #0371b6;
+}
+.label-cbx input:radio + .checkbox + span {
     color: #0371b6;
 }
