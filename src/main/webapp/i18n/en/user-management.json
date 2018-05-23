@@ -25,8 +25,6 @@
         "createdBy": "Created by",
         "createdDate": "Created date",
         "lastModifiedBy": "Modified by",
-        "lastModifiedDate": "Modified date",
-        "status": "Status",
-        "action": "Action"
+        "lastModifiedDate": "Modified date"
     }
 }

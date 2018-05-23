@@ -1,0 +1,171 @@
+<ul class="nav" ui-nav>
+	<li ui-sref-active="active">
+		<a ui-sref="app.dashboard">
+        	<span class="nav-icon">
+          		<i class="material-icons">&#xe3fc;
+            		<span ui-include="'content/assets/images/i_0.svg'"></span>
+          		</i>
+        	</span>
+        	<span class="nav-text">Trang chủ</span>
+		</a>
+	</li>
+    
+    <!-- Khách hàng -->
+	<li ui-sref-active="active">
+		<a ui-sref="app.contact">
+	        <span class="nav-icon">
+	          	<i class="material-icons">&#xe8b6;</i>
+	        </span>
+        	<span class="nav-text">Khách hàng</span>
+      	</a>
+	</li>
+    
+    <!-- Sản phẩm -->
+	<li ng-class="{active:$state.includes('app.product')}">
+		<a>
+	        <span class="nav-caret">
+	          	<i class="fa fa-caret-down"></i>
+	        </span>
+        	<span class="nav-icon">
+          		<i class="material-icons">&#xe85e;</i>
+        	</span>
+        	<span class="nav-text">Sản phẩm</span>
+		</a>
+      	<ul class="nav-sub">
+      		<!-- Product CAR -->
+	        <li ui-sref-active="active">
+				<a>
+		            <span class="nav-caret">
+			          	<i class="fa fa-caret-down"></i>
+			        </span>
+			        <span class="nav-icon">
+			          	<i class="material-icons">&#xe85e;</i>
+			        </span>
+		        	<span class="nav-text">Bảo hiểm ô tô</span>
+	          	</a>
+	          	<ul class="nav-sub">
+			        <li ui-sref-active="active">
+						<a ui-sref="product.bvp">
+				            <span class="nav-text">Cấp đơn Online</span>
+				        </a>
+			        </li>
+			        <li ui-sref-active="active">
+			          	<a ui-sref="app.layout.aside">
+			            	<span class="nav-text">Cấp đơn Offline</span>
+			          	</a>
+			        </li>
+			        <li ui-sref-active="active">
+			          	<a ui-sref="app.layout.aside">
+			            	<span class="nav-text">Cấp đơn Ấn chỉ</span>
+			          	</a>
+			        </li>
+		      	</ul>
+	        </li>
+	        <!-- Product BVP -->
+	        <li ui-sref-active="active">
+				<a>
+		            <span class="nav-caret">
+			          	<i class="fa fa-caret-down"></i>
+			        </span>
+			        <span class="nav-icon">
+			          	<i class="material-icons">&#xe85e;</i>
+			        </span>
+		        	<span class="nav-text">Bảo hiểm An gia</span>
+	          	</a>
+	          	<ul class="nav-sub">
+			        <li ui-sref-active="active">
+						<a ui-sref="product.bvp">
+				            <span class="nav-text">Cấp đơn Online</span>
+				        </a>
+			        </li>
+			        <li ui-sref-active="active">
+			          	<a ui-sref="app.layout.aside">
+			            	<span class="nav-text">Cấp đơn Offline</span>
+			          	</a>
+			        </li>
+			        <li ui-sref-active="active">
+			          	<a ui-sref="app.layout.aside">
+			            	<span class="nav-text">Cấp đơn Ấn chỉ</span>
+			          	</a>
+			        </li>
+		      	</ul>
+	        </li>
+		</ul>
+    </li>
+    
+    <!-- Ấn chỉ -->
+    <li ng-class="{active:$state.includes('app.layout')}">
+      	<a>
+	        <span class="nav-caret">
+	          <i class="fa fa-caret-down"></i>
+	        </span>
+	        <span class="nav-icon">
+	          <i class="material-icons">&#xe871;</i>
+	        </span>
+        	<span class="nav-text">Ấn chỉ</span>
+      	</a>
+      	<ul class="nav-sub">
+	        <li ui-sref-active="active">
+	          	<a ui-sref="app.layout.header">
+	            	<span class="nav-text">Ấn chỉ chưa sử dụng</span>
+	          	</a>
+	        </li>
+	        <li ui-sref-active="active">
+	          	<a ui-sref="app.layout.aside">
+	            	<span class="nav-text">Ấn chỉ đã sử dụng</span>
+	          	</a>
+	        </li>
+      	</ul>
+    </li>
+    
+	<!-- Giỏ hàng -->    
+    <li ui-sref-active="active">
+      	<a ui-sref="app.cart">
+	        <span class="nav-icon">
+	          <i class="material-icons">&#xe876;</i>
+	        </span>
+	        <span class="nav-text">Giỏ hàng</span>
+      	</a>
+    </li>
+    
+    <!-- Đơn hàng -->    
+    <li ui-sref-active="active">
+      	<a ui-sref="app.order">
+	        <span class="nav-icon">
+	          <i class="material-icons">&#xe876;</i>
+	        </span>
+	        <span class="nav-text">Đơn hàng</span>
+      	</a>
+    </li>
+    
+    <!-- Báo cáo -->  
+    <li ui-sref-active="active">
+      <a ui-sref="app.echarts.pie">
+        <span class="nav-icon">
+          <i class="material-icons">&#xe01b;
+          </i>
+        </span>
+        <span class="nav-text">Báo cáo</span>
+      </a>
+    </li>
+    
+    <!-- Tài liệu -->
+    <li ui-sref-active="active">
+      	<a ui-sref="app.echarts.scatter">
+	        <span class="nav-icon">
+	          <i class="material-icons">&#xe868;</i>
+	        </span>
+	        <span class="nav-text">Tài liệu</span>
+     	 </a>
+    </li>
+    
+    <!-- Khuyến mại -->
+    <li ui-sref-active="active">
+      	<a ui-sref="app.page.profile">
+	        <span class="nav-icon">
+	          <i class="material-icons">&#xe8e8;</i>
+	        </span>
+	        <span class="nav-text">Khuyến mại</span>
+      	</a>
+    </li>
+</ul>
