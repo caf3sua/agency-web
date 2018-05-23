@@ -6,7 +6,6 @@ html {
 
 body {
   color: rgba(0, 0, 0, 0.87);
-  font-size: 0.875rem;
   background-color: #f0f0f0;
   -webkit-font-smoothing: antialiased; }
 
@@ -882,7 +881,7 @@ a.list-group-item {
   margin: 0;
   padding: 0 1rem;
   flex-shrink: 0;
-  min-height: 3.5rem; }
+  min-height: 62px; }
   .navbar .up {
     margin: 0 -0.6em; }
   .navbar .avatar {
@@ -1706,7 +1705,7 @@ body {
   margin: inherit;
   z-index: 1020; }
   .app-header ~ .app-body {
-    padding-top: 3.5rem; }
+    padding-top: 6.5rem; }
   .app-header.navbar-md ~ .app-body {
     padding-top: 4rem; }
   .app-header.navbar-sm ~ .app-body {
@@ -1760,7 +1759,7 @@ body {
       /* margin-left: 11.25rem; */
       margin-left: 15.25rem; }
     .app-aside.folded {
-      width: 4rem; }
+      width: 6rem; }
       .app-aside.folded:not(.hide) ~ .app-content {
         margin-left: 4rem; }
       .app-aside.folded.md {
@@ -1771,12 +1770,11 @@ body {
       margin-left: 12.5rem; }
     .app-aside .left {
       position: absolute;
-      right: 0;
+      right: 0px;
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
   .hide-scroll {
     width: auto;
-    margin-right: -17px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch; } }
 
@@ -1991,10 +1989,13 @@ body {
       border: inherit;
       position: relative; }
       .navside .nav li li a {
-        line-height: 2rem;
-        padding-left: 3.5rem; }
+        padding-left: 10px; }
         .navside .nav li li a .nav-text {
-          padding: 0.4375rem 0; }
+            padding: 15px 0 15px 35px;
+            font-size: 14px;
+            font-family: Roboto;
+            font-weight: normal;
+            color: #000; }
       .navside .nav li li li a {
         padding-left: 4.5rem; }
       .navside .nav li li li li a {
@@ -2012,7 +2013,7 @@ body {
         .navside .nav li a:focus {
           background-color: rgba(0, 0, 0, 0.065); }
       .navside .nav li.active {
-        background-color: rgba(0, 0, 0, 0.065); }
+        color: #0371b6; }
         .navside .nav li.active > a {
           background-color: transparent; }
           .navside .nav li.active > a .nav-caret i {
@@ -2106,7 +2107,7 @@ body {
 @media (min-width: 992px) {
   .folded,
   .folded .scroll {
-    width: 4rem; }
+    width: 59px; }
   .folded.md,
   .folded.md .scroll {
     width: 5rem; }
@@ -2264,7 +2265,7 @@ body {
     overflow: visible;
     max-height: 999px;
     color: rgba(255, 255, 255, 0.87);
-    background-color: rgba(0, 0, 0, 0.87);
+    background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     position: absolute;

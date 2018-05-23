@@ -1,80 +1,72 @@
 <div class="navbar">
     <!-- Open side - Naviation on mobile -->
-    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg">
       <i class="material-icons">&#xe5d2;</i>
     </a>
     <!-- / -->
 
-	<!-- Toggle side - Hide on mobile -->
-    <a class="navbar-item pull-left hidden-lg-down" ng-click="toogleSettingFolded()">
-      <i class="material-icons">&#xe8d4;</i>
-    </a>
+
     <!-- / -->
     <!-- Page title - Bind to $state's title -->
-    <div class="navbar-item pull-left h5" data-translate="global.menu.{{$state.current.data.title}}" id="pageTitle" ></div>
-
+    <div class="navbar-item pull-left" id="pageTitle" >
+        <a class="bv-logo">
+            <img src="../../../content/assets/images/logo.png">
+        </a>
+    </div>
+    <div class="navbar-custom-menu pull-right background-fff" >
+        <!--ng-switch-when="true"-->
+        <ul class="nav navbar-nav" >
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown">
+                <a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">
+                    <span class=""> Bạn đang đăng nhâp dưới tên <strong>{{vm.user.ten}}</strong>  </span>
+                    <div>
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" >
+                    <li>
+                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>
+                    </li>
+                    <li>
+                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.logout()">Đăng xuất</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Control Sidebar Toggle Button -->
+        </ul>
+        <div class="nav navbar-nav" ng-switch-when="false">
+            <!-- User Account: style can be found in dropdown.less -->
+            <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.login()">
+                <span class=""> Đăng nhập  </span>
+            </a>
+            <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.register()">
+                <span class=""> Đăng ký </span>
+            </a>
+            <!-- Control Sidebar Toggle Button -->
+        </div>
+    </div>
     <!-- navbar right -->
-    <ul class="nav navbar-nav pull-right">
-    	<!-- Trang chủ -->
-    	<li class="nav-item dropdown pos-stc-xs">
-	        <a class="navbar-item pull-left hidden-lg-down">
-      			<i class="material-icons">&#xe88a;</i> <span data-translate="global.menu.nav-home">Trang chủ</span>
-    		</a>
-      	</li>
-      	<!-- Yêu cầu -->
-    	<li class="nav-item dropdown pos-stc-xs">
-	        <a class="navbar-item pull-left hidden-lg-down">
-      			<i class="material-icons">&#xe22b;</i>  <span data-translate="global.menu.nav-request">Yêu cầu</span>
-    		</a>
-      	</li>
-      	<!-- Giỏ công việc -->
-    	<li class="nav-item dropdown pos-stc-xs">
-	        <a class="navbar-item pull-left hidden-lg-down">
-      			<i class="material-icons">&#xe8cc;</i> <span data-translate="global.menu.nav-work-basket"> Giỏ công việc</span>
-    		</a>
-      	</li>
-      	<!-- Báo cáo -->
-    	<li class="nav-item dropdown pos-stc-xs">
-	        <a class="navbar-item pull-left hidden-lg-down">
-      			<i class="material-icons">&#xe873;</i> <span data-translate="global.menu.nav-report"> Báo cáo</span>
-    		</a>
-      	</li>
-      	
-      	<!-- Trợ giúp -->
-    	<li class="nav-item dropdown pos-stc-xs">
-	        <a class="navbar-item pull-left hidden-lg-down">
-      			<i class="material-icons">&#xe8fd;</i> <span data-translate="global.menu.nav-help"> Trợ giúp</span>
-    		</a>
-      	</li>
-    
-      <li class="nav-item dropdown pos-stc-xs">
-        <a class="nav-link" href data-toggle="dropdown">
-          <i class="material-icons">&#xe7f5;</i>
-          <span class="label label-sm up warn">3</span>
-        </a>
-        <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
-      </li>
-      <!-- Language -->
-      <li class="nav-item dropdown pos-stc-xs" ng-controller="ItsLanguageController as languageVm">
-        <a class="nav-link" href data-toggle="dropdown">
-          <i class="material-icons">&#xe153;</i>
-          <img src="content/assets/images/flag/flag_{{languageVm.currentLang()}}.svg" alt="..." class="w-16 img-circle header-language-flag">
-        </a>
-        <div ui-include="'../views/theme/blocks/dropdown.language.html'"></div>
-      </li>
-	 <li class="nav-item dropdown">
-        <a class="nav-link clear" href data-toggle="dropdown">
-          <span class="avatar w-32">
-            <img src="content/assets/images/a0.jpg" alt="...">
-            <i class="on b-white bottom"></i>
-          </span>
-        </a>
-        <div ui-include="'../views/blocks/dropdown.user.html'"></div>
-      </li>
-      <li class="nav-item hidden-md-up">
-        <a class="nav-link" data-toggle="collapse" data-target="#collapse">
-          <i class="material-icons">&#xe5d4;</i>
-        </a>
-      </li>
-    </ul>
+    <!--<ul class="navbar navbar pull-right background-fff">-->
+    	<!--&lt;!&ndash; Trang chủ &ndash;&gt;-->
+        <!--<li class="dropdown">-->
+            <!--<a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">-->
+                <!--<span class=""> Bạn đang đăng nhâp dưới tên <strong>{{vm.user.ten}}</strong>  </span>-->
+                <!--<div>-->
+                    <!--<i class="fas fa-gem"></i>-->
+                <!--</div>-->
+                <!--<span class="caret"></span>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu" >-->
+                <!--<li>-->
+                    <!--<a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.logout()">Đăng xuất</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</li>-->
+      	<!--&lt;!&ndash; Yêu cầu &ndash;&gt;-->
+    <!--</ul>-->
 </div>

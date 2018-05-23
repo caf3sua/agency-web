@@ -1,11 +1,13 @@
 <!-- aside -->
   <div id="aside" class="app-aside modal fade sm nav-dropdown" ng-class="{'folded': app.setting.folded}">
     <div class="left navside grey dk" layout="column">
-      <page-ribbon></page-ribbon>
       <div class="navbar no-radius">
+          <a class="navbar-item pull-left hidden-lg-down" ng-click="toogleSettingFolded()">
+              <i class="material-icons">&#xe8d4;</i>
+          </a>
         <div ui-include="'../views/theme/blocks/navbar.brand.html'"></div>
       </div>
-      <div flex class="hide-scroll">
+      <div flex class="hide-scroll background-fff">
         <nav class="scroll nav-border b-{{app.setting.theme.primary}}">
           <div ui-include="'../views/theme/blocks/nav.html'"></div>
         </nav>
