@@ -33,7 +33,7 @@
 		</a>
       	<ul class="nav-sub">
       		<!-- Product CAR -->
-	        <li ui-sref-active="active">
+	        <li ui-sref-active="active" ng-repeat="product in menuProducts">
 				<a>
 		            <span class="nav-caret">
 			          	<i class="fa fa-caret-down"></i>
@@ -41,11 +41,11 @@
 			        <span class="nav-icon">
 			          	<i class="material-icons">&#xe85e;</i>
 			        </span>
-		        	<span class="nav-text">Bảo hiểm ô tô</span>
+		        	<span class="nav-text">{{product.name}}</span>
 	          	</a>
 	          	<ul class="nav-sub">
 			        <li ui-sref-active="active">
-						<a ui-sref="product.bvp">
+						<a ui-sref="{{product.sref}}">
 				            <span class="nav-text">Cấp đơn Online</span>
 				        </a>
 			        </li>
@@ -61,7 +61,7 @@
 			        </li>
 		      	</ul>
 	        </li>
-	        <!-- Product BVP -->
+	        <!-- Product BVP
 	        <li ui-sref-active="active">
 				<a>
 		            <span class="nav-caret">
@@ -89,7 +89,7 @@
 			          	</a>
 			        </li>
 		      	</ul>
-	        </li>
+	        </li> -->
 		</ul>
     </li>
     

@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('pteMagicApp')
+        .module('app')
         .controller('ProductTviController', ProductTviController);
 
-    ProductTviController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope'];
 
-    function ProductTviController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductTviController ($scope, $controller, Principal, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -16,7 +16,7 @@
     	// Init controller
   		(function initController() {
   			// instantiate base controller
-  		    $controller('AgencyBaseController', { vm: vm, $scope: $scope });
+  		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
   		})();
   		
   		// Properties & function declare
