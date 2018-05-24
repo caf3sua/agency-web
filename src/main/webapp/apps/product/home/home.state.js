@@ -24,7 +24,7 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/home/home.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/home/home.service.js', 'apps/product/home/home.controller.js']);
 		        }
             }
         });
