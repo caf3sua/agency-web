@@ -889,8 +889,16 @@ a.list-group-item {
 
 .navbar-item {
   margin-right: 1rem;
-  margin-bottom: 0; }
-
+  margin-bottom: 0;
+}
+.navbar-item>i {
+    margin-right: 6px;
+    margin-bottom: 0;
+    color: #000;
+    float: right !important;
+    font-size: 20px;
+    margin-top: 20px;
+}
 .navbar-nav > .nav-link,
 .navbar-nav > .nav-item > .nav-link,
 .navbar-item,
@@ -923,7 +931,7 @@ a.list-group-item {
     text-decoration: none; }
   .navbar-brand img,
   .navbar-brand svg {
-    max-height: 24px;
+    max-height: 60px;
     vertical-align: -4px;
     display: inline-block; }
   .navbar-brand > span {
@@ -1754,10 +1762,10 @@ body {
     .app-aside.sm:not(.folded),
     .app-aside.sm:not(.folded) .scroll {
       /* width: 11.25rem; */
-      width: 15.25rem; }
+      width: 20.25rem; }
     .app-aside.sm:not(.hide) ~ .app-content {
       /* margin-left: 11.25rem; */
-      margin-left: 15.25rem; }
+      margin-left: 20.25rem; }
     .app-aside.folded {
       width: 6rem; }
       .app-aside.folded:not(.hide) ~ .app-content {
