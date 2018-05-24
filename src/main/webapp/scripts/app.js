@@ -50,19 +50,20 @@
     function stateChange($rootScope, $state, $stateParams, Principal) {
     	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     		console.log('stateChange:' + toState.name);
-    		
+
     		var blackList = ['access.signin'];
     		// black list
     		if (blackList.indexOf(toState.name) != -1) {
     			return;
     		}
     		
-    		var isAuthenticated = Principal.isAuthenticated();
-    		if (isAuthenticated == false) {
-    			event.preventDefault();
-    			$state.go('access.signin');
-    			return;
-    		}
+    		Principal.identity().then(function(account) {
+                if (Principal.isAuthenticated() == false) {
+                	event.preventDefault();
+        			$state.go('access.signin');
+        			return;
+                }
+            });
     	});
     }
     

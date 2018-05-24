@@ -12,12 +12,17 @@
       .module('app')
       .controller('AppCtrl', AppCtrl);
 
-      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window', 'Auth', '$state'];
+      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window', 'Auth', '$state', 'Principal'];
 
-      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window, Auth, $state) {
+      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window, Auth, $state, Principal) {
         var vm = $scope;
         vm.isIE = isIE();
         vm.isSmart = isSmart();
+        
+        // Account
+        vm.account = getAccount();
+        vm.isAuthenticated = Principal.isAuthenticated;
+        
         // menu
         vm.asideMenu = {
         		"dashboard" : {
@@ -125,6 +130,14 @@
   				"sref": "product.hhvc"
   			},
   		];
+  		
+  		function getAccount() {
+  			Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.isAuthenticated = Principal.isAuthenticated;
+            });
+  		}
+  		
 
         var setting = vm.app.name+'-Setting';
         // save settings to local storage
