@@ -49,7 +49,6 @@
                 // Redirect to signin
                 if (!isAuthenticated) {
                 		$state.go('access.signin')
-                		return;
                 }
                 
                 // an authenticated user can't access to login and register pages

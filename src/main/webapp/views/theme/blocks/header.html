@@ -5,7 +5,6 @@
     </a>
     <!-- / -->
 
-
     <!-- / -->
     <!-- Page title - Bind to $state's title -->
     <div class="navbar-item pull-left" id="pageTitle" >
@@ -14,12 +13,11 @@
         </a>
     </div>
     <div class="navbar-custom-menu pull-right background-fff" >
-        <!--ng-switch-when="true"-->
         <ul class="nav navbar-nav" >
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown">
                 <a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">
-                    <span class=""> Bạn đang đăng nhâp dưới tên <strong>{{vm.user.ten}}</strong>  </span>
+                    <span class=""> Bạn đang đăng nhâp dưới tên <strong>{{account.ten}}</strong>  </span>
                     <div>
                         <i class="fas fa-gem"></i>
                     </div>
@@ -30,43 +28,11 @@
                         <a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>
                     </li>
                     <li>
-                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.logout()">Đăng xuất</a>
+                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="logout()">Đăng xuất</a>
                     </li>
                 </ul>
             </li>
             <!-- Control Sidebar Toggle Button -->
         </ul>
-        <div class="nav navbar-nav" ng-switch-when="false">
-            <!-- User Account: style can be found in dropdown.less -->
-            <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.login()">
-                <span class=""> Đăng nhập  </span>
-            </a>
-            <a href="#" class="dropdown-toggle bv-menu-tab-user" ng-click="vm.register()">
-                <span class=""> Đăng ký </span>
-            </a>
-            <!-- Control Sidebar Toggle Button -->
-        </div>
     </div>
-    <!-- navbar right -->
-    <!--<ul class="navbar navbar pull-right background-fff">-->
-    	<!--&lt;!&ndash; Trang chủ &ndash;&gt;-->
-        <!--<li class="dropdown">-->
-            <!--<a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">-->
-                <!--<span class=""> Bạn đang đăng nhâp dưới tên <strong>{{vm.user.ten}}</strong>  </span>-->
-                <!--<div>-->
-                    <!--<i class="fas fa-gem"></i>-->
-                <!--</div>-->
-                <!--<span class="caret"></span>-->
-            <!--</a>-->
-            <!--<ul class="dropdown-menu" >-->
-                <!--<li>-->
-                    <!--<a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="vm.logout()">Đăng xuất</a>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</li>-->
-      	<!--&lt;!&ndash; Yêu cầu &ndash;&gt;-->
-    <!--</ul>-->
 </div>

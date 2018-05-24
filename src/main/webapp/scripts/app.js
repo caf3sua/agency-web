@@ -34,7 +34,8 @@
 		 'oc.lazyLoad',
 		 'highcharts-ng'
       ])
-      .run(run);
+      .run(run)
+      .run(stateChange);
     
     run.$inject = ['stateHandler', 'translationHandler'];
 
@@ -42,4 +43,28 @@
         stateHandler.initialize();
         translationHandler.initialize();
     }
+    
+    // Check state change
+    stateChange.$inject = ['$rootScope', '$state', '$stateParams', 'Principal'];
+
+    function stateChange($rootScope, $state, $stateParams, Principal) {
+    	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    		console.log('stateChange:' + toState.name);
+
+    		var blackList = ['access.signin'];
+    		// black list
+    		if (blackList.indexOf(toState.name) != -1) {
+    			return;
+    		}
+    		
+    		Principal.identity().then(function(account) {
+                if (Principal.isAuthenticated() == false) {
+                	event.preventDefault();
+        			$state.go('access.signin');
+        			return;
+                }
+            });
+    	});
+    }
+    
 })();

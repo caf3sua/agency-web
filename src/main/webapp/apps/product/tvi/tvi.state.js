@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('pteMagicApp')
+        .module('app')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
@@ -11,21 +11,21 @@
         $stateProvider.state('product.tvi', {
             parent: 'product',
             url: '/tvi',
+            templateUrl: 'apps/product/tvi/tvi.html',
             data: {
-                authorities: []
+                authorities: [],
+                title: 'PRODUCT_TVI'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/product/tvi/tvi.html',
-                    controller: 'ProductTviController',
-                    controllerAs: 'vm'
-                }
-            },
+            controller: "ProductTviController",
+            controllerAs: 'vm',
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
-                    return $translate.refresh();
-                }]
+            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+        				$translatePartialLoader.addPart('global');
+        				return $translate.refresh();
+            		}],
+            		loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['apps/product/tvi/tvi.controller.js']);
+		        }
             }
         });
     }

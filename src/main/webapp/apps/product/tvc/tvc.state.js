@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('pteMagicApp')
+        .module('app')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
@@ -11,21 +11,21 @@
         $stateProvider.state('product.tvc', {
             parent: 'product',
             url: '/tvc',
+            templateUrl: 'apps/product/tvc/tvc.html',
             data: {
-                authorities: []
+                authorities: [],
+                title: 'PRODUCT_TVC'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/product/tvc/tvc.html',
-                    controller: 'ProductTvcController',
-                    controllerAs: 'vm'
-                }
-            },
+            controller: "ProductTvcController",
+            controllerAs: 'vm',
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
-                    return $translate.refresh();
-                }]
+            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+        				$translatePartialLoader.addPart('global');
+        				return $translate.refresh();
+            		}],
+            		loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['apps/product/tvc/tvc.controller.js']);
+		        }
             }
         });
     }

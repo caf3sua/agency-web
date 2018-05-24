@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('pteMagicApp')
+        .module('app')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
@@ -11,21 +11,21 @@
         $stateProvider.state('product.kcare', {
             parent: 'product',
             url: '/kcare',
+            templateUrl: 'apps/product/kcare/kcare.html',
             data: {
-                authorities: []
+                authorities: [],
+                title: 'PRODUCT_KCARE'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/product/kcare/kcare.html',
-                    controller: 'ProductKcareController',
-                    controllerAs: 'vm'
-                }
-            },
+            controller: "ProductKcareController",
+            controllerAs: 'vm',
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
-                    return $translate.refresh();
-                }]
+            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+        				$translatePartialLoader.addPart('global');
+        				return $translate.refresh();
+            		}],
+            		loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['apps/product/kcare/kcare.controller.js']);
+		        }
             }
         });
     }
