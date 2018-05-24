@@ -207,10 +207,10 @@
         
         vm.logout = function() {
     		console.log('logout');
-            Auth.logout();
+//            Auth.logout();
 //            vm.isAuthenticated = null;
 //            $rootScope.$broadcast('logoutSuccess');
-//            $state.go('access.signin');
+            $state.go('access.signin');
         }
 
       }

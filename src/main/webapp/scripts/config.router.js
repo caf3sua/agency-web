@@ -22,8 +22,8 @@
       function config( $stateProvider,   $urlRouterProvider,   $locationProvider, MODULE_CONFIG ) {
         
         $urlRouterProvider
-        		//.otherwise('/app/dashboard');
-        		.otherwise('/access/signin');
+        		.otherwise('/app/dashboard');
+        		//.otherwise('/access/signin');
         $stateProvider
         		.state('app', {
         			abstract: true,
@@ -34,16 +34,16 @@
         				}
         			},
         			resolve: {
-        				authorize: ['Auth',
-                        function (Auth) {
-                            return Auth.authorize();
-                        }
-                    ],
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('global');
-                        return $translate.refresh();
-                    }]
-                }
+//        				authorize: ['Auth',
+//	                        function (Auth) {
+//	                            return Auth.authorize();
+//	                        }
+//	                    ],
+	                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+	                        $translatePartialLoader.addPart('global');
+	                        return $translate.refresh();
+	                    }]
+        			}
         		})
         		
         		// applications

@@ -26,7 +26,6 @@
         // Init controller
   		(function initController() {
             Auth.logout();
-            //$state.go('home');
   		})();
 
         $timeout(function (){angular.element('#username').focus();});
