@@ -16,23 +16,25 @@
         <ul class="nav navbar-nav" >
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown">
-                <a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">
+                <div>
                     <span class=""> Bạn đang đăng nhâp dưới tên <strong>{{account.ten}}</strong>  </span>
-                    <div>
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" >
-                    <li>
-                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password">Thay đổi mật khẩu</a>
-                    </li>
-                    <li>
-                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="logout()">Đăng xuất</a>
-                    </li>
-                </ul>
+                    <a class="dropdown-toggle bv-menu-tab-user" data-toggle="dropdown">
+	                    <div>
+	                        <i class="fas fa-gem"></i>
+	                    </div>
+	                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right dropdown-menu-scale">
+	                    <li>
+	                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ui-sref="password"><i class="fa fa-fw m-r-sm fa-key"></i>Thay đổi mật khẩu</a>
+	                    </li>
+	                    <li class="divider"></li>
+	                    <li>
+	                        <a class="btn dropdown-toggle bv-dropdown-header" type="button" ng-click="logout()"><i class="fa fa-fw m-r-sm fa-sign-out-alt"></i>Đăng xuất</a>
+	                    </li>
+	                </ul>
+                </div>
             </li>
-            <!-- Control Sidebar Toggle Button -->
         </ul>
     </div>
 </div>
