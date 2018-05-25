@@ -1133,6 +1133,30 @@ body {
 .navbar{
     border-bottom: 1px solid #ccc;
 }
+.bv-margin-botton-10{
+    margin-bottom: 10px;
+}
+.bv-title-from-des{
+    font-size: 10px;
+    font-family: Roboto;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.bv-req-red{
+    color: #ff0000;
+}
+.bv-gh-text-sum-product{
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Roboto;
+}
+.bv-gh-number-sum{
+    display: inline-block;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 600;
+    color: #0371b6;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{
         margin-left: 10px;
