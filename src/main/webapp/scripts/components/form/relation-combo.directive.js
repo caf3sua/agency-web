@@ -89,7 +89,7 @@
         	}
         	
         	function onError(result) {
-        		
+        		toastr.error('Get data error!', 'Error');
         	}
         }
 

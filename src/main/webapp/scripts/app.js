@@ -33,7 +33,8 @@
 		 'ui.jp',
 		 'oc.lazyLoad',
 		 'highcharts-ng',
-		 'ngScrollbars'
+		 'ngScrollbars', 
+		 'toastr'
       ])
       .run(run)
       .run(stateChange);

@@ -31,8 +31,12 @@
   
   <!-- Custom main css -->
   <link rel="stylesheet" href="content/assets/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="content/assets/styles/bvCheckbox.css" type="text/css" />
-    <link rel="stylesheet" href="content/assets/styles/bvMain.css" type="text/css" />
+  <link rel="stylesheet" href="content/assets/styles/bvCheckbox.css" type="text/css" />
+  <link rel="stylesheet" href="content/assets/styles/bvMain.css" type="text/css" />
+  
+  <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css" type="text/css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css" type="text/css" />
+  
   <base href="/">
 </head>
 <body ng-app="app" ng-controller="AppCtrl" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
@@ -82,7 +86,9 @@
     <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
     <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
     <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
-    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.min.js"></script>
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/highcharts-ng/dist/highstock.src.js"></script>

@@ -84,16 +84,16 @@
 			"purposeOfUsageId":"15",
 			"receiveMethod" : "1",
 			"receiverUser":{  
-				"address":"Xã Hưng Thịnh",
-				"addressDistrict":"string",
+				"address":"Duy Tân",
+				"addressDistrict":"Cầu Giấy",
 				"email":"a@gmail.com",
 				"mobile":"0123456789",
 				"name":"Nguyễn Văn 0"
 			},
-		   	"registrationNumber":"1212121",
+		   	"registrationNumber":"",
 		   	"thirdPartyPremium":480700,
-		   	"thoihanden":"18/05/2019",
-		   	"thoihantu":"19/05/2018",
+		   	"thoihanden":"",
+		   	"thoihantu":"",
 		   	"tndsSocho":"1",
 		   	"tndsbbCheck":true,
 		   	"tndstnCheck":true,
@@ -306,7 +306,7 @@
     	}
     	
     	function onGetPremiumError(result) {
-    		
+    		toastr.error('Get data error!', 'Error');
     	}
     	
     	function createNewPolicy() {
@@ -350,11 +350,11 @@
     	}
     	
     	function onCreatePolicySuccess(result) {
-    		
+    		toastr.success('Create Invoice Success!', 'Successful!');
     	}
     	
     	function onCreatePolicyError(result) {
-    		
+    		toastr.error('Create Invoice Error!', 'Error');
     	}
     }
 })();
