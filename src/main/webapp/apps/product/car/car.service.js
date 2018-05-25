@@ -1,27 +1,64 @@
-(function () {
-    'use strict';
+(function() {
+	'use strict';
 
-    angular
-        .module('pteMagicApp')
-        .factory('CarService', CarService);
+	angular
+		.module('app')
+		.factory('CarService', CarService);
 
-    CarService.$inject = ['$resource'];
+	CarService.$inject = [ '$resource' ];
 
-    function CarService ($resource) {
-        var service = $resource('api/users/:login', {}, {
-            'query': {method: 'GET', isArray: true},
-            'get': {
-                method: 'GET',
-                transformResponse: function (data) {
-                    data = angular.fromJson(data);
-                    return data;
-                }
-            },
-            'save': { method:'POST' },
-            'update': { method:'PUT' },
-            'delete':{ method:'DELETE'}
-        });
+	function CarService($resource) {
+		var service = $resource('', {}, {
+			'getCarBranches' : {
+				method : 'POST',
+				url : 'api/agency/product/car/getCarMakes',
+				isArray : true
+			},
+			'getCarModel' : {
+				method : 'GET',
+				url : 'api/agency/product/car/getCarModel',
+				isArray : true
+			},
+			'getMaxManufactureYear' : {
+				method : 'GET',
+				url : 'api/agency/product/car/getMaxManufactureYear',
+				transformResponse : function(data) {
+					data = angular.fromJson({
+						max : data
+					});
+					return data;
+				}
+			},
+			'getMinManufactureYear' : {
+				method : 'GET',
+				url : 'api/agency/product/car/getMinManufactureYear',
+				transformResponse : function(data) {
+					data = angular.fromJson({
+						min : data
+					});
+					return data;
+				}
+			},
+			'getCarPriceWithYear' : {
+				method : 'GET',
+				url : 'api/agency/product/car/getCarPriceWithYear',
+				transformResponse : function(data) {
+					data = angular.fromJson({
+						price : Number(data)
+					});
+					return data;
+				}
+			},
+			'getPremium' : {
+				method : 'POST',
+				url : 'api/agency/product/car/premium'
+			},
+			'createNewPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/car/createPolicy'
+			}
+		});
 
-        return service;
-    }
+		return service;
+	}
 })();
