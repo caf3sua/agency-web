@@ -48,11 +48,11 @@
 			"chargeFree" : ""
 		};
   		
-  		var policy = {  
+  		vm.policy = {  
 			"actualValue":8929000000,
 			"changePremium":0,
 			"chassisNumber":"",
-			"contactCode":"",
+			"contactCode":"4857",
 			"engineNumber":"",
 			"garageCheck":true,
 			"insuredAddress":"",
@@ -90,7 +90,7 @@
 				"mobile":"0123456789",
 				"name":"Nguyễn Văn 0"
 			},
-		   	"registrationNumber":"jejsjsje",
+		   	"registrationNumber":"1212121",
 		   	"thirdPartyPremium":480700,
 		   	"thoihanden":"18/05/2019",
 		   	"thoihantu":"19/05/2018",
@@ -231,11 +231,11 @@
   		}
   		
   		function getPremium() {
-  			var postData = getPostData();
+  			var postData = getPostData(false);
   			CarService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
   		}
   		
-  		function getPostData() {
+  		function getPostData(isCreate) {
   			var postData = Object.assign({}, vm.productCar);
   			if(!postData.changePremium || postData.changePremium == "") {
   				postData.changePremium = 0;
@@ -262,11 +262,13 @@
   			}
   			
   			// Remove unuse
-  			delete postData.chargeFree;
-  			delete postData.manufacturer;
-  			delete postData.model;
-  			delete postData.actualValue;
-  			delete postData.receiveMethod;
+  			if(!isCreate) {
+  				delete postData.chargeFree;
+  	  			delete postData.manufacturer;
+  	  			delete postData.model;
+  	  			delete postData.actualValue;
+  	  			delete postData.receiveMethod;
+  			}
   			
   			return postData;
   		}
@@ -308,7 +310,7 @@
     	}
     	
     	function createNewPolicy() {
-    		var postData = getPostData();
+    		var postData = getPostData(true);
     		
     	  	vm.policy.actualValue = postData.actualValue;
 	  		vm.policy.changePremium = postData.changePremium;
