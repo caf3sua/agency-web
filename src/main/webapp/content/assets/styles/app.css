@@ -1999,7 +1999,7 @@ body {
       .navside .nav li li a {
         padding-left: 10px; }
         .navside .nav li li a .nav-text {
-            padding: 15px 0 15px 35px;
+            padding: 15px 0 15px 10px;
             font-size: 14px;
             font-family: Roboto;
             font-weight: normal;
@@ -2045,7 +2045,6 @@ body {
 
 .nav-text {
   display: block;
-  line-height: 1.125rem;
   padding: 0.5625rem 0; }
   .nav > li > a .nav-text {
     font-weight: 500; }
