@@ -32,7 +32,7 @@
     "oclazyload": "1.1.0",
     "highcharts-ng": "latest",
     "angular-ivh-treeview": "latest",
-    "angular-material": "latest"
+	"ng-scrollbars": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.5.8"
