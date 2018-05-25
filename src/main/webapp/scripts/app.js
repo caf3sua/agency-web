@@ -60,6 +60,7 @@
     		
     		Principal.identity().then(function(account) {
                 if (Principal.isAuthenticated() == false) {
+                	console.log('not authenticated');
                 	event.preventDefault();
         			$state.go('access.signin');
         			return;
