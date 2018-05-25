@@ -1769,7 +1769,7 @@ body {
     .app-aside.folded {
       width: 6rem; }
       .app-aside.folded:not(.hide) ~ .app-content {
-        margin-left: 4rem; }
+        margin-left: 6rem; }
       .app-aside.folded.md {
         width: 5rem; }
         .app-aside.folded.md:not(.hide) ~ .app-content {
