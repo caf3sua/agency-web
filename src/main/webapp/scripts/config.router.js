@@ -10,6 +10,11 @@
     angular
       .module('app')
       .run(runBlock)
+      .config(function (ScrollBarsProvider) {
+			ScrollBarsProvider.defaults = {
+				axis: 'y' // enable 2 axis scrollbars by default
+			};
+	  })
       .config(config);
 
       runBlock.$inject = ['$rootScope', '$state', '$stateParams'];

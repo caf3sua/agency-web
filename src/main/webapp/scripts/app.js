@@ -33,7 +33,8 @@
 		 'ui.jp',
 		 'oc.lazyLoad',
 		 'highcharts-ng',
-		 'ngScrollbars'
+		 'ngScrollbars', 
+		 'toastr'
       ])
       .run(run)
       .run(stateChange);
@@ -60,6 +61,7 @@
     		
     		Principal.identity().then(function(account) {
                 if (Principal.isAuthenticated() == false) {
+                	console.log('not authenticated');
                 	event.preventDefault();
         			$state.go('access.signin');
         			return;

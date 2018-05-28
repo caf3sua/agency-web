@@ -1990,7 +1990,8 @@ body {
     padding-right: 0;
     list-style: none; }
   .navside [flex] {
-    overflow: auto; }
+  	overflow-x:hidden;
+    overflow-y: auto; }
   .navside .nav {
     border: inherit; }
     .navside .nav li {
