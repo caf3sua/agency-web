@@ -1,38 +1,41 @@
-<div class="app-body-inner">
-  <div class="row-col row-col-xs b-b">
-    <!-- column -->
-    <div class="col-sm-2 col-md-2 w w-auto-sm b-r">
-      <div class="row-col">
-        <div class="row-row">
-          <div class="row-body scrollable hover">
-            <div class="row-inner">
-              <div class="nav nav-pills nav-stacked m-t-sm">
-                <a class="nav-link" ng-class="{'_600': (filter == '')}" ng-click="selectGroup({name:''})">ALL Contacts</a>
-                <a ng-repeat="item in groups" ng-dblclick="editItem(item)" class="nav-link hover-anchor" ng-class="{'_600': item.selected}" ng-click="selectGroup(item)">
-                  <span ng-click='deleteGroup(item)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
-                  <span class="block">{{ item.name ? item.name : 'Untitled' }}</span>
-                  <input type="text" class="form-control form-control-sm pos-abt" ng-show="item.editing" ng-blur="doneEditing(item)" ng-model="item.name" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
-                </a>
-              </div>
+<div class="app-body-inner bv-background-sp">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-border-bottom-b4cfe4">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0 padding0">
+                <p class="bv-title-home">Danh sách khách hàng</p>
             </div>
-          </div>
+            <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
+                <div class="bv-btn-groud-header">
+                    <div class="bv-btn-header-title">
+                        <i class="fas fa-calculator"></i>
+                        <span>Tính phí nhanh</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="p-a">
-          <span bs-tooltip title="Double click to Edit" class="pull-right text-muted inline p-a-xs m-r-sm"><i class="fa fa-question"></i></span>
-          <a href class="btn btn-sm white" ng-click="createGroup()"><i class="fa fa-plus fa-fw m-r-xs"></i> <span class="hidden-sm-down">New Group</span></a>
+        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+            <div class="bv-block-two-button">
+                <button class="bv-block-two-button-style">Khách hàng tiềm năng</button>
+                <button class="bv-block-two-button-style">Khách hàng VIP</button>
+                <button class="bv-block-two-button-style">Khách hàng thân thiện</button>
+            </div>
         </div>
-      </div>
+        <div>
+
+        </div>
     </div>
-    <!-- /column -->
+  <div class="row-col row-col-xs b-b bv-border-ccc background-fff">
     <!-- column -->
     <div class="col-sm-4 col-md-3 light bg b-r">
       <div class="row-col">
-        <div class="p-a-xs b-b">
-          <div class="input-group">
-            <span class="input-group-addon no-border no-bg"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control no-border no-bg" placeholder="Search {{group.name ? group.name : 'All Contacts'}}" ng-model="query">
+          <div class="bv-input-search-contact ">
+              <span class="bv-input-icon-search-contact"><span class="fas fa-search"></span></span>
+              <input type="text" placeholder="Tìm kiếm" class="bv-input-with-icon" id="form-name"
+                 placeholder="Search {{group.name ? group.name : 'All Contacts'}}" ng-model="query"
+              >
+              <div class="bv-icon-from-searchContact"><i class="fas fa-plus"></i></div>
+              <div class="bv-icon-from-searchContact"><i class="fas fa-envelope"></i></div>
           </div>
-        </div>
         <div class="row-row">
           <div class="row-body scrollable hover">
             <div class="row-inner">
@@ -76,16 +79,14 @@
             <div class="row-inner">
               <div class="padding">
                 <div class="row-col h-auto m-b-lg">
-                  <div class="col-sm-3">
+                  <div class="col-sm-12 v-m h2 _300 text-center">
                     <div class="avatar w-64 inline">
-                      <img ng-src="{{item.avatar}}" ng-show="item.avatar">
+                        <img ng-src="{{item.avatar}}" ng-show="item.avatar">
                     </div>
-                  </div>
-                  <div class="col-sm-9 v-m h2 _300">
-                    <div ng-hide="item.editing">{{item.first}} {{item.last}}</div>
-                    <div ng-show="item.editing" class="p-l-xs">
-                      <input type="text" placeholder="First" class="form-control w-sm inline" ng-model="item.first" >
-                      <input type="text" placeholder="Last" class="form-control w-sm inline" ng-model="item.last" >
+                    <div ng-hide="item.editing" class="inline">{{item.first}} {{item.last}}</div>
+                    <div ng-show="item.editing" class="p-l-xs inline" >
+                        <input type="text" placeholder="First" class="form-control w-sm inline" ng-model="item.first" >
+                        <input type="text" placeholder="Last" class="form-control w-sm inline" ng-model="item.last" >
                     </div>
                   </div>
                 </div>
