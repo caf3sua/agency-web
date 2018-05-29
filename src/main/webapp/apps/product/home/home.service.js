@@ -7,10 +7,6 @@
 
     ProductHomeService.$inject = ['$resource'];
 
-//    /api/agency/product/home/createPolicy createPolicy
-//    POST /api/agency/product/home/premium getPremium
-//    POST /api/agency/product/home/updatePolicy
-    
     function ProductHomeService ($resource) {
         var service = $resource('api/agency/product/home', {}, {
             'getPremium': {url: 'api/agency/product/home/premium', method: 'POST', isArray: false},
@@ -21,3 +17,4 @@
         return service;
     }
 })();
+ 

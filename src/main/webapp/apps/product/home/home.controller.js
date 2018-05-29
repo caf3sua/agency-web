@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductHomeController', ProductHomeController);
 
-    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductHomeService'];
+    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductHomeService', 'ProductCommonService'];
 
-    function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService) {
+    function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -33,51 +33,54 @@
   		
   		vm.homePolicy = {
   				"bankId": "0",
-  				"baovietCompanyId": "CompanyId",
-  				"baovietCompanyName": "Company Name",
+  				"baovietCompanyId": "",
+  				"baovietCompanyName": " ",
   				"bars": "1",
-  				"byNight": "byNight",
-  				"contactCode": "4797",
-  				"expiredDate": "23/04/2019",
-  				"inceptionDate": "24/04/2018",
-  				"insuranceAddress": "Address",
-  				"insuranceName": "Name",
-  				"insuredLocation": "Location",
-  				"invoceNumber": "",
+  				"byNight": "0198711131",
+  				"contactCode": "DUC001",
+  				"expiredDate": "29/05/2019",
+  				"gycbhNumber": "ITSOL.HOM.18.78",
+  				"inceptionDate": "30/05/2018",
+  				"insuranceAddress": "HN",
+  				"insuranceName": "HN",
+  				"insuredLocation": "HN",
+  				"invoceNumber": "0198711131",
   				"invoiceInfo": {
-  				"accountNo": "1151242",
-  				"address": "address",
-  				"check": "1",
-  				"company": "company",
-  				"name": "name",
-  				"taxNo": "1101"
+  				"accountNo": "",
+  				"address": "",
+  				"check": "0",
+  				"company": "",
+  				"name": "",
+  				"taxNo": ""
   				},
   				"loaiHinh": "1",
+  				"policyNumber": "",
   				"premiumDiscount": 0,
   				"premiumHome": 0,
   				"premiumNet": 0,
   				"premiumsi": 0,
   				"premiumsiin": 0,
+  				"receiveMethod": "1",
   				"receiverUser": {
-  				"address": "address",
+  				"address": "",
   				"addressDistrict": "",
-  				"email": "abc@gmail.com",
-  				"mobile": "0987111234",
-  				"name": "name"
+  				"email": "",
+  				"mobile": "",
+  				"name": ""
   				},
   				"si": "300000000",
   				"siPremium": 0,
-  				"siin": "500000000",
+  				"siin": "100000000",
   				"siinPremium": 0,
-  				"totalUsedArea": "600000000",
-  				"type": "ONL",
-  				"userAgent": "1",
+  				"totalUsedArea": "100000000",
+  				"userAgent": "",
   				"windowLocks": "1",
   				"yearBuildCode": "1"
-		};
+  				};
   		
   		vm.getPremium = getPremium;
   		vm.createPolicy = createPolicy;
+  		vm.getPolicyNumber = getPolicyNumber;
   		
   		// Function
   		function getPremium() {
@@ -85,22 +88,46 @@
   			
   			function onGetPremiumSuccess(data, headers) {
   				vm.homePremium = data;
+  				vm.homePolicy.si = data.si;
+  				vm.homePolicy.siin = data.siin;
+  				vm.homePolicy.premiumsi = data.premiumSi;
+  				vm.homePolicy.premiumsiin = data.premiumSiin;
+  				vm.homePolicy.premiumNet = data.premiumNet;
+  				vm.homePolicy.premiumHome = data.premiumHome;
+  				vm.homePolicy.premiumDiscount = data.premiumDiscount;
+  				vm.homePolicy.yearBuildCode = data.yearBuildCode;
   				console.log(vm.homePremium);
             }
             function onGetPremiumError(error) {
                 console.log(error.data.message);
             }
   		}
+  		
+  		function getPolicyNumber() {
+  			ProductCommonService.getPolicyNumber({lineId: 'HOM'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+  			
+  			function onGetPolicyNumberSuccess(data, headers) {
+  				vm.homePolicy.gycbhNumber = data;
+  				createPolicy();
+            }
+            function onGetPolicyNumberError(error) {
+                console.log(error.data.message);
+            }
+  		}
 
   		function createPolicy() {
+  			console.log('createPolicy');
+  			debugger
   			ProductHomeService.createPolicy(vm.homePolicy, onSuccess, onError);
   			
   			function onSuccess(data, headers) {
   				vm.homePolicy = data;
   				console.log(vm.homePolicy);
+  				toastr.success('Create Invoice Success!', 'Successful!');
             }
+  			
             function onError(error) {
-                console.log(error.data.message);
+            	toastr.error('Create Invoice Error!', 'Error');
             }
   		}
   		
