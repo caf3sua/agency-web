@@ -26,9 +26,13 @@
         	var defaultOption = '';
 
             switch(attrs.type){
+                case 'moto-type':
+                    defaultOption = "--- Cần lựa chọn loại xe ---";
+                    break;
 	            case 'car-socho':
 	            	defaultOption = "--- Lựa chọn số chỗ/trọng tải xe ---";
 	                break;
+                case 'moto-tndstn-sotien':
 	            case 'car-tndstn-sotien':
 	            	defaultOption = "--- Cần lựa chọn mức trách nhiệm ---";
 	                break;
@@ -61,7 +65,9 @@
                 ngModel.$setViewValue(scope.selectedItem);
                 
                 switch(attrs.type){
+                    case 'moto-type':
 	                case 'car-socho':
+                    case 'moto-tndstn-sotien':
 	                case 'car-tndstn-sotien':
 	                case 'car-nntx-sotien':
 	                	onSuccess(null);

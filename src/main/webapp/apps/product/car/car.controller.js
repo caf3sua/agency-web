@@ -20,7 +20,7 @@
   		})();
   		
   		// Properties & function declare
-  		vm.productCar = {
+  		vm.product = {
 			"agencyRole": "1",
 			"changePremium": "",
 			"garage": false,
@@ -172,14 +172,14 @@
     	}
     	
     	function checkedChange() {
-    		if((!vm.productCar.tndsbbCheck && !vm.productCar.tndstnCheck && !vm.productCar.vcxCheck)) {
-    			vm.productCar.nntxCheck = false;
+    		if((!vm.product.tndsbbCheck && !vm.product.tndstnCheck && !vm.product.vcxCheck)) {
+    			vm.product.nntxCheck = false;
     		}
     	}
   		
   		function showChangePremium() {
-  			if((vm.productCar.tndsbbCheck && vm.productCar.tndsSoCho)
-  					|| (vm.productCar.tndstnCheck && vm.productCar.tndsSoCho)) {
+  			if((vm.product.tndsbbCheck && vm.product.tndsSoCho)
+  					|| (vm.product.tndstnCheck && vm.product.tndsSoCho)) {
   				return true;
   			} else {
   				return false;
@@ -187,9 +187,9 @@
   		}
   		
   		function disableExtendedInsurance() {
-  			if((!vm.productCar.tndsbbCheck && !vm.productCar.tndstnCheck && !vm.productCar.vcxCheck) 
-  					|| (vm.productCar.tndsbbCheck && !vm.productCar.tndsSoCho)
-  					|| (vm.productCar.tndstnCheck && !vm.productCar.tndsSoCho)) {
+  			if((!vm.product.tndsbbCheck && !vm.product.tndstnCheck && !vm.product.vcxCheck)
+  					|| (vm.product.tndsbbCheck && !vm.product.tndsSoCho)
+  					|| (vm.product.tndstnCheck && !vm.product.tndsSoCho)) {
   				return true;
   			} else {
   				return false;
@@ -206,26 +206,26 @@
 	            	break;
 	            case 'car-manufacturer':
 	            	vm.modelOptions = [];
-	            	vm.productCar.model = '';
-	            	vm.productCar.namSX = '';
-	            	vm.productCar.actualValue = '';
-	            	vm.productCar.vcxSoTien = '';
+	            	vm.product.model = '';
+	            	vm.product.namSX = '';
+	            	vm.product.actualValue = '';
+	            	vm.product.vcxSoTien = '';
 	            	data.forEach(function(item, index, arr) {
 	      				vm.modelOptions.push({id: item.carId, name: item.carName});
 	      			})
 	                break;
 	            case 'car-model':
 	            	vm.yearOptions = [];
-	            	vm.productCar.namSX = '';
-	            	vm.productCar.actualValue = '';
-	            	vm.productCar.vcxSoTien = '';
+	            	vm.product.namSX = '';
+	            	vm.product.actualValue = '';
+	            	vm.product.vcxSoTien = '';
 	            	for(var i = data.min; i <= data.max; i++) {
-	            		vm.yearOptions.push({id: i + ":" + vm.productCar.model, name: i});
+	            		vm.yearOptions.push({id: i + ":" + vm.product.model, name: i});
 	            	}
 	                break;
 	            case 'car-year':
-	            	vm.productCar.vcxSoTien = '';
-	            	vm.productCar.actualValue = data.price;
+	            	vm.product.vcxSoTien = '';
+	            	vm.product.actualValue = data.price;
 	                break;
 	        }
   		}
@@ -236,7 +236,7 @@
   		}
   		
   		function getPostData(isCreate) {
-  			var postData = Object.assign({}, vm.productCar);
+  			var postData = Object.assign({}, vm.product);
   			if(!postData.changePremium || postData.changePremium == "") {
   				postData.changePremium = 0;
   			}
@@ -274,34 +274,34 @@
   		}
   		
   		function onGetPremiumSuccess(result) {
-    		if(vm.productCar.tndsbbCheck && vm.productCar.tndsSoCho) {
+    		if(vm.product.tndsbbCheck && vm.product.tndsSoCho) {
     			vm.isShowTndsbbPhi = true;
-    			vm.productCar.tndsbbPhi = result.tndsbbPhi;
+    			vm.product.tndsbbPhi = result.tndsbbPhi;
     		}
-    		if(vm.productCar.tndstnCheck && vm.productCar.tndsSoCho && vm.productCar.tndstnSoTien) {
+    		if(vm.product.tndstnCheck && vm.product.tndsSoCho && vm.product.tndstnSoTien) {
     			vm.isShowTndstnPhi = true;
-    			vm.productCar.tndstnPhi = result.tndstnPhi;
+    			vm.product.tndstnPhi = result.tndstnPhi;
     		}
-    		if(vm.productCar.nntxCheck && vm.productCar.nntxSoTien) {
+    		if(vm.product.nntxCheck && vm.product.nntxSoTien) {
     			vm.isShowNntxPhi = true;
-    			vm.productCar.nntxPhi = result.nntxPhi;
+    			vm.product.nntxPhi = result.nntxPhi;
     		}
-    		if(vm.productCar.vcxCheck && vm.productCar.namSX && vm.productCar.vcxSoTien) {
+    		if(vm.product.vcxCheck && vm.product.namSX && vm.product.vcxSoTien) {
     			vm.isShowVcxPhi = true;
-    			vm.productCar.vcxPhi = result.vcxPhi;
+    			vm.product.vcxPhi = result.vcxPhi;
     		}
-    		if(vm.productCar.changePremium) {
+    		if(vm.product.changePremium) {
     			vm.isShowChangePremium = true;
     			if(result.changePremium != 0) {
-    				vm.productCar.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
+    				vm.product.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
     			}
     		}
-    		if((vm.productCar.tndsbbCheck && vm.productCar.tndsSoCho)
-    				|| vm.productCar.tndstnCheck && vm.productCar.tndsSoCho && vm.productCar.tndstnSoTien) {
+    		if((vm.product.tndsbbCheck && vm.product.tndsSoCho)
+    				|| vm.product.tndstnCheck && vm.product.tndsSoCho && vm.product.tndstnSoTien) {
     			vm.isShowPremium = true;
           		vm.isShowTotalPremium = true;
-          		vm.productCar.premium = result.premium;
-          		vm.productCar.totalPremium = result.totalPremium;
+          		vm.product.premium = result.premium;
+          		vm.product.totalPremium = result.totalPremium;
     		}
     	}
     	
