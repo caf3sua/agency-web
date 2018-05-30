@@ -113,6 +113,12 @@
                     <p>Thông tin bảo hiểm</p>
                 </div>
                 <div class="margin-top-10">
+                    <p class="bv-title-from">Mã khách hàng (*)</p>
+                </div>
+                <div class="margin-top-5">
+                    <input type="text" name="contactCode" id="contactCode" ng-model="vm.homePolicy.contactCode" class="bv-input" placeholder="Mã khách hàng" />
+                </div>
+                <div class="margin-top-10">
                     <p class="bv-title-from">Họ và tên người được bảo hiểm (*)</p>
                 </div>
                 <div class="margin-top-5">
@@ -172,8 +178,8 @@
                     <p class="bv-title-from">Loại hình ngôi nhà (*)</p>
                 </div>
                 <div class="margin-top-5">
-                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="0"/> Chung cư
-                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="1" style="margin-left: 50px"/> Nhà liền kề/biệt thự 
+                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="0" ng-change="vm.checkLoaiHinh()"/> Chung cư
+                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="1" ng-change="vm.checkLoaiHinh()" style="margin-left: 50px"/> Nhà liền kề/biệt thự 
                 </div>
                 
                 <div class="margin-top-10">
@@ -183,7 +189,7 @@
                 <div class=" display-flex margin-top-5">
                     <div class="margin-right-5 width-100">
                     	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-						    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate">
+						    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate" ng-change="vm.changeToDate()">
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
@@ -191,7 +197,7 @@
                     </div>
                     <div class="width-100">
                     	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-						    <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
+						    <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
@@ -376,9 +382,17 @@
                         <div class="margin-top-10">
                             <p class="bv-title-from">Quyền sở hữu</p>
                         </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">{{vm.homePolicy.bankId}}</p>
-                        </div>
+                        <div ng-switch="vm.homePolicy.bankId">
+						  <div ng-switch-when="0">
+						     <p class="bv-tile-templateSummary">Chủ sở hữu</p>
+						  </div>
+						  <div ng-switch-when="1">
+						    <p class="bv-tile-templateSummary">Chủ sở hữu cho thuê nhà</p>
+						  </div>
+						  <div ng-switch-when="2">
+						    <p class="bv-tile-templateSummary">Người thuê nhà</p>
+						  </div>
+						</div>
                     </div>
                     <div class="border-right-ccc bv-pading-30 width-100">
                         <div class="text-header-sp">
@@ -388,7 +402,7 @@
                             <p class="bv-title-from">Tổng tiền thanh toán</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.homePolicy.premiumHome}}</p>
+                            <p class="bv-tile-templateSummary">{{vm.homePolicy.premiumHome | number}} VND</p>
                         </div>
                         
                         <div class="text-header-sp" style="margin-bottom: 10px">
@@ -422,7 +436,6 @@
                             <p class="bv-title-from">Hình thức giao nhận</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.homePolicy.receiveMethod}}</p>
                             <p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký</p>
                         </div>
                     </div>
@@ -477,9 +490,14 @@
 	                        <div class="margin-top-10">
 	                            <p class="bv-title-from">Loại hình ngôi nhà</p>
 	                        </div>
-	                        <div>
-	                            <p class="bv-tile-templateSummary">{{vm.homePolicy.loaiHinh}}</p>
-	                        </div>
+	                        <div ng-switch="vm.homePolicy.loaiHinh">
+							  <div ng-switch-when="1">
+							     <p class="bv-tile-templateSummary">Nhà liền kề/biệt thự</p>
+							  </div>
+							  <div ng-switch-when="0">
+							    <p class="bv-tile-templateSummary">Chung cư</p>
+							  </div>
+							</div>
 	                        <div>
 	                        	<p class="bv-title-from">Câu hỏi về tình trạng ngôi nhà:</p>
 	                        </div>
@@ -587,7 +605,7 @@
                            	</div>
                            	
 			                <div>
-		                        <p class="bv-tile-templateSummary display-inline-block">{{vm.homePolicy.invoiceInfo.accountNo}}</p>
+		                        <p class="bv-tile-templateSummary display-inline-block"></p>
 		                        <button class="bv-btn-step3" ng-click="vm.getPolicyNumber()">
 		                            Tạo đơn hàng
 		                        </button>

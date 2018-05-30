@@ -31,7 +31,12 @@
         vm.typeArrowOne = "fa-angle-left";
         vm.typeArrowTwo = "fa-angle-left";
         vm.typeArrowThree = "fa-angle-right";
+        
+        // declare function
         vm.closeOpenStep = closeOpenStep;
+        vm.calculateToDate = calculateToDate;
+        
+        // implement function
         function closeOpenStep(type){
             if(type == "step1"){
                 document.getElementById("bv-step-1").className = 'bv-step-1  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98 display-flex OpenStepOne';
@@ -63,5 +68,13 @@
                 vm.typeArrowOne = "fa-angle-left";
             }
         }
+        
+        function calculateToDate(fromDate) {
+  			var fromDateObj = moment(fromDate, 'DD/MM/YYYY');
+  			var toDateObj = fromDateObj.add(1, 'y').subtract(1, 'd');
+  			var toDate = toDateObj.format('DD/MM/YYYY');
+  			
+  			return toDate;
+  		}
     }
 })();
