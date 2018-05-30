@@ -52,13 +52,13 @@
         		})
         		
         		// applications
-            .state('app.contact', {
-              url: '/contact',
-              templateUrl: 'apps/contact/main.html',
-              data : { title: 'Contacts', hideFooter: true },
-              controller: 'ContactCtrl',
-              resolve: load('apps/contact/contact.js')
-            })
+//            .state('app.contact', {
+//              url: '/contact',
+//              templateUrl: 'apps/contact/main.html',
+//              data : { title: 'Contacts', hideFooter: true },
+//              controller: 'ContactCtrl',
+//              resolve: load('apps/contact/contact.js')
+//            })
 
             .state('app.calendar', {
               url: '/calendar',

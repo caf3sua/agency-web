@@ -19,13 +19,13 @@
             controller: "ProductKcareController",
             controllerAs: 'vm',
             resolve: {
-            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-        				$translatePartialLoader.addPart('global');
-        				return $translate.refresh();
-            		}],
-            		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/kcare/kcare.controller.js']);
-		        }
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(['apps/product/kcare/kcare.service.js', 'apps/product/kcare/kcare.controller.js']);
+                }
             }
         });
     }
