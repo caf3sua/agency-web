@@ -20,9 +20,9 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$scope', '$window', '$compile', '$timeout'];
+    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactSearchDialogService'];
 
-    function ProductBaseController(vm, $scope, $window, $compile, $timeout){
+    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactSearchDialogService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -32,11 +32,46 @@
         vm.typeArrowTwo = "fa-angle-left";
         vm.typeArrowThree = "fa-angle-right";
         
+        vm.contactCode;
+        vm.receiverUserData = {  
+			"address":"Duy Tân",
+			"addressDistrict":"Cầu Giấy",
+			"email":"a@gmail.com",
+			"mobile":"0123456789",
+			"name":"Nguyễn Văn 0"
+		};
+        vm.invoiceInfoData = {  
+				"accountNo":"",
+				"address":"",
+				"check":"0",
+				"company":"",
+				"name":"",
+				"taxNo":""
+        };
+        
         // declare function
         vm.closeOpenStep = closeOpenStep;
         vm.calculateToDate = calculateToDate;
+        vm.openSearchContact = openSearchContact;
+		vm.appendCommonData = appendCommonData;
         
         // implement function
+        $scope.$on('contactCodeChange', function() {
+        	if ($rootScope.selectedContactCode != undefined && $rootScope.selectedContactCode != "") {
+        		vm.contactCode = $rootScope.selectedContactCode;
+        	}
+        });
+
+        function appendCommonData(policy) {
+        	policy.contactCode = vm.contactCode;
+        	policy.receiverUser = vm.receiverUserData;
+        	policy.invoiceInfo = vm.invoiceInfoData;
+        }
+        
+        function openSearchContact() {
+        	ContactSearchDialogService.open();
+        }
+        
         function closeOpenStep(type){
             if(type == "step1"){
                 document.getElementById("bv-step-1").className = 'bv-step-1  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98 display-flex OpenStepOne';
