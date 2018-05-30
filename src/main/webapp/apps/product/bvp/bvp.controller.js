@@ -9,7 +9,8 @@
 
     function ProductBvpController ($scope, $controller, Principal, $state, $rootScope) {
     	var vm = this;
-
+        vm.tvc ={
+        };
         angular.element(document).ready(function () {
         });
 

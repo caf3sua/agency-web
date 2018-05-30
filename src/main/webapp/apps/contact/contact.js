@@ -54,6 +54,9 @@
           vm.createItem = createItem;
           vm.editItem = editItem;
           vm.doneEditing = doneEditing;
+          vm.openContactDetail = openContactDetail;
+          vm.qlShow = false;
+          vm.arrowContact = ' fa-chevron-right'
 
           function createGroup(){
             var group = {name: 'New Group'};
@@ -131,5 +134,11 @@
             vm.items.length && selectItem($filter('orderBy')(vm.items, 'first')[0]);
           }
 
+          function openContactDetail(type){
+            if(type == 'ql'){
+                vm.qlShow = true;
+                vm.arrowContact = 'fa-chevron-down';
+            }
+          }
         }
 })();
