@@ -390,7 +390,7 @@ body {
     border-bottom: 5px solid #2ea4ee;
 }
 .padding0{
-    padding: 0 !important;
+    padding: 0;
 }
 .bv-home-block-left{
     padding: 7px 0 21px 0;
