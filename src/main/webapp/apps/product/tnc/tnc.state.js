@@ -24,7 +24,7 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/tnc/tnc.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/tnc/tnc.service.js','apps/product/tnc/tnc.controller.js']);
 		        }
             }
         });
