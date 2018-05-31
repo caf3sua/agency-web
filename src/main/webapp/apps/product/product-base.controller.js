@@ -34,6 +34,7 @@
         
         vm.contactCode;
         vm.contactName;
+        vm.contactDob;
         vm.receiverUserData = {  
 			"address":"",
 			"addressDistrict":"",
@@ -62,6 +63,7 @@
         		debugger
         		vm.contactCode = $rootScope.selectedContact.contactCode;
         		vm.contactName = $rootScope.selectedContact.contactName;
+                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
         	}
         });
 
