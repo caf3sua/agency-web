@@ -328,9 +328,6 @@
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
 	  		
-	  		// NamNH fix: Append contactCode + invoiceInfo + receiverUser
-  			vm.appendCommonData(vm.policy);
-	  		
 	  		CarService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
     	}
     	

@@ -119,6 +119,9 @@
                 vm.typeArrowOne = "fa-angle-right";
                 vm.typeArrowThree = "fa-angle-left";
                 vm.typeArrowTwo = "fa-angle-right";
+
+                // NamNH fix: Append contactCode + invoiceInfo + receiverUser
+                appendCommonData(vm.policy);
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
                 // document.getElementById("bv-step-2").className = 'bv-step-2 col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex widthStep2';

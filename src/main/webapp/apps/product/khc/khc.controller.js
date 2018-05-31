@@ -22,7 +22,7 @@
         // Properties & function declare
         vm.product = {
             "insuranceStartDate": "",
-            "numberMonth": 12,
+            "numberMonth": 0,
             "numberPerson": "",
             "premiumDiscount": 0,
             "premiumKhc": 0,
@@ -182,10 +182,15 @@
             }
             vm.policy.tlAddcollections = postData.premiumKhcList;
 
-            // NamNH fix: Append contactCode + invoiceInfo + receiverUser
-            vm.appendCommonData(vm.policy);
-
             KhcService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+        }
+
+        function onCreatePolicySuccess(result) {
+            toastr.success('Create Invoice Success!', 'Successful!');
+        }
+
+        function onCreatePolicyError(result) {
+            toastr.error('Create Invoice Error!', 'Error');
         }
 
         function onGetPolicyNumberSuccess(result) {

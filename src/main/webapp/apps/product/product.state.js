@@ -25,7 +25,8 @@
 		            }],
 		            loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load([
-                                'scripts/components/form/relation-combo.directive.js'
+		            			'apps/product/car/car.service.js'
+                                , 'scripts/components/form/relation-combo.directive.js'
 		            			, 'apps/product/product-base.service.js'
 		            			, 'apps/contact/contact-search-dialog.controller.js'
 		            			, 'apps/product/product-base.controller.js']);

@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTncController', ProductTncController);
 
-    ProductTncController.$inject = ['$scope', '$controller', 'TncService', '$state', '$rootScope'];
+    ProductTncController.$inject = ['$scope', '$controller', 'TncService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductTncController ($scope, $controller, TncService, $state, $rootScope) {
+    function ProductTncController ($scope, $controller, TncService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -31,18 +31,8 @@
         }
 
         vm.policy = {
-            "contactCode":"DUC001",
-            "gycbhNumber":"ITSOL.TNC.18.39",
             "insuranceexpireddate":"28/05/2019",
             "insurancestartdate":"29/05/2018",
-            "invoiceInfo":{
-                "accountNo":"",
-                "address":"",
-                "check":"0",
-                "company":"",
-                "name":"",
-                "taxNo":""
-            },
             "listTncAdd":[],
             "numbermonth":12,
             "numberperson":1,
@@ -51,18 +41,10 @@
             "premiumdiscount":0,
             "premiumnet":0,
             "premiumtnc":0,
-            "receiveMethod":"1",
-            "receiverUser":{
-                "address":"Hai Bà Trưng",
-                "addressDistrict":"HN",
-                "email":"string@gmail.com",
-                "mobile":"0987456321",
-                "name":"Tên nhận"
-            }
+            "receiveMethod":"1"
         }
 
         vm.addOrRemovePerson = addOrRemovePerson;
-        vm.onDobChange = onDobChange;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
@@ -87,12 +69,18 @@
 
         // Function
         function init() {
-        }
+            var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.product.insurancestartdate = DateUtils.convertDate(startDate);
 
-        function onDobChange() {
-            if(vm.product.numberperson > 0 && vm.product.premiumPackage) {
-                getPremium();
-            }
+            var endDate = new Date();
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            vm.product.insuranceexpireddate = DateUtils.convertDate(endDate);
+
+            // Get gycbhNumber
+            ProductCommonService.getPolicyNumber({lineId: 'TNC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
         }
 
         function addOrRemovePerson() {
@@ -115,9 +103,7 @@
                     "dob":"",
                     "idPasswport":"",
                     "insuredName":"",
-                    "title":"",
-                    "yearOld" : 0,
-                    "premium" : 0
+                    "title":""
                 });
             }
         };
@@ -137,18 +123,23 @@
 
         function getPremium() {
             var postData = getPostData(false);
-            TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+
+            if(vm.policy.listTncAdd.length > 0) {
+                TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            }
         }
 
         function getPostData() {
             var postData = Object.assign({}, vm.product);
 
+            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate) + 1;
+
             return postData;
         }
 
         function onGetPremiumSuccess(result) {
-            vm.premiumnet = result.premiumnet;
-            vm.premiumtnc = result.premiumtnc;
+            vm.product.premiumnet = result.premiumnet;
+            vm.product.premiumtnc = result.premiumtnc;
             if(vm.product.numberperson > 0) {
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
@@ -156,6 +147,7 @@
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
+            vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
         }
 
         function onGetPremiumError(result) {
@@ -165,28 +157,38 @@
         function createNewPolicy() {
             var postData = getPostData(true);
 
-            vm.policy.chaynoCheck = postData.chaynoCheck;
-            vm.policy.chaynoPhi = postData.chaynoPhi;
-            vm.policy.chaynoStbh = postData.chaynoStbh;
-            vm.policy.gycbhNumber = "ITSOL.MOT.18.31";
-            vm.policy.nntxCheck = postData.nntxCheck;
-            vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
-            vm.policy.nntxStbh = postData.nntxStbh;
-            vm.policy.premium = postData.premium;
+            vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
+            vm.policy.insurancestartdate = postData.insurancestartdate;
+            vm.policy.numbermonth = postData.numbermonth;
+            vm.policy.numberperson = postData.numberperson;
+            vm.policy.premiumPackage = postData.premiumPackage;
+            vm.policy.premiumPackageplanid = postData.premiumPackage.toString()[0];
+            vm.policy.premiumdiscount = postData.premiumdiscount;
+            vm.policy.premiumnet = postData.premiumnet;
+            vm.policy.premiumtnc = postData.premiumtnc;
             if(postData.receiveMethod) {
                 vm.policy.receiveMethod = "2";
             } else {
                 vm.policy.receiveMethod = "1";
             }
-            vm.policy.tndsBbPhi = postData.tndsbbPhi;
-            vm.policy.tndsTnNntxPhi = postData.nntxPhi;
-            vm.policy.tndsTnPhi = postData.tndstnPhi;
-            vm.policy.tndsTnSotien = postData.tndstnSotien;
-            vm.policy.tndsbbCheck = postData.tndsbbCheck;
-            vm.policy.tongPhi = postData.tongPhi;
-            vm.policy.typeOfMotoId = postData.typeOfMoto;
 
-            MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            TncService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+        }
+
+        function onCreatePolicySuccess(result) {
+            toastr.success('Create Invoice Success!', 'Successful!');
+        }
+
+        function onCreatePolicyError(result) {
+            toastr.error('Create Invoice Error!', 'Error');
+        }
+
+        function onGetPolicyNumberSuccess(result) {
+            vm.policy.gycbhNumber  = result.policyNumber;
+        }
+
+        function onGetPolicyNumberError(result) {
+            toastr.error('Get data error!', 'Error');
         }
     }
 })();

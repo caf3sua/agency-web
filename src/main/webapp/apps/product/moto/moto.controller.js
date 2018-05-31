@@ -197,9 +197,6 @@
             vm.policy.tongPhi = postData.tongPhi;
             vm.policy.typeOfMotoId = postData.typeOfMoto;
 
-            // NamNH fix: Append contactCode + invoiceInfo + receiverUser
-            vm.appendCommonData(vm.policy);
-
             MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
         }
 
