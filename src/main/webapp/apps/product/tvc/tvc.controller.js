@@ -12,25 +12,26 @@
     	vm.tvcBaseVM = {
                 agreementId: "",
                 changePremium: null,
-                contactCod: "",
+                contactCode: "",
                 destinationId: "",
                 expiredDate: "",
                 gycbhNumber: "",
                 inceptionDate: "",
                 invoiceInfo: {
+                    check: "0",
                  },
                 listTvcAddBaseVM: [
                 ],
                 loaitien: "",
                 netPremium: null,
-                paymentMethod:"",
+                paymentMethod:"paymentMethod",
                 planId:"",
                 policyNumber: "",
                 premium: null,
                 propserCellphone: "",
                 propserName: "",
                 propserNgaysinh: "",
-                receiveMethod: "",
+                receiveMethod: "1",
                 receiverUser: {
                     address: "",
                     addressDistrict: "",
@@ -39,7 +40,7 @@
                     name: ""
                 },
             soNguoiThamGia: null,
-            travelCareId: null,
+            travelCareId: 1,
             travelWithId: "",
             tvcPackage: ""
         };
@@ -49,9 +50,13 @@
         vm.getPolicyNumber = getPolicyNumber;
         vm.infoPerson = infoPerson;
         vm.onchangeReceiveMethod = false;
-        vm.createNewPolicy = createNewPolicy;4
+        vm.createNewPolicy = createNewPolicy;
         vm.showChangePremium = showChangePremium;
+        vm.addOrRemovePerson =addOrRemovePerson
+        vm.addNewPerson = addNewPerson;
+        vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
+        vm.isShowPersonList = false;
         angular.element(document).ready(function () {
         });
 
@@ -126,10 +131,10 @@
             console.log(vm.tvcBaseVM);
         }
         function createNewPolicy() {
-            if(vm.onchangeReceiveMethod){
-                vm.tvcBaseVM.receiveMethod = '1';
-            }else{
+            if(vm.product.receiveMethod){
                 vm.tvcBaseVM.receiveMethod = '2';
+            }else{
+                vm.tvcBaseVM.receiveMethod = '1';
             }
             vm.tvcBaseVM.invoiceInfo.name = vm.invoiceInfoData.name;
             vm.tvcBaseVM.invoiceInfo.company = vm.invoiceInfoData.company;
@@ -141,7 +146,14 @@
             vm.tvcBaseVM.receiverUser.addressDistrict  = vm.receiverUserData.addressDistrict;
             vm.tvcBaseVM.receiverUser.mobile  = vm.receiverUserData.mobile;
             vm.tvcBaseVM.receiverUser.email  = vm.receiverUserData.email;
+            vm.tvcBaseVM.propserName = vm.contactName;
+            vm.tvcBaseVM.propserNgaysinh = vm.contactDob;
+            vm.tvcBaseVM.propserCellphone  = vm.handPhone;
+            vm.tvcBaseVM.contactCode  = vm.contactCode;
+            vm.tvcBaseVM.tvcPackage = vm.tvcBaseVM.travelWithId;
+            vm.tvcBaseVM.policyNumber = vm.tvcBaseVM.gycbhNumber;
             TvcService.createNewPolicy(vm.tvcBaseVM, onGetCreateSuccess, onGetCreateError);
+            console.log(vm.tvcBaseVM);
         }
         function onGetCreateSuccess(result) {
         }
@@ -149,5 +161,34 @@
         function onGetCreateError(result) {
             toastr.error('Get data error!', 'Error');
         }
+
+        function addOrRemovePerson() {
+            if(vm.tvcBaseVM.soNguoiThamGia > 0) {
+                vm.isShowPersonList = true;
+            } else {
+                vm.isShowPersonList = false;
+            }
+            if(vm.tvcBaseVM.soNguoiThamGia> vm.tvcBaseVM.listTvcAddBaseVM.length) {
+                addNewPerson();
+            } else if(vm.tvcBaseVM.soNguoiThamGia< vm.tvcBaseVM.listTvcAddBaseVM.length) {
+                removePerson();
+            }
+        }
+
+        function addNewPerson() {
+            var lineAdd = vm.tvcBaseVM.soNguoiThamGia- vm.tvcBaseVM.listTvcAddBaseVM.length;
+            for (var i=0; i < lineAdd; i++) {
+                vm.tvcBaseVM.listTvcAddBaseVM.push({
+                    "dob": "",
+                    "insuredName": "",
+                    "idPasswport": 0,
+                    "relationship" : "",
+            });
+            }
+        };
+
+        function removePerson() {
+            vm.tvcBaseVM.listTvcAddBaseVM.splice(vm.tvcBaseVM.soNguoiThamGia, vm.tvcBaseVM.listTvcAddBaseVM.length)
+        };
     }
 })();
