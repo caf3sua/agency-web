@@ -33,6 +33,7 @@
         vm.typeArrowThree = "fa-angle-right";
         
         vm.contactCode;
+        vm.contactName;
         vm.receiverUserData = {  
 			"address":"",
 			"addressDistrict":"",
@@ -56,9 +57,11 @@
 		vm.appendCommonData = appendCommonData;
         
         // implement function
-        $scope.$on('contactCodeChange', function() {
-        	if ($rootScope.selectedContactCode != undefined && $rootScope.selectedContactCode != "") {
-        		vm.contactCode = $rootScope.selectedContactCode;
+        $scope.$on('selectedContactChange', function() {
+        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+        		debugger
+        		vm.contactCode = $rootScope.selectedContact.contactCode;
+        		vm.contactName = $rootScope.selectedContact.contactName;
         	}
         });
 
