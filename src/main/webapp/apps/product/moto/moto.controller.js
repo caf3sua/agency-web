@@ -41,31 +41,15 @@
             "chaynoCheck":false,
             "chaynoPhi":0,
             "chaynoStbh":0,
-            "contactCode":"DUC001",
             "gycbhNumber":"ITSOL.MOT.18.31",
             "hieuxe":"",
             "insuredAddress":"Hà Nội",
             "insuredName":"Đức",
-            "invoiceInfo":{
-                "accountNo":"",
-                "address":"",
-                "check":"0",
-                "company":"",
-                "name":"",
-                "taxNo":""
-            },
             "nntxCheck":false,
             "nntxSoNguoi":0,
             "nntxStbh":0,
             "policyNumber":"",
             "receiveMethod":"1",
-            "receiverUser":{
-                "address":"Hai Bà Trưng",
-                "addressDistrict":"HN",
-                "email":"string@gmail.com",
-                "mobile":"09875461324",
-                "name":"Tên nhận"
-            },
             "registrationNumber":"112223334445",
             "sokhung":"DSF234RF2F35635865",
             "somay":"SDAFGA43563RFG356W4",
@@ -212,6 +196,9 @@
             vm.policy.tndsbbCheck = postData.tndsbbCheck;
             vm.policy.tongPhi = postData.tongPhi;
             vm.policy.typeOfMotoId = postData.typeOfMoto;
+
+            // NamNH fix: Append contactCode + invoiceInfo + receiverUser
+            vm.appendCommonData(vm.policy);
 
             MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
         }

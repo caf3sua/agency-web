@@ -35,6 +35,7 @@
         vm.currentAccount;
         vm.contactCode;
         vm.contactName;
+        vm.contactDob;
         vm.receiverUserData = {  
 			"address":"",
 			"addressDistrict":"",
@@ -75,6 +76,7 @@
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		vm.contactCode = $rootScope.selectedContact.contactCode;
         		vm.contactName = $rootScope.selectedContact.contactName;
+                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
         	}
         });
 
