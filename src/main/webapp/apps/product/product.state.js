@@ -29,10 +29,9 @@
 		                return $translate.refresh();
 		            }],
 		            loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['ui.bootstrap'
-		            			, 'apps/product/product-base.service.js'
+		            		return $ocLazyLoad.load([
+		            			'apps/product/product-base.service.js'
 		            			, 'apps/contact/contact-search-dialog.controller.js'
-		            			, 'apps/contact/contact.service.js'
 		            			, 'apps/product/product-base.controller.js']);
 			        }
 		        }

@@ -20,9 +20,9 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactSearchDialogService'];
+    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactCommonDialogService', 'Principal'];
 
-    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactSearchDialogService){
+    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactCommonDialogService, Principal){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -32,6 +32,7 @@
         vm.typeArrowTwo = "fa-angle-left";
         vm.typeArrowThree = "fa-angle-right";
         
+        vm.currentAccount;
         vm.contactCode;
         vm.contactName;
         vm.receiverUserData = {  
@@ -50,16 +51,28 @@
 				"taxNo":""
         };
         
+        // Init controller
+  		(function initController() {
+  			// instantiate base controller
+  		    getAccount();
+  		})();
+  		
         // declare function
         vm.closeOpenStep = closeOpenStep;
         vm.calculateToDate = calculateToDate;
         vm.openSearchContact = openSearchContact;
 		vm.appendCommonData = appendCommonData;
+		vm.openAddContact = openAddContact;
         
         // implement function
+		function getAccount() {
+  			Principal.identity().then(function(account) {
+                vm.currentAccount = account;
+            });
+  		}
+		
         $scope.$on('selectedContactChange', function() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
-        		debugger
         		vm.contactCode = $rootScope.selectedContact.contactCode;
         		vm.contactName = $rootScope.selectedContact.contactName;
         	}
@@ -74,7 +87,11 @@
         }
         
         function openSearchContact() {
-        	ContactSearchDialogService.open();
+        	ContactCommonDialogService.openSearchDialog();
+        }
+        
+        function openAddContact() {
+        	ContactCommonDialogService.openAddDialog();
         }
         
         function closeOpenStep(type){
