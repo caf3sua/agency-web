@@ -24,7 +24,7 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/moto/moto.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/moto/moto.service.js', 'apps/product/moto/moto.controller.js']);
 		        }
             }
         });

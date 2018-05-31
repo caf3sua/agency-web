@@ -4,7 +4,7 @@
         .module('app')
         .factory('contactStorage', ContactStorage)
         .factory('contactGroupStorage', ContactGroupStorage)
-        .controller('ContactCtrl', ContactCtrl);
+        .controller('ContactController', ContactController);
 
         ContactStorage.$inject = ['ngStore'];
         function ContactStorage(ngStore) {
@@ -16,8 +16,8 @@
             return ngStore.model('contact-group');
         }
 
-        ContactCtrl.$inject = ['$scope', '$http', '$filter', 'contactStorage'];
-        function ContactCtrl($scope, $http, $filter, contactStorage) {
+        ContactController.$inject = ['$scope', '$http', '$filter', 'contactStorage'];
+        function ContactController($scope, $http, $filter, contactStorage) {
           var vm = $scope;
           vm.items = contactStorage.findAll();
 

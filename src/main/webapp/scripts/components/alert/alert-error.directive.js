@@ -11,7 +11,7 @@
     };
 
     angular
-        .module('blastApp')
+        .module('app')
         .component('jhiAlertError', jhiAlertError);
 
     jhiAlertErrorController.$inject = ['$scope', 'AlertService', '$rootScope', '$translate'];

@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('blastApp')
+        .module('app')
         .provider('AlertService', AlertService);
 
     function AlertService () {
-        this.toast = false;
+        this.toast = true;
         /*jshint validthis: true */
         this.$get = getService;
 

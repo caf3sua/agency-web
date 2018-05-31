@@ -2111,7 +2111,7 @@ body {
   -webkit-transition: max-height 0.4s ease 0s;
   transition: max-height 0.4s ease 0s; }
   .active > .nav-sub {
-    max-height: 50rem; }
+    max-height: 70rem; }
 
 @media (min-width: 992px) {
   .folded,

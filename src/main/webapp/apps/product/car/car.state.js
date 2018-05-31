@@ -24,7 +24,7 @@
                     return $translate.refresh();
                 }],
                 loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['apps/product/car/car.controller.js']);
+                    return $ocLazyLoad.load(['apps/product/car/car.service.js', 'apps/product/car/car.controller.js']);
                 }
             }
         });

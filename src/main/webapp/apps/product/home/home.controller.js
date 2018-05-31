@@ -35,25 +35,25 @@
   				"bankId": "0",
   				"baovietCompanyId": "",
   				"baovietCompanyName": " ",
-  				"bars": "1",
-  				"byNight": "0198711131",
-  				"contactCode": "DUC001",
-  				"expiredDate": "29/05/2019",
-  				"gycbhNumber": "ITSOL.HOM.18.78",
-  				"inceptionDate": "30/05/2018",
-  				"insuranceAddress": "HN",
-  				"insuranceName": "HN",
-  				"insuredLocation": "HN",
-  				"invoceNumber": "0198711131",
-  				"invoiceInfo": {
-  				"accountNo": "",
-  				"address": "",
-  				"check": "0",
-  				"company": "",
-  				"name": "",
-  				"taxNo": ""
-  				},
-  				"loaiHinh": "1",
+  				"bars": "0",
+  				"byNight": "",
+//  				"contactCode": "DUC001",
+  				"expiredDate": "",
+  				"gycbhNumber": "",
+  				"inceptionDate": "",
+  				"insuranceAddress": "",
+  				"insuranceName": "",
+  				"insuredLocation": "",
+  				"invoceNumber": "",
+//  				"invoiceInfo": {
+//	  				"accountNo": "",
+//	  				"address": "",
+//	  				"check": "0",
+//	  				"company": "",
+//	  				"name": "",
+//	  				"taxNo": ""
+//  				},
+  				"loaiHinh": "0",
   				"policyNumber": "",
   				"premiumDiscount": 0,
   				"premiumHome": 0,
@@ -61,26 +61,27 @@
   				"premiumsi": 0,
   				"premiumsiin": 0,
   				"receiveMethod": "1",
-  				"receiverUser": {
-  				"address": "",
-  				"addressDistrict": "",
-  				"email": "",
-  				"mobile": "",
-  				"name": ""
-  				},
-  				"si": "300000000",
+//  				"receiverUser": {
+//	  				"address": "",
+//	  				"addressDistrict": "",
+//	  				"email": "",
+//	  				"mobile": "",
+//	  				"name": ""
+//  				},
+  				"si": "",
   				"siPremium": 0,
-  				"siin": "100000000",
+  				"siin": "",
   				"siinPremium": 0,
-  				"totalUsedArea": "100000000",
+  				"totalUsedArea": "",
   				"userAgent": "",
-  				"windowLocks": "1",
+  				"windowLocks": "0",
   				"yearBuildCode": "1"
   				};
   		
   		vm.getPremium = getPremium;
   		vm.createPolicy = createPolicy;
   		vm.getPolicyNumber = getPolicyNumber;
+  		vm.changeToDate = changeToDate;
   		
   		// Function
   		function getPremium() {
@@ -104,10 +105,11 @@
   		}
   		
   		function getPolicyNumber() {
+  			console.log('getPolicyNumber');
   			ProductCommonService.getPolicyNumber({lineId: 'HOM'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
   			
   			function onGetPolicyNumberSuccess(data, headers) {
-  				vm.homePolicy.gycbhNumber = data;
+  				vm.homePolicy.gycbhNumber = data.policyNumber;
   				createPolicy();
             }
             function onGetPolicyNumberError(error) {
@@ -117,7 +119,10 @@
 
   		function createPolicy() {
   			console.log('createPolicy');
-  			debugger
+  			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
+  			vm.appendCommonData(vm.homePolicy);
+  			
+  			//debugger
   			ProductHomeService.createPolicy(vm.homePolicy, onSuccess, onError);
   			
   			function onSuccess(data, headers) {
@@ -129,6 +134,11 @@
             function onError(error) {
             	toastr.error('Create Invoice Error!', 'Error');
             }
+  		}
+  		
+  		function changeToDate() {
+  			var toDate = vm.calculateToDate(vm.homePolicy.inceptionDate);
+  			vm.homePolicy.expiredDate = toDate;
   		}
   		
     }

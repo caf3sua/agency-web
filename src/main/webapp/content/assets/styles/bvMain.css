@@ -390,7 +390,7 @@ body {
     border-bottom: 5px solid #2ea4ee;
 }
 .padding0{
-    padding: 0 !important;
+    padding: 0;
 }
 .bv-home-block-left{
     padding: 7px 0 21px 0;
@@ -1125,7 +1125,7 @@ body {
     float: right;
     margin-left: 1rem;
     margin-right: 0.5rem;
-    margin-top: 5px;
+    margin-top: 13px;
 }
 .left{
     border-right:1px solid #ccc ;
