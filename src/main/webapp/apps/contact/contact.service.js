@@ -35,10 +35,9 @@
                 }
             });
             
-            modalInstance.result.then(function (contactCode) {
-                console.log(contactCode);
-                $rootScope.selectedContactCode = contactCode;
-                $rootScope.$broadcast('contactCodeChange', {data: contactCode});
+            modalInstance.result.then(function (contactObj) {
+                $rootScope.selectedContact = contactObj;
+                $rootScope.$broadcast('selectedContactChange');
                 modalInstance = null;
               }, function () {
                 console.log('Modal dismissed at: ' + new Date());
@@ -52,9 +51,9 @@
     	var resourceUrl =  'api/devices/:id';
 
         return $resource(resourceUrl, {}, {
-        	'search': {url : 'api/devices-search-on-grid', method: 'POST', isArray: true},
-            'getAll': {url : 'api/devices-search-on-grid', method: 'GET', isArray: true},
-            'add': { method:'PUT' }
+        	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
+            'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
+            'add': { method:'POST' }
         });
     }
 })();

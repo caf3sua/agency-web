@@ -34,7 +34,8 @@
 		 'oc.lazyLoad',
 		 'highcharts-ng',
 		 'ngScrollbars', 
-		 'toastr'
+		 'toastr',
+		 'smart-table'
       ])
       .run(run)
       .run(stateChange);
