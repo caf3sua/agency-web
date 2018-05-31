@@ -25,7 +25,7 @@
 //		                }
 //		            ],
 		            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-		                $translatePartialLoader.addPart('global');
+		                $translatePartialLoader.addPart('product');
 		                return $translate.refresh();
 		            }],
 		            loadPlugin: function ($ocLazyLoad) {
