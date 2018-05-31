@@ -1,10 +1,21 @@
 <div class="modal-header">
-    <h5 class="modal-title">I am a modal!</h5>
+    <h5 class="modal-title">Chọn khách hàng</h5>
 </div>
 <div class="modal-body">
-	<input type="text" placeholder="ContactCode" ng-model="vm.contactCode"/>
+	<div class="row">
+		<div class="col-sm-3">Họ tên</div>
+		<div class="col-sm-3"><input type="text" placeholder="ContactCode" ng-model="vm.searchCriterial.contactName"/></div>
+		<div class="col-sm-3">Số điện thoại</div>
+		<div class="col-sm-3"><input type="text" placeholder="ContactCode" ng-model="vm.searchCriterial.handPhone"/></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">Số CMT/MST</div>
+		<div class="col-sm-3"><input type="text" placeholder="ContactCode" ng-model="vm.searchCriterial.idNumber"/></div>
+		<div class="col-sm-3">Ngày sinh</div>
+		<div class="col-sm-3"><input type="text" placeholder="ContactCode" ng-model="vm.searchCriterial.dateOfBirth"/></div>
+	</div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="vm.search()">Tìm</button>
+    <button class="btn btn-warning" type="button" ng-click="vm.addNewContact()">Thêm mới</button>
 </div>

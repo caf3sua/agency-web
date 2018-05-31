@@ -49,18 +49,13 @@
 
     ContactService.$inject = ['$resource'];
     function ContactService ($resource) {
-        var service = $resource('api/account', {}, {
-            'get': { method: 'GET', params: {}, isArray: false,
-                interceptor: {
-                    response: function(response) {
-                        // expose response
-                        return response;
-                    }
-                }
-            }        
-        });
+    	var resourceUrl =  'api/devices/:id';
 
-        return service;
+        return $resource(resourceUrl, {}, {
+        	'search': {url : 'api/devices-search-on-grid', method: 'POST', isArray: true},
+            'getAll': {url : 'api/devices-search-on-grid', method: 'GET', isArray: true},
+            'add': { method:'PUT' }
+        });
     }
 })();
 
