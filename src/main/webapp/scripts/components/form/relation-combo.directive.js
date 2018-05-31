@@ -26,6 +26,9 @@
         	var defaultOption = '';
 
             switch(attrs.type){
+                case 'tnc-money':
+                    defaultOption = "--- Cần số tiền bảo hiểm ---";
+                    break;
                 case 'moto-type':
                     defaultOption = "--- Cần lựa chọn loại xe ---";
                     break;
@@ -65,6 +68,7 @@
                 ngModel.$setViewValue(scope.selectedItem);
                 
                 switch(attrs.type){
+                    case 'tnc-money':
                     case 'moto-type':
 	                case 'car-socho':
                     case 'moto-tndstn-sotien':
