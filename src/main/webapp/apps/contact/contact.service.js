@@ -4,13 +4,14 @@
     angular
         .module('app')
         .factory('ContactService', ContactService)
-	    .factory('ContactSearchDialogService', ContactSearchDialogService);
+	    .factory('ContactCommonDialogService', ContactCommonDialogService);
 	
-    ContactSearchDialogService.$inject = ['$rootScope', '$uibModal'];
+    ContactCommonDialogService.$inject = ['$rootScope', '$uibModal'];
 
-    function ContactSearchDialogService ($rootScope, $uibModal) {
+    function ContactCommonDialogService ($rootScope, $uibModal) {
         var service = {
-            open: open
+    		openSearchDialog: openSearchDialog,
+    		openAddDialog: openAddDialog
         };
 
         var modalInstance = null;
@@ -20,7 +21,7 @@
 
         return service;
 
-        function open () {
+        function openSearchDialog () {
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,
@@ -44,11 +45,39 @@
                 modalInstance = null;
               });
         }
+        
+        function openAddDialog () {
+            if (modalInstance !== null) return;
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/contact/contact-add-dialog.html',
+                controller: 'ContactAddDialogController',
+                controllerAs: 'vm',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['apps/contact/contact-add-dialog.controller.js']);
+                    }
+                }
+            });
+            
+            modalInstance.result.then(function (contactObj) {
+                $rootScope.selectedContact = contactObj;
+                $rootScope.$broadcast('selectedContactChange');
+                modalInstance = null;
+              }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+                modalInstance = null;
+              });
+        }
     }
 
     ContactService.$inject = ['$resource'];
     function ContactService ($resource) {
-    	var resourceUrl =  'api/devices/:id';
+    	var resourceUrl =  'api/agency/contact/:id';
 
         return $resource(resourceUrl, {}, {
         	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},

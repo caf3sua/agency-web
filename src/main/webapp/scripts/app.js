@@ -16,7 +16,7 @@
           'ngCookies',
           'ngAria',
           'ngCacheBuster',
-//          'ui.bootstrap',
+          'ui.bootstrap',
 //          'ui.bootstrap.datetimepicker',
           'infinite-scroll',
           'angular-loading-bar',
