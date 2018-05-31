@@ -30,6 +30,7 @@
 		            }],
 		            loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load(['ui.bootstrap'
+                                , 'apps/product/car/car.service.js'
                                 , 'scripts/components/form/relation-combo.directive.js'
 		            			, 'apps/product/product-base.service.js'
 		            			, 'apps/contact/contact-search-dialog.controller.js'

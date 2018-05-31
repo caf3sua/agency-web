@@ -43,16 +43,7 @@
                 "name":"",
                 "taxNo":""
             },
-            "listTncAdd":[
-                {
-                    "dob":"01/05/1982",
-                    "idPasswport":"1234411",
-                    "insuredName":"tên người được BH",
-                    "title":"Mr.Ông",
-                    "yearOld" : 36,
-                    "premium" : 10000
-                }
-            ],
+            "listTncAdd":[],
             "numbermonth":12,
             "numberperson":1,
             "premiumPackage":20000000,
@@ -70,10 +61,9 @@
             }
         }
 
-        vm.addNewPerson = addNewPerson;
-        vm.removePerson = removePerson;
+        vm.addOrRemovePerson = addOrRemovePerson;
+        vm.onDobChange = onDobChange;
         vm.processComboResult = processComboResult;
-        vm.checkedChange = checkedChange;
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
         vm.premiumPackageOptions = [
@@ -88,6 +78,7 @@
             {id: '100000000', name: '100000000 VND'}
         ];
 
+        vm.isShowPersonList = false;
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
 
@@ -99,10 +90,17 @@
         }
 
         function onDobChange() {
-
+            if(vm.product.numberperson > 0 && vm.product.premiumPackage) {
+                getPremium();
+            }
         }
 
         function addOrRemovePerson() {
+            if(vm.product.numberperson > 0) {
+                vm.isShowPersonList = true;
+            } else {
+                vm.isShowPersonList = false;
+            }
             if(vm.product.numberperson > vm.policy.listTncAdd.length) {
                 addNewPerson();
             } else if(vm.product.numberperson < vm.policy.listTncAdd.length) {
@@ -111,18 +109,21 @@
         }
 
         function addNewPerson() {
-            vm.policy.listTncAdd.push({
-                "dob":"",
-                "idPasswport":"",
-                "insuredName":"",
-                "title":"",
-                "yearOld" : 0,
-                "premium" : 0
-            });
+            var lineAdd = vm.product.numberperson - vm.policy.listTncAdd.length;
+            for (var i=0; i < lineAdd; i++) {
+                vm.policy.listTncAdd.push({
+                    "dob":"",
+                    "idPasswport":"",
+                    "insuredName":"",
+                    "title":"",
+                    "yearOld" : 0,
+                    "premium" : 0
+                });
+            }
         };
 
         function removePerson() {
-            vm.policy.listTncAdd.splice(vm.policy.listTncAdd.length - vm.product.numberperson, vm.product.numberperson)
+            vm.policy.listTncAdd.splice(vm.product.numberperson, vm.policy.listTncAdd.length)
         };
 
         function processComboResult(data, type) {
@@ -159,6 +160,33 @@
 
         function onGetPremiumError(result) {
             toastr.error('Get data error!', 'Error');
+        }
+
+        function createNewPolicy() {
+            var postData = getPostData(true);
+
+            vm.policy.chaynoCheck = postData.chaynoCheck;
+            vm.policy.chaynoPhi = postData.chaynoPhi;
+            vm.policy.chaynoStbh = postData.chaynoStbh;
+            vm.policy.gycbhNumber = "ITSOL.MOT.18.31";
+            vm.policy.nntxCheck = postData.nntxCheck;
+            vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
+            vm.policy.nntxStbh = postData.nntxStbh;
+            vm.policy.premium = postData.premium;
+            if(postData.receiveMethod) {
+                vm.policy.receiveMethod = "2";
+            } else {
+                vm.policy.receiveMethod = "1";
+            }
+            vm.policy.tndsBbPhi = postData.tndsbbPhi;
+            vm.policy.tndsTnNntxPhi = postData.nntxPhi;
+            vm.policy.tndsTnPhi = postData.tndstnPhi;
+            vm.policy.tndsTnSotien = postData.tndstnSotien;
+            vm.policy.tndsbbCheck = postData.tndsbbCheck;
+            vm.policy.tongPhi = postData.tongPhi;
+            vm.policy.typeOfMotoId = postData.typeOfMoto;
+
+            MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
         }
     }
 })();

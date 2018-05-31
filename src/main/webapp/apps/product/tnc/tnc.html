@@ -44,19 +44,15 @@
                 <div class="margin-top-5">
                     <input type="number" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.numberperson" ng-blur="vm.addOrRemovePerson()"/>
                 </div>
-                <div class="">
-                    <p class="bv-title-from">Số tiền bảo hiểm</p>
-                    <relation-combo type="tnc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
-                </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Loại bảo hiểm</p>
+                    <relation-combo type="tnc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Thời hạn bảo hiểm</p>
                 </div>
-                <div class=" display-flex margin-top-5">
+                <div class=" display-flex margin-top-10">
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" autoclose="true">
+                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                             <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
@@ -64,36 +60,37 @@
                         </div>
                     </div>
                     <div class="width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.insuranceenddate">
+                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.insuranceenddate" ng-disabled="true">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered margin-top-10" ng-show="vm.isShowPersonList">
                     <thead>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh (dd/MM/yyyy)</th>
+                        <th>Tuổi</th>
+                        <th>Phí bảo hiểm</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="person in vm.policy.listTncAdd">
-                        <td><input type="text" class="form-control" ng-disabled="true" value="Người tham gia bảo hiểm $index"></td>
-                        <td>
-                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" autoclose="true">
-                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="person.dob" ng-change="vm.onDobChange()">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
+                        <tr ng-repeat="person in vm.policy.listTncAdd">
+                            <td><input type="text" class="form-control" ng-disabled="true" value="Người tham gia bảo hiểm {{$index}}" ng-model="person.insuredName" /></td>
+                            <td>
+                                <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td><input type="email" class="form-control" ng-model="person.yearOld" ng-disabled="true"/></td>
-                        <td><input type="email" class="form-control" ng-model="person.premium" ng-disabled="true"/></td>
-                    </tr>
+                            </td>
+                            <td><input type="email" class="form-control" ng-model="person.yearOld" ng-disabled="true"/></td>
+                            <td><input type="email" class="form-control" ng-model="person.premium" ng-disabled="true"/></td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="bv-title-from" ng-show="vm.isShowPremium">
