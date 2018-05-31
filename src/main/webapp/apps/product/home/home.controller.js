@@ -37,7 +37,7 @@
   				"baovietCompanyName": " ",
   				"bars": "0",
   				"byNight": "",
-  				"contactCode": "DUC001",
+//  				"contactCode": "DUC001",
   				"expiredDate": "",
   				"gycbhNumber": "",
   				"inceptionDate": "",
@@ -45,14 +45,14 @@
   				"insuranceName": "",
   				"insuredLocation": "",
   				"invoceNumber": "",
-  				"invoiceInfo": {
-  				"accountNo": "",
-  				"address": "",
-  				"check": "0",
-  				"company": "",
-  				"name": "",
-  				"taxNo": ""
-  				},
+//  				"invoiceInfo": {
+//	  				"accountNo": "",
+//	  				"address": "",
+//	  				"check": "0",
+//	  				"company": "",
+//	  				"name": "",
+//	  				"taxNo": ""
+//  				},
   				"loaiHinh": "0",
   				"policyNumber": "",
   				"premiumDiscount": 0,
@@ -61,13 +61,13 @@
   				"premiumsi": 0,
   				"premiumsiin": 0,
   				"receiveMethod": "1",
-  				"receiverUser": {
-  				"address": "",
-  				"addressDistrict": "",
-  				"email": "",
-  				"mobile": "",
-  				"name": ""
-  				},
+//  				"receiverUser": {
+//	  				"address": "",
+//	  				"addressDistrict": "",
+//	  				"email": "",
+//	  				"mobile": "",
+//	  				"name": ""
+//  				},
   				"si": "",
   				"siPremium": 0,
   				"siin": "",
@@ -119,6 +119,9 @@
 
   		function createPolicy() {
   			console.log('createPolicy');
+  			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
+  			vm.appendCommonData(vm.homePolicy);
+  			
   			//debugger
   			ProductHomeService.createPolicy(vm.homePolicy, onSuccess, onError);
   			

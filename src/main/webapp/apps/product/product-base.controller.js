@@ -34,11 +34,11 @@
         
         vm.contactCode;
         vm.receiverUserData = {  
-			"address":"Duy Tân",
-			"addressDistrict":"Cầu Giấy",
-			"email":"a@gmail.com",
-			"mobile":"0123456789",
-			"name":"Nguyễn Văn 0"
+			"address":"",
+			"addressDistrict":"",
+			"email":"",
+			"mobile":"",
+			"name":""
 		};
         vm.invoiceInfoData = {  
 				"accountNo":"",
@@ -64,6 +64,8 @@
 
         function appendCommonData(policy) {
         	policy.contactCode = vm.contactCode;
+        	// concat address + district
+        	vm.receiverUserData.address = vm.receiverUserData.address + "::" + vm.receiverUserData.addressDistrict;
         	policy.receiverUser = vm.receiverUserData;
         	policy.invoiceInfo = vm.invoiceInfoData;
         }
