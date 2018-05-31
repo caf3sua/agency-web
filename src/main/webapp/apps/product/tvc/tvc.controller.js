@@ -9,7 +9,7 @@
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, toastr, ProductCommonService) {
     	var vm = this;
-    	vm.tvcBaseVM = {
+    	vm.policy = {
                 agreementId: "",
                 changePremium: null,
                 contactCode: "",
@@ -44,7 +44,7 @@
             travelWithId: "",
             tvcPackage: ""
         };
-        vm.premiumTvcVM = {};
+        vm.product = {};
         vm.getPremium = getPremium;
         vm.onchangePlan = onchangePlan;
         vm.getPolicyNumber = getPolicyNumber;
@@ -68,7 +68,7 @@
 
   		})();
         function showChangePremium() {
-            if(vm.tvcBaseVM.destinationId != "") {
+            if(vm.policy.destinationId != "") {
                 return true;
             } else {
                 return false;
@@ -80,7 +80,7 @@
             ProductCommonService.getPolicyNumber({lineId: 'TVC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
         }
         function onGetPolicyNumberSuccess(result) {
-            vm.tvcBaseVM.gycbhNumber  = result.policyNumber;
+            vm.policy.gycbhNumber  = result.policyNumber;
         }
 
         function onGetPolicyNumberError(result) {
@@ -91,30 +91,30 @@
             getPremium();
         }
         function getPremium() {
-            vm.premiumTvcVM.destination =  vm.tvcBaseVM.destinationId;
-            vm.premiumTvcVM.ngayDi =  vm.tvcBaseVM.inceptionDate;
-            vm.premiumTvcVM.ngayVe  =  vm.tvcBaseVM.expiredDate;
-            vm.premiumTvcVM.numberOfPerson  =  1;
-            vm.premiumTvcVM.planId  =  vm.tvcBaseVM.planId;
-            vm.premiumTvcVM.premiumNet  =  0;
-            vm.premiumTvcVM.premiumPackage  =  vm.tvcBaseVM.travelWithId;
-            vm.premiumTvcVM.premiumTvc  = 0;
-            if(vm.premiumTvcVM.premiumDiscount > 0 ){
-                vm.premiumTvcVM.premiumDiscount = vm.premiumTvcVM.premiumDiscount;
+            vm.product.destination =  vm.policy.destinationId;
+            vm.product.ngayDi =  vm.policy.inceptionDate;
+            vm.product.ngayVe  =  vm.policy.expiredDate;
+            vm.product.numberOfPerson  =  1;
+            vm.product.planId  =  vm.policy.planId;
+            vm.product.premiumNet  =  0;
+            vm.product.premiumPackage  =  vm.policy.travelWithId;
+            vm.product.premiumTvc  = 0;
+            if(vm.product.premiumDiscount > 0 ){
+                vm.product.premiumDiscount = vm.product.premiumDiscount;
             }else{
-                vm.premiumTvcVM.premiumDiscount  = 0;
+                vm.product.premiumDiscount  = 0;
             }
-            vm.premiumTvcVM.songay  = 0;
-            TvcService.getPremium(vm.premiumTvcVM, onGetPremiumSuccess, onGetPremiumError);
+            vm.product.songay  = 0;
+            TvcService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
-            vm.tvcBaseVM.premium  = result.premiumTvc;
-            vm.tvcBaseVM.soNguoiThamGia  = result.numberOfPerson;
-            vm.tvcBaseVM.netPremium   = result.premiumNet;
-            vm.tvcBaseVM.changePremium  = result.premiumDiscount;
+            vm.policy.premium  = result.premiumTvc;
+            vm.policy.soNguoiThamGia  = result.numberOfPerson;
+            vm.policy.netPremium   = result.premiumNet;
+            vm.policy.changePremium  = result.premiumDiscount;
             if(result.premiumDiscount > 0){
                 vm.isShowChangePremium = true;
-                vm.sumPremiumDiscount =  vm.tvcBaseVM.netPremium - vm.tvcBaseVM.premium ;
+                vm.sumPremiumDiscount =  vm.policy.netPremium - vm.policy.premium ;
             }
 
 
@@ -126,34 +126,24 @@
             toastr.error('Get data error!', 'Error');
         }
         function infoPerson() {
-            vm.tvcBaseVM.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
+            vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
             vm.tvcAddBaseVM = {};
-            console.log(vm.tvcBaseVM);
+            console.log(vm.policy);
         }
         function createNewPolicy() {
             if(vm.product.receiveMethod){
-                vm.tvcBaseVM.receiveMethod = '2';
+                vm.policy.receiveMethod = '2';
             }else{
-                vm.tvcBaseVM.receiveMethod = '1';
+                vm.policy.receiveMethod = '1';
             }
-            vm.tvcBaseVM.invoiceInfo.name = vm.invoiceInfoData.name;
-            vm.tvcBaseVM.invoiceInfo.company = vm.invoiceInfoData.company;
-            vm.tvcBaseVM.invoiceInfo.taxNo = vm.invoiceInfoData.taxNo;
-            vm.tvcBaseVM.invoiceInfo.address = vm.invoiceInfoData.address;
-            vm.tvcBaseVM.invoiceInfo.accountNo = vm.invoiceInfoData.accountNo;
-            vm.tvcBaseVM.receiverUser.name  = vm.receiverUserData.name;
-            vm.tvcBaseVM.receiverUser.address  = vm.receiverUserData.address;
-            vm.tvcBaseVM.receiverUser.addressDistrict  = vm.receiverUserData.addressDistrict;
-            vm.tvcBaseVM.receiverUser.mobile  = vm.receiverUserData.mobile;
-            vm.tvcBaseVM.receiverUser.email  = vm.receiverUserData.email;
-            vm.tvcBaseVM.propserName = vm.contactName;
-            vm.tvcBaseVM.propserNgaysinh = vm.contactDob;
-            vm.tvcBaseVM.propserCellphone  = vm.handPhone;
-            vm.tvcBaseVM.contactCode  = vm.contactCode;
-            vm.tvcBaseVM.tvcPackage = vm.tvcBaseVM.travelWithId;
-            vm.tvcBaseVM.policyNumber = vm.tvcBaseVM.gycbhNumber;
-            TvcService.createNewPolicy(vm.tvcBaseVM, onGetCreateSuccess, onGetCreateError);
-            console.log(vm.tvcBaseVM);
+            vm.policy.propserName = vm.contactName;
+            vm.policy.propserNgaysinh = vm.contactDob;
+            vm.policy.propserCellphone  = vm.handPhone;
+            vm.policy.tvcPackage = vm.policy.travelWithId;
+            vm.policy.policyNumber = vm.policy.gycbhNumber;
+            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            TvcService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
+            console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
         }
@@ -163,22 +153,22 @@
         }
 
         function addOrRemovePerson() {
-            if(vm.tvcBaseVM.soNguoiThamGia > 0) {
+            if(vm.policy.soNguoiThamGia > 0) {
                 vm.isShowPersonList = true;
             } else {
                 vm.isShowPersonList = false;
             }
-            if(vm.tvcBaseVM.soNguoiThamGia> vm.tvcBaseVM.listTvcAddBaseVM.length) {
+            if(vm.policy.soNguoiThamGia> vm.policy.listTvcAddBaseVM.length) {
                 addNewPerson();
-            } else if(vm.tvcBaseVM.soNguoiThamGia< vm.tvcBaseVM.listTvcAddBaseVM.length) {
+            } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {
                 removePerson();
             }
         }
 
         function addNewPerson() {
-            var lineAdd = vm.tvcBaseVM.soNguoiThamGia- vm.tvcBaseVM.listTvcAddBaseVM.length;
+            var lineAdd = vm.policy.soNguoiThamGia- vm.policy.listTvcAddBaseVM.length;
             for (var i=0; i < lineAdd; i++) {
-                vm.tvcBaseVM.listTvcAddBaseVM.push({
+                vm.policy.listTvcAddBaseVM.push({
                     "dob": "",
                     "insuredName": "",
                     "idPasswport": 0,
@@ -188,7 +178,7 @@
         };
 
         function removePerson() {
-            vm.tvcBaseVM.listTvcAddBaseVM.splice(vm.tvcBaseVM.soNguoiThamGia, vm.tvcBaseVM.listTvcAddBaseVM.length)
+            vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
     }
 })();
