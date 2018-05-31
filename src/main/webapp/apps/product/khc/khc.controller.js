@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductKhcController', ProductKhcController);
 
-    ProductKhcController.$inject = ['$scope', '$controller', 'KhcService', 'DateUtils', '$state', '$rootScope'];
+    ProductKhcController.$inject = ['$scope', '$controller', 'KhcService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductKhcController ($scope, $controller, KhcService, DateUtils, $state, $rootScope) {
+    function ProductKhcController ($scope, $controller, KhcService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -32,30 +32,11 @@
         }
 
         vm.policy = {
-            "gycbhNumber":"ITSOL.KHC.18.53",
-            "inceptionDate":"29/05/2018",
+            "inceptionDate":"",
             "permanentTotalDisablement":1,
             "plan":2,
             "receiveMethod":"1",
-            "tlAddcollections":[
-                {
-                    "address":"địa chỉ",
-                    "cellPhone":"0981132145",
-                    "city":"HN",
-                    "diagnose":"",
-                    "dob":"01/05/1982",
-                    "emailAdress":"abc@gmail.com",
-                    "homePhone":"sdt nhà",
-                    "idPasswport":"CMT/MST",
-                    "insuredName":"chắc là tên",
-                    "premium":58000,
-                    "relationship":"",
-                    "si":0,
-                    "title":"",
-                    "tlAddId":"",
-                    "tlId":""
-                }
-            ],
+            "tlAddcollections":[],
             "userAgent":""
         }
 
@@ -68,12 +49,7 @@
             {id: '20000000', name: '20000000 VND'},
             {id: '30000000', name: '30000000 VND'},
             {id: '40000000', name: '40000000 VND'},
-            {id: '50000000', name: '50000000 VND'},
-            {id: '60000000', name: '60000000 VND'},
-            {id: '70000000', name: '70000000 VND'},
-            {id: '80000000', name: '80000000 VND'},
-            {id: '90000000', name: '90000000 VND'},
-            {id: '100000000', name: '100000000 VND'}
+            {id: '50000000', name: '50000000 VND'}
         ];
 
         vm.isShowPersonList = false;
@@ -95,6 +71,9 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.product.insuranceEndDate = DateUtils.convertDate(endDate);
+
+            // Get gycbhNumber
+            ProductCommonService.getPolicyNumber({lineId: 'KHC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
         }
 
         function onDobChange() {
@@ -124,7 +103,7 @@
                     "insuredName": "",
                     "premium": 0,
                     "yearOld" : 0,
-                    "passportId": ""
+                    "idPasswport": ""
                 });
             }
         };
@@ -193,31 +172,28 @@
         function createNewPolicy() {
             var postData = getPostData(true);
 
-            vm.policy.chaynoCheck = postData.chaynoCheck;
-            vm.policy.chaynoPhi = postData.chaynoPhi;
-            vm.policy.chaynoStbh = postData.chaynoStbh;
-            vm.policy.gycbhNumber = "ITSOL.MOT.18.31";
-            vm.policy.nntxCheck = postData.nntxCheck;
-            vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
-            vm.policy.nntxStbh = postData.nntxStbh;
-            vm.policy.premium = postData.premium;
+            vm.policy.inceptionDate = postData.insuranceStartDate;
+            vm.policy.permanentTotalDisablement = postData.numberPerson;
+            vm.policy.plan = postData.premiumPackage.toString()[0];
             if(postData.receiveMethod) {
                 vm.policy.receiveMethod = "2";
             } else {
                 vm.policy.receiveMethod = "1";
             }
-            vm.policy.tndsBbPhi = postData.tndsbbPhi;
-            vm.policy.tndsTnNntxPhi = postData.nntxPhi;
-            vm.policy.tndsTnPhi = postData.tndstnPhi;
-            vm.policy.tndsTnSotien = postData.tndstnSotien;
-            vm.policy.tndsbbCheck = postData.tndsbbCheck;
-            vm.policy.tongPhi = postData.tongPhi;
-            vm.policy.typeOfMotoId = postData.typeOfMoto;
+            vm.policy.tlAddcollections = postData.premiumKhcList;
 
             // NamNH fix: Append contactCode + invoiceInfo + receiverUser
             vm.appendCommonData(vm.policy);
 
-            MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            KhcService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+        }
+
+        function onGetPolicyNumberSuccess(result) {
+            vm.policy.gycbhNumber  = result.policyNumber;
+        }
+
+        function onGetPolicyNumberError(result) {
+            toastr.error('Get data error!', 'Error');
         }
     }
 })();
