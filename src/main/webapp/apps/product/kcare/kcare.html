@@ -16,6 +16,7 @@
                 <p>3</p>
             </div>
         </div>
+   <!-- Tab1: TÍNH PHÍ -->
         <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">
             <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
                 <p class="fas {{vm.typeArrowOne}}"></p>
@@ -566,15 +567,34 @@
                         <div class="margin-top-10">
                             <p class="bv-title-from">Giới tính</p>
                         </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">{{vm.policy.insuredSex}}</p>
-                        </div>
+                        <div ng-switch="vm.policy.insuredSex">
+						  <div ng-switch-when="1">
+						     <p class="bv-tile-templateSummary">Nam</p>
+						  </div>
+						  <div ng-switch-when="2">
+						     <p class="bv-tile-templateSummary">Nữ</p>
+						  </div>
+						</div>
                         <div class="margin-top-10">
                             <p class="bv-title-from">Quan hệ với người yêu cầu bảo hiểm</p>
                         </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">{{vm.policy.insuredRelationship}}</p>
-                        </div>
+                        <div ng-switch="vm.policy.insuredRelationship">
+						  <div ng-switch-when="30">
+						     <p class="bv-tile-templateSummary">Bản thân</p>
+						  </div>
+						  <div ng-switch-when="31">
+						     <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+						  </div>
+						  <div ng-switch-when="32">
+						     <p class="bv-tile-templateSummary">Con</p>
+						  </div>
+						  <div ng-switch-when="33">
+						     <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+						  </div>
+						  <div ng-switch-when="34">
+						     <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+						  </div>
+					  	</div>
                     </div>
                     <div class="width-100 bv-pading-30">
                         <div class="text-header-sp">
@@ -584,13 +604,13 @@
                             <p class="bv-title-from">Phí bảo hiểm /năm</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.policy.insuredRelationship}}</p>
+                            <p class="bv-tile-templateSummary">{{vm.policy.netPremium | number}} VND</p>
                         </div>
                         <div class="margin-top-10">
                             <p class="bv-title-from">Tổng phí thanh toán năm thứ nhất</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.policy.insuredRelationship}}</p>
+                            <p class="bv-tile-templateSummary">{{vm.policy.totalPremium | number}} VND</p>
                         </div>
                         <div>
                             <p class="bv-tile-templateSummary">(Phí bảo hiểm /năm không thay đổi trong suốt thời hạn hợp đồng bảo hiểm)</p>
@@ -651,98 +671,316 @@
 	                <!-- BẢNG TÓM TẮT QUYỀN LỢI BẢO HIỂM -->
 	                <div style="width: 800px" ng-include="'apps/product/partial/partial.kcareBill.html'"></div>
                 </div>
-                
-                
+                <!-- THÔNG TIN VỀ TÌNH TRẠNG SỨC KHỎE -->
                 <div class="bv-pading-30">
                     <div class="text-header-sp">
-                        <p>Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
+                        <p>Thông tin tình trạng sức khỏe</p>
                     </div>
-                    <div class="display-flex">
-                        <div class="margin-right-70">
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Họ tên người nhận</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
-                            </div>
-                        </div>
-                        <div class="margin-right-70">
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Số điện thoại</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Email</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
-                            </div>
-                        </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">1. Người được bảo hiểm đã từng mắc phải, hoặc được thông báo rằng Người được bảo hiểm mắc phải, hoặc đang trong quá trình kiểm tra bệnh viêm gan siêu vi B/C, ung thư, khối u, u nang, phát triển ung thư biểu mô tại chỗ của bất kỳ loại ung thư nào không?</p>
                     </div>
-                    <div class="bv-title-from">
-                        <p>Địa chỉ người nhận</p>
+                    <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd5" class="label-cbx">
+                            <input id="cbxd5" name="dq1" type="radio" class="invisible" disabled ng-model="vm.policy.q1" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
                     </div>
-                    <div>
-                        <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}, {{vm.policy.receiverUser.addressDistrict}}</p>
+                    <div class="cntr">
+	                     <label for="cbxd6" class="label-cbx">
+                            <input id="cbxd6" name="dq1" type="radio" class="invisible" disabled ng-model="vm.policy.q1" value="0">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+	                     </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+                        <p class="bv-title-from">2. Người được bảo hiểm có hút hơn 20 điếu thuốc một ngày không?</p>
                     </div>
-                    <div class="bv-title-from">
-                        <p>Hình thức giao nhận</p>
+	                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd7" class="label-cbx">
+                            <input id="cbxd7" name="dq2" type="radio" class="invisible" disabled ng-model="vm.policy.q2" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
                     </div>
-                    <div>
-                        <p class="bv-tile-templateSummary display-inline-block">Gửi tới địa chỉ người nhận</p>
+                    <div class="cntr">
+	                        <label for="cbxd8" class="label-cbx">
+	                            <input id="cbxd8" name="dq2" type="radio" class="invisible" disabled ng-model="vm.policy.q2" value="0">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+                        <p class="bv-title-from">3. Người được bảo hiểm có mắc triệu chứng nào sau đây trong thời gian 3 tháng gần đây nhất và kéo dài liên tục hơn 1 tuần hay không?</p>
+                    </div>
+	                <div class="cntr margin-top-5">
+	                    <label for="cbxd9" class="label-cbx">
+	                        <input id="cbxd9" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtreatment">
+	                        <div class="checkbox">
+	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                <polyline points="4 11 8 15 16 6"></polyline>
+	                            </svg>
+	                        </div>
+	                        <span>Mệt mỏi</span>
+	                    </label>
+	                </div>
+	                <div class="cntr margin-right-15">
+	                    <label for="cbxd10" class="label-cbx">
+	                        <input id="cbxd10" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultTre">
+	                        <div class="checkbox">
+	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                <polyline points="4 11 8 15 16 6"></polyline>
+	                            </svg>
+	                        </div>
+	                        <span>Giảm cân không rõ nguyên nhân</span>
+	                    </label>
+	                </div>
+	                <div class="cntr margin-right-15">
+	                    <label for="cbxd11" class="label-cbx">
+	                        <input id="cbxd11" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtypeCancer">
+	                        <div class="checkbox">
+	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                <polyline points="4 11 8 15 16 6"></polyline>
+	                            </svg>
+	                        </div>
+	                        <span>Nổi hạch lớn</span>
+	                    </label>
+	                </div>
+	                <div class="cntr margin-right-15">
+	                    <label for="cbxd12" class="label-cbx">
+	                    	<input id="cbxd12" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultCan">
+	                        <div class="checkbox">
+	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                <polyline points="4 11 8 15 16 6"></polyline>
+	                            </svg>
+	                        </div>
+	                        <span>Xuất hiện mảng da không giống với khu vực da xung quanh</span>
+	                    </label>
+	                </div>
+	                <div class="cntr margin-right-15">
+	                    <label for="cbxq3" class="label-cbx">
+	                    	<input id="cbxq3" type="checkbox" class="invisible" disabled ng-model="vm.policy.q3">
+	                        <div class="checkbox">
+	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                <polyline points="4 11 8 15 16 6"></polyline>
+	                            </svg>
+	                        </div>
+	                        <span>Không mắc triệu chứng nào nêu trên</span>
+	                    </label>
+	                </div>
+	                <div class="margin-top-10">
+                    <p class="bv-title-from">4. Người được bảo hiểm đã từng hoặc được đề xuất nên phẫu thuật, kiểm tra hoặc điều trị* hoặc đã nằm viện trong 7 ngày trở lên trong vòng 12 tháng qua hay không? (*)</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">*(điều trị trong những trường hợp sau đây có thể được bỏ qua: cảm lạnh thông thường hoặc cảm cúm, mang thai và sinh mổ không biến chứng, ngừa thai, cao huyết áp, tăng mỡ máu, tiểu đường, tiêm chủng hoặc chấn thương mà Người được bảo hiểm đã hoàn toàn hồi phục.)</p>
+                </div>
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd13" class="label-cbx">
+                            <input id="cbxd13" name="dq4" type="radio" disabled class="invisible" ng-model="vm.policy.q4" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbxd14" class="label-cbx">
+                            <input id="cbxd14" name="dq4" type="radio" disabled class="invisible" ng-model="vm.policy.q4" value="0">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+                        </label>
                     </div>
                 </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">5. Người được bảo hiểm có 2 hoặc nhiều hơn các thành viên trực hệ trong gia đình (cha mẹ hoặc anh, chị, em), đã được chẩn đoán bị ung thư trước tuổi 60 hay không? (*)</p>
+                </div>
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd15" class="label-cbx">
+                            <input id="cbxd15" name="dq5" type="radio" disabled class="invisible" ng-model="vm.policy.q5" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbxd16" class="label-cbx">
+                            <input id="cbxd16" name="dq5" type="radio" disabled class="invisible" ng-model="vm.policy.q5" value="0">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+                        </label>
+                    </div>
+                </div>
+                </div>
+              
+              <!-- THÔNG TIN NGƯỜI THỤ HƯỞNG & NGƯỜI CHỈ ĐỊNH NHẬN -->
+              <div class="display-flex margin-top-20">  
+	              <div class="border-right-ccc bv-pading-30 width-100">
+	                  <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
+	                      <p>Thông tin người thụ hưởng bảo hiểm</p>
+	                  </div>
+	                  <div class="margin-top-10">
+	                  <p class="bv-title-from">Họ và tên</p>
+		              </div>
+		              <div class="margin-top-5">
+		              	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryName}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Ngày sinh</p>
+		              </div>
+		              <div class="margin-top-5">
+		                 	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryNgaysinh}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Số CMND/Hộ chiếu/Số giấy khai sinh</p>
+		              </div>
+		              <div class="margin-top-5">
+		              	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryIdNumber}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Quan hệ với người được bảo hiểm</p>
+		              </div>
+		              <div ng-switch="vm.policy.beneficiaryRelationship">
+						  <div ng-switch-when="31">
+						     <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+						  </div>
+						  <div ng-switch-when="32">
+						     <p class="bv-tile-templateSummary">Con</p>
+						  </div>
+						  <div ng-switch-when="33">
+						     <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+						  </div>
+					  </div>
+	              </div>
+	              
+	              <div class="border-right-ccc bv-pading-30 width-100">
+	                  <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
+	                      <p>Thông tin về người được chỉ định nhận tiền bảo hiểm</p>
+	                  </div>
+	                  <div class="margin-top-10">
+		                  <p class="bv-title-from">Họ và tên</p>
+		              </div>
+		              <div class="margin-top-5">
+		              	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryNameD}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Ngày sinh</p>
+		              </div>
+		              <div class="margin-top-5">
+		                 	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryNgaysinhD}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Số CMND/Hộ chiếu/Số giấy khai sinh</p>
+		              </div>
+		              <div class="margin-top-5">
+		              	<p class="bv-tile-templateSummary">{{vm.policy.beneficiaryIdNumberD}}</p>
+		              </div>
+		              <div class="margin-top-10">
+		                  <p class="bv-title-from">Quan hệ với người được bảo hiểm</p>
+		              </div>
+		              <div ng-switch="vm.policy.beneficiaryRelationshipD">
+						  <div ng-switch-when="31">
+						     <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+						  </div>
+						  <div ng-switch-when="32">
+						     <p class="bv-tile-templateSummary">Con</p>
+						  </div>
+						  <div ng-switch-when="33">
+						     <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+						  </div>
+					  </div>      
+	                </div>
+                </div>
+                
                 <div class="bv-pading-30">
-                    <div class="text-header-sp">
-                        <p>Thông tin hóa đơn giá trị gia tăng</p>
-                    </div>
-                    <div class="display-flex">
-                        <div class="margin-right-70">
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Họ tên người mua</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.name}}</p>
-                            </div>
-                        </div>
-                        <div class="margin-right-70">
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Tên công ty</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.company}}</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="margin-top-10">
-                                <p class="bv-title-from">Mã số thuế</p>
-                            </div>
-                            <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.taxNo}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bv-title-from">
-                        <p>Địa chỉ công ty</p>
-                    </div>
-                    <div>
-                        <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.address}}</p>
-                    </div>
-                    <div class="bv-title-from">
-                        <p>Số tài khoản</p>
-                    </div>
-                    <div>
-                        <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
-                        <button class="bv-btn-step3" ng-click="vm.createNewPolicy()">
-                            Tạo đơn hàng
-                        </button>
-                    </div>
+                  <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
+                      <p>Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
+                  </div>
+                  <div class="margin-top-10">
+	                  <p class="bv-title-from">Họ và tên</p>
+	              </div>
+	              <div class="margin-top-5">
+	              	<p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
+	              </div>
+	              <div class="margin-top-10">
+	                  <p class="bv-title-from">Địa chỉ</p>
+	              </div>
+	              <div class="margin-top-5">
+	                 	<p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}</p>
+	              </div>
+	              <div class="margin-top-10">
+	                  <p class="bv-title-from">Số điện thoại liên hệ</p>
+	              </div>
+	              <div class="margin-top-5">
+	              	<p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
+	              </div>
+	              <div class="margin-top-10">
+	                  <p class="bv-title-from">Địa chỉ email</p>
+	              </div>
+	              <div class="margin-top-5">
+	              	<p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
+	              </div>
+	              <div class="margin-top-10">
+	                  <p class="bv-title-from">Hình thức giao nhận</p>
+	              </div>      
+	              <div class="margin-top-5">
+	              	<p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký.</p>
+	              </div>
                 </div>
-            </div>
+                
+	            <div>
+                    <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
+                    <button class="bv-btn-step3" ng-click="vm.createNewPolicy()">
+                        Tạo đơn hàng
+                    </button>
+                </div>
         </div>
     </div>
 </div>

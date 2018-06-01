@@ -49,14 +49,14 @@
   				"insuredNgaysinh": "01/05/1982",
   				"insuredRelationship": "32",
   				"insuredSex": "1",
-  				"invoiceInfo": {
-  				"accountNo": "",
-  				"address": "",
-  				"check": "0",
-  				"company": "",
-  				"name": "",
-  				"taxNo": ""
-  				},
+//  				"invoiceInfo": {
+//  				"accountNo": "",
+//  				"address": "",
+//  				"check": "0",
+//  				"company": "",
+//  				"name": "",
+//  				"taxNo": ""
+//  				},
   				"lstTinhtrangSKs": [
   				{
   				"benhvienorbacsy": "string",
@@ -95,13 +95,13 @@
   				"qtreatment": "0",
   				"qtypeCancer": "0",
   				"receiveMethod": "1",
-  				"receiverUser": {
-  				"address": "Hai Bà Trưng",
-  				"addressDistrict": "HN",
-  				"email": "string@gmail.com",
-  				"mobile": "0988789456",
-  				"name": "string"
-  				},
+//  				"receiverUser": {
+//  				"address": "Hai Bà Trưng",
+//  				"addressDistrict": "HN",
+//  				"email": "string@gmail.com",
+//  				"mobile": "0988789456",
+//  				"name": "string"
+//  				},
   				"thoihanden": "30/04/2018",
   				"thoihantu": "18/05/2018",
   				"totalPremium": 1170000.0
@@ -182,7 +182,7 @@
   		
   		function createPolicy() {
   			console.log('createPolicy');
-  			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
+  			// Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
   			
   			//debugger
