@@ -52,19 +52,10 @@
 			"actualValue":8929000000,
 			"changePremium":0,
 			"chassisNumber":"",
-//			"contactCode":"4857",
 			"engineNumber":"",
 			"garageCheck":true,
 			"insuredAddress":"",
 			"insuredName":"",
-//			"invoiceInfo":{  
-//				"accountNo":"",
-//				"address":"",
-//				"check":"0",
-//				"company":"",
-//				"name":"",
-//				"taxNo":""
-//			},
 			"khaoHaoCheck":true,
 			"khauTruCheck":true,
 			"makeId":"1",
@@ -83,13 +74,6 @@
 			"premium":181734532,
 			"purposeOfUsageId":"15",
 			"receiveMethod" : "1",
-//			"receiverUser":{  
-//				"address":"Duy Tân",
-//				"addressDistrict":"Cầu Giấy",
-//				"email":"a@gmail.com",
-//				"mobile":"0123456789",
-//				"name":"Nguyễn Văn 0"
-//			},
 		   	"registrationNumber":"",
 		   	"thirdPartyPremium":480700,
 		   	"thoihanden":"",
@@ -100,7 +84,6 @@
 		   	"tndstnPhi":709500,
 		   	"tndstnSotien":150000000,
 		   	"totalPremium":181734532,
-//		   	"type":"ONL",
 		   	"vcxCheck":true,
 		   	"yearOfMake":"2016"
 		}
@@ -344,9 +327,6 @@
 	  		vm.policy.totalPremium = postData.totalPremium;
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
-	  		
-	  		// NamNH fix: Append contactCode + invoiceInfo + receiverUser
-  			vm.appendCommonData(vm.policy);
 	  		
 	  		CarService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
     	}

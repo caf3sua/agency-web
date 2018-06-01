@@ -19,12 +19,8 @@
             controller: "ProductKhcController",
             controllerAs: 'vm',
             resolve: {
-            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-        				$translatePartialLoader.addPart('global');
-        				return $translate.refresh();
-            		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/khc/khc.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/khc/khc.service.js', 'apps/product/khc/khc.controller.js']);
 		        }
             }
         });

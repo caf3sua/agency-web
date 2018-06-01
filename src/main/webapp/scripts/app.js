@@ -16,7 +16,7 @@
           'ngCookies',
           'ngAria',
           'ngCacheBuster',
-//          'ui.bootstrap',
+          'ui.bootstrap',
 //          'ui.bootstrap.datetimepicker',
           'infinite-scroll',
           'angular-loading-bar',
@@ -34,7 +34,8 @@
 		 'oc.lazyLoad',
 		 'highcharts-ng',
 		 'ngScrollbars', 
-		 'toastr'
+		 'toastr',
+		 'smart-table'
       ])
       .run(run)
       .run(stateChange);

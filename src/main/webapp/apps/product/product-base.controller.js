@@ -20,9 +20,9 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactSearchDialogService'];
+    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactCommonDialogService', 'Principal'];
 
-    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactSearchDialogService){
+    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactCommonDialogService, Principal){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -32,7 +32,10 @@
         vm.typeArrowTwo = "fa-angle-left";
         vm.typeArrowThree = "fa-angle-right";
         
+        vm.currentAccount;
         vm.contactCode;
+        vm.contactName;
+        vm.contactDob;
         vm.receiverUserData = {  
 			"address":"",
 			"addressDistrict":"",
@@ -49,16 +52,32 @@
 				"taxNo":""
         };
         
+        // Init controller
+  		(function initController() {
+  			// instantiate base controller
+  		    getAccount();
+  		})();
+  		
         // declare function
         vm.closeOpenStep = closeOpenStep;
         vm.calculateToDate = calculateToDate;
         vm.openSearchContact = openSearchContact;
 		vm.appendCommonData = appendCommonData;
+		vm.openAddContact = openAddContact;
         
         // implement function
-        $scope.$on('contactCodeChange', function() {
-        	if ($rootScope.selectedContactCode != undefined && $rootScope.selectedContactCode != "") {
-        		vm.contactCode = $rootScope.selectedContactCode;
+		function getAccount() {
+  			Principal.identity().then(function(account) {
+                vm.currentAccount = account;
+            });
+  		}
+		
+        $scope.$on('selectedContactChange', function() {
+        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+        		vm.contactCode = $rootScope.selectedContact.contactCode;
+        		vm.contactName = $rootScope.selectedContact.contactName;
+                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
+                vm.handPhone = $rootScope.selectedContact.handPhone;
         	}
         });
 
@@ -71,7 +90,11 @@
         }
         
         function openSearchContact() {
-        	ContactSearchDialogService.open();
+        	ContactCommonDialogService.openSearchDialog();
+        }
+        
+        function openAddContact() {
+        	ContactCommonDialogService.openAddDialog();
         }
         
         function closeOpenStep(type){
@@ -97,6 +120,9 @@
                 vm.typeArrowOne = "fa-angle-right";
                 vm.typeArrowThree = "fa-angle-left";
                 vm.typeArrowTwo = "fa-angle-right";
+
+                // NamNH fix: Append contactCode + invoiceInfo + receiverUser
+                appendCommonData(vm.policy);
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
                 // document.getElementById("bv-step-2").className = 'bv-step-2 col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex widthStep2';

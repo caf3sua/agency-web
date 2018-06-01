@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('app')
-        .controller('ContactSearchDialogController', ContactSearchDialogController);
+        .controller('ContactAddDialogController', ContactAddDialogController);
 
 
-    	ContactSearchDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
-        function ContactSearchDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
+    	ContactAddDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
+        function ContactAddDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
         	var vm = this;
         	vm.contactCode;
         	vm.searchContact = searchContact;
@@ -21,6 +21,15 @@
         	vm.contacts = [];
         	vm.contactsInit = [];
         	
+        	angular.element(document).ready(function () {
+            });
+
+        	// Init controller
+      		(function initController() {
+      			// instantiate base controller
+      		    console.log('Init ContactAddDialogController');
+      		})();
+      		
         	// Implement function
         	function selectedContact(row) {
         		console.log('selected contact:' + row);
