@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .factory('TvcService', TvcService);
+        .factory('TviService', TviService);
 
-    TvcService.$inject = [ '$resource' ];
+    TviService.$inject = [ '$resource' ];
 
-    function TvcService($resource) {
+    function TviService($resource) {
         var service = $resource('', {}, {
             'getPremium' : {
                 method : 'POST',

@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('ProductTvcController', ProductTvcController);
+        .controller('ProductTviController', ProductTviController);
 
-    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'toastr', 'ProductCommonService'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TviService', 'toastr', 'ProductCommonService'];
 
-    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, toastr, ProductCommonService) {
+    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, TviService, toastr, ProductCommonService) {
         var vm = this;
         vm.policy = {
             bankId: "",
@@ -46,7 +46,7 @@
             }
         ],
             netPremium: 0,
-            paymentMethod: "1",
+            paymentMethod: "",
             planId: "",
             policyNumber: "",
             premium: 0,
@@ -69,7 +69,7 @@
                 name: ""
             },
             soGycbh: "",
-            statusPolicyId: "90",
+            statusPolicyId: "",
             teamId: "",
             travelWithId: "",
             tviPackage: "",
@@ -123,29 +123,30 @@
         }
         function getPremium() {
             vm.product.destination =  vm.policy.destinationId;
-            vm.product.ngayDi =  vm.policy.inceptionDate;
-            vm.product.ngayVe  =  vm.policy.expiredDate;
-            vm.product.numberOfPerson  =  1;
+            vm.product.inceptionDate  =  vm.policy.inceptionDate;
+            vm.product.expiredDate   =  vm.policy.expiredDate;
+            vm.product.numberOfPerson  = vm.product.soNguoiThamGia;
             vm.product.planId  =  vm.policy.planId;
             vm.product.premiumNet  =  0;
             vm.product.premiumPackage  =  vm.policy.travelWithId;
-            vm.product.premiumTvc  = 0;
-            if(vm.product.premiumDiscount > 0 ){
-                vm.product.premiumDiscount = vm.product.premiumDiscount;
+            vm.product.premiumTvi  = 0;
+            vm.product.premiumDiscount = 0;
+            if(vm.product.premiumPercentDiscount > 0 ){
+                vm.product.premiumPercentDiscount = vm.product.premiumPercentDiscount;
             }else{
-                vm.product.premiumDiscount  = 0;
+                vm.product.premiumPercentDiscount  = 0;
             }
-            vm.product.songay  = 0;
-            TvcService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            vm.product.numberOfDay   = 0;
+            TviService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
-            vm.policy.premium  = result.premiumTvc;
+            vm.policy.premium  = result.premiumTvi;
             vm.policy.soNguoiThamGia  = result.numberOfPerson;
             vm.policy.netPremium   = result.premiumNet;
-            vm.policy.changePremium  = result.premiumDiscount;
+            vm.policy.changePremium  = result.premiumPercentDiscount;
             if(result.premiumDiscount > 0){
                 vm.isShowChangePremium = true;
-                vm.sumPremiumDiscount =  vm.policy.netPremium - vm.policy.premium ;
+                vm.sumPremiumDiscount =   result.premiumDiscount ;
             }
 
 
@@ -184,7 +185,7 @@
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.policyNumber = vm.policy.gycbhNumber;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
-            TvcService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
+            TviService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
@@ -195,32 +196,48 @@
         }
 
         function addOrRemovePerson() {
-            if(vm.policy.soNguoiThamGia > 0) {
+            if(vm.product.soNguoiThamGia > 0) {
                 vm.isShowPersonList = true;
             } else {
                 vm.isShowPersonList = false;
             }
-            if(vm.policy.soNguoiThamGia> vm.policy.listTvcAddBaseVM.length) {
+            if(vm.product.soNguoiThamGia> vm.policy.listTviAdd.length) {
                 addNewPerson();
-            } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {
+            } else if(vm.product.soNguoiThamGia< vm.policy.listTviAdd.length) {
                 removePerson();
             }
         }
 
         function addNewPerson() {
-            var lineAdd = vm.policy.soNguoiThamGia- vm.policy.listTvcAddBaseVM.length;
+            var lineAdd = vm.product.soNguoiThamGia- vm.policy.listTviAdd.length;
             for (var i=0; i < lineAdd; i++) {
-                vm.policy.listTvcAddBaseVM.push({
+                vm.policy.listTviAdd.push({
+                    "address": "",
+                    "cellPhone": "",
+                    "city": "",
+                    "dayTreatment": "",
+                    "detailTreatment": "",
+                    "diagnose": "",
                     "dob": "",
+                    "emailAdress": "",
+                    "homePhone": "",
+                    "idPasswport": "",
                     "insuredName": "",
-                    "idPasswport": 0,
-                    "relationship" : "",
+                    "nameDoctor": "",
+                    "relationship": "",
+                    "relationshipId": "",
+                    "relationshipName": "",
+                    "resultTreatment": "",
+                    "title": "",
+                    "travaelcareId": "",
+                    "tviAddId": "",
+                    "tviCareId": ""
                 });
             }
         };
 
         function removePerson() {
-            vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
+            vm.policy.listTviAdd.splice(vm.product.soNguoiThamGia, vm.policy.listTviAdd.length)
         };
     }
 })();

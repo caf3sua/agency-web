@@ -1,7 +1,7 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 bv-background-sp">
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 ">
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0">
-            <p class="bv-title-home">Sản phẩm bảo hiểm du lịch quốc tế</p>
+            <p class="bv-title-home">Sản phẩm bảo hiểm du lịch Việt Nam</p>
         </div>
         <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
             <div class="bv-btn-groud-header">
@@ -45,7 +45,7 @@
                     <span class="bv-title-from-des">(Phạm vi lãnh thổ được bảo hiểm)</span>
                 </div>
                 <div>
-                    <select class="bv-select-box form-control" ng-model="vm.policy.destinationId">
+                    <select class="bv-select-box form-control">
                         <option disabled selected>Viêt Nam</option>
                     </select>
                 </div>
@@ -63,7 +63,7 @@
                     <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="">
-                    <input type="text" class="bv-input" placeholder="Nhập tổng số người tham gia"/>
+                    <input type="text" class="bv-input"  ng-model="vm.product.soNguoiThamGia" placeholder="Nhập tổng số người tham gia"  ng-blur="vm.addOrRemovePerson()"/>
                 </div>
                 <div class="bv-margin-botton-10 margin-top-10">
                     <p class="bv-title-from margin-bottom-0">Ngày khởi hành từ Việt Nam<span class="bv-req-red">&nbsp(*)</span></p>
@@ -109,7 +109,7 @@
                     <!--</select>-->
                     <div class="cntr text-center">
                         <label for="cbx13" class="label-cbx margin-right-5">
-                            <input id="cbx13" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
+                            <input id="cbx13" type="radio" class="invisible" ng-model="vm.policy.planId" value="1" ng-change="vm.onchangePlan()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -119,7 +119,7 @@
                             <span>Bạc</span>
                         </label>
                         <label for="cbx12" class="label-cbx margin-right-5">
-                            <input id="cbx12" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
+                            <input id="cbx12" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -129,7 +129,29 @@
                             <span>Vàng</span>
                         </label>
                         <label for="cbx11" class="label-cbx margin-right-5">
-                            <input id="cbx11" type="radio" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
+                            <input id="cbx11" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Kim cương</span>
+                        </label>
+                    </div>
+                    <div class="cntr text-center">
+                        <label for="cbx16" class="label-cbx margin-right-5">
+                            <input id="cbx16" type="radio" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Bạch kim</span>
+                        </label>
+                        <label for="cbx17" class="label-cbx margin-right-5">
+                            <input id="cbx17" type="radio" class="invisible" ng-model="vm.policy.planId" value="5" ng-change="vm.onchangePlan()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -141,7 +163,7 @@
                     </div>
                 </div>
                 <div class="margin-top-5">
-                    <input type="number" min="1" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.premiumTvcVM.premiumDiscount" ng-blur="vm.getPremium()"/>
+                    <input type="number" min="1" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumPercentDiscount" ng-blur="vm.getPremium()"/>
                 </div>
                 <div class="margin-top-10">
                     <div class="table-responsive">
@@ -177,34 +199,7 @@
                 </div>
             </div>
             <div class="bv-step-content">
-                <div class="text-header-sp">
-                    <p>Thông tin người yêu cầu bảo hiểm</p>
-                </div>
-                <div class="cntr margin-top-5">
-                    <label for="cbx7" class="label-cbx">
-                        <input id="cbx7" type="checkbox" class="invisible">
-                        <div class="checkbox">
-                            <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                <polyline points="4 11 8 15 16 6"></polyline>
-                            </svg>
-                        </div>
-                        <span>Điền thông tin cho tài khoản đăng nhập</span>
-                        <p class="bv-title-from-des margin-top-10">(Bỏ chọn ô này để xóa thông tin)</p>
-                    </label>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Họ và tên người yêu cầu bảo hiểm</p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="vm.policy.name "/>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngày sinh</p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Địa chỉ theo đăng ký xe" ng-model="vm.policy.propserNgaysinh"  />
-                </div>
+                <div ng-include="'apps/product/partial/partial.contact.extend.html'"></div>
                 <div class="margin-top-20 text-header-sp">
                     <p>Thông tin người được bảo hiểm</p>
                 </div>
@@ -221,9 +216,9 @@
                         <p class="bv-title-from-des margin-top-10">(Bỏ chọn ô này để xóa thông tin người yêu cầu bảo hiểm đã được điền sẵn bên dưới)</p>
                     </label>
                 </div>
-                <div class="margin-top-10">
+                <div class="margin-top-10" ng-show="vm.isShowPersonList">
                     <div class="table-responsive bv-home-block-left-table-responsive">
-                        <form ng-submit="vm.infoPerson()">
+                        <form >
                             <table class="table bv-tvc-block-left-table" >
                                 <thead>
                                 <tr>
@@ -231,21 +226,20 @@
                                     <th><p>Số hộ chiếu/CMND</p></th>
                                     <th><p>Ngày sinh</p></th>
                                     <th><p class="bv-table-th-db">Quan hệ người yêu cầu bảo hiểm</p></th>
-                                    <th><p>Lưu</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <tr ng-repeat="person in  vm.policy.listTviAdd">
                                     <td>
-                                        <input type="text" class="bv-input" ng-model="vm.tvcAddBaseVM.insuredName"/>
+                                        <input type="text" class="bv-input" ng-model="person.insuredName"/>
                                     </td>
                                     <td>
-                                        <input type="text" class="bv-input" ng-model="vm.tvcAddBaseVM.idPasswport "/>
+                                        <input type="text" class="bv-input" ng-model="person.idPasswport "/>
                                     </td>
                                     <td>
                                         <div class=" width-100">
                                             <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                                                <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.tvcAddBaseVM.dob">
+                                                <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob">
                                                 <div class="input-group-addon">
                                                     <span class="glyphicon glyphicon-th"></span>
                                                 </div>
@@ -253,33 +247,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <select class="bv-select-box form-control" ng-model ="vm.tvcAddBaseVM.relationship">
+                                        <select class="bv-select-box form-control" ng-model ="person.relationship">
                                             <option value="30">Bản thân</option>
                                             <option value="31">Vợ/Chồng</option>
                                             <option value="32">Con</option>
                                             <option value="34">Bố/Me</option>
                                             <option value="39">Bố Me của vợ/chồng</option>
                                         </select>
-                                    </td>
-                                    <td>
-                                        <p ng-click="vm.infoPerson()"><i class="far fa-check-circle"></i></p>
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="person in  vm.policy.listTvcAddBaseVM">
-                                    <td>
-                                        <p class="">{{person.insuredName}}</p>
-                                    </td>
-                                    <td>
-                                        <p class="">{{person.idPasswport}}</p>
-                                    </td>
-                                    <td>
-                                        <p class="">{{person.dob}}</p>
-                                    </td>
-                                    <td>
-                                        <p class="">{{person.relationship}}</p>
-                                    </td>
-                                    <td>
-                                        <p class=""><i class="fas fa-check"></i></p>
                                     </td>
                                 </tr>
                                 </tbody>
