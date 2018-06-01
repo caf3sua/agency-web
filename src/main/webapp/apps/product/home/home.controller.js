@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductHomeController', ProductHomeController);
 
-    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductHomeService', 'ProductCommonService'];
+    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductHomeService', 'ProductCommonService', 'DateUtils'];
 
-    function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService) {
+    function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService, DateUtils) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -83,7 +83,22 @@
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		
+  		// Initialize
+  		init();
+  		
   		// Function
+  		function init() {
+            var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.homePolicy.inceptionDate = DateUtils.convertDate(startDate);
+
+            var endDate = new Date();
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            vm.homePolicy.expiredDate = DateUtils.convertDate(endDate);
+        }
+  		
   		function getPremium() {
   			ProductHomeService.getPremium(vm.homePremium, onGetPremiumSuccess, onGetPremiumError);
   			
