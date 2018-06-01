@@ -15,7 +15,8 @@
             convertLocalDateToServer: convertLocalDateToServer,
             dateformat: dateformat,
             convertDate: convertDate,
-            monthDiff : monthDiff
+            monthDiff : monthDiff,
+            yearDiff : yearDiff
         };
 
         return service;
@@ -76,6 +77,17 @@
             months -= d1.getMonth() + 1;
             months += d2.getMonth();
             return months <= 0 ? 0 : months;
+        }
+
+        function yearDiff(date1, date2) {
+            var from = date1.split("/");
+            var to = date2.split("/");
+            var d1 = new Date(from[2], from[1] - 1, from[0]);
+            var d2 = new Date(to[2], to[1] - 1, to[0]);
+
+            var years;
+            years = d2.getFullYear() - d1.getFullYear();
+            return years;
         }
     }
 
