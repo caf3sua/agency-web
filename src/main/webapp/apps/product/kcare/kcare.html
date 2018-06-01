@@ -147,7 +147,7 @@
                 </div>
                 <div class="margin-right-5 width-100">
                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.contactDob" ng-change="vm.changeToDate()">
+					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.contactDob">
 					    <div class="input-group-addon">
 					        <span class="glyphicon glyphicon-th"></span>
 					    </div>
@@ -289,7 +289,7 @@
                 </div>
                 <div class="cntr margin-top-5">
                     <label for="cbx9" class="label-cbx">
-                        <input id="cbx9" type="checkbox" class="invisible" ng-model="vm.policy.qtreatment">
+                        <input id="cbx9" type="checkbox" class="invisible" ng-model="vm.policy.qtreatment" checked="{{vm.isCheckQtreatment}}" ng-change="vm.checkQtreatment()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -301,7 +301,7 @@
                 </div>
                 <div class="cntr margin-right-15">
                     <label for="cbx10" class="label-cbx">
-                        <input id="cbx10" type="checkbox" class="invisible" ng-model="vm.policy.qresultTre">
+                        <input id="cbx10" type="checkbox" class="invisible" ng-model="vm.policy.qresultTre" checked="{{vm.isCheckQresultTre}}" ng-change="vm.checkQresultTre()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="cntr margin-right-15">
                     <label for="cbx11" class="label-cbx">
-                        <input id="cbx11" type="checkbox" class="invisible" ng-model="vm.policy.qtypeCancer">
+                        <input id="cbx11" type="checkbox" class="invisible" ng-model="vm.policy.qtypeCancer" checked="{{vm.isCheckQtypeCancer}}" ng-change="vm.checkQtypeCancer()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -325,7 +325,7 @@
                 </div>
                 <div class="cntr margin-right-15">
                     <label for="cbx12" class="label-cbx">
-                    	<input id="cbx12" type="checkbox" class="invisible" ng-model="vm.policy.qresultCan">
+                    	<input id="cbx12" type="checkbox" class="invisible" ng-model="vm.policy.qresultCan" checked="{{vm.isCheckQresultCan}}" ng-change="vm.checkQresultCan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -335,8 +335,17 @@
                         <span>Xuất hiện mảng da không giống với khu vực da xung quanh</span>
                     </label>
                 </div>
-                <div>
-                	<input id="q3" name="q3" type="radio" ng-model="vm.policy.q3" value="1">Không mắc triệu chứng nào nêu trên
+                <div class="cntr margin-right-15">
+                    <label for="cbq3i" class="label-cbx">
+                    	<input id="cbq3i" type="checkbox" class="invisible" checked="{{vm.isCheckQ3}}" ng-model="vm.policy.q3" ng-change="vm.checkQ3()">
+                        <div class="checkbox">
+                            <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                <polyline points="4 11 8 15 16 6"></polyline>
+                            </svg>
+                        </div>
+                        <span>Không mắc triệu chứng nào nêu trên</span>
+                    </label>
                 </div>
               	<div class="margin-top-10">
                     <p class="bv-title-from">Người được bảo hiểm đã từng hoặc được đề xuất nên phẫu thuật, kiểm tra hoặc điều trị* hoặc đã nằm viện trong 7 ngày trở lên trong vòng 12 tháng qua hay không? (*)</p>
@@ -976,8 +985,7 @@
                 </div>
                 
 	            <div>
-                    <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
-                    <button class="bv-btn-step3" ng-click="vm.createNewPolicy()">
+                    <button class="bv-btn-step3" ng-click="vm.getPolicyNumber()">
                         Tạo đơn hàng
                     </button>
                 </div>

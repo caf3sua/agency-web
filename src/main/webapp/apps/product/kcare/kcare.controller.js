@@ -31,24 +31,24 @@
   			};
   		
   		vm.policy = {
-  				"beneficiaryIdNumber": "string",
-  				"beneficiaryIdNumberD": "string",
-  				"beneficiaryName": "string",
-  				"beneficiaryNameD": "string",
-  				"beneficiaryNgaysinh": "01/05/1982",
-  				"beneficiaryNgaysinhD": "01/05/1982",
-  				"beneficiaryRelationship": "31",
-  				"beneficiaryRelationshipD": "31",
+  				"beneficiaryIdNumber": "",
+  				"beneficiaryIdNumberD": "",
+  				"beneficiaryName": "",
+  				"beneficiaryNameD": "",
+  				"beneficiaryNgaysinh": "",
+  				"beneficiaryNgaysinhD": "",
+  				"beneficiaryRelationship": "",
+  				"beneficiaryRelationshipD": "",
   				"changePremium": 0,
   				"contactCode": "DUC001",
-  				"contactDob": "24/04/1988",
-  				"contactName": "Tên đó",
-  				"gycbhNumber": "ITSOL.KCR.18.127",
-  				"insuredIdNumber": "09874564132",
-  				"insuredName": "Cũng là Tên",
-  				"insuredNgaysinh": "01/05/1982",
-  				"insuredRelationship": "32",
-  				"insuredSex": "1",
+  				"contactDob": "",
+  				"contactName": "",
+  				"gycbhNumber": "",
+  				"insuredIdNumber": "",
+  				"insuredName": "",
+  				"insuredNgaysinh": "",
+  				"insuredRelationship": "",
+  				"insuredSex": "0",
 //  				"invoiceInfo": {
 //  				"accountNo": "",
 //  				"address": "",
@@ -59,31 +59,31 @@
 //  				},
   				"lstTinhtrangSKs": [
   				{
-  				"benhvienorbacsy": "string",
-  				"bvSysdate": "18/05/2018",
-  				"chitietdieutri": "string",
-  				"chuandoan": "string",
-  				"congtybh": "string",
-  				"dkdacbiet": "string",
-  				"id": "string",
-  				"idThamchieu": "string",
-  				"ketqua": "string",
-  				"khuoctu": "string",
-  				"lydodc": "string",
-  				"lydoycbt": "string",
-  				"masanpham": "string",
-  				"ngaybatdau": "18/05/2018",
-  				"ngaydieutri": "18/05/2018",
-  				"ngayhethan": "18/05/2018",
-  				"ngayycbt": "18/05/2018",
-  				"questionThamchieu": "string",
-  				"sohd": "string",
+  				"benhvienorbacsy": "",
+  				"bvSysdate": "",
+  				"chitietdieutri": "",
+  				"chuandoan": "",
+  				"congtybh": "",
+  				"dkdacbiet": "",
+  				"id": "",
+  				"idThamchieu": "",
+  				"ketqua": "",
+  				"khuoctu": "",
+  				"lydodc": "",
+  				"lydoycbt": "",
+  				"masanpham": "",
+  				"ngaybatdau": "",
+  				"ngaydieutri": "",
+  				"ngayhethan": "",
+  				"ngayycbt": "",
+  				"questionThamchieu": "",
+  				"sohd": "",
   				"sotienbh": 0,
   				"sotienycbt": 0
   				}
   				],
   				"netPremium": 0,
-  				"planId": "PGM3",
+  				"planId": "",
   				"policyNumber": "",
   				"q1": "0",
   				"q2": "0",
@@ -102,9 +102,9 @@
 //  				"mobile": "0988789456",
 //  				"name": "string"
 //  				},
-  				"thoihanden": "30/04/2018",
-  				"thoihantu": "18/05/2018",
-  				"totalPremium": 1170000.0
+  				"thoihanden": "",
+  				"thoihantu": "",
+  				"totalPremium": 0.0
   				};
   		
   		vm.getPremium = getPremium;
@@ -113,6 +113,11 @@
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		vm.checkedChangeBill = checkedChangeBill;
+  		vm.checkQ3 = checkQ3;
+  		vm.checkQresultCan = checkQresultCan;
+  		vm.checkQtypeCancer = checkQtypeCancer;
+  		vm.checkQresultTre = checkQresultTre;
+  		vm.checkQtreatment = checkQtreatment;
 
   		
   		var ngayKetThuc = "";
@@ -122,7 +127,55 @@
   		vm.isShowBill3 = false;
   		vm.isShowPremium = false;
   		
+  		vm.isCheckQresultCan = false;
+  		vm.isCheckQtypeCancer = false;
+  		vm.isCheckQresultTre = false;
+  		vm.isCheckQtreatment = false;
+  		vm.isCheckQ3 = false;
+  		
   		// Initialize
+  		function checkQ3() {
+  			var check = vm.policy.q3;
+  			
+  			if (check == true) {
+  		  		vm.policy.qresultCan = false;
+  		  		vm.policy.qresultTre = false;
+  		  		vm.policy.qtreatment = false;
+  		  		vm.policy.qtypeCancer = false;
+  			}
+  		}
+  		
+  		function checkQtreatment() {
+  			var check = vm.policy.qtreatment;
+  			
+  			if (check == true) {
+  				vm.policy.q3 = false;
+  			} 
+  		}
+  		
+  		function checkQresultTre() {
+  			var check = vm.policy.qresultTre;
+  			
+  			if (check == true) {
+  				vm.policy.q3 = false;
+  			} 
+  		}
+  		
+  		function checkQtypeCancer() {
+  			var check = vm.policy.qtypeCancer;
+  			
+  			if (check == true) {
+  				vm.policy.q3 = false;
+  			} 
+  		}
+  		
+  		function checkQresultCan() {
+  			var check = vm.policy.qresultCan;
+  			
+  			if (check == true) {
+  				vm.policy.q3 = false;
+  			} 
+  		}
   		
   		function checkedChangeBill() {
   			var type = vm.premium.typeOfKcare;
