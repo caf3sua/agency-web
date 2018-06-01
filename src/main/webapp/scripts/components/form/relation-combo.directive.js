@@ -95,6 +95,13 @@
                 ngModel.$setViewValue(scope.selectedItem);
                 
                 switch(attrs.type){
+                    case 'hhvc-item-group':
+                    case 'hhvc-item-name':
+                    case 'hhvc-insurance-term':
+                    case 'hhvc-shipping-wrap-type':
+                    case 'hhvc-shipping-way':
+                    case 'hhvc-shipping-vehicle':
+                    case 'hhvc-money-type':
                     case 'khc-money':
                     case 'tnc-money':
                     case 'moto-type':

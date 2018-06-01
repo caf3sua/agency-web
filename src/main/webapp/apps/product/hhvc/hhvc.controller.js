@@ -329,7 +329,10 @@
 
         function getPremium() {
             var postData = getPostData(false);
-            HhvcService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+
+            if(postData.loaiHangHoa != 0 && postData.dieuKhoanBaoHiem != 0 && postData.giaTriHang != 0 && postData.phuongThucThanhToan != 0) {
+                HhvcService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            }
         }
 
         function getPostData() {
