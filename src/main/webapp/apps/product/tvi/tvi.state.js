@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/tvi/tvi.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/tvi/tvi.controller.js','apps/product/tvi/tvi.service.js']);
 		        }
             }
         });

@@ -9,53 +9,13 @@
 
 	function ProductKcareService($resource) {
 		var service = $resource('', {}, {
-			'getCarBranches' : {
-				method : 'POST',
-				url : 'api/agency/product/car/getCarMakes',
-				isArray : true
-			},
-			'getCarModel' : {
-				method : 'GET',
-				url : 'api/agency/product/car/getCarModel',
-				isArray : true
-			},
-			'getMaxManufactureYear' : {
-				method : 'GET',
-				url : 'api/agency/product/car/getMaxManufactureYear',
-				transformResponse : function(data) {
-					data = angular.fromJson({
-						max : data
-					});
-					return data;
-				}
-			},
-			'getMinManufactureYear' : {
-				method : 'GET',
-				url : 'api/agency/product/car/getMinManufactureYear',
-				transformResponse : function(data) {
-					data = angular.fromJson({
-						min : data
-					});
-					return data;
-				}
-			},
-			'getCarPriceWithYear' : {
-				method : 'GET',
-				url : 'api/agency/product/car/getCarPriceWithYear',
-				transformResponse : function(data) {
-					data = angular.fromJson({
-						price : Number(data)
-					});
-					return data;
-				}
-			},
 			'getPremium' : {
 				method : 'POST',
-				url : 'api/agency/product/car/premium'
+				url : 'api/agency/product/kcare/premium'
 			},
-			'createNewPolicy' : {
+			'createPolicy' : {
 				method : 'POST',
-				url : 'api/agency/product/car/createPolicy'
+				url : 'api/agency/product/kcare/createPolicy'
 			}
 		});
 
