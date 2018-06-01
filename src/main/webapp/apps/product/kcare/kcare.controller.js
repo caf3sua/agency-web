@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductKcareController', ProductKcareController);
 
-    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductKcareService', 'ProductCommonService'];
+    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductKcareService', 'ProductCommonService', 'DateUtils'];
 
-    function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductKcareService, ProductCommonService) {
+    function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductKcareService, ProductCommonService, DateUtils) {
         var vm = this;
 
         angular.element(document).ready(function () {
@@ -118,6 +118,7 @@
   		vm.checkQtypeCancer = checkQtypeCancer;
   		vm.checkQresultTre = checkQresultTre;
   		vm.checkQtreatment = checkQtreatment;
+  		vm.onDobChange = onDobChange;
 
   		
   		var ngayKetThuc = "";
@@ -127,13 +128,32 @@
   		vm.isShowBill3 = false;
   		vm.isShowPremium = false;
   		
-  		vm.isCheckQresultCan = false;
-  		vm.isCheckQtypeCancer = false;
-  		vm.isCheckQresultTre = false;
-  		vm.isCheckQtreatment = false;
-  		vm.isCheckQ3 = false;
-  		
   		// Initialize
+  		init();
+  		
+  		// Function
+        function init() {
+            var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.premium.ngayBatDau = DateUtils.convertDate(startDate);
+
+            var endDate = new Date();
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            vm.ngayKetThuc = DateUtils.convertDate(endDate);
+        }
+  		
+  		function onDobChange() {
+            var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            
+            var dob = new Date(vm.premium.ngaySinh);
+            var dobStr = DateUtils.convertDate(dob);
+            
+            vm.tuoi = DateUtils.yearDiff(dobStr, nowStr);
+        }
+  		
   		function checkQ3() {
   			var check = vm.policy.q3;
   			
