@@ -76,7 +76,13 @@
             ProductCommonService.getPolicyNumber({lineId: 'KHC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
         }
 
-        function onDobChange() {
+        function onDobChange(index) {
+            if(vm.product.premiumKhcList[index]) {
+                var now = new Date();
+                var nowStr = DateUtils.convertDate(now);
+                vm.product.premiumKhcList[index].yearOld = DateUtils.yearDiff(vm.product.premiumKhcList[index].dob, nowStr);
+            }
+
             if(vm.product.numberPerson > 0 && vm.product.premiumPackage) {
                 getPremium();
             }
