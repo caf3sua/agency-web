@@ -1263,6 +1263,13 @@ body {
     font-size: 12px;
     margin-left: 10px;
 }
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #0371b6;
+    color: #fff;
+    text-align: center;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{
         margin-left: 10px;

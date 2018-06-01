@@ -94,7 +94,7 @@
             vm.product.destination =  vm.policy.destinationId;
             vm.product.ngayDi =  vm.policy.inceptionDate;
             vm.product.ngayVe  =  vm.policy.expiredDate;
-            vm.product.numberOfPerson  =  1;
+            vm.product.numberOfPerson  =  vm.policy.soNguoiThamGia;
             vm.product.planId  =  vm.policy.planId;
             vm.product.premiumNet  =  0;
             vm.product.premiumPackage  =  vm.policy.travelWithId;

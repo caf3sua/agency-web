@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTviController', ProductTviController);
 
-    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TviService', 'toastr', 'ProductCommonService'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TviService', 'ProductCommonService'];
 
-    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, TviService, toastr, ProductCommonService) {
+    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, TviService, ProductCommonService) {
         var vm = this;
         vm.policy = {
             bankId: "",
@@ -189,6 +189,7 @@
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
+            toastr.success('Success!');
         }
 
         function onGetCreateError(result) {
