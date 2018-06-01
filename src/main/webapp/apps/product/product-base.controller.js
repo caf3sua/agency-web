@@ -77,6 +77,10 @@
         		vm.contactCode = $rootScope.selectedContact.contactCode;
         		vm.contactName = $rootScope.selectedContact.contactName;
                 vm.contactDob = $rootScope.selectedContact.dateOfBirth;
+                vm.contactEmail = $rootScope.selectedContact.email;
+                vm.contactPhone = $rootScope.selectedContact.handPhone;
+                vm.contactAddress = $rootScope.selectedContact.homeAddress;
+                vm.contactAddressDistrict = $rootScope.selectedContact.homeAddress;
                 vm.handPhone = $rootScope.selectedContact.handPhone;
         	}
         });
