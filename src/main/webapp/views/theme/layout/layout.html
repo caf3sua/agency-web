@@ -24,7 +24,15 @@
     <div class="app-footer">
       <div ui-include="'../views/blocks/footer.html'"></div>
     </div>
-    <div ui-view class="app-body" id="view"></div>
+    <div class="app-body" id="view">
+    	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12  bv-background-home">
+    		<!-- Header -->
+			<div ng-include="'views/theme/blocks/partial.title.html'"></div>
+		    
+		    <div ui-view id="view">
+		    </div>
+	    </div>
+    </div>
   </div>
 <!-- / content -->
 
