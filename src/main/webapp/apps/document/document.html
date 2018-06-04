@@ -1,5 +1,5 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12  bv-background-home" >
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0"  style="min-height: 100vh">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
         <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0 padding0">
                 <p class="bv-title-home">Tài liệu</p>
@@ -21,18 +21,16 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+            <div class="bv-input-icon-wrap">
+                <span class="bv-input-icon"><span class="fas fa-search"></span></span>
+                <input st-search="" type="text" placeholder="Tìm kiếm" class="bv-input-with-icon" id="form-name">
+            </div>
+        </div>
         <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
             <!-- Table content -->
 	        <table st-table="vm.docsInit" st-safe-src="vm.docs" class="table table-striped bv-home-block-left-table bv-table-kh">
 			      	<thead>
-				      	<tr>
-				      		<th colspan="7">
-					      		<div class="bv-input-icon-wrap">
-					                <span class="bv-input-icon"><span class="fas fa-search"></span></span>
-					                <input st-search="" type="text" placeholder="Tìm kiếm" class="bv-input-with-icon" id="form-name">
-					            </div>
-				            </th>
-						</tr>
 				        <tr>
 				          	<th st-sort="id">#</th>
 				          	<th st-sort="code">Mã tài liệu</th>
