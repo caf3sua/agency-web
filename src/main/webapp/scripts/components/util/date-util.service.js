@@ -86,19 +86,19 @@
             return years;
         }
 
-        function dateDiff(date1, date2) {
-            var from = date1.split("/");
-            var to = date2.split("/");
-            var d1 = new Date(from[2], from[1] - 1, from[0]);
-            var d2 = new Date(to[2], to[1] - 1, to[0]);
-
-            var days;
-            days = d2.getDate() - d1.getDate();
-            return days;
+        function dateDiff(date1Str, date2Str) {
+            var date1 = parseDate(date1Str);
+            var date2 = parseDate(date2Str);
+            date1.setHours(0);
+            date1.setMinutes(0, 0, 0);
+            date2.setHours(0);
+            date2.setMinutes(0, 0, 0);
+            var datediff = Math.abs(date1.getTime() - date2.getTime()); // difference
+            return parseInt(datediff / (24 * 60 * 60 * 1000), 10); //Convert values days and return value
         }
 
         function parseDate(d) {
-            var dateStr = date1.split("/");
+            var dateStr = d.split("/");
             return new Date(dateStr[2], dateStr[1] - 1, dateStr[0]);
         }
     }

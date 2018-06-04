@@ -15,14 +15,20 @@
 </div>
 <div class="margin-right-5 width-100 margin-top-5">
     <div class="input-group " >
-        <input name="contactName" type="text" class="bv-input" placeholder="Họ và tên" ng-model="vm.contactName" readonly="readonly"/>
+        <input name="contactName" type="text" class="bv-input" placeholder="Họ và tên" ng-model="vm.contactName" readonly="readonly"
+               required-message="'This field is required!'"
+               required/>
         <div class="input-group-addon" ng-click="vm.openSearchContact()">
             <i class="fa fa-plus"></i>
         </div>
     </div>
 </div>
 <div class="input-group date margin-top-5" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-    <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="vm.contactDob">
+    <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="vm.contactDob"
+           validator = "vm.dobValidator(vm.contactDob) === true"
+           invalid-message = "vm.dobValidator(vm.contactDob)"
+           required-message="'This field is required!'"
+           required>
     <div class="input-group-addon">
         <span class="glyphicon glyphicon-th"></span>
     </div>
