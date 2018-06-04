@@ -1069,10 +1069,8 @@ body {
     border-radius: 25px;
 }
 .bv-input-icon-wrap {
-    border: 1px solid #ccc;
     display: flex;
     flex-direction: row;
-    padding: 5px 15px;
     background: #ffff;
     border-bottom: none;
 }
@@ -1479,6 +1477,16 @@ body {
 .bv-home-block-four-left{
     border-right: 1px solid #ccc;
 }
+/*.input-group-addon{*/
+    /*position: absolute;*/
+    /*right: -41px;*/
+    /*top: 1px;*/
+    /*min-height: 50px;*/
+/*}*/
+/*.input-group-addon>i{*/
+    /*left: -5px;*/
+    /*top: 10px;*/
+/*}*/
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{
         margin-left: 10px;
