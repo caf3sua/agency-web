@@ -2,18 +2,16 @@
     <!-- Header -->
 	<div ng-include="'apps/product/partial/partial.product.header.html'"></div>
 	
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step">
-        <div class="hidden-md hidden-lg text-center">
-            <div class=" text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStep('step1')">
-                <p class="display-inline-block">1</p>
-                <p class="display-inline-block">Tính phí</p>
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+        <div class="hidden-md hidden-lg text-center ">
+            <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
+                <p class="display-inline-block">{{vm.typeNameOne}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step2')">
-                <p class="display-inline-block">2</p>
-                <p class="display-inline-block">Thông tin bảo hiểm</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step2')" id="mobile-step-2">
+                <p class="display-inline-block">{{vm.typeNameTwo}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step3')">
-                <p>3</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step3')" id="mobile-step-3">
+                <p class="display-inline-block">{{vm.typeNameThree}}</p>
             </div>
         </div>
         <!-- Tab 1 -->
@@ -21,7 +19,7 @@
             <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
                 <p class="fas {{vm.typeArrowOne}}"></p>
                 <p>1</p>
-                <span>TÍNH PHÍ - THÔNG TIN BẢO HIỂM</span>
+                <span>Tính phí ,thông tin bảo hiểm</span>
             </div>
             <div class="bv-step-content" id="bv-step-1-content"  >
                 <div class="text-header-sp">
@@ -47,20 +45,20 @@
                 </div>
                 
                 <div class="">
-                    <p class="bv-title-from">Thời hạn bảo hiểm áp dụng(*)</p>
+                    <p class="bv-title-from">Thời hạn bảo hiểm áp dụng<span class="bv-req-red">&nbsp(*)</span></p>
                     <select class="bv-select-box form-control" ng-model="vm.homePremium.yearBuildCode" ng-change="vm.getPremium()">
                         <option value="1">1 năm</option>
                         <option value="2">2 năm</option>
                     </select>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà(*)</p>
+                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà<span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="number" ng-change="vm.getPremium()" min = "300000000" max = "5000000000" maxlength="10" required class="bv-input" ng-model="vm.homePremium.si" name="si" id="si" placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" />
                 </div>
                 
-                <div class="">
+                <div class="margin-top-5">
                     <p class="bv-title-from">Giới hạn bồi thường phần Tài sản bên trong</p>
                     <select class="bv-select-box form-control" ng-model="vm.homePremium.siin" ng-change="vm.getPremium()">
                    		<option value="">Lựa chọn Giới hạn bồi thường</option>	
@@ -72,7 +70,7 @@
                     </select>
                 </div>
                 
-                <div class="">
+                <div class="margin-top-5">
                     <p class="bv-title-from">Phí bảo hiểm phần ngôi nhà:</p>
                     <p class="bv-title-from">{{vm.homePremium.premiumSi | number}} VND</p>
                 </div>
@@ -88,7 +86,7 @@
                     <p class="bv-title-from">Nhập mã giảm giá (nếu có)</p>
                     <input type="text" class="bv-input" ng-model="vm.homePremium.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
                 </div>
-                <div class="">
+                <div class="margin-top-5">
                     <p class="bv-title-from">Tổng phí thanh toán:</p>
                     <p class="bv-title-from">{{vm.homePremium.premiumHome | number}} VND</p>
                 </div>

@@ -2,18 +2,16 @@
     <!-- Header -->
 	<div ng-include="'apps/product/partial/partial.product.header.html'"></div>
 	
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step">
-        <div class="hidden-md hidden-lg text-center">
-            <div class=" text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStep('step1')">
-                <p class="display-inline-block">1</p>
-                <p class="display-inline-block">Tính phí</p>
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+        <div class="hidden-md hidden-lg text-center ">
+            <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
+                <p class="display-inline-block">{{vm.typeNameOne}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step2')">
-                <p class="display-inline-block">2</p>
-                <p class="display-inline-block">Thông tin bảo hiểm</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step2')" id="mobile-step-2">
+                <p class="display-inline-block">{{vm.typeNameTwo}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step3')">
-                <p>3</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step3')" id="mobile-step-3">
+                <p class="display-inline-block">{{vm.typeNameThree}}</p>
             </div>
         </div>
    <!-- Tab1: TÍNH PHÍ -->
@@ -328,7 +326,7 @@
                         <span>Mệt mỏi</span>
                     </label>
                 </div>
-                <div class="cntr margin-right-15">
+                <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx10" class="label-cbx">
                         <input id="cbx10" type="checkbox" class="invisible" ng-model="vm.policy.qresultTre" ng-change="vm.checkQresultTre()">
                         <div class="checkbox">
@@ -340,7 +338,7 @@
                         <span>Giảm cân không rõ nguyên nhân</span>
                     </label>
                 </div>
-                <div class="cntr margin-right-15">
+                <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx11" class="label-cbx">
                         <input id="cbx11" type="checkbox" class="invisible" ng-model="vm.policy.qtypeCancer" ng-change="vm.checkQtypeCancer()">
                         <div class="checkbox">
@@ -352,7 +350,7 @@
                         <span>Nổi hạch lớn</span>
                     </label>
                 </div>
-                <div class="cntr margin-right-15">
+                <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx12" class="label-cbx">
                     	<input id="cbx12" type="checkbox" class="invisible" ng-model="vm.policy.qresultCan" ng-change="vm.checkQresultCan()">
                         <div class="checkbox">
@@ -364,7 +362,7 @@
                         <span>Xuất hiện mảng da không giống với khu vực da xung quanh</span>
                     </label>
                 </div>
-                <div class="cntr margin-right-15">
+                <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbq3i" class="label-cbx">
                     	<input id="cbq3i" type="checkbox" class="invisible" ng-model="vm.policy.q3" ng-change="vm.checkQ3()">
                         <div class="checkbox">
@@ -787,7 +785,7 @@
 	                        <span>Mệt mỏi</span>
 	                    </label>
 	                </div>
-	                <div class="cntr margin-right-15">
+	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd10" class="label-cbx">
 	                        <input id="cbxd10" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultTre">
 	                        <div class="checkbox">
@@ -799,7 +797,7 @@
 	                        <span>Giảm cân không rõ nguyên nhân</span>
 	                    </label>
 	                </div>
-	                <div class="cntr margin-right-15">
+	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd11" class="label-cbx">
 	                        <input id="cbxd11" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtypeCancer">
 	                        <div class="checkbox">
@@ -811,7 +809,7 @@
 	                        <span>Nổi hạch lớn</span>
 	                    </label>
 	                </div>
-	                <div class="cntr margin-right-15">
+	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd12" class="label-cbx">
 	                    	<input id="cbxd12" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultCan">
 	                        <div class="checkbox">
@@ -823,7 +821,7 @@
 	                        <span>Xuất hiện mảng da không giống với khu vực da xung quanh</span>
 	                    </label>
 	                </div>
-	                <div class="cntr margin-right-15">
+	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxq3" class="label-cbx">
 	                    	<input id="cbxq3" type="checkbox" class="invisible" disabled ng-model="vm.policy.q3">
 	                        <div class="checkbox">

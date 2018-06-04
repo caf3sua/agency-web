@@ -287,7 +287,7 @@
     </li>
 
     <!-- Ấn chỉ -->
-    <li ng-class="{active:$state.includes('app.layout')}">
+    <li ng-class="{active:$state.includes('printed-paper')}">
         <a class="bv-left-menu">
             <span class="nav-caret">
 	          <i class="fa fa-caret-down"></i>
@@ -297,12 +297,12 @@
         </a>
         <ul class="nav-sub">
             <li ui-sref-active="active">
-                <a ui-sref="app.layout.header">
+                <a ui-sref="printed-paper.new">
                     <span class="nav-text">Ấn chỉ chưa sử dụng</span>
                 </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="app.layout.aside">
+                <a ui-sref="printed-paper.used">
                     <span class="nav-text">Ấn chỉ đã sử dụng</span>
                 </a>
             </li>
