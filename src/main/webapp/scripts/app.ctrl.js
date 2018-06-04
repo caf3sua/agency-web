@@ -20,7 +20,7 @@
         vm.isSmart = isSmart();
         
         // Account
-        vm.account = getAccount();
+        vm.account;
         vm.isAuthenticated = Principal.isAuthenticated;
         
         // menu
@@ -30,6 +30,8 @@
         			"ui-sref" : "root",
         		},
         };
+        
+        getAccount();
         
         // config
         vm.app = {
@@ -131,8 +133,13 @@
   			},
   		];
   		
+  		$scope.$on('authenticationSuccess', function() {
+  			getAccount();
+        });
+  		
   		function getAccount() {
   			Principal.identity().then(function(account) {
+  				console.log('AppCtrl, get Account' + account);
                 vm.account = account;
                 vm.isAuthenticated = Principal.isAuthenticated;
             });

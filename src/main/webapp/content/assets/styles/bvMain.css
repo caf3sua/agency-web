@@ -2242,3 +2242,9 @@ body {
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(0,0,0,0.5); 
 }
+
+.bv-btn {
+	width: 40px !important;
+    height: 40px !important;
+   line-height: 30px !important;
+}
