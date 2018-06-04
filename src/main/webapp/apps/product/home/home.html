@@ -48,7 +48,7 @@
                     </select>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà<span class="bv-req-red">&nbsp(*)</span></p>
+                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà<span class="bv-req-red">&nbsp<span class="bv-req-red">&nbsp(*)</span></span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="number" ng-change="vm.getPremium()" min = "300000000" max = "5000000000" maxlength="10" required class="bv-input" ng-model="vm.homePremium.si" name="si" id="si" placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" />
@@ -96,49 +96,49 @@
                     <p>Thông tin bảo hiểm</p>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Họ và tên người được bảo hiểm (*)</p>
+                    <p class="bv-title-from">Họ và tên người được bảo hiểm <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" name="insuranceName" id="insuranceName" ng-model="vm.homePolicy.insuranceName" class="bv-input" placeholder="Họ và tên người được bảo hiểm" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Số CMND/Hộ chiếu (*)</p>
+                    <p class="bv-title-from">Số CMND/Hộ chiếu <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" name="invoceNumber" id="invoceNumber" ng-model="vm.homePolicy.invoceNumber" class="bv-input" placeholder="Số CMND/Hộ chiếu" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Địa chỉ liên lạc (*)</p>
+                    <p class="bv-title-from">Địa chỉ liên lạc <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" name="insuranceAddress" id="insuranceAddress" ng-model="vm.homePolicy.insuranceAddress" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Tên phường/ xã (*)</p>
+                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Số điện thoại (*)</p>
+                    <p class="bv-title-from">Số điện thoại <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" class="bv-input" name="byNight" id="byNight" ng-model="vm.homePolicy.byNight" placeholder="Số điện thoại" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Địa chỉ ngôi nhà mua bảo hiểm(*)</p>
+                    <p class="bv-title-from">Địa chỉ ngôi nhà mua bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" name="insuredLocation" id="insuredLocation" ng-model="vm.homePolicy.insuredLocation" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Tên phường/ xã (*)</p>
+                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Quyền sở hữu ngôi nhà (*)</p>
+                    <p class="bv-title-from">Quyền sở hữu ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
 
@@ -180,13 +180,13 @@
                     </div>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Tổng diện tích sử dụng (*)</p>
+                    <p class="bv-title-from">Tổng diện tích sử dụng <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class="margin-top-5">
                     <input type="number" min = "10" max = "1000" maxlength="4" required ng-model="vm.homePolicy.totalUsedArea" id="totalUsedArea" name="totalUsedArea" class="bv-input" placeholder="Tổng diện tích sử dụng trong khoảng từ 10m2 đến 1000m2" />
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Loại hình ngôi nhà (*)</p>
+                    <p class="bv-title-from">Loại hình ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 <div class=" display-flex">
                     <div class="cntr margin-right-5">
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Thời hạn bảo hiểm từ ngày (*)</p>
+                    <p class="bv-title-from">Thời hạn bảo hiểm từ ngày <span class="bv-req-red">&nbsp(*)</span></p>
                 </div>
                 
                 <div class=" display-flex margin-top-5">
