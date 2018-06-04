@@ -28,6 +28,7 @@
                 templateUrl: 'apps/contact/contact-search-dialog.html',
                 controller: 'ContactSearchDialogController',
                 controllerAs: 'vm',
+                size: 'lg',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('global');
