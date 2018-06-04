@@ -2,18 +2,16 @@
     <!-- Header -->
 	<div ng-include="'apps/product/partial/partial.product.header.html'"></div>
 	
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step">
-        <div class="hidden-md hidden-lg text-center">
-            <div class=" text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStep('step1')">
-                <p class="display-inline-block">1</p>
-                <p class="display-inline-block">Tính phí</p>
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+        <div class="hidden-md hidden-lg text-center ">
+            <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
+                <p class="display-inline-block">{{vm.typeNameOne}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step2')">
-                <p class="display-inline-block">2</p>
-                <p class="display-inline-block">Thông tin bảo hiểm</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step2')" id="mobile-step-2">
+                <p class="display-inline-block">{{vm.typeNameTwo}}</p>
             </div>
-            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step3')">
-                <p>3</p>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStepMobile('step3')" id="mobile-step-3">
+                <p class="display-inline-block">{{vm.typeNameThree}}</p>
             </div>
         </div>
         <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">

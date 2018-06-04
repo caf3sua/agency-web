@@ -1,378 +1,442 @@
-<div class="container display-flex" style="margin-top: 90px">
-    <div class="bv-step-1 display-flex" id="bv-step-1">
-        <div class="bv-step-title text-center" ng-click="vm.closeOpenStepOne()">
-            <p class="fas {{vm.typeArrowOne}}"></p>
-            <p>1</p>
-            <p>Tính phí</p>
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 bv-background-sp">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 ">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0">
+            <p class="bv-title-home">Sản phẩm Bảo Việt An Gia</p>
         </div>
-        <div class="bv-step-content" id="bv-step-1-content">
-            <div class="text-header-sp">
-                <p>Thông tin gói</p>
-            </div>
-            <div class="">
-                <p class="bv-title-from">Chon nhóm loại xe</p>
-                <select class="bv-select-box form-control">
-                    <option>Xe oto chở người không kinh doanh vận tải</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Đối tượng đượng bảo hiểm</p>
-            </div>
-            <div class=" display-flex">
-                <div class="cntr margin-right-5">
-                    <label for="cbx" class="label-cbx">
-                        <input id="cbx" type="checkbox" class="invisible">
-                        <div class="checkbox">
-                            <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                <polyline points="4 11 8 15 16 6"></polyline>
-                            </svg>
-                        </div>
-                        <span>Mới</span>
-                    </label>
+        <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
+            <div class="bv-btn-groud-header">
+                <div class="bv-btn-header-title">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Tạo đơn hàng mới</span>
                 </div>
-                <div class="cntr">
+                <div class="bv-btn-header-title">
+                    <i class="fas fa-user"></i>
+                    <span>Tạo khách hàng mới</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step">
+        <div class="hidden-md hidden-lg text-center">
+            <div class=" text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStep('step1')">
+                <p class="display-inline-block">1</p>
+                <p class="display-inline-block">Tính phí</p>
+            </div>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step2')">
+                <p class="display-inline-block">2</p>
+                <p class="display-inline-block">Thông tin bảo hiểm</p>
+            </div>
+            <div class="display-inline-block text-center bv-step-mobile" ng-click="vm.closeOpenStep('step3')">
+                <p>3</p>
+            </div>
+        </div>
+        <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">
+            <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
+                <p class="fas {{vm.typeArrowOne}}"></p>
+                <p>1</p>
+                <span>Tính phí</span>
+                <span>,thông tin bảo hiểm</span>
+            </div>
+            <div class="bv-step-content" id="bv-step-1-content"  >
+                <div class="text-header-sp">
+                    <p>Thông tin gói</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Thời hạn bảo hiểm</p>
+                </div>
+                <div class=" display-flex margin-top-10">
+                    <div class="margin-right-5 width-100">
+                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insuranceStartDate">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="width-100">
+                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.insuranceEndDate" ng-disabled="true">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" display-flex margin-top-10">
+                    <div class="margin-right-5 width-100">
+                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.insuranceStartDate">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="width-100">
+                        <input type="number" min="0" class="bv-input" placeholder="Tuổi" ng-model="vm.product.numberPerson" ng-blur="vm.addOrRemovePerson()"/>
+                    </div>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Đối tượng đượng bảo hiểm</p>
+                </div>
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbx13" class="label-cbx">
+                            <input id="cbx13" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.product.insuranceTarget" value="New">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Mới</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbx14" class="label-cbx">
+                            <input id="cbx14" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.product.insuranceTarget" value="Reuse">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Tái tục</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="margin-top-10">
+                    <relation-combo type="bvp-insurance-type" ng-model="vm.product.premiumPackage" options="vm.insuranceTypeOptions" onfinished="vm.processComboResult(data, type)"/>
+                </div>
+                <div class="margin-top-10" ng-show="vm.product.namSX">
+                    <p class="bv-title-from">Quyền lợi bổ sung</p>
+                </div>
+                <div class="cntr margin-top-5" ng-show="vm.product.namSX">
+                    <div>
+                        <label for="cbx6" class="label-cbx">
+                            <input id="cbx6" type="checkbox" class="invisible" ng-model="vm.product.khauTru" ng-change="vm.getPremium()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Điều trị ngoại trú do ốm bệnh, tai nạn</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="cbx7" class="label-cbx">
+                            <input id="cbx7" type="checkbox" class="invisible" ng-model="vm.product.khauHao" ng-change="vm.getPremium()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Bảo hiểm tai nạn cá nhân</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="cbx8" class="label-cbx">
+                            <input id="cbx8" type="checkbox" class="invisible" ng-model="vm.product.matCap" ng-change="vm.getPremium()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Bảo hiểm sinh mạng cá nhân</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="cbx9" class="label-cbx">
+                            <input id="cbx9" type="checkbox" class="invisible" ng-model="vm.product.ngapNuoc" ng-change="vm.getPremium()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Bảo hiểm nha khoa</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="cbx10" class="label-cbx">
+                            <input id="cbx10" type="checkbox" class="invisible" ng-model="vm.product.garage" ng-change="vm.getPremium()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Bảo hiểm thai sản</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="bv-title-from" ng-show="vm.isShowPremium">
+                    <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
+                </div>
+                <div ng-show="vm.isShowPremium">
+                    <p class="bv-tile-templateSummary">{{vm.product.premiumNet}}</p>
+                </div>
+                <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
+                    <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
+                </div>
+                <div ng-show="vm.isShowTotalPremium">
+                    <p class="bv-tile-templateSummary">{{vm.product.premiumKhc}}</p>
+                </div>
+            </div>
+            <div class="bv-step-content">
+                <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
+                <div ng-include="'apps/product/partial/partial.contact.extend.html'"></div>
+
+                <div class="text-header-sp margin-top-20" ng-show="vm.isShowPersonList">
+                    <p>2. Thông tin người được bảo hiểm</p>
+                </div>
+                <div class="cntr margin-right-5" ng-show="vm.isShowPersonList">
                     <label for="cbx1" class="label-cbx">
-                        <input id="cbx1" type="checkbox" class="invisible">
+                        <input id="cbx1" type="checkbox" class="invisible" ng-model="vm.deletePersonDetailCheck">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
                                 <polyline points="4 11 8 15 16 6"></polyline>
                             </svg>
                         </div>
-                        <span>Tái tục</span>
+                        <span>Người yêu cầu bảo hiểm có đi cùng và có tham gia bảo hiểm(Bỏ chọn ô này để xóa thông tin)</span>
                     </label>
                 </div>
-            </div>
-            <div class="margin-top-5">
-                <input type="text" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" />
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Loại bảo hiểm</p>
-            </div>
-            <div class="cntr margin-top-5">
-                <label for="cbx2" class="label-cbx">
-                    <input id="cbx2" type="checkbox" class="invisible">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div>
-                    <span>Bảo hiểm trách nhiệm dân sự bắt buộc</span>
-                </label>
-            </div>
-            <div class="margin-top-5">
-                <select class="bv-select-box form-control">
-                    <option>Loại xe dưới 6 chỗ ngồi</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </div>
-            <div class="cntr margin-top-5">
-                <label for="cbx3" class="label-cbx">
-                    <input id="cbx3" type="checkbox" class="invisible">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div>
-                    <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
-                </label>
-            </div>
-            <div class="cntr margin-top-5">
-                <label for="cbx4" class="label-cbx">
-                    <input id="cbx4" type="checkbox" class="invisible">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div>
-                    <span>Bảo hiểm tai nạn người ngồi trên xe</span>
-                </label>
-            </div>
-            <div class="cntr margin-top-5">
-                <label for="cbx5" class="label-cbx">
-                    <input id="cbx5" type="checkbox" class="invisible">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div>
-                    <span>Bảo hiểm vật chất xe</span>
-                </label>
+                <table class="table table-bordered margin-top-10" ng-show="vm.isShowPersonList">
+                    <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Số Hộ chiếu/CMND</th>
+                        <th>Ngày sinh (dd/MM/yyyy)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="person in vm.product.premiumKhcList">
+                        <td><input type="text" class="form-control" ng-model="person.insuredName"></td>
+                        <td><input type="text" class="form-control" ng-model="person.idPasswport"/></td>
+                        <td>
+                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="margin-top-5">
+                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="bv-step-2 display-flex" id="bv-step-2" ng-click="vm.closeOpenStepTwo()">
-        <div class="bv-step-title text-center">
-            <p class="fas {{ vm.typeArrowTwo }}"></p>
-            <p>2</p>
-            <p>Thông tin bảo hiểm</p>
-        </div>
-        <div class="bv-step-content">
-            <div class="text-header-sp">
-                <p>Thông tin gói</p>
+        <div class="bv-step-2 closeStepTwo padding0 display-flex " id="bv-step-2" >
+            <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step2')">
+                <p class="fas {{ vm.typeArrowTwo }}"></p>
+                <p>2</p>
+                <span>Thông tin giao hàng</span>
             </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Tên chủ xe</p>
-            </div>
-            <div class="margin-top-5">
-                <input type="text" class="bv-input" placeholder="Tên chủ xe theo đăng ký xe" />
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Địa chỉ</p>
-            </div>
-            <div class="margin-top-5">
-                <input type="text" class="bv-input" placeholder="Địa chỉ theo đăng ký xe" />
-            </div>
-            <div class="margin-top-5">
-                <input type="text" class="bv-input" placeholder="Địa chỉ theo đăng ký xe" />
-            </div>
-            <div class="margin-top-20 text-header-sp">
-                <p>Thông tin xe</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Biển kiểm soát</p>
-            </div>
-            <div class="margin-top-5">
-                <input type="text" class="bv-input" placeholder="Biển kiểm soát" />
-            </div>
-            <div class=" display-flex margin-top-5">
-                <div class="margin-right-5">
-                    <input type="text" class="bv-input" placeholder="Số khung" />
+
+            <div class="bv-step-content">
+                <!-- THÔNG TIN HÓA ĐƠN GIÁ TRỊ GIA TĂNG - THÔNG TIN NHẬN ĐƠN BẢO HIỂM -->
+                <div ng-include="'apps/product/partial/partial.invoice-receiverUser.html'"></div>
+
+                <div class="margin-top-10">
+                    <p class="bv-tile-templateSummary display-inline-block"></p>
+                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step3')">
+                        Tiếp theo
+                    </button>
                 </div>
-                <div class="">
-                    <input type="text" class="bv-input" placeholder="Số máy" />
-                </div>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Thời gian bảo hiểm</p>
-            </div>
-            <div class=" display-flex margin-top-5">
-                <div class="margin-right-5">
-                    <input type="text" class="bv-input" placeholder="Từ ngày" />
-                </div>
-                <div class="">
-                    <input type="text" class="bv-input" placeholder="Đến ngày" />
-                </div>
-            </div>
-            <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
-                <p>Thông tin giao hàng</p>
-            </div>
-            <div class="cntr margin-top-5">
-                <label for="cbx6" class="label-cbx">
-                    <input id="cbx6" type="checkbox" class="invisible">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div>
-                    <span>Theo thông tin chủ xe</span>
-                </label>
             </div>
         </div>
-    </div>
-    <div class="bv-step-3-default display-flex" id="bv-step-3" ng-click="vm.closeOpenStepThree()">
-        <div class="bv-step-title text-center">
-            <p class="fas {{ vm.typeArrowThree }}"></p>
-            <p>3</p>
-        </div>
-        <div class="bv-step-content">
-            <div class="display-flex">
-                <div class="border-right-ccc bv-pading-30 width-100">
-                    <div class="text-header-sp" style="margin-bottom: 10px">
-                        <p>Thông tin chủ xe</p>
+        <div class="bv-step-3-default  padding0  display-flex " id="bv-step-3" >
+            <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step3')">
+                <p class="fas {{ vm.typeArrowThree }}"></p>
+                <p>3</p>
+                <span>Tóm tắt đơn hàng</span>
+            </div>
+            <div class="bv-step-content">
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>1. Thông tin người yêu cầu bảo hiểm</p>
                     </div>
-                    <div class="margin-top-10">
-                        <p class="bv-title-from">Tên chủ xe</p>
-                    </div>
-                    <div>
-                        <p class="bv-tile-templateSummary">Tạ Minh Anh</p>
-                    </div>
-                    <div class="margin-top-10">
-                        <p class="bv-title-from">Địa chỉ</p>
+                    <div class="bv-title-from">
+                        <p>Họ tên người yêu cầu bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">368 Lý Thường Kiệt,Phường Tràng Tiền,Quận Hoàn Kiếm,Thành phố Hà Nội</p>
+                        <p class="bv-tile-templateSummary">{{vm.contactName}}</p>
                     </div>
-                    <div class="margin-top-10">
-                        <p class="bv-title-from">Điện thoại</p>
+                    <div class="bv-title-from">
+                        <p>Ngày sinh</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">098545465</p>
+                        <p class="bv-tile-templateSummary">{{vm.contactDob}}</p>
                     </div>
                 </div>
-                <div class="border-right-ccc bv-pading-30 width-100">
-                    <div class="text-header-sp" style="margin-bottom: 10px">
-                        <p>Thông tin về tham gia bảo hiểm</p>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>2. Thông tin người được bảo hiểm</p>
                     </div>
-                    <div class="margin-top-10">
-                        <p class="bv-title-from">Biển số</p>
+                    <table class="table table-bordered margin-top-10" ng-show="vm.isShowPersonList">
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ và tên</th>
+                            <th>Số Hộ chiếu/CMND</th>
+                            <th>Ngày sinh (dd/MM/yyyy)</th>
+                            <th>Số tiền bảo hiểm(VND)</th>
+                            <th>Phí bảo hiểm(VND</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="person in vm.product.premiumKhcList">
+                            <td>{{$index + 1}}</td>
+                            <td><input type="text" class="form-control" ng-model="person.insuredName" ng-disabled="true"/></td>
+                            <td><input type="text" class="form-control" ng-model="person.idPasswport" ng-disabled="true"/></td>
+                            <td>
+                                <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><input type="text" class="form-control" ng-model="vm.product.premiumPackage" ng-disabled="true"/></td>
+                            <td><input type="text" class="form-control" ng-model="person.premium" ng-disabled="true"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>3. Thông tin bảo hiểm</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Số tiền bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">29D1 553392</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumPackage}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Thời hạn bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Từ {{vm.product.insuranceStartDate}} Đến {{vm.product.insuranceEndDate}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Quyền lợi bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Điều kiện bảo hiểm A - Tử vong không phải do nguyên nhân tai nạn</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Điều khoản, điều kiện</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Theo điều khoản bảo hiểm kết hợp con người của Bảo Hiểm Bảo Việt. Quý khách vui lòng xem <a href="#">Điều khoản, điều kiện</a></p>
+                    </div>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>4. Thông tin phí bảo hiểm</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Tổng phí phải thanh toán</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc}}</p>
+                    </div>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>5. Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
                     </div>
                     <div class="display-flex">
-                        <div class="margin-right-30">
-                            <div class="">
-                                <p class="bv-title-from">Số khung</p>
+                        <div class="margin-right-70">
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Họ tên người nhận</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">65464556</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
+                            </div>
+                        </div>
+                        <div class="margin-right-70">
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Số điện thoại</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="-10">
-                                <p class="bv-title-from">Số máy</p>
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Email</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">65464556</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <p class="bv-title-from">Loại xe</p>
+                    <div class="bv-title-from">
+                        <p>Địa chỉ người nhận</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Dưới 6 chỗ ngồi</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}, {{vm.policy.receiverUser.addressDistrict}}</p>
                     </div>
-                    <div class="">
-                        <p class="bv-title-from">Mục đích sử dụng</p>
+                    <div class="bv-title-from">
+                        <p>Hình thức giao nhận</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Xe oto chở người không kinh doanh vận tải</p>
+                        <p class="bv-tile-templateSummary display-inline-block">Gửi tới địa chỉ người nhận</p>
                     </div>
                 </div>
-                <div class="width-100 bv-pading-30">
+                <div class="bv-pading-30">
                     <div class="text-header-sp">
-                        <p>Thời gian bảo hiểm</p>
+                        <p>6. Thông tin hóa đơn giá trị gia tăng</p>
+                    </div>
+                    <div class="display-flex">
+                        <div class="margin-right-70">
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Họ tên người mua</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.name}}</p>
+                            </div>
+                        </div>
+                        <div class="margin-right-70">
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Tên công ty</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.company}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="margin-top-10">
+                                <p class="bv-title-from">Mã số thuế</p>
+                            </div>
+                            <div>
+                                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.taxNo}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Địa chỉ công ty</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Xe oto chở người không kinh doanh vận tải</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.address}}</p>
                     </div>
-                </div>
-            </div>
-            <div>
-                <div class="bv-pading-30 margin-top-20 text-header-sp" style="margin-bottom: 10px">
-                    <p>Mức trách nhiệm và phí bảo hiểm</p>
-                </div>
-                <div style="background: #fafafa">
-                    <div class="bv-pading-table-templateSummary">
-                        <table class="width-100 ">
-                            <thead>
-                            <tr>
-                                <th class="bv-title-from">Phạm vi bảo hiểm</th>
-                                <th class="bv-title-from">Mức trách nhiệm</th>
-                                <th class="bv-title-from">Phí bảo hiểm(Đã bao gồm VAT)</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p class="bv-tile-templateSummary">Bảo hiểm trách nhiệm dân sự bắt buộc</p></td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <p class="margin-bottom-0">
-                                                Mức trách nhiệm đối với người thứ 3
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về người:100,000,000 VND/người/vụ
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về tài sản:100,000,000 VND/vụ
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <span>480,700</span><span>VND</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="bv-tile-templateSummary">Bảo hiểm tai nạn người ngồi trên xe</p></td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <p class="margin-bottom-0">
-                                               Số người: 5 người
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về người:100,000,000 VND/người/vụ
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <span>480,700</span><span>VND</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <p class="bv-title-from">Tổng phí bảo hiểm</p>
-                                </td>
-                                <td>
-                                    <p class="bv-tile-templateSummary"><span>530,700</span><span>VND</span></p></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="bv-pading-30">
-                <div class="text-header-sp">
-                    <p>Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
-                </div>
-                <div class="display-flex">
-                    <div class="margin-right-70">
-                        <div class="margin-top-10">
-                            <p class="bv-title-from">Loại bảo hiểm</p>
-                        </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">Tạ Minh Anh</p>
-                        </div>
-                    </div>
-                    <div class="margin-right-70">
-                        <div class="margin-top-10">
-                            <p class="bv-title-from">Số điện thoại</p>
-                        </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">0964564644</p>
-                        </div>
+                    <div class="bv-title-from">
+                        <p>Số tài khoản</p>
                     </div>
                     <div>
-                        <div class="margin-top-10">
-                            <p class="bv-title-from">Email</p>
-                        </div>
-                        <div>
-                            <p class="bv-tile-templateSummary">minhta@gmail.com</p>
-                        </div>
+                        <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
+                        <button class="bv-btn-step3" ng-click="vm.createNewPolicy()">
+                            Tạo đơn hàng
+                        </button>
                     </div>
-                </div>
-                <div class="bv-title-from">
-                    <p>Địa chỉ người nhận</p>
-                </div>
-                <div>
-                    <p class="bv-tile-templateSummary">386 Lý Thường Kiệt,Phường Tràng Tiền,Quận Hoàn Kiếm,Thành phố Hà Nội</p>
-                </div>
-                <div class="bv-title-from">
-                    <p>Hình thức giao nhận</p>
-                </div>
-                <div>
-                    <p class="bv-tile-templateSummary">Gửi tới địa chỉ người nhận</p>
                 </div>
             </div>
         </div>

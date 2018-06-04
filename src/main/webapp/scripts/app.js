@@ -35,7 +35,9 @@
 		 'highcharts-ng',
 		 'ngScrollbars', 
 		 'toastr',
-		 'smart-table'
+		 'smart-table',
+		 'disableAll',
+         'angularValidator'
       ])
       .run(run)
       .run(stateChange);

@@ -8,19 +8,19 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('product.bvp', {
-            parent: 'product',
-            url: '/bvp',
-            templateUrl: 'apps/product/bvp/bvp.html',
+        $stateProvider.state('printed-paper.new', {
+            parent: 'printed-paper',
+            url: '/new',
+            templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-new.html',
             data: {
                 authorities: [],
-                title: 'PRODUCT_BVP'
+                title: 'PRINTED_PAPER_NEW'
             },
-            controller: "ProductBvpController",
+            controller: "PrintedPaperNewController",
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/bvp/bvp.service.js', 'apps/product/bvp/bvp.controller.js']);
+	            		return $ocLazyLoad.load(['apps/printed-paper/printed-paper-new/printed-paper-new.controller.js']);
 		        }
             }
         });

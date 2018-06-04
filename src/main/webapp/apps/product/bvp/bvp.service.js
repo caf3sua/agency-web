@@ -3,19 +3,19 @@
 
 	angular
 		.module('app')
-		.factory('KhcService', BvpService);
+		.factory('BvpService', BvpService);
 
-    KhcService.$inject = [ '$resource' ];
+    BvpService.$inject = [ '$resource' ];
 
-	function KhcService($resource) {
+	function BvpService($resource) {
 		var service = $resource('', {}, {
 			'getPremium' : {
 				method : 'POST',
-				url : 'api/agency/product/khc/premium'
+				url : 'api/agency/product/bvp/premium'
 			},
 			'createNewPolicy' : {
 				method : 'POST',
-				url : 'api/agency/product/khc/createPolicy'
+				url : 'api/agency/product/bvp/createPolicy'
 			}
 		});
 

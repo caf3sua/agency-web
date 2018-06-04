@@ -2,7 +2,7 @@
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0"  style="min-height: 100vh">
         <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0 padding0">
-                <p class="bv-title-home">Giỏ hàng</p>
+                <p class="bv-title-home">Tài liệu</p>
             </div>
             <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
                 <div class="bv-btn-groud-header">
@@ -21,148 +21,56 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-            <div class="bv-input-icon-wrap">
-                <span class="bv-input-icon"><span class="fas fa-search"></span></span>
-                <input type="text" placeholder="Tìm kiếm" class="bv-input-with-icon" id="form-name">
-            </div>
-        </div>
         <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-            <table class="table bv-home-block-left-table bv-table-kh" >
-                <col width="5%">
-                <col width="18%">
-                <col width="15%">
-                <col width="10%">
-                <col width="13%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                <col width="*">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Mã tài liệu</th>
-                    <th>Tên tài liệu</th>
-                    <th>Người tải lên</th>
-                    <th>Số lượt download</th>
-                    <th>Ghi chú</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tr>
-                    <td>
-                        <p class="bv-home-table-stt margin-0">1</p>
-                    </td>
-                    <td>
-                        <p class="bv-table-text-colorBlue">BVP.HN.01</p>
-                    </td>
-                    <td>
-                        <p class="">Vũ Hoàng Chiến</p>
-                    </td>
-                    <td>
-                        <p class="">Bảo hiểm oto</p>
-                    </td>
-                    <td>
-                        <p class="">059484948</p>
-                    </td>
-                    <td>
-                        <p class="">Đã thanh toán</p>
-                    </td>
-                    <td>
-                        <div class="bv-tl-icon text-right">
-                            <i class="fas fa-download"></i>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="bv-home-table-stt margin-0">2</p>
-                    </td>
-                    <td>
-                        <p class="bv-table-text-colorBlue">BVP.HN.01</p>
-                    </td>
-                    <td>
-                        <p class="">Vũ Hoàng Chiến</p>
-                    </td>
-                    <td>
-                        <p class="">Bảo hiểm oto</p>
-                    </td>
-                    <td>
-                        <p class="">059484948</p>
-                    </td>
-                    <td>
-                        <p class="">Đã thanh toán</p>
-                    </td>
-                    <td>
-                        <div class="bv-tl-icon text-right">
-                            <i class="fas fa-download"></i>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="bv-home-table-stt margin-0">3</p>
-                    </td>
-                    <td>
-                        <p class="bv-table-text-colorBlue">BVP.HN.01</p>
-                    </td>
-                    <td>
-                        <p class="">Vũ Hoàng Chiến</p>
-                    </td>
-                    <td>
-                        <p class="">Bảo hiểm oto</p>
-                    </td>
-                    <td>
-                        <p class="">059484948</p>
-                    </td>
-                    <td>
-                        <p class="">Đã thanh toán</p>
-                    </td>
-                    <td>
-                        <div class="bv-tl-icon text-right">
-                            <i class="fas fa-download"></i>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="bv-home-table-stt margin-0">4</p>
-                    </td>
-                    <td>
-                        <p class="bv-table-text-colorBlue">BVP.HN.01</p>
-                    </td>
-                    <td>
-                        <p class="">Vũ Hoàng Chiến</p>
-                    </td>
-                    <td>
-                        <p class="">Bảo hiểm oto</p>
-                    </td>
-                    <td>
-                        <p class="">059484948</p>
-                    </td>
-                    <td>
-                        <p class="">Đã thanh toán</p>
-                    </td>
-                    <td>
-                        <div class="bv-tl-icon text-right">
-                            <i class="fas fa-download"></i>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-        </div>
-        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-            <div  class="col-lg-8 padding0" >
-                <p class="bv-gh-text-sum">Tổng tiền</p>
-            </div>
-            <div class="col-lg-4 padding0 text-right" >
-                <p class="bv-gh-number-sum">1480.00 VND</p>
-                <button class="bv-gh-tt">
-                    Thanh toán
-                </button>
-            </div>
-
+            <!-- Table content -->
+	        <table st-table="vm.docsInit" st-safe-src="vm.docs" class="table table-striped bv-home-block-left-table bv-table-kh">
+			      	<thead>
+				      	<tr>
+				      		<th colspan="7">
+					      		<div class="bv-input-icon-wrap">
+					                <span class="bv-input-icon"><span class="fas fa-search"></span></span>
+					                <input st-search="" type="text" placeholder="Tìm kiếm" class="bv-input-with-icon" id="form-name">
+					            </div>
+				            </th>
+						</tr>
+				        <tr>
+				          	<th st-sort="id">#</th>
+				          	<th st-sort="code">Mã tài liệu</th>
+				          	<th st-sort="name">Tên tài liệu</th>
+				          	<th st-sort="usernameUpload">Người tải lên</th>
+				          	<th st-sort="numberDownload">Số lượt download</th>
+				          	<th st-sort="note">Ghi chú</th>
+				          	<th></th>
+				        </tr>
+					</thead>
+			      	<tbody>
+				        <tr ng-repeat="doc in vm.docsInit track by $index">
+		                    <td>
+		                        <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
+		                    </td>
+		                    <td>
+		                        <p class="bv-table-text-colorBlue">{{doc.code}}</p>
+		                    </td>
+		                    <td>
+		                        <p class="">{{doc.name}}</p>
+		                    </td>
+		                    <td>
+		                        <p class="">{{doc.usernameUpload}}</p>
+		                    </td>
+		                    <td>
+		                        <p class="">{{doc.numberDownload | number}}</p>
+		                    </td>
+		                    <td>
+		                        <p class="">{{doc.note}}</p>
+		                    </td>
+		                    <td>
+		                    	<button class="md-btn md-fab m-b-sm blue-600 bv-btn" ng-click="vm.downloadDocument(doc)">
+		                    		<i class="fas fa-download"></i>
+		                    	</button>
+		                    </td>
+		                </tr>
+			      	</tbody>
+		    </table>
         </div>
     </div>
 </div>
