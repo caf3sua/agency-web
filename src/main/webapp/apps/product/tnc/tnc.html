@@ -56,7 +56,11 @@
                     <div class=" display-flex margin-top-10">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate">
+                                <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate"
+                                       validator = "vm.dobValidator(vm.contactDob) === true"
+                                       invalid-message = "vm.dobValidator(vm.contactDob)"
+                                       required-message="'This field is required!'"
+                                       required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
