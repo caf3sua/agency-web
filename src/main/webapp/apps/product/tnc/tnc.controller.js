@@ -44,6 +44,7 @@
             "receiveMethod":"1"
         }
 
+        vm.validation = validation;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
@@ -94,6 +95,7 @@
             } else if(vm.product.numberperson < vm.policy.listTncAdd.length) {
                 removePerson();
             }
+            getPremium();
         }
 
         function addNewPerson() {
@@ -124,8 +126,12 @@
         function getPremium() {
             var postData = getPostData(false);
 
-            if(vm.policy.listTncAdd.length > 0) {
+            if(postData.numberperson > 0 && postData.premiumPackage > 0) {
                 TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            } else {
+                vm.product.premiumnet = 0;
+                vm.product.premiumtnc = 0;
+                vm.product.premiumAverage = 0;
             }
         }
 
@@ -189,6 +195,10 @@
 
         function onGetPolicyNumberError(result) {
             toastr.error('Get data error!', 'Error');
+        }
+
+        function validation() {
+
         }
     }
 })();

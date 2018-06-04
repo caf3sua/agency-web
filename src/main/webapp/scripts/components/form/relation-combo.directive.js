@@ -11,6 +11,7 @@
         var directive = {
             restrict: 'E',
             scope: {
+                name: '@',
             	selectedItem: '=ngModel',
             	options: '=',
             	loadRelationFinished: '&onfinished'
@@ -75,11 +76,11 @@
             }
 
             if(attrs.type == 'hhvc-money-type') {
-                var template = '<select class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()">'
+                var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()">'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
 			} else {
-                var template = '<select class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()">'
+                var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()">'
                     + '<option value="" disabled selected>' + defaultOption + '</option>'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';

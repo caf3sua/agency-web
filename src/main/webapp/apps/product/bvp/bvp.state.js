@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/bvp/bvp.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/bvp/bvp.service.js', 'apps/product/bvp/bvp.controller.js']);
 		        }
             }
         });
