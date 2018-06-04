@@ -141,9 +141,43 @@
                     <p class="bv-title-from">Quyền sở hữu ngôi nhà (*)</p>
                 </div>
                 <div class="margin-top-5">
-                     <input type="radio" ng-model="vm.homePolicy.bankId" value="0"/> Chủ sở hữu 
-                     <input type="radio" ng-model="vm.homePolicy.bankId" value="1" style="margin-left: 40px"/> Chủ sở hữu cho thuê nhà 
-                     <input type="radio" ng-model="vm.homePolicy.bankId" value="2" style="margin-left: 40px"/> Người thuê nhà
+
+                    <div class="cntr margin-right-15 margin-top-5">
+                        <label for="cbxd12" class="label-cbx">
+                            <input id="cbxd12" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="0">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Chủ sở hữu </span>
+                        </label>
+                    </div>
+                    <div class="cntr margin-right-15 margin-top-5">
+                        <label for="cbxd13" class="label-cbx">
+                            <input id="cbxd13" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Chủ sở hữu cho thuê nhà</span>
+                        </label>
+                    </div>
+                    <div class="cntr margin-right-15 margin-top-5">
+                        <label for="cbxd14" class="label-cbx">
+                            <input id="cbxd14" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="2">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span> Người thuê nhà</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Tổng diện tích sử dụng (*)</p>
@@ -154,11 +188,32 @@
                 <div class="margin-top-10">
                     <p class="bv-title-from">Loại hình ngôi nhà (*)</p>
                 </div>
-                <div class="margin-top-5">
-                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="0" ng-change="vm.checkLoaiHinh()"/> Chung cư
-                     <input type="radio" ng-model="vm.homePolicy.loaiHinh" value="1" ng-change="vm.checkLoaiHinh()" style="margin-left: 50px"/> Nhà liền kề/biệt thự 
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd15" class="label-cbx">
+                            <input id="cbxd15" name="dq6" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="0" ng-change="vm.checkLoaiHinh()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbxd16" class="label-cbx">
+                            <input id="cbxd16" name="dq5" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="1" ng-change="vm.checkLoaiHinh()">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+                        </label>
+                    </div>
                 </div>
-                
                 <div class="margin-top-10">
                     <p class="bv-title-from">Thời hạn bảo hiểm từ ngày (*)</p>
                 </div>
@@ -185,19 +240,61 @@
                 <div class="margin-top-10">
                     <p class="bv-title-from">Ngôi nhà được bảo hiểm là công trình xây dựng với mục đích để ở và phục vụ sinh hoạt gia đình?</p>
                 </div>
-                <div class="margin-top-5">
-                     <input type="radio" ng-model="vm.homePolicy.windowLocks" value="0"/> Có
-                     <input type="radio" ng-model="vm.homePolicy.windowLocks" value="1" style="margin-left: 50px"/> Không
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd17" class="label-cbx">
+                            <input id="cbxd17" name="dq8" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="0">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbxd18" class="label-cbx">
+                            <input id="cbxd18" name="dq9" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+                        </label>
+                    </div>
                 </div>
-                
                 <div class="margin-top-10">
                     <p class="bv-title-from">Ngôi nhà được bảo hiểm được xây dựng bằng gạch, đá, xi măng?</p>
                 </div>
-                <div class="margin-top-5">
-                     <input type="radio" ng-model="vm.homePolicy.bars" value="0"/> Có
-                     <input type="radio" ng-model="vm.homePolicy.bars" value="1" style="margin-left: 50px"/> Không
+                <div class=" display-flex">
+                    <div class="cntr margin-right-5">
+                        <label for="cbxd22" class="label-cbx">
+                            <input id="cbxd22" name="dq22" type="radio"  class="invisible" ng-model="vm.homePolicy.bars" value="0" >
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Có</span>
+                        </label>
+                    </div>
+                    <div class="cntr">
+                        <label for="cbxd23" class="label-cbx">
+                            <input id="cbxd23" name="dq23" type="radio"  class="invisible"  ng-model="vm.homePolicy.bars"  value="1">
+                            <div class="checkbox">
+                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Không</span>
+                        </label>
+                    </div>
                 </div>
-                
                 
                 <div class="margin-top-5">
                     <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
