@@ -211,6 +211,7 @@
   		}
 
   		// FOR VALIDATOR
+        // Date of birth validator
         function dobValidator(dobStr) {
             if(!dobStr){return;}
 
