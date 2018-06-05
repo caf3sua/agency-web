@@ -231,34 +231,36 @@
                         </label>
                     </div>
                 </div>
-                <div>
-                	<table class="table table-bordered margin-top-10">
-                    <thead>
-                    <tr>
-                        <th style="width: 195px">Ngày khám/điều trị</th>
-                        <th>Chuẩn đoán</th>
-                        <th>Chi tiết điều trị</th>
-                        <th>Kết quả</th>
-                        <th>Tên, địa chỉ bác sĩ/bệnh viện</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="vm.policy.ngaydieutri">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="text" class="form-control" ng-model="vm.policy.chuandoan" /></td>
-                        <td><input type="text" class="form-control" ng-model="vm.policy.chitietdieutri" /></td>
-                        <td><input type="text" class="form-control" ng-model="vm.policy.ketqua" /></td>
-                        <td><input type="text" class="form-control" ng-model="vm.policy.benhvienorbacsy" /></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="margin-top-5">
+                    <div class="table-responsive bv-home-block-left-table-responsive">
+                        <table class="table bv-tvc-block-left-table"  >
+                            <thead>
+                            <tr>
+                                <th ><p>Ngày khám/điều trị</p></th>
+                                <th ><p>Chuẩn đoán</p></th>
+                                <th><p>Chi tiết điều trị</p></th>
+                                <th><p>Kết quả</p></th>
+                                <th><p class="bv-table-th-db">Tên, địa chỉ bác sĩ/bệnh viện</p></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                            <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="vm.policy.ngaydieutri">
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><input type="text" class="bv-input" ng-model="vm.policy.chuandoan" /></td>
+                                    <td><input type="text" class="bv-input" ng-model="vm.policy.chitietdieutri" /></td>
+                                    <td><input type="text" class="bv-input" ng-model="vm.policy.ketqua" /></td>
+                                    <td><input type="text" class="bv-input" ng-model="vm.policy.benhvienorbacsy" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Người được bảo hiểm có hút hơn 20 điếu thuốc một ngày không? (*)</p>
@@ -456,8 +458,8 @@
                     <p>Thông tin về người được chỉ định nhận tiền bảo hiểm</p>
                 </div>
                 <div class="cntr margin-top-5">
-                    <label for="cbx17" class="label-cbx">
-                        <input id=""cbx17"" type="checkbox" class="invisible">
+                    <label for="cbx30" class="label-cbx">
+                        <input id="cbx30" type="checkbox" class="invisible">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -466,7 +468,7 @@
                         </div>
                         <span>Người thụ hưởng có là người được chỉ định nhận tiền bảo hiểm</span>
                     </label>
-                    <p class="bv-title-from">(Bỏ chọn để xóa thông tin người được chỉ định nhận tiền đã điền sẵn)</p>
+                    <p class="bv-title-from margin-top-10">(Bỏ chọn để xóa thông tin người được chỉ định nhận tiền đã điền sẵn)</p>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Họ và tên</p>
