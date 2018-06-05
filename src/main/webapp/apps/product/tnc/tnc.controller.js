@@ -154,6 +154,7 @@
                 vm.isShowTotalPremium = false;
             }
             vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
+            vm.clearReponseError();
         }
 
         function onGetPremiumError(result) {
@@ -161,7 +162,7 @@
             if(result.data.fieldName == 'numbermonth') {
             	result.data.fieldName = 'insurancestartdate';
             }
-            vm.validateReponse($scope, result);
+            vm.validateReponse(result);
         }
 
         function createNewPolicy() {

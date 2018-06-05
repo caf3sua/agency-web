@@ -9,18 +9,33 @@
 
     function ResponseValidateService () {
         var service = {
-            validateReponse: validateReponse
+            validateReponse: validateReponse,
+            cleanResponseError: cleanResponseError
         };
 
         return service;
-
-        function validateReponse($scope, data) {
-        	console.log($scope.myForm["numbermonth"])
-        	var modelName = 'vm.product.' + data.fieldName
+        
+        function cleanResponseError(fieldName) {
+        	var modelName = 'vm.product.' + fieldName;
         	var element = angular.element('[ng-model="' + modelName + '"]');
         	
+        	// Remove old validation message
+        	element.parent().children('.control-label.has-error.validationMessage').remove();
+        	element.parent().removeClass('has-error');
+        }
+
+        function validateReponse(data) {
+        	var modelName = 'vm.product.' + data.fieldName;
+        	var element = angular.element('[ng-model="' + modelName + '"]');
+        	
+        	// Remove old validation message
+        	element.parent().children('.control-label.has-error.validationMessage').remove();
+        	element.parent().removeClass('has-error');
+        	
+        	// Build and append new message
+        	element.parent().addClass('has-error');
         	var elementName = "[name='" + data.fieldName + "']";
-        	$('<label class="control-label has-error validationMessage">This field is invalid!</label>').insertAfter(elementName);
+        	$("<label class='control-label has-error validationMessage'>This field is invalid!</label>").insertAfter(elementName);
         }
     }
 })();

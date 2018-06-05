@@ -73,6 +73,7 @@
 		vm.getName = getName;
         vm.dobValidator = dobValidator;
         vm.validateReponse = validateReponse;
+        vm.clearReponseError = clearReponseError;
         
         // implement function
 		function getAccount() {
@@ -236,8 +237,13 @@
             return true;
         };
         
-        function validateReponse($scope, result) {
-        	ResponseValidateService.validateReponse($scope, result.data);
+        function validateReponse(result) {
+        	ResponseValidateService.validateReponse(result.data);
+        	vm.errorField = result.data.fieldName;
+        }
+        
+        function clearReponseError() {
+        	ResponseValidateService.cleanResponseError(vm.errorField);
         }
     }
 })();
