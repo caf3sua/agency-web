@@ -30,6 +30,12 @@
 	            case 'bvp-insurance-type':
 	                defaultOption = "--- Chọn chương trình bảo hiểm ---";
 	                break;
+	            case 'bvp-tncn':
+	                defaultOption = "--- Chọn số tiền bảo hiểm tai nạn cá nhân ---";
+	                break;
+	            case 'bvp-smcn':
+	                defaultOption = "--- Chọn số tiền bảo hiểm sinh mạng cá nhân ---";
+	                break;
                 case 'hhvc-item-group':
                     defaultOption = "--- Chọn nhóm/loại sản phẩm ---";
                     break;
@@ -100,6 +106,8 @@
                 
                 switch(attrs.type){
                 	case 'bvp-insurance-type':
+                	case 'bvp-tncn':
+                	case 'bvp-smcn':
                     case 'hhvc-item-group':
                     case 'hhvc-item-name':
                     case 'hhvc-insurance-term':

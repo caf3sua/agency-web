@@ -137,13 +137,6 @@
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
   		}
   		
-  		function getName(id, datas) {
-  			var filterObj = datas.filter(function(e) {
-  			  return e.id == id;
-  			});
-  			return filterObj.name;
-  		}
-  		
   		function getCarBranchesSuccess(result) {
   			result.forEach(function(item, index, arr) {
   				vm.manufacturerOptions.push({id: item, name: item});

@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductBvpController', ProductBvpController);
 
-    ProductBvpController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope'];
+    ProductBvpController.$inject = ['$scope', '$controller', 'BvpService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductBvpController ($scope, $controller, Principal, $state, $rootScope) {
+    function ProductBvpController ($scope, $controller, BvpService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
         vm.tvc ={
         };
@@ -28,10 +28,10 @@
 			"ngoaitruChk": false,
 			"ngoaitruPhi": 0,
 			"tncnChk": false,
-			"tncnSi": 0,
+			"tncnSi": "",
 			"tncnPhi": 0,
-			"smcnChk": true,
-			"smcnSi": 0,
+			"smcnChk": false,
+			"smcnSi": "",
 			"smcnPhi": 0,
 			"nhakhoaChk": false,
 			"nhakhoaPhi": 0,
@@ -42,7 +42,7 @@
 			"phiBH": 0,
 			"premiumNet": 0,
 			"premiumDiscount": 0,
-			"pagencyRole": ""
+			"pagencyRole": "1"
 		}
 
         vm.policy = {
@@ -51,7 +51,7 @@
     		"contactCode": "DUC001",
     		"discount": 0,
     		"expiredDate": "28/05/2018",
-    		"files":"string",
+    		"files":"",
     		"gycbhNumber": "ITSOL.BVP.18.43",
     		"hasExtracare": false,
     		"hasNguoinhantien": false,
@@ -99,11 +99,11 @@
     		"nguoiycNgaysinh": "23/04/1982",
     		"nhakhoa": "0",
     		"nhakhoaPhi": 0,
-    		"policyNumber": "string",
-    		"policyParent": "string",
-    		"q1": "1",
-    		"q2": "1",
-    		"q3": "1",
+    		"policyNumber": "",
+    		"policyParent": "",
+    		"q1": "",
+    		"q2": "",
+    		"q3": "",
     		"receiveMethod": "1",
     		"sinhmang": "1",
     		"sinhmangPhi": 0,
@@ -119,8 +119,8 @@
     		"tncnSotienbh": 0
 		}
 
-        vm.validation = validation;
-        vm.addOrRemovePerson = addOrRemovePerson;
+        vm.isHealthyPersonChange = isHealthyPersonChange;
+  		vm.openSearchContactForPanel = openSearchContactForPanel;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
@@ -130,6 +130,30 @@
             {id: '3', name: 'Vàng'},
             {id: '4', name: 'Bạch Kim'},
             {id: '5', name: 'Kim Cương'}
+        ];
+        vm.siOptions = [
+            {id: '50000000', name: '50 triệu'},
+            {id: '100000000', name: '100 triệu'},
+            {id: '200000000', name: '200 triệu'},
+            {id: '300000000', name: '300 triệu'},
+            {id: '400000000', name: '400 triệu'},
+            {id: '500000000', name: '500 triệu'},
+            {id: '600000000', name: '600 triệu'},
+            {id: '700000000', name: '700 triệu'},
+            {id: '800000000', name: '800 triệu'},
+            {id: '900000000', name: '900 triệu'},
+            {id: '1000000000', name: '1 tỷ'}
+        ];
+        vm.relationOptions = [
+            {id: '30', name: 'Bản thân'},
+            {id: '31', name: 'Vợ/Chồng'},
+            {id: '32', name: 'Con'},
+            {id: '33', name: 'Bố/Mẹ'},
+            {id: '34', name: 'Bố mẹ của Vợ/Chồng'}
+        ];
+        vm.relationOptions = [
+            {id: 'New', name: 'Mới'},
+            {id: 'Reuse', name: 'Tái tục'}
         ];
 
         vm.isShowPersonList = false;
@@ -156,14 +180,39 @@
             ProductCommonService.getPolicyNumber({lineId: 'BVP'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
         }
         
+        $scope.$on('selectedContactChange', function() {
+            if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+                switch (vm.panelType) {
+                    case 'contact':
+                    	vm.policy.nguoiycName = $rootScope.selectedContact.contactName;
+                    	vm.policy.nguoiycNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                        break;
+                    case 'insured':
+                    	vm.policy.nguoidbhName = $rootScope.selectedContact.contactName;
+                    	vm.policy.nguoidbhNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                        break;
+                    case 'requirement':
+                    	vm.policy.nguoithName = $rootScope.selectedContact.contactName;
+                    	vm.policy.nguoithNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                        break;
+                }
+            }
+        });
+        
         function isHealthyPersonChange() {
-        	
+        	if(vm.isHealthyPerson) {
+        		vm.policy.q1 = "";
+        		vm.policy.q2 = "";
+        		vm.policy.q3 = "";
+        	}
         }
-
+        
         function processComboResult(data, type) {
             console.log(data);
             switch(type){
                 case 'bvp-insurance-type':
+                case 'bvp-tncn':
+            	case 'bvp-smcn':
                     getPremium();
                     break;
             }
@@ -173,7 +222,7 @@
             var postData = getPostData(false);
 
             if(postData.chuongTrinh) {
-                TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            	BvpService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.product.premiumNet = 0;
                 vm.product.phiBH = 0;
@@ -182,12 +231,34 @@
 
         function getPostData() {
             var postData = Object.assign({}, vm.product);
+            
+            if(postData.chuongTrinh == 1 || postData.chuongTrinh == 2 || postData.chuongTrinh == 3) {
+            	postData.thaisanChk = false;
+            }
+            
+            if(postData.tncnSi == "") {
+            	postData.tncnChk = false;
+            	postData.tncnSi = 0;
+            }
+            if(postData.smcnSi == "") {
+            	postData.smcnChk = false;
+            	postData.smcnSi = 0;
+            }
+            
             return postData;
         }
 
         function onGetPremiumSuccess(result) {
             vm.product.premiumNet = result.premiumNet;
             vm.product.phiBH = result.phiBH;
+            
+            if(vm.product.chuongTrinh) {
+                vm.isShowPremium = true;
+                vm.isShowTotalPremium = true;
+            } else {
+                vm.isShowPremium = false;
+                vm.isShowTotalPremium = false;
+            }
         }
 
         function onGetPremiumError(result) {
@@ -196,6 +267,12 @@
 
         function createNewPolicy() {
             var postData = getPostData(true);
+            
+            if(vm.isHealthyPerson) {
+        		vm.policy.q1 = "0";
+        		vm.policy.q2 = "0";
+        		vm.policy.q3 = "0";
+        	}
 
             vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
             vm.policy.insurancestartdate = postData.insurancestartdate;
@@ -212,7 +289,12 @@
                 vm.policy.receiveMethod = "1";
             }
 
-            TncService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            BvpService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+        }
+        
+        function openSearchContactForPanel(type) {
+            vm.panelType = type;
+            vm.openSearchContact();
         }
 
         function onCreatePolicySuccess(result) {
