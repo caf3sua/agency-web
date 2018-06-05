@@ -58,29 +58,52 @@
 //  				"taxNo": ""
 //  				},
   				"lstTinhtrangSKs": [
-  				{
-  				"benhvienorbacsy": "",
-  				"bvSysdate": "",
-  				"chitietdieutri": "",
-  				"chuandoan": "",
-  				"congtybh": "",
-  				"dkdacbiet": "",
-  				"id": "",
-  				"idThamchieu": "",
-  				"ketqua": "",
-  				"khuoctu": "",
-  				"lydodc": "",
-  				"lydoycbt": "",
-  				"masanpham": "",
-  				"ngaybatdau": "",
-  				"ngaydieutri": "",
-  				"ngayhethan": "",
-  				"ngayycbt": "",
-  				"questionThamchieu": "",
-  				"sohd": "",
-  				"sotienbh": 0,
-  				"sotienycbt": 0
-  				}
+	  				{
+	  				"benhvienorbacsy": "",
+	  				"bvSysdate": "",
+	  				"chitietdieutri": "",
+	  				"chuandoan": "",
+	  				"congtybh": "",
+	  				"dkdacbiet": "",
+	  				"id": "",
+	  				"idThamchieu": "",
+	  				"ketqua": "",
+	  				"khuoctu": "",
+	  				"lydodc": "",
+	  				"lydoycbt": "",
+	  				"masanpham": "",
+	  				"ngaybatdau": "",
+	  				"ngaydieutri": "",
+	  				"ngayhethan": "",
+	  				"ngayycbt": "",
+	  				"questionThamchieu": "",
+	  				"sohd": "",
+	  				"sotienbh": 0,
+	  				"sotienycbt": 0
+	  				},
+	  				{
+	  				"benhvienorbacsy": "",
+	  				"bvSysdate": "",
+	  				"chitietdieutri": "",
+	  				"chuandoan": "",
+	  				"congtybh": "",
+	  				"dkdacbiet": "",
+	  				"id": "",
+	  				"idThamchieu": "",
+	  				"ketqua": "",
+	  				"khuoctu": "",
+	  				"lydodc": "",
+	  				"lydoycbt": "",
+	  				"masanpham": "",
+	  				"ngaybatdau": "",
+	  				"ngaydieutri": "",
+	  				"ngayhethan": "",
+	  				"ngayycbt": "",
+	  				"questionThamchieu": "",
+	  				"sohd": "",
+	  				"sotienbh": 0,
+	  				"sotienycbt": 0
+	  				}
   				],
   				"netPremium": 0,
   				"planId": "",
@@ -114,6 +137,7 @@
   		vm.changeToDate = changeToDate;
   		vm.checkedChangeBill = checkedChangeBill;
   		vm.checkQ3 = checkQ3;
+  		vm.checkQ4 = checkQ4;
   		vm.checkQresultCan = checkQresultCan;
   		vm.checkQtypeCancer = checkQtypeCancer;
   		vm.checkQresultTre = checkQresultTre;
@@ -127,6 +151,7 @@
   		vm.isShowBill2 = false;
   		vm.isShowBill3 = false;
   		vm.isShowPremium = false;
+  		vm.isq4 = false;
   		
   		// Initialize
   		init();
@@ -162,6 +187,16 @@
   		  		vm.policy.qresultTre = false;
   		  		vm.policy.qtreatment = false;
   		  		vm.policy.qtypeCancer = false;
+  			}
+  		}
+  		
+  		function checkQ4() {
+  			var check = vm.policy.q4;
+  			
+  			if (check == true) {
+  				vm.isq4 = true;
+  			} else {
+  				vm.isq4 = false;
   			}
   		}
   		
