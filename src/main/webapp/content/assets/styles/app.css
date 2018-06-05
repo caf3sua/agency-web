@@ -2291,7 +2291,12 @@ body {
       display: block; }
     .nav-dropup .nav > li > ul .nav-text,
     .folded.nav-dropdown .nav > li > ul .nav-text {
-      padding: 6px 0 !important; }
+        padding: 15px 0 15px 10px;
+        font-size: 14px;
+        font-family: Roboto;
+        font-weight: normal;
+        color: #000;
+    }
   .nav-dropup .nav > li .nav-mega,
   .folded.nav-dropdown .nav > li .nav-mega {
     width: 320px; }

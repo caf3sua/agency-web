@@ -8,15 +8,24 @@
     PromotionService.$inject = ['$resource'];
 
     function PromotionService ($resource) {
-        var service = $resource('api/account', {}, {
-            'get': { method: 'GET', params: {}, isArray: false,
-                interceptor: {
-                    response: function(response) {
-                        // expose response
-                        return response;
-                    }
-                }
-            }        
+        var service = $resource('', {}, {
+        	'getPromos' : {
+				method : 'GET',
+				url : 'api/agency/promotion/getPromos',
+				isArray : true
+			},
+        	'getPromosAll' : {
+				method : 'GET',
+				url : 'api/agency/promotion/get-all',
+				isArray : true
+			},
+			'getPromosDetail' : {
+				method : 'GET',
+				url : 'api/agency/promotion/getPromosDetail',
+				isArray : true
+			}
+			
+			
         });
 
         return service;
