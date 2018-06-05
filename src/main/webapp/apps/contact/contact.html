@@ -6,10 +6,7 @@
                 <button class="bv-block-two-button-style">Khách hàng thân thiện</button>
             </div>
         </div>
-        <div>
-
-        </div>
-    </div>
+</div>
   <div class="row-col row-col-xs b-b bv-border-ccc background-fff">
     <!-- column -->
     <div class="col-sm-4 col-md-3 light bg b-r background-fff" >
@@ -51,17 +48,17 @@
           <div class="row-body scrollable hover">
             <div class="row-inner">
               <div class="list inset">
-                <div ng-repeat="item in items | filter:{group:filter} | filter:query | orderBy:'first' track by $index" class="list-item pointer" ng-class="{'dker': item.selected }" ng-click="selectItem(item)">
+                <div ng-repeat="item in vm.contacts track by $index" class="list-item pointer" ng-class="{'dker': item.selected }" ng-click="selectItem(item)">
                   <div class="list-left">
                   </div>
                   <div class="list-body">
-                    {{ item.first }} {{ item.last }}
-                    <small class="block text-muted"><i class="fa fa-phone m-r-sm"></i>{{ item.mobile }}</small>
-                    <span ng-hide="item.first || item.last">No Name</span>
+                    {{ item.contactName }}
+                    <small class="block text-muted"><i class="fa fa-phone m-r-sm"></i>{{ item.phone }}</small>
+                    <!-- <span ng-hide="item.first || item.last">No Name</span> -->
                   </div>
                 </div>
               </div>
-              <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(items | filter:{group:filter} | filter:query).length">No Contacts</div>
+              <!-- <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(items | filter:{group:filter} | filter:query).length">No Contacts</div> -->
             </div>
           </div>
         </div>

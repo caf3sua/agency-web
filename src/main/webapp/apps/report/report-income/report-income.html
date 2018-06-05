@@ -1,0 +1,62 @@
+<div class="padding">
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="box">
+          <div class="box-header">
+            <h3>Basic area</h3>
+            <small class="block text-muted">vertical fill, smoothed line</small>
+          </div>
+          <div class="box-body">
+            <div ui-jp="chart" ui-options="{
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['Preorder','Sale','Deal']
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Deal',
+                        type:'line',
+                        smooth:true,
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:[10, 12, 21, 54, 260, 830, 710]
+                    },
+                    {
+                        name:'Sale',
+                        type:'line',
+                        smooth:true,
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:[30, 182, 434, 791, 390, 30, 10]
+                    },
+                    {
+                        name:'Preorder',
+                        type:'line',
+                        smooth:true,
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:[1320, 1132, 601, 234, 120, 90, 20]
+                    }
+                ]
+                    
+            }" style="height:300px" >
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+</div>

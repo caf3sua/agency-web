@@ -12,9 +12,9 @@
       .module('app')
       .controller('AppCtrl', AppCtrl);
 
-      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window', 'Auth', '$state', 'Principal'];
+      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window', 'Auth', '$state', 'Principal', 'ContactCommonDialogService'];
 
-      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window, Auth, $state, Principal) {
+      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService) {
         var vm = $scope;
         vm.isIE = isIE();
         vm.isSmart = isSmart();
@@ -233,5 +233,9 @@
             $state.go('access.signin');
         }
 
+        vm.openAddContact = function() {
+        	console.log('openAddContact');
+        	ContactCommonDialogService.openAddDialog();
+        }
       }
 })();
