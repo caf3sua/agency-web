@@ -166,7 +166,7 @@ body {
     margin-top: 85px;
     color: #dfdfdf;
 }
-.closeStepOne>.bv-step-content{
+.closeStepOne>form>.bv-step-content{
     width: 0;
     min-width: 0;
     display: none;
@@ -1129,7 +1129,7 @@ body {
     float: right;
     margin-left: 1rem;
     margin-right: 0.5rem;
-    margin-top: 5px;
+    margin-top: 16px;
     color: #292929;
 }
 .left{

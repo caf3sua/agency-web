@@ -23,11 +23,11 @@
                 listTvcAddBaseVM: [
                 ],
                 loaitien: "",
-                netPremium: null,
+                netPremium: 0,
                 paymentMethod:"paymentMethod",
                 planId:"",
                 policyNumber: "",
-                premium: null,
+                premium: 0,
                 propserCellphone: "",
                 propserName: "",
                 propserNgaysinh: "",
@@ -39,7 +39,7 @@
                     mobile: "",
                     name: ""
                 },
-            soNguoiThamGia: null,
+            soNguoiThamGia: 0,
             travelCareId: 1,
             travelWithId: "",
             tvcPackage: ""
@@ -171,7 +171,7 @@
                 vm.policy.listTvcAddBaseVM.push({
                     "dob": "",
                     "insuredName": "",
-                    "idPasswport": 0,
+                    "idPasswport": null,
                     "relationship" : "",
             });
             }
