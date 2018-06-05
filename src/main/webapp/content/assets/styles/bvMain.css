@@ -282,7 +282,7 @@ body {
 }
 .bv-select-box{
     padding: 6px 15px;
-    height: 45px;
+    height: 52px;
     font-size: 16px;
     font-family: Roboto;
     font-weight: normal;
@@ -1069,10 +1069,8 @@ body {
     border-radius: 25px;
 }
 .bv-input-icon-wrap {
-    border: 1px solid #ccc;
     display: flex;
     flex-direction: row;
-    padding: 5px 15px;
     background: #ffff;
     border-bottom: none;
 }
@@ -1478,6 +1476,23 @@ body {
 }
 .bv-home-block-four-left{
     border-right: 1px solid #ccc;
+}
+/*.input-group-addon{*/
+    /*position: absolute;*/
+    /*right: -41px;*/
+    /*top: 1px;*/
+    /*min-height: 50px;*/
+/*}*/
+/*.input-group-addon>i{*/
+    /*left: -5px;*/
+    /*top: 10px;*/
+/*}*/
+.bv-input-contact{
+    width: 100%;
+    padding: 5px 15px;
+    border: 1px solid rgb(224, 225, 229);
+    border-radius: 5px;
+    color: rgb(156, 156, 156);
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-logo{

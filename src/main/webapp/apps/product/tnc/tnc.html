@@ -1,21 +1,3 @@
-<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 bv-background-sp">
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 ">
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0">
-            <p class="bv-title-home">Sản phẩm bảo hiểm tai nạn con người</p>
-        </div>
-        <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
-            <div class="bv-btn-groud-header">
-                <div class="bv-btn-header-title">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Tạo đơn hàng mới</span>
-                </div>
-                <div class="bv-btn-header-title">
-                    <i class="fas fa-user"></i>
-                    <span>Tạo khách hàng mới</span>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
         <div class="hidden-md hidden-lg text-center ">
             <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
@@ -29,14 +11,14 @@
             </div>
         </div>
         <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">
-            <form angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
-                <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
-                    <p class="fas {{vm.typeArrowOne}}"></p>
-                    <p>1</p>
-                    <span>Tính phí</span>
-                    <span>,thông tin bảo hiểm</span>
-                </div>
-                <div class="bv-step-content" id="bv-step-1-content"  >
+            <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
+                <p class="fas {{vm.typeArrowOne}}"></p>
+                <p>1</p>
+                <span>Tính phí</span>
+                <span>,thông tin bảo hiểm</span>
+            </div>
+            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+                <div class="bv-step-content" id="bv-step-1-content">
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
                     </div>
@@ -55,7 +37,9 @@
                     <div class=" display-flex margin-top-10">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate">
+                                <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate"
+                                       required-message="'This field is required!'"
+                                       required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -121,8 +105,8 @@
                             <td>
                                 <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                     <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
-                                       validator = "vm.dobValidator(value.val=person.dob) === true"
-                                       invalid-message = "vm.passwordValidator(value.val=person.dob)"
+                                       validator = "vm.dobValidator(person.dob) === true"
+                                       invalid-message = "vm.dobValidator(person.dob)"
                                        required-message="'This field is required!'"
                                        required>
                                     <div class="input-group-addon">
@@ -348,4 +332,3 @@
             </div>
         </div>
     </div>
-</div>
