@@ -754,7 +754,7 @@ body {
     font-weight: bold;
     position: relative;
     display: inline-block;
-    top: -3px;
+    top: 0px;
     color: #292929;
 }
 .sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > a > span {
@@ -1494,7 +1494,13 @@ body {
     border-radius: 5px;
     color: rgb(156, 156, 156);
 }
+.bv-from{
+    display: flex;
+}
 @media (min-width:1200px) and (max-width:1300px) {
+    .bv-from{
+        display: flex;
+    }
     .bv-logo{
         margin-left: 10px;
     }
@@ -1539,7 +1545,9 @@ body {
     }
 }
 @media (min-width:992px) and (max-width:1200px) {
-
+    .bv-from{
+        display: flex;
+    }
     .bv-gh-text-sum {
         font-size: 12px;
         font-weight: bold;
@@ -1642,6 +1650,9 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .bv-from{
+        display: block;
+    }
     .bv-gh-text-sum {
         font-size: 12px;
         font-weight: bold;
@@ -1816,6 +1827,9 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-from{
+        display: block;
+    }
     .bv-input-icon, .bv-input-with-icon {
         padding: 7px;
     }
@@ -2026,6 +2040,9 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-from{
+        display: block;
+    }
     .bv-input-icon, .bv-input-with-icon {
         padding: 7px;
     }

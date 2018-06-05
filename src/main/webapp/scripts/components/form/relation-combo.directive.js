@@ -27,6 +27,9 @@
         	var defaultOption = '';
 
             switch(attrs.type){
+	            case 'bvp-insurance-type':
+	                defaultOption = "--- Chọn chương trình bảo hiểm ---";
+	                break;
                 case 'hhvc-item-group':
                     defaultOption = "--- Chọn nhóm/loại sản phẩm ---";
                     break;
@@ -96,6 +99,7 @@
                 ngModel.$setViewValue(scope.selectedItem);
                 
                 switch(attrs.type){
+                	case 'bvp-insurance-type':
                     case 'hhvc-item-group':
                     case 'hhvc-item-name':
                     case 'hhvc-insurance-term':

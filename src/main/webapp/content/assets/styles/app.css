@@ -2098,7 +2098,9 @@ body {
   float: right;
   margin-left: 1rem;
   margin-right: 0.5rem;
-  opacity: 0.45; }
+  opacity: 0.45;
+    margin-top: 5px;
+}
   .nav-caret i {
     -webkit-transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out; }
