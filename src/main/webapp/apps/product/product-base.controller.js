@@ -20,9 +20,9 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactCommonDialogService', 'Principal', 'DateUtils'];
+    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils'];
 
-    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactCommonDialogService, Principal, DateUtils){
+    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -72,6 +72,7 @@
 
 		vm.getName = getName;
         vm.dobValidator = dobValidator;
+        vm.validateReponse = validateReponse;
         
         // implement function
 		function getAccount() {
@@ -234,5 +235,9 @@
             }
             return true;
         };
+        
+        function validateReponse($scope, result) {
+        	ResponseValidateService.validateReponse($scope, result.data);
+        }
     }
 })();

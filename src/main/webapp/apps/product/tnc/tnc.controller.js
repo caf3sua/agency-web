@@ -138,7 +138,7 @@
         function getPostData() {
             var postData = Object.assign({}, vm.product);
 
-            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate) + 1;
+            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate);
 
             return postData;
         }
@@ -158,6 +158,10 @@
 
         function onGetPremiumError(result) {
             toastr.error('Get data error!', 'Error');
+            if(result.data.fieldName == 'numbermonth') {
+            	result.data.fieldName = 'insurancestartdate';
+            }
+            vm.validateReponse($scope, result);
         }
 
         function createNewPolicy() {
@@ -198,7 +202,7 @@
         }
 
         function validation() {
-
+    		
         }
     }
 })();
