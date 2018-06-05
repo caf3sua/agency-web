@@ -754,7 +754,7 @@ body {
     font-weight: bold;
     position: relative;
     display: inline-block;
-    top: -3px;
+    top: 0px;
     color: #292929;
 }
 .sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > a > span {
