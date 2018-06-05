@@ -127,26 +127,8 @@
             
             <!-- Page 2: Thông tin người yêu cầu bảo hiểm-->
             <div class="bv-step-content">
-                <div class="text-header-sp">
-                    <p>Thông tin người yêu cầu bảo hiểm</p>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Họ tên người yêu cầu bảo hiểm</p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Họ tên người yêu cầu bảo hiểm" ng-model="vm.policy.contactName" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngày sinh</p>
-                </div>
-                <div class="margin-right-5 width-100">
-                   	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.contactDob">
-					    <div class="input-group-addon">
-					        <span class="glyphicon glyphicon-th"></span>
-					    </div>
-					</div>
-                </div>
+                <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
+            	<div ng-include="'apps/product/partial/partial.contact.html'"></div>
                 
                 <div class="text-header-sp margin-top-20">
                     <p>Thông tin người được bảo hiểm</p>

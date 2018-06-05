@@ -40,7 +40,7 @@
   				"beneficiaryRelationship": "",
   				"beneficiaryRelationshipD": "",
   				"changePremium": 0,
-  				"contactCode": "DUC001",
+//  				"contactCode": "DUC001",
   				"contactDob": "",
   				"contactName": "",
   				"gycbhNumber": "",
@@ -246,6 +246,61 @@
   			
   			function onGetPolicyNumberSuccess(data, headers) {
   				vm.policy.gycbhNumber = data.policyNumber;
+  				
+  				if(vm.policy.q1 == false){
+  					vm.policy.q1 = 0;
+  				} else {
+  					vm.policy.q1 = 1;
+  				}
+  				
+  				if(vm.policy.q2 == false){
+  					vm.policy.q2 = 0;
+  				} else {
+  					vm.policy.q2 = 1;
+  				}
+  				
+  				if(vm.policy.q3 == false){
+  					vm.policy.q3 = 0;
+  				} else {
+  					vm.policy.q3 = 1;
+  				}
+  				
+  				if(vm.policy.q4 == false){
+  					vm.policy.q4 = 0;
+  				} else {
+  					vm.policy.q4 = 1;
+  				}
+  				
+  				if(vm.policy.q5 == false){
+  					vm.policy.q5 = 0;
+  				} else {
+  					vm.policy.q5 = 1;
+  				}
+  				
+  				if(vm.policy.qresultCan == false){
+  					vm.policy.qresultCan = 0;
+  				} else {
+  					vm.policy.qresultCan = 1;
+  				}
+  				
+  				if(vm.policy.qresultTre == false){
+  					vm.policy.qresultTre = 0;
+  				} else {
+  					vm.policy.qresultTre = 1;
+  				}
+  				
+  				if(vm.policy.qtreatment == false){
+  					vm.policy.qtreatment = 0;
+  				} else {
+  					vm.policy.qtreatment = 1;
+  				}
+  				
+  				if(vm.policy.qtypeCancer == false){
+  					vm.policy.qtypeCancer = 0;
+  				} else {
+  					vm.policy.qtypeCancer = 1;
+  				}
+  				
   				createPolicy();
             }
             function onGetPolicyNumberError(error) {
@@ -256,6 +311,7 @@
   		function createPolicy() {
   			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
+  			debugger
   			vm.appendCommonData(vm.policy);
   			
   			//debugger
