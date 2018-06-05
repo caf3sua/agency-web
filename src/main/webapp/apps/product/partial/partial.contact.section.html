@@ -1,0 +1,37 @@
+<div class="text-header-sp">
+    <p>{{title}}</p>
+</div>
+<div class="margin-right-5 width-100 margin-top-5">
+    <div class="input-group margin-top-5" >
+        <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"/>
+        <div class="input-group-addon" ng-click="openSearchContact()">
+            <i class="fa fa-plus"></i>
+        </div>
+    </div>
+    <div class="input-group date margin-top-5" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+	    <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="contactDob"
+	           validator = "vm.dobValidator(contactDob) === true"
+	           invalid-message = "vm.dobValidator(contactDob)"
+	           required-message="'This field is required!'"
+	           required>
+	    <div class="input-group-addon">
+	        <span class="glyphicon glyphicon-th"></span>
+	    </div>
+	</div>
+	<div class="margin-top-5" ng-show="isShowExtendInfo">
+        <input type="text" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactIdNumber"/>
+    </div>
+    <div class="margin-top-5" ng-show="isShowExtendInfo">
+        <p class="bv-title-from">Quan hệ với người bảo hiểm</p>
+    </div>
+    <div class="margin-top-5" ng-show="isShowExtendInfo">
+        <select class="bv-select-box form-control" ng-model="contactRelation">
+            <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>
+            <option value="30">Bản thân</option>
+            <option value="31">Vợ/Chồng</option>
+            <option value="32">Con</option>
+            <option value="33">Bố/Mẹ</option>
+            <option value="34">Bố mẹ của Vợ/Chồng</option>
+        </select>
+    </div>
+</div>
