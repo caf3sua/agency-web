@@ -70,6 +70,7 @@
 		vm.appendCommonData = appendCommonData;
 		vm.openAddContact = openAddContact;
 
+		vm.getName = getName;
         vm.dobValidator = dobValidator;
         
         // implement function
@@ -208,6 +209,13 @@
   			var toDate = toDateObj.format('DD/MM/YYYY');
   			
   			return toDate;
+  		}
+        
+        function getName(id, datas) {
+  			var filterObj = datas.filter(function(e) {
+  			  return e.id == id;
+  			});
+  			return filterObj.name;
   		}
 
   		// FOR VALIDATOR

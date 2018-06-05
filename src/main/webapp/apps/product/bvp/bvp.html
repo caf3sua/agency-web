@@ -29,7 +29,7 @@
                 <div class=" display-flex margin-top-10">
                     <div class="margin-right-5 width-100">
                         <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.thoihanbhTu">
+                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.thoihanbhTu" ng-change="vm.getPremium()">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -47,14 +47,14 @@
                 <div class=" display-flex margin-top-10">
                     <div class="margin-right-5 width-100">
                         <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.insuranceStartDate">
+                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.getPremium()">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
                     </div>
                     <div class="width-100">
-                        <input type="number" min="0" class="bv-input" placeholder="Tuổi" ng-model="vm.product.numberPerson" ng-blur="vm.addOrRemovePerson()"/>
+                        <input type="number" min="0" class="bv-input" placeholder="Tuổi" ng-model="vm.product.tuoi" ng-disabled="true"/>
                     </div>
                 </div>
                 <div class="margin-top-10">
@@ -90,7 +90,7 @@
 	                <input type="text" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber"/>
 	            </div>
                 <div class="margin-top-10">
-                    <relation-combo type="bvp-insurance-type" ng-model="vm.product.premiumPackage" options="vm.insuranceTypeOptions" onfinished="vm.processComboResult(data, type)"/>
+                    <relation-combo type="bvp-insurance-type" ng-model="vm.product.chuongTrinh" options="vm.insuranceTypeOptions" onfinished="vm.processComboResult(data, type)"/>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Quyền lợi bổ sung</p>
@@ -98,7 +98,7 @@
                 <div class="cntr margin-top-5">
                     <div>
                         <label for="cbx2" class="label-cbx">
-                            <input id="cbx2" type="checkbox" class="invisible" ng-model="vm.product.khauTru" ng-change="vm.getPremium()">
+                            <input id="cbx2" type="checkbox" class="invisible" ng-model="vm.product.ngoaitruChk" ng-change="vm.getPremium()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -110,7 +110,7 @@
                     </div>
                     <div>
                         <label for="cbx3" class="label-cbx">
-                            <input id="cbx3" type="checkbox" class="invisible" ng-model="vm.product.khauHao" ng-change="vm.getPremium()">
+                            <input id="cbx3" type="checkbox" class="invisible" ng-model="vm.product.tncnChk">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -119,10 +119,13 @@
                             </div>
                             <span>Bảo hiểm tai nạn cá nhân</span>
                         </label>
+                        <div class="margin-top-5" ng-show="vm.product.chuongTrinh && vm.product.tncnChk">
+                        	<relation-combo type="bvp-tncn" ng-model="vm.product.tncnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
+          			    </div>
                     </div>
                     <div>
                         <label for="cbx4" class="label-cbx">
-                            <input id="cbx4" type="checkbox" class="invisible" ng-model="vm.product.matCap" ng-change="vm.getPremium()">
+                            <input id="cbx4" type="checkbox" class="invisible" ng-model="vm.product.smcnChk">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -131,10 +134,13 @@
                             </div>
                             <span>Bảo hiểm sinh mạng cá nhân</span>
                         </label>
+                        <div class="margin-top-5" ng-show="vm.product.chuongTrinh && vm.product.smcnChk">
+                        	<relation-combo type="bvp-smcn" ng-model="vm.product.smcnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
+	            	 	</div>
                     </div>
                     <div>
                         <label for="cbx5" class="label-cbx">
-                            <input id="cbx5" type="checkbox" class="invisible" ng-model="vm.product.ngapNuoc" ng-change="vm.getPremium()">
+                            <input id="cbx5" type="checkbox" class="invisible" ng-model="vm.product.nhakhoaChk" ng-change="vm.getPremium()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -144,9 +150,9 @@
                             <span>Bảo hiểm nha khoa</span>
                         </label>
                     </div>
-                    <div>
+                    <div ng-show="vm.product.chuongTrinh == 4 || vm.product.chuongTrinh == 5">
                         <label for="cbx6" class="label-cbx">
-                            <input id="cbx6" type="checkbox" class="invisible" ng-model="vm.product.garage" ng-change="vm.getPremium()">
+                            <input id="cbx6" type="checkbox" class="invisible" ng-model="vm.product.thaisanChk" ng-change="vm.getPremium()">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -176,8 +182,8 @@
                     isShowExtendInfo="false"
                     title="1. Thông tin người yêu cầu bảo hiểm"
                     contact-name="vm.policy.nguoiycName" contact-dob="vm.policy.nguoiycNgaysinh"
-                    contact-id-number="" contact-relation=""
-                    open-search-contact="vm.openSearchContactForPanel('contact')"></contact-panel>
+                    contact-id-number="vm.policy.nguoiycCmnd" contact-relation="vm.policy.nguoiycQuanhe"
+                    open-search-contact="vm.openSearchContactForPanel('contact')"></contact-section>
 
                 <div class="margin-top-20"/>
 
@@ -186,14 +192,14 @@
                     title="2. Thông tin người được bảo hiểm"
                     contact-name="vm.policy.nguoidbhName" contact-dob="vm.policy.nguoidbhNgaysinh"
                     contact-id-number="vm.policy.nguoidbhCmnd" contact-relation="vm.policy.nguoidbhQuanhe"
-                    open-search-contact="vm.openSearchContactForPanel('insured')"></contact-panel>
+                    open-search-contact="vm.openSearchContactForPanel('insured')"></contact-section>
                     
                 <div class="margin-top-20 text-header-sp">
                 	<p>3. Thông tin tình trạng sức khỏe</p>
                 </div>
                 <div class="cntr margin-top-5">
 	                <label for="cbx7" class="label-cbx">
-	                    <input id="cbx7" type="checkbox" class="invisible" ng-model="vm.isHealthyPerson" ng-change="vm.vm.isHealthyPersonChange()">
+	                    <input id="cbx7" type="checkbox" class="invisible" ng-model="vm.isHealthyPerson" ng-change="vm.isHealthyPersonChange()">
 	                    <div class="checkbox">
 	                        <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -209,7 +215,7 @@
                 <div class=" display-flex">
                     <div class="cntr margin-right-5">
                         <label for="cbx8" class="label-cbx">
-                            <input id="cbx8" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="1">
+                            <input id="cbx8" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="1" ng-disabled="vm.isHealthyPerson">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -221,7 +227,7 @@
                     </div>
                     <div class="cntr">
                         <label for="cbx9" class="label-cbx">
-                            <input id="cbx9" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="0">
+                            <input id="cbx9" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="0" ng-disabled="vm.isHealthyPerson">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -238,7 +244,7 @@
                 <div class=" display-flex">
                     <div class="cntr margin-right-5">
                         <label for="cbx10" class="label-cbx">
-                            <input id="cbx10" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="1">
+                            <input id="cbx10" name="q2" type="radio" class="invisible" ng-model="vm.policy.q2" value="1" ng-disabled="vm.isHealthyPerson">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -250,7 +256,7 @@
                     </div>
                     <div class="cntr">
                         <label for="cbx11" class="label-cbx">
-                            <input id="cbx11" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="0">
+                            <input id="cbx11" name="q2" type="radio" class="invisible" ng-model="vm.policy.q2" value="0" ng-disabled="vm.isHealthyPerson">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -267,7 +273,7 @@
                 <div class=" display-flex">
                     <div class="cntr margin-right-5">
                         <label for="cbx12" class="label-cbx">
-                            <input id="cbx12" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="1">
+                            <input id="cbx12" name="q3" type="radio" class="invisible" ng-model="vm.policy.q3" value="1" ng-disabled="vm.isHealthyPerson">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -279,8 +285,8 @@
                     </div>
                     <div class="cntr">
                         <label for="cbx13" class="label-cbx">
-                            <input id="cbx13" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="0">
-                            <div class="checkbox">
+                            <input id="cbx13" name="q3" type="radio" class="invisible" ng-model="vm.policy.q3" value="0" ng-disabled="vm.isHealthyPerson">
+                            <div class="checkbox"> 
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
                                     <polyline points="4 11 8 15 16 6"></polyline>
@@ -290,7 +296,7 @@
                         </label>
                     </div>
                 </div>
-                <table class="table table-bordered margin-top-10" ng-show="vm.isShowPersonList">
+                <table class="table table-bordered margin-top-10" ng-show="vm.policy.q3 == 1">
                     <thead>
                     <tr>
                         <th style="width: 195px">Ngày khám/điều trị</th>
@@ -325,7 +331,7 @@
                     title="4. Thông tin người thụ hưởng bảo hiểm"
                     contact-name="vm.policy.nguoithName" contact-dob="vm.policy.nguoithNgaysinh"
                     contact-id-number="vm.policy.nguoithCmnd" contact-relation="vm.policy.nguoithQuanhe"
-                    open-search-contact="vm.openSearchContactForPanel('requirement')"></contact-panel>
+                    open-search-contact="vm.openSearchContactForPanel('requirement')"></contact-section>
                     
                 <div class="margin-top-5">
                     <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
@@ -366,92 +372,205 @@
                         <p>Họ tên người yêu cầu bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.contactName}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoiycName}}</p>
                     </div>
                     <div class="bv-title-from">
                         <p>Ngày sinh</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.contactDob}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoiycNgaysinh}}</p>
                     </div>
                 </div>
                 <div class="bv-pading-30">
                     <div class="text-header-sp">
                         <p>2. Thông tin người được bảo hiểm</p>
                     </div>
-                    <table class="table table-bordered margin-top-10" ng-show="vm.isShowPersonList">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Họ và tên</th>
-                            <th>Số Hộ chiếu/CMND</th>
-                            <th>Ngày sinh (dd/MM/yyyy)</th>
-                            <th>Số tiền bảo hiểm(VND)</th>
-                            <th>Phí bảo hiểm(VND</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="person in vm.product.premiumKhcList">
-                            <td>{{$index + 1}}</td>
-                            <td><input type="text" class="form-control" ng-model="person.insuredName" ng-disabled="true"/></td>
-                            <td><input type="text" class="form-control" ng-model="person.idPasswport" ng-disabled="true"/></td>
-                            <td>
-                                <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input type="text" class="form-control" ng-model="vm.product.premiumPackage" ng-disabled="true"/></td>
-                            <td><input type="text" class="form-control" ng-model="person.premium" ng-disabled="true"/></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bv-pading-30">
-                    <div class="text-header-sp">
-                        <p>3. Thông tin bảo hiểm</p>
-                    </div>
                     <div class="bv-title-from">
-                        <p>Số tiền bảo hiểm</p>
+                        <p>Họ tên người được bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumPackage}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhName}}</p>
                     </div>
                     <div class="bv-title-from">
-                        <p>Thời hạn bảo hiểm</p>
+                        <p>Ngày sinh</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Từ {{vm.product.insuranceStartDate}} Đến {{vm.product.insuranceEndDate}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhNgaysinh}}</p>
                     </div>
                     <div class="bv-title-from">
-                        <p>Quyền lợi bảo hiểm</p>
+                        <p>Số CMT/Hộ chiếu</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Điều kiện bảo hiểm A - Tử vong không phải do nguyên nhân tai nạn</p>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhCmnd}}</p>
                     </div>
                     <div class="bv-title-from">
-                        <p>Điều khoản, điều kiện</p>
+                        <p>Quan hệ với người yêu cầu bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">Theo điều khoản bảo hiểm kết hợp con người của Bảo Hiểm Bảo Việt. Quý khách vui lòng xem <a href="#">Điều khoản, điều kiện</a></p>
+                        <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.nguoidbhQuanhe, vm.relationOptions)}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Hình thức tham gia</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.getName(vm.product.insuranceTarget, vm.relationOptions)}}</p>
                     </div>
                 </div>
                 <div class="bv-pading-30">
                     <div class="text-header-sp">
-                        <p>4. Thông tin phí bảo hiểm</p>
-                    </div>
-                    <div class="bv-title-from">
-                        <p>Tổng phí phải thanh toán</p>
+                        <p>3. Thời hạn bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc}}</p>
+                        <p class="bv-tile-templateSummary">Từ {{vm.product.thoihanbhTu}} Đến {{vm.product.thoihanbhDeb}}</p>
                     </div>
                 </div>
                 <div class="bv-pading-30">
                     <div class="text-header-sp">
-                        <p>5. Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
+                        <p>4. Thông tin bảo hiểm</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Chương trình bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.getName(vm.product.chuongTrinh, vm.insuranceTypeOptions)}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Tổng phí bảo hiểm (đã bao gồm VAT)</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumNet}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Tổng phí thanh toán (đã bao gồm VAT)</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.product.phiBH}}</p>
+                    </div>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>5. Thông tin tình trạng sức khỏe</p>
+                    </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">1) Người được bảo hiểm kê khai trên đã từng phải điều trị, nằm viện hay phẫu thuật trong một bệnh viện, viện điều dưỡng, phòng khám hoặc các tổ chức y tế khác trong vòng 3 năm gần đây không? (*)</p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbx8" class="label-cbx">
+	                            <input id="cbx8" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="1" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbx9" class="label-cbx">
+	                            <input id="cbx9" name="q1" type="radio" class="invisible" ng-model="vm.policy.q1" value="0" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">2) Người được bảo hiểm có đang được theo dõi hoặc điều trị thương tật, bệnh hoặc có triệu chứng sức khỏe không ổn định hoặc cần phải điều trị bệnh viện trong vòng 12 tháng tới không? (*)</p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbx10" class="label-cbx">
+	                            <input id="cbx10" name="q2" type="radio" class="invisible" ng-model="vm.policy.q2" value="1" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbx11" class="label-cbx">
+	                            <input id="cbx11" name="q2" type="radio" class="invisible" ng-model="vm.policy.q2" value="0" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">3) Trong 3 năm qua, Người được bảo hiểm có mắc hay điều trị một hay nhiều triệu chứng các bệnh sau: ung thư, u các loại, huyết áp, tim mạch, loét dạ dày, viêm đa khớp mãn tính, loét ruột, viêm gan, viêm màng trong dạ con, trĩ, sỏi trong các hệ thống tiết niệu và đường mật, lao, đục nhân mắt, viêm xoang, tiểu đường, thoát vị đĩa đệm hay các bệnh khác không? (*)</p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbx12" class="label-cbx">
+	                            <input id="cbx12" name="q3" type="radio" class="invisible" ng-model="vm.policy.q3" value="1" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbx13" class="label-cbx">
+	                            <input id="cbx13" name="q3" type="radio" class="invisible" ng-model="vm.policy.q3" value="0" ng-disabled="vm.isHealthyPerson">
+	                            <div class="checkbox"> 
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>6. Thông tin người thụ hưởng bảo hiểm</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Họ tên người được bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoithName}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Ngày sinh</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoithNgaysinh}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Số CMT/Hộ chiếu</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.nguoithCmnd}}</p>
+                    </div>
+                    <div class="bv-title-from">
+                        <p>Quan hệ với người yêu cầu bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.nguoithQuanhe, vm.relationOptions)}}</p>
+                    </div>
+                </div>
+                <div class="bv-pading-30">
+                    <div class="text-header-sp">
+                        <p>7. Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
                     </div>
                     <div class="display-flex">
                         <div class="margin-right-70">
@@ -494,7 +613,7 @@
                 </div>
                 <div class="bv-pading-30">
                     <div class="text-header-sp">
-                        <p>6. Thông tin hóa đơn giá trị gia tăng</p>
+                        <p>8. Thông tin hóa đơn giá trị gia tăng</p>
                     </div>
                     <div class="display-flex">
                         <div class="margin-right-70">
