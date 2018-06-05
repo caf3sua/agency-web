@@ -10,9 +10,9 @@
 
     function stateConfig ($stateProvider) {
 	    	$stateProvider
-			.state('printed-paper', {
+			.state('report', {
 				abstract: true,
-				url: '/printed-paper',
+				url: '/report',
 				views: {
 					'': {
 						templateUrl: '../views/theme/layout/layout.html'
@@ -20,13 +20,12 @@
 				},
 				resolve: {
 		            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-		                $translatePartialLoader.addPart('printed-paper');
 		                $translatePartialLoader.addPart('global');
 		                return $translate.refresh();
 		            }],
 		            loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load([
-		            			'apps/printed-paper/printed-paper-base.service.js'
+		            			'apps/report/report-base.service.js'
 		            			]);
 			        }
 		        }
