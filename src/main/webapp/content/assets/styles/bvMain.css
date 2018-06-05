@@ -177,7 +177,7 @@ body {
     background: #fff;
     box-shadow: 1px 0px 5px 0px #fff;
 }
-.OpenStepTwo>.bv-step-content{
+.OpenStepTwo>form>.bv-step-content{
     width: 100%;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
@@ -245,7 +245,7 @@ body {
     width: 40px;
     text-align: left;
 }
-.closeStepTwo>.bv-step-content{
+.closeStepTwo>form>.bv-step-content{
     width: 0;
     min-width: 0;
     display: none;
@@ -256,7 +256,7 @@ body {
     background: #fff;
     box-shadow: 1px 0px 5px 0px #fff;
 }
-.OpenStepOne>.bv-step-content{
+.OpenStepOne>form>.bv-step-content{
     width: 100%;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
@@ -1496,6 +1496,13 @@ body {
 }
 .bv-from{
     display: flex;
+}
+.row-body{
+    height: 100vh;
+}
+.bv-report-border-right{
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from{
