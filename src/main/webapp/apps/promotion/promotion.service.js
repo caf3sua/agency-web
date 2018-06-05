@@ -16,7 +16,7 @@
 			},
         	'getPromosAll' : {
 				method : 'GET',
-				url : 'api/agency/promotion/getPromosAll',
+				url : 'api/agency/promotion/get-all',
 				isArray : true
 			},
 			'getPromosDetail' : {
