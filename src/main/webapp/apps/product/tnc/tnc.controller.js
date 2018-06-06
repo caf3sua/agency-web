@@ -50,15 +50,15 @@
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
         vm.premiumPackageOptions = [
-            {id: '20000000', name: '20000000 VND'},
-            {id: '30000000', name: '30000000 VND'},
-            {id: '40000000', name: '40000000 VND'},
-            {id: '50000000', name: '50000000 VND'},
-            {id: '60000000', name: '60000000 VND'},
-            {id: '70000000', name: '70000000 VND'},
-            {id: '80000000', name: '80000000 VND'},
-            {id: '90000000', name: '90000000 VND'},
-            {id: '100000000', name: '100000000 VND'}
+            {id: '20000000', name: '20.000.000 VND'},
+            {id: '30000000', name: '30.000.000 VND'},
+            {id: '40000000', name: '40.000.000 VND'},
+            {id: '50000000', name: '50.000.000 VND'},
+            {id: '60000000', name: '60.000.000 VND'},
+            {id: '70000000', name: '70.000.000 VND'},
+            {id: '80000000', name: '80.000.000 VND'},
+            {id: '90000000', name: '90.000.000 VND'},
+            {id: '100000000', name: '100.000.000 VND'}
         ];
 
         vm.isShowPersonList = false;
@@ -138,7 +138,7 @@
         function getPostData() {
             var postData = Object.assign({}, vm.product);
 
-            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate) + 1;
+            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate);
 
             return postData;
         }
@@ -154,10 +154,16 @@
                 vm.isShowTotalPremium = false;
             }
             vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
+            vm.clearReponseError();
         }
 
         function onGetPremiumError(result) {
-            toastr.error('Get data error!', 'Error');
+            if(result.data.fieldName == 'numbermonth') {
+            	result.data.fieldName = 'insurancestartdate';
+            }
+            if(!vm.validateReponse(result)) {
+                toastr.error('Get data error!', 'Error');
+            }
         }
 
         function createNewPolicy() {
@@ -198,7 +204,7 @@
         }
 
         function validation() {
-
+    		
         }
     }
 })();

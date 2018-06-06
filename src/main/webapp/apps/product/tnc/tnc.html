@@ -63,18 +63,18 @@
                         <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumnet}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumnet | number}}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                         <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowTotalPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumtnc}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumtnc | number}}</p>
                     </div>
                 </div>
                 <div class="bv-step-content" disable-all="vm.product.premiumtnc == 0">
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
-                    <div ng-include="'apps/product/partial/partial.contact.extend.html'"></div>
+                    <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
                     <div class="text-header-sp margin-top-20" ng-show="vm.isShowPersonList">
                         <p>2. Thông tin người được bảo hiểm</p>
