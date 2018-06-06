@@ -27,6 +27,10 @@
         function validateReponse(data) {
         	var modelName = 'vm.product.' + data.fieldName;
         	var element = angular.element('[ng-model="' + modelName + '"]');
+
+        	if(!element) {
+        	    return false
+            }
         	
         	// Remove old validation message
         	element.parent().children('.control-label.has-error.validationMessage').remove();
@@ -36,6 +40,8 @@
         	element.parent().addClass('has-error');
         	var elementName = "[name='" + data.fieldName + "']";
         	$("<label class='control-label has-error validationMessage'>This field is invalid!</label>").insertAfter(elementName);
+
+        	return true;
         }
     }
 })();

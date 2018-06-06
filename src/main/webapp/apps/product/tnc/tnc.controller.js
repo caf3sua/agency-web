@@ -158,11 +158,12 @@
         }
 
         function onGetPremiumError(result) {
-            toastr.error('Get data error!', 'Error');
             if(result.data.fieldName == 'numbermonth') {
             	result.data.fieldName = 'insurancestartdate';
             }
-            vm.validateReponse(result);
+            if(!vm.validateReponse(result)) {
+                toastr.error('Get data error!', 'Error');
+            }
         }
 
         function createNewPolicy() {
