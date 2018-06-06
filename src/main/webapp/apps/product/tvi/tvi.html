@@ -58,12 +58,15 @@
                         <span class="bv-title-from-des">(Thời gian bảo hiểm từ)</span>
                     </div>
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
-                                   required-message="'Chưa chọn ngày khởi hành!'"
-                                   required
-                            >
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                                       required-message="'Chưa chọn ngày khởi hành!'"
+                                       required
+                                >
+                           </div>
+
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -73,12 +76,18 @@
                         <span class="bv-title-from-des">(Thời hạn bảo hiểm đến)</span>
                     </div>
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy"
-                             required-message="'Chưa chọn ngày kết thúc!'"
-                             required
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy"
+
                         >
-                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate">
-                            <div class="input-group-addon">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Đến ngày"
+                                       ng-model="vm.policy.expiredDate"
+                                       required-message="'Chưa chọn ngày kết thúc!'"
+                                       required
+                                >
+                            </div>
+
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -238,12 +247,14 @@
                                         </td>
                                         <td>
                                             <div class=" width-100">
-                                                <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                                                    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
-                                                           required-message="'Chưa thêm ngày sinh !'"
-                                                           require
-                                                    >
-                                                    <div class="input-group-addon">
+                                                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                                    <div class="width-100">
+                                                        <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
+                                                               required-message="'Chưa thêm ngày sinh !'"
+                                                               require
+                                                        >
+                                                    </div>
+                                                    <div class="input-group-addon bv-date-icon">
                                                         <span class="glyphicon glyphicon-th"></span>
                                                     </div>
                                                 </div>

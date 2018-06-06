@@ -220,17 +220,21 @@
                 
                 <div class=" display-flex margin-top-5">
                     <div class="margin-right-5 width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate" ng-change="vm.changeToDate()">
-						    <div class="input-group-addon">
+                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate" ng-change="vm.changeToDate()">
+                            </div>
+						    <div class="input-group-addon bv-date-icon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
 						</div>
                     </div>
                     <div class="width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
-						    <div class="input-group-addon">
+                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
+                            </div>
+						    <div class="input-group-addon bv-date-icon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
 						</div>
