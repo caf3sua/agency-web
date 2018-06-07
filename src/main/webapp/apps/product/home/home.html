@@ -17,292 +17,302 @@
                 <p>1</p>
                 <span>Tính phí ,thông tin bảo hiểm</span>
             </div>
-            <div class="bv-step-content" id="bv-step-1-content"  >
-                <div class="text-header-sp">
-                    <p>Tính phí bảo hiểm</p>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Phạm vi bảo hiểm</p>
-                </div>
-                <div>
-                	<p>A. Cháy, Sét</p>
-                	<p>B. Nổ</p>
-                	<p>C. Giông, Bão, Lũ lụt</p>
-                	<p>D. Vỡ hoặc Tràn nước</p>
-                	<p>E. Va chạm với ngôi nhà</p>
-                	<p>F. Trộm cướp</p>
-                </div>
-                
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Điều khoản mở rộng</p>
-                </div>
-                <div>
-                	<p>Thuê nhà sau tổn thất</p>
-                </div>
-                
-                <div class="">
-                    <p class="bv-title-from">Thời hạn bảo hiểm áp dụng<span class="bv-req-red">&nbsp(*)</span></p>
-                    <select class="bv-select-box form-control" ng-model="vm.homePremium.yearBuildCode" ng-change="vm.getPremium()">
-                        <option value="1">1 năm</option>
-                        <option value="2">2 năm</option>
-                    </select>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà<span class="bv-req-red">&nbsp<span class="bv-req-red">&nbsp(*)</span></span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="number" ng-change="vm.getPremium()" min = "300000000" max = "5000000000" maxlength="10" required class="bv-input" ng-model="vm.homePremium.si" name="si" id="si" placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" />
-                </div>
-                
-                <div class="margin-top-5">
-                    <p class="bv-title-from">Giới hạn bồi thường phần Tài sản bên trong</p>
-                    <select class="bv-select-box form-control" ng-model="vm.homePremium.siin" ng-change="vm.getPremium()">
-                   		<option value="">Lựa chọn Giới hạn bồi thường</option>	
-                        <option value="100000000">100,000,000 VND</option>
-                        <option value="300000000">300,000,000 VND</option>
-                        <option value="500000000">500,000,000 VND</option>
-                        <option value="750000000">750,000,000 VND</option>
-                        <option value="1000000000">1,000,000,000 VND</option>
-                    </select>
-                </div>
-                
-                <div class="margin-top-5">
-                    <p class="bv-title-from">Phí bảo hiểm phần ngôi nhà:</p>
-                    <p class="bv-title-from">{{vm.homePremium.premiumSi | number}} VND</p>
-                </div>
-                <div class="">
-                    <p class="bv-title-from">Phí bảo hiểm phần tài sản bên trong:</p>
-                    <p class="bv-title-from">{{vm.homePremium.premiumSiin | number}} VND</p>
-                </div>
-                <div class="">
-                    <p class="bv-title-from">Tổng phí bảo hiểm:</p>
-                    <p class="bv-title-from">{{vm.homePremium.premiumNet | number}} VND</p>
-                </div>
-                <div class="">
-                    <p class="bv-title-from">Nhập mã giảm giá (nếu có)</p>
-                    <input type="text" class="bv-input" ng-model="vm.homePremium.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
-                </div>
-                <div class="margin-top-5">
-                    <p class="bv-title-from">Tổng phí thanh toán:</p>
-                    <p class="bv-title-from">{{vm.homePremium.premiumHome | number}} VND</p>
-                </div>
-                
-            </div>
-            <div class="bv-step-content">
-            	<!-- Thông tin người yêu cầu bảo hiểm - Contact -->
-            	<div ng-include="'apps/product/partial/partial.contact.html'"></div>
-            	<br/>
-                <div class="text-header-sp">
-                    <p>Thông tin bảo hiểm</p>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Họ và tên người được bảo hiểm <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" name="insuranceName" id="insuranceName" ng-model="vm.homePolicy.insuranceName" class="bv-input" placeholder="Họ và tên người được bảo hiểm" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Số CMND/Hộ chiếu <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" name="invoceNumber" id="invoceNumber" ng-model="vm.homePolicy.invoceNumber" class="bv-input" placeholder="Số CMND/Hộ chiếu" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Địa chỉ liên lạc <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" name="insuranceAddress" id="insuranceAddress" ng-model="vm.homePolicy.insuranceAddress" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Số điện thoại <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" name="byNight" id="byNight" ng-model="vm.homePolicy.byNight" placeholder="Số điện thoại" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Địa chỉ ngôi nhà mua bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" name="insuredLocation" id="insuredLocation" ng-model="vm.homePolicy.insuredLocation" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Quyền sở hữu ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-
-                    <div class="cntr margin-right-15 margin-top-5">
-                        <label for="cbxd12" class="label-cbx">
-                            <input id="cbxd12" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="0">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Chủ sở hữu </span>
-                        </label>
-                    </div>
-                    <div class="cntr margin-right-15 margin-top-5">
-                        <label for="cbxd13" class="label-cbx">
-                            <input id="cbxd13" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="1">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Chủ sở hữu cho thuê nhà</span>
-                        </label>
-                    </div>
-                    <div class="cntr margin-right-15 margin-top-5">
-                        <label for="cbxd14" class="label-cbx">
-                            <input id="cbxd14" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="2">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span> Người thuê nhà</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Tổng diện tích sử dụng <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class="margin-top-5">
-                    <input type="number" min = "10" max = "1000" maxlength="4" required ng-model="vm.homePolicy.totalUsedArea" id="totalUsedArea" name="totalUsedArea" class="bv-input" placeholder="Tổng diện tích sử dụng trong khoảng từ 10m2 đến 1000m2" />
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Loại hình ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                <div class=" display-flex">
-                    <div class="cntr margin-right-5">
-                        <label for="cbxd15" class="label-cbx">
-                            <input id="cbxd15" name="dq6" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="0" ng-change="vm.checkLoaiHinh()">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Có</span>
-                        </label>
-                    </div>
-                    <div class="cntr">
-                        <label for="cbxd16" class="label-cbx">
-                            <input id="cbxd16" name="dq5" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="1" ng-change="vm.checkLoaiHinh()">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Không</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Thời hạn bảo hiểm từ ngày <span class="bv-req-red">&nbsp(*)</span></p>
-                </div>
-                
-                <div class=" display-flex margin-top-5">
-                    <div class="margin-right-5 width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate" ng-change="vm.changeToDate()">
-						    <div class="input-group-addon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
-						</div>
-                    </div>
-                    <div class="width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
-						    <div class="input-group-addon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
-						</div>
-                    </div>
-                </div>
-                
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngôi nhà được bảo hiểm là công trình xây dựng với mục đích để ở và phục vụ sinh hoạt gia đình?</p>
-                </div>
-                <div class=" display-flex">
-                    <div class="cntr margin-right-5">
-                        <label for="cbxd17" class="label-cbx">
-                            <input id="cbxd17" name="dq8" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="0">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Có</span>
-                        </label>
-                    </div>
-                    <div class="cntr">
-                        <label for="cbxd18" class="label-cbx">
-                            <input id="cbxd18" name="dq9" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="1">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Không</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngôi nhà được bảo hiểm được xây dựng bằng gạch, đá, xi măng?</p>
-                </div>
-                <div class=" display-flex">
-                    <div class="cntr margin-right-5">
-                        <label for="cbxd22" class="label-cbx">
-                            <input id="cbxd22" name="dq22" type="radio"  class="invisible" ng-model="vm.homePolicy.bars" value="0" >
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Có</span>
-                        </label>
-                    </div>
-                    <div class="cntr">
-                        <label for="cbxd23" class="label-cbx">
-                            <input id="cbxd23" name="dq23" type="radio"  class="invisible"  ng-model="vm.homePolicy.bars"  value="1">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Không</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="margin-top-5">
-                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
-                </div>
-            </div>
+            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+	            <div class="bv-step-content" id="bv-step-1-content"  >
+	                <div class="text-header-sp">
+	                    <p>Tính phí bảo hiểm</p>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Phạm vi bảo hiểm</p>
+	                </div>
+	                <div>
+	                	<p>A. Cháy, Sét</p>
+	                	<p>B. Nổ</p>
+	                	<p>C. Giông, Bão, Lũ lụt</p>
+	                	<p>D. Vỡ hoặc Tràn nước</p>
+	                	<p>E. Va chạm với ngôi nhà</p>
+	                	<p>F. Trộm cướp</p>
+	                </div>
+	                
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Điều khoản mở rộng</p>
+	                </div>
+	                <div>
+	                	<p>Thuê nhà sau tổn thất</p>
+	                </div>
+	                
+	                <div class="">
+	                    <p class="bv-title-from">Thời hạn bảo hiểm áp dụng<span class="bv-req-red">&nbsp(*)</span></p>
+	                    <select class="bv-select-box form-control" ng-model="vm.product.yearBuildCode" ng-change="vm.getPremium()">
+	                        <option value="1">1 năm</option>
+	                        <option value="2">2 năm</option>
+	                    </select>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Giới hạn bồi thường phần ngôi nhà<span class="bv-req-red">&nbsp<span class="bv-req-red">&nbsp(*)</span></span></p>
+	                </div>
+	                <div class="margin-top-5">
+					<input type="number" class="bv-input"
+						placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" ng-model="vm.product.si"
+						ng-blur="vm.getPremium()" name="numberperson"
+						validate-on="blur"
+						validator="vm.siValidator(vm.product.si) === true"
+						invalid-message="vm.siValidator(vm.product.si)"
+						required-message="'This field is required!'" required />
+				</div>
+	                
+	                <div class="margin-top-5">
+	                    <p class="bv-title-from">Giới hạn bồi thường phần Tài sản bên trong</p>
+	                    <select class="bv-select-box form-control" ng-model="vm.product.siin" ng-change="vm.getPremium()">
+	                   		<option value="">Lựa chọn Giới hạn bồi thường</option>	
+	                        <option value="100000000">100,000,000 VND</option>
+	                        <option value="300000000">300,000,000 VND</option>
+	                        <option value="500000000">500,000,000 VND</option>
+	                        <option value="750000000">750,000,000 VND</option>
+	                        <option value="1000000000">1,000,000,000 VND</option>
+	                    </select>
+	                </div>
+	                
+	                <div class="margin-top-5">
+	                    <p class="bv-title-from">Phí bảo hiểm phần ngôi nhà:</p>
+	                    <p class="bv-title-from">{{vm.product.premiumSi | number}} VND</p>
+	                </div>
+	                <div class="">
+	                    <p class="bv-title-from">Phí bảo hiểm phần tài sản bên trong:</p>
+	                    <p class="bv-title-from">{{vm.product.premiumSiin | number}} VND</p>
+	                </div>
+	                <div class="">
+	                    <p class="bv-title-from">Tổng phí bảo hiểm:</p>
+	                    <p class="bv-title-from">{{vm.product.premiumNet | number}} VND</p>
+	                </div>
+	                <div class="">
+	                    <p class="bv-title-from">Nhập mã giảm giá (nếu có)</p>
+	                    <input type="text" class="bv-input" ng-model="vm.product.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
+	                </div>
+	                <div class="margin-top-5">
+	                    <p class="bv-title-from">Tổng phí thanh toán:</p>
+	                    <p class="bv-title-from">{{vm.product.premiumHome | number}} VND</p>
+	                </div>
+	                
+	            </div>
+	        
+	            
+	            <div class="bv-step-content" disable-all="vm.product.premiumHome == 0">
+	            	<!-- Thông tin người yêu cầu bảo hiểm - Contact -->
+	            	<div ng-include="'apps/product/partial/partial.contact.html'"></div>
+	            	<br/>
+	                <div class="text-header-sp">
+	                    <p>Thông tin bảo hiểm</p>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Họ và tên người được bảo hiểm <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" name="insuranceName" id="insuranceName" ng-model="vm.homePolicy.insuranceName" class="bv-input" placeholder="Họ và tên người được bảo hiểm" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Số CMND/Hộ chiếu <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" name="invoceNumber" id="invoceNumber" ng-model="vm.homePolicy.invoceNumber" class="bv-input" placeholder="Số CMND/Hộ chiếu" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Địa chỉ liên lạc <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" name="insuranceAddress" id="insuranceAddress" ng-model="vm.homePolicy.insuranceAddress" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Số điện thoại <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="tel" class="bv-input" name="byNight" id="byNight" ng-model="vm.homePolicy.byNight" placeholder="Số điện thoại" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Địa chỉ ngôi nhà mua bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" name="insuredLocation" id="insuredLocation" ng-model="vm.homePolicy.insuredLocation" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="text" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Quyền sở hữu ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	
+	                    <div class="cntr margin-right-15 margin-top-5">
+	                        <label for="cbxd12" class="label-cbx">
+	                            <input id="cbxd12" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="0" required>
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Chủ sở hữu </span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr margin-right-15 margin-top-5">
+	                        <label for="cbxd13" class="label-cbx">
+	                            <input id="cbxd13" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="1">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Chủ sở hữu cho thuê nhà</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr margin-right-15 margin-top-5">
+	                        <label for="cbxd14" class="label-cbx">
+	                            <input id="cbxd14" type="radio" class="invisible" ng-model="vm.homePolicy.bankId" value="2">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span> Người thuê nhà</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Tổng diện tích sử dụng <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class="margin-top-5">
+	                    <input type="number" min = "10" max = "1000" maxlength="4" required ng-model="vm.homePolicy.totalUsedArea" id="totalUsedArea" name="totalUsedArea" class="bv-input" placeholder="Tổng diện tích sử dụng trong khoảng từ 10m2 đến 1000m2" required-message="'This field is required!'" required/>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Loại hình ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbxd15" class="label-cbx">
+	                            <input id="cbxd15" name="dq6" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="0" ng-change="vm.checkLoaiHinh()">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbxd16" class="label-cbx">
+	                            <input id="cbxd16" name="dq5" type="radio"  class="invisible" ng-model="vm.homePolicy.loaiHinh" value="1" ng-change="vm.checkLoaiHinh()">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Thời hạn bảo hiểm từ ngày <span class="bv-req-red">&nbsp(*)</span></p>
+	                </div>
+	                
+	                <div class=" display-flex margin-top-5">
+	                    <div class="margin-right-5 width-100">
+	                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+							    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.homePolicy.inceptionDate" ng-change="vm.changeToDate()">
+							    <div class="input-group-addon">
+							        <span class="glyphicon glyphicon-th"></span>
+							    </div>
+							</div>
+	                    </div>
+	                    <div class="width-100">
+	                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+							    <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.homePolicy.expiredDate">
+							    <div class="input-group-addon">
+							        <span class="glyphicon glyphicon-th"></span>
+							    </div>
+							</div>
+	                    </div>
+	                </div>
+	                
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Ngôi nhà được bảo hiểm là công trình xây dựng với mục đích để ở và phục vụ sinh hoạt gia đình?</p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbxd17" class="label-cbx">
+	                            <input id="cbxd17" name="dq8" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="0">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbxd18" class="label-cbx">
+	                            <input id="cbxd18" name="dq9" type="radio"  class="invisible" ng-model="vm.homePolicy.windowLocks" value="1">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="margin-top-10">
+	                    <p class="bv-title-from">Ngôi nhà được bảo hiểm được xây dựng bằng gạch, đá, xi măng?</p>
+	                </div>
+	                <div class=" display-flex">
+	                    <div class="cntr margin-right-5">
+	                        <label for="cbxd22" class="label-cbx">
+	                            <input id="cbxd22" name="dq22" type="radio"  class="invisible" ng-model="vm.homePolicy.bars" value="0" >
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Có</span>
+	                        </label>
+	                    </div>
+	                    <div class="cntr">
+	                        <label for="cbxd23" class="label-cbx">
+	                            <input id="cbxd23" name="dq23" type="radio"  class="invisible"  ng-model="vm.homePolicy.bars"  value="1">
+	                            <div class="checkbox">
+	                                <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                                    <polyline points="4 11 8 15 16 6"></polyline>
+	                                </svg>
+	                            </div>
+	                            <span>Không</span>
+	                        </label>
+	                    </div>
+	                </div>
+	                
+	                <div class="margin-top-5">
+	                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
+	                </div>
+	            </div>
+	        </form>
         </div>
         
-        <!-- Tab 2 -->
+<!---------- Tab 2 -->
         <div class="bv-step-2 closeStepTwo padding0 display-flex " id="bv-step-2" >
         	<div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step2')">
                 <p class="fas {{ vm.typeArrowTwo }}"></p>
