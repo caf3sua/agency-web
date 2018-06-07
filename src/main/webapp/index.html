@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="content/assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="content/assets/styles/font.css" type="text/css" />
+
   
   <!-- Custom main css -->
   <link rel="stylesheet" href="content/assets/styles/main.css" type="text/css" />
@@ -36,7 +37,7 @@
   
   <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css" type="text/css" />
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css" type="text/css" />
-  
+    <link rel="stylesheet" href="content/assets/styles/styleIcon.css" type="text/css" />
   <base href="/">
 </head>
 <body ng-app="app" ng-controller="AppCtrl" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
@@ -160,7 +161,8 @@
     <script src="scripts/components/form/relation-combo.directive.js"></script>
     <script src="scripts/components/form/angular-disable-all.min.js"></script>
     <script src="scripts/components/response/response-validate.service.js"></script>
-
+	<script src="scripts/components/message/message.service.js"></script>
+	
 	<!-- Config and intercepter -->
     <script src="scripts/blocks/interceptor/errorhandler.interceptor.js"></script>
     <script src="scripts/blocks/interceptor/auth-expired.interceptor.js"></script>

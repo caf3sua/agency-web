@@ -235,7 +235,8 @@
 
         vm.openAddContact = function() {
         	console.log('openAddContact');
-        	ContactCommonDialogService.openAddDialog();
+        	//ContactCommonDialogService.openAddDialog();
+        	$state.go('app.contact-new');
         }
       }
 })();
