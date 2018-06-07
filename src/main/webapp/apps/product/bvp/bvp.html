@@ -28,17 +28,21 @@
                 </div>
                 <div class=" display-flex margin-top-10">
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.thoihanbhTu" ng-change="vm.getPremium()">
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.thoihanbhTu" ng-change="vm.getPremium()">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
                     </div>
                     <div class="width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.thoihanbhDen" ng-disabled="true">
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.thoihanbhDen" ng-disabled="true">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -309,9 +313,11 @@
                     <tbody>
 	                    <tr ng-repeat="item in vm.policy.lstAdd">
 	                        <td>
-	                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-	                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
-	                                <div class="input-group-addon">
+	                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+	                                <div class="width-100">
+                                        <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
+                                    </div>
+	                                <div class="input-group-addon bv-date-icon">
 	                                    <span class="glyphicon glyphicon-th"></span>
 	                                </div>
 	                            </div>

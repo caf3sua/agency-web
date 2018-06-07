@@ -177,7 +177,27 @@ body {
     background: #fff;
     box-shadow: 1px 0px 5px 0px #fff;
 }
+.closeStepOne>.bv-step-content{
+    width: 0;
+    min-width: 0;
+    display: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);;
+    padding: 0px;
+    border: 0px solid #dfdfe0;
+    background: #fff;
+    box-shadow: 1px 0px 5px 0px #fff;
+}
 .OpenStepTwo>form>.bv-step-content{
+    width: 100%;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 10s;
+}
+.OpenStepTwo>.bv-step-content{
     width: 100%;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
@@ -246,6 +266,17 @@ body {
     text-align: left;
 }
 .closeStepTwo>form>.bv-step-content{
+    width: 0;
+    min-width: 0;
+    display: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);;
+    padding: 0px;
+    border: 0px solid #dfdfe0;
+    background: #fff;
+    box-shadow: 1px 0px 5px 0px #fff;
+}
+.closeStepTwo>.bv-step-content{
     width: 0;
     min-width: 0;
     display: none;
@@ -1503,6 +1534,16 @@ body {
 .bv-report-border-right{
     border-right: 1px solid #ccc;
     border-bottom: 0;
+}
+.bv-date-icon{
+    height: 52px;
+    width: auto;
+}
+.bv-date-icon>i{
+    margin: 10px 0 0 0;
+}
+.bv-date-icon>span{
+    margin: 10px 0 0 0;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from{

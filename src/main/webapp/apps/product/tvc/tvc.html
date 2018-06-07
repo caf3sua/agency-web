@@ -64,12 +64,15 @@
                         <span class="bv-title-from-des">(Thời gian bảo hiểm từ)</span>
                     </div>
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
-                                   required-message="'Chưa chọn từ ngày !'"
-                                   required
-                            >
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                                       required-message="'Chưa chọn từ ngày !'"
+                                       required
+                                >
+                            </div>
+
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -79,12 +82,14 @@
                         <span class="bv-title-from-des">(Thời hạn bảo hiểm đến)</span>
                     </div>
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
-                                   required-message="'Chưa chọn đến ngày!'"
-                                   required
-                            >
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
+                                       required-message="'Chưa chọn đến ngày!'"
+                                       required
+                                >
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -180,7 +185,7 @@
                     </div>
                 </div>
                 <div class="bv-step-content" disable-all="vm.policy.premium == 0">
-                    <div ng-include="'apps/product/partial/partial.contact.extend.html'"></div>
+                    <div ng-include="'apps/product/partial/partial.contact.html'"></div>
                     <div class="margin-top-20 text-header-sp">
                         <p>Thông tin người được bảo hiểm</p>
                     </div>
@@ -223,12 +228,14 @@
                                             </td>
                                             <td>
                                                 <div class=" width-100">
-                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                                                        <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
-                                                               required-message="'Chưa thêm ngày sinh!'"
-                                                               required
-                                                        >
-                                                        <div class="input-group-addon">
+                                                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                                        <div class="width-100">
+                                                            <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
+                                                                   required-message="'Chưa thêm ngày sinh!'"
+                                                                   required
+                                                            >
+                                                        </div>
+                                                        <div class="input-group-addon bv-date-icon">
                                                             <span class="glyphicon glyphicon-th"></span>
                                                         </div>
                                                     </div>

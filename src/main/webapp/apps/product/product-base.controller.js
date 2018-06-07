@@ -238,8 +238,8 @@
         };
         
         function validateReponse(result) {
-        	ResponseValidateService.validateReponse(result.data);
         	vm.errorField = result.data.fieldName;
+        	return ResponseValidateService.validateReponse(result.data);
         }
         
         function clearReponseError() {

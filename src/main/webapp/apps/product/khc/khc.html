@@ -32,17 +32,21 @@
                 </div>
                 <div class=" display-flex margin-top-10">
                     <div class="margin-right-5 width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insuranceStartDate">
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insuranceStartDate">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
                     </div>
                     <div class="width-100">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.insuranceEndDate" ng-disabled="true">
-                            <div class="input-group-addon">
+                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.product.insuranceEndDate" ng-disabled="true">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
@@ -61,9 +65,11 @@
                     <tr ng-repeat="person in vm.product.premiumKhcList">
                         <td><input type="text" class="form-control" ng-disabled="true" value="Người tham gia bảo hiểm {{$index}}"></td>
                         <td>
-                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange($index)">
-                                <div class="input-group-addon">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                <div class="width-100">
+                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange($index)">
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
@@ -88,7 +94,7 @@
             </div>
             <div class="bv-step-content">
                 <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
-                <div ng-include="'apps/product/partial/partial.contact.extend.html'"></div>
+                <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
                 <div class="text-header-sp margin-top-20" ng-show="vm.isShowPersonList">
                     <p>2. Thông tin người được bảo hiểm</p>
@@ -119,9 +125,11 @@
                         <td><input type="text" class="form-control" ng-model="person.insuredName"></td>
                         <td><input type="text" class="form-control" ng-model="person.idPasswport"/></td>
                         <td>
-                            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
-                                <div class="input-group-addon">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                <div class="width-100">
+                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
@@ -198,9 +206,11 @@
                             <td><input type="text" class="form-control" ng-model="person.insuredName" ng-disabled="true"/></td>
                             <td><input type="text" class="form-control" ng-model="person.idPasswport" ng-disabled="true"/></td>
                             <td>
-                                <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                    <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
-                                    <div class="input-group-addon">
+                                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                    <div class="width-100">
+                                        <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
+                                    </div>
+                                    <div class="input-group-addon bv-date-icon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
                                 </div>

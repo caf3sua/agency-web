@@ -27,17 +27,21 @@
                 
                 <div class=" display-flex margin-top-5">
                     <div class="margin-right-5 width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.premium.ngayBatDau" ng-change="vm.changeToDate()">
-						    <div class="input-group-addon">
+                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+						   <div class="width-100">
+                               <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.premium.ngayBatDau" ng-change="vm.changeToDate()">
+                           </div>
+						    <div class="input-group-addon bv-date-icon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
 						</div>
                     </div>
                     <div class="width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.ngayKetThuc">
-						    <div class="input-group-addon">
+                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.ngayKetThuc">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
 						</div>
@@ -49,9 +53,11 @@
                 </div>
                 <div class=" display-flex margin-top-5">
                     <div class="margin-right-5 width-100">
-                    	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.premium.ngaySinh" ng-change="vm.onDobChange()">
-						    <div class="input-group-addon">
+                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="width-100">
+                                <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.premium.ngaySinh" ng-change="vm.onDobChange()">
+                            </div>
+                            <div class="input-group-addon bv-date-icon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
 						</div>
@@ -143,9 +149,11 @@
                     <p class="bv-title-from">Ngày sinh</p>
                 </div>
                 <div class="margin-right-5 width-100">
-                   	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.insuredNgaysinh">
-					    <div class="input-group-addon">
+                   	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                        <div class="width-100">
+                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.insuredNgaysinh">
+                        </div>
+                        <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
 					    </div>
 					</div>
@@ -371,9 +379,11 @@
                             <tbody>
                                 <tr ng-repeat="item in vm.policy.lstTinhtrangSKs">
                                     <td>
-                                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                            <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
-                                            <div class="input-group-addon">
+                                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                            <div class="width-100">
+                                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
+                                            </div>
+                                            <div class="input-group-addon bv-date-icon">
                                                 <span class="glyphicon glyphicon-th"></span>
                                             </div>
                                         </div>
@@ -431,9 +441,11 @@
                     <p class="bv-title-from">Ngày sinh</p>
                 </div>
                 <div class="margin-right-5 width-100">
-                   	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinh">
-					    <div class="input-group-addon">
+                   	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                        <div class="width-100">
+                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinh">
+                        </div>
+                        <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
 					    </div>
 					</div>
@@ -482,9 +494,11 @@
                     <p class="bv-title-from">Ngày sinh</p>
                 </div>
                 <div class="margin-right-5 width-100">
-                   	<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-					    <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinhD">
-					    <div class="input-group-addon">
+                   	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+					    <div class="width-100">
+                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinhD">
+                        </div>
+					    <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
 					    </div>
 					</div>
