@@ -169,6 +169,12 @@
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
+
+            if(result.premiumKhc > 0) {
+                vm.disableContactInfo(false);
+            } else {
+                vm.disableContactInfo(true);
+            }
             vm.clearResponseError();
         }
 

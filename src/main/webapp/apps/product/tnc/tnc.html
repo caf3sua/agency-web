@@ -73,7 +73,7 @@
                         <p class="bv-tile-templateSummary">{{vm.product.premiumtnc | number}}</p>
                     </div>
                 </div>
-                <div class="bv-step-content" disable-all="vm.product.premiumtnc == 0">
+                <div id="contact-info" class="bv-step-content disable-all">
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
@@ -101,7 +101,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="person in vm.policy.listTncAdd" disable-all="vm.product.premiumtnc == 0">
+                        <tr ng-repeat="person in vm.policy.listTncAdd">
                             <td><input name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
                                        required-message="'This field is required!'"
                                        required></td>

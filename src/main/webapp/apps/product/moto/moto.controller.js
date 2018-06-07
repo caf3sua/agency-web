@@ -167,6 +167,12 @@
                 vm.isShowChaynoPhi = true;
                 vm.product.chaynoPhi = result.chaynoPhi;
             }
+
+            if(result.tongPhi > 0) {
+                vm.disableContactInfo(false);
+            } else {
+                vm.disableContactInfo(true);
+            }
             vm.clearResponseError();
         }
 

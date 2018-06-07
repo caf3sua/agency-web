@@ -184,7 +184,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bv-step-content" disable-all="vm.policy.premium == 0">
+                <div id="contact-info" class="bv-step-content disable-all">
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
                     <div class="margin-top-20 text-header-sp">
                         <p>Thông tin người được bảo hiểm</p>
@@ -214,7 +214,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="person in  vm.policy.listTvcAddBaseVM"  disable-all="vm.policy.premium == 0" >
+                                        <tr ng-repeat="person in  vm.policy.listTvcAddBaseVM">
                                             <td>
                                                 <input name="insuredName{{$index}}" type="text" class="bv-input" ng-model="person.insuredName"
                                                        required-message="'Chưa thêm họ và tên !'"

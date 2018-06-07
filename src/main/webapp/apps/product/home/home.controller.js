@@ -114,6 +114,12 @@
   				vm.policy.premiumDiscount = data.premiumDiscount;
   				vm.policy.yearBuildCode = data.yearBuildCode;
   				console.log(vm.product);
+
+                if(result.premiumHome > 0) {
+                    vm.disableContactInfo(false);
+                } else {
+                    vm.disableContactInfo(true);
+                }
                 vm.clearResponseError();
             }
             function onGetPremiumError(error) {
