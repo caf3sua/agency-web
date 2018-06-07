@@ -72,8 +72,8 @@
 
 		vm.getName = getName;
         vm.dobValidator = dobValidator;
-        vm.validateReponse = validateReponse;
-        vm.clearReponseError = clearReponseError;
+        vm.validateResponse = validateResponse;
+        vm.clearResponseError = clearResponseError;
         
         // implement function
 		function getAccount() {
@@ -237,12 +237,24 @@
             return true;
         };
         
-        function validateReponse(result) {
+        function validateResponse(result, type) {
         	vm.errorField = result.data.fieldName;
-        	return ResponseValidateService.validateReponse(result.data);
+
+            var message = ResponseValidateService.validateResponse(result.data);
+            if(!message) {
+                message = result.data.fieldName + ' is invalid';
+            }
+            if(type == 'getPremium') {
+                message = 'Get data error, ' + message;
+            } else if(type == 'createPolicy') {
+                message = 'Create invoice error, ' + message ;
+            } else if(type == 'getPolicyNumber') {
+                message = 'Get policy number error, ' + message ;
+            }
+            toastr.error(message, 'Error');
         }
         
-        function clearReponseError() {
+        function clearResponseError() {
         	ResponseValidateService.cleanResponseError(vm.errorField);
         }
     }

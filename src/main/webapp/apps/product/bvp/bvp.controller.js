@@ -259,10 +259,11 @@
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
+            vm.clearResponseError();
         }
 
         function onGetPremiumError(result) {
-            toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'getPremium');
         }
 
         function createNewPolicy() {
@@ -299,18 +300,20 @@
 
         function onCreatePolicySuccess(result) {
             toastr.success('Create Invoice Success!', 'Successful!');
+            vm.clearResponseError();
         }
 
         function onCreatePolicyError(result) {
-            toastr.error('Create Invoice Error!', 'Error');
+            vm.validateResponse(result, 'createPolicy');
         }
 
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
+            vm.clearResponseError();
         }
 
         function onGetPolicyNumberError(result) {
-            toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'getPolicyNumber');
         }
     }
 })();

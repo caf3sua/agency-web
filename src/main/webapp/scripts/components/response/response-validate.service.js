@@ -9,7 +9,7 @@
 
     function ResponseValidateService () {
         var service = {
-            validateReponse: validateReponse,
+            validateResponse: validateResponse,
             cleanResponseError: cleanResponseError
         };
 
@@ -24,14 +24,10 @@
         	element.parent().removeClass('has-error');
         }
 
-        function validateReponse(data) {
+        function validateResponse(data) {
         	var modelName = 'vm.product.' + data.fieldName;
         	var element = angular.element('[ng-model="' + modelName + '"]');
 
-        	if(!element) {
-        	    return false
-            }
-        	
         	// Remove old validation message
         	element.parent().children('.control-label.has-error.validationMessage').remove();
         	element.parent().removeClass('has-error');
@@ -39,9 +35,13 @@
         	// Build and append new message
         	element.parent().addClass('has-error');
         	var elementName = "[name='" + data.fieldName + "']";
-        	$("<label class='control-label has-error validationMessage'>This field is invalid!</label>").insertAfter(elementName);
+        	var message = data.message;
+        	if(!message) {
+                message = "This field is invalid!";
+            }
+        	$("<label class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
 
-        	return true;
+        	return data.message;
         }
     }
 })();

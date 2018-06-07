@@ -114,6 +114,7 @@
   				vm.policy.premiumDiscount = data.premiumDiscount;
   				vm.policy.yearBuildCode = data.yearBuildCode;
   				console.log(vm.product);
+                vm.clearResponseError();
             }
             function onGetPremiumError(error) {
                 console.log(error.data.message);
@@ -121,6 +122,7 @@
             	vm.product.premiumNet = 0;
             	vm.product.premiumSi= 0;
             	vm.product.premiumSiin= 0;
+                vm.validateResponse(error, 'getPremium');
             }
   		}
   		
@@ -131,9 +133,10 @@
   			function onGetPolicyNumberSuccess(data, headers) {
   				vm.policy.gycbhNumber = data.policyNumber;
   				createPolicy();
+                vm.clearResponseError();
             }
             function onGetPolicyNumberError(error) {
-                console.log(error.data.message);
+                vm.validateResponse(error, 'getPolicyNumber');
             }
   		}
 
@@ -149,10 +152,11 @@
   				vm.policy = data;
   				console.log(vm.policy);
   				toastr.success('Create Invoice Success!', 'Successful!');
+                vm.clearResponseError();
             }
   			
             function onError(error) {
-            	toastr.error('Create Invoice Error!', 'Error');
+                vm.validateResponse(error, 'createPolicy');
             }
   		}
   		
