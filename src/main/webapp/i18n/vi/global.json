@@ -22,7 +22,8 @@
         		"REPORT_INCOME" : "Báo cáo doanh thu",
         		"REPORT_COMMISSION" : "Báo cáo hoa hồng",
         		"DOCUMENT" : "Tài liệu",
-        		"PROMOTION" : "Khuyến mại"  		
+        		"PROMOTION" : "Khuyến mại",
+        		"CONTACT_NEW" : "Tạo khách hàng mới"
         	}
         },
         "menu": {

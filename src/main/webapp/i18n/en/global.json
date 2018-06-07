@@ -19,10 +19,11 @@
         		"PRINTED_PAPER_USED" : "Danh sách ấn chỉ đã sử dụng",
         		"CART" : "Giỏ hàng",
         		"ORDER" : "Danh sách đơn hàng của tôi",
-        		"REPORT_INCOME" : "Báo cáo doanh thu",
-        		"REPORT_COMMISSION" : "Báo cáo hoa hồng",
-        		"DOCUMENT" : "Tài liệu",
-        		"PROMOTION" : "Khuyến mại"
+        		"REPORT_INCOME" : "Report income",
+        		"REPORT_COMMISSION" : "Report commission",
+        		"DOCUMENT" : "Documents",
+        		"PROMOTION" : "Promotion",
+        		"CONTACT_NEW" : "Create new contact"
         	}
         },
         "menu": {
