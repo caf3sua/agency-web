@@ -7,17 +7,39 @@
 
     	ContactAddDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
         function ContactAddDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
+        	
         	var vm = this;
-        	vm.contactCode;
-        	vm.searchContact = searchContact;
+        	
         	vm.addNewContact = addNewContact;
         	vm.selectedContact = selectedContact;
-        	vm.searchCriterial = {
-    			"contactName": "",
-    			"phone": "",
-    			"idNumber": "",
-    			"dateOfBirth": ""
-        	}
+        	
+        	vm.contactAdd = {
+			  "contactId": "",
+			  "contactName": "Name6415",
+			  "contactSex": "1",
+			  "dateOfBirth": "24/06/1989",
+			  "email": "email@gmai.com",
+			  "group": "POTENTIAL",
+			  "homeAddress": "71 Ngô Sĩ Liên",
+			  "idNumber": "141410101112",
+			  "listRelationship": [
+			    {
+			      "customerId": "",
+			      "customerIdParrent": "",
+			      "customerName": "",
+			      "customerNameParrent": "",
+			      "id": "",
+			      "relationId": "",
+			      "relationName": ""
+			    }
+			  ],
+			  "listTarget": [
+			    "string"
+			  ],
+			  "phone": "0988777666",
+			  "occupation": "Nghề nghiệp"
+			}
+        	
         	vm.contacts = [];
         	vm.contactsInit = [];
         	
@@ -36,31 +58,22 @@
         		$uibModalInstance.close(row);
         	}
         	
-        	function searchContact() {
-        		console.log('searchContact');
+        	
+        	function addNewContact() {
+        		console.log('addNewContact');
         		
-        		ContactService.search(vm.searchCriterial, onSuccess, onError);
+        		ContactService.create(vm.contactAdd, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			vm.contacts = result;
+        			toastr.success('Success!', 'Successful!');
+        			$uibModalInstance.dismiss('cancel');
         		}
         		
         		function onError(result) {
-        			
+        			toastr.error('Error!', 'Error');
+        			$uibModalInstance.dismiss('cancel');
         		}
         	}
         	
-        	function addNewContact() {
-        		$uibModalInstance.dismiss('cancel');
-        	}
-        	
-        	
-//        	vm.ok = function () {
-//                $uibModalInstance.close(vm.contactCode);
-//            };
-//
-//            vm.cancel = function () {
-//                $uibModalInstance.dismiss('cancel');
-//            };
         }
 })();

@@ -112,10 +112,11 @@
         }
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
+            vm.clearResponseError();
         }
 
         function onGetPolicyNumberError(result) {
-            toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'getPolicyNumber');
         }
         // Function
         function onchangePlan() {
@@ -149,13 +150,13 @@
                 vm.sumPremiumDiscount =   result.premiumDiscount ;
             }
 
-
+            vm.clearResponseError();
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
         }
 
         function onGetPremiumError(result) {
-            toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'getPremium');
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -190,10 +191,11 @@
         }
         function onGetCreateSuccess(result) {
             toastr.success('Success!');
+            vm.clearResponseError();
         }
 
         function onGetCreateError(result) {
-            toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'createPolicy');
         }
 
         function addOrRemovePerson() {

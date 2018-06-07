@@ -20,7 +20,7 @@
   		})();
   		
   		// Properties & function declare
-  		vm.homePremium = {
+  		vm.product = {
   			"premiumDiscount": 0,
   			"premiumHome": 0,
   			"premiumNet": 0,
@@ -31,7 +31,7 @@
   			"yearBuildCode": "1"
   		};
   		
-  		vm.homePolicy = {
+  		vm.policy = {
   				"bankId": "0",
   				"baovietCompanyId": "",
   				"baovietCompanyName": " ",
@@ -82,6 +82,7 @@
   		vm.createPolicy = createPolicy;
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
+  		vm.siValidator = siValidator;
   		
   		// Initialize
   		init();
@@ -91,31 +92,37 @@
             var startDate = new Date();
             // add a day
             startDate.setDate(startDate.getDate() + 1);
-            vm.homePolicy.inceptionDate = DateUtils.convertDate(startDate);
+            vm.policy.inceptionDate = DateUtils.convertDate(startDate);
 
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.homePolicy.expiredDate = DateUtils.convertDate(endDate);
+            vm.policy.expiredDate = DateUtils.convertDate(endDate);
         }
   		
   		function getPremium() {
-  			ProductHomeService.getPremium(vm.homePremium, onGetPremiumSuccess, onGetPremiumError);
+  			ProductHomeService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
-  				vm.homePremium = data;
-  				vm.homePolicy.si = data.si;
-  				vm.homePolicy.siin = data.siin;
-  				vm.homePolicy.premiumsi = data.premiumSi;
-  				vm.homePolicy.premiumsiin = data.premiumSiin;
-  				vm.homePolicy.premiumNet = data.premiumNet;
-  				vm.homePolicy.premiumHome = data.premiumHome;
-  				vm.homePolicy.premiumDiscount = data.premiumDiscount;
-  				vm.homePolicy.yearBuildCode = data.yearBuildCode;
-  				console.log(vm.homePremium);
+  				vm.product = data;
+  				vm.policy.si = data.si;
+  				vm.policy.siin = data.siin;
+  				vm.policy.premiumsi = data.premiumSi;
+  				vm.policy.premiumsiin = data.premiumSiin;
+  				vm.policy.premiumNet = data.premiumNet;
+  				vm.policy.premiumHome = data.premiumHome;
+  				vm.policy.premiumDiscount = data.premiumDiscount;
+  				vm.policy.yearBuildCode = data.yearBuildCode;
+  				console.log(vm.product);
+                vm.clearResponseError();
             }
             function onGetPremiumError(error) {
                 console.log(error.data.message);
+                vm.product.premiumHome = 0;
+            	vm.product.premiumNet = 0;
+            	vm.product.premiumSi= 0;
+            	vm.product.premiumSiin= 0;
+                vm.validateResponse(error, 'getPremium');
             }
   		}
   		
@@ -124,37 +131,49 @@
   			ProductCommonService.getPolicyNumber({lineId: 'HOM'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
   			
   			function onGetPolicyNumberSuccess(data, headers) {
-  				vm.homePolicy.gycbhNumber = data.policyNumber;
+  				vm.policy.gycbhNumber = data.policyNumber;
   				createPolicy();
+                vm.clearResponseError();
             }
             function onGetPolicyNumberError(error) {
-                console.log(error.data.message);
+                vm.validateResponse(error, 'getPolicyNumber');
             }
   		}
 
   		function createPolicy() {
   			console.log('createPolicy');
   			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
-  			vm.appendCommonData(vm.homePolicy);
+  			vm.appendCommonData(vm.policy);
   			
   			//debugger
-  			ProductHomeService.createPolicy(vm.homePolicy, onSuccess, onError);
+  			ProductHomeService.createPolicy(vm.policy, onSuccess, onError);
   			
   			function onSuccess(data, headers) {
-  				vm.homePolicy = data;
-  				console.log(vm.homePolicy);
+  				vm.policy = data;
+  				console.log(vm.policy);
   				toastr.success('Create Invoice Success!', 'Successful!');
+                vm.clearResponseError();
             }
   			
             function onError(error) {
-            	toastr.error('Create Invoice Error!', 'Error');
+                vm.validateResponse(error, 'createPolicy');
             }
   		}
   		
   		function changeToDate() {
-  			var toDate = vm.calculateToDate(vm.homePolicy.inceptionDate);
-  			vm.homePolicy.expiredDate = toDate;
+  			var toDate = vm.calculateToDate(vm.policy.inceptionDate);
+  			vm.policy.expiredDate = toDate;
   		}
+  		
+  		
+  		function siValidator(siStr) {
+            if(!siStr){return;}
+
+            if (siStr < 300000000 || yearDiff > 5000000000) {
+                return "Bảo Việt chỉ bảo hiểm cho phần ngôi nhà trong giới hạn từ 300 triệu đồng đến 5 tỷ đồng";
+            }
+            return true;
+        };
   		
     }
 })();

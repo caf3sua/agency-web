@@ -279,10 +279,11 @@
           		vm.product.premium = result.premium;
           		vm.product.totalPremium = result.totalPremium;
     		}
+            vm.clearResponseError();
     	}
     	
     	function onGetPremiumError(result) {
-    		toastr.error('Get data error!', 'Error');
+            vm.validateResponse(result, 'getPremium');
     	}
     	
     	function createNewPolicy() {
@@ -325,11 +326,12 @@
     	}
     	
     	function onCreatePolicySuccess(result) {
-    		toastr.success('Create Invoice Success!', 'Successful!');
+            toastr.success('Create Invoice Success!', 'Successful!');
+            vm.clearResponseError();
     	}
     	
     	function onCreatePolicyError(result) {
-    		toastr.error('Create Invoice Error!', 'Error');
+            vm.validateResponse(result, 'createPolicy');
     	}
     }
 })();

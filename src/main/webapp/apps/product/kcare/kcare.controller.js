@@ -268,10 +268,12 @@
   				vm.policy.netPremium = data.premiumNet;
   				vm.policy.totalPremium = data.premiumKCare;
   				vm.policy.planId = data.typeOfKcare;
+                vm.clearResponseError();
   	    	}
   	    	
   	    	function onGetPremiumError(error) {
   	    		vm.isShowPremium = false;
+                vm.validateResponse(error, 'getPremium');
   	    	}
   		}
   		
@@ -337,9 +339,10 @@
   				}
   				
   				createPolicy();
+                vm.clearResponseError();
             }
             function onGetPolicyNumberError(error) {
-                console.log(error.data.message);
+                vm.validateResponse(error, 'getPolicyNumber');
             }
   		}
   		
@@ -356,10 +359,11 @@
   				vm.policy = data;
   				console.log(vm.policy);
   				toastr.success('Create Invoice Success!', 'Successful!');
+                vm.clearResponseError();
             }
   			
             function onError(error) {
-            	toastr.error('Create Invoice Error!', 'Error');
+                vm.validateResponse(error, 'createPolicy');
             }
   		}
   		

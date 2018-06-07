@@ -39,6 +39,7 @@
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                 <div class="width-100">
                                     <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate"
+                                           ng-change="vm.getPremium()"
                                            required-message="'This field is required!'"
                                            required>
                                 </div>
