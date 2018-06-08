@@ -22,8 +22,10 @@
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
                     </div>
-                    <div class="">
-                        <p class="bv-title-from">Chon nhóm loại xe</p>
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Chon nhóm loại xe</p>
+	                </div>
+                    <div class="margin-top-5">
                         <relation-combo type="moto-type" ng-model="vm.product.typeOfMoto" options="vm.typeOfMotoOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
                     <div class="margin-top-10">
@@ -53,6 +55,9 @@
                             <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
                         </label>
                     </div>
+                    <div class="margin-top-10 required" ng-show="vm.product.tndstnCheck">
+	                    <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
+	                </div>
                     <div class="margin-top-5" ng-show="vm.product.tndstnCheck">
                         <relation-combo type="moto-tndstn-sotien" ng-model="vm.product.tndstnSotien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
@@ -68,11 +73,21 @@
                             <span>Bảo hiểm tai nạn người ngồi trên xe</span>
                         </label>
                     </div>
+                    <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+	                    <p class="bv-title-from">Số chỗ tham gia bảo hiểm</p>
+	                </div>
                     <div class="margin-top-5">
-                        <input type="number" min="1" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.product.nntxSoNguoi" ng-blur="vm.getPremium()"/>
+                        <input type="number" min="1" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.product.nntxSoNguoi" ng-blur="vm.getPremium()"
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
+                    <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+	                    <p class="bv-title-from">Số tiền bảo hiểm</p>
+	                </div>
                     <div class="margin-top-5">
-                        <input type="number" min="0" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm" ng-model="vm.product.nntxStbh" ng-blur="vm.getPremium()"/>
+                        <input type="number" min="0" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm" ng-model="vm.product.nntxStbh" ng-blur="vm.getPremium()"
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
                     <div class="cntr margin-top-5">
                         <label for="cbx5" class="label-cbx">
@@ -86,8 +101,13 @@
                             <span>Bảo hiểm cháy nổ</span>
                         </label>
                     </div>
+                    <div class="margin-top-10 required" ng-show="vm.product.chaynoCheck">
+	                    <p class="bv-title-from">Số tiền bảo hiểm cháy nổ</p>
+	                </div>
                     <div class="margin-top-5">
-                        <input type="number" min="0" ng-show="vm.product.chaynoCheck" class="bv-input" ng-model="vm.product.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ" ng-blur="vm.getPremium()"/>
+                        <input type="number" min="0" ng-show="vm.product.chaynoCheck" class="bv-input" ng-model="vm.product.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ" ng-blur="vm.getPremium()"
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
                     <div class="margin-top-5">
                         <input type="number" min="1" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.changePremium" ng-blur="vm.getPremium()"/>
@@ -133,51 +153,64 @@
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Tên chủ xe</p>
                     </div>
                     <div class="margin-top-5">
-                        <input type="text" class="bv-input" placeholder="Tên chủ xe theo đăng ký xe" ng-model="vm.policy.insuredName" />
+                        <input type="text" class="bv-input" placeholder="Tên chủ xe theo đăng ký xe" ng-model="vm.policy.insuredName" 
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Địa chỉ</p>
                     </div>
                     <div class="margin-top-5">
-                        <input type="text" class="bv-input" placeholder="Theo đăng ký xe" ng-model="vm.policy.insuredAddress"/>
+                        <input type="text" class="bv-input" placeholder="Theo đăng ký xe" ng-model="vm.policy.insuredAddress"
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
                     <div class="margin-top-5">
-                        <input type="text" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddress"/>
+                        <input type="text" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddress"
+                        	required-message="'This field is required!'"
+                            required/>
                     </div>
-                    <div class="margin-top-20 text-header-sp">
-                        <p>Thông tin xe</p>
-                    </div>
-                    <div class="margin-top-10">
-                        <p class="bv-title-from">Biển kiểm soát</p>
-                    </div>
-                    <div class=" display-flex margin-top-5">
-                        <div class="margin-right-5 width-100">
-                            <input type="text" class="bv-input" placeholder="Biển kiểm soát" ng-model="vm.policy.registrationNumber"/>
-                        </div>
-                        <div class="width-100">
-                            <input type="text" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe"/>
-                        </div>
+                    <div class="margin-top-10 required">
+                        <p class="bv-title-from">Thông tin xe</p>
                     </div>
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
-                            <input type="text" class="bv-input" placeholder="Số khung" ng-model="vm.policy.chassisNumber"/>
+                            <input type="text" class="bv-input" placeholder="Biển kiểm soát" ng-model="vm.policy.registrationNumber"
+                            	required-message="'This field is required!'"
+                            	required/>
                         </div>
                         <div class="width-100">
-                            <input type="text" class="bv-input" placeholder="Số máy" ng-model="vm.policy.engineNumber"/>
+                            <input type="text" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe"
+                            	required-message="'This field is required!'"
+                            	required/>
                         </div>
                     </div>
-                    <div class="margin-top-10">
+                    <div class=" display-flex margin-top-5">
+                        <div class="margin-right-5 width-100">
+                            <input type="text" class="bv-input" placeholder="Số khung" ng-model="vm.policy.sokhung"
+                            	required-message="'This field is required!'"
+                            	required/>
+                        </div>
+                        <div class="width-100">
+                            <input type="text" class="bv-input" placeholder="Số máy" ng-model="vm.policy.somay"
+                            	required-message="'This field is required!'"
+                            	required/>
+                        </div>
+                    </div>
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Thời gian bảo hiểm</p>
                     </div>
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose>
                                 <div class="width-100">
-                                    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu">
+                                    <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu"
+                                    	required-message="'This field is required!'"
+                            			required>
                                 </div>
                                 <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
@@ -187,7 +220,7 @@
                         <div class="width-100">
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose>
                                 <div class="width-100">
-                                    <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.thoihanden">
+                                    <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.thoihanden" ng-disabled="true">
                                 </div>
                                 <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
@@ -252,7 +285,13 @@
                     </div>
                     <div class="border-right-ccc bv-pading-30 width-100">
                         <div class="text-header-sp" style="margin-bottom: 10px">
-                            <p>Thông tin về tham gia bảo hiểm</p>
+                            <p>Thông tin về xe tham gia bảo hiểm</p>
+                        </div>
+                        <div class="margin-top-10">
+                            <p class="bv-title-from">Loại xe</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">{{vm.getName(vm.product.typeOfMoto, vm.typeOfMotoOptions)}}</p>
                         </div>
                         <div class="margin-top-10">
                             <p class="bv-title-from">Biển số</p>
@@ -279,16 +318,16 @@
                             </div>
                         </div>
                         <div class="">
-                            <p class="bv-title-from">Loại xe</p>
+                            <p class="bv-title-from">Nhãn hiệu xe</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.getName(vm.product.tndsSoCho)}}</p>
+                            <p class="bv-tile-templateSummary">{{vm.policy.hieuxe}}</p>
                         </div>
                         <div class="">
-                            <p class="bv-title-from">Mục đích sử dụng</p>
+                            <p class="bv-title-from">Giá trị bảo hiểm</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.typeOfMotoOptions[vm.product.typeOfMoto].name}}</p>
+                            <p class="bv-tile-templateSummary">{{vm.product.chaynoStbh}}</p>
                         </div>
                     </div>
                     <div class="width-100 bv-pading-30">
@@ -308,64 +347,102 @@
                         <div class="bv-pading-table-templateSummary">
                             <table class="width-100 ">
                                 <thead>
-                                <tr>
-                                    <th class="bv-title-from">Phạm vi bảo hiểm</th>
-                                    <th class="bv-title-from">Mức trách nhiệm</th>
-                                    <th class="bv-title-from">Phí bảo hiểm(Đã bao gồm VAT)</th>
-                                </tr>
+	                                <tr>
+	                                    <th class="bv-title-from">Phạm vi bảo hiểm</th>
+	                                    <th class="bv-title-from">Mức trách nhiệm</th>
+	                                    <th class="bv-title-from">Phí bảo hiểm(Đã bao gồm VAT)</th>
+	                                </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <p class="bv-tile-templateSummary">Bảo hiểm trách nhiệm dân sự bắt buộc</p></td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <p class="margin-bottom-0">
-                                                Mức trách nhiệm đối với người thứ 3
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về người:100,000,000 VND/người/vụ
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về tài sản:100,000,000 VND/vụ
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <span>480,700</span><span>VND</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="bv-tile-templateSummary">Bảo hiểm tai nạn người ngồi trên xe</p></td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <p class="margin-bottom-0">
-                                                Số người: 5 người
-                                            </p>
-                                            <p class="margin-bottom-0">
-                                                - Về người:100,000,000 VND/người/vụ
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="bv-tile-templateSummary">
-                                            <span>480,700</span><span>VND</span>
-                                        </div>
-                                    </td>
-                                </tr>
+	                                <tr ng-show="vm.isShowTndsbbPhi">
+	                                    <td>
+	                                        <p class="bv-tile-templateSummary">Bảo hiểm trách nhiệm dân sự bắt buộc</p></td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <p class="margin-bottom-0">
+	                                                Mức trách nhiệm đối với người thứ 3
+	                                            </p>
+	                                            <p class="margin-bottom-0">
+	                                                - Về người: 100,000,000 VND/người/vụ
+	                                            </p>
+	                                            <p class="margin-bottom-0">
+	                                                - Về tài sản: 50,000,000 VND/vụ
+	                                            </p>
+	                                        </div>
+	                                    </td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <span>{{vm.product.tndsbbPhi}}</span><span>VND</span>
+	                                        </div>
+	                                    </td>
+	                                </tr>
+	                                <tr ng-show="vm.isShowTndstnPhi">
+	                                    <td>
+	                                        <p class="bv-tile-templateSummary">Bảo hiểm Trách nhiệm dân sự tự nguyện</p></td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <p class="margin-bottom-0">
+	                                                Mức trách nhiệm đối với người thứ 3
+	                                            </p>
+	                                            <p class="margin-bottom-0">
+	                                                - Về người: 50,000,000 VND/người/vụ
+	                                            </p>
+	                                            <p class="margin-bottom-0">
+	                                                - Về tài sản: 50,000,000 VND/vụ
+	                                            </p>
+	                                        </div>
+	                                    </td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <span>{{vm.product.tndstnPhi}}</span><span>VND</span>
+	                                        </div>
+	                                    </td>
+	                                </tr>
+	                                <tr ng-show="vm.isShowNntxPhi">
+	                                    <td>
+	                                        <p class="bv-tile-templateSummary">Bảo hiểm tai nạn người ngồi trên xe</p></td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <p class="margin-bottom-0">
+	                                                - Số người: {{vm.product.nntxSoNguoi}} người
+	                                            </p>
+	                                            <p class="margin-bottom-0">
+	                                                - Số tiền bảo hiểm: {{vm.product.nntxStbh}} VND/người/vụ
+	                                            </p>
+	                                        </div>
+	                                    </td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <span>{{vm.product.nntxPhi}}</span><span>VND</span>
+	                                        </div>
+	                                    </td>
+	                                </tr>
+	                                <tr ng-show="vm.isShowChaynoPhi">
+	                                    <td>
+	                                        <p class="bv-tile-templateSummary">Bảo hiểm Cháy nổ xe máy</p></td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <p class="margin-bottom-0">
+	                                                - Số tiền bảo hiểm: {{vm.product.chaynoStbh}} VND
+	                                            </p>
+	                                        </div>
+	                                    </td>
+	                                    <td>
+	                                        <div class="bv-tile-templateSummary">
+	                                            <span>{{vm.product.chaynoPhi}}</span><span>VND</span>
+	                                        </div>
+	                                    </td>
+	                                </tr>
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <p class="bv-title-from">Tổng phí bảo hiểm</p>
-                                    </td>
-                                    <td>
-                                        <p class="bv-tile-templateSummary"><span>530,700</span><span>VND</span></p></td>
-                                </tr>
+	                                <tr>
+	                                    <td></td>
+	                                    <td>
+	                                        <p class="bv-title-from">Tổng phí bảo hiểm</p>
+	                                    </td>
+	                                    <td>
+	                                        <p class="bv-tile-templateSummary"><span>{{vm.product.tongPhi}}</span><span>VND</span></p></td>
+	                                </tr>
                                 </tfoot>
                             </table>
                         </div>

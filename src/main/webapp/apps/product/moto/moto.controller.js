@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductMotoController', ProductMotoController);
 
-    ProductMotoController.$inject = ['$scope', '$controller', 'MotoService', '$state', '$rootScope'];
+    ProductMotoController.$inject = ['$scope', '$controller', 'MotoService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductMotoController ($scope, $controller, MotoService, $state, $rootScope) {
+    function ProductMotoController ($scope, $controller, MotoService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
 
         angular.element(document).ready(function () {
@@ -41,20 +41,19 @@
             "chaynoCheck":false,
             "chaynoPhi":0,
             "chaynoStbh":0,
-            "gycbhNumber":"ITSOL.MOT.18.31",
             "hieuxe":"",
-            "insuredAddress":"Hà Nội",
-            "insuredName":"Đức",
+            "insuredAddress":"",
+            "insuredName":"",
             "nntxCheck":false,
             "nntxSoNguoi":0,
             "nntxStbh":0,
             "policyNumber":"",
             "receiveMethod":"1",
-            "registrationNumber":"112223334445",
-            "sokhung":"DSF234RF2F35635865",
-            "somay":"SDAFGA43563RFG356W4",
-            "thoihanden":"28/05/2019",
-            "thoihantu":"29/05/2018",
+            "registrationNumber":"",
+            "sokhung":"",
+            "somay":"",
+            "thoihanden":"",
+            "thoihantu":"",
             "tndsBbPhi":66000,
             "tndsTnNntxPhi":0,
             "tndsTnPhi":0,
@@ -90,6 +89,21 @@
 
         // Function
         function init() {
+        	var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.thoihantu = DateUtils.convertDate(startDate);
+
+            var endDate = new Date();
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            vm.policy.thoihanden = DateUtils.convertDate(endDate);
+
+            // Get gycbhNumber
+            ProductCommonService.getPolicyNumber({lineId: 'MOT'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+        	
+        	// Register disable 
+            vm.registerDisableContactInfoValue('vm.product.tongPhi');
         }
 
         function checkedChange() {
@@ -168,11 +182,6 @@
                 vm.product.chaynoPhi = result.chaynoPhi;
             }
 
-            if(result.tongPhi > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
         }
 
@@ -214,6 +223,15 @@
 
         function onCreatePolicyError(result) {
             vm.validateResponse(result, 'createPolicy');
+        }
+        
+        function onGetPolicyNumberSuccess(result) {
+            vm.policy.gycbhNumber  = result.policyNumber;
+            vm.clearResponseError();
+        }
+
+        function onGetPolicyNumberError(result) {
+            vm.validateResponse(result, 'getPolicyNumber');
         }
     }
 })();

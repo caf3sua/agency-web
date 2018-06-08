@@ -219,7 +219,7 @@
   			var filterObj = datas.filter(function(e) {
   			  return e.id == id;
   			});
-  			return filterObj.name;
+  			return filterObj[0].name;
   		}
 
   		// FOR DISABLE ALL
