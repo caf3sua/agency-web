@@ -104,6 +104,7 @@
         }
         
         function openSearchContact() {
+        	console.log('openSearchContact');
         	ContactCommonDialogService.openSearchDialog();
         }
         
