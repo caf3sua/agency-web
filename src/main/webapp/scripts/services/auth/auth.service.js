@@ -46,6 +46,12 @@
             function authThen () {
                 var isAuthenticated = Principal.isAuthenticated();
 
+                var blackList = ['access.signin', 'access.forgot-password'];
+        		// black list
+        		if (blackList.indexOf(toState.name) != -1) {
+        			return;
+        		}
+        		
                 // Redirect to signin
                 if (!isAuthenticated) {
                 		$state.go('access.signin')

@@ -1544,7 +1544,7 @@ body {
 .disable-all{
     opacity: 0.5;
     background: #eeeeee5e;
-    z-index: 9999;
+    z-index: 999;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from{
@@ -2329,6 +2329,12 @@ body {
     height: 40px !important;
    line-height: 30px !important;
 }
+
+.bv-product-icon {
+	font-size: 20px;
+    margin-bottom: 5px;
+}
+
 
 /* For required fields */
 div.required p:after {

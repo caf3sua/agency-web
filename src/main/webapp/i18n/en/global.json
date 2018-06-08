@@ -23,7 +23,9 @@
         		"REPORT_COMMISSION" : "Report commission",
         		"DOCUMENT" : "Documents",
         		"PROMOTION" : "Promotion",
-        		"CONTACT_NEW" : "Create new contact"
+        		"CONTACT_NEW" : "Create new contact",
+        		"ACCOUNT_CHANGE_PASSWORD" : "Change password",
+        		"ACCOUNT_PROFILE" : "Profile"
         	}
         },
         "menu": {
