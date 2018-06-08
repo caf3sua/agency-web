@@ -5,14 +5,17 @@
         .controller('ContactNewController', ContactNewController);
 
 
-    	ContactNewController.$inject = ['$scope', '$http', '$filter',
+    	ContactNewController.$inject = ['$rootScope', '$scope', '$http', '$filter',
     		'ContactService', 'MessageService', '$controller', 'ContactCommonDialogService'];
-        function ContactNewController($scope, $http, $filter
+        function ContactNewController($rootScope, $scope, $http, $filter
         		, ContactService, MessageService, $controller, ContactCommonDialogService) {
         	
         	var vm = this;
         	
         	// variable
+        	vm.contactRelationId = "";
+		    vm.contactRelationName = "";
+		    vm.relationId;
         	vm.relationships = [
         		{"relationId": "30", "relationName" : "Bản thân"}, 
         		{"relationId": "31", "relationName" : "Vợ/Chồng"},
@@ -51,11 +54,6 @@
       			  "idNumber": "CMT14141001",
       			  "listContactProduct": [],
       			  "listRelationship": [
-      			    {
-      			      "contactRelationId": "string",
-      			      "contactRelationName": "string",
-      			      "relationId": "30"
-      			    }
       			  ],
       			  "occupation": "Công nghệ thông tin",
       			  "phone": "0989888999"
@@ -76,6 +74,14 @@
       		    console.log('Init ContactNewController');
       		})();
       		
+      		$scope.$on('selectedContactChange', function() {
+            	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+            		console.log($rootScope.selectedContact);
+            		vm.contactRelationName = $rootScope.selectedContact.contactName;
+            		vm.contactRelationId = $rootScope.selectedContact.contactId;
+            	}
+            });
+      		
       		// Implement function
       		function openSearchContact() {
             	console.log('openSearchContact');
@@ -89,7 +95,24 @@
     		}
       		
       		function addRelationship() {
-      			vm.contactAdd.listRelationship.push(vm.selRelationship);
+      			// Get relationId
+      			if (vm.selRelationship != null && vm.selRelationship.relationId != null && vm.contactRelationId != ""
+      				&& vm.contactRelationName != "") {
+      				// Add to list
+      				var relatioship = {
+          			      "contactRelationId": vm.contactRelationId,
+          			      "contactRelationName": vm.contactRelationName,
+          			      "relationId": vm.selRelationship.relationId
+        			};
+      				vm.contactAdd.listRelationship.push(relatioship);
+      			} else {
+      				toastr.error('Lỗi!', 'Dữ liệu không hợp lệ');
+      			}
+      			
+      			// Get ContactRelationId, contactRelationName
+      			vm.contactRelationId = "";
+      			vm.contactRelationName = "";
+      			vm.selRelationship = {};
     		}
       		
       		
