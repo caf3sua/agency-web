@@ -38,35 +38,30 @@
     	</div>
 	</div>
 	<div class="col-sm-3">
-		<button class="bv-btn-step3" ng-click="vm.addRelationship()">
-        Thêm
-    	</button>
+		<button class="bv-btn-step3" ng-click="vm.addRelationship()">Thêm</button>
     </div>
 </div>
-
-<pre>{{vm.contactAdd.listRelationship}}</pre>
+<div>
+	<ul>
+	  <li ng-repeat="item in vm.contact.listRelationship">
+	      <span>{{item.relationName}} - {{item.contactRelationName}} <button ng-click="vm.deleteRelationship($index)">Xóa</button></span>
+	  </li>
+	</ul>
+</div>
 
 <div class="col-md-12 padding0 margin-top-5">
 	<div class="col-sm-3">Mục khai thác</div>
 	<div>
 		<select ng-options="selected.productName for selected in vm.products" ng-model="vm.selProduct"></select>
    </div>
-   
    <div>
-   		<button class="bv-btn-step3" ng-click="vm.addProduct()">
-        Thêm
-    	</button>
+   		<button class="bv-btn-step3" ng-click="vm.addProduct()">Thêm</button>
    </div>
-   
-   <p ng-repeat="p in vm.contactAdd.listContactProduct">{{p.productName}}</p>
 </div>
-
-
-<pre>{{vm.contactAdd.listContactProduct}}</pre>
 <div>
 	<ul>
-	  <li ng-repeat="item in vm.contactAdd.listContactProduct">
-	      <span>{{item.productName}}</span>
+	  <li ng-repeat="item in vm.contact.listContactProduct">
+	      <span>{{item.productName}} <button ng-click="vm.deleteContactProduct($index)">Xóa</button></span>
 	  </li>
 	</ul>
 </div>

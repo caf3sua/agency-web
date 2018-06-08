@@ -44,7 +44,7 @@
         	
         	vm.selRelationship = {};
         	vm.selProduct = {};
-        	vm.contactAdd = {
+        	vm.contact = {
       			  "contactName": "Tên khách hàng",
       			  "contactSex": "1",
       			  "dateOfBirth": "24/06/1989",
@@ -53,8 +53,7 @@
       			  "homeAddress": "Địa chỉ",
       			  "idNumber": "CMT14141001",
       			  "listContactProduct": [],
-      			  "listRelationship": [
-      			  ],
+      			  "listRelationship": [],
       			  "occupation": "Công nghệ thông tin",
       			  "phone": "0989888999"
       			}
@@ -64,6 +63,9 @@
         	vm.addProduct = addProduct;
         	vm.addRelationship = addRelationship;
         	vm.openSearchContact = openSearchContact;
+        	vm.deleteContactProduct = deleteContactProduct;
+        	vm.deleteRelationship = deleteRelationship;
+        	
         	
         	angular.element(document).ready(function () {
             });
@@ -89,9 +91,14 @@
             }
       		
       		function addProduct() {
-      			if (vm.contactAdd.listContactProduct.indexOf(vm.selProduct) == -1) {
-      				vm.contactAdd.listContactProduct.push(vm.selProduct);
+      			if (vm.contact.listContactProduct.indexOf(vm.selProduct) == -1) {
+      				vm.contact.listContactProduct.push(vm.selProduct);
       			}
+    		}
+      		
+      		function deleteContactProduct(index) {
+      			console.log('deleteContactProduct');
+      			vm.contact.listContactProduct.splice(index, 1);
     		}
       		
       		function addRelationship() {
@@ -102,9 +109,10 @@
       				var relatioship = {
           			      "contactRelationId": vm.contactRelationId,
           			      "contactRelationName": vm.contactRelationName,
-          			      "relationId": vm.selRelationship.relationId
+          			      "relationId": vm.selRelationship.relationId,
+          			      "relationName": vm.selRelationship.relationName
         			};
-      				vm.contactAdd.listRelationship.push(relatioship);
+      				vm.contact.listRelationship.push(relatioship);
       			} else {
       				toastr.error('Lỗi!', 'Dữ liệu không hợp lệ');
       			}
@@ -113,6 +121,11 @@
       			vm.contactRelationId = "";
       			vm.contactRelationName = "";
       			vm.selRelationship = {};
+    		}
+      		
+      		function deleteRelationship(index) {
+      			console.log('deleteRelationship');
+      			vm.contact.listRelationship.splice(index, 1);
     		}
       		
       		
