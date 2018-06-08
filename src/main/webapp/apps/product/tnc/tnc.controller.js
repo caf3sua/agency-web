@@ -147,12 +147,14 @@
         }
 
         function onGetPremiumSuccess(result) {
-            vm.product.premiumnet = result.premiumnet;
-            vm.product.premiumtnc = result.premiumtnc;
             if(vm.product.numberperson > 0) {
+            	vm.product.premiumnet = result.premiumnet;
+                vm.product.premiumtnc = result.premiumtnc;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
             } else {
+            	vm.product.premiumnet = 0;
+                vm.product.premiumtnc = 0;
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }

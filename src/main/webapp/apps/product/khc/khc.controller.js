@@ -74,6 +74,9 @@
 
             // Get gycbhNumber
             ProductCommonService.getPolicyNumber({lineId: 'KHC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+            
+            // Register disable 
+            vm.registerDisableContactInfoValue('vm.product.premiumKhc');
         }
 
         function onDobChange(index) {
@@ -99,6 +102,7 @@
             } else if(vm.product.numberPerson < vm.product.premiumKhcList.length) {
                 removePerson();
             }
+            getPremium();
         }
 
         function addNewPerson() {
@@ -155,26 +159,31 @@
         }
 
         function onGetPremiumSuccess(result) {
-            vm.product.premiumNet = result.premiumNet;
-            vm.product.premiumKhc = result.premiumKhc;
-
             for (var i=0; i < vm.postPremiumKhcListIndex.length; i++) {
-                vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]] = result.premiumKhcList[i];
+                vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].dob = result.premiumKhcList[i].dob;
+	            vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].insuredName = result.premiumKhcList[i].insuredName;
+	            vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].premium = result.premiumKhcList[i].premium;
+            }
+            
+            var count = 0;
+            for (var i=0; i < vm.product.premiumKhcList.length; i++) {
+            	if(vm.product.premiumKhcList[i].premium > 0) {
+            		count++
+            	}
             }
 
-            if(vm.product.numberPerson > 0) {
+            if(vm.product.numberPerson > 0 && count == vm.product.premiumKhcList.length) {
+            	vm.product.premiumNet = result.premiumNet;
+                vm.product.premiumKhc = result.premiumKhc;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
             } else {
+            	vm.product.premiumNet = 0;
+                vm.product.premiumKhc = 0;
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
 
-            if(result.premiumKhc > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
         }
 

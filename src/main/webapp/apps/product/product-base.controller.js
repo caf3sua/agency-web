@@ -224,7 +224,7 @@
 
   		// FOR DISABLE ALL
 		function registerDisableContactInfoValue(model) {
-			$scope.$watch('vm.product.premiumtnc', function(value) {
+			$scope.$watch(model, function(value) {
 		    	if(value > 0) {
 		            disableContactInfo(false);
 		        } else {
