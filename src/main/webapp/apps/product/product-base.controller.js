@@ -74,6 +74,7 @@
         vm.dobValidator = dobValidator;
         vm.validateResponse = validateResponse;
         vm.clearResponseError = clearResponseError;
+        vm.disableContactInfo = disableContactInfo;
         
         // implement function
 		function getAccount() {
@@ -220,6 +221,15 @@
   			});
   			return filterObj.name;
   		}
+
+  		// FOR DISABLE ALL
+        function disableContactInfo(isDisable) {
+            if(isDisable) {
+                $("#contact-info").addClass("disable-all");
+            } else {
+                $("#contact-info").removeClass("disable-all");
+            }
+        }
 
   		// FOR VALIDATOR
         // Date of birth validator

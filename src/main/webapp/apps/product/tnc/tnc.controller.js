@@ -154,6 +154,12 @@
                 vm.isShowTotalPremium = false;
             }
             vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
+
+            if(result.premiumtnc > 0) {
+                vm.disableContactInfo(false);
+            } else {
+                vm.disableContactInfo(true);
+            }
             vm.clearResponseError();
         }
 

@@ -268,6 +268,12 @@
   				vm.policy.netPremium = data.premiumNet;
   				vm.policy.totalPremium = data.premiumKCare;
   				vm.policy.planId = data.typeOfKcare;
+
+                if(result.totalPremium > 0) {
+                    vm.disableContactInfo(false);
+                } else {
+                    vm.disableContactInfo(true);
+                }
                 vm.clearResponseError();
   	    	}
   	    	
