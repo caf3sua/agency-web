@@ -31,18 +31,26 @@
         				}
 	        		}
         		})
-        		.state('access.signup', {
-        			url: '/signup',
-        			templateUrl: 'apps/access/signup/signup.html'
-        		})
+//        		.state('access.signup', {
+//        			url: '/signup',
+//        			templateUrl: 'apps/access/signup/signup.html'
+//        		})
         		.state('access.forgot-password', {
         			url: '/forgot-password',
-        			templateUrl: 'apps/access/forgot-password/forgot-password.html'
-        		})
-        		.state('access.lockme', {
-        			url: '/lockme',
-        			templateUrl: 'apps/access/lockme/lockme.html'
-        		})
-        		;
+        			templateUrl: 'apps/access/forgot-password/forgot-password.html',
+        			data : { title: 'SignIn' },
+        			controller: "SigninController",
+        			controllerAs: 'vm',
+        			resolve: {
+        				loadPlugin: function ($ocLazyLoad) {
+        		    			return $ocLazyLoad.load(['apps/access/signin/signin.controller.js']);
+        				}
+	        		}
+        		});
+//        		.state('access.lockme', {
+//        			url: '/lockme',
+//        			templateUrl: 'apps/access/lockme/lockme.html'
+//        		})
+//        		;
     }
 })();
