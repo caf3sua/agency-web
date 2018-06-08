@@ -1541,6 +1541,11 @@ body {
 .bv-date-icon>span{
     margin: 10px 0 0 0;
 }
+.disable-all{
+    opacity: 0.5;
+    background: #eeeeee5e;
+    z-index: 9999;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from{
         display: flex;
