@@ -2329,3 +2329,9 @@ body {
     height: 40px !important;
    line-height: 30px !important;
 }
+
+/* For required fields */
+div.required p:after {
+    content: " (*)";
+    color: red;
+}
