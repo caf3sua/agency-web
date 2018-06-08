@@ -37,7 +37,7 @@
 	        				return $translate.refresh();
 	            		}],
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/contact/contact-new.controller.js']);
+		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js', 'apps/contact/contact-new.controller.js']);
 			        }
 	            }
 	        });

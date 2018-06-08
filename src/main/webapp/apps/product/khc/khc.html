@@ -22,13 +22,19 @@
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
                     </div>
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Số người tham gia</p>
+	                </div>
                     <div class="margin-top-5">
                         <input type="number" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.numberPerson" ng-blur="vm.addOrRemovePerson()"/>
                     </div>
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Số tiền bảo hiểm</p>
+	                </div>
                     <div class="margin-top-10">
                         <relation-combo type="khc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Thời hạn bảo hiểm</p>
                     </div>
                     <div class=" display-flex margin-top-10">

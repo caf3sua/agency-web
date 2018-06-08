@@ -20,7 +20,7 @@
   		})();
   		
   		// Properties & function declare
-  		vm.premium = {
+  		vm.product = {
   			  "gioiTinh": "0",
   			  "ngayBatDau": "dd/MM/yyyy",
   			  "ngaySinh": "dd/MM/yyyy",
@@ -161,7 +161,7 @@
             var startDate = new Date();
             // add a day
             startDate.setDate(startDate.getDate() + 1);
-            vm.premium.ngayBatDau = DateUtils.convertDate(startDate);
+            vm.product.ngayBatDau = DateUtils.convertDate(startDate);
 
             var endDate = new Date();
             // add a day
@@ -173,7 +173,7 @@
             var now = new Date();
             var nowStr = DateUtils.convertDate(now);
             
-            var dob = new Date(vm.premium.ngaySinh);
+            var dob = new Date(vm.product.ngaySinh);
             var dobStr = DateUtils.convertDate(dob);
             
             vm.tuoi = DateUtils.yearDiff(dobStr, nowStr);
@@ -233,7 +233,7 @@
   		}
   		
   		function checkedChangeBill() {
-  			var type = vm.premium.typeOfKcare;
+  			var type = vm.product.typeOfKcare;
   			
   			if (type == "PGM1") {
   				vm.isShowBill1 = true;
@@ -257,11 +257,11 @@
   		}
   		
   		function getPremium() {
-  			ProductKcareService.getPremium(vm.premium, onGetPremiumSuccess, onGetPremiumError);
+  			ProductKcareService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
   				vm.isShowPremium = true;
-  				vm.premium = data;
+  				vm.product = data;
   				vm.policy.thoihantu = data.ngayBatDau;
   				vm.policy.thoihanden = vm.ngayKetThuc;
   				vm.policy.changePremium = data.premiumDiscount;
@@ -269,7 +269,7 @@
   				vm.policy.totalPremium = data.premiumKCare;
   				vm.policy.planId = data.typeOfKcare;
 
-                if(result.totalPremium > 0) {
+                if(vm.policy.totalPremium > 0) {
                     vm.disableContactInfo(false);
                 } else {
                     vm.disableContactInfo(true);
@@ -374,7 +374,7 @@
   		}
   		
   		function changeToDate() {
-  			var toDate = vm.calculateToDate(vm.premium.ngayBatDau);
+  			var toDate = vm.calculateToDate(vm.product.ngayBatDau);
   			vm.ngayKetThuc = toDate;
   		}
   		

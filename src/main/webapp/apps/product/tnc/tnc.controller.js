@@ -82,6 +82,9 @@
 
             // Get gycbhNumber
             ProductCommonService.getPolicyNumber({lineId: 'TNC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+            
+            // Register disable 
+            vm.registerDisableContactInfoValue('vm.product.premiumtnc');
         }
 
         function addOrRemovePerson() {
@@ -144,22 +147,18 @@
         }
 
         function onGetPremiumSuccess(result) {
-            vm.product.premiumnet = result.premiumnet;
-            vm.product.premiumtnc = result.premiumtnc;
             if(vm.product.numberperson > 0) {
+            	vm.product.premiumnet = result.premiumnet;
+                vm.product.premiumtnc = result.premiumtnc;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
             } else {
+            	vm.product.premiumnet = 0;
+                vm.product.premiumtnc = 0;
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
             vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
-
-            if(result.premiumtnc > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
         }
 

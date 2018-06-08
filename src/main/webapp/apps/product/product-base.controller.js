@@ -74,7 +74,7 @@
         vm.dobValidator = dobValidator;
         vm.validateResponse = validateResponse;
         vm.clearResponseError = clearResponseError;
-        vm.disableContactInfo = disableContactInfo;
+        vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
         
         // implement function
 		function getAccount() {
@@ -105,6 +105,7 @@
         }
         
         function openSearchContact() {
+        	console.log('openSearchContact');
         	ContactCommonDialogService.openSearchDialog();
         }
         
@@ -222,6 +223,16 @@
   		}
 
   		// FOR DISABLE ALL
+		function registerDisableContactInfoValue(model) {
+			$scope.$watch(model, function(value) {
+		    	if(value > 0) {
+		            disableContactInfo(false);
+		        } else {
+		            disableContactInfo(true);
+		        }
+		    }, true);
+		}
+		
         function disableContactInfo(isDisable) {
             if(isDisable) {
                 $("#contact-info").addClass("disable-all");
