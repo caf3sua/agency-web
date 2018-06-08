@@ -2334,3 +2334,10 @@ body {
 	font-size: 20px;
     margin-bottom: 5px;
 }
+
+
+/* For required fields */
+div.required p:after {
+    content: " (*)";
+    color: red;
+}

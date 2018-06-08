@@ -22,19 +22,25 @@
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
                     </div>
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Số người tham gia</p>
+	                </div>
                     <div class="margin-top-5">
                         <input type="number" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.numberperson" ng-blur="vm.addOrRemovePerson()"
                                name="numberperson"
                                required-message="'This field is required!'"
                                required/>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Số tiền bảo hiểm</p>
+	                </div>
+                    <div class="margin-top-5">
                         <relation-combo name="premiumPackage" type="tnc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Thời hạn bảo hiểm</p>
                     </div>
-                    <div class=" display-flex margin-top-10">
+                    <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                 <div class="width-100">
@@ -112,8 +118,6 @@
                                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                     <div class="width-100">
                                         <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
-                                               validator = "vm.dobValidator(person.dob) === true"
-                                               invalid-message = "vm.dobValidator(person.dob)"
                                                required-message="'This field is required!'"
                                                required>
                                     </div>

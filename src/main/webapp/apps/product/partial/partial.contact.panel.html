@@ -14,33 +14,67 @@
             <span>Lấy thông tin người yêu cầu bảo hiểm</span>
         </label>
     </div>
-
+	<div class="margin-top-10 required">
+	    <p class="bv-title-from">Họ và tên</p>
+	</div>
     <div class="input-group margin-top-5" >
-        <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"/>
+        <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
+        	required-message="'This field is required!'"
+            required/>
         <div class="input-group-addon" ng-click="openSearchContact()">
             <i class="fa fa-plus"></i>
         </div>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Vai trò</p>
+	</div>
     <div class="margin-top-5">
-        <select class="bv-select-box form-control" ng-model="contactRole">
+        <select class="bv-select-box form-control" ng-model="contactRole"
+        	required-message="'This field is required!'"
+            required>
             <option value="" selected disabled>--- Người yêu cầu bảo hiểm là ---</option>
             <option value="0">Cá nhân</option>
             <option value="1">Tổ chức</option>
         </select>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Mã số thuế</p>
+	</div>
     <div class="margin-top-5">
-        <input type="text" class="bv-input" placeholder="Mã số thuế" ng-model="contactTaxNo"/>
+        <input type="text" class="bv-input" placeholder="Mã số thuế" ng-model="contactTaxNo"
+        	required-message="'This field is required!'"
+            required/>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Địa chỉ</p>
+	</div>
     <div class="margin-top-5">
-        <input type="text" class="bv-input" placeholder="Địa chỉ" ng-model="contactAddress"/>
+        <input type="text" class="bv-input" placeholder="Địa chỉ" ng-model="contactAddress"
+        	required-message="'This field is required!'"
+            required/>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Phường/Xã</p>
+	</div>
     <div class="margin-top-5">
-        <input type="text" class="bv-input" placeholder="Phường/Xã" ng-model="contactAddressDistrict"/>
+        <input type="text" class="bv-input" placeholder="Phường/Xã" ng-model="contactAddressDistrict"
+        	required-message="'This field is required!'"
+            required/>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Điện thoại</p>
+	</div>
     <div class="margin-top-5">
-        <input type="text" class="bv-input" placeholder="Điện thoại" ng-model="contactPhone"/>
+        <input type="text" class="bv-input" placeholder="Điện thoại" ng-model="contactPhone"
+        	required-message="'This field is required!'"
+            required/>
     </div>
+    <div class="margin-top-10 required">
+	    <p class="bv-title-from">Email</p>
+	</div>
     <div class="margin-top-5">
-        <input type="text" class="bv-input" placeholder="Email" ng-model="contactEmail"/>
+        <input type="text" class="bv-input" placeholder="Email" ng-model="contactEmail"
+        	required-message="'This field is required!'"
+            required/>
     </div>
 </div>
