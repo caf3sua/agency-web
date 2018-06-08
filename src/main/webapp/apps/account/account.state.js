@@ -40,7 +40,7 @@
 	            controllerAs: 'vm',
 	            resolve: {
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/account/change-password/change-password.controller.js']);
+		            		return $ocLazyLoad.load(['apps/account/change-password/change-password.controller.js', 'apps/account/change-password/change-password.service.js']);
 			        }
 	            }
 	        });
