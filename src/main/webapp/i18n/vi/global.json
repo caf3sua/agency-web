@@ -23,7 +23,9 @@
         		"REPORT_COMMISSION" : "Báo cáo hoa hồng",
         		"DOCUMENT" : "Tài liệu",
         		"PROMOTION" : "Khuyến mại",
-        		"CONTACT_NEW" : "Tạo khách hàng mới"
+        		"CONTACT_NEW" : "Tạo khách hàng mới",
+        		"ACCOUNT_CHANGE_PASSWORD" : "Đổi mật khẩu",
+        		"ACCOUNT_PROFILE" : "Trang thông tin cá nhân"
         	}
         },
         "menu": {
