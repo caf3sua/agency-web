@@ -1,33 +1,26 @@
-  <div class="center-block w-xxl w-auto-xs p-y-md ">
-    <div class="navbar">
+<div class="center-block w-xxl w-auto-xs p-y-md ">
+	<div class="navbar">
       <div class="pull-center">
         <div ui-include="'../views/theme/blocks/navbar.brand.html'"></div>
       </div>
     </div>
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a bv-border-ccc">
-      <!-- <div class="m-b text-md">
-        Sign in with your {{app.name}} Account
-      </div> -->
-      <form name="form" role="form" ng-submit="vm.login()" show-validation>
-        <div class="md-form-group float-label">
-        	<input type="email" class="md-input" required ng-model="vm.username" id="username" name="username">
-          	<label>Username</label>
-        </div>
-        <div class="md-form-group float-label">
-          <input type="password" id="password" name="password" class="md-input" ng-model="vm.password" ng-minlength=1 ng-maxlength=20 required>
-          <label>Password</label>
-        </div>      
-        <div class="m-b-md">        
-          <label class="md-check">
-            <input type="checkbox"><i class="primary"></i> Keep me signed in
-          </label>
-        </div>
-        <button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid">Sign in</button>
-      </form>
+		<form name="form" role="form" ng-submit="vm.login()" show-validation>
+	        <div class="md-form-group float-label">
+	        	<input type="email" class="md-input" required ng-model="vm.username" id="username" name="username">
+	          	<label>Tên đăng nhập</label>
+	        </div>
+	        <div class="md-form-group float-label">
+	          	<input type="password" id="password" name="password" class="md-input" ng-model="vm.password" ng-minlength=1 ng-maxlength=20 required>
+				<label>Mật khẩu</label>
+	        </div>
+	        <!-- Button -->      
+	        <button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid">Đăng nhập</button>
+      	</form>
     </div>
 
+	<!-- Quên mật khẩu -->
     <div class="p-v-lg text-center">
-      <div class="m-b"><a ui-sref="access.forgot-password" href="forgot-password.html" class="text-primary _600">Forgot password?</a></div>
-      <div>Do not have an account? <a ui-sref="access.signup" href="signup.html" class="text-primary _600">Sign up</a></div>
+		<div class="m-b">Quên mật khẩu? <a ui-sref="access.forgot-password" href="signup.html" class="text-primary _600">Nhấn vào đây</a></div>
     </div>
-  </div>
+</div>
