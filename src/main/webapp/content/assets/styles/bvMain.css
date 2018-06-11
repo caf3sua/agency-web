@@ -1546,7 +1546,26 @@ body {
     background: #eeeeee5e;
     z-index: 999;
 }
+.bv-from-changepassword{
+    width: 400px;
+    margin: 0 auto;
+}
+.bv-btn-changepassword{
+    background: #0371b6;
+    border: 1px solid #0371b6;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px 80px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-block;
+}
 @media (min-width:1200px) and (max-width:1300px) {
+    .bv-from-changepassword{
+        width: 400px;
+        margin: 0 auto;
+    }
     .bv-from{
         display: flex;
     }
@@ -1594,6 +1613,10 @@ body {
     }
 }
 @media (min-width:992px) and (max-width:1200px) {
+    .bv-from-changepassword{
+        width: 400px;
+        margin: 0 auto;
+    }
     .bv-from{
         display: flex;
     }
@@ -1699,6 +1722,10 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .bv-from-changepassword{
+        width: 400px;
+        margin: 0 auto;
+    }
     .bv-from{
         display: block;
     }
@@ -1876,6 +1903,10 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-from-changepassword{
+        width: 400px;
+        margin: 0 auto;
+    }
     .bv-from{
         display: block;
     }
@@ -2089,6 +2120,10 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-from-changepassword{
+        width: 320px;
+        margin: 0 auto;
+    }
     .bv-from{
         display: block;
     }
@@ -2259,7 +2294,7 @@ body {
         z-index: 9999;
     }
     .bv-logo{
-        margin-left: 40px;
+        margin-left: 0px;
     }
 
     .sidebar-mini.bv-check-menu .sidebar-menu > li > a > span{
