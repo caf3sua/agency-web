@@ -2250,7 +2250,7 @@ body {
     .bv-btn-header-title {
         display: inline-block;
         border: 1px solid #b4cfe4;
-        padding: 4px 5px;
+        padding: 5px 5px 2px 5px;
         border-radius: 15px;
     }
     .bv-btn-header-title>span {
