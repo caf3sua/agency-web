@@ -135,6 +135,7 @@
   		function init() {
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
+            vm.registerDisableContactInfoValue('vm.product.premium');
   		}
   		
   		function getCarBranchesSuccess(result) {

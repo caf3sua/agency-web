@@ -96,7 +96,7 @@
             // instantiate base controller
             $controller('ProductBaseController', { vm: vm, $scope: $scope });
             getPolicyNumber();
-
+            vm.registerDisableContactInfoValue('vm.policy.premium');
         })();
         function showChangePremium() {
             if(vm.policy.destinationId != "") {

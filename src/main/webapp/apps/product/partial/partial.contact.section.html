@@ -6,32 +6,36 @@
 	    <p class="bv-title-from">Họ và tên</p>
 	</div>
     <div class="input-group margin-top-5" >
-        <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
-        	required-message="'This field is required!'"
-            required/>
-        <div class="input-group-addon" ng-click="openSearchContact()">
+        <input type="text" name="contactName" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
+               required-message="'Chựa cọn thông tin người yêu cầu bảo hiểm!'"
+               required/>
+        <div class="input-group-addon " ng-click="openSearchContact()">
             <i class="fa fa-plus"></i>
         </div>
     </div>
     <div class="margin-top-10 required">
 	    <p class="bv-title-from">Ngày sinh</p>
 	</div>
-    <div class="input-group date margin-top-5" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-	    <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="contactDob"
-	           validator = "vm.dobValidator(contactDob) === true"
-	           invalid-message = "vm.dobValidator(contactDob)"
-	           required-message="'This field is required!'"
-	           required>
-	    <div class="input-group-addon">
-	        <span class="glyphicon glyphicon-th"></span>
-	    </div>
-	</div>
+    <div class="margin-right-5 width-100">
+        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+            <div class="width-100">
+                <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="contactDob"
+                       validator = "vm.dobValidator(contactDob) === true"
+                       invalid-message = "vm.dobValidator(contactDob)"
+                       required-message="'Chưa chọn ngày sinh!'"
+                       required/>
+            </div>
+            <div class="input-group-addon bv-date-icon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        </div>
+    </div>
 	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
 	</div>
 	<div class="margin-top-5" ng-show="isShowExtendInfo">
         <input type="text" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactIdNumber"
-        	required-message="'This field is required!'"
+            required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
            	required/>
     </div>
     <div class="margin-top-10 required" ng-show="isShowExtendInfo">

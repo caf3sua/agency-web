@@ -98,6 +98,8 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.expiredDate = DateUtils.convertDate(endDate);
+            vm.registerDisableContactInfoValue('vm.product.premiumHome');
+
         }
   		
   		function getPremium() {

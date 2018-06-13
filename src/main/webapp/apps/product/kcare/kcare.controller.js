@@ -167,6 +167,7 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.ngayKetThuc = DateUtils.convertDate(endDate);
+            vm.registerDisableContactInfoValue('vm.product.premiumKCare');
         }
   		
   		function onDobChange() {

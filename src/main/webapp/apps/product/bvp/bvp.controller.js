@@ -178,6 +178,8 @@
 
             // Get gycbhNumber
             ProductCommonService.getPolicyNumber({lineId: 'BVP'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+            vm.registerDisableContactInfoValue('vm.product.phiBH');
+
         }
         
         $scope.$on('selectedContactChange', function() {

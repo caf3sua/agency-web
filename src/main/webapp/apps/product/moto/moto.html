@@ -149,7 +149,7 @@
                         <p class="bv-tile-templateSummary">{{vm.product.tongPhi}}</p>
                     </div>
                 </div>
-                <div id="contact-info" class="bv-step-content disable-all">
+                <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.tongPhi == 0">
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 

@@ -17,7 +17,7 @@
                 <p>1</p>
                 <span>Tính phí - thông tin bảo hiểm</span>
             </div>
-            <div class="bv-step-content" id="bv-step-1-content"  >
+            <div class="bv-step-content" id="bv-step-1-content">
                 <div class="text-header-sp">
                     <p>Thông tin gói</p>
                 </div>
@@ -132,7 +132,7 @@
             </div>
             
             <!-- Page 2: Thông tin người yêu cầu bảo hiểm-->
-            <div id="contact-info" class="bv-step-content disable-all">
+            <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumKCare == 0">
                 <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
             	<div ng-include="'apps/product/partial/partial.contact.html'"></div>
                 

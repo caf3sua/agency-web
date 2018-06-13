@@ -30,7 +30,6 @@
                                 required-message="'Chưa chọn nơi đến !'"
                                 required
                         >
-                            <option >Chọn nơi đến</option>
                             <option value="2">Toàn cầu</option>
                             <option value="3">Châu Á - Thái Bình Dương</option>
                             <option value="4">ASEAN</option>
@@ -67,7 +66,7 @@
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
                                 <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
-                                       required-message="'Chưa chọn từ ngày !'"
+                                       required-message="'Nhập vào ngày khời hành Việt Nam !'"
                                        required
                                 >
                             </div>
@@ -85,7 +84,7 @@
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
                                 <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
-                                       required-message="'Chưa chọn đến ngày!'"
+                                       required-message="'Nhập vào ngày trở về!'"
                                        required
                                 >
                             </div>
@@ -149,7 +148,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5">
-                        <input type="number" min="1" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
+                        <input type="number" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
                     </div>
                     <div class="margin-top-10">
                         <div class="table-responsive">
@@ -184,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="contact-info" class="bv-step-content disable-all">
+                <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.premium == 0">
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
                     <div class="margin-top-20 text-header-sp">
                         <p>Thông tin người được bảo hiểm</p>

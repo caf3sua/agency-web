@@ -86,12 +86,12 @@
 
             if(attrs.type == 'hhvc-money-type') {
                 var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()"'
-                	+ 'required-message="\'This field is required!\'" required>'
+                	+ 'required-message="\'Chưa chọn số tiền bảo hiểm!\'" required>'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
 			} else {
                 var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()"'
-                	+ 'required-message="\'This field is required!\'" required>'
+                	+ 'required-message="\'Chưa chọn số tiền bảo hiểm!\'" required>'
                     + '<option value="" disabled selected>' + defaultOption + '</option>'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
