@@ -17,7 +17,7 @@
                 <span>Tính phí</span>
                 <span>,thông tin bảo hiểm</span>
             </div>
-            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
                 <div class="bv-step-content" id="bv-step-1-content"  >
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
@@ -78,7 +78,7 @@
 	                </div>
                     <div class="margin-top-5">
                         <input type="number" min="1" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.product.nntxSoNguoi" ng-blur="vm.getPremium()"
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa chọn số người tham gia bảo hiểm!'"
                             required/>
                     </div>
                     <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
@@ -86,7 +86,7 @@
 	                </div>
                     <div class="margin-top-5">
                         <input type="number" min="0" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm" ng-model="vm.product.nntxStbh" ng-blur="vm.getPremium()"
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa chọn số tiền bảo hiểm!'"
                             required/>
                     </div>
                     <div class="cntr margin-top-5">
@@ -106,7 +106,7 @@
 	                </div>
                     <div class="margin-top-5">
                         <input type="number" min="0" ng-show="vm.product.chaynoCheck" class="bv-input" ng-model="vm.product.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ" ng-blur="vm.getPremium()"
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa nhâp số tiền bảo hiểm cháy nổ!'"
                             required/>
                     </div>
                     <div class="margin-top-5">
@@ -158,7 +158,7 @@
                     </div>
                     <div class="margin-top-5">
                         <input type="text" class="bv-input" placeholder="Tên chủ xe theo đăng ký xe" ng-model="vm.policy.insuredName" 
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa nhập tên chủ xe!'"
                             required/>
                     </div>
                     <div class="margin-top-10 required">
@@ -166,12 +166,12 @@
                     </div>
                     <div class="margin-top-5">
                         <input type="text" class="bv-input" placeholder="Theo đăng ký xe" ng-model="vm.policy.insuredAddress"
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa nhập địa chỉ!'"
                             required/>
                     </div>
                     <div class="margin-top-5">
                         <input type="text" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddress"
-                        	required-message="'This field is required!'"
+                        	required-message="'Chưa nhâp phường/ xã!'"
                             required/>
                     </div>
                     <div class="margin-top-10 required">
@@ -180,24 +180,24 @@
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
                             <input type="text" class="bv-input" placeholder="Biển kiểm soát" ng-model="vm.policy.registrationNumber"
-                            	required-message="'This field is required!'"
+                            	required-message="'Chưa nhập biển kiểm soát!'"
                             	required/>
                         </div>
                         <div class="width-100">
                             <input type="text" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe"
-                            	required-message="'This field is required!'"
+                            	required-message="'Chưa nhập nhãn hiệu xe!'"
                             	required/>
                         </div>
                     </div>
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
                             <input type="text" class="bv-input" placeholder="Số khung" ng-model="vm.policy.sokhung"
-                            	required-message="'This field is required!'"
+                            	required-message="'Chưa nhâp số khung!'"
                             	required/>
                         </div>
                         <div class="width-100">
                             <input type="text" class="bv-input" placeholder="Số máy" ng-model="vm.policy.somay"
-                            	required-message="'This field is required!'"
+                            	required-message="'Chưa nhập số máy!'"
                             	required/>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose>
                                 <div class="width-100">
                                     <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu"
-                                    	required-message="'This field is required!'"
+                                    	required-message="'Chưa nhâp thời gian từ ngày!'"
                             			required>
                                 </div>
                                 <div class="input-group-addon bv-date-icon">

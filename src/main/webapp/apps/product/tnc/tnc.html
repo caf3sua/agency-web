@@ -17,7 +17,7 @@
                 <span>Tính phí</span>
                 <span>,thông tin bảo hiểm</span>
             </div>
-            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
                 <div class="bv-step-content" id="bv-step-1-content">
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
@@ -28,7 +28,7 @@
                     <div class="margin-top-5">
                         <input type="number" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.numberperson" ng-blur="vm.addOrRemovePerson()"
                                name="numberperson"
-                               required-message="'This field is required!'"
+                               required-message="'Chưa nhâp số người tham gia!'"
                                required/>
                     </div>
                     <div class="margin-top-10 required">
@@ -46,7 +46,7 @@
                                 <div class="width-100">
                                     <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insurancestartdate"
                                            ng-change="vm.getPremium()"
-                                           required-message="'This field is required!'"
+                                           required-message="'Chưa chọn thời gian từ ngày!'"
                                            required>
                                 </div>
                                 <div class="input-group-addon bv-date-icon">
@@ -109,16 +109,16 @@
                         <tbody>
                         <tr ng-repeat="person in vm.policy.listTncAdd">
                             <td><input name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
-                                       required-message="'This field is required!'"
+                                       required-message="'Chưa nhập Họ và Tên!'"
                                        required></td>
                             <td><input name="idPasswport{{$index}}" type="text" class="form-control" ng-model="person.idPasswport"
-                                       required-message="'This field is required!'"
+                                       required-message="'Chưa nhập số hộ chiếu/CMND!'"
                                        required/></td>
                             <td>
                                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                     <div class="width-100">
                                         <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
-                                               required-message="'This field is required!'"
+                                               required-message="'Chưa chọn ngày sinh!'"
                                                required>
                                     </div>
                                     <div class="input-group-addon bv-date-icon">
