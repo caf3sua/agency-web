@@ -8,8 +8,13 @@
     
     DashboardController.$inject = ['$scope', 'Dashboard'];
 
-      function DashboardController($scope, Dashboard){
+      function DashboardController($scope, Dashboard) {
         var vm = this;
+        
+        // Declare variable and method
+        vm.filterDate = 'WEEK';
+        vm.changeFilterDate = changeFilterDate;
+        
         vm.p_p_1 = [{data: 70, label: 'Server'}, {data: 30, label: 'Client'}];
         vm.p_p_2 = [{data: 75, label: 'iPhone'}, {data: 20, label: 'iPad'}];
         vm.p_p_3 = [{data: 30, label: 'Server'}, {data: 70, label: 'Client'}];
@@ -61,6 +66,12 @@
             210.32,
             325.42
           ]
+          
+          // Implement function 
+          function changeFilterDate(type) {
+        	  vm.filterDate = type;
+          }
+          
       }
       
 })();
