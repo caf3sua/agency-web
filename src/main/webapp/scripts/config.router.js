@@ -484,6 +484,10 @@
               url: '/403',
               templateUrl: '../views/misc/403.html'
             })
+            .state('503', {
+              url: '/503',
+              templateUrl: '../views/misc/503.html'
+            })
             .state('505', {
               url: '/505',
               templateUrl: '../views/misc/505.html'

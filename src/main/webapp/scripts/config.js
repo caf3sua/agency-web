@@ -7,7 +7,7 @@
         .constant('DEBUG_INFO_ENABLED', true)
         .constant('BUILD_TIMESTAMP', "")
         .constant('API_SERVICE_PREFIX', "api,management")
-        //.constant('API_SERVICE_URL', "http://appuat.baoviet.com.vn:7778")
-        .constant('API_SERVICE_URL', "http://localhost:9090")
+        .constant('API_SERVICE_URL', "http://appuat.baoviet.com.vn:7778")
+        //.constant('API_SERVICE_URL', "http://localhost:9090")
 ;
 })();

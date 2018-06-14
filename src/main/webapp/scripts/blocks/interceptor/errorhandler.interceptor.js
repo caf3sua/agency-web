@@ -20,6 +20,11 @@
                 stateService.go('403');
             }
         	
+        	if (response.status === 503 || response.status === -1) {
+                var stateService = $injector.get('$state');
+                stateService.go('503');
+            }
+        	
             if (!(response.status === 401 && (response.data === '' || (response.data.path && response.data.path.indexOf('/api/account') === 0 )))) {
                 $rootScope.$emit('webApp.httpError', response);
             }
