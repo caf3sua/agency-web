@@ -60,213 +60,212 @@
 //              resolve: load('apps/contact/contact.js')
 //            })
 
-            .state('app.calendar', {
-              url: '/calendar',
-              templateUrl: 'apps/calendar/main.html',
-              data : { title: 'Calendar' },
-              controller: 'FullcalendarCtrl',
-              resolve: load(['moment','fullcalendar','ui.calendar','apps/calendar/calendar.js'])
-            })
-
-            .state('app.todo', {
-              url: '/todo',
-              templateUrl: 'apps/todo/todo.html',
-              data : { title: 'Todo' },
-              controller: 'TodoCtrl',
-              resolve: load('apps/todo/todo.js')
-            })
-            .state('app.todo.list', {
-                url: '/{fold}'
-            })
-
-            .state('app.note', {
-              url: '/note',
-              templateUrl: 'apps/note/main.html',
-              data : { title: 'Note', hideFooter: true }
-            })
-            .state('app.note.list', {
-              url: '/list',
-              templateUrl: 'apps/note/list.html',
-              data : { title: 'Note'},
-              controller: 'NoteCtrl',
-              resolve: load(['apps/note/note.js', 'moment'])
-            })
-            .state('app.note.item', {
-              url: '/{id}',
-              views: {
-                '': {
-                  templateUrl: 'apps/note/item.html',
-                  controller: 'NoteItemCtrl',
-                  resolve: load(['apps/note/note.js', 'moment'])
-                }
-              },
-              data : { title: 'Note' }
-            })
+//            .state('app.calendar', {
+//              url: '/calendar',
+//              templateUrl: 'apps/calendar/main.html',
+//              data : { title: 'Calendar' },
+//              controller: 'FullcalendarCtrl',
+//              resolve: load(['moment','fullcalendar','ui.calendar','apps/calendar/calendar.js'])
+//            })
+//
+//            .state('app.todo', {
+//              url: '/todo',
+//              templateUrl: 'apps/todo/todo.html',
+//              data : { title: 'Todo' },
+//              controller: 'TodoCtrl',
+//              resolve: load('apps/todo/todo.js')
+//            })
+//            .state('app.todo.list', {
+//                url: '/{fold}'
+//            })
+//
+//            .state('app.note', {
+//              url: '/note',
+//              templateUrl: 'apps/note/main.html',
+//              data : { title: 'Note', hideFooter: true }
+//            })
+//            .state('app.note.list', {
+//              url: '/list',
+//              templateUrl: 'apps/note/list.html',
+//              data : { title: 'Note'},
+//              controller: 'NoteCtrl',
+//              resolve: load(['apps/note/note.js', 'moment'])
+//            })
+//            .state('app.note.item', {
+//              url: '/{id}',
+//              views: {
+//                '': {
+//                  templateUrl: 'apps/note/item.html',
+//                  controller: 'NoteItemCtrl',
+//                  resolve: load(['apps/note/note.js', 'moment'])
+//                }
+//              },
+//              data : { title: 'Note' }
+//            })
 
             // ui router
-            .state('app.layout', {
-              url: '/layout',
-              template: '<div ui-view></div>'
-            })
-              .state('app.layout.header', {
-                url: '/header',
-                templateUrl: '../views/ui/headers.html',
-                data : { title: 'Headers' }
-              })
-              .state('app.layout.aside', {
-                url: '/aside',
-                templateUrl: '../views/ui/asides.html',
-                data : { title: 'Asides' }
-              })
-              .state('app.layout.footer', {
-                url: '/footer',
-                templateUrl: '../views/ui/footers.html',
-                data : { title: 'Footers' }
-              })
-
-            .state('app.inbox', {
-                url: '/inbox',
-                templateUrl: 'apps/inbox/main.html',
-                data : { title: 'Inbox'},
-                controller: 'MainCtrl',
-                resolve: load( ['apps/inbox/inbox.js','moment'] )
-            })
-            .state('app.inbox.list', {
-                url: '/inbox/{fold}',
-                templateUrl: 'apps/inbox/list.html',
-                controller: 'ListCtrl'
-            })
-            .state('app.inbox.item', {
-                url: '/{id:[0-9]{1,4}}',
-                templateUrl: 'apps/inbox/item.html',
-                controller: 'DetailCtrl'
-            })
-            .state('app.inbox.compose', {
-                url: '/compose',
-                templateUrl: 'apps/inbox/new.html',
-                controller: 'NewCtrl',
-                resolve: load( ['summernote', 'ui.select'] )
-            })
+//            .state('app.layout', {
+//              url: '/layout',
+//              template: '<div ui-view></div>'
+//            })
+//              .state('app.layout.header', {
+//                url: '/header',
+//                templateUrl: '../views/ui/headers.html',
+//                data : { title: 'Headers' }
+//              })
+//              .state('app.layout.aside', {
+//                url: '/aside',
+//                templateUrl: '../views/ui/asides.html',
+//                data : { title: 'Asides' }
+//              })
+//              .state('app.layout.footer', {
+//                url: '/footer',
+//                templateUrl: '../views/ui/footers.html',
+//                data : { title: 'Footers' }
+//              })
+//
+//            .state('app.inbox', {
+//                url: '/inbox',
+//                templateUrl: 'apps/inbox/main.html',
+//                data : { title: 'Inbox'},
+//                controller: 'MainCtrl',
+//                resolve: load( ['apps/inbox/inbox.js','moment'] )
+//            })
+//            .state('app.inbox.list', {
+//                url: '/inbox/{fold}',
+//                templateUrl: 'apps/inbox/list.html',
+//                controller: 'ListCtrl'
+//            })
+//            .state('app.inbox.item', {
+//                url: '/{id:[0-9]{1,4}}',
+//                templateUrl: 'apps/inbox/item.html',
+//                controller: 'DetailCtrl'
+//            })
+//            .state('app.inbox.compose', {
+//                url: '/compose',
+//                templateUrl: 'apps/inbox/new.html',
+//                controller: 'NewCtrl',
+//                resolve: load( ['summernote', 'ui.select'] )
+//            })
 
             // widget router
-            .state('app.widget', {
-              url: '/widget',
-              templateUrl: '../views/ui/widget.html',
-              data : { title: 'Widgets' }
-            })
+//            .state('app.widget', {
+//              url: '/widget',
+//              templateUrl: '../views/ui/widget.html',
+//              data : { title: 'Widgets' }
+//            })
 
             // ui router
-            .state('app.ui', {
-              url: '/ui',
-              template: '<div ui-view></div>'
-            })
-              .state('app.ui.arrow', {
-                url: '/arrow',
-                templateUrl: '../views/ui/arrow.html',
-                data : { title: 'Arrows' }
-              })
-              .state('app.ui.box', {
-                url: '/box',
-                templateUrl: '../views/ui/box.html',
-                data : { title: 'Box' }
-              })
-              .state('app.ui.label', {
-                url: '/label',
-                templateUrl: '../views/ui/label.html',
-                data : { title: 'Labels' }
-              })
-              .state('app.ui.button', {
-                url: '/button',
-                templateUrl: '../views/ui/button.html',
-                data : { title: 'Buttons' }
-              })
-              .state('app.ui.color', {
-                url: '/color',
-                templateUrl: '../views/ui/color.html',
-                data : { title: 'Colors' }
-              })
-              .state('app.ui.dropdown', {
-                url: '/dropdown',
-                templateUrl: '../views/ui/dropdown.html',
-                data : { title: 'Dropdowns' }
-              })
-              .state('app.ui.grid', {
-                url: '/grid',
-                templateUrl: '../views/ui/grid.html',
-                data : { title: 'Grids' }
-              })
-              .state('app.ui.icon', {
-                url: '/icons',
-                templateUrl: '../views/ui/icon.html',
-                data : { title: 'Icons' }
-              })
-              .state('app.ui.list', {
-                url: '/list',
-                templateUrl: '../views/ui/list.html',
-                data : { title: 'Lists' }
-              })
-              .state('app.ui.modal', {
-                url: '/modal',
-                templateUrl: '../views/ui/modal.html',
-                data : { title: 'Modals' }
-              })
-              .state('app.ui.nav', {
-                url: '/nav',
-                templateUrl: '../views/ui/nav.html',
-                data : { title: 'Navs' }
-              })
-              .state('app.ui.progress', {
-                url: '/progress',
-                templateUrl: '../views/ui/progress.html',
-                data : { title: 'Progress' }
-              })
-              .state('app.ui.social', {
-                url: '/social',
-                templateUrl: '../views/ui/social.html',
-                data : { title: 'Social' }
-              })
-              .state('app.ui.sortable', {
-                url: '/sortable',
-                templateUrl: '../views/ui/sortable.html',
-                data : { title: 'Sortable' }
-              })
-              .state('app.ui.streamline', {
-                url: '/streamline',
-                templateUrl: '../views/ui/streamline.html',
-                data : { title: 'Streamlines' }
-              })
-              .state('app.ui.timeline', {
-                url: '/timeline',
-                templateUrl: '../views/ui/timeline.html',
-                data : { title: 'Timelines' }
-              })
-              .state('app.ui.angularstrap', {
-                url: '/angularstrap',
-                templateUrl: '../views/ui/ng.angularstrap.html',
-                data : { title: 'AngularStrap' },
-                resolve: load(['mgcrea.ngStrap','scripts/controllers/angularstrap.js'])
-              })
-              .state('app.ui.bootstrap', {
-                url: '/bootstrap',
-                templateUrl: '../views/ui/ng.bootstrap.html',
-                data : { title: 'UI Bootstrap' },
-                resolve: load(['ui.bootstrap','scripts/controllers/bootstrap.js'])
-              })
-              .state('app.googlemap', {
-                url: '/googlemap',
-                templateUrl: '../views/ui/ng.google.html',
-                data : { title: 'Gmap', hideFooter: true },
-                controller: 'GoogleMapCtrl',
-                //resolve: load(['ui.map', 'scripts/controllers/googlemap.js'], function(){ })
-                resolve: load(['ui.map', 'scripts/controllers/load-google-maps.js', 'scripts/controllers/googlemap.js'], function(){ return loadGoogleMaps(); })
-              })
-              .state('app.ui.vectormap', {
-                url: '/vectormap',
-                templateUrl: '../views/ui/map.vector.html',
-                data : { title: 'Vector Map' },
-                controller: 'ChartCtrl',
-                resolve: load('scripts/controllers/chart.js')
-              })
+//            .state('app.ui', {
+//              url: '/ui',
+//              template: '<div ui-view></div>'
+//            })
+//              .state('app.ui.arrow', {
+//                url: '/arrow',
+//                templateUrl: '../views/ui/arrow.html',
+//                data : { title: 'Arrows' }
+//              })
+//              .state('app.ui.box', {
+//                url: '/box',
+//                templateUrl: '../views/ui/box.html',
+//                data : { title: 'Box' }
+//              })
+//              .state('app.ui.label', {
+//                url: '/label',
+//                templateUrl: '../views/ui/label.html',
+//                data : { title: 'Labels' }
+//              })
+//              .state('app.ui.button', {
+//                url: '/button',
+//                templateUrl: '../views/ui/button.html',
+//                data : { title: 'Buttons' }
+//              })
+//              .state('app.ui.color', {
+//                url: '/color',
+//                templateUrl: '../views/ui/color.html',
+//                data : { title: 'Colors' }
+//              })
+//              .state('app.ui.dropdown', {
+//                url: '/dropdown',
+//                templateUrl: '../views/ui/dropdown.html',
+//                data : { title: 'Dropdowns' }
+//              })
+//              .state('app.ui.grid', {
+//                url: '/grid',
+//                templateUrl: '../views/ui/grid.html',
+//                data : { title: 'Grids' }
+//              })
+//              .state('app.ui.icon', {
+//                url: '/icons',
+//                templateUrl: '../views/ui/icon.html',
+//                data : { title: 'Icons' }
+//              })
+//              .state('app.ui.list', {
+//                url: '/list',
+//                templateUrl: '../views/ui/list.html',
+//                data : { title: 'Lists' }
+//              })
+//              .state('app.ui.modal', {
+//                url: '/modal',
+//                templateUrl: '../views/ui/modal.html',
+//                data : { title: 'Modals' }
+//              })
+//              .state('app.ui.nav', {
+//                url: '/nav',
+//                templateUrl: '../views/ui/nav.html',
+//                data : { title: 'Navs' }
+//              })
+//              .state('app.ui.progress', {
+//                url: '/progress',
+//                templateUrl: '../views/ui/progress.html',
+//                data : { title: 'Progress' }
+//              })
+//              .state('app.ui.social', {
+//                url: '/social',
+//                templateUrl: '../views/ui/social.html',
+//                data : { title: 'Social' }
+//              })
+//              .state('app.ui.sortable', {
+//                url: '/sortable',
+//                templateUrl: '../views/ui/sortable.html',
+//                data : { title: 'Sortable' }
+//              })
+//              .state('app.ui.streamline', {
+//                url: '/streamline',
+//                templateUrl: '../views/ui/streamline.html',
+//                data : { title: 'Streamlines' }
+//              })
+//              .state('app.ui.timeline', {
+//                url: '/timeline',
+//                templateUrl: '../views/ui/timeline.html',
+//                data : { title: 'Timelines' }
+//              })
+//              .state('app.ui.angularstrap', {
+//                url: '/angularstrap',
+//                templateUrl: '../views/ui/ng.angularstrap.html',
+//                data : { title: 'AngularStrap' },
+//                resolve: load(['mgcrea.ngStrap','scripts/controllers/angularstrap.js'])
+//              })
+//              .state('app.ui.bootstrap', {
+//                url: '/bootstrap',
+//                templateUrl: '../views/ui/ng.bootstrap.html',
+//                data : { title: 'UI Bootstrap' },
+//                resolve: load(['ui.bootstrap','scripts/controllers/bootstrap.js'])
+//              })
+//              .state('app.googlemap', {
+//                url: '/googlemap',
+//                templateUrl: '../views/ui/ng.google.html',
+//                data : { title: 'Gmap', hideFooter: true },
+//                controller: 'GoogleMapCtrl',
+//                resolve: load(['ui.map', 'scripts/controllers/load-google-maps.js', 'scripts/controllers/googlemap.js'], function(){ return loadGoogleMaps(); })
+//              })
+//              .state('app.ui.vectormap', {
+//                url: '/vectormap',
+//                templateUrl: '../views/ui/map.vector.html',
+//                data : { title: 'Vector Map' },
+//                controller: 'ChartCtrl',
+//                resolve: load('scripts/controllers/chart.js')
+//              })
 
             // form routers
             .state('app.form', {
@@ -339,94 +338,94 @@
               })
 
             // table routers
-            .state('app.table', {
-              url: '/table',
-              template: '<div ui-view></div>'
-            })
-              .state('app.table.static', {
-                url: '/static',
-                templateUrl: '../views/table/static.html',
-                data : { title: 'Static' }
-              })
-              .state('app.table.datatable', {
-                url: '/datatable',
-                data : { title: 'Datatable' },
-                templateUrl: '../views/table/datatable.html'
-              })
-              .state('app.table.footable', {
-                url: '/footable',
-                data : { title: 'Footable' },
-                templateUrl: '../views/table/footable.html'
-              })
-              .state('app.table.smart', {
-                url: '/smart',
-                templateUrl: '../views/table/ng.smart.html',
-                data : { title: 'Smart' },
-                controller: 'TableCtrl',
-                resolve: load(['smart-table', 'scripts/controllers/table.js'])
-              })
-              .state('app.table.uigrid', {
-                url: '/uigrid',
-                templateUrl: '../views/table/ng.uigrid.html',
-                data : { title: 'UI Grid' },
-                controller: "UiGridCtrl",
-                resolve: load(['ui.grid', 'scripts/controllers/uigrid.js'])
-              })
-              .state('app.table.editable', {
-                url: '/editable',
-                templateUrl: '../views/table/ng.editable.html',
-                data : { title: 'Editable' },
-                controller: 'XeditableCtrl',
-                resolve: load(['xeditable','scripts/controllers/xeditable.js'])
-              })
+//            .state('app.table', {
+//              url: '/table',
+//              template: '<div ui-view></div>'
+//            })
+//              .state('app.table.static', {
+//                url: '/static',
+//                templateUrl: '../views/table/static.html',
+//                data : { title: 'Static' }
+//              })
+//              .state('app.table.datatable', {
+//                url: '/datatable',
+//                data : { title: 'Datatable' },
+//                templateUrl: '../views/table/datatable.html'
+//              })
+//              .state('app.table.footable', {
+//                url: '/footable',
+//                data : { title: 'Footable' },
+//                templateUrl: '../views/table/footable.html'
+//              })
+//              .state('app.table.smart', {
+//                url: '/smart',
+//                templateUrl: '../views/table/ng.smart.html',
+//                data : { title: 'Smart' },
+//                controller: 'TableCtrl',
+//                resolve: load(['smart-table', 'scripts/controllers/table.js'])
+//              })
+//              .state('app.table.uigrid', {
+//                url: '/uigrid',
+//                templateUrl: '../views/table/ng.uigrid.html',
+//                data : { title: 'UI Grid' },
+//                controller: "UiGridCtrl",
+//                resolve: load(['ui.grid', 'scripts/controllers/uigrid.js'])
+//              })
+//              .state('app.table.editable', {
+//                url: '/editable',
+//                templateUrl: '../views/table/ng.editable.html',
+//                data : { title: 'Editable' },
+//                controller: 'XeditableCtrl',
+//                resolve: load(['xeditable','scripts/controllers/xeditable.js'])
+//              })
 
             // chart
-            .state('app.chart', {
-              url: '/chart',
-              templateUrl: '../views/chart/chart.html',
-              data : { title: 'Charts' },
-              controller: "ChartCtrl",
-              resolve: load('scripts/controllers/chart.js')
-            })
-            .state('app.echarts', {
-              url: '/echarts',
-              template: '<div ui-view></div>'
-            })
-            .state('app.echarts.line', {
-              url: '/line',
-              templateUrl: '../views/chart/echarts-line.html',
-              data : { title: 'Echarts Line' }
-            })
-            .state('app.echarts.bar', {
-              url: '/bar',
-              templateUrl: '../views/chart/echarts-bar.html',
-              data : { title: 'Echarts Bar' }
-            })
-            .state('app.echarts.pie', {
-              url: '/pie',
-              templateUrl: '../views/chart/echarts-pie.html',
-              data : { title: 'Echarts Pie' }
-            })
-            .state('app.echarts.scatter', {
-              url: '/scatter',
-              templateUrl: '../views/chart/echarts-scatter.html',
-              data : { title: 'Echarts Scatter' }
-            })
-            .state('app.echarts.rc', {
-              url: '/rc',
-              templateUrl: '../views/chart/echarts-radar-chord.html',
-              data : { title: 'Radar & Chord' }
-            })
-            .state('app.echarts.gf', {
-              url: '/gf',
-              templateUrl: '../views/chart/echarts-gauge-funnel.html',
-              data : { title: 'Gauge & Funnel' }
-            })
-            .state('app.echarts.map', {
-              url: '/map',
-              templateUrl: '../views/chart/echarts-map.html',
-              data : { title: 'Map' }
-            })
+//            .state('app.chart', {
+//              url: '/chart',
+//              templateUrl: '../views/chart/chart.html',
+//              data : { title: 'Charts' },
+//              controller: "ChartCtrl",
+//              resolve: load('scripts/controllers/chart.js')
+//            })
+//            .state('app.echarts', {
+//              url: '/echarts',
+//              template: '<div ui-view></div>'
+//            })
+//            .state('app.echarts.line', {
+//              url: '/line',
+//              templateUrl: '../views/chart/echarts-line.html',
+//              data : { title: 'Echarts Line' }
+//            })
+//            .state('app.echarts.bar', {
+//              url: '/bar',
+//              templateUrl: '../views/chart/echarts-bar.html',
+//              data : { title: 'Echarts Bar' }
+//            })
+//            .state('app.echarts.pie', {
+//              url: '/pie',
+//              templateUrl: '../views/chart/echarts-pie.html',
+//              data : { title: 'Echarts Pie' }
+//            })
+//            .state('app.echarts.scatter', {
+//              url: '/scatter',
+//              templateUrl: '../views/chart/echarts-scatter.html',
+//              data : { title: 'Echarts Scatter' }
+//            })
+//            .state('app.echarts.rc', {
+//              url: '/rc',
+//              templateUrl: '../views/chart/echarts-radar-chord.html',
+//              data : { title: 'Radar & Chord' }
+//            })
+//            .state('app.echarts.gf', {
+//              url: '/gf',
+//              templateUrl: '../views/chart/echarts-gauge-funnel.html',
+//              data : { title: 'Gauge & Funnel' }
+//            })
+//            .state('app.echarts.map', {
+//              url: '/map',
+//              templateUrl: '../views/chart/echarts-map.html',
+//              data : { title: 'Map' }
+//            })
 
           .state('app.page', {
             url: '/page',
@@ -480,6 +479,10 @@
             .state('404', {
               url: '/404',
               templateUrl: '../views/misc/404.html'
+            })
+            .state('403', {
+              url: '/403',
+              templateUrl: '../views/misc/403.html'
             })
             .state('505', {
               url: '/505',

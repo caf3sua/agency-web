@@ -5,9 +5,9 @@
         .module('app')
         .factory('errorHandlerInterceptor', errorHandlerInterceptor);
 
-    errorHandlerInterceptor.$inject = ['$q', '$rootScope'];
+    errorHandlerInterceptor.$inject = ['$q', '$rootScope', '$injector'];
 
-    function errorHandlerInterceptor ($q, $rootScope) {
+    function errorHandlerInterceptor ($q, $rootScope, $injector) {
         var service = {
             responseError: responseError
         };
@@ -15,6 +15,11 @@
         return service;
 
         function responseError (response) {
+        	if (response.status === 403) {
+                var stateService = $injector.get('$state');
+                stateService.go('403');
+            }
+        	
             if (!(response.status === 401 && (response.data === '' || (response.data.path && response.data.path.indexOf('/api/account') === 0 )))) {
                 $rootScope.$emit('webApp.httpError', response);
             }

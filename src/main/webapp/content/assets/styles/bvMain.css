@@ -138,6 +138,7 @@ body {
     border: 1px solid #dfdfe0;
     background: #fff;
     box-shadow: 1px 0px 5px 0px #dfdfe0;
+    position: relative;
 }
 .bv-step-3-default>.bv-step-title{
     padding: 15px 20px;
@@ -2421,4 +2422,16 @@ body {
 div.required p:after {
     content: " (*)";
     color: red;
+}
+
+.lock-all {
+	position: absolute;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/content/assets/images/icon/lock.png);
+    background-repeat: no-repeat;
+    background-position: center top;
 }

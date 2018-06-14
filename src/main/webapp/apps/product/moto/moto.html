@@ -150,6 +150,7 @@
                     </div>
                 </div>
                 <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.tongPhi == 0">
+                	<div class="lock-all" ng-show="vm.product.tongPhi == 0"></div>
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
                     <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
