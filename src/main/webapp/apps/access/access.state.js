@@ -39,11 +39,11 @@
         			url: '/forgot-password',
         			templateUrl: 'apps/access/forgot-password/forgot-password.html',
         			data : { title: 'SignIn' },
-        			controller: "SigninController",
+        			controller: "ForgotPasswordController",
         			controllerAs: 'vm',
         			resolve: {
         				loadPlugin: function ($ocLazyLoad) {
-        		    			return $ocLazyLoad.load(['apps/access/signin/signin.controller.js']);
+        		    			return $ocLazyLoad.load(['apps/access/forgot-password/forgot-password.controller.js']);
         				}
 	        		}
         		});

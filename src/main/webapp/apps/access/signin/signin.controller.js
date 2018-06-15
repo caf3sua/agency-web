@@ -64,6 +64,7 @@
 //                }
             }).catch(function () {
                 vm.authenticationError = true;
+                toastr.error('Kiểm tra lại username và password!', 'Đăng nhập Lỗi!');
             });
         }
         
