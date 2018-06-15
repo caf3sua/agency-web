@@ -8,19 +8,19 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('product.ycbh-offline', {
+        $stateProvider.state('product.printed-paper', {
             parent: 'product',
-            url: '/ycbh-offline/{productCode}',
-            templateUrl: 'apps/product/ycbh-offline/ycbh-offline.html',
+            url: '/printed-paper/{productCode}',
+            templateUrl: 'apps/product/printed-paper/printed-paper.html',
             data: {
                 authorities: [],
-                title: 'PRODUCT_YCBH_OFFLINE'
+                title: 'PRODUCT_PRINTED_PAPER'
             },
-            controller: "ProductYcbhOfflineController",
+            controller: "ProductPrintedPaperController",
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/ycbh-offline/ycbh-offline.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/printed-paper/printed-paper.controller.js']);
 		        }
             }
         });

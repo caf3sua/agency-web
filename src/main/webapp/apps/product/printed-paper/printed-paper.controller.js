@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('ProductYcbhOfflineController', ProductYcbhOfflineController);
+        .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
-    ProductYcbhOfflineController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
+    ProductPrintedPaperController.$inject = ['$scope', '$controller', 'Principal', 'LoginService', '$state', '$rootScope'];
 
-    function ProductYcbhOfflineController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
+    function ProductPrintedPaperController ($scope, $controller, Principal, LoginService, $state, $rootScope) {
         var vm = this;
 
         angular.element(document).ready(function () {
