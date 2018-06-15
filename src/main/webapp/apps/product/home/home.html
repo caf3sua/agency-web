@@ -77,43 +77,45 @@
                         <input type="text" class="bv-input" ng-model="vm.product.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
                     </div>
                     <div class="margin-top-10">
-                        <div class="table-responsive">
-                            <table class="table table-sum-product" >
-                                <col width="60%">
-                                <col width="40%">
-                                <tr>
-                                    <td>
-                                        <p class="bv-gh-text-sum-product">Phí bảo hiểm phần ngôi nhà:</p>
-                                    </td>
-                                    <td class="text-right">
-                                        <p class="">{{vm.product.premiumSi | number}} VND</p>
-                                    </td>
-                                </tr>
-                                <tr >
-                                    <td>
-                                        <p class="bv-gh-text-sum-product">Phí bảo hiểm phần tài sản bên trong:</p>
-                                    </td>
-                                    <td class="text-right">
-                                        <p class="">{{vm.product.premiumSiin | number}} VND</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="bv-gh-text-sum-product">Tổng phí bảo hiểm:</p>
-                                    </td>
-                                    <td class="text-right">
-                                        <p class="">{{vm.product.premiumNet | number}} VND</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="bv-gh-text-sum-product">Tổng phí thanh toán:</p>
-                                    </td>
-                                    <td class="text-right">
-                                        <p class="bv-gh-number-sum-product">{{vm.product.premiumHome | number}} VND</p>
-                                    </td>
-                                </tr>
-                            </table>
+                        <div class="width-100">
+                            <div class="table-responsive bv-home-block-left-table-responsive">
+                                <table class="table table-sum-product" >
+                                    <!--<col width="60%">-->
+                                    <!--<col width="40%">-->
+                                    <tr>
+                                        <td>
+                                            <p class="bv-gh-text-sum-product">Phí bảo hiểm phần ngôi nhà:</p>
+                                        </td>
+                                        <td class="text-right">
+                                            <p class="">{{vm.product.premiumSi | number}} VND</p>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td>
+                                            <p class="bv-gh-text-sum-product">Phí bảo hiểm phần tài sản bên trong:</p>
+                                        </td>
+                                        <td class="text-right">
+                                            <p class="">{{vm.product.premiumSiin | number}} VND</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="bv-gh-text-sum-product">Tổng phí bảo hiểm:</p>
+                                        </td>
+                                        <td class="text-right">
+                                            <p class="">{{vm.product.premiumNet | number}} VND</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="bv-gh-text-sum-product">Tổng phí thanh toán:</p>
+                                        </td>
+                                        <td class="text-right">
+                                            <p class="bv-gh-number-sum-product">{{vm.product.premiumHome | number}} VND</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
 	            </div>

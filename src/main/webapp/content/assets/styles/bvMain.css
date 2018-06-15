@@ -2146,6 +2146,43 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-home-block-left-table-responsive {
+        min-width: 100%;
+        max-width: 230px;
+    }
+    .bv-btn-step3 {
+        background: #0371b6;
+        border: 1px solid #0371b6;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 8px 35px;
+        font-size: 10px;
+        float: right;
+        text-align: center;
+        font-weight: 600;
+        border-radius: 20px;
+        display: inline-block;
+    }
+    .bv-icon-order {
+        font-size: 15px;
+        padding: 10px 20px;
+        text-align: center;
+        color: #b4cfe4;
+        border-right: 1px solid #ccc;
+    }
+    .bv-icon-order-blockTwo>p {
+        font-family: Roboto;
+        font-weight: 300;
+        font-size: 10px;
+    }
+    /*.bv-step-content {*/
+        /*width: 294px;*/
+        /*padding: 30px;*/
+        /*border: 1px solid #dfdfe0;*/
+        /*background: #fff;*/
+        /*box-shadow: 1px 0px 5px 0px #dfdfe0;*/
+        /*position: relative;*/
+    /*}*/
 	.dropdown-w {
 		width: 175px;
 	}

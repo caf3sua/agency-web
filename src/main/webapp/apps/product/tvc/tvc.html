@@ -30,6 +30,7 @@
                                 required-message="'Chưa chọn nơi đến !'"
                                 required
                         >
+                            <option value="" selected disabled>--- Chọn nơi đến ---</option>
                             <option value="2">Toàn cầu</option>
                             <option value="3">Châu Á - Thái Bình Dương</option>
                             <option value="4">ASEAN</option>
@@ -44,6 +45,7 @@
                                 required-message="'Chưa chọn gói bảo hiểm !'"
                                 required
                         >
+                            <option value="" selected disabled>--- Chọn gói bảo hiểm ---</option>
                             <option value="1">Cá nhân</option>
                             <option value="2">Gia đình</option>
                             <option value="3">Khách đoàn</option>
@@ -297,13 +299,13 @@
                                 <p class="bv-title-from">Họ tên người yêu cầu bảo hiểm</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">Tạ Minh Anh</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.propserName}}</p>
                             </div>
                             <div class="margin-top-10">
                                 <p class="bv-title-from">Ngày sinh</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">24/07/1994</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.propserNgaysinh}}</p>
                             </div>
                         </div>
                         <div class="bv-pading-30 width-100">
