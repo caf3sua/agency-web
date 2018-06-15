@@ -78,12 +78,12 @@
                        required-message="'This field is required!'"
                        required/>
                 <div class="input-group-addon" ng-click="vm.openSearchContact()">
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-search-plus"></i>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
-            <button class="bv-btn-step3" ng-click="vm.addRelationship()">Thêm</button>
+        <div class="col-lg-4 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+        	<button class="btn btn-outline rounded b-info text-info" ng-click="vm.addRelationship()"><i class="fa fa-plus"></i> Thêm</button>
         </div>
     </div>
 </div>
@@ -105,7 +105,7 @@
             <select class="bv-select-box form-control"  ng-options="selected.productName for selected in vm.products" ng-model="vm.selProduct"></select>
         </div>
         <div class="col-lg-4   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
-            <button class="bv-btn-step3" ng-click="vm.addProduct()">Thêm</button>
+            <button class="btn btn-outline rounded b-info text-info" ng-click="vm.addProduct()"><i class="fa fa-plus"></i> Thêm</button>
         </div>
     </div>
 </div>
