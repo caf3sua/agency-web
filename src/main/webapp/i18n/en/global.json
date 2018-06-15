@@ -25,7 +25,10 @@
         		"PROMOTION" : "Promotion",
         		"CONTACT_NEW" : "Create new contact",
         		"ACCOUNT_CHANGE_PASSWORD" : "Change password",
-        		"ACCOUNT_PROFILE" : "Profile"
+        		"ACCOUNT_PROFILE" : "Profile",
+        		"PRODUCT_YCBH_OFFLINE" : "Tạo yêu cầu bảo hiểm Offline",
+        		"PRODUCT_PRINTED_PAPER" : "Cấp đơn ấn chỉ",
+        		"REMINDER" : "Thông báo"
         	}
         },
         "menu": {
