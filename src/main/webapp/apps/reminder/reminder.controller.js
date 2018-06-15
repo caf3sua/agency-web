@@ -26,10 +26,11 @@
   		
   		function loadAll() {
   			vm.reminders = [
+  				// More contactName, groupType 
   				{
   		    	    "active": "string",
   		    	    "contactId": "string",
-  		    	    "content": "string",
+  		    	    "content": "Sắp mua ô tô",
   		    	    "createdDate": "dd/MM/yyyy",
   		    	    "id": "string",
   		    	    "note": "Sắp mua ô tô",
@@ -40,7 +41,7 @@
   		    	{
   		    	    "active": "string",
   		    	    "contactId": "string",
-  		    	    "content": "string",
+  		    	    "content": "Khách hàng sắp hết hạn",
   		    	    "createdDate": "dd/MM/yyyy",
   		    	    "id": "string",
   		    	    "note": "Khách hàng sắp hết hạn",
