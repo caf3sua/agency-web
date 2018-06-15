@@ -304,6 +304,13 @@ body {
     font-style: normal;
     font-weight: 300;
 }
+.bv-cart-text-header>p{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+}
 .text-header-sp{
     margin-bottom: 25px;
 }
@@ -1566,6 +1573,11 @@ body {
 .dropdown-w {
 	width: 280px;
 }
+.bv-img-pay>img{
+    height: 50px;
+    width: auto;
+}
+.bv-color-a{color: #0a5dc7f2;}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from-changepassword{
         width: 400px;
