@@ -2479,3 +2479,9 @@ div.required p:after {
   margin-bottom: 10px;
   color: red;
 }
+
+.bv-btn-add {
+	padding: 8px 15px;
+	border-radius: 10px;
+	background: #4a95c3;
+}
