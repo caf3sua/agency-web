@@ -6,17 +6,17 @@
         .factory('CartService', CartService);
 
     CartService.$inject = ['$resource'];
-
-    function CartService ($resource) {
-        var service = $resource('api/account', {}, {
-            'get': { method: 'GET', params: {}, isArray: false,
-                interceptor: {
-                    response: function(response) {
-                        // expose response
-                        return response;
-                    }
-                }
-            }        
+    function CartService($resource) {
+        var service = $resource('', {}, {
+            'getAll' : {
+                method : 'GET',
+                url : 'api/agency/product/order/get-all',
+                isArray : true
+            },
+            'createNewPolicy' : {
+                method : 'POST',
+                url : 'api/agency/product/bvp/createPolicy'
+            }
         });
 
         return service;
