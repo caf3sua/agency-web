@@ -13,11 +13,11 @@
 						</tr>
 				        <tr>
 				          	<th st-sort="id">#</th>
-				          	<th st-sort="code">Khách hàng</th>
-				          	<th st-sort="name">Mã sản phẩm bảo hiểm</th>
-				          	<th st-sort="usernameUpload">Ngày thông báo</th>
-				          	<th st-sort="numberDownload">Nội dung</th>
-				          	<th st-sort="numberDownload">Ghi chú</th>
+				          	<th st-sort="contactName">Khách hàng</th>
+				          	<th st-sort="productCode">Mã sản phẩm bảo hiểm</th>
+				          	<th st-sort="remindeDate">Ngày thông báo</th>
+				          	<th st-sort="content">Nội dung</th>
+				          	<th st-sort="note">Ghi chú</th>
 				          	<th></th>
 				        </tr>
 					</thead>
@@ -27,13 +27,13 @@
 		                        <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="bv-table-text-colorBlue">{{reminder.code}}</p>
+		                        <p class="bv-table-text-colorBlue">{{reminder.contactName}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{reminder.name}}</p>
+		                        <p class="">{{reminder.productCode}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{reminder.usernameUpload}}</p>
+		                        <p class="">{{reminder.remindeDate}}</p>
 		                    </td>
 		                    <td>
 		                        <p class="">{{reminder.content}}</p>
@@ -42,8 +42,8 @@
 		                        <p class="">{{reminder.note}}</p>
 		                    </td>
 		                    <td>
-		                    	<button class="md-btn md-fab m-b-sm red bv-btn" ng-click="vm.delete(reminder)">
-		                    		<i class="fas fa-plus"></i>
+		                    	<button class="md-btn md-fab m-b-sm red bv-btn" ng-click="vm.deleteReminder(reminder.id)">
+		                    		<i class="far fa-trash-alt"></i>
 		                    	</button>
 		                    </td>
 		                </tr>
