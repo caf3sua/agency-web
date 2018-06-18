@@ -26,20 +26,6 @@
   		vm.deleteReminder = deleteReminder;
   		
   		function loadAll() {
-//  			vm.reminders = [
-//  				// More contactName, groupType 
-//  				{
-//  		    	    "active": "string",
-//  		    	    "contactId": "string",
-//  		    	    "content": "Sắp mua ô tô",
-//  		    	    "createdDate": "dd/MM/yyyy",
-//  		    	    "id": "string",
-//  		    	    "note": "Sắp mua ô tô",
-//  		    	    "productCode": "string",
-//  		    	    "remindeDate": "15/07/2018",
-//  		    	    "type": "Mã khách hàng"
-//  		    	}
-//  			];
   			console.log('searchReminder');
     		
   			ReminderService.getAll({}, onSuccess, onError);
