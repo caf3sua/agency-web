@@ -139,6 +139,7 @@ body {
     background: #fff;
     box-shadow: 1px 0px 5px 0px #dfdfe0;
     position: relative;
+    min-height: 400px;
 }
 .bv-step-3-default>.bv-step-title{
     padding: 15px 20px;
@@ -2490,7 +2491,9 @@ div.required p:after {
     height: 100%;
     background-image: url(/content/assets/images/icon/lock.png);
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center 100px;
+    opacity: 0.4;
+    background-size: 200px 200px;
 }
 
 .help-block {
