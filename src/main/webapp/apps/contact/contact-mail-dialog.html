@@ -1,41 +1,21 @@
 <div class="modal-header">
-	<i class="fas fa-times-circle pte-icon-close-dialog"  ng-click="vm.cancel()"></i>
+	<i class="fas fa-times-circle pte-icon-close-dialog pull-right"  ng-click="vm.cancel()"></i>
     <h5 class="modal-title">Gửi thư</h5>
 </div>
 <div class="row modal-body">
 	<form name="form">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5 text-center">
-		    <div class="bv-title-from">
-		        <p>Từ</p>
-		    </div>
-		    <div class="margin-top-5">
-		        <input type="text" class="bv-input" placeholder="Gửi từ" />
-		    </div>
-		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5 text-center">
-		    <div class="bv-title-from">
-		        <p>Đến</p>
-		    </div>
-		    <div class="margin-top-5">
-		        <input type="text" class="bv-input" placeholder="Gửi đến" />
-		    </div>
-		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5 text-center">
-		    <div class="bv-title-from">
-		        <p>C/c</p>
-		    </div>
-		    <div class="margin-top-5">
-		        <input type="text" class="bv-input" placeholder="CC" />
-		    </div>
-		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5 text-center">
-		    <div class="bv-title-from">
-		        <p>Chủ đề</p>
-		    </div>
-		    <div class="margin-top-5">
-		        <input type="text" class="bv-input" placeholder="Chủ đề" />
-		    </div>
-		</div>
+        <div class="col-md-12 padding0">
+            <div class="col-sm-3">Từ</div>
+            <div class="col-sm-3 padding0"><input type="text"  class="bv-input-contact" placeholder="Họ và tên" ng-model="vm.searchCriterial.contactName"/></div>
+            <div class="col-sm-3">Đến</div>
+            <div class="col-sm-3 padding0"><input type="text"  class="bv-input-contact" placeholder="Số điện thoại" ng-model="vm.searchCriterial.phone"/></div>
+        </div>
+        <div class="col-md-12 padding0 margin-top-5">
+            <div class="col-sm-3">C/c</div>
+            <div class="col-sm-3 padding0"><input type="text"  class="bv-input-contact" placeholder="Số CMT/MST" ng-model="vm.searchCriterial.idNumber"/></div>
+            <div class="col-sm-3">Chủ đề</div>
+            <div class="col-sm-3 padding0"><input type="text"  class="bv-input-contact" placeholder="Ngày sinh" ng-model="vm.searchCriterial.dateOfBirth"/></div>
+        </div>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5 text-center">
 			<textarea rows="5" type="text" class="bv-input" placeholder="Nội dung" />
 		</div>
