@@ -11,7 +11,8 @@
     function ContactCommonDialogService ($rootScope, $uibModal) {
         var service = {
     		openSearchDialog: openSearchDialog,
-    		openAddDialog: openAddDialog
+    		openAddDialog: openAddDialog,
+    		openMailDialog: openMailDialog
         };
 
         var modalInstance = null;
@@ -27,6 +28,32 @@
                 animation: true,
                 templateUrl: 'apps/contact/contact-search-dialog.html',
                 controller: 'ContactSearchDialogController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            });
+            
+            modalInstance.result.then(function (contactObj) {
+                $rootScope.selectedContact = contactObj;
+                $rootScope.$broadcast('selectedContactChange');
+                modalInstance = null;
+              }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+                modalInstance = null;
+              });
+        }
+        
+        function openMailDialog () {
+            if (modalInstance !== null) return;
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/contact/contact-mail-dialog.html',
+                controller: 'ContactMailDialogController',
                 controllerAs: 'vm',
                 size: 'lg',
                 resolve: {

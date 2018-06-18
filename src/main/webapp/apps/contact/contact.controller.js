@@ -5,14 +5,17 @@
         .controller('ContactController', ContactController);
 
 
-    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService'];
-    function ContactController($scope, $http, $filter, ContactService) {
+    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService'];
+    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService) {
     	var vm = this;
     	vm.contacts = [];
+    	vm.selectedContact = null;
     	vm.groupType = 'POTENTIAL';
     	
     	// Function declare
     	vm.changeGroupType = changeGroupType;
+    	vm.selectContact = selectContact;
+    	vm.openMailDialog = openMailDialog;
     	
     	angular.element(document).ready(function () {
         });
@@ -23,10 +26,28 @@
   		})();
   		
     	// Implement function
-  		function changeGroupType(type) {
-  			vm.groupType = type;
+  		function openMailDialog() {
+  			ContactCommonDialogService.openMailDialog();
   		}
   		
+  		function changeGroupType(type) {
+  			vm.groupType = type;
+  			resetSelectContact();
+  		}
+  		
+  		function resetSelectContact() {
+  			vm.selectedContact = null;
+  			angular.forEach(vm.contacts, function(contact) {
+  				contact.selected = false;
+  				contact.editing = false;
+  			});
+  		}
+  		
+  		function selectContact(contact){
+  			resetSelectContact();
+      		vm.selectedContact = contact;
+  			vm.selectedContact.selected = true;
+  		};
   		
     	function loadAll() {
     		console.log('searchContact');

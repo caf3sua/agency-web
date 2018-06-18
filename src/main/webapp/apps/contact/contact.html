@@ -32,7 +32,7 @@
                         </div>
 
                         <div>
-                            <input name="type" type="radio" value="type-posts" id="type-posts">
+                            <input name="type" type="radio" value="type-posts" id="type-posts" ng-click="vm.openMailDialog()">
                             <label for="type-posts">
                                 <i class="fas fa-envelope edit-pen-title"></i>
                                 <span>Mail</span>
@@ -72,14 +72,10 @@
                 <div class="row-row">
                     <div class="row-body">
                         <div class="row-inner">
-                            <div class="padding">
+                            <div class="padding" ng-show="vm.selectedContact">
                                 <div class="col-md-12 h-auto m-b-lg">
                                     <div class="col-sm-12 v-m h2 _300 text-center">
-                                        <div ng-hide="item.editing" class="inline">{{item.first}} {{item.last}}</div>
-                                        <div ng-show="item.editing" class="p-l-xs inline" >
-                                            <input type="text" placeholder="First" class="form-control w-sm inline" ng-model="item.first" >
-                                            <input type="text" placeholder="Last" class="form-control w-sm inline" ng-model="item.last" >
-                                        </div>
+                                        <div class="inline">{{vm.selectedContact.contactName}}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center padding-bottom-35 padding-bottom-ccc">
@@ -131,29 +127,30 @@
                                             <p class="bv-title-from">Mobile</p>
                                         </div>
                                         <div>
-                                            <p class="bv-tile-templateSummary">09565564456</p>
+                                            <p class="bv-tile-templateSummary">{{vm.selectedContact.phone}}</p>
                                         </div>
                                         <div class="margin-top-10">
                                             <p class="bv-title-from">Email</p>
                                         </div>
                                         <div>
-                                            <p class="bv-tile-templateSummary">phuongit247@gmail.com</p>
+                                            <p class="bv-tile-templateSummary">{{vm.selectedContact.email}}</p>
                                         </div>
                                         <div class="margin-top-10">
                                             <p class="bv-title-from">Điạ chỉ</p>
                                         </div>
                                         <div>
-                                            <p class="bv-tile-templateSummary">99 Lý Thường Kiệt,Hoàn Kiếm ,Hà Nội</p>
+                                            <p class="bv-tile-templateSummary">{{vm.selectedContact.homeAddress}}</p>
                                         </div>
                                         <div class="margin-top-10">
                                             <p class="bv-title-from">Facebook message</p>
                                         </div>
                                         <div>
-                                            <p class="bv-tile-templateSummary">anhmt</p>
+                                            <p class="bv-tile-templateSummary"></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="vm.selectedContact">Không chọn khách hàng</div>
                         </div>
                     </div>
                 </div>
