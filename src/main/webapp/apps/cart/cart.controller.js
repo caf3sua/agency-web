@@ -5,14 +5,17 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'CartService'];
+    CartController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
 
-    function CartController ($scope, Principal, $state, $rootScope, CartService) {
+    function CartController ($scope, Principal, $state, $rootScope, CartService, DateUtils) {
     	var vm = this;
         vm.getAllOrder = getAllOrder;
         vm.newDate = null;
         vm.cartWarning = false;
         vm.cartCheckBox = false;
+        vm.inceptionDateFormat = null;
+        vm.expiredDate = null;
+        vm.dateUtil = dateUtil;
         angular.element(document).ready(function () {
         });
 
@@ -32,16 +35,15 @@
         function onGetAllOrderSuccess(result) {
             vm.allOrder = result;
             for (var i = 0; i < vm.allOrder.length; i++) {
-                if( vm.allOrder[i].inceptionDate < vm.newDate){
-                    vm.cartWarning = true;
-                }else{
-                    vm.cartCheckBox = true;
-                }
+                vm.inceptionDateFormat = new Date(vm.allOrder[i].inceptionDate);
+                vm.expiredDate = new Date(vm.allOrder[i].expiredDate);
             }
         }
         function onGetAllOrderError() {
             toastr.error("error!");
         }
-
+        function dateUtil(date) {
+            return DateUtils.convertLocalDateToServer(date);
+        }
     }
 })();

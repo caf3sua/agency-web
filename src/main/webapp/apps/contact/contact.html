@@ -2,9 +2,21 @@
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 ">
         <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
             <div class="bv-block-two-button">
-                <button class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'POTENTIAL' }" ng-click="vm.changeGroupType('POTENTIAL')">Khách hàng tiềm năng</button>
-                <button class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'FAMILIAR' }" ng-click="vm.changeGroupType('FAMILIAR')">Khách hàng thân thiện</button>
-                <button class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'VIP' }" ng-click="vm.changeGroupType('VIP')">Khách hàng VIP</button>
+                <!--<div class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'POTENTIAL' }" ng-click="vm.changeGroupType('POTENTIAL')"><i class="fas fa-user"></i><span>Khách hàng tiềm năng</span></div>-->
+                <!--<div class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'FAMILIAR' }" ng-click="vm.changeGroupType('FAMILIAR')"><i class="fas fa-user-lock"></i><span>Khách hàng thân thiện</span></div>-->
+                <!--<div class="bv-block-two-button-style" ng-class="{'active-contact': vm.groupType == 'VIP' }" ng-click="vm.changeGroupType('VIP')"><i class="fas fa-user-astronaut"></i><span>Khách hàng VIP</span></div>-->
+                <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'POTENTIAL' }" ng-click="vm.changeGroupType('POTENTIAL')">
+                    <i class="icon-employees-01"></i>
+                    <span class="hidden-xs hidden-sm">Khách hàng tiềm năng</span>
+                </div>
+                <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'FAMILIAR' }" ng-click="vm.changeGroupType('FAMILIAR')">
+                    <i class="fas fa-user"></i>
+                    <span class="hidden-xs hidden-sm">Khách hàng thân thiện</span>
+                </div>
+                <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'VIP' }" ng-click="vm.changeGroupType('VIP')">
+                    <i class="icon-broken-arm"></i>
+                    <span class="hidden-xs hidden-sm">Khách hàng VIP</span>
+                </div>
             </div>
         </div>
         <div>

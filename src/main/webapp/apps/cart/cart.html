@@ -110,12 +110,11 @@
                 </tr>
                 </thead>
                 <tr ng-repeat="order in vm.allOrder">
-
                     <td>
-                        <div class="bv-gh-checkbox" ng-show="vm.cartWarning">
+                        <div class="bv-gh-checkbox"  ng-show="vm.expiredDate < vm.newDate">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
-                        <div class="bv-gh-checkbox" ng-show="vm.cartCheckBox">
+                        <div class="bv-gh-checkbox" ng-show="vm.expiredDate >= vm.newDate">
                             <label for="cbx33" class="label-cbx margin-right-5">
                                 <input id="cbx33" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
                                 <div class="checkbox">
@@ -146,10 +145,10 @@
                         <p class="">{{order.statusPolicyName}}</p>
                     </td>
                     <td>
-                        <p class="">{{order.expiredDate}}</p>
+                        <p class="">{{vm.dateUtil(vm.inceptionDateFormat)}}</p>
                     </td>
                     <td>
-                        <p class="">{{order.inceptionDate}}</p>
+                        <p class="">{{vm.dateUtil(vm.expiredDate)}}</p>
                     </td>
                     <td>
                         <p class="">{{order.totalPremium}}</p>
