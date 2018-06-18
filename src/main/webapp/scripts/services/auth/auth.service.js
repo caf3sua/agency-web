@@ -48,7 +48,7 @@
 
                 var blackList = ['access.signin', 'access.forgot-password'];
         		// black list
-        		if (blackList.indexOf(toState.name) != -1) {
+        		if (blackList.indexOf($rootScope.toState.name) != -1) {
         			return;
         		}
         		

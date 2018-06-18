@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('app')
-        .controller('ContactSearchDialogController', ContactSearchDialogController);
+        .controller('ContactMailDialogController', ContactMailDialogController);
 
 
-    	ContactSearchDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
-        function ContactSearchDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
+    	ContactMailDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
+        function ContactMailDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
         	var vm = this;
         	vm.contactCode;
         	vm.searchContact = searchContact;
@@ -45,7 +45,11 @@
         		$uibModalInstance.dismiss('cancel');
         	}
         	
-        	vm.cancel = function () {
+//        	vm.ok = function () {
+//                $uibModalInstance.close(vm.contactCode);
+//            };
+//
+            vm.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
         }

@@ -21,7 +21,7 @@
 	        				return $translate.refresh();
 	            		}],
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/contact/contact.controller.js']);
+		            		return $ocLazyLoad.load(['apps/contact/contact.controller.js', 'apps/contact/contact-mail-dialog.controller.js']);
 			        }
 	            }
 	        })
