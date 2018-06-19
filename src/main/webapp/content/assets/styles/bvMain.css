@@ -1650,6 +1650,9 @@ body {
 .bv-context-menu div:hover i{
     color: #0d47a1;
 }
+.inset .list-body:after {
+     left: 0px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from-changepassword{
         width: 400px;
