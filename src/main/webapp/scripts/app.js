@@ -37,7 +37,8 @@
 		 'toastr',
 		 'smart-table',
 		 'disableAll',
-         'angularValidator'
+         'angularValidator',
+         'cp.ngConfirm'
       ])
       .run(run)
       .run(stateChange);
