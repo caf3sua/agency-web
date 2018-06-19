@@ -25,7 +25,7 @@
     </div>
     <div class="row-col row-col-xs b-b bv-border-ccc background-fff" style="margin-bottom: 30px">
         <!-- column -->
-        <div class="col-sm-4 col-md-3 light bg b-r background-fff" >
+        <div class="col-sm-4 col-md-3 light bg b-r background-fff bv-contact-border-left" >
             <div class="row-col">
                 <form class="search-form">
                     <input type="search" value="" placeholder="Search" class="search-input">
@@ -57,11 +57,8 @@
                         <div class="row-inner">
                             <div class="list inset">
                                 <div ng-repeat="contact in vm.contacts | filter:{groupType:vm.groupType} | orderBy:'contactName' track by $index" class="list-item pointer" ng-class="{'dker': contact.selected }" ng-click="vm.selectContact(contact)">
-                                    <div class="list-left">
-                                    </div>
                                     <div class="list-body">
                                         {{ contact.contactName }}
-                                        <small class="block text-muted"><i class="fa fa-phone m-r-sm"></i>{{ contact.phone }}</small>
                                         <span ng-hide="contact.contactName">Không tên</span>
                                     </div>
                                 </div>
@@ -77,7 +74,7 @@
                 <div class="p-a-sm">
                     <div>
                         <!--<a class="btn btn-sm white pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>-->
-                        <a class="btn btn-sm white pull-right btn-edit-contact" ng-hide="item.editing" ng-click="editItem(item)"><i class="fas fa-pencil-alt"></i></a>
+                        <a class="pull-right" ng-hide="item.editing" ng-click="editItem(item)"><i class="fas edit-pen-title fa-pencil-alt"></i></a>
                         <a class="btn btn-sm white" ng-show="item.editing" ng-click="doneEditing(item)">Done</a>
                     </div>
                 </div>
@@ -85,12 +82,12 @@
                     <div class="row-body">
                         <div class="row-inner">
                             <div class="padding" ng-show="vm.selectedContact">
-                                <div class="col-md-12 h-auto m-b-lg">
-                                    <div class="col-sm-12 v-m h2 _300 text-center">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 h-auto m-b-lg">
+                                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 v-m h2 _300 text-center">
                                         <div class="inline">{{vm.selectedContact.contactName}}</div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center padding-bottom-35 padding-bottom-ccc">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center padding-bottom-35 padding-bottom-ccc">
                                     <div class="bv-icon-contact-detail display-inline-block">
                                         <i class="icon-telephone"></i>
                                         <p class="bv-text-icon-contact-detail">Gọi điện</p>
@@ -108,7 +105,7 @@
                                         <p class="bv-text-icon-contact-detail">Chat</p>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                     <div  class="bv-detail-contact">
                                         <p>Cấp đơn<i class="fas {{vm.arrowContact}}"></i></p>
                                     </div>

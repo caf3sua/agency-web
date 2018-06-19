@@ -1632,6 +1632,10 @@ body {
 .border-transparent{
     border: 1px solid transparent;
 }
+.bv-contact-border-left{
+    border: 1px solid #ccc;
+    border-right: 1px solid rgba(120, 130, 140, 0.13);
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from-changepassword{
         width: 400px;
@@ -1977,6 +1981,21 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-icon-contact-detail {
+        margin-left: 10px;
+    }
+    .bv-icon-contact-detail>i {
+        background: #0371b6;
+        border: 1px solid #0371b6;
+        color: #fff;
+        border-radius: 100%;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        width: 30px;
+        justify-content: center;
+        vertical-align: middle;
+    }
     .active-contact >i{
         color: #fff;
     }
@@ -2221,6 +2240,21 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .row-body {
+        height: 100%;
+    }
+    .bv-icon-contact-detail>i {
+        background: #0371b6;
+        border: 1px solid #0371b6;
+        color: #fff;
+        border-radius: 100%;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        width: 50px;
+        justify-content: center;
+        vertical-align: middle;
+    }
     .bv-b-b{
         width: 57px;
         height: 57px;
