@@ -1636,6 +1636,20 @@ body {
     border: 1px solid #ccc;
     border-right: 1px solid rgba(120, 130, 140, 0.13);
 }
+.bv-context-menu{
+    display: flex;
+    margin-left: 50px;
+}
+.bv-context-menu>div{
+    margin-left: 15px;
+    cursor: pointer;
+}
+.bv-context-menu div:hover{
+   color: #0d47a1;
+}
+.bv-context-menu div:hover i{
+    color: #0d47a1;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-from-changepassword{
         width: 400px;
