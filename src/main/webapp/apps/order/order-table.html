@@ -1,0 +1,205 @@
+<div class="col-lg-12 margin-top-20  col-md-12 col-sm-12 col-xs-12 padding0">
+	<p class="bv-result-search-dh">Tìm thấy <span>10</span> đơn hàng phù hợp</p>
+</div>
+<div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+    <table class="table bv-home-block-left-table bv-table-kh" ui-jp="footable" data-page-size="20">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Mã đơn hàng</th>
+                <th>Tên khách hàng</th>
+                <th>Sản phẩm</th>
+                <th>Số điện thoại</th>
+                <th>Trạng thái</th>
+                <th>Hiệu lực từ</th>
+                <th>Hiệu lực đến</th>
+                <th>Phí bảo hiểm</th>
+                <th data-hide="phone,tablet">
+	            </th>
+            </tr>
+        </thead>
+        <tbody>
+	        <tr ng-repeat="i in [1, 2, 3, 4, 5]">
+	            <td>
+	                <p class="bv-home-table-stt margin-0">1</p>
+	            </td>
+	            <td>
+	                <p class="bv-table-text-colorBlue footable-toggle">BVP.HN.01</p>
+	            </td>
+	            <td>
+	                <p class="">Vũ Hoàng Chiến</p>
+	            </td>
+	            <td>
+	                <p class="">Bảo hiểm oto</p>
+	            </td>
+	            <td>
+	                <p class="">059484948</p>
+	            </td>
+	            <td>
+	                <p class="">Đã thanh toán</p>
+	            </td>
+	            <td>
+	                <p class="">Hiệu lực từ</p>
+	            </td>
+	            <td>
+	                <p class="">Hiệu lực đến</p>
+	            </td>
+	            <td>
+	                <p class="">Phí bảo hiểm</p>
+	            </td>
+	            <td>
+	            	<div>
+			                <div class="bv-detail-icon-table">
+			                    <i class="icon-eye"></i>
+			                </div>
+			                <span class="bv-detail-text-table">Xem</span>
+
+			                <div  class="bv-detail-icon-table">
+			                    <i class="icon-cancel"></i>
+			                </div>
+			                <span class="bv-detail-text-table" >Hủy</span>
+
+			                <div class="bv-detail-icon-table">
+			                    <i class="icon-pencil"></i>
+			                </div>
+			                <span class="bv-detail-text-table">Sửa</span>
+
+			                <div class="bv-detail-icon-table">
+			                    <i class="icon-mail"></i>
+			                </div>
+			                <span class="bv-detail-text-table">Gửi lại email xác nhận</span>
+
+			                <div class="bv-detail-icon-table">
+			                   <i class="icon-reload-arrow"></i>
+			                </div>
+			                <span class="bv-detail-text-table">Tái túc</span>
+
+			                <div class="bv-detail-icon-table">
+			                    <i class="icon-money"></i>
+			                </div>
+			                <span class="bv-detail-text-table">Khách hàng nợ phí</span>
+			            </td>
+	            	</div>
+	            </td>
+	        </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="10" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- <div class="padding">
+  <div class="box">
+    <div>
+      <table class="table m-b-none" ui-jp="footable" data-page-size="20">
+        <thead>
+          <tr>
+              <th data-toggle="true">
+                  First Name
+              </th>
+              <th>
+                  Last Name
+              </th>
+              <th data-hide="phone,tablet">
+                  Job Title
+              </th>
+              <th data-hide="phone,tablet" data-name="Date Of Birth">
+                  DOB
+              </th>
+              <th data-hide="phone">
+                  Status
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>Isidra</td>
+              <td><a href>Boudreaux</a></td>
+              <td>Traffic Court Referee</td>
+              <td data-value="78025368997">22 Jun 1972</td>
+              <td data-value="1"><span class="label success" title="Active">Active</span></td>
+          </tr>
+          <tr>
+              <td>Shona</td>
+              <td>Woldt</td>
+              <td><a href>Airline Transport Pilot</a></td>
+              <td data-value="370961043292">3 Oct 1981</td>
+              <td data-value="2"><span class="label" title="Disabled">Disabled</span></td>
+          </tr>
+          <tr>
+              <td>Granville</td>
+              <td>Leonardo</td>
+              <td>Business Services Sales Representative</td>
+              <td data-value="-22133780420">19 Apr 1969</td>
+              <td data-value="3"><span class="label warning" title="Suspended">Suspended</span>
+              </td>
+          </tr>
+          <tr>
+              <td>Easer</td>
+              <td>Dragoo</td>
+              <td>Drywall Stripper</td>
+              <td data-value="250833505574">13 Dec 1977</td>
+              <td data-value="1"><span class="label success" title="Active">Active</span></td>
+          </tr>
+          <tr>
+              <td>Maple</td>
+              <td>Halladay</td>
+              <td>Aviation Tactical Readiness Officer</td>
+              <td data-value="694116650726">30 Dec 1991</td>
+              <td data-value="3"><span class="label warning" title="Suspended">Suspended</span>
+              </td>
+          </tr>
+          <tr>
+              <td>Maxine</td>
+              <td><a href>Woldt</a></td>
+              <td><a href>Business Services Sales Representative</a></td>
+              <td data-value="561440464855">17 Oct 1987</td>
+              <td data-value="2"><span class="label" title="Disabled">Disabled</span></td>
+          </tr>
+          <tr>
+              <td>Lorraine</td>
+              <td>Mcgaughy</td>
+              <td>Hemodialysis Technician</td>
+              <td data-value="437400551390">11 Nov 1983</td>
+              <td data-value="2"><span class="label" title="Disabled">Disabled</span></td>
+          </tr>
+          <tr>
+              <td>Lizzee</td>
+              <td><a href>Goodlow</a></td>
+              <td>Technical Services Librarian</td>
+              <td data-value="-257733999319">1 Nov 1961</td>
+              <td data-value="3"><span class="label warning" title="Suspended">Suspended</span>
+              </td>
+          </tr>
+          <tr>
+              <td>Judi</td>
+              <td>labeltt</td>
+              <td>Electrical Lineworker</td>
+              <td data-value="362134712000">23 Jun 1981</td>
+              <td data-value="1"><span class="label success" title="Active">Active</span></td>
+          </tr>
+          <tr>
+              <td>Lauri</td>
+              <td>Hyland</td>
+              <td>Blackjack Supervisor</td>
+              <td data-value="500874333932">15 Nov 1985</td>
+              <td data-value="3"><span class="label warning" title="Suspended">Suspended</span>
+              </td>
+          </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div> -->

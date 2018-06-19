@@ -34,7 +34,8 @@
   border-top: none;
 }
 .footable.breakpoint > tbody > tr > td > span.footable-toggle {
-  display: inline-block;
+  /* display: inline-block; */
+  display: none;
   font-family: 'footable';
   speak: none;
   font-style: normal;
@@ -133,7 +134,8 @@
   content: "\e012";
 }
 .footable > thead > tr > th > span.footable-sort-indicator {
-  display: inline-block;
+  /* display: inline-block; */
+  display: none;
   font-family: 'footable';
   speak: none;
   font-style: normal;
