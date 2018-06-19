@@ -27,32 +27,33 @@
   			
   		}
   		
+  		function doCancelOrder() {
+  			console.log('doCancelOrder');
+  		}
+  		
   		function cancelOrder() {
   			$ngConfirm({
-  	            title: 'Confirm!',
-  	            content: '<strong>{{name}}</strong> is my favourite song',
-  	            scope: $scope,
-  	            buttons: {
-  	                sayBoo: {
-  	                    text: 'Say Booo',
-  	                    btnClass: 'btn-blue',
-  	                    action: function(scope, button){
-  	                        scope.name = 'Booo!!';
-  	                        return false; // prevent close;
-  	                    }
-  	                },
-  	                somethingElse: {
-  	                    text: 'Something else',
-  	                    btnClass: 'btn-orange',
-  	                    action: function(scope, button){
-  	                        $ngConfirm('You clicked on something else');
-  	                    }
-  	                },
-  	                close: function(scope, button){
-  	                    // closes the modal
-  	                },
-  	            }
-  	        });
+                title: 'Xác nhận',
+                icon: 'fa fa-check',
+                theme: 'modern',
+                type: 'blue',
+//                scope: vm,
+                content: '<div class="text-center">Bạn chắc chắn muốn hủy hợp đồng này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	doCancelOrder();
+	                    }
+                    },
+                    close: function () {
+                    	text: 'Hủy'
+                    }
+                },
+            });
   		}
   		
   		
