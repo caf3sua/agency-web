@@ -2221,7 +2221,7 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
-    .b-b{
+    .bv-b-b{
         width: 57px;
         height: 57px;
     }
@@ -2408,6 +2408,9 @@ body {
         font-size: 15px;
         color: #0371b6;
         margin-right: 0px;
+    }
+    .active-contact >i {
+        color: #fff;
     }
     .bv-btn-header-title {
         display: inline-block;

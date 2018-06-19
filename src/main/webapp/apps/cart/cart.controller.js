@@ -16,6 +16,8 @@
         vm.inceptionDateFormat = null;
         vm.expiredDate = null;
         vm.dateUtil = dateUtil;
+        vm.sumMoney = null;
+        vm.selectCheckBoxCart = selectCheckBoxCart;
         angular.element(document).ready(function () {
         });
 
@@ -44,6 +46,10 @@
         }
         function dateUtil(date) {
             return DateUtils.convertLocalDateToServer(date);
+        }
+        function selectCheckBoxCart(data) {
+            var money = data.totalPremium;
+            vm.sumMoney = vm.sumMoney + money
         }
     }
 })();
