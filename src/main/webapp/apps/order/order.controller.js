@@ -36,7 +36,7 @@
                 title: 'Xác nhận',
                 icon: 'fa fa-check',
                 theme: 'modern',
-                type: 'blue',
+                type: 'red',
 //                scope: vm,
                 content: '<div class="text-center">Bạn chắc chắn muốn hủy hợp đồng này ?</div>',
                 animation: 'scale',
@@ -49,7 +49,7 @@
                         	doCancelOrder();
 	                    }
                     },
-                    close: function () {
+                    close: {
                     	text: 'Hủy'
                     }
                 },

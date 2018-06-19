@@ -37,10 +37,50 @@
                 <i class="icon-employees-01"></i>
                 <span>Tạo khách hàng mới</span>
             </div>
-            <div class="bv-btn-header-title">
+            <div class="bv-btn-header-title" data-toggle="collapse" data-target="#demo">
                 <i class="icon-calculator"></i>
                 <span>Tính phí nhanh</span>
             </div>
         </div>
     </div>
+    
+    <!-- Tính phí nhanh -->
+    <div class="col-lg-128 col-sm-12 col-xs-12 col-md-12 padding0 collapse" id="demo">
+    	<div>
+    		<div>icon</div>
+	    	<div>Tính phí nhanh</div>
+    	</div>
+    	<!-- Input -->
+	    <div>
+	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
+	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
+	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
+	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
+	    </div>
+	    <!-- Button -->
+	    <div>
+	    	<div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
+                <button class="bv-btn-step2" 
+                	uib-popover
+                	uib-popover-template="'premium-tpl.html'"
+                	popover-placement="top"
+                	popover-trigger="focus">
+               		Tính phí
+               	</button>
+            </div>
+	    </div>
+	    
+	    <script type="text/ng-template" id="premium-tpl.html">
+      		<div class="popover-content" ng-switch="vm.isCanPremium">
+        		<div ng-switch-when="false">
+          			Không đủ dữ liệu tính phí
+        		</div>
+				<div ng-switch-when="true">
+					<div>PHÍ BẢO HIỂM DỰ KIẾN</div>
+					<div>450,000 VND</div>
+					<div><button>TIẾP TỤC MUA</button></div>
+        		</div>
+      		</div> 
+    	</script>
+   	</div>
 </div>

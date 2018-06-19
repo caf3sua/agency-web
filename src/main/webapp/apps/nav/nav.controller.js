@@ -12,6 +12,7 @@
     		, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService, ReminderService, CONSTANT_REMINDER_RANGER_DATE) {
     	var vm = this;
     	vm.countReminder = 0;
+    	vm.isCanPremium = true;
     	
     	vm.logout = logout;
 
