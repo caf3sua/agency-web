@@ -10,12 +10,8 @@
         var service = $resource('', {}, {
             'getAll' : {
                 method : 'GET',
-                url : 'api/agency/product/order/get-all',
+                url : 'api/agency/product/agreement/get-cart',
                 isArray : true
-            },
-            'createNewPolicy' : {
-                method : 'POST',
-                url : 'api/agency/product/bvp/createPolicy'
             }
         });
 
