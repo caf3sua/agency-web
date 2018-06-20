@@ -340,6 +340,16 @@ body {
     border-radius: 5px;
     color: #9c9c9c;
 }
+.bv-input-tp{
+    width: 100%;
+    padding: 15px 15px;
+    border: 1px solid #e0e1e5;
+    border-radius: 5px;
+    color: #9c9c9c;
+}
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
 .margin-top-5{
     margin-top: 5px;
 }
@@ -1653,7 +1663,28 @@ body {
 .inset .list-body:after {
      left: 0px;
 }
+.navbar-item>i{
+    color: #0d47a1;
+}
+.bv-collapse-tp-icon>i{
+    font-size: 20px;
+    color: #0371b6;
+}
+.bv-collapse-tp-icon>span{
+    font-size: 17px;
+    font-family: Roboto;
+    font-weight: normal;
+}
+.bv-collapse-tp{
+    display: flex;
+}
+.bv-padding-tp{
+    padding: 8px 10px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
+    .bv-collapse-tp{
+        display: flex;
+    }
     .bv-from-changepassword{
         width: 400px;
         margin: 0 auto;
@@ -1705,6 +1736,18 @@ body {
     }
 }
 @media (min-width:992px) and (max-width:1200px) {
+    .bv-collapse-tp{
+        display: block;
+        text-align: center;
+    }
+    .bv-input-tp {
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #e0e1e5;
+        border-radius: 5px;
+        color: #9c9c9c;
+        margin-bottom: 5px;
+    }
     .bv-from-changepassword{
         width: 400px;
         margin: 0 auto;
@@ -1814,6 +1857,18 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .bv-collapse-tp{
+        display: block;
+        text-align: center;
+    }
+    .bv-input-tp {
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #e0e1e5;
+        border-radius: 5px;
+        color: #9c9c9c;
+        margin-bottom: 5px;
+    }
     .bv-from-changepassword{
         width: 400px;
         margin: 0 auto;
@@ -1998,6 +2053,18 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-collapse-tp{
+        display: block;
+        text-align: center;
+    }
+    .bv-input-tp {
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #e0e1e5;
+        border-radius: 5px;
+        color: #9c9c9c;
+        margin-bottom: 5px;
+    }
     .bv-icon-contact-detail {
         margin-left: 10px;
     }
@@ -2257,6 +2324,18 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-collapse-tp{
+        display: block;
+        text-align: center;
+    }
+    .bv-input-tp {
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #e0e1e5;
+        border-radius: 5px;
+        color: #9c9c9c;
+        margin-bottom: 5px;
+    }
     .row-body {
         height: 100%;
     }

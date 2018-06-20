@@ -20,8 +20,8 @@
     </div>
 </div>
  -->
- <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-border-bottom-b4cfe4">
-    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0 padding0">
+ <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-border-bottom-b4cfe4 ">
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-home" data-translate="global.page.title.{{$state.current.data.title}}">Trang chủ</p>
     </div>
     <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
@@ -45,30 +45,42 @@
     </div>
     
     <!-- Tính phí nhanh -->
-    <div class="col-lg-128 col-sm-12 col-xs-12 col-md-12 padding0 collapse" id="demo">
-    	<div>
-    		<div>icon</div>
-	    	<div>Tính phí nhanh</div>
-    	</div>
-    	<!-- Input -->
-	    <div>
-	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
-	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
-	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
-	    	<input type="text" class="bv-input-contact" placeholder="placehoder 1"/>
-	    </div>
-	    <!-- Button -->
-	    <div>
-	    	<div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
-                <button class="bv-btn-step2" 
-                	uib-popover
-                	uib-popover-template="'premium-tpl.html'"
-                	popover-placement="top"
-                	popover-trigger="focus">
-               		Tính phí
-               	</button>
+    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 padding0 collapse margin-bottom-15" id="demo">
+        <div class="bv-collapse-tp">
+            <div class="bv-collapse-tp-icon margin-top-10 margin-right-5">
+                <i class="icon-calculator"></i>
+                <span>Tính phí nhanh</span>
             </div>
-	    </div>
+            <!-- Input -->
+            <div class="margin-right-5">
+                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
+            </div>
+            <div class="margin-right-5">
+                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
+            </div>
+            <div class="margin-right-5">
+                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
+            </div>
+            <div class="margin-right-5">
+                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
+            </div>
+            <div class="margin-right-5">
+                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
+            </div>
+            <!-- Button -->
+            <div class="margin-top-10">
+                <div class=" bv-kh-padding-left">
+                    <button class="bv-btn-step2 bv-padding-tp"
+                            uib-popover
+                            uib-popover-template="'premium-tpl.html'"
+                            popover-placement="top"
+                            popover-trigger="focus">
+                        Tính phí nhanh
+                    </button>
+                </div>
+            </div>
+        </div>
+
 	    
 	    <script type="text/ng-template" id="premium-tpl.html">
       		<div class="popover-content" ng-switch="vm.isCanPremium">
