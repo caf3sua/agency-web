@@ -56,8 +56,10 @@
                 <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
                 </select>
             </div>
-            
-    		<div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
+        </div>
+        
+        <div class="">
+        	<div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-BVP.html'" ng-show="vm.selProduct == 'BVP'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-KCARE.html'" ng-show="vm.selProduct == 'KCARE'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TVC.html'" ng-show="vm.selProduct == 'TVC'"></div>
@@ -67,26 +69,17 @@
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-KHC.html'" ng-show="vm.selProduct == 'KHC'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TNC.html'" ng-show="vm.selProduct == 'TNC'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-HHVC.html'" ng-show="vm.selProduct == 'HHVC'"></div>
-            <!-- <div class="margin-right-5">
-                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
-            </div>
-            <div class="margin-right-5">
-                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
-            </div>
-            <div class="margin-right-5">
-                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
-            </div>
-            <div class="margin-right-5">
-                <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
-            </div> -->
-            <!-- Button -->
-            <div class="margin-top-10 m-w-150">
+        </div>
+        <div class="bv-collapse-tp">
+        	<!-- Button -->
+            <div class="margin-top-10 m-w-150" ng-show="vm.selProduct != ''">
                 <div class=" bv-kh-padding-left">
                     <button class="bv-btn-step2 bv-padding-tp"
                             uib-popover
                             uib-popover-template="'premium-tpl.html'"
-                            popover-placement="top"
-                            popover-trigger="focus">
+                            popover-placement="top-right"
+                            popover-trigger="focus"
+					>
                         Tính phí nhanh
                     </button>
                 </div>
