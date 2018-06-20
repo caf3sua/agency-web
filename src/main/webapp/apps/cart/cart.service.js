@@ -15,8 +15,8 @@
             },
             'getBanksByPaymentCode' : {
                 method : 'GET',
-                url : '/api/agency/payment/getBanksByPaymentCode',
-                isArray : true
+                url : 'api/agency/payment/getBanksByPaymentCode/:id',
+                isArray : false
             },
             'createNewPolicy' : {
                 method : 'POST',

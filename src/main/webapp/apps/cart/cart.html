@@ -5,7 +5,7 @@
         <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0 ">
                 <label for="cbx13" class="label-cbx margin-right-5">
-                    <input id="cbx13" type="radio" class="invisible" ng-model="vm.getListBank.type" value="123pay">
+                    <input id="cbx13" type="radio" class="invisible" ng-model="vm.typeBank" value="123pay" ng-change="vm.getListBank()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
                 <label for="cbx15" class="label-cbx margin-right-5">
-                    <input id="cbx15" type="radio" class="invisible" ng-model="vm.getListBank.type" value="Momo">
+                    <input id="cbx15" type="radio" class="invisible" ng-model="vm.typeBank" value="Momo" >
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
                 <label for="cbx16" class="label-cbx margin-right-5">
-                    <input id="cbx16" type="radio" class="invisible" ng-model="vm.getListBank.type" value="VNPAY">
+                    <input id="cbx16" type="radio" class="invisible" ng-model="vm.typeBank" value="VNPAY" ng-change="vm.getListBank()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -39,12 +39,12 @@
                         </svg>
                     </div>
                     <span>VnPayment</span>
-                    <p class="margin-top-10 bv-img-pay"><img   src="../../content/assets/images/viettelpay.jpg"></p>
+                    <p class="margin-top-10 bv-img-pay"><img   src="../../content/assets/images/vnpay.jpg"></p>
                 </label>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
                 <label for="cbx17" class="label-cbx margin-right-5">
-                    <input id="cbx17" type="radio" class="invisible" ng-model="vm.getListBank.type" value="ViettelPay">
+                    <input id="cbx17" type="radio" class="invisible" ng-model="vm.typeBank" value="ViettelPay">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -52,7 +52,7 @@
                         </svg>
                     </div>
                     <span>Viettel Payment</span>
-                    <p class="margin-top-10 bv-img-pay"><img src="../../content/assets/images/vnpay.jpg"></p>
+                    <p class="margin-top-10 bv-img-pay"><img src="../../content/assets/images/viettelpay.jpg"></p>
                 </label>
             </div>
 
@@ -64,12 +64,11 @@
                </p>
            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
-                <select class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
-                        required-message="'Chưa chọn gói bảo hiểm!'"
-                        required
+                <select class="bv-select-box form-control"
                 >
-                    <option value="1">Cá nhân</option>
-                    <option value="3">Khách đoàn</option>
+                    <option value="bank.bankCodeView"  ng-repeat="bank in vm.getListBankObj">
+                        {{bank.paymentBankName}}
+                    </option>
                 </select>
             </div>
         </div>
@@ -111,10 +110,10 @@
                 </thead>
                 <tr ng-repeat="order in vm.allOrder">
                     <td>
-                        <div class="bv-gh-checkbox"  ng-show="vm.expiredDate < vm.newDate">
+                        <div class="bv-gh-checkbox"  ng-show="vm.type91">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
-                        <div class="bv-gh-checkbox" ng-show="vm.expiredDate >= vm.newDate">
+                        <div class="bv-gh-checkbox" ng-show="vm.type90">
 
                             <label for="cart{{$index}}" class="label-cbx margin-right-5">
                                 <input id="cart{{$index}}" type="radio" class="invisible" value="{{$index}}" ng-click="vm.selectCheckBoxCart(order)">
@@ -146,10 +145,10 @@
                         <p class="">{{order.statusPolicyName}}</p>
                     </td>
                     <td>
-                        <p  style="width: 150px">{{vm.dateUtil(vm.inceptionDateFormat)}}</p>
+                        <p  style="width: 150px">{{order.inceptionDate}}</p>
                     </td>
                     <td>
-                        <p  style="width: 150px">{{vm.dateUtil(vm.expiredDate)}}</p>
+                        <p  style="width: 150px">{{order.expiredDate}}</p>
                     </td>
                     <td>
                         <p  style="width: 150px">{{order.totalPremium}}</p>
