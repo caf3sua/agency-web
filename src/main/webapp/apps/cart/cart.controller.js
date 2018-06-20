@@ -17,6 +17,7 @@
         vm.expiredDate = null;
         vm.dateUtil = dateUtil;
         vm.sumMoney = null;
+        vm.getListBank = getListBank;
         vm.selectCheckBoxCart = selectCheckBoxCart;
         angular.element(document).ready(function () {
         });
@@ -50,6 +51,14 @@
         function selectCheckBoxCart(data) {
             var money = data.totalPremium;
             vm.sumMoney = vm.sumMoney + money
+        }
+        function getListBank(type) {
+            CartService.getBanksByPaymentCode(type, onGetListBankSuccess, onGetListBankError)
+        }
+        function onGetListBankSuccess(result) {
+        }
+        function onGetListBankError() {
+            toastr.error("error!");
         }
     }
 })();
