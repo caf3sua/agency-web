@@ -58,8 +58,8 @@
             </div>
         </div>
         
-        <div class="">
-        	<div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 padding0">
+        	<div class="" ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-BVP.html'" ng-show="vm.selProduct == 'BVP'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-KCARE.html'" ng-show="vm.selProduct == 'KCARE'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TVC.html'" ng-show="vm.selProduct == 'TVC'"></div>
@@ -70,11 +70,11 @@
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TNC.html'" ng-show="vm.selProduct == 'TNC'"></div>
             <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-HHVC.html'" ng-show="vm.selProduct == 'HHVC'"></div>
         </div>
-        <div class="bv-collapse-tp">
+        <div class="">
         	<!-- Button -->
             <div class="margin-top-10 m-w-150" ng-show="vm.selProduct != ''">
                 <div class=" bv-kh-padding-left">
-                    <button class="bv-btn-step2 bv-padding-tp"
+                    <button class="bv-padding-tp pull-right"
                             uib-popover
                             uib-popover-template="'premium-tpl.html'"
                             popover-placement="top-right"
