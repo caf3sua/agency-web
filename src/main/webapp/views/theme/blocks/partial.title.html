@@ -52,21 +52,21 @@
                 <span>Tính phí nhanh</span>
             </div>
             <!-- Input -->
-            <div class="margin-right-5">
+            <div class="margin-right-5 margin-bottom-5">
                 <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
                 </select>
             </div>
             
-    		<div ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-BVP.html'" ng-show="vm.selProduct == 'BVP'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-KCARE.html'" ng-show="vm.selProduct == 'KCARE'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-TVC.html'" ng-show="vm.selProduct == 'TVC'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-TVI.html'" ng-show="vm.selProduct == 'TVI'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-MOTO.html'" ng-show="vm.selProduct == 'MOTO'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-HOME.html'" ng-show="vm.selProduct == 'HOME'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-KHC.html'" ng-show="vm.selProduct == 'KHC'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-TNC.html'" ng-show="vm.selProduct == 'TNC'"></div>
-            <div ng-include="'views/theme/blocks/premium/partial.premium-HHVC.html'" ng-show="vm.selProduct == 'HHVC'"></div>
+    		<div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-CAR.html'" ng-show="vm.selProduct == 'CAR'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-BVP.html'" ng-show="vm.selProduct == 'BVP'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-KCARE.html'" ng-show="vm.selProduct == 'KCARE'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TVC.html'" ng-show="vm.selProduct == 'TVC'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TVI.html'" ng-show="vm.selProduct == 'TVI'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-MOTO.html'" ng-show="vm.selProduct == 'MOTO'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-HOME.html'" ng-show="vm.selProduct == 'HOME'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-KHC.html'" ng-show="vm.selProduct == 'KHC'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-TNC.html'" ng-show="vm.selProduct == 'TNC'"></div>
+            <div class="bv-collapse-tp" ng-include="'views/theme/blocks/premium/partial.premium-HHVC.html'" ng-show="vm.selProduct == 'HHVC'"></div>
             <!-- <div class="margin-right-5">
                 <input type="text" class="bv-input-tp" placeholder="placehoder 1"/>
             </div>
@@ -93,10 +93,9 @@
             </div>
         </div>
 
-	    
-	    <script type="text/ng-template" id="premium-tpl.html">
+        <script type="text/ng-template" id="premium-tpl.html">
       		<div class="popover-content" ng-switch="vm.isCanPremium">
-        		<div ng-switch-when="false">
+        		<div ng-switch-when="false" class="bv-background-premium">
           			Không đủ dữ liệu tính phí
         		</div>
 				<div ng-switch-when="true">
