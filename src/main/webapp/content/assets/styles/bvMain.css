@@ -2698,3 +2698,7 @@ div.required p:after {
 	border-radius: 10px;
 	background: #4a95c3;
 }
+
+.m-w-150 {
+	min-width: 150px;
+}
