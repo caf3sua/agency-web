@@ -1681,6 +1681,45 @@ body {
 .bv-padding-tp{
     padding: 8px 10px;
 }
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+.bv-background-premium{
+    background: #0d47a1;
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.popover-content{
+    background: #0d47a1;
+    border: 1px solid #0d47a1;
+}
+.popover{
+    border: 1px solid #0d47a1;
+}
+.bv-premium-title{
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.bv-premium-number{
+    color: #ffbd00;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.bv-premium-continue{
+    background-color: #fff;
+    color: #1964af;
+    font-size: 16px;
+    padding: 3px 5px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
