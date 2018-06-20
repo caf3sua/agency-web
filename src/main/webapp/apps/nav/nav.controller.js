@@ -12,7 +12,7 @@
     		, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService, ReminderService, CONSTANT_REMINDER_RANGER_DATE) {
     	var vm = this;
     	vm.countReminder = 0;
-    	vm.isCanPremium = false;
+    	vm.isCanPremium = true;
     	
     	vm.products = [
     		{"lineId": "", "lineName" : "-- Chọn sản phẩm --"}, 
