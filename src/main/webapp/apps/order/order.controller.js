@@ -5,9 +5,9 @@
         .module('app')
         .controller('OrderController', OrderController);
 
-    OrderController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'OrderService', '$ngConfirm'];
+    OrderController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout'];
 
-    function OrderController ($scope, Principal, $state, $rootScope, OrderService, $ngConfirm) {
+    function OrderController ($scope, Principal, $state, $rootScope, OrderService, $ngConfirm, $timeout) {
     	var vm = this;
         
         angular.element(document).ready(function () {
@@ -78,9 +78,11 @@
   			
   			function onSearchSuccess(result) {
   				vm.orders = result;
-  				$timeout(function ()
-						{$(window).trigger('resize');}, 4000);
-  				
+  				$timeout(function () {
+					$('#footable').trigger('footable_initialized');
+					$('#footable').trigger('footable_resize');
+					$('#footable').data('footable').redraw();
+				}, 1000);
   	        }
   	        function onSearchError() {
   	            toastr.error("error!");
