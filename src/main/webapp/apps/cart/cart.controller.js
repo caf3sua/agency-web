@@ -57,8 +57,7 @@
                         vm.type89 = true;
                         break;
                     case "90":
-                        // vm.type90 = true;
-                        vm.type91 = true;
+                        vm.type90 = true;
                         break;
                     case "91":
                         vm.type91 = true;
