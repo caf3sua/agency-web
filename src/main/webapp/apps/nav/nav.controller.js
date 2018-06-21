@@ -111,9 +111,9 @@
     			"premiumNet": 0,
     			"premiumSi": 0,
     			"premiumSiin": 0,
-    			"si": "300000000",
-    			"siin": "500000000",
-    			"yearBuildCode": "1"
+    			"si": "",
+    			"siin": "",
+    			"yearBuildCode": "" // Thoi han bao hiem
     			};
     	
     	// Function declare
@@ -238,7 +238,7 @@
 		  	    	console.log('calculate premium HOME');
 	  	            NavCommonService.getHomePremium(vm.home, function (data) {
 		  	            	vm.isCanPremium = true;
-		  	            	vm.premium = data.totalPremium;
+		  	            	vm.premium = data.premiumHome;
 		  	            	vm.urlCreatePolicy = "product.home";
 	  	            	}, function () {
 	  	            	});
