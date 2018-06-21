@@ -50,6 +50,10 @@
     	vm.makeCars = [];
     	vm.modelCars = [];
     	vm.yearOfMakeCars = [];
+    	vm.typeOfMotoOptions = [
+            {id: '2', name: 'Xe Mô tô 2 bánh dung tích trên 50cc'},
+            {id: '1', name: 'Xe Mô tô 2 bánh dung tích từ 50cc trở xuống'}
+        ];
     	
     	vm.car = {
     			"GARAGE": true,
