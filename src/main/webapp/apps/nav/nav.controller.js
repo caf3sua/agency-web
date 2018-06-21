@@ -173,6 +173,22 @@
 	  	            	}, function () {
 	  	            	});
 	  	            break;
+	  	        case "BVP":
+	  	            break;
+	  	        case "KHC":
+	  	            break;
+	  	        case "TNC":
+	  	            break;
+		  	    case "TVC":
+	  	            break;
+		  	    case "TVI":
+		            break;
+		  	    case "HOME":
+		            break;
+		  	    case "MOTO":
+		            break;
+		  	    case "HHVC":
+		            break;
 	  	        default: 
 	  	            console.log('default');
 	  	        break;
