@@ -8,13 +8,10 @@
     OrderService.$inject = ['$resource'];
     function OrderService($resource) {
         var service = $resource('', {}, {
-            'getAll' : {
-                method : 'GET',
-                url : 'GET /api/agency/product/order/get-alL'
-            },
-            'createNewPolicy' : {
+        	'search' : {
                 method : 'POST',
-                url : 'api/agency/product/bvp/createPolicy'
+                url : 'api/agency/product/agreement/search-order',
+                isArray : true
             }
         });
 

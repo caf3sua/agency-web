@@ -9,35 +9,50 @@
 
     function OrderController ($scope, Principal, $state, $rootScope, OrderService, $ngConfirm) {
     	var vm = this;
-        vm.getAllOrder = getAllOrder;
+        
         angular.element(document).ready(function () {
         });
 
     	// Init controller
   		(function initController() {
-            getAllOrder;
   		})();
   		
   		// Properties & function declare
+  		vm.orders = [];
+  		vm.searchCriterial = {
+  			  "contactCode": "",
+  			  "contactName": "",
+  			  "email": "",
+  			  "fromDate": "",
+  			  "gycbhNumber": "",
+  			  "lstStatusPolicy": [
+  			    "90", "91"
+  			  ],
+  			  "phone": "",
+  			  "productCode": "",
+  			  "toDate": ""
+  		};
+  		
+  		
   		vm.viewDetail = viewDetail;
-  		vm.cancelOrder = cancelOrder;
+  		vm.confirmCancelOrder = confirmCancelOrder;
+  		vm.searchOrder = searchOrder;
   		
   		// Function
   		function viewDetail() {
   			
   		}
   		
-  		function doCancelOrder() {
+  		function cancelOrder() {
   			console.log('doCancelOrder');
   		}
   		
-  		function cancelOrder() {
+  		function confirmCancelOrder() {
   			$ngConfirm({
                 title: 'Xác nhận',
                 icon: 'fa fa-check',
                 theme: 'modern',
                 type: 'red',
-//                scope: vm,
                 content: '<div class="text-center">Bạn chắc chắn muốn hủy hợp đồng này ?</div>',
                 animation: 'scale',
                 closeAnimation: 'scale',
@@ -46,7 +61,7 @@
                     	text: 'Đồng ý',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	doCancelOrder();
+                        	cancelOrder();
 	                    }
                     },
                     close: {
@@ -56,15 +71,20 @@
             });
   		}
   		
-  		
-        function getAllOrder() {
-            OrderService.getAllOrder("", onGetAllOrderSuccess, onGetAllOrderError);
-        }
-        function onGetAllOrderSuccess(result) {
-            vm.allOrder = result;
-        }
-        function onGetAllOrderError() {
-            toastr.error("error!");
-        }
+  		function searchOrder() {
+  			vm.orders = [];
+  			
+  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
+  			
+  			function onSearchSuccess(result) {
+  				vm.orders = result;
+  				$timeout(function ()
+						{$(window).trigger('resize');}, 4000);
+  				
+  	        }
+  	        function onSearchError() {
+  	            toastr.error("error!");
+  	        }
+  		}
     }
 })();
