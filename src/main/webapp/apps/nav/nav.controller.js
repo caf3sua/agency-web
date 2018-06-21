@@ -83,6 +83,43 @@
     			"vcxSoTien": 0
     			};
     	
+    	// KHC, TNC, HOME
+    	vm.khc = {
+    			"insuranceStartDate": "18/05/2018",
+    			"numberMonth": 12,
+    			"numberPerson": 1,
+    			"premiumDiscount": 0,
+    			"premiumKhc": 0,
+    			"premiumKhcList": [
+    			{
+    			"dob": "01/05/1982",
+    			"personName": "Đức",
+    			"premiumPerson": 0
+    			}
+    			],
+    			"premiumNet": 0,
+    			"premiumPackage": 20000000
+    			};
+    	vm.tnc = {
+    			"insurancestartdate": "18/05/2018",
+    			"numbermonth": 12,
+    			"numberperson": 1,
+    			"premiumPackage": 20000000,
+    			"premiumdiscount": 0,
+    			"premiumnet": 0,
+    			"premiumtnc": 0
+    			};
+    	vm.home = {
+    			"premiumDiscount": 0,
+    			"premiumHome": 0,
+    			"premiumNet": 0,
+    			"premiumSi": 0,
+    			"premiumSiin": 0,
+    			"si": "",
+    			"siin": "",
+    			"yearBuildCode": "" // Thoi han bao hiem
+    			};
+    	
     	// Function declare
     	vm.logout = logout;
     	vm.calculatePremium = calculatePremium;
@@ -180,14 +217,35 @@
 	  	        case "BVP":
 	  	            break;
 	  	        case "KHC":
+	  	        	console.log('calculate premium KHC');
+	  	            NavCommonService.getKhcPremium(vm.khc, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.totalPremium;
+		  	            	vm.urlCreatePolicy = "product.khc";
+	  	            	}, function () {
+	  	            	});
 	  	            break;
 	  	        case "TNC":
+	  	        	console.log('calculate premium TNC');
+	  	            NavCommonService.getTncPremium(vm.tnc, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.totalPremium;
+		  	            	vm.urlCreatePolicy = "product.tnc";
+	  	            	}, function () {
+	  	            	});
 	  	            break;
 		  	    case "TVC":
 	  	            break;
 		  	    case "TVI":
 		            break;
 		  	    case "HOME":
+		  	    	console.log('calculate premium HOME');
+	  	            NavCommonService.getHomePremium(vm.home, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.premiumHome;
+		  	            	vm.urlCreatePolicy = "product.home";
+	  	            	}, function () {
+	  	            	});
 		            break;
 		  	    case "MOTO":
 		            break;
