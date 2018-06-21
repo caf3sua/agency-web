@@ -14,6 +14,8 @@
     		, NavCommonService) {
     	var vm = this;
     	vm.countReminder = 0;
+    	vm.maxYear = 0;
+    	vm.minYear = 0;
     	vm.processing = true;
     	vm.isCanPremium = false;
     	
@@ -45,16 +47,110 @@
     		"typeOfKcare": ""
     	};
     	
+    	vm.makeCars = [];
+    	vm.modelCars = [];
+    	vm.yearOfMakeCars = [];
+    	
+    	vm.car = {
+    			"GARAGE": true,
+    			"agencyRole": "1",
+    			"changePremium": 0,
+    			"garage": true,
+    			"khauHao": false,
+    			"khauTru": false,
+    			"matCap": false,
+    			"namSX": 0,
+    			"ngapNuoc": false,
+    			"nntxCheck": false,
+    			"nntxPhi": 0,
+    			"nntxSoCho": 0,
+    			"nntxSoTien": 0,
+    			"premium": 0,
+    			"purposeOfUsageId": "15",
+    			"tndsSoCho": "1",
+    			"tndsbbCheck": true,
+    			"tndsbbPhi": 5000000,
+    			"tndstnCheck": false,
+    			"tndstnPhi": 0,
+    			"tndstnSoTien": 0,
+    			"totalPremium": 0,
+    			"vcxCheck": true,
+    			"vcxPhi": 0,
+    			"vcxSoTien": 0
+    			};
+    	
     	// Function declare
     	vm.logout = logout;
     	vm.calculatePremium = calculatePremium;
+    	vm.onCarMakesSel = onCarMakesSel;
+    	vm.onCarModelSel = onCarModelSel;
+    	vm.onYearSel = onYearSel;
 
     	// Init controller
   		(function initController() {
   			console.log('NavController initController');
   			countReminder();
+  			// Load init for car
+  			NavCommonService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
   		})();
   		
+  		function getCarBranchesSuccess(result) {
+  			result.forEach(function(item, index, arr) {
+  				vm.makeCars.push({id: item, name: item});
+  			})
+    	}
+    	
+    	function getCarBranchesError(error) {
+    	}
+
+    	function onCarMakesSel(makeId) {
+    		vm.modelCars = [];
+    		vm.yearOfMakeCars = [];
+    		vm.car.vcxSoTien = 0;
+    		NavCommonService.getCarModel({model : makeId}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				result.forEach(function(item, index, arr) {
+  					vm.modelCars.push({carId: item.carId, carName: item.carName});
+  	  			})
+            }
+            function onError(error) {
+                vm.validateResponse(error, 'Get data error!');
+            }
+  		}
+    	
+    	function onCarModelSel(modelId) {
+    		vm.maxYear = 0;
+        	vm.minYear = 0;
+        	vm.yearOfMakeCars = [];
+        	vm.car.vcxSoTien = 0;
+    		NavCommonService.getMaxManufactureYear({carId : modelId}, function(maxYear) {
+    			vm.maxYear = maxYear.max;
+        		NavCommonService.getMinManufactureYear({carId : modelId}, function(minYear) {
+        			vm.minYear = minYear.min
+        			for (vm.minYear; vm.minYear <= vm.maxYear; vm.minYear++){
+        				vm.yearOfMakeCars.push({year: vm.minYear});
+        			}
+        		}, onError);
+        	}, onError);
+    		
+            function onError(error) {
+                vm.validateResponse(error, 'Get data error!');
+            }
+  		}
+    	
+    	function onYearSel(year) {
+    		vm.car.vcxSoTien = 0;
+    		NavCommonService.getCarPriceWithYear({carId : vm.car.modelId,year : year}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				vm.car.vcxSoTien = result.price;
+            }
+            function onError(error) {
+                vm.validateResponse(error, 'Get data error!');
+            }
+  		}
+    	
   		function calculatePremium() {
   			vm.isCanPremium = false;
   			vm.urlCreatePolicy = "";
@@ -68,9 +164,14 @@
 	  	            	}, function () {
 	  	            	});
 	  	            break;
-	  	        case "KCARE":
-	  	            console.log('calculate premium KCARE');
-	  	            
+	  	        case "CAR":
+	  	        	console.log('calculate premium CAR');
+	  	            NavCommonService.getCarPremium(vm.car, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.totalPremium;
+		  	            	vm.urlCreatePolicy = "product.car";
+	  	            	}, function () {
+	  	            	});
 	  	            break;
 	  	        default: 
 	  	            console.log('default');
@@ -84,7 +185,6 @@
     		function onSuccess(result) {
     			vm.countReminder = result.count;
     		}
-    		
     		function onError(result) {
     			
     		}
