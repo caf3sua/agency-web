@@ -79,6 +79,7 @@
                             uib-popover-template="'premium-tpl.html'"
                             popover-placement="top-right"
                             popover-trigger="focus"
+                            ng-click="vm.calculatePremium()"
 					>
                         Tính phí nhanh
                     </button>
@@ -93,8 +94,8 @@
         		</div>
 				<div ng-switch-when="true">
 					<div class="bv-premium-title">PHÍ BẢO HIỂM DỰ KIẾN</div>
-					<div class="bv-premium-number">450,000 VND</div>
-					<div class="bv-premium-continue">TIẾP TỤC MUA</div>
+					<div class="bv-premium-number">{{vm.premium | number}} VND</div>
+					<div class="bv-premium-continue" ui-sref="{{vm.urlCreatePolicy}}">TIẾP TỤC MUA</div>
         		</div>
       		</div> 
     	</script>
