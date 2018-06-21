@@ -19,33 +19,33 @@
             </tr>
         </thead>
         <tbody>
-	        <tr ng-repeat="i in [1, 2, 3, 4, 5]">
+	        <tr ng-repeat="order in vm.orders track by $index">
 	            <td>
-	                <p class="bv-home-table-stt margin-0">1</p>
+	                <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
 	            </td>
 	            <td>
-	                <p class="bv-table-text-colorBlue footable-toggle">BVP.HN.01</p>
+	                <p class="bv-table-text-colorBlue footable-toggle">{{order.gycbhNumber}}</p>
 	            </td>
 	            <td>
-	                <p class="">Vũ Hoàng Chiến</p>
+	                <p class="">{{order.contactName}}</p>
 	            </td>
 	            <td>
-	                <p class="">Bảo hiểm oto</p>
+	                <p class="">{{order.lineName}}</p>
 	            </td>
 	            <td>
-	                <p class="">059484948</p>
+	                <p class="">{{order.contactPhone}}</p>
 	            </td>
 	            <td>
-	                <p class="">Đã thanh toán</p>
+	                <p class="">{{order.statusPolicyName}}</p>
 	            </td>
 	            <td>
-	                <p class="">Hiệu lực từ</p>
+	                <p class="">{{order.inceptionDate}}</p>
 	            </td>
 	            <td>
-	                <p class="">Hiệu lực đến</p>
+	                <p class="">{{order.expiredDate}}</p>
 	            </td>
 	            <td>
-	                <p class="">Phí bảo hiểm</p>
+	                <p class="">{{order.totalPremium | number}}</p>
 	            </td>
 	            <td>
 	            	<!-- Context menu -->
