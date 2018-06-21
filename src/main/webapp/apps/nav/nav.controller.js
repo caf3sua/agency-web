@@ -6,13 +6,16 @@
         .controller('NavController', NavController);
 
     NavController.$inject = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll'
-    	, '$timeout', '$window', 'Auth', '$state', 'Principal', 'ContactCommonDialogService', 'ReminderService', 'CONSTANT_REMINDER_RANGER_DATE'];
+    	, '$timeout', '$window', 'Auth', '$state', 'Principal', 'ContactCommonDialogService', 'ReminderService', 'CONSTANT_REMINDER_RANGER_DATE'
+    	, 'NavCommonService'];
 
     function NavController ($scope, $localStorage, $location, $rootScope, $anchorScroll
-    		, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService, ReminderService, CONSTANT_REMINDER_RANGER_DATE) {
+    		, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService, ReminderService, CONSTANT_REMINDER_RANGER_DATE
+    		, NavCommonService) {
     	var vm = this;
     	vm.countReminder = 0;
-    	vm.isCanPremium = true;
+    	vm.processing = true;
+    	vm.isCanPremium = false;
     	
     	vm.products = [
     		{"lineId": "", "lineName" : "-- Chọn sản phẩm --"}, 
@@ -28,14 +31,52 @@
     		{"lineId": "HHVC", "lineName" : "Bảo hiểm vận chuyển hàng hóa"}
     	];
     	vm.selProduct = "";
+    	vm.premium;
+    	vm.urlCreatePolicy;
     	
+    	// Product
+    	vm.kcare = {
+    		"gioiTinh": "1",
+    		"ngayBatDau": "",
+    		"ngaySinh": "",
+    		"premiumDiscount": 0,
+    		"premiumKCare": 0,
+    		"premiumNet": 0,
+    		"typeOfKcare": ""
+    	};
+    	
+    	// Function declare
     	vm.logout = logout;
+    	vm.calculatePremium = calculatePremium;
 
     	// Init controller
   		(function initController() {
   			console.log('NavController initController');
   			countReminder();
   		})();
+  		
+  		function calculatePremium() {
+  			vm.isCanPremium = false;
+  			vm.urlCreatePolicy = "";
+  			switch(vm.selProduct){
+	  	        case "KCARE":
+	  	            console.log('calculate premium KCARE');
+	  	            NavCommonService.getKcarePremium(vm.kcare, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.premiumKCare;
+		  	            	vm.urlCreatePolicy = "product.kcare";
+	  	            	}, function () {
+	  	            	});
+	  	            break;
+	  	        case "KCARE":
+	  	            console.log('calculate premium KCARE');
+	  	            
+	  	            break;
+	  	        default: 
+	  	            console.log('default');
+	  	        break;
+	  	    }
+  		}
   		
   		function countReminder() {
   			ReminderService.getCountReminder({numberDay: CONSTANT_REMINDER_RANGER_DATE}, onSuccess, onError);

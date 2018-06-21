@@ -217,7 +217,14 @@
                   'bower_components/highcharts-ng/dist/highcharts-more.js',
                   'bower_components/highcharts-ng/dist/highcharts-ng.js'
               ]
-          }
+          },
+          {
+              name: 'ui.footable',
+              module: true,
+              files: [
+                  'libs/angular/angular-footable/angular-footable.js'
+              ]
+          },
         ]
       )
       .config(['$ocLazyLoadProvider', 'MODULE_CONFIG', function($ocLazyLoadProvider, MODULE_CONFIG) {

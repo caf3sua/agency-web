@@ -21,7 +21,10 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/order/order.service.js', 'apps/order/order.controller.js']);
+	            		return $ocLazyLoad.load([
+	            			'apps/order/order.service.js'
+	            			, 'apps/order/order.controller.js'
+	            		]);
 		        }
             }
         });
