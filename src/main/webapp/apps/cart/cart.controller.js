@@ -110,8 +110,14 @@
             return DateUtils.convertLocalDateToServer(date);
         }
         function selectCheckBoxCart(data) {
-            var money = data.totalPremium;
-            vm.sumMoney = vm.sumMoney + money
+            if(data.check == true){
+                var money = data.totalPremium;
+                vm.sumMoney = vm.sumMoney + money;
+            }else {
+                var money = data.totalPremium;
+                vm.sumMoney = vm.sumMoney - money;
+            }
+
         }
         function getListBank() {
             CartService.getBanksByPaymentCode({paymentCode:vm.typeBank}, onGetListBankSuccess, onGetListBankError)
