@@ -98,10 +98,11 @@
     			"premiumPackage": ""
     			};
     	vm.tnc = {
-    			"insurancestartdate": "18/05/2018",
+    			"endDate": "",
+    			"insurancestartdate": "",
     			"numbermonth": 12,
-    			"numberperson": 1,
-    			"premiumPackage": 20000000,
+    			"numberperson": "",
+    			"premiumPackage": "",
     			"premiumdiscount": 0,
     			"premiumnet": 0,
     			"premiumtnc": 0
@@ -131,12 +132,41 @@
   			// Load init for car
   			NavCommonService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
   		})();
+
+  		$scope.$watch('vm.khc.insuranceStartDate', function (value) {
+  			console.log('change vm.khc.insuranceStartDate' + vm.khc.insuranceStartDate);
+  			var isValid = moment(vm.khc.insuranceStartDate, "DD/MM/YYYY", true).isValid();
+  			
+  			if (isValid) {
+  				var fromDateObj = moment(vm.khc.insuranceStartDate, 'DD/MM/YYYY');
+  	  			var toDateObj = fromDateObj.add(1, 'y').subtract(1, 'd');
+  	  			var toDate = toDateObj.format('DD/MM/YYYY');
+  	  			vm.khc.endDate = toDate;
+  			} else {
+  				vm.khc.endDate = "";
+  			}
+  		});
+  		
+  		$scope.$watch('vm.tnc.insurancestartdate', function (value) {
+  			console.log('change vm.tnc.insurancestartdate' + vm.tnc.insurancestartdate);
+  			var isValid = moment(vm.tnc.insurancestartdate, "DD/MM/YYYY", true).isValid();
+  			
+  			if (isValid) {
+  				var fromDateObj = moment(vm.tnc.insurancestartdate, 'DD/MM/YYYY');
+  	  			var toDateObj = fromDateObj.add(1, 'y').subtract(1, 'd');
+  	  			var toDate = toDateObj.format('DD/MM/YYYY');
+  	  			vm.tnc.endDate = toDate;
+  			} else {
+  				vm.tnc.endDate = "";
+  			}
+  		});
   		
   		function getCarBranchesSuccess(result) {
   			result.forEach(function(item, index, arr) {
   				vm.makeCars.push({id: item, name: item});
   			})
     	}
+  		
     	
     	function getCarBranchesError(error) {
     	}
@@ -226,7 +256,7 @@
 	  	        	console.log('calculate premium TNC');
 	  	            NavCommonService.getTncPremium(vm.tnc, function (data) {
 		  	            	vm.isCanPremium = true;
-		  	            	vm.premium = data.totalPremium;
+		  	            	vm.premium = data.premiumtnc;
 		  	            	vm.urlCreatePolicy = "product.tnc";
 	  	            	}, function () {
 	  	            	});
