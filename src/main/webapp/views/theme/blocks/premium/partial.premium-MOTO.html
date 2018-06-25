@@ -1,18 +1,21 @@
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 ">
-    <select class="bv-select-box form-control" ng-model="vm.selProduct">
-    <option value="" selected disabled>--- Lựa chọn loại xe ---</option>
-	<option ng-repeat="option in vm.typeOfMotoOptions" value="{{option.id}}">{{option.name}}</option>
+    <select class="bv-select-box form-control" ng-model="vm.moto.typeOfMoto">
+    	<option value="1">Xe Mô tô 2 bánh dung tích từ 50cc trở xuống</option>
+    	<option value="2">Xe Mô tô 2 bánh dung tích trên 50cc</option>
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <select class="bv-select-box form-control" ng-model="vm.selProduct">
-    <option value="" selected disabled>--- Bảo hiểm trách nhiệm dân sự bắt buộc ---</option>
+    <select class="bv-select-box form-control">
+    <option value="">--- Bảo hiểm trách nhiệm dân sự bắt buộc ---</option>
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
+    <select class="bv-select-box form-control" ng-model="vm.checkNNTX">
+    	<option value="">Bạn muốn có BH tai nạn người ngồi trên xe không?</option>
+    	<option value="1">Có</option>
+    	<option value="2">Không</option>
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <input type="text" class="bv-input-tp" placeholder="Sá»‘ tiá»�n báº£o hiá»ƒm"/>
+    <input type="number" class="bv-input-tp" placeholder="Số tiền bảo hiểm" ng-model="vm.moto.nntxStbh | number"/>
 </div>
