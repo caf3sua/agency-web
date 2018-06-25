@@ -18,6 +18,8 @@
     	vm.minYear = 0;
     	vm.processing = true;
     	vm.isCanPremium = false;
+    	vm.checkNNTX = "";
+    	vm.premiumPackageTvi = "";
     	
     	vm.products = [
     		{"lineId": "", "lineName" : "-- Chọn sản phẩm --"}, 
@@ -77,6 +79,49 @@
     			"vcxCheck": true,
     			"vcxPhi": 0,
     			"vcxSoTien": 0
+    			};
+    	// moto
+    	vm.moto = {
+    			  "chaynoCheck": false,
+    			  "chaynoPhi": 0,
+    			  "chaynoStbh": 0,
+    			  "nntxCheck": false,
+    			  "nntxPhi": 0,
+    			  "nntxSoNguoi": 1,
+    			  "nntxStbh": 20000000,
+    			  "tndsbbCheck": true,
+    			  "tndsbbPhi": 0,
+    			  "tndstnCheck": false,
+    			  "tndstnPhi": 0,
+    			  "tndstnSotien": 50000000,
+    			  "tongPhi": 0,
+    			  "typeOfMoto": "1"
+    			};
+    	// tvi
+    	vm.tvi = {
+    			"expiredDate": "",
+    			"inceptionDate": "",
+    			"numberOfDay": "",
+    			"numberOfPerson": 1,
+    			"planId": "",
+    			"premiumDiscount": 0,
+    			"premiumNet": 0,
+    			"premiumPackage": "1",
+    			"premiumPercentDiscount": 0,
+    			"premiumTvi": 0
+    			};
+    	// tvc
+    	vm.tvc = {
+    			"destination": "",
+    			"ngayDi": "",
+    			"ngayVe": "",
+    			"numberOfPerson": 1,
+    			"planId": "",
+    			"premiumDiscount": 0,
+    			"premiumNet": 0,
+    			"premiumPackage": "",
+    			"premiumTvc": 0,
+    			"songay": ""
     			};
     	
     	// KHC, TNC, HOME
@@ -292,8 +337,35 @@
 	  	            	});
 	  	            break;
 		  	    case "TVC":
+		  	    	console.log('calculate premium TVC');
+		  	    	var ngayDi = moment().format('DD/MM/YYYY');
+		  	    	var ngayVe = moment().add(vm.tvc.songay, 'd').format('DD/MM/YYYY');
+		  	    	vm.tvc.ngayDi = ngayDi;
+		  	    	vm.tvc.ngayVe = ngayVe;
+		  	    	if (vm.tvc.premiumPackage == 1){
+		  	    		vm.tvc.numberOfPerson = 1;
+		  	    	} else {
+		  	    		vm.tvc.numberOfPerson = 2;
+		  	    	}
+	  	            NavCommonService.getTvcPremium(vm.tvc, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.premiumTvc;
+		  	            	vm.urlCreatePolicy = "product.tvc";
+	  	            	}, function () {
+	  	            	});
 	  	            break;
 		  	    case "TVI":
+		  	    	console.log('calculate premium TVI');
+		  	    	var inceptionDate = moment().format('DD/MM/YYYY');
+		  	    	var expiredDate = moment().add(vm.tvi.numberOfDay, 'd').format('DD/MM/YYYY');
+		  	    	vm.tvi.inceptionDate = inceptionDate;
+		  	    	vm.tvi.expiredDate = expiredDate;
+	  	            NavCommonService.getTviPremium(vm.tvi, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.premiumTvi;
+		  	            	vm.urlCreatePolicy = "product.tvi";
+	  	            	}, function () {
+	  	            	});
 		            break;
 		  	    case "HOME":
 		  	    	console.log('calculate premium HOME');
@@ -305,6 +377,18 @@
 	  	            	});
 		            break;
 		  	    case "MOTO":
+		  	    	console.log('calculate premium MOTO');
+		  	    	if (vm.checkNNTX == 1){
+		  	    		vm.moto.nntxCheck = true;
+		  	    	} else {
+		  	    		vm.moto.nntxCheck = false;
+		  	    	}
+	  	            NavCommonService.getMotoPremium(vm.moto, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.tongPhi;
+		  	            	vm.urlCreatePolicy = "product.moto";
+	  	            	}, function () {
+	  	            	});
 		            break;
 		  	    case "HHVC":
 		            break;

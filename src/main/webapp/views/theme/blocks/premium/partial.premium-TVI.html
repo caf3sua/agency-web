@@ -1,15 +1,25 @@
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 ">
-    <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
+    <select class="bv-select-box form-control">
+    <option value="">Việt Nam</option>
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
+    <select class="bv-select-box form-control" ng-model="vm.premiumPackageTvi">
+    <option value="">Gói bảo hiểm (*)</option>
+   	<option value="1">Cá nhân</option>
+   	<option value="3">Khách đoàn</option>
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <input type="text" class="bv-input-tp" placeholder="Số ngày (*)"/>
+    <input type="number" class="bv-input-tp" placeholder="Số ngày (*)" ng-model="vm.tvi.numberOfDay"/>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <select class="bv-select-box form-control" ng-options="selected.lineId as selected.lineName for selected in vm.products" ng-model="vm.selProduct">
+    <select class="bv-select-box form-control" ng-model="vm.tvi.planId">
+    <option value="">Lựa chọn trương chình bảo hiểm (*)</option>
+   	<option value="1">Chương trình Bảo hiểm Đồng</option>
+   	<option value="2">Chương trình Bảo hiểm Bạc</option>
+   	<option value="3">Chương trình Bảo hiểm Vàng</option>
+   	<option value="4">Chương trình Bảo hiểm Bạch Kim</option>
+   	<option value="5">Chương trình Bảo hiểm Kim Cương</option>
 	</select>
 </div>
