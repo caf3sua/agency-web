@@ -2100,6 +2100,10 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-background-home {
+        padding: 25px 10px;
+        background: #f8f9fd;
+    }
     .bv-collapse-tp{
         display: block;
         text-align: center;
@@ -2371,6 +2375,10 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-background-home {
+        padding: 25px 10px;
+        background: #f8f9fd;
+    }
     .bv-collapse-tp{
         display: block;
         text-align: center;
