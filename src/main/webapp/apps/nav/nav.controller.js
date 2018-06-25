@@ -81,20 +81,21 @@
     	
     	// KHC, TNC, HOME
     	vm.khc = {
-    			"insuranceStartDate": "18/05/2018",
+    			"endDate": "",
+    			"insuranceStartDate": "",
     			"numberMonth": 12,
     			"numberPerson": 1,
     			"premiumDiscount": 0,
     			"premiumKhc": 0,
     			"premiumKhcList": [
-    			{
-    			"dob": "01/05/1982",
-    			"personName": "Đức",
-    			"premiumPerson": 0
-    			}
+	    			{
+	    			"dob": "",
+	    			"personName": "Đức",
+	    			"premiumPerson": 0
+	    			}
     			],
     			"premiumNet": 0,
-    			"premiumPackage": 20000000
+    			"premiumPackage": ""
     			};
     	vm.tnc = {
     			"insurancestartdate": "18/05/2018",
@@ -216,7 +217,7 @@
 	  	        	console.log('calculate premium KHC');
 	  	            NavCommonService.getKhcPremium(vm.khc, function (data) {
 		  	            	vm.isCanPremium = true;
-		  	            	vm.premium = data.totalPremium;
+		  	            	vm.premium = data.premiumKhc;
 		  	            	vm.urlCreatePolicy = "product.khc";
 	  	            	}, function () {
 	  	            	});
