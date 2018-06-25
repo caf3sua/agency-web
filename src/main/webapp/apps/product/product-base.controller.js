@@ -219,7 +219,9 @@
   			var filterObj = datas.filter(function(e) {
   			  return e.id == id;
   			});
-  			return filterObj[0].name;
+  			if (filterObj[0] != null && filterObj[0] != undefined) {
+  				return filterObj[0].name;
+  			}
   		}
 
   		// FOR DISABLE ALL

@@ -1579,6 +1579,7 @@ body {
 }
 .bv-from{
     display: flex;
+    width: 100%;
 }
 .row-body{
     height: 100vh;
@@ -1727,6 +1728,9 @@ body {
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
+}
+.datepicker.dropdown-menu {
+    z-index: 9999 !important;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
@@ -2100,6 +2104,10 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-background-home {
+        padding: 25px 10px;
+        background: #f8f9fd;
+    }
     .bv-collapse-tp{
         display: block;
         text-align: center;
@@ -2371,6 +2379,10 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-background-home {
+        padding: 25px 10px;
+        background: #f8f9fd;
+    }
     .bv-collapse-tp{
         display: block;
         text-align: center;
@@ -2721,7 +2733,7 @@ div.required p:after {
 
 .lock-all {
 	position: absolute;
-    z-index: 9999;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100%;
