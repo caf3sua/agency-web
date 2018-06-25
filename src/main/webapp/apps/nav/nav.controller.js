@@ -183,8 +183,8 @@
     		"phiBH": 0,
     		"premiumNet": 0,
     		"premiumDiscount": 0,
-    		"pagencyRole": ""
-    		};
+    		"pagencyRole": "1"
+    	};
     	
     	// Function declare
     	vm.logout = logout;
