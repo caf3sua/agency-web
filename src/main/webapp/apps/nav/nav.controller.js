@@ -117,6 +117,29 @@
     			"siin": "",
     			"yearBuildCode": "" // Thoi han bao hiem
     			};
+    	vm.bvp = {
+    		"chuongTrinh": "1",
+    		"ngaySinh": "",
+    		"tuoi": 36,
+    		"ngoaitruChk": false,
+    		"ngoaitruPhi": 0,
+    		"tncnChk": false,
+    		"tncnSi": 0,
+    		"tncnPhi": 0,
+    		"smcnChk": true,
+    		"smcnSi": 0,
+    		"smcnPhi": 0,
+    		"nhakhoaChk": false,
+    		"nhakhoaPhi": 0,
+    		"thaisanChk": false,
+    		"thaisanPhi": 0,
+    		"thoihanbhTu": "",
+    		"qlChinhPhi": 0,
+    		"phiBH": 0,
+    		"premiumNet": 0,
+    		"premiumDiscount": 0,
+    		"pagencyRole": ""
+    		};
     	
     	// Function declare
     	vm.logout = logout;
@@ -242,6 +265,13 @@
 	  	            	});
 	  	            break;
 	  	        case "BVP":
+	  	        	console.log('calculate premium BVP');
+	  	            NavCommonService.getBvpPremium(vm.bvp, function (data) {
+		  	            	vm.isCanPremium = true;
+		  	            	vm.premium = data.premiumNet;
+		  	            	vm.urlCreatePolicy = "product.bvp";
+	  	            	}, function () {
+	  	            	});
 	  	            break;
 	  	        case "KHC":
 	  	        	console.log('calculate premium KHC');
