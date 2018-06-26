@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductCarController', ProductCarController);
 
-    ProductCarController.$inject = ['$scope', '$controller', 'CarService', '$state', '$rootScope'];
+    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductCarController ($scope, $controller, CarService, $state, $rootScope) {
+    function ProductCarController ($scope, $controller, CarService, ProductCommonService, $state, $rootScope) {
         var vm = this;
 
         angular.element(document).ready(function () {
@@ -94,6 +94,8 @@
   		vm.checkedChange = checkedChange;
   		vm.getPremium = getPremium;
   		vm.createNewPolicy = createNewPolicy;
+  		vm.validatorNntxSoCho = validatorNntxSoCho;
+  		vm.validatorVcxSoTien = validatorVcxSoTien;
   		vm.tndsSoChoOptions = [
   	      {id: '1', name: 'Loại xe dưới 6 chỗ ngồi'},
   	      {id: '2', name: 'Loại xe từ 6 đến 11 chỗ ngồi'},
@@ -133,6 +135,9 @@
   		
   		// Function
   		function init() {
+  			// Get gycbhNumber
+            ProductCommonService.getPolicyNumber({lineId: 'CAR'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
+  			
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
             vm.registerDisableContactInfoValue('vm.product.premium');
@@ -281,11 +286,6 @@
           		vm.product.totalPremium = result.totalPremium;
     		}
 
-            if(result.totalPremium > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
     	}
     	
@@ -340,5 +340,34 @@
     	function onCreatePolicyError(result) {
             vm.validateResponse(result, 'createPolicy');
     	}
+    	
+    	function onGetPolicyNumberSuccess(result) {
+            vm.policy.gycbhNumber  = result.policyNumber;
+            vm.clearResponseError();
+        }
+
+        function onGetPolicyNumberError(result) {
+            vm.validateResponse(result, 'getPolicyNumber');
+        }
+        
+        function validatorNntxSoCho() {
+        	if(!vm.product.nntxCheck) {
+        		return true;
+        	}
+        	if(!vm.product.nntxSoCho) {
+        		return "Chưa chọn số người tham gia bảo hiểm!";
+        	}
+            return true;
+        }
+        
+        function validatorVcxSoTien() {
+        	if(!vm.product.namSX) {
+        		return true;
+        	}
+        	if(!vm.product.vcxSoTien) {
+        		return "Chưa điền giá trị xe tham gia bảo hiểm!";
+        	}
+            return true;
+        }
     }
 })();

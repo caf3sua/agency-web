@@ -68,6 +68,9 @@
         vm.checkedChange = checkedChange;
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
+        vm.validatorNntxSoNguoi = validatorNntxSoNguoi;
+        vm.validatorNntxStbh = validatorNntxStbh;
+        vm.validatorChaynoStbh = validatorChaynoStbh;
         vm.typeOfMotoOptions = [
             {id: '2', name: 'Xe Mô tô 2 bánh dung tích trên 50cc'},
             {id: '1', name: 'Xe Mô tô 2 bánh dung tích từ 50cc trở xuống'}
@@ -232,6 +235,36 @@
 
         function onGetPolicyNumberError(result) {
             vm.validateResponse(result, 'getPolicyNumber');
+        }
+        
+        function validatorNntxSoNguoi() {
+        	if(!vm.product.nntxCheck) {
+        		return true;
+        	}
+        	if(!vm.product.nntxSoNguoi) {
+        		return "Chưa chọn số người tham gia bảo hiểm!";
+        	}
+            return true;
+        }
+        
+        function validatorNntxStbh() {
+        	if(!vm.product.nntxCheck) {
+        		return true;
+        	}
+        	if(!vm.product.nntxStbh) {
+        		return "Chưa chọn số tiền bảo hiểm!";
+        	}
+            return true;
+        }
+        
+        function validatorChaynoStbh() {
+        	if(!vm.product.chaynoCheck) {
+        		return true;
+        	}
+        	if(!vm.product.nntxStbh) {
+        		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
+        	}
+            return true;
         }
     }
 })();
