@@ -261,7 +261,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5 padding-bottom-35">
-                        <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
+                        <button class="bv-btn-step3" type="submit">Tiếp theo</button>
                     </div>
                 </div>
             </form>
@@ -272,7 +272,7 @@
                 <p>2</p>
                 <p>Thông tin bảo hiểm</p>
             </div>
-            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step3', true)" name="myForm1" novalidate angular-validator>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step3', true)" name="myForm1" novalidate angular-validator>
                 <div class="bv-step-content">
                     <div ng-include="'apps/product/partial/partial.invoice-receiverUser.html'"></div>
                     <div class="margin-top-10">
