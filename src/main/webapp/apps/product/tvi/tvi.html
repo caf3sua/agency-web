@@ -26,7 +26,7 @@
                         <span class="bv-title-from-des">(Phạm vi lãnh thổ được bảo hiểm)</span>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control">
+                        <select name="txt1" class="bv-select-box form-control">
                             <option disabled selected>Viêt Nam</option>
                         </select>
                     </div>
@@ -35,10 +35,11 @@
                         <p class="bv-title-from">Chọn gói bảo hiểm cho<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
+                        <select name="travelWithId" class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
                                 required-message="'Chưa chọn gói bảo hiểm!'"
                                 required
                         >
+                            <option value="" selected="" disabled="">--- Chọn gói bảo hiểm ---</option>
                             <option value="1">Cá nhân</option>
                             <option value="3">Khách đoàn</option>
                         </select>
@@ -47,7 +48,7 @@
                         <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div class="">
-                        <input type="text" class="bv-input"  ng-model="vm.product.soNguoiThamGia" placeholder="Nhập tổng số người tham gia"
+                        <input type="text" class="bv-input"  name="soNguoiThamGia" ng-model="vm.product.soNguoiThamGia" placeholder="Nhập tổng số người tham gia"
                                ng-blur="vm.addOrRemovePerson()"
                                required-message="'Chưa chọn số người tham gia!'"
                                required
@@ -60,7 +61,7 @@
                     <div class="margin-right-5 width-100">
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                                <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
                                        required-message="'Chưa chọn ngày khởi hành!'"
                                        required
                                 >
@@ -80,7 +81,7 @@
 
                         >
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Đến ngày"
+                                <input type="text" class="bv-input" name="expiredDate" placeholder="Đến ngày"
                                        ng-model="vm.policy.expiredDate"
                                        required-message="'Chưa chọn ngày kết thúc!'"
                                        required
@@ -96,7 +97,8 @@
                         <p class="bv-title-from">Loại tiền trong bảng quyền lợi<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model ="vm.policy.bankId">
+                        <select class="bv-select-box form-control"  name="bankId" ng-model ="vm.policy.bankId">
+                            <option value="" selected="" disabled="">--- Chọn loại tiền ---</option>
                             <option value="USD">VND/USD</option>
                             <option value="EUR">VND/EUR</option>
                         </select>
@@ -166,7 +168,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5">
-                        <input type="number" min="1" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumPercentDiscount" ng-blur="vm.getPremium()"/>
+                        <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
                     </div>
                     <div class="margin-top-10">
                         <div class="table-responsive">
@@ -235,24 +237,24 @@
                                     <tbody>
                                     <tr ng-repeat="person in  vm.policy.listTviAdd">
                                         <td>
-                                            <input type="text" class="bv-input" ng-model="person.insuredName"
+                                            <input type="text" name="insuredName" class="bv-input" ng-model="person.insuredName"
                                                    required-message="'Chưa thêm họ và tên !'"
                                                    required
                                             />
                                         </td>
                                         <td>
-                                            <input type="text" class="bv-input" ng-model="person.idPasswport "
+                                            <input type="text" name="idPasswport" class="bv-input" ng-model="person.idPasswport "
                                                    required-message="'Chưa thêm sô Hộ chiếu/CMND !'"
-                                                   require
+                                                   required
                                             />
                                         </td>
                                         <td>
                                             <div class=" width-100">
                                                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                                                     <div class="width-100">
-                                                        <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
+                                                        <input type="text" class="bv-input" name="dob" placeholder="Ngày sinh" ng-model="person.dob"
                                                                required-message="'Chưa thêm ngày sinh !'"
-                                                               require
+                                                               required
                                                         >
                                                     </div>
                                                     <div class="input-group-addon bv-date-icon">
@@ -262,9 +264,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="bv-select-box form-control" ng-model ="person.relationship"
+                                            <select class="bv-select-box form-control" name="relationship" ng-model ="person.relationship"
                                                     required-message="'Chưa chọn mối quan hệ !'"
-                                                    require
+                                                    required
                                             >
                                                 <option value="30">Bản thân</option>
                                                 <option value="31">Vợ/Chồng</option>

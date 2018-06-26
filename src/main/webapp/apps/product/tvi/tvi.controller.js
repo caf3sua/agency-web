@@ -150,11 +150,6 @@
                 vm.sumPremiumDiscount =   result.premiumDiscount ;
             }
 
-            if(result.premium > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount

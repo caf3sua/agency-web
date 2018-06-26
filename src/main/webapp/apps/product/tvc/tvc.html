@@ -26,7 +26,7 @@
                         <span class="bv-title-from-des">(Phạm vi lãnh thổ được bảo hiểm)</span>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model="vm.policy.destinationId"
+                        <select class="bv-select-box form-control" name="destinationId" ng-model="vm.policy.destinationId"
                                 required-message="'Chưa chọn nơi đến !'"
                                 required
                         >
@@ -41,7 +41,7 @@
                         <p class="bv-title-from">Chọn gói bảo hiểm cho<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
+                        <select class="bv-select-box form-control" name="travelWithId" ng-model="vm.policy.travelWithId"
                                 required-message="'Chưa chọn gói bảo hiểm !'"
                                 required
                         >
@@ -55,7 +55,7 @@
                         <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div class="">
-                        <input type="text" class="bv-input" ng-model="vm.policy.soNguoiThamGia" placeholder="Nhập tổng số người tham gia" ng-blur="vm.addOrRemovePerson()"
+                        <input type="text" name="soNguoiThamGia" class="bv-input" ng-model="vm.policy.soNguoiThamGia" placeholder="Nhập tổng số người tham gia" ng-blur="vm.addOrRemovePerson()"
                                required-message="'Chưa thêm tổng số người tham gia!'"
                                required
                         />
@@ -67,7 +67,7 @@
                     <div class="margin-right-5 width-100">
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                                <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
                                        required-message="'Nhập vào ngày khời hành Việt Nam !'"
                                        required
                                 >
@@ -85,7 +85,7 @@
                     <div class="margin-right-5 width-100">
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
+                                <input type="text" name="expiredDate" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
                                        required-message="'Nhập vào ngày trở về!'"
                                        required
                                 >
@@ -99,10 +99,11 @@
                         <p class="bv-title-from">Loại tiền trong bảng quyền lợi<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model ="vm.policy.loaitien"
+                        <select class="bv-select-box form-control" name="loaitien" ng-model ="vm.policy.loaitien"
                                 required-message="'Chưa chọn loại tiền !'"
                                 required
                         >
+                            <option value="" selected="" disabled="">--- Chọn loại tiền ---</option>
                             <option value="USD">VND/USD</option>
                             <option value="EUR">VND/EUR</option>
                         </select>
@@ -150,7 +151,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5">
-                        <input type="number" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
+                        <input type="number" name="premiumDiscount" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
                     </div>
                     <div class="margin-top-10">
                         <div class="table-responsive">
