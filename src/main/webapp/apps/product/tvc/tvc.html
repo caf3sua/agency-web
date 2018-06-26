@@ -26,7 +26,7 @@
                         <span class="bv-title-from-des">(Phạm vi lãnh thổ được bảo hiểm)</span>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model="vm.policy.destinationId"
+                        <select class="bv-select-box form-control" name="destinationId" ng-model="vm.policy.destinationId"
                                 required-message="'Chưa chọn nơi đến !'"
                                 required
                         >
@@ -41,7 +41,7 @@
                         <p class="bv-title-from">Chọn gói bảo hiểm cho<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
+                        <select class="bv-select-box form-control" name="travelWithId" ng-model="vm.policy.travelWithId"
                                 required-message="'Chưa chọn gói bảo hiểm !'"
                                 required
                         >
@@ -55,7 +55,7 @@
                         <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div class="">
-                        <input type="text" class="bv-input" ng-model="vm.policy.soNguoiThamGia" placeholder="Nhập tổng số người tham gia" ng-blur="vm.addOrRemovePerson()"
+                        <input type="text" name="soNguoiThamGia" class="bv-input" ng-model="vm.policy.soNguoiThamGia" placeholder="Nhập tổng số người tham gia" ng-blur="vm.addOrRemovePerson()"
                                required-message="'Chưa thêm tổng số người tham gia!'"
                                required
                         />
@@ -67,7 +67,7 @@
                     <div class="margin-right-5 width-100">
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                                <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
                                        required-message="'Nhập vào ngày khời hành Việt Nam !'"
                                        required
                                 >
@@ -85,7 +85,7 @@
                     <div class="margin-right-5 width-100">
                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
                             <div class="width-100">
-                                <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
+                                <input type="text" name="expiredDate" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.expiredDate"
                                        required-message="'Nhập vào ngày trở về!'"
                                        required
                                 >
@@ -99,10 +99,11 @@
                         <p class="bv-title-from">Loại tiền trong bảng quyền lợi<span class="bv-req-red">&nbsp(*)</span></p>
                     </div>
                     <div>
-                        <select class="bv-select-box form-control" ng-model ="vm.policy.loaitien"
+                        <select class="bv-select-box form-control" name="loaitien" ng-model ="vm.policy.loaitien"
                                 required-message="'Chưa chọn loại tiền !'"
                                 required
                         >
+                            <option value="" selected="" disabled="">--- Chọn loại tiền ---</option>
                             <option value="USD">VND/USD</option>
                             <option value="EUR">VND/EUR</option>
                         </select>
@@ -118,7 +119,7 @@
                         <!--</select>-->
                         <div class="cntr text-center">
                             <label for="cbx13" class="label-cbx margin-right-5">
-                                <input id="cbx13" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
+                                <input id="cbx13" name="planId" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
                                 <div class="checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                         <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -128,7 +129,7 @@
                                 <span>Bạc</span>
                             </label>
                             <label for="cbx12" class="label-cbx margin-right-5">
-                                <input id="cbx12" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
+                                <input id="cbx12" name="planId" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
                                 <div class="checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                         <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -138,7 +139,7 @@
                                 <span>Vàng</span>
                             </label>
                             <label for="cbx11" class="label-cbx margin-right-5">
-                                <input id="cbx11" type="radio" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
+                                <input id="cbx11" type="radio"  name="planId" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
                                 <div class="checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                         <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -150,7 +151,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5">
-                        <input type="number" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
+                        <input type="number" name="premiumDiscount" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
                     </div>
                     <div class="margin-top-10">
                         <div class="table-responsive">
@@ -193,7 +194,7 @@
                     </div>
                     <div class="cntr margin-top-5">
                         <label for="cbx8" class="label-cbx">
-                            <input id="cbx8" type="checkbox" class="invisible">
+                            <input id="cbx8" name="cbx8" type="checkbox" class="invisible">
                             <div class="checkbox">
                                 <svg width="18px" height="18px" viewBox="0 0 20 20">
                                     <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -261,7 +262,7 @@
                         </div>
                     </div>
                     <div class="margin-top-5 padding-bottom-35">
-                        <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
+                        <button class="bv-btn-step3" type="submit">Tiếp theo</button>
                     </div>
                 </div>
             </form>
@@ -272,7 +273,7 @@
                 <p>2</p>
                 <p>Thông tin bảo hiểm</p>
             </div>
-            <form class="display-flex" angular-validator-submit="vm.closeOpenStep('step3', true)" name="myForm1" novalidate angular-validator>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step3', true)" name="myForm1" novalidate angular-validator>
                 <div class="bv-step-content">
                     <div ng-include="'apps/product/partial/partial.invoice-receiverUser.html'"></div>
                     <div class="margin-top-10">
