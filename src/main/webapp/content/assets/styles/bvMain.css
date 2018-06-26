@@ -2398,6 +2398,9 @@ body {
     .row-body {
         height: 100vh;
     }
+    .row-col-xs .row-body {
+        overflow: scroll;
+    }
     .bv-icon-contact-detail>i {
         background: #0371b6;
         border: 1px solid #0371b6;
