@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductCarController', ProductCarController);
 
-    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'ProductCommonService', '$state', '$rootScope'];
+    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductCarController ($scope, $controller, CarService, ProductCommonService, $state, $rootScope) {
+    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state, $rootScope) {
         var vm = this;
 
         angular.element(document).ready(function () {
@@ -135,6 +135,16 @@
   		
   		// Function
   		function init() {
+  			var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.thoihantu = DateUtils.convertDate(startDate);
+
+            var endDate = new Date();
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            vm.policy.thoihanden = DateUtils.convertDate(endDate);
+  			
   			// Get gycbhNumber
             ProductCommonService.getPolicyNumber({lineId: 'CAR'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
   			
@@ -290,6 +300,7 @@
     	}
     	
     	function onGetPremiumError(result) {
+    		vm.clearResponseError();
             vm.validateResponse(result, 'getPremium');
     	}
     	
@@ -338,6 +349,7 @@
     	}
     	
     	function onCreatePolicyError(result) {
+    		vm.clearResponseError();
             vm.validateResponse(result, 'createPolicy');
     	}
     	
@@ -347,7 +359,18 @@
         }
 
         function onGetPolicyNumberError(result) {
+        	vm.clearResponseError();
             vm.validateResponse(result, 'getPolicyNumber');
+        }
+        
+        function validatorTndsSoCho() {
+        	if(!vm.product.tndsbbCheck) {
+        		return true;
+        	}
+        	if(!vm.product.tndsSoCho) {
+        		return "Chưa lựa chọn số chỗ/trọng tải xe!";
+        	}
+            return true;
         }
         
         function validatorNntxSoCho() {

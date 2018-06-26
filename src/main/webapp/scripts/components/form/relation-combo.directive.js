@@ -14,7 +14,8 @@
                 name: '@',
             	selectedItem: '=ngModel',
             	options: '=',
-            	loadRelationFinished: '&onfinished'
+            	loadRelationFinished: '&onfinished',
+            	validator: '&validator'
             },
             require: 'ngModel',
             template : getTemplate,
@@ -91,7 +92,7 @@
                     + '</select>';
 			} else {
                 var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()"'
-                	+ 'required-message="\'Chưa chọn số tiền bảo hiểm!\'" required>'
+                	+ 'validator= "validator === true" invalid-message="validator">'
                     + '<option value="" disabled selected>' + defaultOption + '</option>'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
