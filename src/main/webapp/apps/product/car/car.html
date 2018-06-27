@@ -24,13 +24,15 @@
                 <div class="text-header-sp">
                     <p>Thông tin gói</p>
                 </div>
-                <div class="">
-                    <p class="bv-title-from">Chon nhóm loại xe</p>
+                <div>
+                    <div class="margin-top-10 required">
+	                    <p class="bv-title-from">Chọn nhóm loại xe</p>
+	                </div>
                     <select name="carType" class="bv-select-box form-control">
                         <option disabled selected>Xe oto chở người không kinh doanh vận tải</option>
                     </select>
                 </div>
-                <div class="margin-top-10">
+                <div class="margin-top-10 required">
                     <p class="bv-title-from">Đối tượng đượng bảo hiểm</p>
                 </div>
                 <div class=" display-flex">
@@ -77,8 +79,11 @@
                         <span>Bảo hiểm trách nhiệm dân sự bắt buộc</span>
                     </label>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.tndsbbCheck">
+                    <p class="bv-title-from">Số chỗ ngồi / tải trọng xe</p>
+                </div>
                 <div class="margin-top-5" ng-show="vm.product.tndsbbCheck">
-                    <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.product.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)" validator="vm.validatorTndsSoCho()"/>
+                    <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.product.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
                 </div>
                 <div class="cntr margin-top-5">
                     <label for="cbx3" class="label-cbx">
@@ -92,8 +97,14 @@
                         <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
                     </label>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.tndstnCheck && !vm.product.tndsbbCheck">
+                    <p class="bv-title-from">Số chỗ ngồi / tải trọng xe</p>
+                </div>
                 <div class="margin-top-5" ng-show="vm.product.tndstnCheck && !vm.product.tndsbbCheck">
                     <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.product.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
+                </div>
+                <div class="margin-top-10 required" ng-show="vm.product.tndstnCheck">
+                    <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
                 </div>
                 <div class="margin-top-5" ng-show="vm.product.tndstnCheck">
                     <relation-combo name="tndstnSoTien" type="car-tndstn-sotien" ng-model="vm.product.tndstnSoTien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
@@ -110,10 +121,16 @@
                         <span>Bảo hiểm tai nạn người ngồi trên xe</span>
                     </label>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+                    <p class="bv-title-from">Số người tham gia</p>
+                </div>
                 <div class="margin-top-5">
                     <input type="number" name="nntxSoCho" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.nntxSoCho" ng-blur="vm.getPremium()"
                     	validator= "vm.validatorNntxSoCho() === true"
        					invalid-message = "vm.validatorNntxSoCho()"/>
+                </div>
+                <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+                    <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
                 </div>
                 <div class="margin-top-5" ng-show="vm.product.nntxCheck">
                     <relation-combo name="nntxSoTien" type="car-nntx-sotien" ng-model="vm.product.nntxSoTien" options="vm.nntxSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
@@ -130,17 +147,32 @@
                         <span>Bảo hiểm vật chất xe</span>
                     </label>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.vcxCheck">
+                    <p class="bv-title-from">Hãng xe</p>
+                </div>
                 <div class="margin-top-5" ng-show="vm.product.vcxCheck">
                     <relation-combo name="manufacturer" type="car-manufacturer" ng-model="vm.product.manufacturer" options="vm.manufacturerOptions" onfinished="vm.processComboResult(data, type)"/>
+                </div>
+                <div class="margin-top-10 required" ng-show="vm.product.manufacturer && vm.product.vcxCheck">
+                    <p class="bv-title-from">Dòng xe</p>
                 </div>
                 <div class="margin-top-5" ng-show="vm.product.manufacturer && vm.product.vcxCheck">
                     <relation-combo name="model" type="car-model" ng-model="vm.product.model" options="vm.modelOptions" onfinished="vm.processComboResult(data, type)"/>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.model && vm.product.vcxCheck">
+                    <p class="bv-title-from">Năm sản xuất</p>
+                </div>
                 <div class="margin-top-5" ng-show="vm.product.model && vm.product.vcxCheck">
                     <relation-combo name="namSX" type="car-year" ng-model="vm.product.namSX" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
                 </div>
+                <div class="margin-top-10 required" ng-show="vm.product.namSX && vm.product.vcxCheck">
+                    <p class="bv-title-from">Giá trị xe theo thị trường</p>
+                </div>
                 <div class="margin-top-5">
                     <input name="actualValue" type="number" ng-show="vm.product.namSX && vm.product.vcxCheck" class="bv-input" ng-model="vm.product.actualValue" placeholder="Giá trị xe theo thị trường" disabled="disabled"/>
+                </div>
+                <div class="margin-top-10 required" ng-show="vm.product.namSX && vm.product.vcxCheck">
+                    <p class="bv-title-from">Giá trị xe tham gia bảo hiểm</p>
                 </div>
                 <div class="margin-top-5">
                     <input name="vcxSoTien" type="number" ng-show="vm.product.namSX && vm.product.vcxCheck" class="bv-input" ng-model="vm.product.vcxSoTien" placeholder="Giá trị xe tham gia bảo hiểm" ng-blur="vm.getPremium()"

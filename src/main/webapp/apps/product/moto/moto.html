@@ -28,7 +28,7 @@
 	                    <p class="bv-title-from">Chon nhóm loại xe</p>
 	                </div>
                     <div class="margin-top-5">
-                        <relation-combo type="moto-type" ng-model="vm.product.typeOfMoto" options="vm.typeOfMotoOptions" onfinished="vm.processComboResult(data, type)"/>
+                        <relation-combo name="typeOfMoto" type="moto-type" ng-model="vm.product.typeOfMoto" options="vm.typeOfMotoOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
                     <div class="margin-top-10">
                         <p class="bv-title-from">Loại bảo hiểm</p>
@@ -61,7 +61,7 @@
 	                    <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
 	                </div>
                     <div class="margin-top-5" ng-show="vm.product.tndstnCheck">
-                        <relation-combo type="moto-tndstn-sotien" ng-model="vm.product.tndstnSotien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
+                        <relation-combo name="tndstnSotien" type="moto-tndstn-sotien" ng-model="vm.product.tndstnSotien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
                     <div class="cntr margin-top-5">
                         <label for="cbx4" class="label-cbx">

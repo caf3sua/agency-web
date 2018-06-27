@@ -14,8 +14,7 @@
                 name: '@',
             	selectedItem: '=ngModel',
             	options: '=',
-            	loadRelationFinished: '&onfinished',
-            	validator: '&validator'
+            	loadRelationFinished: '&onfinished'
             },
             require: 'ngModel',
             template : getTemplate,
@@ -87,12 +86,12 @@
 
             if(attrs.type == 'hhvc-money-type') {
                 var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()"'
-                	+ 'required-message="\'Chưa chọn số tiền bảo hiểm!\'" required>'
+                	+ 'validator="vm.validatorCombo(\'{{name}}\') === true" invalid-message="vm.validatorCombo(\'{{name}}\')">'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
 			} else {
                 var template = '<select name="{{name}}" class="bv-select-box form-control" ng-model="selectedItem" ng-change="changeEvent()"'
-                	+ 'validator= "validator === true" invalid-message="validator">'
+                	+ 'validator="vm.validatorCombo(\'{{name}}\') === true" invalid-message="vm.validatorCombo(\'{{name}}\')">'
                     + '<option value="" disabled selected>' + defaultOption + '</option>'
                     + '<option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>'
                     + '</select>';
