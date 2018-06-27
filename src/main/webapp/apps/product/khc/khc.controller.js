@@ -132,10 +132,10 @@
         }
 
         function getPremium() {
-            vm.loading = true;
             var postData = getPostData(false);
 
             if(postData.premiumKhcList.length > 0) {
+            	vm.loading = true;
                 KhcService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             }
         }

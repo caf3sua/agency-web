@@ -24,7 +24,7 @@
                     <div class="text-header-sp">
                         <p>Thông tin gói</p>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Thời hạn bảo hiểm</p>
                     </div>
                     <div class=" display-flex margin-top-10">
@@ -49,6 +49,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="margin-top-10 required">
+                        <p class="bv-title-from">Ngày sinh</p>
+                    </div>
                     <div class=" display-flex margin-top-10">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
@@ -62,7 +65,7 @@
                             <input type="number" min="0" class="bv-input" name="tuoi" placeholder="Tuổi" ng-model="vm.product.tuoi" ng-disabled="true"/>
                         </div>
                     </div>
-                    <div class="margin-top-10">
+                    <div class="margin-top-10 required">
                         <p class="bv-title-from">Đối tượng đượng bảo hiểm</p>
                     </div>
                     <div class=" display-flex">
@@ -94,8 +97,11 @@
                     <div class="margin-top-5" ng-show="vm.product.insuranceTarget == 'Reuse'">
                         <input type="text" name="policyNumber" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber"/>
                     </div>
+                    <div class="margin-top-10 required">
+                        <p class="bv-title-from">Lựa chọn chương trình bảo hiểm</p>
+                    </div>
                     <div class="margin-top-10">
-                        <relation-combo type="bvp-insurance-type" ng-model="vm.product.chuongTrinh" options="vm.insuranceTypeOptions" onfinished="vm.processComboResult(data, type)"/>
+                        <relation-combo name="chuongTrinh" type="bvp-insurance-type" ng-model="vm.product.chuongTrinh" options="vm.insuranceTypeOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
                     <div class="margin-top-10">
                         <p class="bv-title-from">Quyền lợi bổ sung</p>

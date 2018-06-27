@@ -124,6 +124,7 @@
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
         vm.createNewPolicy = createNewPolicy;
+        vm.validatorCombo = validatorCombo;
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
             {id: '2', name: 'Bạc'},
@@ -328,6 +329,16 @@
 
         function onGetPolicyNumberError(result) {
             vm.validateResponse(result, 'getPolicyNumber');
+        }
+        
+        function validatorCombo(name) {
+  			switch(name) {
+	  			case "chuongTrinh":
+	  	        	if(!vm.product.chuongTrinh) {
+	  	        		return "Cần lựa chọn chương trình bảo hiểm!";
+	  	        	}
+	  	            return true;
+  			}
         }
     }
 })();
