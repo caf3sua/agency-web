@@ -201,7 +201,6 @@
             vm.policy.chaynoCheck = postData.chaynoCheck;
             vm.policy.chaynoPhi = postData.chaynoPhi;
             vm.policy.chaynoStbh = postData.chaynoStbh;
-            vm.policy.gycbhNumber = "ITSOL.MOT.18.31";
             vm.policy.nntxCheck = postData.nntxCheck;
             vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
             vm.policy.nntxStbh = postData.nntxStbh;
