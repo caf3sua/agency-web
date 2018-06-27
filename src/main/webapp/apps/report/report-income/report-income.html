@@ -1,61 +1,17 @@
 <div class="padding">
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <div class="bv-block-two-button">
-            <button class="bv-block-two-button-style active-contact">Tuần</button>
-            <button class="bv-block-two-button-style">Tháng</button>
-            <button class="bv-block-two-button-style">Năm</button>
-            <button class="bv-block-two-button-style">Nâng cao</button>
+            <button class="bv-block-two-button-style" ng-class="{'active-contact': vm.filterDate == 'WEEK' }" ng-click="vm.changeFilterDate('WEEK')">Tuần</button>
+        	<button class="bv-block-two-button-style" ng-class="{'active-contact': vm.filterDate == 'MONTH' }" ng-click="vm.changeFilterDate('MONTH')">Tháng</button>
+        	<button class="bv-block-two-button-style" ng-class="{'active-contact': vm.filterDate == 'YEAR' }" ng-click="vm.changeFilterDate('YEAR')">Năm</button>
+        	<button class="bv-block-two-button-style" ng-class="{'active-contact': vm.filterDate == 'ENHANCE' }" ng-click="vm.changeFilterDate('ENHANCE')">Nâng cao</button>
         </div>
     </div>
 
 
       <div class="col-sm-12 padding0">
           <div class="box-body">
-            <div ui-jp="chart" ui-options="{
-                tooltip : {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data:['Preorder','Sale','Deal']
-                },
-                calculable : true,
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name:'Deal',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[10, 12, 21, 54, 260, 830, 710]
-                    },
-                    {
-                        name:'Sale',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[30, 182, 434, 791, 390, 30, 10]
-                    },
-                    {
-                        name:'Preorder',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[1320, 1132, 601, 234, 120, 90, 20]
-                    }
-                ]
-                    
-            }" style="height:300px" >
+            <div style="height:300px" e-chart echart-options="vm.chartOptions">
             </div>
         </div>
       </div>
