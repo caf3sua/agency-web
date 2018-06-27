@@ -185,6 +185,7 @@
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.policyNumber = vm.policy.gycbhNumber;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.chaynoStbh = 0;
             TviService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
             console.log(vm.policy);
         }

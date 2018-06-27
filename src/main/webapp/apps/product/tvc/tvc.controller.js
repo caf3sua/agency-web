@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTvcController', ProductTvcController);
 
-    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'toastr', 'ProductCommonService'];
+    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'ProductCommonService'];
 
-    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, toastr, ProductCommonService) {
+    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, ProductCommonService) {
     	var vm = this;
     	vm.policy = {
                 agreementId: "",
