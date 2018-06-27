@@ -1,4 +1,4 @@
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
         <div class="hidden-md hidden-lg text-center ">
             <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
                 <p class="display-inline-block">{{vm.typeNameOne}}</p>
@@ -17,122 +17,122 @@
                 <p>1</p>
                 <span>Tính phí - thông tin bảo hiểm</span>
             </div>
-            <div class="bv-step-content" id="bv-step-1-content">
-                <div class="text-header-sp">
-                    <p>Thông tin gói</p>
-                </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Thời hạn bảo hiểm</p>
-                </div>
-                
-                <div class=" display-flex margin-top-5">
-                    <div class="margin-right-5 width-100">
-                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-						   <div class="width-100">
-                               <input type="text" name="ngayBatDau" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.ngayBatDau" ng-change="vm.changeToDate()">
-                           </div>
-						    <div class="input-group-addon bv-date-icon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
-						</div>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+                <div class="bv-step-content" id="bv-step-1-content">
+                    <div class="text-header-sp">
+                        <p>Thông tin gói</p>
                     </div>
-                    <div class="width-100">
-                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <div class="width-100">
-                                <input type="text" name="ngayKetThuc" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.ngayKetThuc">
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Thời hạn bảo hiểm</p>
+                    </div>
+
+                    <div class=" display-flex margin-top-5">
+                        <div class="margin-right-5 width-100">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                               <div class="width-100">
+                                   <input type="text" name="ngayBatDau" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.ngayBatDau" ng-change="vm.changeToDate()">
+                               </div>
+                                <div class="input-group-addon bv-date-icon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
                             </div>
-                            <div class="input-group-addon bv-date-icon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
-						</div>
-                    </div>
-                </div>
-                
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngày sinh</p>
-                </div>
-                <div class=" display-flex margin-top-5">
-                    <div class="margin-right-5 width-100">
-                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                            <div class="width-100">
-                                <input type="text" name="ngaySinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.onDobChange()">
+                        </div>
+                        <div class="width-100">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                <div class="width-100">
+                                    <input type="text" name="ngayKetThuc" class="bv-input" disabled="disabled" placeholder="Đến ngày" ng-model="vm.ngayKetThuc">
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
                             </div>
-                            <div class="input-group-addon bv-date-icon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
-						</div>
+                        </div>
                     </div>
-                    <div class="width-100">
-						    <input type="text" name="tuoi" style="width: 60px" disabled="disabled" class="bv-input" ng-model="vm.tuoi"> tuổi
+
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Ngày sinh</p>
                     </div>
-                </div>
-                
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Giới tính</p>
-                </div>
-                <div class=" display-flex">
-                    <div class="cntr margin-right-5">
-                        <label for="cbx1" class="label-cbx">
-                            <input id="cbx1" name="gioiTinh" type="radio" class="invisible" ng-model="vm.product.gioiTinh" value="1" ng-change="vm.getPremium()">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
+                    <div class=" display-flex margin-top-5">
+                        <div class="margin-right-5 width-100">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                <div class="width-100">
+                                    <input type="text" name="ngaySinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.onDobChange()">
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
                             </div>
-                            <span>Nam</span>
-                        </label>
+                        </div>
+                        <div class="width-100">
+                                <input type="text" name="tuoi" style="width: 60px" disabled="disabled" class="bv-input" ng-model="vm.tuoi"> tuổi
+                        </div>
                     </div>
-                    <div class="cntr">
-                        <label for="cbx2" class="label-cbx">
-                            <input id="cbx2" name="gioiTinh" type="radio" class="invisible" ng-model="vm.product.gioiTinh" value="2" ng-change="vm.getPremium()">
-                            <div class="checkbox">
-                                <svg width="18px" height="18px" viewBox="0 0 20 20">
-                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                                    <polyline points="4 11 8 15 16 6"></polyline>
-                                </svg>
-                            </div>
-                            <span>Nữ</span>
-                        </label>
+
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Giới tính</p>
                     </div>
+                    <div class=" display-flex">
+                        <div class="cntr margin-right-5">
+                            <label for="cbx1" class="label-cbx">
+                                <input id="cbx1" name="gioiTinh" type="radio" class="invisible" ng-model="vm.product.gioiTinh" value="1">
+                                <div class="checkbox">
+                                    <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                        <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                        <polyline points="4 11 8 15 16 6"></polyline>
+                                    </svg>
+                                </div>
+                                <span>Nam</span>
+                            </label>
+                        </div>
+                        <div class="cntr">
+                            <label for="cbx2" class="label-cbx">
+                                <input id="cbx2" name="gioiTinh" type="radio" class="invisible" ng-model="vm.product.gioiTinh" value="2">
+                                <div class="checkbox">
+                                    <svg width="18px" height="18px" viewBox="0 0 20 20">
+                                        <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                        <polyline points="4 11 8 15 16 6"></polyline>
+                                    </svg>
+                                </div>
+                                <span>Nữ</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Chương trình bảo hiểm</p>
+                        <select name="typeOfKcare" class="bv-select-box form-control" ng-model="vm.product.typeOfKcare" ng-change="vm.checkedChangeBill()">
+                            <option value="">Lựa chọn Giới hạn bồi thường</option>
+                            <option value="PGM1">Chương trình 1</option>
+                            <option value="PGM2">Chương trình 2</option>
+                            <option value="PGM3">Chương trình 3</option>
+                        </select>
+                    </div>
+
+                    <div class="margin-top-5">
+                        <p class="bv-title-from">Giảm phí (%)</p>
+                        <input type="number" name="premiumDiscount" min="0" max="30" ng-show="vm.isShowPremium" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
+                    </div>
+                    <div ng-show="vm.isShowPremium">
+                        <div class="bv-title-from margin-top-10">
+                            <p>Tổng phí bảo hiểm</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">{{vm.product.premiumNet | number}} VND</p>
+                        </div>
+                        <div class="bv-title-from">
+                            <p>Tổng phí thanh toán</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">{{vm.product.premiumKCare | number}} VND</p>
+                        </div>
+                    </div>
+                    <br/>
+                    <!-- BẢNG TÓM TẮT QUYỀN LỢI BẢO HIỂM -->
+                    <div ng-include="'apps/product/partial/partial.kcareBill.html'"></div>
+
                 </div>
-                
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Chương trình bảo hiểm</p>
-                    <select name="typeOfKcare" class="bv-select-box form-control" ng-model="vm.product.typeOfKcare" ng-change="vm.checkedChangeBill()">
-                   		<option value="">Lựa chọn Giới hạn bồi thường</option>	
-                        <option value="PGM1">Chương trình 1</option>
-                        <option value="PGM2">Chương trình 2</option>
-                        <option value="PGM3">Chương trình 3</option>
-                    </select>
-                </div>
-                
-                <div class="margin-top-5">
-                	<p class="bv-title-from">Giảm phí (%)</p>
-                    <input type="number" min="1" max="30" ng-show="vm.isShowPremium" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
-                </div>
-                <div ng-show="vm.isShowPremium">
-	                <div class="bv-title-from margin-top-10">
-	                    <p>Tổng phí bảo hiểm</p>
-	                </div>
-	                <div>
-	                    <p class="bv-tile-templateSummary">{{vm.product.premiumNet | number}} VND</p>
-	                </div>
-	                <div class="bv-title-from">
-	                    <p>Tổng phí thanh toán</p>
-	                </div>
-	                <div>
-	                    <p class="bv-tile-templateSummary">{{vm.product.premiumKCare | number}} VND</p>
-	                </div>
-                </div>
-                <br/>
-                <!-- BẢNG TÓM TẮT QUYỀN LỢI BẢO HIỂM -->
-                <div ng-include="'apps/product/partial/partial.kcareBill.html'"></div>
-                
-            </div>
-            
-            <!-- Page 2: Thông tin người yêu cầu bảo hiểm-->
-            <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumKCare == 0">
+                <!-- Page 2: Thông tin người yêu cầu bảo hiểm-->
+                <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumKCare == 0">
 				<div class="lock-all" ng-show="vm.product.premiumKCare == 0"></div>
                 <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
             	<div ng-include="'apps/product/partial/partial.contact.html'"></div>
@@ -144,7 +144,7 @@
                     <p class="bv-title-from">Họ tên người được bảo hiểm</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Họ tên người được bảo hiểm" ng-model="vm.policy.insuredName" />
+                    <input type="text" name="insuredName" class="bv-input" placeholder="Họ tên người được bảo hiểm" ng-model="vm.policy.insuredName" />
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Ngày sinh</p>
@@ -152,7 +152,7 @@
                 <div class="margin-right-5 width-100">
                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                         <div class="width-100">
-                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.insuredNgaysinh">
+                            <input type="text" name="beneficiaryNgaysinhD" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinhD">
                         </div>
                         <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
@@ -192,13 +192,13 @@
                     <p class="bv-title-from">Số CMND/Hộ chiếu</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Số CMND/Hộ chiếu" ng-model="vm.policy.insuredIdNumber"/>
+                    <input type="text" name="insuredIdNumber" class="bv-input" placeholder="Số CMND/Hộ chiếu" ng-model="vm.policy.insuredIdNumber"/>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Quan hệ với người yêu cầu bảo hiểm</p>
                 </div>
                 <div class="margin-top-5">
-                    <select class="bv-select-box form-control" ng-model="vm.policy.insuredRelationship">
+                    <select name="insuredRelationship" class="bv-select-box form-control" ng-model="vm.policy.insuredRelationship">
                    		<option value=""></option>	
                         <option value="30">Bản thân</option>
                         <option value="31">Vợ/Chồng</option>
@@ -274,7 +274,7 @@
                 </div>
                 <div class="cntr margin-top-5">
                     <label for="cbx9" class="label-cbx">
-                        <input id="cbx9" type="checkbox" class="invisible" ng-model="vm.policy.qtreatment" ng-change="vm.checkQtreatment()">
+                        <input id="cbx9" name="qtreatment" type="checkbox" class="invisible" ng-model="vm.policy.qtreatment" ng-change="vm.checkQtreatment()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -286,7 +286,7 @@
                 </div>
                 <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx10" class="label-cbx">
-                        <input id="cbx10" type="checkbox" class="invisible" ng-model="vm.policy.qresultTre" ng-change="vm.checkQresultTre()">
+                        <input id="cbx10" name="qresultTre" type="checkbox" class="invisible" ng-model="vm.policy.qresultTre" ng-change="vm.checkQresultTre()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -298,7 +298,7 @@
                 </div>
                 <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx11" class="label-cbx">
-                        <input id="cbx11" type="checkbox" class="invisible" ng-model="vm.policy.qtypeCancer" ng-change="vm.checkQtypeCancer()">
+                        <input id="cbx11" name="qtypeCancer" type="checkbox" class="invisible" ng-model="vm.policy.qtypeCancer" ng-change="vm.checkQtypeCancer()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbx12" class="label-cbx">
-                    	<input id="cbx12" type="checkbox" class="invisible" ng-model="vm.policy.qresultCan" ng-change="vm.checkQresultCan()">
+                    	<input id="cbx12" name="qresultCan" type="checkbox" class="invisible" ng-model="vm.policy.qresultCan" ng-change="vm.checkQresultCan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -322,7 +322,7 @@
                 </div>
                 <div class="cntr margin-right-15 margin-top-5">
                     <label for="cbq3i" class="label-cbx">
-                    	<input id="cbq3i" type="checkbox" class="invisible" ng-model="vm.policy.q3" ng-change="vm.checkQ3()">
+                    	<input id="cbq3i" name="q3" type="checkbox" class="invisible" ng-model="vm.policy.q3" ng-change="vm.checkQ3()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -382,17 +382,17 @@
                                     <td>
                                         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                             <div class="width-100">
-                                                <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
+                                                <input type="text" name="ngaydieutri" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
                                             </div>
                                             <div class="input-group-addon bv-date-icon">
                                                 <span class="glyphicon glyphicon-th"></span>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><input type="text" class="bv-input" ng-model="item.chuandoan" /></td>
-                                    <td><input type="text" class="bv-input" ng-model="item.chitietdieutri" /></td>
-                                    <td><input type="text" class="bv-input" ng-model="item.ketqua" /></td>
-                                    <td><input type="text" class="bv-input" ng-model="item.benhvienorbacsy" /></td>
+                                    <td><input type="text" name="chuandoan" class="bv-input" ng-model="item.chuandoan" /></td>
+                                    <td><input type="text" name="chitietdieutri" class="bv-input" ng-model="item.chitietdieutri" /></td>
+                                    <td><input type="text" name="ketqua" class="bv-input" ng-model="item.ketqua" /></td>
+                                    <td><input type="text" name="benhvienorbacsy" class="bv-input" ng-model="item.benhvienorbacsy" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -444,7 +444,7 @@
                 <div class="margin-right-5 width-100">
                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                         <div class="width-100">
-                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinh">
+                            <input type="text" name="beneficiaryNgaysinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinh">
                         </div>
                         <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
@@ -455,13 +455,13 @@
                     <p class="bv-title-from">Số CMND/Hộ chiếu/Số giấy khai sinh</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Số CMND/Hộ chiếu/Số giấy khai sinh" ng-model="vm.policy.beneficiaryIdNumber"/>
+                    <input type="text" name="beneficiaryIdNumber" class="bv-input" placeholder="Số CMND/Hộ chiếu/Số giấy khai sinh" ng-model="vm.policy.beneficiaryIdNumber"/>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Quan hệ với người được bảo hiểm</p>
                 </div>
                 <div class="margin-top-5">
-                    <select class="bv-select-box form-control" ng-model="vm.policy.beneficiaryRelationship">
+                    <select name="beneficiaryRelationship" class="bv-select-box form-control" ng-model="vm.policy.beneficiaryRelationship">
                    		<option value=""></option>	
                         <option value="31">Vợ/Chồng</option>
                         <option value="32">Con</option>
@@ -474,7 +474,7 @@
                 </div>
                 <div class="cntr margin-top-5">
                     <label for="cbx30" class="label-cbx">
-                        <input id="cbx30" type="checkbox" class="invisible">
+                        <input id="cbx30" name="cbx30" type="checkbox" class="invisible">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
                                 <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -489,7 +489,7 @@
                     <p class="bv-title-from">Họ và tên</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Họ và tên người được chỉ định" ng-model="vm.policy.beneficiaryNameD" />
+                    <input type="text" name="beneficiaryNameD" class="bv-input" placeholder="Họ và tên người được chỉ định" ng-model="vm.policy.beneficiaryNameD" />
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Ngày sinh</p>
@@ -497,7 +497,7 @@
                 <div class="margin-right-5 width-100">
                    	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
 					    <div class="width-100">
-                            <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinhD">
+                            <input type="text" name="beneficiaryNgaysinhD" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.beneficiaryNgaysinhD">
                         </div>
 					    <div class="input-group-addon bv-date-icon">
 					        <span class="glyphicon glyphicon-th"></span>
@@ -508,13 +508,13 @@
                     <p class="bv-title-from">Số CMND/Hộ chiếu</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Số CMND/Hộ chiếu" ng-model="vm.policy.beneficiaryIdNumberD"/>
+                    <input type="text" name="beneficiaryIdNumberD" class="bv-input" placeholder="Số CMND/Hộ chiếu" ng-model="vm.policy.beneficiaryIdNumberD"/>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Quan hệ với người được bảo hiểm</p>
                 </div>
                 <div class="margin-top-5">
-                    <select class="bv-select-box form-control" ng-model="vm.policy.beneficiaryRelationshipD">
+                    <select name="beneficiaryRelationshipD" class="bv-select-box form-control" ng-model="vm.policy.beneficiaryRelationshipD">
                    		<option value=""></option>	
                         <option value="31">Vợ/Chồng</option>
                         <option value="32">Con</option>
@@ -522,9 +522,10 @@
                     </select>
                 </div>
                 <div class="margin-top-5 padding-bottom-35">
-                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step2')">Tiếp theo</button>
+                    <button class="bv-btn-step3" type="submit">Tiếp theo</button>
                 </div>
             </div>
+            </form>
         </div>
         
    <!-- Tab2: THÔNG TIN GIAO HÀNG -->
@@ -534,18 +535,19 @@
                 <p>2</p>
                 <span>Thông tin giao hàng</span>
             </div>
-				
-			<div class="bv-step-content">
-				<!-- THÔNG TIN HÓA ĐƠN GIÁ TRỊ GIA TĂNG - THÔNG TIN NHẬN ĐƠN BẢO HIỂM -->
-            	<div ng-include="'apps/product/partial/partial.invoice-receiverUser.html'"></div>
-				
-                <div class="margin-top-10">
-                    <p class="bv-tile-templateSummary display-inline-block"></p>
-                    <button class="bv-btn-step3" ng-click="vm.closeOpenStep('step3')">
-                        Tiếp theo
-                    </button>
+            <form class="bv-from" angular-validator-submit="vm.closeOpenStep('step3', true)" name="myForm1" novalidate angular-validator>
+                <div class="bv-step-content">
+                    <!-- THÔNG TIN HÓA ĐƠN GIÁ TRỊ GIA TĂNG - THÔNG TIN NHẬN ĐƠN BẢO HIỂM -->
+                    <div ng-include="'apps/product/partial/partial.invoice-receiverUser.html'"></div>
+
+                    <div class="margin-top-10">
+                        <p class="bv-tile-templateSummary display-inline-block"></p>
+                        <button class="bv-btn-step3" type="submit">
+                            Tiếp theo
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         
    <!-- Tab3: TÓM TẮT ĐƠN HÀNG -->
@@ -772,7 +774,7 @@
                     </div>
 	                <div class="cntr margin-top-5">
 	                    <label for="cbxd9" class="label-cbx">
-	                        <input id="cbxd9" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtreatment">
+	                        <input id="cbxd9" name="qtreatment" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtreatment">
 	                        <div class="checkbox">
 	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -784,7 +786,7 @@
 	                </div>
 	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd10" class="label-cbx">
-	                        <input id="cbxd10" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultTre">
+	                        <input id="cbxd10" name="qresultTre" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultTre">
 	                        <div class="checkbox">
 	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -796,7 +798,7 @@
 	                </div>
 	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd11" class="label-cbx">
-	                        <input id="cbxd11" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtypeCancer">
+	                        <input id="cbxd11" name="qtypeCancer" type="checkbox" class="invisible" disabled ng-model="vm.policy.qtypeCancer">
 	                        <div class="checkbox">
 	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -808,7 +810,7 @@
 	                </div>
 	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxd12" class="label-cbx">
-	                    	<input id="cbxd12" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultCan">
+	                    	<input id="cbxd12" name="qresultCan" type="checkbox" class="invisible" disabled ng-model="vm.policy.qresultCan">
 	                        <div class="checkbox">
 	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -820,7 +822,7 @@
 	                </div>
 	                <div class="cntr margin-right-15 margin-top-5">
 	                    <label for="cbxq3" class="label-cbx">
-	                    	<input id="cbxq3" type="checkbox" class="invisible" disabled ng-model="vm.policy.q3">
+	                    	<input id="cbxq3" name="cbxq3" type="checkbox" class="invisible" disabled ng-model="vm.policy.q3">
 	                        <div class="checkbox">
 	                            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -1015,3 +1017,4 @@
                 </div>
         </div>
     </div>
+</div>
