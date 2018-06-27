@@ -21,8 +21,8 @@
         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
             <div class="width-100">
                 <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="contactDob"
-                       validator = "vm.dobValidator(contactDob) === true"
-                       invalid-message = "vm.dobValidator(contactDob)"
+                       validator = "vm.dobValidator('{{contactDob}}') === true"
+                       invalid-message = "vm.dobValidator('{{contactDob}}')"
                        required-message="'Chưa chọn ngày sinh!'"
                        required/>
             </div>
