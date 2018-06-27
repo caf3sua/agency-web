@@ -148,6 +148,7 @@
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
+            toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 

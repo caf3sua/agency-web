@@ -174,8 +174,8 @@
             var now = new Date();
             var nowStr = DateUtils.convertDate(now);
             
-            var dob = new Date(vm.product.ngaySinh);
-            var dobStr = DateUtils.convertDate(dob);
+            var dobStr = vm.product.ngaySinh;
+            // var dobStr = DateUtils.convertDate(dob);
             
             vm.tuoi = DateUtils.yearDiff(dobStr, nowStr);
         }
@@ -269,12 +269,7 @@
   				vm.policy.netPremium = data.premiumNet;
   				vm.policy.totalPremium = data.premiumKCare;
   				vm.policy.planId = data.typeOfKcare;
-
-                if(vm.policy.totalPremium > 0) {
-                    vm.disableContactInfo(false);
-                } else {
-                    vm.disableContactInfo(true);
-                }
+                vm.policy.insuredNgaysinh = data.ngaySinh;
                 vm.clearResponseError();
   	    	}
   	    	
@@ -358,7 +353,6 @@
   			// Append contactCode + invoiceInfo + receiverUser
   			debugger
   			vm.appendCommonData(vm.policy);
-  			
   			//debugger
   			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
   			

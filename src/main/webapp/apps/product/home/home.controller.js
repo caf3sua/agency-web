@@ -9,7 +9,7 @@
 
     function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService, DateUtils) {
     	var vm = this;
-
+        vm.changeYear = changeYear;
         angular.element(document).ready(function () {
         });
 
@@ -117,11 +117,6 @@
   				vm.policy.yearBuildCode = data.yearBuildCode;
   				console.log(vm.product);
 
-                if(result.premiumHome > 0) {
-                    vm.disableContactInfo(false);
-                } else {
-                    vm.disableContactInfo(true);
-                }
                 vm.clearResponseError();
             }
             function onGetPremiumError(error) {
@@ -177,11 +172,15 @@
   		function siValidator(siStr) {
             if(!siStr){return;}
 
-            if (siStr < 300000000 || yearDiff > 5000000000) {
+            if (siStr < 300000000 || siStr > 5000000000) {
                 return "Bảo Việt chỉ bảo hiểm cho phần ngôi nhà trong giới hạn từ 300 triệu đồng đến 5 tỷ đồng";
             }
             return true;
         };
-  		
+  		function changeYear() {
+            if(vm.product.si != ""){
+                getPremium();
+            }
+        }
     }
 })();
