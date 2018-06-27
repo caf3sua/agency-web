@@ -71,6 +71,7 @@
         vm.validatorNntxSoNguoi = validatorNntxSoNguoi;
         vm.validatorNntxStbh = validatorNntxStbh;
         vm.validatorChaynoStbh = validatorChaynoStbh;
+        vm.validatorCombo = validatorCombo;
         vm.typeOfMotoOptions = [
             {id: '2', name: 'Xe Mô tô 2 bánh dung tích trên 50cc'},
             {id: '1', name: 'Xe Mô tô 2 bánh dung tích từ 50cc trở xuống'}
@@ -198,7 +199,6 @@
             vm.policy.chaynoCheck = postData.chaynoCheck;
             vm.policy.chaynoPhi = postData.chaynoPhi;
             vm.policy.chaynoStbh = postData.chaynoStbh;
-            vm.policy.gycbhNumber = "ITSOL.MOT.18.31";
             vm.policy.nntxCheck = postData.nntxCheck;
             vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
             vm.policy.nntxStbh = postData.nntxStbh;
@@ -265,6 +265,21 @@
         		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
         	}
             return true;
+        }
+        
+        function validatorCombo(name) {
+  			switch(name) {
+	  			case "typeOfMoto":
+	  	            return true;
+	  			case "tndstnSotien":
+	  				if(!vm.product.tndstnCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.tndstnSotien) {
+	  	        		return "Cần lựa chọn mức trách nhiệm!";
+	  	        	}
+	  	            return true;
+  			}
         }
     }
 })();

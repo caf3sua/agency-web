@@ -94,6 +94,7 @@
   		vm.checkedChange = checkedChange;
   		vm.getPremium = getPremium;
   		vm.createNewPolicy = createNewPolicy;
+  		vm.validatorCombo = validatorCombo;
   		vm.validatorNntxSoCho = validatorNntxSoCho;
   		vm.validatorVcxSoTien = validatorVcxSoTien;
   		vm.tndsSoChoOptions = [
@@ -363,16 +364,6 @@
             vm.validateResponse(result, 'getPolicyNumber');
         }
         
-        function validatorTndsSoCho() {
-        	if(!vm.product.tndsbbCheck) {
-        		return true;
-        	}
-        	if(!vm.product.tndsSoCho) {
-        		return "Chưa lựa chọn số chỗ/trọng tải xe!";
-        	}
-            return true;
-        }
-        
         function validatorNntxSoCho() {
         	if(!vm.product.nntxCheck) {
         		return true;
@@ -384,6 +375,9 @@
         }
         
         function validatorVcxSoTien() {
+        	if(!vm.product.vcxCheck) {
+        		return true;
+        	}
         	if(!vm.product.namSX) {
         		return true;
         	}
@@ -391,6 +385,59 @@
         		return "Chưa điền giá trị xe tham gia bảo hiểm!";
         	}
             return true;
+        }
+        
+        function validatorCombo(name) {
+  			switch(name) {
+	  			case "tndsSoCho":
+	  				if(!vm.product.tndsbbCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.tndsSoCho) {
+	  	        		return "Chưa lựa chọn số chỗ/trọng tải xe!";
+	  	        	}
+	  	            return true;
+	  			case "tndstnSoTien":
+	  				if(!vm.product.tndstnCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.tndstnSoTien) {
+	  	        		return "Cần lựa chọn mức trách nhiệm!";
+	  	        	}
+	  	            return true;
+	  			case "nntxSoTien":
+	  				if(!vm.product.nntxCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.nntxSoTien) {
+	  	        		return "Cần lựa chọn mức trách nhiệm!";
+	  	        	}
+	  	            return true;
+	  			case "manufacturer":
+	  				if(!vm.product.vcxCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.manufacturer) {
+	  	        		return "Cần lựa chọn hãng xe!";
+	  	        	}
+	  	            return true;
+	  			case "model":
+	  				if(!vm.product.vcxCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(vm.product.manufacturer && !vm.product.model) {
+	  	        		return "Cần lựa chọn dòng xe!";
+	  	        	}
+	  	            return true;
+	  			case "namSX":
+	  				if(!vm.product.vcxCheck) {
+	  	        		return true;
+	  	        	}
+	  	        	if(vm.product.model && !vm.product.namSX) {
+	  	        		return "Cần lựa chọn năm sản xuất!";
+	  	        	}
+	  	            return true;
+  			}
         }
     }
 })();
