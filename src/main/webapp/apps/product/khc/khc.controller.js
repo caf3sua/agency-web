@@ -132,6 +132,7 @@
         }
 
         function getPremium() {
+            vm.loading = true;
             var postData = getPostData(false);
 
             if(postData.premiumKhcList.length > 0) {
@@ -159,6 +160,7 @@
         }
 
         function onGetPremiumSuccess(result) {
+            vm.loading = false;
             for (var i=0; i < vm.postPremiumKhcListIndex.length; i++) {
                 vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].dob = result.premiumKhcList[i].dob;
 	            vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].insuredName = result.premiumKhcList[i].insuredName;
@@ -188,12 +190,13 @@
         }
 
         function onGetPremiumError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'getPremium');
         }
 
         function createNewPolicy() {
             var postData = getPostData(true);
-
+            vm.loading = true;
             vm.policy.inceptionDate = postData.insuranceStartDate;
             vm.policy.permanentTotalDisablement = postData.numberPerson;
             vm.policy.plan = postData.premiumPackage.toString()[0];
@@ -208,11 +211,13 @@
         }
 
         function onCreatePolicySuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
         function onCreatePolicyError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'createPolicy');
         }
 

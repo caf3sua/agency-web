@@ -256,11 +256,13 @@
   			
   			getPremium();
   		}
-  		
+
   		function getPremium() {
+            vm.loading = true;
   			ProductKcareService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
+                vm.loading = false;
   				vm.isShowPremium = true;
   				vm.product = data;
   				vm.policy.thoihantu = data.ngayBatDau;
@@ -274,6 +276,7 @@
   	    	}
   	    	
   	    	function onGetPremiumError(error) {
+                vm.loading = false;
   	    		vm.isShowPremium = false;
                 vm.validateResponse(error, 'getPremium');
   	    	}
@@ -349,14 +352,15 @@
   		}
   		
   		function createPolicy() {
+            vm.loading = true;
   			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
-  			debugger
   			vm.appendCommonData(vm.policy);
   			//debugger
   			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
   			
   			function onSuccess(data, headers) {
+                vm.loading = false;
   				vm.policy = data;
   				console.log(vm.policy);
   				toastr.success('Create Invoice Success!', 'Successful!');
@@ -364,6 +368,7 @@
             }
   			
             function onError(error) {
+                vm.loading = false;
                 vm.validateResponse(error, 'createPolicy');
             }
   		}
