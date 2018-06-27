@@ -35,8 +35,8 @@
 <div class="input-group date margin-top-5 display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
     <div class="width-100">
         <input name="contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="vm.contactDob" readonly="readonly"
-               validator = "vm.dobValidator(vm.contactDob) === true"
-               invalid-message = "vm.dobValidator(vm.contactDob)"
+               validator = "vm.dobValidator('{{contactDob}}') === true"
+               invalid-message = "vm.dobValidator('{{contactDob}}')"
                required-message="'This field is required!'"
                required>
     </div>
