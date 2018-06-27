@@ -123,6 +123,7 @@
             getPremium();
         }
         function getPremium() {
+            vm.loading = true;
             vm.product.destination =  vm.policy.destinationId;
             vm.product.inceptionDate  =  vm.policy.inceptionDate;
             vm.product.expiredDate   =  vm.policy.expiredDate;
@@ -141,6 +142,7 @@
             TviService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
+            vm.loading = false;
             vm.policy.premium  = result.premiumTvi;
             vm.policy.soNguoiThamGia  = result.numberOfPerson;
             vm.policy.netPremium   = result.premiumNet;
@@ -155,6 +157,7 @@
         }
 
         function onGetPremiumError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'getPremium');
         }
         function infoPerson() {
@@ -163,6 +166,7 @@
             console.log(vm.policy);
         }
         function createNewPolicy() {
+            vm.loading = true;
             if(vm.product.receiveMethod){
                 vm.policy.receiveMethod = '2';
             }else{
@@ -185,15 +189,18 @@
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.policyNumber = vm.policy.gycbhNumber;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.chaynoStbh = 0;
             TviService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
         function onGetCreateError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'createPolicy');
         }
 

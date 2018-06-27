@@ -128,7 +128,7 @@
 
         function getPremium() {
             var postData = getPostData(false);
-
+            vm.loading = true;
             if(postData.numberperson > 0 && postData.premiumPackage > 0) {
                 TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
@@ -147,6 +147,7 @@
         }
 
         function onGetPremiumSuccess(result) {
+            vm.loading = false;
             if(vm.product.numberperson > 0) {
             	vm.product.premiumnet = result.premiumnet;
                 vm.product.premiumtnc = result.premiumtnc;
@@ -163,10 +164,12 @@
         }
 
         function onGetPremiumError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'getPremium');
         }
 
         function createNewPolicy() {
+            vm.loading = true;
             var postData = getPostData(true);
 
             vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
@@ -188,11 +191,13 @@
         }
 
         function onCreatePolicySuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
         function onCreatePolicyError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'createPolicy');
         }
 

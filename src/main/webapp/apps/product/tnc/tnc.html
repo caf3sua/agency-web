@@ -1,4 +1,6 @@
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+<div class="bv-loading" ng-show="vm.loading">
+</div>
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
         <div class="hidden-md hidden-lg text-center ">
             <div class="text-center display-inline-block bv-step-mobile" ng-click="vm.closeOpenStepMobile('step1')" id="mobile-step-1">
                 <p class="display-inline-block">{{vm.typeNameOne}}</p>
@@ -99,37 +101,39 @@
                             <span>Người yêu cầu bảo hiểm có đi cùng và có tham gia bảo hiểm(Bỏ chọn ô này để xóa thông tin)</span>
                         </label>
                     </div>
-                    <table class="table table-bordered margin-top-10" ng-show="vm.isShowPersonList">
-                        <thead>
-                        <tr>
-                            <th>Họ và tên</th>
-                            <th>Số Hộ chiếu/CMND</th>
-                            <th>Ngày sinh (dd/MM/yyyy)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="person in vm.policy.listTncAdd">
-                            <td><input name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
-                                       required-message="'Chưa nhập Họ và Tên!'"
-                                       required></td>
-                            <td><input name="idPasswport{{$index}}" type="text" class="form-control" ng-model="person.idPasswport"
-                                       required-message="'Chưa nhập số hộ chiếu/CMND!'"
-                                       required/></td>
-                            <td>
-                                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                    <div class="width-100">
-                                        <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
-                                               required-message="'Chưa chọn ngày sinh!'"
-                                               required>
+                    <div class="table-responsive bv-home-block-left-table-responsive margin-top-10">
+                        <table class="table table-bordered " ng-show="vm.isShowPersonList">
+                            <thead>
+                            <tr>
+                                <th>Họ và tên</th>
+                                <th>Số Hộ chiếu/CMND</th>
+                                <th>Ngày sinh (dd/MM/yyyy)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="person in vm.policy.listTncAdd">
+                                <td><input name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
+                                           required-message="'Chưa nhập Họ và Tên!'"
+                                           required></td>
+                                <td><input name="idPasswport{{$index}}" type="text" class="form-control" ng-model="person.idPasswport"
+                                           required-message="'Chưa nhập số hộ chiếu/CMND!'"
+                                           required/></td>
+                                <td>
+                                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                        <div class="width-100">
+                                            <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
+                                                   required-message="'Chưa chọn ngày sinh!'"
+                                                   required>
+                                        </div>
+                                        <div class="input-group-addon bv-date-icon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
                                     </div>
-                                    <div class="input-group-addon bv-date-icon">
-                                        <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="margin-top-5 padding-bottom-35">
                         <button type="submit" class="bv-btn-step3">Tiếp theo</button>
                     </div>

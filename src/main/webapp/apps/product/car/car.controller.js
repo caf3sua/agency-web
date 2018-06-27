@@ -224,6 +224,7 @@
   		}
   		
   		function getPremium() {
+            vm.loading = true;
   			var postData = getPostData(false);
   			CarService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
   		}
@@ -267,6 +268,7 @@
   		}
   		
   		function onGetPremiumSuccess(result) {
+            vm.loading = false;
     		if(vm.product.tndsbbCheck && vm.product.tndsSoCho) {
     			vm.isShowTndsbbPhi = true;
     			vm.product.tndsbbPhi = result.tndsbbPhi;
@@ -301,11 +303,13 @@
     	}
     	
     	function onGetPremiumError(result) {
+            vm.loading = false;
     		vm.clearResponseError();
             vm.validateResponse(result, 'getPremium');
     	}
     	
     	function createNewPolicy() {
+            vm.loading = true;
     		var postData = getPostData(true);
     		
     	  	vm.policy.actualValue = postData.actualValue;
@@ -345,11 +349,13 @@
     	}
     	
     	function onCreatePolicySuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
     	}
     	
     	function onCreatePolicyError(result) {
+            vm.loading = false;
     		vm.clearResponseError();
             vm.validateResponse(result, 'createPolicy');
     	}

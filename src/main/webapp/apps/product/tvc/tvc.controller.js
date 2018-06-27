@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTvcController', ProductTvcController);
 
-    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'toastr', 'ProductCommonService'];
+    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'ProductCommonService'];
 
-    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, toastr, ProductCommonService) {
+    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, ProductCommonService) {
     	var vm = this;
     	vm.policy = {
                 agreementId: "",
@@ -93,6 +93,7 @@
             getPremium();
         }
         function getPremium() {
+            vm.loading = true;
             vm.product.destination =  vm.policy.destinationId;
             vm.product.ngayDi =  vm.policy.inceptionDate;
             vm.product.ngayVe  =  vm.policy.expiredDate;
@@ -110,6 +111,7 @@
             TvcService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
+            vm.loading = false;
             vm.policy.premium  = result.premiumTvc;
             vm.policy.soNguoiThamGia  = result.numberOfPerson;
             vm.policy.netPremium   = result.premiumNet;
@@ -125,6 +127,7 @@
         }
 
         function onGetPremiumError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'getPremium');
         }
         function infoPerson() {
@@ -133,6 +136,7 @@
             console.log(vm.policy);
         }
         function createNewPolicy() {
+            vm.loading = true;
             if(vm.product.receiveMethod){
                 vm.policy.receiveMethod = '2';
             }else{
@@ -148,11 +152,13 @@
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
         function onGetCreateError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'createPolicy');
         }
 

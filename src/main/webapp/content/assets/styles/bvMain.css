@@ -1269,7 +1269,7 @@ body {
 }
 .bv-home-block-left-table-responsive{
     min-width: 100%;
-    max-width: 400px;
+    max-width: 365px;
 }
 .table-responsive {
     width: 100%;
@@ -1731,6 +1731,19 @@ body {
 }
 .datepicker.dropdown-menu {
     z-index: 9999 !important;
+}
+.bv-loading{
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/content/assets/images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center 100px;
+    background-color: #eee;
+    opacity: 0.4;
 }
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{

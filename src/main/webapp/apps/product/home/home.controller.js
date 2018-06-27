@@ -103,9 +103,11 @@
         }
   		
   		function getPremium() {
+            vm.loading = true;
   			ProductHomeService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
+                vm.loading = false;
   				vm.product = data;
   				vm.policy.si = data.si;
   				vm.policy.siin = data.siin;
@@ -120,6 +122,7 @@
                 vm.clearResponseError();
             }
             function onGetPremiumError(error) {
+                vm.loading = false;
                 console.log(error.data.message);
                 vm.product.premiumHome = 0;
             	vm.product.premiumNet = 0;
@@ -149,9 +152,11 @@
   			vm.appendCommonData(vm.policy);
   			
   			//debugger
+            vm.loading = true;
   			ProductHomeService.createPolicy(vm.policy, onSuccess, onError);
   			
   			function onSuccess(data, headers) {
+                vm.loading = false;
   				vm.policy = data;
   				console.log(vm.policy);
   				toastr.success('Create Invoice Success!', 'Successful!');
@@ -159,6 +164,7 @@
             }
   			
             function onError(error) {
+                vm.loading = false;
                 vm.validateResponse(error, 'createPolicy');
             }
   		}

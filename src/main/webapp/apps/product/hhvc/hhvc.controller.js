@@ -328,6 +328,7 @@
         }
 
         function getPremium() {
+            vm.loading = true;
             var postData = getPostData(false);
 
             if(postData.loaiHangHoa != 0 && postData.dieuKhoanBaoHiem != 0 && postData.giaTriHang != 0 && postData.phuongThucThanhToan != 0) {
@@ -361,6 +362,7 @@
         }
 
         function onGetPremiumSuccess(result) {
+            vm.loading = false;
             vm.product.premiumNet = result.premiumNet;
             vm.product.premiumHHVC = result.premiumHHVC;
 
@@ -376,10 +378,12 @@
         }
 
         function onGetPremiumError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'getPremium');
         }
 
         function createNewPolicy() {
+            vm.loading = true;
             var postData = getPostData(true);
 
             if(postData.receiveMethod) {
@@ -418,11 +422,13 @@
         }
 
         function onCreatePolicySuccess(result) {
+            vm.loading = false;
             toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
         function onCreatePolicyError(result) {
+            vm.loading = false;
             vm.validateResponse(result, 'createPolicy');
         }
 

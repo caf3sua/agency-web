@@ -28,6 +28,7 @@
 		var checkCloseStepOne = false;
         var checkCloseStepTwo = false;
         var checkCloseStepThree = false;
+        vm.loading = false;
         vm.typeArrowOne = "fa-angle-left";
         vm.typeArrowTwo = "fa-angle-left";
         vm.typeArrowThree = "fa-angle-right";
