@@ -149,7 +149,6 @@
                 vm.isShowChangePremium = true;
                 vm.sumPremiumDiscount =   result.premiumDiscount ;
             }
-
             vm.clearResponseError();
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
@@ -190,7 +189,7 @@
             console.log(vm.policy);
         }
         function onGetCreateSuccess(result) {
-            toastr.success('Success!');
+            toastr.success('Create Invoice Success!', 'Successful!');
             vm.clearResponseError();
         }
 
