@@ -50,7 +50,7 @@
   		function confirmCancelOrder() {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'fa fa-trash-o',
+                icon: 'fa fa-times',
                 theme: 'modern',
                 type: 'red',
                 content: '<div class="text-center">Bạn chắc chắn muốn hủy hợp đồng này ?</div>',
