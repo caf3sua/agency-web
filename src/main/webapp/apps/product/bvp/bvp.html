@@ -55,7 +55,7 @@
                     <div class=" display-flex margin-top-10">
                         <div class="margin-right-5 width-100">
                             <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <input type="text" class="bv-input" name="ngaySinh" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.getPremium()">
+                                <input type="text" class="bv-input" name="ngaySinh" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.onDobChange()">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -138,7 +138,7 @@
                                 <span>Bảo hiểm tai nạn cá nhân</span>
                             </label>
                             <div class="margin-top-5" ng-show="vm.product.chuongTrinh && vm.product.tncnChk">
-                                <relation-combo type="bvp-tncn" ng-model="vm.product.tncnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
+                                <relation-combo type="bvp-tncn" name="tncnSi" ng-model="vm.product.tncnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
                             </div>
                         </div>
                         <div>
@@ -153,7 +153,7 @@
                                 <span>Bảo hiểm sinh mạng cá nhân</span>
                             </label>
                             <div class="margin-top-5" ng-show="vm.product.chuongTrinh && vm.product.smcnChk">
-                                <relation-combo type="bvp-smcn" ng-model="vm.product.smcnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
+                                <relation-combo type="bvp-smcn" name="smcnSi" ng-model="vm.product.smcnSi" options="vm.siOptions" onfinished="vm.processComboResult(data, type)"/>
                             </div>
                         </div>
                         <div>
@@ -198,7 +198,8 @@
                 	<div class="lock-all" ng-show="vm.product.phiBH == 0"></div>
                     <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
                     <contact-section
-                        isShowExtendInfo="false"
+                    	name="nguoiycName"
+                        is-show-extend-info="false"
                         title="1. Thông tin người yêu cầu bảo hiểm"
                         contact-name="vm.policy.nguoiycName" contact-dob="vm.policy.nguoiycNgaysinh"
                         contact-id-number="vm.policy.nguoiycCmnd" contact-relation="vm.policy.nguoiycQuanhe"
@@ -207,7 +208,8 @@
                     <div class="margin-top-20"/>
 
                     <contact-section
-                        isShowExtendInfo="true"
+                    	name="nguoidbhName"
+                        is-show-extend-info="true"
                         title="2. Thông tin người được bảo hiểm"
                         contact-name="vm.policy.nguoidbhName" contact-dob="vm.policy.nguoidbhNgaysinh"
                         contact-id-number="vm.policy.nguoidbhCmnd" contact-relation="vm.policy.nguoidbhQuanhe"
@@ -348,7 +350,8 @@
                     <div class="margin-top-20"/>
 
                     <contact-section
-                        isShowExtendInfo="true"
+                    	name="nguoithName"
+                        is-show-extend-info="true"
                         title="4. Thông tin người thụ hưởng bảo hiểm"
                         contact-name="vm.policy.nguoithName" contact-dob="vm.policy.nguoithNgaysinh"
                         contact-id-number="vm.policy.nguoithCmnd" contact-relation="vm.policy.nguoithQuanhe"

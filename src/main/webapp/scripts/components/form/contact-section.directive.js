@@ -9,6 +9,7 @@
         var directive = {
             restrict: 'E',
             scope: {
+            	name: '@',
             	isShowExtendInfo: '=',
                 title: '@',
                 contactName: '=',
