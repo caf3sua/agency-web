@@ -198,7 +198,6 @@
 
         function createNewPolicy() {
             var postData = getPostData(true);
-            vm.loading = true;
             vm.policy.chaynoCheck = postData.chaynoCheck;
             vm.policy.chaynoPhi = postData.chaynoPhi;
             vm.policy.chaynoStbh = postData.chaynoStbh;
@@ -219,20 +218,10 @@
             vm.policy.tongPhi = postData.tongPhi;
             vm.policy.typeOfMotoId = postData.typeOfMoto;
 
-            MotoService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            // call base
+            vm.createNewPolicyBase("MOTO", vm.policy);
         }
 
-        function onCreatePolicySuccess(result) {
-            vm.loading = false;
-            toastr.success('Create Invoice Success!', 'Successful!');
-            vm.clearResponseError();
-        }
-
-        function onCreatePolicyError(result) {
-            vm.loading = false;
-            vm.validateResponse(result, 'createPolicy');
-        }
-        
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
             vm.clearResponseError();

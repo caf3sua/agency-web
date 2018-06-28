@@ -148,18 +148,9 @@
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.policyNumber = vm.policy.gycbhNumber;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
-            TvcService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
-            console.log(vm.policy);
-        }
-        function onGetCreateSuccess(result) {
-            vm.loading = false;
-            toastr.success('Create Invoice Success!', 'Successful!');
-            vm.clearResponseError();
-        }
-
-        function onGetCreateError(result) {
-            vm.loading = false;
-            vm.validateResponse(result, 'createPolicy');
+            
+            // call base
+            vm.createNewPolicyBase("TVC", vm.policy);
         }
 
         function addOrRemovePerson() {

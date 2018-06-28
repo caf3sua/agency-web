@@ -169,7 +169,7 @@
         }
 
         function createNewPolicy() {
-            vm.loading = true;
+//            vm.loading = true;
             var postData = getPostData(true);
 
             vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
@@ -187,19 +187,21 @@
                 vm.policy.receiveMethod = "1";
             }
 
-            TncService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            //TncService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            // call base
+            vm.createNewPolicyBase("TNC", vm.policy);
         }
 
-        function onCreatePolicySuccess(result) {
-            vm.loading = false;
-            toastr.success('Create Invoice Success!', 'Successful!');
-            vm.clearResponseError();
-        }
-
-        function onCreatePolicyError(result) {
-            vm.loading = false;
-            vm.validateResponse(result, 'createPolicy');
-        }
+//        function onCreatePolicySuccess(result) {
+//            vm.loading = false;
+//            toastr.success('Create Invoice Success!', 'Successful!');
+//            vm.clearResponseError();
+//        }
+//
+//        function onCreatePolicyError(result) {
+//            vm.loading = false;
+//            vm.validateResponse(result, 'createPolicy');
+//        }
 
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;

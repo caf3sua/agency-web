@@ -20,9 +20,11 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$rootScope', '$scope', '$window', '$compile', '$timeout', 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils'];
+    ProductBaseController.$inject = ['vm', '$state', '$rootScope', '$scope', '$window', '$compile', '$timeout'
+    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService'];
 
-    function ProductBaseController(vm, $rootScope, $scope, $window, $compile, $timeout, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils){
+    function ProductBaseController(vm, $state, $rootScope, $scope, $window, $compile, $timeout
+    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -77,7 +79,82 @@
         vm.clearResponseError = clearResponseError;
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
         
+        vm.createNewPolicyBase = createNewPolicyBase; 
+        vm.showCreatePolicySuccessInfo = showCreatePolicySuccessInfo;
         // implement function
+        function createNewPolicyBase(productCode, obj) {
+        	vm.loading = true;
+        	console.log('create new policy: ' + productCode);
+        	switch(productCode){
+	  	        case "KCARE":
+	  	        	ProductCommonService.createKcarePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+	  	        case "CAR":
+	  	        	ProductCommonService.createCarPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+	  	        case "BVP":
+	  	        	ProductCommonService.createBvpPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+	  	        case "KHC":
+	  	        	ProductCommonService.createKhcPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+	  	        case "TNC":
+	  	        	ProductCommonService.createTncPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+		  	    case "TVC":
+		  	    	ProductCommonService.createTvcPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+	  	            break;
+		  	    case "TVI":
+		  	    	ProductCommonService.createTviPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+		            break;
+		  	    case "HOME":
+		  	    	ProductCommonService.createHomePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+		            break;
+		  	    case "MOTO":
+		  	    	ProductCommonService.createMotoPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+		            break;
+		  	    case "HHVC":
+		  	    	ProductCommonService.createHhvcPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+		            break;
+	  	        default: 
+	  	            console.log('invalid product code');
+	  	        break;
+	  	    }
+
+  			function onCreatePolicySuccess(data, headers) {
+  				vm.clearResponseError();
+                vm.loading = false;
+  				vm.showCreatePolicySuccessInfo();
+            }
+  			
+            function onCreatePolicyError(error) {
+                vm.loading = false;
+                vm.validateResponse(error, 'createPolicy');
+            }
+        }
+        
+        function showCreatePolicySuccessInfo() {
+        	$ngConfirm({
+                title: 'Thông báo',
+                icon: 'fa fa-check',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">Tạo hợp đồng thành công!</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đóng',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	$state.go('app.cart');
+	                    }
+                    }
+                },
+            });
+        }
+        
+        
 		function getAccount() {
   			Principal.identity().then(function(account) {
                 vm.currentAccount = account;

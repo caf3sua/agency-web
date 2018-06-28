@@ -190,18 +190,9 @@
             vm.policy.policyNumber = vm.policy.gycbhNumber;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
             vm.policy.chaynoStbh = 0;
-            TviService.createNewPolicy(vm.policy, onGetCreateSuccess, onGetCreateError);
-            console.log(vm.policy);
-        }
-        function onGetCreateSuccess(result) {
-            vm.loading = false;
-            toastr.success('Create Invoice Success!', 'Successful!');
-            vm.clearResponseError();
-        }
-
-        function onGetCreateError(result) {
-            vm.loading = false;
-            vm.validateResponse(result, 'createPolicy');
+            
+            // call base
+            vm.createNewPolicyBase("TVI", vm.policy);
         }
 
         function addOrRemovePerson() {

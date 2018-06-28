@@ -352,25 +352,27 @@
   		}
   		
   		function createPolicy() {
-            vm.loading = true;
-  			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
-  			//debugger
-  			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
   			
-  			function onSuccess(data, headers) {
-                vm.loading = false;
-  				vm.policy = data;
-  				console.log(vm.policy);
-  				toastr.success('Create Invoice Success!', 'Successful!');
-                vm.clearResponseError();
-            }
-  			
-            function onError(error) {
-                vm.loading = false;
-                vm.validateResponse(error, 'createPolicy');
-            }
+  			// call base
+  			vm.createNewPolicyBase("KCARE", vm.policy);
+//  			//debugger
+//  			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
+//  			
+//  			function onSuccess(data, headers) {
+//  				vm.clearResponseError();
+//                vm.loading = false;
+//  				vm.policy = data;
+//  				console.log(vm.policy);
+//  				//toastr.success('Create Invoice Success!', 'Successful!');
+//  				vm.showCreatePolicySuccessInfo();
+//            }
+//  			
+//            function onError(error) {
+//                vm.loading = false;
+//                vm.validateResponse(error, 'createPolicy');
+//            }
   		}
   		
   		function changeToDate() {

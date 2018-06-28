@@ -147,26 +147,11 @@
   		}
 
   		function createPolicy() {
-  			console.log('createPolicy');
   			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
   			
-  			//debugger
-            vm.loading = true;
-  			ProductHomeService.createPolicy(vm.policy, onSuccess, onError);
-  			
-  			function onSuccess(data, headers) {
-                vm.loading = false;
-  				vm.policy = data;
-  				console.log(vm.policy);
-  				toastr.success('Create Invoice Success!', 'Successful!');
-                vm.clearResponseError();
-            }
-  			
-            function onError(error) {
-                vm.loading = false;
-                vm.validateResponse(error, 'createPolicy');
-            }
+  			// call base
+  			vm.createNewPolicyBase("HOME", vm.policy);
   		}
   		
   		function changeToDate() {

@@ -207,19 +207,20 @@
             }
             vm.policy.tlAddcollections = postData.premiumKhcList;
 
-            KhcService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
+            // call base
+            vm.createNewPolicyBase("KHC", vm.policy);
         }
 
-        function onCreatePolicySuccess(result) {
-            vm.loading = false;
-            toastr.success('Create Invoice Success!', 'Successful!');
-            vm.clearResponseError();
-        }
-
-        function onCreatePolicyError(result) {
-            vm.loading = false;
-            vm.validateResponse(result, 'createPolicy');
-        }
+//        function onCreatePolicySuccess(result) {
+//            vm.loading = false;
+//            toastr.success('Create Invoice Success!', 'Successful!');
+//            vm.clearResponseError();
+//        }
+//
+//        function onCreatePolicyError(result) {
+//            vm.loading = false;
+//            vm.validateResponse(result, 'createPolicy');
+//        }
 
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
