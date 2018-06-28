@@ -30,7 +30,7 @@
 
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
-                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="0d">
                                <div class="width-100">
                                    <input type="text" name="ngayBatDau" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.ngayBatDau" ng-change="vm.changeToDate()">
                                </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class=" display-flex margin-top-5">
                         <div class="margin-right-5 width-100">
-                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d">
                                 <div class="width-100">
                                     <input type="text" name="ngaySinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.product.ngaySinh" ng-change="vm.onDobChange()">
                                 </div>
@@ -66,7 +66,14 @@
                             </div>
                         </div>
                         <div class="width-100">
-                                <input type="text" name="tuoi" style="width: 60px" disabled="disabled" class="bv-input" ng-model="vm.tuoi"> tuổi
+                        	<div class="input-group display-flex">
+                                <div class="width-100">
+                                    <input type="number" min="0" class="bv-input" name="tuoi" placeholder="Tuổi" ng-model="vm.tuoi" ng-disabled="true"/>
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
+                                    <i class="material-icons md-15"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

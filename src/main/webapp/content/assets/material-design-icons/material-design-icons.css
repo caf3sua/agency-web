@@ -36,6 +36,7 @@
   font-feature-settings: 'liga';
 }
 
+.material-icons.md-15 { font-size: 15px; }
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; vertical-align: -7px;}
 .material-icons.md-36 { font-size: 36px; vertical-align: -12px;}

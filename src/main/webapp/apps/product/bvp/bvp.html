@@ -62,7 +62,14 @@
                             </div>
                         </div>
                         <div class="width-100">
-                            <input type="number" min="0" class="bv-input" name="tuoi" placeholder="Tuổi" ng-model="vm.product.tuoi" ng-disabled="true"/>
+                            <div class="input-group display-flex">
+                                <div class="width-100">
+                                    <input type="number" min="0" class="bv-input" name="tuoi" placeholder="Tuổi" ng-model="vm.product.tuoi" ng-disabled="true"/>
+                                </div>
+                                <div class="input-group-addon bv-date-icon">
+                                    <i class="material-icons md-15"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="margin-top-10 required">
