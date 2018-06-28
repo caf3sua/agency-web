@@ -38,51 +38,59 @@
                                 <p>Cấp đơn<i class="fas {{vm.arrowContact}}"></i></p>
                             </div>
                             <div class="bv-detail-contact">
-                                <p ng-click="vm.openContactDetail('ql')">Quan hệ <i class="fas fa-chevron-right"></i></p>
-                                <div class="display-flex">
-                                    <div class="width-100 margin-right-5">
-                                        <select class="form-control">
-                                            <option>Lái xe</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                    <div class="width-100">
-                                        <select class="form-control">
-                                            <option>Bảo hiểm mô tô</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
+                                <p ng-init="vm.isCollapsedRelationship = false" ng-click="vm.isCollapsedRelationship = !vm.isCollapsedRelationship">
+                                	Quan hệ <i class="fas" ng-class="vm.isCollapsedRelationship ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+                                </p>
+                                <div uib-collapse="vm.isCollapsedRelationship">
+	                                <div class="display-flex">
+	                                    <div class="width-100 margin-right-5">
+	                                        <select class="form-control">
+	                                            <option>Lái xe</option>
+	                                            <option>2</option>
+	                                            <option>3</option>
+	                                            <option>4</option>
+	                                        </select>
+	                                    </div>
+	                                    <div class="width-100">
+	                                        <select class="form-control">
+	                                            <option>Bảo hiểm mô tô</option>
+	                                            <option>2</option>
+	                                            <option>3</option>
+	                                            <option>4</option>
+	                                        </select>
+	                                    </div>
+	                                </div>
                                 </div>
                             </div>
                             <div class="bv-detail-contact">
-                                <p ng-click="vm.openContactDetail('ql')">Liên hệ <i class="fas fa-chevron-right"></i></p>
-                                <div class="margin-top-20">
-                                    <p class="bv-title-from">Mobile</p>
-                                </div>
-                                <div>
-                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.phone}}</p>
-                                </div>
-                                <div class="margin-top-10">
-                                    <p class="bv-title-from">Email</p>
-                                </div>
-                                <div>
-                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.email}}</p>
-                                </div>
-                                <div class="margin-top-10">
-                                    <p class="bv-title-from">Điạ chỉ</p>
-                                </div>
-                                <div>
-                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.homeAddress}}</p>
-                                </div>
-                                <div class="margin-top-10">
-                                    <p class="bv-title-from">Facebook message</p>
-                                </div>
-                                <div>
-                                    <p class="bv-tile-templateSummary"></p>
+                                <p ng-init="vm.isCollapsedContact = false" ng-click="vm.isCollapsedContact = !vm.isCollapsedContact">
+                                	Liên hệ <i class="fas" ng-class="vm.isCollapsedContact ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+                                </p>
+                                <div uib-collapse="vm.isCollapsedContact">
+                                	<div class="margin-top-20">
+	                                    <p class="bv-title-from">Mobile</p>
+	                                </div>
+	                                <div>
+	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.phone}}</p>
+	                                </div>
+	                                <div class="margin-top-10">
+	                                    <p class="bv-title-from">Email</p>
+	                                </div>
+	                                <div>
+	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.email}}</p>
+	                                </div>
+	                                <div class="margin-top-10">
+	                                    <p class="bv-title-from">Điạ chỉ</p>
+	                                </div>
+	                                <div>
+	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.homeAddress}}</p>
+	                                </div>
+	                                <div class="margin-top-10">
+	                                    <p class="bv-title-from">Facebook message</p>
+	                                </div>
+	                                <div>
+	                                    <p class="bv-tile-templateSummary"></p>
+	                                </div>
                                 </div>
                             </div>
                         </div>
