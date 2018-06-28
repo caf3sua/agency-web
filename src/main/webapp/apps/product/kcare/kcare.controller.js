@@ -356,6 +356,8 @@
   			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
+            vm.policy.contactName = vm.contactName;
+            vm.policy.contactDob = vm.contactDob;
   			//debugger
   			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
   			

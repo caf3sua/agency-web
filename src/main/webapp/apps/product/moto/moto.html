@@ -118,37 +118,37 @@
                         <p>Phí bảo hiểm trách nhiệm dân sự bắt buộc (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowTndsbbPhi">
-                        <p class="bv-tile-templateSummary">{{vm.product.tndsbbPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.tndsbbPhi | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowTndstnPhi">
                         <p>Phí bảo hiểm trách nhiệm dân sự tự nguyện (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowTndstnPhi">
-                        <p class="bv-tile-templateSummary">{{vm.product.tndstnPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.tndstnPhi | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowNntxPhi">
                         <p>Phí bảo hiểm tai nạn người trên xe:</p>
                     </div>
                     <div ng-show="vm.isShowNntxPhi">
-                        <p class="bv-tile-templateSummary">{{vm.product.nntxPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.nntxPhi | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowChaynoPhi">
                         <p>Phí bảo hiểm Cháy nổ (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowChaynoPhi">
-                        <p class="bv-tile-templateSummary">{{vm.product.chaynoPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.chaynoPhi | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowPremium">
                         <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.tongPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.tongPhi | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                         <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowTotalPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.tongPhi}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.tongPhi | number:0 }}</p>
                     </div>
                 </div>
                 <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.tongPhi == 0">
@@ -375,7 +375,7 @@
 	                                    </td>
 	                                    <td>
 	                                        <div class="bv-tile-templateSummary">
-	                                            <span>{{vm.product.tndsbbPhi}}</span><span>VND</span>
+	                                            <span>{{vm.product.tndsbbPhi | number:0 }}</span><span>VND</span>
 	                                        </div>
 	                                    </td>
 	                                </tr>
@@ -397,7 +397,7 @@
 	                                    </td>
 	                                    <td>
 	                                        <div class="bv-tile-templateSummary">
-	                                            <span>{{vm.product.tndstnPhi}}</span><span>VND</span>
+	                                            <span>{{vm.product.tndstnPhi | number:0 }}</span><span>VND</span>
 	                                        </div>
 	                                    </td>
 	                                </tr>
@@ -410,13 +410,13 @@
 	                                                - Số người: {{vm.product.nntxSoNguoi}} người
 	                                            </p>
 	                                            <p class="margin-bottom-0">
-	                                                - Số tiền bảo hiểm: {{vm.product.nntxStbh}} VND/người/vụ
+	                                                - Số tiền bảo hiểm: {{vm.product.nntxStbh | number:0 }} VND/người/vụ
 	                                            </p>
 	                                        </div>
 	                                    </td>
 	                                    <td>
 	                                        <div class="bv-tile-templateSummary">
-	                                            <span>{{vm.product.nntxPhi}}</span><span>VND</span>
+	                                            <span>{{vm.product.nntxPhi | number:0 }}</span><span>VND</span>
 	                                        </div>
 	                                    </td>
 	                                </tr>
@@ -426,13 +426,13 @@
 	                                    <td>
 	                                        <div class="bv-tile-templateSummary">
 	                                            <p class="margin-bottom-0">
-	                                                - Số tiền bảo hiểm: {{vm.product.chaynoStbh}} VND
+	                                                - Số tiền bảo hiểm: {{vm.product.chaynoStbh | number:0 }} VND
 	                                            </p>
 	                                        </div>
 	                                    </td>
 	                                    <td>
 	                                        <div class="bv-tile-templateSummary">
-	                                            <span>{{vm.product.chaynoPhi}}</span><span>VND</span>
+	                                            <span>{{vm.product.chaynoPhi | number:0 }}</span><span>VND</span>
 	                                        </div>
 	                                    </td>
 	                                </tr>
@@ -444,7 +444,7 @@
 	                                        <p class="bv-title-from">Tổng phí bảo hiểm</p>
 	                                    </td>
 	                                    <td>
-	                                        <p class="bv-tile-templateSummary"><span>{{vm.product.tongPhi}}</span><span>VND</span></p></td>
+	                                        <p class="bv-tile-templateSummary"><span>{{vm.product.tongPhi | number:0 }}</span><span>VND</span></p></td>
 	                                </tr>
                                 </tfoot>
                             </table>

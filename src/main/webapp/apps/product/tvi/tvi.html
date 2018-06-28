@@ -182,7 +182,7 @@
                                         <p class="bv-gh-text-sum-product">Tổng phí bảo hiểm:</p>
                                     </td>
                                     <td class="text-right">
-                                        <p class="">{{vm.policy.netPremium}}</p>
+                                        <p class="">{{vm.policy.netPremium | number:0 }}</p>
                                     </td>
                                 </tr>
                                 <tr ng-show="vm.isShowChangePremium">
@@ -190,7 +190,7 @@
                                         <p class="bv-gh-text-sum-product">Giảm phí:</p>
                                     </td>
                                     <td class="text-right">
-                                        <p class="">{{vm.sumPremiumDiscount}}</p>
+                                        <p class="">{{vm.sumPremiumDiscount | number:0 }}</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -198,7 +198,7 @@
                                         <p class="bv-gh-text-sum-product">Tổng phí thanh toán:</p>
                                     </td>
                                     <td class="text-right">
-                                        <p class="bv-gh-number-sum-product">{{vm.policy.premium}}</p>
+                                        <p class="bv-gh-number-sum-product">{{vm.policy.premium | number:0 }}</p>
                                     </td>
                                 </tr>
                             </table>
@@ -380,13 +380,13 @@
                                 <p class="bv-title-from">Tổng phí bảo hiểm</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.premium }}</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.premium | number:0 }}</p>
                             </div>
                             <div class="margin-top-10">
                                 <p class="bv-title-from">Tổng phí cân thanh toán</p>
                             </div>
                             <div>
-                                <p class="bv-tile-templateSummary">{{vm.policy.premium }}</p>
+                                <p class="bv-tile-templateSummary">{{vm.policy.premium | number:0 }}</p>
                             </div>
                         </div>
                     </div>

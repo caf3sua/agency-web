@@ -344,7 +344,7 @@
 	  		vm.policy.totalPremium = postData.totalPremium;
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
-	  		
+            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
 	  		CarService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
     	}
     	

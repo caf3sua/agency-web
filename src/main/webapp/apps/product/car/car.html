@@ -251,43 +251,43 @@
                     <p>Phí bảo hiểm trách nhiệm dân sự bắt buộc (đã bao gồm VAT):</p>
                 </div>
                 <div ng-show="vm.isShowTndsbbPhi">
-                    <p class="bv-tile-templateSummary">{{vm.product.tndsbbPhi}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.tndsbbPhi | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowTndstnPhi">
                     <p>Phí bảo hiểm trách nhiệm dân sự tự nguyện (đã bao gồm VAT):</p>
                 </div>
                 <div ng-show="vm.isShowTndstnPhi">
-                    <p class="bv-tile-templateSummary">{{vm.product.tndstnPhi}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.tndstnPhi | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowNntxPhi">
                     <p>Phí bảo hiểm người ngồi trên xe:</p>
                 </div>
                 <div ng-show="vm.isShowNntxPhi">
-                    <p class="bv-tile-templateSummary">{{vm.product.nntxPhi}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.nntxPhi | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowVcxPhi">
                     <p>Phí bảo hiểm Vật chất xe tạm tính (đã bao gồm VAT):</p>
                 </div>
                 <div ng-show="vm.isShowVcxPhi">
-                    <p class="bv-tile-templateSummary">{{vm.product.vcxPhi}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.vcxPhi | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowPremium">
                     <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
                 </div>
                 <div ng-show="vm.isShowPremium">
-                    <p class="bv-tile-templateSummary">{{vm.product.premium}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.premium | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowChangePremium">
                     <p>Giảm phí:</p>
                 </div>
                 <div ng-show="vm.isShowChangePremium">
-                    <p class="bv-tile-templateSummary">{{vm.product.chargeFree}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.chargeFree | number:0 }}</p>
                 </div>
                 <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                     <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
                 </div>
                 <div ng-show="vm.isShowTotalPremium">
-                    <p class="bv-tile-templateSummary">{{vm.product.totalPremium}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.product.totalPremium | number:0 }}</p>
                 </div>
             </div>
             <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premium == 0">

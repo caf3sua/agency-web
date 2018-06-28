@@ -269,13 +269,13 @@
                 message = result.data.fieldName + ' is invalid';
             }
             if(type == 'getPremium') {
-                message = 'Get data error, ' + message;
+                message = '' + message;
             } else if(type == 'createPolicy') {
-                message = 'Create invoice error, ' + message ;
+                message = '' + message ;
             } else if(type == 'getPolicyNumber') {
-                message = 'Get policy number error, ' + message ;
+                message = '' + message ;
             }
-            toastr.error(message, 'Error');
+            toastr.error(message, 'Lỗi');
         }
         
         function clearResponseError() {

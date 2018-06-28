@@ -95,13 +95,13 @@
                         <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumNet}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumNet | number:0 }}</p>
                     </div>
                     <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                         <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
                     </div>
                     <div ng-show="vm.isShowTotalPremium">
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc | number:0 }}</p>
                     </div>
                 </div>
                 <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumKhc == 0">
@@ -251,7 +251,7 @@
                         <p>Số tiền bảo hiểm</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumPackage}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumPackage | number:0 }}</p>
                     </div>
                     <div class="bv-title-from">
                         <p>Thời hạn bảo hiểm</p>
@@ -280,7 +280,7 @@
                         <p>Tổng phí phải thanh toán</p>
                     </div>
                     <div>
-                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc}}</p>
+                        <p class="bv-tile-templateSummary">{{vm.product.premiumKhc | number:0 }}</p>
                     </div>
                 </div>
                 <div class="bv-pading-30">
