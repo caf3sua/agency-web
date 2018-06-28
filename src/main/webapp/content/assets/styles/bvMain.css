@@ -1745,6 +1745,17 @@ body {
     background-color: #eee;
     opacity: 0.4;
 }
+.navside .nav li a:hover span {
+   color: #1964af;
+
+}
+.navside .nav li a:hover{
+    background-color: #fff;
+}
+
+.navside .nav li a:hover i {
+    color: #1964af;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
