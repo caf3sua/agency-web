@@ -112,14 +112,14 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="person in vm.policy.listTncAdd">
-                                <td><input name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
+                                <td><input style="width: 150px" name="insuredName{{$index}}" type="text" class="form-control" ng-model="person.insuredName"
                                            required-message="'Chưa nhập Họ và Tên!'"
                                            required></td>
-                                <td><input name="idPasswport{{$index}}" type="text" class="form-control" ng-model="person.idPasswport"
+                                <td><input style="width: 150px"  name="idPasswport{{$index}}" type="text" class="form-control" ng-model="person.idPasswport"
                                            required-message="'Chưa nhập số hộ chiếu/CMND!'"
                                            required/></td>
                                 <td>
-                                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                                    <div style="width: 150px"  class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                         <div class="width-100">
                                             <input name="dob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob"
                                                    required-message="'Chưa chọn ngày sinh!'"
