@@ -97,7 +97,7 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th></th>
+                    <!-- <th></th> -->
                     <th>Mã đơn hàng</th>
                     <th>Tên khách hàng</th>
                     <th>Sản phẩm</th>
@@ -126,9 +126,9 @@
                             </label>
                         </div>
                     </td>
-                    <td>
+                    <!-- <td>
                         <p class="bv-home-table-stt margin-0">{{index}}</p>
-                    </td>
+                    </td> -->
                     <td>
                         <p class="bv-table-text-colorBlue">{{order.policyNumber}}</p>
                     </td>
@@ -136,7 +136,7 @@
                         <p class="">{{order.receiverName}}</p>
                     </td>
                     <td>
-                        <p class="" style="width: 170px;">{{order.lineName}}</p>
+                        <i class="icon-{{order.lineId}} bv-table-text-colorBlue"></i>
                     </td>
                     <td>
                         <p class="">{{order.receiverMoible}}</p>

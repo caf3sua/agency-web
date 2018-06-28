@@ -2777,3 +2777,7 @@ div.required p:after {
 .m-w-150 {
 	min-width: 150px;
 }
+
+.icon-bv-color {
+	color: #0567b2;
+}

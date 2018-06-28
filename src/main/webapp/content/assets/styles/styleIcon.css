@@ -24,40 +24,40 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-mortgage:before {
+.icon-HOM:before, .icon-HOME:before, .icon-mortgage:before {
     content: "\e928";
 }
-.icon-cardiogram:before {
+.icon-KCR:before, .icon-KCARE:before, .icon-cardiogram:before {
     content: "\e929";
 }
-.icon-broken-arm:before {
+.icon-TNC:before, .icon-broken-arm:before {
     content: "\e92a";
 }
-.icon-motorbike:before {
+.icon-MOT:before, .icon-MOTO:before, .icon-motorbike:before {
     content: "\e92b";
 }
-.icon-airplane:before {
+.icon-TVC:before, .icon-airplane:before {
     content: "\e92c";
 }
 .icon-medical-insurance:before {
     content: "\e92d";
 }
-.icon-insurance2:before {
+.icon-BVP:before, .icon-insurance2:before {
     content: "\e92e";
 }
-.icon-car:before {
+.icon-CAR:before, .icon-car:before {
     content: "\e92f";
 }
-.icon-vn:before {
+.icon-TVI:before, .icon-vn:before {
     content: "\e930";
 }
 .icon-golf-flag-and-field:before {
     content: "\e931";
 }
-.icon-insurance:before {
+.icon-KHC:before, .icon-insurance:before {
     content: "\e932";
 }
-.icon-truck:before {
+.icon-HHVC:before, .icon-truck:before {
     content: "\e933";
 }
 .icon-documentation:before {
