@@ -40,6 +40,7 @@
             "userAgent":""
         }
 
+        vm.validatorCombo = validatorCombo;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.onDobChange = onDobChange;
         vm.processComboResult = processComboResult;
@@ -196,7 +197,6 @@
 
         function createNewPolicy() {
             var postData = getPostData(true);
-            vm.loading = true;
             vm.policy.inceptionDate = postData.insuranceStartDate;
             vm.policy.permanentTotalDisablement = postData.numberPerson;
             vm.policy.plan = postData.premiumPackage.toString()[0];
@@ -211,17 +211,6 @@
             vm.createNewPolicyBase("KHC", vm.policy);
         }
 
-//        function onCreatePolicySuccess(result) {
-//            vm.loading = false;
-//            toastr.success('Create Invoice Success!', 'Successful!');
-//            vm.clearResponseError();
-//        }
-//
-//        function onCreatePolicyError(result) {
-//            vm.loading = false;
-//            vm.validateResponse(result, 'createPolicy');
-//        }
-
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
             vm.clearResponseError();
@@ -229,6 +218,13 @@
 
         function onGetPolicyNumberError(result) {
             vm.validateResponse(result, 'getPolicyNumber');
+        }
+        
+        function validatorCombo(name) {
+        	switch(name) {
+  			case "premiumPackage":
+  	            return true;
+			}
         }
     }
 })();

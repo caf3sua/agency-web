@@ -83,6 +83,9 @@
 </div>
 <div class="margin-top-5">
     <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.receiverUserData.mobile"
+    	ng-pattern = "/^[0-9]{10,11}$/"
+    	validate-on="blur"
+        invalid-message = "'Số điện thoại không đúng định dạng'"
     	required-message="'Chưa nhập số điện thoại liên hệ!'"
 	 	required/>
 </div>
@@ -90,7 +93,10 @@
     <p class="bv-title-from">Email người nhận</p>
 </div>
 <div class="margin-top-5">
-    <input type="email" name="receiverUserData.email" class="bv-input" placeholder="Email người nhận" ng-model="vm.receiverUserData.email"
+    <input type="text" name="email22" class="bv-input" placeholder="Email người nhận" ng-model="vm.receiverUserData.email"
+    	ng-pattern = "/\S+@\S+\.\S+/"
+    	validate-on="blur"
+        invalid-message = "'Email không đúng định dạng'"
     	required-message="'Chưa nhập email người nhận!'"
 	 	required/>
 </div>
