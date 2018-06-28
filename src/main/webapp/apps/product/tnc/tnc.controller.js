@@ -128,8 +128,8 @@
 
         function getPremium() {
             var postData = getPostData(false);
-            vm.loading = true;
             if(postData.numberperson > 0 && postData.premiumPackage > 0) {
+                vm.loading = true;
                 TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.product.premiumnet = 0;
