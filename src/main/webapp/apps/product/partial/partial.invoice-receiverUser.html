@@ -82,7 +82,7 @@
     <p class="bv-title-from">Số điện thoại liên hệ</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="receiverUserData.mobile" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.receiverUserData.mobile"
+    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.receiverUserData.mobile"
     	required-message="'Chưa nhập số điện thoại liên hệ!'"
 	 	required/>
 </div>
@@ -90,7 +90,7 @@
     <p class="bv-title-from">Email người nhận</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="receiverUserData.email" class="bv-input" placeholder="Email người nhận" ng-model="vm.receiverUserData.email" 
+    <input type="email" name="receiverUserData.email" class="bv-input" placeholder="Email người nhận" ng-model="vm.receiverUserData.email"
     	required-message="'Chưa nhập email người nhận!'"
 	 	required/>
 </div>

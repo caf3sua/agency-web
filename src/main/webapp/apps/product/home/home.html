@@ -89,7 +89,7 @@
                                             <p class="bv-gh-text-sum-product">Phí bảo hiểm phần ngôi nhà:</p>
                                         </td>
                                         <td class="text-right">
-                                            <p class="">{{vm.product.premiumSi | number}} VND</p>
+                                            <p class="">{{vm.product.premiumSi | number:0 }} VND</p>
                                         </td>
                                     </tr>
                                     <tr >
@@ -97,7 +97,7 @@
                                             <p class="bv-gh-text-sum-product">Phí bảo hiểm phần tài sản bên trong:</p>
                                         </td>
                                         <td class="text-right">
-                                            <p class="">{{vm.product.premiumSiin | number}} VND</p>
+                                            <p class="">{{vm.product.premiumSiin | number:0 }} VND</p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -105,7 +105,7 @@
                                             <p class="bv-gh-text-sum-product">Tổng phí bảo hiểm:</p>
                                         </td>
                                         <td class="text-right">
-                                            <p class="">{{vm.product.premiumNet | number}} VND</p>
+                                            <p class="">{{vm.product.premiumNet | number:0 }} VND</p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -113,7 +113,7 @@
                                             <p class="bv-gh-text-sum-product">Tổng phí thanh toán:</p>
                                         </td>
                                         <td class="text-right">
-                                            <p class="bv-gh-number-sum-product">{{vm.product.premiumHome | number}} VND</p>
+                                            <p class="bv-gh-number-sum-product">{{vm.product.premiumHome | number:0 }} VND</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -420,7 +420,7 @@
                             <p class="bv-title-from">Tổng tiền thanh toán</p>
                         </div>
                         <div>
-                            <p class="bv-tile-templateSummary">{{vm.policy.premiumHome | number}} VND</p>
+                            <p class="bv-tile-templateSummary">{{vm.policy.premiumHome | number:0 }} VND</p>
                         </div>
                         
                         <div class="text-header-sp" style="margin-bottom: 10px">

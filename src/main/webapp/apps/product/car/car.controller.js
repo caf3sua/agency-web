@@ -309,7 +309,6 @@
     	}
     	
     	function createNewPolicy() {
-//            vm.loading = true;
     		var postData = getPostData(true);
     		
     	  	vm.policy.actualValue = postData.actualValue;
@@ -344,23 +343,10 @@
 	  		vm.policy.totalPremium = postData.totalPremium;
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
-	  		
+            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
 	  		// call base to create policy
 	  		vm.createNewPolicyBase("CAR", vm.policy);
-//	  		CarService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
     	}
-    	
-//    	function onCreatePolicySuccess(result) {
-//            vm.loading = false;
-//            toastr.success('Create Invoice Success!', 'Successful!');
-//            vm.clearResponseError();
-//    	}
-    	
-//    	function onCreatePolicyError(result) {
-//            vm.loading = false;
-//    		vm.clearResponseError();
-//            vm.validateResponse(result, 'createPolicy');
-//    	}
     	
     	function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;

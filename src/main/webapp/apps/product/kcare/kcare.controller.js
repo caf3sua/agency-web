@@ -352,6 +352,8 @@
   		}
   		
   		function createPolicy() {
+            vm.loading = true;
+  			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
   			

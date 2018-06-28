@@ -279,7 +279,6 @@
         }
 
         function createNewPolicy() {
-//            vm.loading = true;
             var postData = getPostData(true);
             
             if(vm.isHealthyPerson) {
@@ -303,7 +302,6 @@
                 vm.policy.receiveMethod = "1";
             }
 
-//            BvpService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
             vm.createNewPolicyBase("BVP", vm.policy);
         }
         
@@ -311,17 +309,6 @@
             vm.panelType = type;
             vm.openSearchContact();
         }
-
-//        function onCreatePolicySuccess(result) {
-//            vm.loading = false;
-//            toastr.success('Create Invoice Success!', 'Successful!');
-//            vm.clearResponseError();
-//        }
-//
-//        function onCreatePolicyError(result) {
-//            vm.loading = false;
-//            vm.validateResponse(result, 'createPolicy');
-//        }
 
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
