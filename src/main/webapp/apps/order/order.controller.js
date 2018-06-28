@@ -26,7 +26,7 @@
   			  "fromDate": "",
   			  "gycbhNumber": "",
   			  "lstStatusPolicy": [
-  			    "90", "91"
+  			    ""
   			  ],
   			  "phone": "",
   			  "productCode": "",
