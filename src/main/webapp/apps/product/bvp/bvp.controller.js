@@ -23,8 +23,8 @@
   		// Properties & function declare
   		vm.product = {
 			"chuongTrinh": "",
-			"ngaySinh": "01/04/1982",
-			"tuoi": 36,
+			"ngaySinh": "",
+			"tuoi": 0,
 			"ngoaitruChk": false,
 			"ngoaitruPhi": 0,
 			"tncnChk": false,
@@ -37,8 +37,8 @@
 			"nhakhoaPhi": 0,
 			"thaisanChk": false,
 			"thaisanPhi": 0,
-			"thoihanbhTu": "14/04/2018",
-			"qlChinhPhi": 1315600,
+			"thoihanbhTu": "",
+			"qlChinhPhi": 0,
 			"phiBH": 0,
 			"premiumNet": 0,
 			"premiumDiscount": 0,
@@ -47,16 +47,14 @@
 
         vm.policy = {
     		"chuongtrinhBh": "5",
-    		"chuongtrinhPhi": 4719000.0,
-    		"contactCode": "DUC001",
+    		"chuongtrinhPhi": 0,
     		"discount": 0,
-    		"expiredDate": "28/05/2018",
+    		"expiredDate": "",
     		"files":"",
-    		"gycbhNumber": "ITSOL.BVP.18.43",
     		"hasExtracare": false,
     		"hasNguoinhantien": false,
     		"hasNguoithuhuong": false,
-    		"inceptionDate": "29/04/2018",
+    		"inceptionDate": "",
     		"lstAdd": [
 	    		{
 		    		"benhvienorbacsy": "",
@@ -82,21 +80,21 @@
     		],
     		"ngoaitru": "1",
     		"ngoaitruPhi": 4290000.0,
-    		"nguoidbhCmnd": "CMND người DBH",
-    		"nguoidbhName": "Tên NDBH",
-    		"nguoidbhNgaysinh": "23/04/1982",
-    		"nguoidbhQuanhe": "30",
-    		"nguoinhanCmnd": "CMND người nhận",
-    		"nguoinhanName": "Tên người nhận",
-    		"nguoinhanNgaysinh": "23/04/1982",
-    		"nguoinhanQuanhe": "31",
-    		"nguointNgaysinh": "23/04/1982",
-    		"nguoithCmnd": "CMND người TH",
-    		"nguoithName": "Tên người TH",
-    		"nguoithNgaysinh": "23/04/1982",
-    		"nguoithQuanhe": "Bà",
-    		"nguoiycName": "Tên NYC",
-    		"nguoiycNgaysinh": "23/04/1982",
+    		"nguoidbhCmnd": "",
+    		"nguoidbhName": "",
+    		"nguoidbhNgaysinh": "",
+    		"nguoidbhQuanhe": "",
+    		"nguoinhanCmnd": "",
+    		"nguoinhanName": "",
+    		"nguoinhanNgaysinh": "",
+    		"nguoinhanQuanhe": "",
+    		"nguointNgaysinh": "",
+    		"nguoithCmnd": "",
+    		"nguoithName": "",
+    		"nguoithNgaysinh": "",
+    		"nguoithQuanhe": "",
+    		"nguoiycName": "",
+    		"nguoiycNgaysinh": "",
     		"nhakhoa": "0",
     		"nhakhoaPhi": 0,
     		"policyNumber": "",
@@ -110,7 +108,7 @@
     		"sinhmangPhiSi": 0,
     		"sinhmangSotienbh": 0,
     		"tanggiamPhi": 0,
-    		"tanggiamPhiNoidung": "nội dung tăng giảm",
+    		"tanggiamPhiNoidung": "",
     		"thaisan": "0",
     		"thaisanPhi": 0,
     		"tncn": "0",
@@ -119,6 +117,7 @@
     		"tncnSotienbh": 0
 		}
 
+  		vm.onDobChange = onDobChange;
         vm.isHealthyPersonChange = isHealthyPersonChange;
   		vm.openSearchContactForPanel = openSearchContactForPanel;
         vm.processComboResult = processComboResult;
@@ -210,6 +209,16 @@
         	}
         }
         
+        function onDobChange() {
+        	var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            vm.product.tuoi = DateUtils.yearDiff(vm.product.ngaySinh, nowStr);
+            
+            if(vm.product.chuongTrinh) {
+            	getPremium();
+            }
+        }
+        
         function processComboResult(data, type) {
             console.log(data);
             switch(type){
@@ -222,10 +231,10 @@
         }
 
         function getPremium() {
-            vm.loading = true;
             var postData = getPostData(false);
 
             if(postData.chuongTrinh) {
+            	vm.loading = true;
             	BvpService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.product.premiumNet = 0;
@@ -265,11 +274,6 @@
                 vm.isShowTotalPremium = false;
             }
 
-            if(result.phiBH > 0) {
-                vm.disableContactInfo(false);
-            } else {
-                vm.disableContactInfo(true);
-            }
             vm.clearResponseError();
         }
 
@@ -324,6 +328,22 @@
 	  			case "chuongTrinh":
 	  	        	if(!vm.product.chuongTrinh) {
 	  	        		return "Cần lựa chọn chương trình bảo hiểm!";
+	  	        	}
+	  	            return true;
+	  			case "tncnSi":
+	  				if(!vm.product.tncnChk) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.tncnSi) {
+	  	        		return "Cần lựa chọn số tiền bảo hiểm tai nạn cá nhân!";
+	  	        	}
+	  	            return true;
+	  			case "smcnSi":
+	  				if(!vm.product.smcnChk) {
+	  	        		return true;
+	  	        	}
+	  	        	if(!vm.product.smcnSi) {
+	  	        		return "Cần lựa chọn số tiền bảo hiểm sinh mạng cá nhân!";
 	  	        	}
 	  	            return true;
   			}
