@@ -143,7 +143,7 @@
   		vm.checkQresultTre = checkQresultTre;
   		vm.checkQtreatment = checkQtreatment;
   		vm.onDobChange = onDobChange;
-
+        vm.changeNTH = changeNTH;
   		
   		var ngayKetThuc = "";
   		var tuoi = "";
@@ -381,6 +381,18 @@
   			var toDate = vm.calculateToDate(vm.product.ngayBatDau);
   			vm.ngayKetThuc = toDate;
   		}
-  		
+  		function changeNTH(data) {
+            if(data == true){
+                vm.policy.beneficiaryNameD = vm.policy.beneficiaryName ;
+                vm.policy.beneficiaryNgaysinhD = vm.policy.beneficiaryNgaysinh;
+                vm.policy.beneficiaryIdNumberD = vm.policy.beneficiaryIdNumber;
+                vm.policy.beneficiaryRelationshipD = vm.policy.beneficiaryRelationship;
+            }else{
+                vm.policy.beneficiaryNameD = "" ;
+                vm.policy.beneficiaryNgaysinhD = "";
+                vm.policy.beneficiaryIdNumberD = "";
+                vm.policy.beneficiaryRelationshipD = "";
+            }
+        }
     }
 })();
