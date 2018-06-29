@@ -5,7 +5,7 @@
                     <p>Tên khách hàng</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" ng-model="vm.searchCriterial.contactName" />
+                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" maxlength="50" ng-model="vm.searchCriterial.contactName" />
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -13,7 +13,7 @@
                     <p>Mã đơn hàng</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập mã đơn hàng" ng-model="vm.searchCriterial.gycbhNumber" />
+                    <input type="text" class="bv-input" placeholder="Nhập mã đơn hàng" maxlength="50" ng-model="vm.searchCriterial.gycbhNumber" />
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -53,7 +53,8 @@
                 <div class="margin-top-5">
                 	<div class="input-group display-flex">
 	                    <div class="width-100">
-	                        <input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập số điện thoại" ng-model="vm.searchCriterial.phone">
+	                        <input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập số điện thoại" 
+	                        	ng-model="vm.searchCriterial.phone" maxlength="12" numeric-only >
 	                    </div>
 	                    <div class="input-group-addon bv-date-icon">
 	                        <span class="glyphicon glyphicon-earphone"></span>

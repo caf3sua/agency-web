@@ -45,17 +45,17 @@
         	vm.selRelationship = {};
         	vm.selProduct = {};
         	vm.contact = {
-      			  "contactName": "Tên khách hàng",
+      			  "contactName": "",
       			  "contactSex": "1",
-      			  "dateOfBirth": "24/06/1989",
-      			  "email": "email@gmail.com",
+      			  "dateOfBirth": "",
+      			  "email": "",
       			  "groupType": "POTENTIAL",
-      			  "homeAddress": "Địa chỉ",
-      			  "idNumber": "CMT14141001",
+      			  "homeAddress": "",
+      			  "idNumber": "",
       			  "listContactProduct": [],
       			  "listRelationship": [],
-      			  "occupation": "Công nghệ thông tin",
-      			  "phone": "0989888999"
+      			  "occupation": "",
+      			  "phone": ""
       			}
         	
         	// function

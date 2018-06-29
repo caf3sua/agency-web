@@ -2,8 +2,11 @@
     <div class="row-col">
         <div class="p-a-sm">
             <div>
-                <a class="pull-right" ng-hide="item.editing" ng-click="editItem(item)"><i class="fas edit-pen-title fa-pencil-alt"></i></a>
-                <a class="btn btn-sm white" ng-show="item.editing" ng-click="doneEditing(item)">Done</a>
+    			<div class="pull-right" uib-tooltip="Sửa">
+                	<button class="md-btn md-fab m-b-sm blue-600 btn-contact" ng-disabled="!vm.selectedContact">
+             			<i class="fas fa-pencil-alt"></i>
+             		</button>
+                </div>
             </div>
         </div>
         <div class="row-row">
@@ -16,22 +19,22 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center padding-bottom-35 padding-bottom-ccc">
-                            <div class="bv-icon-contact-detail display-inline-block">
+                            <a class="bv-icon-contact-detail display-inline-block">
                                 <i class="icon-telephone"></i>
                                 <p class="bv-text-icon-contact-detail">Gọi điện</p>
-                            </div>
-                            <div class="bv-icon-contact-detail display-inline-block" >
+                            </a>
+                            <a class="bv-icon-contact-detail display-inline-block" href="mailto:{{vm.selectedContact.email}}" target="_top">
                                 <i class="icon-mail-black-envelope-symbol"></i>
                                 <p class="bv-text-icon-contact-detail">Gửi thư</p>
-                            </div>
-                            <div class="bv-icon-contact-detail display-inline-block">
+                            </a>
+                            <a class="bv-icon-contact-detail display-inline-block">
                                 <i class="icon-signs"></i>
                                 <p class="bv-text-icon-contact-detail">Tìm đường</p>
-                            </div>
-                            <div class="bv-icon-contact-detail display-inline-block">
+                            </a>
+                            <a class="bv-icon-contact-detail display-inline-block">
                                 <i class="icon-facebook-logo"></i>
                                 <p class="bv-text-icon-contact-detail">Chat</p>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div  class="bv-detail-contact">
@@ -96,7 +99,7 @@
                         </div>
                     </div>
                     <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="vm.selectedContact">
-                    	<i class="material-icons md-96"></i>
+                    	<i class="material-icons md-96" style="color:lightskyblue"></i>
                     	<p>Không chọn khách hàng</p>
                     </div>
                 </div>
