@@ -2792,3 +2792,8 @@ div.required p:after {
 .icon-bv-color {
 	color: #0567b2;
 }
+
+.btn-disabled {
+	background: #0371b6a6 !important;
+    border: 1px solid #0371b6a6 !important;
+}

@@ -5,7 +5,7 @@
                     <p>Tên khách hàng</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" ng-model="vm.searchCriterial.contactCode" />
+                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" ng-model="vm.searchCriterial.contactName" />
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -103,8 +103,11 @@
                     </select>
                 </div>
             </div>
+            <!-- Button -->
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
-                <button class="bv-btn-step2" ng-click="vm.searchOrder()">Tìm kiếm</button>
+                <button class="bv-btn-step2" ng-click="vm.searchOrder()" ng-class="vm.isLoading ? 'btn-disabled' : ''" ng-disabled="vm.isLoading">
+                	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Tìm kiếm
+                </button>
             </div>
         </div>
         
