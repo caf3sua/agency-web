@@ -43,7 +43,7 @@
         	];
         	
         	vm.selRelationship = {};
-        	vm.selProduct = {};
+        	vm.selProduct = null;
         	vm.contact = {
       			  "contactName": "",
       			  "contactSex": "1",
@@ -91,6 +91,11 @@
             }
       		
       		function addProduct() {
+      			if (vm.selProduct == null || vm.selProduct == "") {
+      				toastr.error('Dữ liệu không hợp lệ');
+      				return;
+      			}
+      			
       			if (vm.contact.listContactProduct.indexOf(vm.selProduct) == -1) {
       				vm.contact.listContactProduct.push(vm.selProduct);
       			}
@@ -114,7 +119,7 @@
         			};
       				vm.contact.listRelationship.push(relatioship);
       			} else {
-      				toastr.error('Lỗi!', 'Dữ liệu không hợp lệ');
+      				toastr.error('Dữ liệu không hợp lệ');
       			}
       			
       			// Get ContactRelationId, contactRelationName
