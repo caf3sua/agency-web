@@ -9,14 +9,21 @@
 
 	function PrintedPaperService($resource) {
 		var service = $resource('', {}, {
-//			'getPremium' : {
-//				method : 'POST',
-//				url : 'api/agency/product/khc/premium'
-//			},
-//			'createNewPolicy' : {
-//				method : 'POST',
-//				url : 'api/agency/product/khc/createPolicy'
-//			}
+			'getListTypes' : {
+				method : 'GET',
+				url : 'api/agency/printed-paper/get-type',
+				isArray : true
+			},
+			'searchNew' : {
+				method : 'POST',
+				url : 'api/agency/printed-paper/search-new',
+				isArray : true
+			},
+			'searchUsed' : {
+				method : 'POST',
+				url : 'api/agency/printed-paper/search-used',
+				isArray : true
+			}
 		});
 
 		return service;
