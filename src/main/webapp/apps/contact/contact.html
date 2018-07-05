@@ -36,17 +36,19 @@
                     </button>
                     <div class="search-option">
                         <div>
-                            <input name="type" type="radio" value="type-users" id="type-users">
-                            <label for="type-users">
-                                <i class="fas fa-plus edit-pen-title"></i>
-                                <span>Add</span>
+                        	<button class="md-btn md-fab m-b-sm blue-600 btn-contact" ui-sref="app.contact-new" >
+	                    		<i class="fas fa-plus"></i>
+	                    	</button>
+	                    	<label for="type-posts">
+                                <span>Mới</span>
                             </label>
                         </div>
 
                         <div>
-                            <input name="type" type="radio" value="type-posts" id="type-posts" ng-click="vm.openMailDialog()">
-                            <label for="type-posts">
-                                <i class="fas fa-envelope edit-pen-title"></i>
+                        	<button class="md-btn md-fab m-b-sm blue-600 btn-contact bg-gray" ng-disabled="true">
+	                    		<i class="fas fa-envelope"></i>
+	                    	</button>
+	                    	<label for="type-posts">
                                 <span>Mail</span>
                             </label>
                         </div>

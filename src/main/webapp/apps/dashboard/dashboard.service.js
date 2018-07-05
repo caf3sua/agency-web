@@ -3,22 +3,18 @@
 
     angular
         .module('app')
-        .factory('Dashboard', Dashboard);
+        .factory('DashboardService', DashboardService);
 
-    Dashboard.$inject = ['$resource'];
+    DashboardService.$inject = ['$resource'];
 
-    function Dashboard ($resource) {
-        var service = $resource('api/account', {}, {
-            'get': { method: 'GET', params: {}, isArray: false,
-                interceptor: {
-                    response: function(response) {
-                        // expose response
-                        return response;
-                    }
-                }
-            }        
-        });
+    function DashboardService ($resource) {
+    	var service = $resource('', {}, {
+			'getReportDashboard' : {
+				method : 'POST',
+				url : 'api/agency/agency-report/report-dashboard'
+			}
+		});
 
-        return service;
+    	return service;
     }
 })();

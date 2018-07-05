@@ -5,11 +5,13 @@
 	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Họ và tên</p>
 	</div>
-    <div class="input-group margin-top-5" >
-        <input type="text" name="{{name}}-contactName" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
-               required-message="'Chựa chọn thông tin người yêu cầu bảo hiểm!'"
-               required/>
-        <div class="input-group-addon" ng-click="openSearchContact()">
+    <div class="input-group display-flex margin-top-5" >
+        <div class="width-100">
+            <input type="text" name="{{name}}-contactName" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
+                   required-message="'Chựa chọn thông tin người yêu cầu bảo hiểm!'"
+                   required/>
+        </div>
+        <div class="input-group-addon bv-date-icon" ng-click="openSearchContact()">
             <i class="fa fa-plus"></i>
         </div>
     </div>

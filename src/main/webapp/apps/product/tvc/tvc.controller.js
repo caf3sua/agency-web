@@ -57,6 +57,7 @@
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
         vm.isShowPersonList = false;
+        // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
 
@@ -181,5 +182,22 @@
         function removePerson() {
             vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
+        // function checkNycbhcdc(idx) {
+        //     if(idx == true){
+        //         var personObj = {};
+        //         personObj.dob = vm.contactDob;
+        //         personObj.idPasswport ="";
+        //         personObj.insuredName = vm.contactName;
+        //         personObj.relationship = "30";
+        //         vm.policy.listTvcAddBaseVM.push(personObj);
+        //     }else{
+        //         for (var i= 0; i< vm.policy.listTvcAddBaseVM.length; i++){
+        //             if(vm.policy.listTvcAddBaseVM[i].insuredName == vm.contactName){
+        //                 vm.policy.listTvcAddBaseVM.splice(i);
+        //             }
+        //         }
+        //     }
+        //
+        // }
     }
 })();

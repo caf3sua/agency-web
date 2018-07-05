@@ -18,6 +18,7 @@
   		})();
   		
   		// Properties & function declare
+  		vm.isLoading = false;
   		vm.orders = [];
   		vm.searchCriterial = {
   			  "contactCode": "",
@@ -72,20 +73,24 @@
   		}
   		
   		function searchOrder() {
+  			vm.isLoading = true;
   			vm.orders = [];
   			
   			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
   			
   			function onSearchSuccess(result) {
   				vm.orders = result;
+  				vm.isLoading = false;
   				$timeout(function () {
 					$('#footable').trigger('footable_initialized');
 					$('#footable').trigger('footable_resize');
 					$('#footable').data('footable').redraw();
 				}, 1000);
+  				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
   	        }
   	        function onSearchError() {
-  	            toastr.error("error!");
+  	        	vm.isLoading = false;
+  	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
   	        }
   		}
     }

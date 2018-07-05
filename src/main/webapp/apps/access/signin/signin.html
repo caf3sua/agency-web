@@ -30,7 +30,9 @@
 	            </div>
 	        </div>
 	        <!-- Button -->      
-	        <button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid">Đăng nhập</button>
+	        <button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid || vm.isLoading">
+	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Đăng nhập
+	        </button>
       	</form>
     </div>
 

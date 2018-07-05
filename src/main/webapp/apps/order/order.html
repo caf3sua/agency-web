@@ -5,7 +5,7 @@
                     <p>Tên khách hàng</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" ng-model="vm.searchCriterial.contactCode" />
+                    <input type="text" class="bv-input" placeholder="Nhập tên khách hàng" maxlength="50" ng-model="vm.searchCriterial.contactName" />
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -13,7 +13,7 @@
                     <p>Mã đơn hàng</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập mã đơn hàng" ng-model="vm.searchCriterial.gycbhNumber" />
+                    <input type="text" class="bv-input" placeholder="Nhập mã đơn hàng" maxlength="50" ng-model="vm.searchCriterial.gycbhNumber" />
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -51,7 +51,15 @@
                     <p>Số điện thoại</p>
                 </div>
                 <div class="margin-top-5">
-                    <input type="text" class="bv-input" placeholder="Nhập số điện thoại" ng-model="vm.searchCriterial.phone" />
+                	<div class="input-group display-flex">
+	                    <div class="width-100">
+	                        <input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập số điện thoại" 
+	                        	ng-model="vm.searchCriterial.phone" maxlength="12" numeric-only >
+	                    </div>
+	                    <div class="input-group-addon bv-date-icon">
+	                        <span class="glyphicon glyphicon-earphone"></span>
+	                    </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -96,8 +104,11 @@
                     </select>
                 </div>
             </div>
+            <!-- Button -->
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
-                <button class="bv-btn-step2" ng-click="vm.searchOrder()">Tìm kiếm</button>
+                <button class="bv-btn-step2" ng-click="vm.searchOrder()" ng-class="vm.isLoading ? 'btn-disabled' : ''" ng-disabled="vm.isLoading">
+                	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Tìm kiếm
+                </button>
             </div>
         </div>
         

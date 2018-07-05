@@ -15,6 +15,12 @@
         return service;
 
         function responseError (response) {
+        	// 401 unauthorized
+        	if (response.status === 401) {
+                var stateService = $injector.get('$state');
+                stateService.go('access.signin');
+            }
+        	
         	if (response.status === 403) {
                 var stateService = $injector.get('$state');
                 stateService.go('403');

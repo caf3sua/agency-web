@@ -550,7 +550,6 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    cursor: default;
 }
 
 /*
@@ -1745,6 +1744,17 @@ body {
     background-color: #eee;
     opacity: 0.4;
 }
+.navside .nav li a:hover span {
+   color: #1964af;
+
+}
+.navside .nav li a:hover{
+    background-color: #fff;
+}
+
+.navside .nav li a:hover i {
+    color: #1964af;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
@@ -2780,4 +2790,23 @@ div.required p:after {
 
 .icon-bv-color {
 	color: #0567b2;
+}
+
+.btn-disabled {
+	background: #0371b6a6 !important;
+    border: 1px solid #0371b6a6 !important;
+}
+
+.bg-gray {
+	background: #ccc !important;
+}
+
+.btn-contact {
+	color: #fff;
+    background: #0371b6;
+    border-radius: 100%;
+    font-size: 16px;
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 0px !important;
 }

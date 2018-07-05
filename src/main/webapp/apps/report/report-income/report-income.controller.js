@@ -30,7 +30,21 @@
         	        '#1790cf','#1bb2d8','#99d2dd','#88b0bb',
         	        '#1c7099','#038cc4','#75abd0','#afd6dd'
         	    ],
-                tooltip : {
+        	    tooltip : {
+                	backgroundColor: 'rgba(0,0,0,0.5)',
+                    axisPointer : {            // åæ ‡è½´æŒ‡ç¤ºå™¨ï¼Œåæ ‡è½´è§¦å‘æœ‰æ•ˆ
+                        type : 'line',         // é»˜è®¤ä¸ºç›´çº¿ï¼Œå¯é€‰ä¸ºï¼š'line' | 'shadow'
+                        lineStyle : {          // ç›´çº¿æŒ‡ç¤ºå™¨æ ·å¼è®¾ç½®
+                            color: '#1790cf',
+                            type: 'dashed'
+                        },
+                        crossStyle: {
+                            color: '#1790cf'
+                        },
+                        shadowStyle : {                     // é˜´å½±æŒ‡ç¤ºå™¨æ ·å¼è®¾ç½®
+                            color: 'rgba(200,200,200,0.3)'
+                        }
+                    },
                     trigger: 'axis'
                 },
                 legend: {

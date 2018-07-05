@@ -368,5 +368,6 @@
         function clearResponseError() {
         	ResponseValidateService.cleanResponseError(vm.errorField);
         }
+
     }
 })();

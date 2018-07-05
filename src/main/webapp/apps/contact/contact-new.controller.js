@@ -43,19 +43,19 @@
         	];
         	
         	vm.selRelationship = {};
-        	vm.selProduct = {};
+        	vm.selProduct = null;
         	vm.contact = {
-      			  "contactName": "Tên khách hàng",
+      			  "contactName": "",
       			  "contactSex": "1",
-      			  "dateOfBirth": "24/06/1989",
-      			  "email": "email@gmail.com",
+      			  "dateOfBirth": "",
+      			  "email": "",
       			  "groupType": "POTENTIAL",
-      			  "homeAddress": "Địa chỉ",
-      			  "idNumber": "CMT14141001",
+      			  "homeAddress": "",
+      			  "idNumber": "",
       			  "listContactProduct": [],
       			  "listRelationship": [],
-      			  "occupation": "Công nghệ thông tin",
-      			  "phone": "0989888999"
+      			  "occupation": "",
+      			  "phone": ""
       			}
         	
         	// function
@@ -91,6 +91,11 @@
             }
       		
       		function addProduct() {
+      			if (vm.selProduct == null || vm.selProduct == "") {
+      				toastr.error('Dữ liệu không hợp lệ');
+      				return;
+      			}
+      			
       			if (vm.contact.listContactProduct.indexOf(vm.selProduct) == -1) {
       				vm.contact.listContactProduct.push(vm.selProduct);
       			}
@@ -114,7 +119,7 @@
         			};
       				vm.contact.listRelationship.push(relatioship);
       			} else {
-      				toastr.error('Lỗi!', 'Dữ liệu không hợp lệ');
+      				toastr.error('Dữ liệu không hợp lệ');
       			}
       			
       			// Get ContactRelationId, contactRelationName

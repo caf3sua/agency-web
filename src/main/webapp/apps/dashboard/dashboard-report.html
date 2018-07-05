@@ -1,0 +1,88 @@
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+    <p class="bv-text-header-home" ng-init="vm.isCollapsedReport = false" ng-click="vm.isCollapsedReport = !vm.isCollapsedReport">
+    	Theo dõi báo cáo <i class="fas" ng-class="vm.isCollapsedReport ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+    </p>
+</div>
+<div  uib-collapse="vm.isCollapsedReport">
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-home-block-four">
+    <div class="col-lg-8  col-md-12 col-sm-12 col-xs-12 padding0 bv-home-block-four-left">
+        <div class="box-body">
+            <div ui-jp="plot" ui-refresh="app.setting.color" ui-options="
+          [
+            {
+              data: {{vm.p_l_3}},
+              points: { show: true, radius: 3},
+              splines: { show: true, tension: 0.45, lineWidth: 0, fill: 0.4}
+            }
+          ],
+          {
+            colors: ['{{app.setting.color.primary}}'],
+            series: { shadowSize: 3 },
+            xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+            yaxis:{ show: true, font: { color: '#ccc' }, min:1},
+            grid: { hoverable: true, clickable: true, borderWidth: 0, color: 'rgba(120,120,120,0.5)' },
+            tooltip: true,
+            tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+          }
+        " style="height:200px" >
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-12 col-sm-12 col-xs-12">
+        <div class="bv-revenue-sum">
+            <p >12,097,786</p>
+            <p>Tổng doanh thu</p>
+        </div>
+        <div class="bv-revenue-person">
+            <p>12,097,786</p>
+            <p>Doanh thu của tôi</p>
+        </div>
+        <div class="bv-revenue-agency">
+            <p>12,097,786</p>
+            <p>Doanh thu của đại lý</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-home-block-four margin-top-10">
+    <div class="col-lg-8  col-md-12 col-sm-12 col-xs-12 padding0 bv-home-block-four-left">
+        <div class="box-body">
+            <div ui-jp="plot" ui-refresh="app.setting.color" ui-options="
+          [
+            {
+              data: {{vm.p_b_1}},
+              bars: { show: true, barWidth: 0.25, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] }, order:1 }
+            },
+            {
+              data: {{vm.p_b_3}},
+              bars: { show: true, barWidth: 0.25, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] }, order:2 }
+            }
+          ],
+          {
+            colors: ['{{app.setting.color.primary}}','{{app.setting.color.warn}}'],
+            series: { shadowSize: 3 },
+            xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+            yaxis:{ show: true, font: { color: '#ccc' }},
+            grid: { hoverable: true, clickable: true, borderWidth: 0, color: 'rgba(120,120,120,0.5)' },
+            tooltip: true,
+            tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+          }
+        " style="height:200px" >
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-12 col-sm-12 col-xs-12">
+        <div class="bv-revenue-sum">
+            <p >2,097,789</p>
+            <p>Hoa hồng tháng nãy</p>
+        </div>
+        <div class="bv-revenue-person">
+            <p>1,766,354</p>
+            <p>Hoa hồng tuần trước</p>
+        </div>
+        <div class="bv-revenue-agency">
+            <p>12,097,786</p>
+            <p>Hoa hồng dự kiến</p>
+        </div>
+    </div>
+</div>
+</div>

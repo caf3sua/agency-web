@@ -4,7 +4,7 @@
             <p>Số ấn chỉ</p>
         </div>
         <div class="margin-top-5">
-            <input type="text" class="bv-input" placeholder="Nhập số ấn chỉ" />
+            <input type="text" class="bv-input" placeholder="Nhập số ấn chỉ" ng-model="vm.searchCriterial.number"/>
         </div>
     </div>
     <div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -12,7 +12,7 @@
             <p>Số đơn bảo hiểm</p>
         </div>
         <div class="margin-top-5">
-            <input type="text" class="bv-input" placeholder="Nhập số ấn chỉ" />
+            <input type="text" class="bv-input" placeholder="Nhập số ấn chỉ" ng-model="vm.searchCriterial.gycbhNumber"/>
         </div>
     </div>
     <div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
@@ -20,12 +20,14 @@
             <p>Mã thanh toán</p>
         </div>
         <div class="margin-top-5">
-            <input type="text" class="bv-input" placeholder="Nhập mã vạch" />
+            <input type="text" class="bv-input" placeholder="Nhập mã vạch" ng-model="vm.searchCriterial.urn"/>
         </div>
     </div>
 
     <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
-        <button class="bv-btn-step2">Tìm kiếm</button>
+        <button class="bv-btn-step2" ng-class="vm.isLoading ? 'btn-disabled' : ''" ng-disabled="vm.isLoading" ng-click="vm.search()"> 
+        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Tìm kiếm
+        </button>
     </div>
 </div>
         
