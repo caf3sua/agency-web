@@ -10,15 +10,15 @@
                 <i class="fas fa-file-alt"></i>
             </td>
             <td class="bv-icon-order-blockOne">
-                <p class="bv-icon-order-blockOne-number">12</p>
+                <p class="bv-icon-order-blockOne-number">{{vm.report.totalOrder}}</p>
                 <p>Đơn hàng trong tuần</p>
             </td>
             <td  class="bv-icon-order-blockTwo">
-                <p class="bv-icon-order-blockTwo-number">8</p>
+                <p class="bv-icon-order-blockTwo-number">{{vm.report.numberOrderPaid}}</p>
                 <p>Đơn hàng đã thanh toán</p>
             </td>
             <td class="bv-icon-order-blockOne">
-                <p class="bv-icon-order-blockOne-number">4</p>
+                <p class="bv-icon-order-blockOne-number">{{vm.report.numberOrderNotPaid}}</p>
                 <p>Đơn hàng chưa thanh toán</p>
             </td>
         </tr>
@@ -27,15 +27,15 @@
                 <i class="fas fa-dollar-sign"></i>
             </td>
             <td class="bv-icon-order-blockOne">
-                <p class="bv-icon-order-blockOne-number">100.000.000</p>
+                <p class="bv-icon-order-blockOne-number">{{vm.report.totalPremmium | number:0}}</p>
                 <p>Tổng số phí bảo hiểm trong tuần</p>
             </td>
             <td  class="bv-icon-order-blockTwo">
-                <p class="bv-icon-order-blockTwo-number bv-color-29af00">8</p>
+                <p class="bv-icon-order-blockTwo-number bv-color-29af00">{{vm.report.premiumPaid | number:0}}</p>
                 <p>Phí bảo hiểm đã thanh toàn</p>
             </td>
             <td class="bv-icon-order-blockOne bv-color-ff0000">
-                <p class="bv-icon-order-blockOne-number">4</p>
+                <p class="bv-icon-order-blockOne-number">{{vm.report.premiumNotPaid | number:0}}</p>
                 <p>Đơn hàng chưa thanh toán</p>
             </td>
         </tr>
