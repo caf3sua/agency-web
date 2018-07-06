@@ -21,12 +21,12 @@
 	        		  "toDate": ""
     		};
 	        vm.report = {
-	        		  "totalOrder" : 0,
-	        		  "numberOrderPaid" : 0,
-	        		  "numberOrderNotPaid" : 0,
-	        		  "totalPremmium" : 0,
-	        		  "premiumPaid" : 0,
-	        		  "premiumNotPaid" : 0,
+	        		  "totalOrder" : "",
+	        		  "numberOrderPaid" : "",
+	        		  "numberOrderNotPaid" : "",
+	        		  "totalPremmium" : "",
+	        		  "premiumPaid" : "",
+	        		  "premiumNotPaid" : "",
 	        		  "waitAgency" : [],
 	        		  "waitBaoviet" : []
     		};
@@ -62,6 +62,16 @@
           
 	  		function loadReport() {
 	  			vm.isLoading = true;
+	  			vm.report = {
+		        		  "totalOrder" : "",
+		        		  "numberOrderPaid" : "",
+		        		  "numberOrderNotPaid" : "",
+		        		  "totalPremmium" : "",
+		        		  "premiumPaid" : "",
+		        		  "premiumNotPaid" : "",
+		        		  "waitAgency" : [],
+		        		  "waitBaoviet" : []
+	    		};
 	  			
 	  			if (vm.filterDate != 'ENHANCE') {
 	  				vm.searchCriterial = {
@@ -78,6 +88,7 @@
 	  			function onSearchSuccess(data) {
 	  				vm.isLoading = false;
 	  				vm.report = data;
+	  				toastr.success("Dữ liệu đã được cập nhật");
 	  			}
 	  			
 	  			function onSearchError() {
