@@ -5,22 +5,30 @@
         .module('app')
         .controller('ReportIncomeController', ReportIncomeController);
 
-    ReportIncomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope'];
+    ReportIncomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ReportService'];
 
-    function ReportIncomeController ($scope, $controller, Principal, $state, $rootScope) {
+    function ReportIncomeController ($scope, $controller, Principal, $state, $rootScope, ReportService) {
     	var vm = this;
 
   		// Properties & function declare
-  		vm.day = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  		vm.month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  		vm.weekConstant = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  		vm.yearConstant = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   		
+  		vm.isLoading = false;
   		vm.data = {};
         vm.data.categories = [];
         vm.data.incomeData = [];
         vm.data.paymentData = [];
+        vm.searchCriterial = {
+      		  "fromDate": "",
+      		  "periodTime": "",
+      		  "toDate": ""
+		};
   		
-  		vm.filterDate = 'WEEK';
+        vm.report;
+  		vm.filterDate = '';
         vm.changeFilterDate = changeFilterDate;
+        vm.searchReport = searchReport;
         
         vm.chartOptions = {
         		grid : {
@@ -32,16 +40,16 @@
         	    ],
         	    tooltip : {
                 	backgroundColor: 'rgba(0,0,0,0.5)',
-                    axisPointer : {            // åæ ‡è½´æŒ‡ç¤ºå™¨ï¼Œåæ ‡è½´è§¦å‘æœ‰æ•ˆ
-                        type : 'line',         // é»˜è®¤ä¸ºç›´çº¿ï¼Œå¯é€‰ä¸ºï¼š'line' | 'shadow'
-                        lineStyle : {          // ç›´çº¿æŒ‡ç¤ºå™¨æ ·å¼è®¾ç½®
+                    axisPointer : {            
+                        type : 'line',         
+                        lineStyle : {          
                             color: '#1790cf',
                             type: 'dashed'
                         },
                         crossStyle: {
                             color: '#1790cf'
                         },
-                        shadowStyle : {                     // é˜´å½±æŒ‡ç¤ºå™¨æ ·å¼è®¾ç½®
+                        shadowStyle : {
                             color: 'rgba(200,200,200,0.3)'
                         }
                     },
@@ -87,36 +95,140 @@
 
     	// Init controller
   		(function initController() {
+  			resetData();
+  			
   			changeFilterDate('WEEK');
   		})();
   		
         // Implement function 
-        function changeFilterDate(type) {
-    		vm.filterDate = type;
+  		function resetData() {
+  			vm.chartOptions.xAxis[0].data = vm.weekConstant;
+	        vm.chartOptions.series[0].data = [0, 0, 0, 0, 0, 0, 0];
+	        vm.chartOptions.series[1].data = [0, 0, 0, 0, 0, 0, 0];
+	        
+  			vm.data = {};
+  	        vm.data.categories = [];
+  	        vm.data.incomeData = [];
+  	        vm.data.paymentData = [];
+  	        vm.report = {};
+  		}
+  		
+  		function loadData() {
+  			resetData();
+  			vm.isLoading = true;
+  			
+  			if (vm.filterDate != 'ENHANCE') {
+  				vm.searchCriterial = {
+  	        		  "fromDate": "",
+  	        		  "periodTime": vm.filterDate,
+  	        		  "toDate": ""
+  				};
+      		} else {
+      			vm.searchCriterial.periodTime = "";
+      		}
+  			
+  			ReportService.getReportIncome(vm.searchCriterial, onSearchSuccess, onSearchError);
+  			
+  			function onSearchSuccess(data) {
+  				loadSummaryReport();
+  				vm.isLoading = false;
+  				vm.report = data;
+  				toastr.success("Dữ liệu đã được cập nhật!");
+  				updateChartData(vm.filterDate, data.data);
+  			}
+  			
+  			function onSearchError() {
+  				vm.isLoading = false;
+  				toastr.error("Lỗi khi tìm kiếm data báo cáo doanh thu!");
+  			}
+  		}
+  		
+  		function loadSummaryReport() {
+  			ReportService.getReportDashboard(vm.searchCriterial, onSearchSummarySuccess, onSearchSummaryError);
+  			
+  			function onSearchSummarySuccess(data) {
+  				vm.report = data;
+  			}
+  			
+  			function onSearchSummaryError() {
+  			}
+  		}
+  		
+  		function updateChartData(type, data) {
+  			// Update chart xAxis
     		switch(type) {
 	    	    case "WEEK":
-	    	    	vm.chartOptions.xAxis[0].data = vm.day;
-	    	        vm.chartOptions.series[0].data = [30, 182, 434, 791, 390, 30, 10];
-	    	        vm.chartOptions.series[1].data = [1320, 1132, 601, 234, 120, 90, 20];
+	    	    	vm.chartOptions.xAxis[0].data = vm.weekConstant;
+	    	        vm.chartOptions.series[0].data = getYaxisData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
 	    	        break;
 	    	    case "MONTH":
-	    	    	vm.data.categories = vm.day;
-	    	        vm.data.incomeData = [30, 182, 434, 791, 390, 30, 10];
-	    	        vm.data.paymentData = [1320, 1132, 601, 234, 120, 90, 20];
+	    	        vm.chartOptions.xAxis[0].data = getXaxisData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
 	    	        break;
 	    	    case "YEAR":
-	    	    	vm.chartOptions.xAxis[0].data = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'];;
-	    	        vm.chartOptions.series[0].data = [30, 182, 434, 791, 390, 30, 10, 30, 182, 434, 791, 390];
-	    	        vm.chartOptions.series[1].data = [1320, 1132, 601, 234, 120, 90, 20, 30, 182, 434, 791, 390];
+	    	    	vm.chartOptions.xAxis[0].data = getXaxisData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
 	    	        break;
 	    	    case "ENHANCE":
-	    	    	vm.data.categories = [];
-	    	        vm.data.incomeData = [];
-	    	        vm.data.paymentData = [];
+	    	    	vm.chartOptions.xAxis[0].data = getXaxisData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
 	    	        break;
 	    	    default:
 	    	    	break;
 	    	}
+  		}
+  		
+  		function getXaxisData(data) {
+  			var result = [];
+  			angular.forEach(data, function(item) {
+  				result.push(item.datePayment);
+  			});
+  			
+  			return result;
+  		}
+  		
+  		function getYaxisData(data) {
+  			var result = [];
+  			angular.forEach(data, function(item) {
+  				result.push(item.totalPremium);
+  			});
+  			
+  			return result;
+  		}
+  		
+  		// TODO
+  		function getYaxisOtherData(data) {
+  			var result = [];
+  			angular.forEach(data, function(item) {
+  				result.push(Math.floor((Math.random() * 10000000) + 1));
+  			});
+  			
+  			return result;
+  		}
+  		
+        function changeFilterDate(type) {
+    		vm.filterDate = type;
+    		
+    		if (vm.filterDate != 'ENHANCE') {
+    			loadData();
+    		}
+        }
+        
+        function searchReport() {
+        	console.log('search report,' + vm.searchCriterial);
+        	
+        	// validate
+        	if (vm.searchCriterial.fromDate == '' || vm.searchCriterial.toDate == '') {
+        		toastr.error('Không đủ dữ liệu để tìm kiếm!');
+        		return;
+        	}
+        	
+        	// Search
+        	loadData();       	
         }
 
     }
