@@ -81,7 +81,7 @@
                (*)Các ngân hàng phát hành thẻ được hoàn tiền 15% phí bảo hiểm
             </p>
         </div>
-        <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+        <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" style="height: 500px;overflow-y: scroll">
             <table class="table bv-home-block-left-table bv-table-kh" >
                 <col width="5%">
                 <col width="3%">
@@ -107,6 +107,7 @@
                     <th>Phí bảo hiểm</th>
                 </tr>
                 </thead>
+                <tbody >
                 <tr ng-repeat="order in vm.allOrder">
                     <td>
                         <div class="bv-gh-checkbox"  ng-show="vm.type91">
@@ -150,6 +151,7 @@
                         <p  style="width: 150px">{{order.totalPremium}}</p>
                     </td>
                 </tr>
+                </tbody>
             </table>
 
         </div>
