@@ -75,6 +75,7 @@
 
 		vm.getName = getName;
         vm.dobValidator = dobValidator;
+        vm.emailValidator = emailValidator;
         vm.validateResponse = validateResponse;
         vm.clearResponseError = clearResponseError;
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
@@ -334,6 +335,15 @@
 
             if (dateDiff < 15 || yearDiff > 70) {
                 return "Ngày Sinh: Chỉ nhận bh cho đối tượng, từ 15 ngày tuổi đến 70 tuổi";
+            }
+            return true;
+        };
+        
+        function emailValidator() {
+            if(!vm.receiverUserData.email){return;}
+
+            if (myForm.input.$error.email) {
+                return "Không đúng định dạng email!";
             }
             return true;
         };

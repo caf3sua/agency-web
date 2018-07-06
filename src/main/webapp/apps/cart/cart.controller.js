@@ -9,7 +9,19 @@
 
     function CartController ($scope, Principal, $state, $rootScope, CartService, DateUtils) {
     	var vm = this;
-        vm.getAllOrder = getAllOrder;
+        
+        angular.element(document).ready(function () {
+        });
+
+        // Init controller
+        (function initController() {
+            getAllOrder();
+            vm.newDate = new Date();
+        })();
+
+  		// Properties & function declare
+  		vm.processPayment = processPayment;
+  		vm.getAllOrder = getAllOrder;
         vm.newDate = null;
         vm.cartWarning = false;
         vm.cartCheckBox = false;
@@ -33,22 +45,15 @@
         vm.type98 = false;
         vm.type99 = false;
         vm.type100 = false;
-        angular.element(document).ready(function () {
-        });
-
-        // Init controller
-        (function initController() {
-            getAllOrder();
-            vm.newDate = new Date();
-        })();
-
-  		// Properties & function declare
-  		
+        vm.couponCode = null;
+        vm.bankCode = null;
+        vm.agreementIds = [];
   		
   		// Function
         function getAllOrder() {
             CartService.getAll({}, onGetAllOrderSuccess, onGetAllOrderError);
         }
+        
         function onGetAllOrderSuccess(result) {
             vm.allOrder = result;
             for (var i = 0; i <  vm.allOrder.length; i++) {
@@ -103,31 +108,58 @@
                 }
             }
         }
+        
         function onGetAllOrderError() {
             toastr.error("error!");
         }
+        
         function dateUtil(date) {
             return DateUtils.convertLocalDateToServer(date);
         }
+        
         function selectCheckBoxCart(data) {
             if(data.check == true){
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney + money;
+                vm.agreementIds.push(data.agreementId);
             }else {
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney - money;
+                var index = vm.agreementIds.indexOf(data.agreementId);
+                if (index !== -1) {
+            		vm.agreementIds.splice(index, 1);
+                }
             }
 
         }
+        
         function getListBank() {
             CartService.getBanksByPaymentCode({paymentCode:vm.typeBank}, onGetListBankSuccess, onGetListBankError)
         }
+        
         function onGetListBankSuccess(result) {
             vm.getListBankObj = result.paymentBanks;
         }
+        
         function onGetListBankError() {
             toastr.error("error!");
         }
 
+        function processPayment() {
+        	var paymentData = {
+    			"agreementIds" : vm.agreementIds,
+    			"bankCode": vm.bankCode,
+    			"couponCode": vm.couponCode,
+    			"paymentFee": vm.sumMoney,
+    			"paymentType": vm.typeBank
+        	}
+        	CartService.getBanksByPaymentCode(paymentData, onGetListBankSuccess, onGetListBankError)
+        }
+        
+        function onProcessPaymentSuccess(result) {
+        }
+        
+        function onProcessPaymentError() {
+        }
     }
 })();

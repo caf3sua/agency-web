@@ -44,7 +44,7 @@
             "receiveMethod":"1"
         }
 
-        vm.validation = validation;
+        vm.validatorCombo = validatorCombo;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
@@ -169,7 +169,6 @@
         }
 
         function createNewPolicy() {
-//            vm.loading = true;
             var postData = getPostData(true);
 
             vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
@@ -187,21 +186,9 @@
                 vm.policy.receiveMethod = "1";
             }
 
-            //TncService.createNewPolicy(vm.policy, onCreatePolicySuccess, onCreatePolicyError);
             // call base
             vm.createNewPolicyBase("TNC", vm.policy);
         }
-
-//        function onCreatePolicySuccess(result) {
-//            vm.loading = false;
-//            toastr.success('Create Invoice Success!', 'Successful!');
-//            vm.clearResponseError();
-//        }
-//
-//        function onCreatePolicyError(result) {
-//            vm.loading = false;
-//            vm.validateResponse(result, 'createPolicy');
-//        }
 
         function onGetPolicyNumberSuccess(result) {
             vm.policy.gycbhNumber  = result.policyNumber;
@@ -212,8 +199,11 @@
             vm.validateResponse(result, 'getPolicyNumber');
         }
 
-        function validation() {
-    		
+        function validatorCombo(name) {
+        	switch(name) {
+  			case "premiumPackage":
+  	            return true;
+			}
         }
     }
 })();

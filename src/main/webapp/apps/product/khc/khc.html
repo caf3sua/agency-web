@@ -34,7 +34,7 @@
 	                    <p class="bv-title-from">Số tiền bảo hiểm</p>
 	                </div>
                     <div class="margin-top-10">
-                        <relation-combo type="khc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
+                        <relation-combo name="premiumPackage" type="khc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
                     </div>
                     <div class="margin-top-10 required">
                         <p class="bv-title-from">Thời hạn bảo hiểm</p>
@@ -77,7 +77,7 @@
                                 <td>
                                     <div  style="width: 150px" class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                         <div class="width-100">
-                                            <input type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange($index)">
+                                            <input name="inputDob{{$index}}" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange($index)">
                                         </div>
                                         <div class="input-group-addon bv-date-icon">
                                             <span class="glyphicon glyphicon-th"></span>
@@ -137,12 +137,16 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="person in vm.product.premiumKhcList">
-                                <td><input style="width: 150px" type="text" name="insuredName" class="form-control" ng-model="person.insuredName"></td>
-                                <td><input style="width: 150px" type="text" name="idPasswport" class="form-control" ng-model="person.idPasswport"/></td>
+                                <td><input style="width: 150px" type="text" name="insuredName{{$index}}" class="form-control" ng-model="person.insuredName"
+                                		required-message="'Chưa nhập Họ và Tên!'"
+                                        required /></td>
+                                <td><input style="width: 150px" type="text" name="idPasswport{{$index}}" class="form-control" ng-model="person.idPasswport"
+                                		required-message="'Chưa nhập số hộ chiếu/CMND!'"
+                                       	required /></td>
                                 <td>
                                     <div style="width: 150px" class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                         <div class="width-100">
-                                            <input type="text" name="dob" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
+                                            <input type="text" name="dob{{$index}}" class="bv-input" placeholder="dd/MM/yyyy" ng-model="person.dob" ng-change="vm.onDobChange()" ng-disabled="true">
                                         </div>
                                         <div class="input-group-addon bv-date-icon">
                                             <span class="glyphicon glyphicon-th"></span>

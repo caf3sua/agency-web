@@ -15,12 +15,16 @@
             },
             'getBanksByPaymentCode' : {
                 method : 'GET',
-                url : 'api/agency/payment/getBanksByPaymentCode/:id',
+                url : 'api/agency/payment/getBanksByPaymentCode',
                 isArray : false
             },
             'createNewPolicy' : {
                 method : 'POST',
                 url : 'api/agency/product/bvp/createPolicy'
+            },
+            'processPayment' : {
+                method : 'POST',
+                url : 'api/agency/payment/processPayment'
             }
         });
 
