@@ -1,6 +1,12 @@
 {
     "global": {
         "title": "Bảo Việt Agency",
+        "time" : {
+				"WEEK" : "trong tuần",
+				"MONTH" : "trong tháng",
+				"YEAR" : "trong năm",
+				"ENHANCE" : "từ ngày đến ngày"
+		},
         "page" : {
         	"title" : {
         		"DASHBOARD": "Trang chủ",

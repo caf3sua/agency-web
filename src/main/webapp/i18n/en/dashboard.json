@@ -2,7 +2,13 @@
     "dashboard": {
     		"title": "Dashboard",
     		"label" : {
-			"hello" : "Hi {{username}}, Welcome back"    		
-    		}
+			"hello" : "Hi {{username}}, Welcome back",
+			"time" : {
+				"WEEK" : "trong tuần",
+				"MONTH" : "trong tháng",
+				"YEAR" : "trong năm",
+				"ENHANCE" : "từ ngày đến ngày"
+			}  		
+		}
     }
 }
