@@ -30,6 +30,7 @@
         		"DOCUMENT" : "Documents",
         		"PROMOTION" : "Promotion",
         		"CONTACT_NEW" : "Create new contact",
+        		"CONTACT_EDIT" : "Edit contact",
         		"ACCOUNT_CHANGE_PASSWORD" : "Change password",
         		"ACCOUNT_PROFILE" : "Profile",
         		"PRODUCT_YCBH_OFFLINE" : "Tạo yêu cầu bảo hiểm Offline",

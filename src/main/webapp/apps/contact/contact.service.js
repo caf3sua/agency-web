@@ -107,8 +107,8 @@
     function ContactService ($resource) {
     	var resourceUrl =  'api/agency/contact/:id';
 
-        return $resource(resourceUrl, {}, {
-        	'get': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
+    	return $resource(resourceUrl, {}, {
+        	'get': {url : 'api/agency/contact/get-by-id/:id', method: 'GET'},
         	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
             'add': { method:'POST' },

@@ -30,6 +30,7 @@
         		"DOCUMENT" : "Tài liệu",
         		"PROMOTION" : "Khuyến mại",
         		"CONTACT_NEW" : "Tạo khách hàng mới",
+        		"CONTACT_EDIT" : "Sửa thông tin khách hàng",
         		"ACCOUNT_CHANGE_PASSWORD" : "Đổi mật khẩu",
         		"ACCOUNT_PROFILE" : "Trang thông tin cá nhân",
         		"PRODUCT_YCBH_OFFLINE" : "Tạo yêu cầu bảo hiểm Offline",
