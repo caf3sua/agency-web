@@ -5,9 +5,9 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
+    CartController.$inject = ['$scope', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
 
-    function CartController ($scope, Principal, $state, $rootScope, CartService, DateUtils) {
+    function CartController ($scope, $window, Principal, $state, $rootScope, CartService, DateUtils) {
     	var vm = this;
         
         angular.element(document).ready(function () {
@@ -146,20 +146,38 @@
         }
 
         function processPayment() {
-        	var paymentData = {
-    			"agreementIds" : vm.agreementIds,
-    			"bankCode": vm.bankCode,
-    			"couponCode": vm.couponCode,
-    			"paymentFee": vm.sumMoney,
-    			"paymentType": vm.typeBank
+        	if(vm.agreementIds.length == 0) {
+        		toastr.error("Bạn cần chọn đơn hàng!");
+        		return;
         	}
-        	CartService.getBanksByPaymentCode(paymentData, onGetListBankSuccess, onGetListBankError)
+        	
+        	if(!vm.typeBank) {
+        		toastr.error("Bạn cần chọn phương thức thanh toán");
+        		return;
+        	} else if(vm.typeBank == '123pay' || vm.typeBank == 'VnPay') {
+        		if(!vm.bankCode) {
+        			toastr.error("Bạn cần chọn ngân hàng hỗ trợ!");
+            		return;
+        		}
+        	} else {
+        		var paymentData = {
+        			"agreementIds" : vm.agreementIds,
+        			"bankCode": vm.bankCode,
+        			"couponCode": vm.couponCode,
+        			"paymentFee": vm.sumMoney,
+        			"paymentType": vm.typeBank
+            	}
+                	
+            	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
+        	}
         }
         
         function onProcessPaymentSuccess(result) {
+        	$window.location.href = result.redirectUrl;
         }
         
         function onProcessPaymentError() {
+        	toastr.error("Có lỗi xảy ra khi thanh toán!");
         }
     }
 })();
