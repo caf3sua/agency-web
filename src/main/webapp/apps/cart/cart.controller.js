@@ -5,9 +5,9 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
+    CartController.$inject = ['$scope', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
 
-    function CartController ($scope, $window, Principal, $state, $rootScope, CartService, DateUtils) {
+    function CartController ($scope, $location, $window, Principal, $state, $rootScope, CartService, DateUtils) {
     	var vm = this;
         
         angular.element(document).ready(function () {
@@ -17,6 +17,15 @@
         (function initController() {
             getAllOrder();
             vm.newDate = new Date();
+            
+            var paymentResult = $location.search().paymentStatus;
+            if(paymentResult) {
+            	if(paymentResult == '3') {
+            		toastr.success("Thanh toán thành công!");
+            	} else {
+            		toastr.error("Thanh toán thất bại!");
+            	}
+            }
         })();
 
   		// Properties & function declare
@@ -33,9 +42,6 @@
         vm.getListBankObj = [];
         vm.typeBank = null;
         vm.selectCheckBoxCart = selectCheckBoxCart;
-        vm.changeTypePay =changeTypePay;
-        vm.personal = false;
-        vm.agency = false;
         vm.type89 = false;
         vm.type90= false;
         vm.type91 = false;
@@ -51,6 +57,7 @@
         vm.couponCode = null;
         vm.bankCode = null;
         vm.agreementIds = [];
+        vm.checkTypePay = 'agency'
   		
   		// Function
         function getAllOrder() {
@@ -181,15 +188,6 @@
         
         function onProcessPaymentError() {
         	toastr.error("Có lỗi xảy ra khi thanh toán!");
-        }
-        function changeTypePay() {
-            if(vm.checkTypePay == "personal" ){
-                vm.personal = true;
-                vm.agency = false;
-            }else{
-                vm.agency = true;
-                vm.personal = false;
-            }
         }
     }
 })();
