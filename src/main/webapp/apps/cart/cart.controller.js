@@ -33,6 +33,9 @@
         vm.getListBankObj = [];
         vm.typeBank = null;
         vm.selectCheckBoxCart = selectCheckBoxCart;
+        vm.changeTypePay =changeTypePay;
+        vm.personal = false;
+        vm.agency = false;
         vm.type89 = false;
         vm.type90= false;
         vm.type91 = false;
@@ -178,6 +181,15 @@
         
         function onProcessPaymentError() {
         	toastr.error("Có lỗi xảy ra khi thanh toán!");
+        }
+        function changeTypePay() {
+            if(vm.checkTypePay == "personal" ){
+                vm.personal = true;
+                vm.agency = false;
+            }else{
+                vm.agency = true;
+                vm.personal = false;
+            }
         }
     }
 })();
