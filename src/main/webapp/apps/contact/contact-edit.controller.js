@@ -6,9 +6,9 @@
 
 
     	ContactEditController.$inject = ['$rootScope', '$scope', '$http', '$filter',
-    		'ContactService', 'MessageService', '$controller', 'ContactCommonDialogService'];
+    		'ContactService', 'MessageService', '$controller', 'ContactCommonDialogService', 'entity'];
         function ContactEditController($rootScope, $scope, $http, $filter
-        		, ContactService, MessageService, $controller, ContactCommonDialogService) {
+        		, ContactService, MessageService, $controller, ContactCommonDialogService, entity) {
         	
         	var vm = this;
         	
@@ -59,7 +59,7 @@
       			}
         	
         	// function
-        	vm.createNewContact = createNewContact;
+        	vm.saveContact = saveContact;
         	vm.addProduct = addProduct;
         	vm.addRelationship = addRelationship;
         	vm.openSearchContact = openSearchContact;
@@ -76,7 +76,7 @@
       		    console.log('Init ContactEditController');
       		    
       		    // Get object Contact
-      		    
+      		    vm.contact = entity;
       		})();
       		
       		$scope.$on('selectedContactChange', function() {
@@ -137,10 +137,10 @@
     		}
       		
       		
-        	function createNewContact() {
+        	function saveContact() {
         		console.log('edit Contact');
         		
-        		ContactService.create(vm.contact, onSuccess, onError);
+        		ContactService.update(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
         			MessageService.showSuccessMessage('Sửa khách hàng thành công');

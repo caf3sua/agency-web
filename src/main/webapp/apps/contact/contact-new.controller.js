@@ -59,7 +59,7 @@
       			}
         	
         	// function
-        	vm.createNewContact = createNewContact;
+        	vm.saveContact = saveContact;
         	vm.addProduct = addProduct;
         	vm.addRelationship = addRelationship;
         	vm.openSearchContact = openSearchContact;
@@ -134,7 +134,7 @@
     		}
       		
       		
-        	function createNewContact() {
+        	function saveContact() {
         		console.log('createNewContact');
         		
         		ContactService.create(vm.contact, onSuccess, onError);

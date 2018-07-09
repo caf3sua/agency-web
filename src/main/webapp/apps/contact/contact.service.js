@@ -112,7 +112,8 @@
         	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
             'add': { method:'POST' },
-            'create': {url : 'api/agency/contact/create', method: 'POST'}
+            'create': {url : 'api/agency/contact/create', method: 'POST'},
+            'update': {url : 'api/agency/contact/update', method: 'POST'}
         });
     }
 })();
