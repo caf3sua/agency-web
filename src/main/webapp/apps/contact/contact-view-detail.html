@@ -46,22 +46,28 @@
                                 </p>
                                 <div uib-collapse="vm.isCollapsedRelationship">
 	                                <div class="display-flex">
-	                                    <div class="width-100 margin-right-5">
-	                                        <select class="form-control">
-	                                            <option>Lái xe</option>
-	                                            <option>2</option>
-	                                            <option>3</option>
-	                                            <option>4</option>
-	                                        </select>
-	                                    </div>
-	                                    <div class="width-100">
-	                                        <select class="form-control">
-	                                            <option>Bảo hiểm mô tô</option>
-	                                            <option>2</option>
-	                                            <option>3</option>
-	                                            <option>4</option>
-	                                        </select>
-	                                    </div>
+	                                    <table class="table bv-home-block-left-table bv-table-kh" id="relationship" data-page-size="10">
+									        <thead>
+									            <tr>
+									                <th>STT</th>
+									                <th>Quan hệ</th>
+									                <th>Tên khách hàng</th>
+									            </tr>
+									        </thead>
+									        <tbody>
+										        <tr ng-repeat="item in vm.selectedContact.listRelationship track by $index">
+										            <td>
+										                <p class="margin-0">{{$index + 1}}</p>
+										            </td>
+										            <td>
+										                <p class="">{{item.relationName}}</p>
+										            </td>
+										            <td>
+										                <p class="">{{item.contactRelationName}}</p>
+										            </td>
+										        </tr>
+									        </tbody>
+									   </table>
 	                                </div>
                                 </div>
                             </div>

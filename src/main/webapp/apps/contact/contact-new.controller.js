@@ -44,6 +44,9 @@
         	
         	vm.selRelationship = {};
         	vm.selProduct = null;
+        	vm.selProductReminder = {};
+        	vm.content = "";
+        	vm.dateReminder = "";
         	vm.contact = {
       			  "contactName": "",
       			  "contactSex": "1",
@@ -54,6 +57,7 @@
       			  "idNumber": "",
       			  "listContactProduct": [],
       			  "listRelationship": [],
+      			  "listReminders": [],
       			  "occupation": "",
       			  "phone": ""
       			}
@@ -62,9 +66,11 @@
         	vm.saveContact = saveContact;
         	vm.addProduct = addProduct;
         	vm.addRelationship = addRelationship;
+        	vm.addReminder = addReminder;
         	vm.openSearchContact = openSearchContact;
         	vm.deleteContactProduct = deleteContactProduct;
         	vm.deleteRelationship = deleteRelationship;
+        	vm.deleteReminderProduct = deleteReminderProduct;
         	
         	
         	angular.element(document).ready(function () {
@@ -104,6 +110,32 @@
       		function deleteContactProduct(index) {
       			console.log('deleteContactProduct');
       			vm.contact.listContactProduct.splice(index, 1);
+    		}
+      		
+      		function addReminder() {
+      			if (vm.selProductReminder == null || vm.selProductReminder == "") {
+      				toastr.error('Dữ liệu không hợp lệ');
+      				return;
+      			}
+      			
+      			if (vm.selProductReminder != null && vm.dateReminder != null && vm.content != ""
+      				&& vm.dateReminder != "") {
+      				// Add to list
+      				var reminder = {
+      				      "contactId": "",
+      				      "content": vm.content,
+      				      "note": "",
+      				      "productCode": vm.selProductReminder.productName,
+      				      "remindeDate": vm.dateReminder
+      				    };
+      				
+      				vm.contact.listReminders.push(reminder);
+      			}
+    		}
+      		
+      		function deleteReminderProduct(index) {
+      			console.log('deleteReminderProduct');
+      			vm.contact.listReminders.splice(index, 1);
     		}
       		
       		function addRelationship() {
