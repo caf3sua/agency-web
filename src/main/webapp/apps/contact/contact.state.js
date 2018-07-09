@@ -40,6 +40,25 @@
 		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js', 'apps/contact/contact-new.controller.js']);
 			        }
 	            }
+	        })
+	        .state('app.contact-edit', {
+	            url: '/contact-edit/{id}',
+	            templateUrl: 'apps/contact/contact-new.html',
+	            data : { title: 'CONTACT_EDIT' },
+	            controller: "ContactEditController",
+	            controllerAs: 'vm',
+	            resolve: {
+	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+	        				$translatePartialLoader.addPart('global');
+	        				return $translate.refresh();
+	            		}],
+	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+	                        return ContactService.get({id : $stateParams.id}).$promise;
+	                    }],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js', 'apps/contact/contact-edit.controller.js']);
+			        }
+	            }
 	        });
     }
 })();

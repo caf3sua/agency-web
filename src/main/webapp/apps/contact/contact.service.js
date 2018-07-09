@@ -108,6 +108,7 @@
     	var resourceUrl =  'api/agency/contact/:id';
 
         return $resource(resourceUrl, {}, {
+        	'get': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
         	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
             'add': { method:'POST' },
