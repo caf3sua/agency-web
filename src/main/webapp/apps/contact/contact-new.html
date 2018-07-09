@@ -187,6 +187,9 @@
 	</div>
 	
 	<div class="col-md-12 text-right margin-top-10">
-		<button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid">Tạo khách hàng mới</button>
+		<button type="submit" class="btn primary btn-block p-x-md" ng-disabled="form.$invalid">
+			<span ng-show="!vm.contact.contactId">Tạo khách hàng mới</span>
+			<span ng-show="vm.contact.contactId">Cập nhật thông tin khách hàng</span>
+		</button>
 	</div>
 </form>

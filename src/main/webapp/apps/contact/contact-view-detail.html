@@ -2,8 +2,9 @@
     <div class="row-col">
         <div class="p-a-sm">
             <div>
+            	<pre>{{vm.selectedContact}}</pre>
     			<div class="pull-right" uib-tooltip="Sửa">
-                	<button ui-sref="app.contact-edit({id: vm.selectedContact.id})" class="md-btn md-fab m-b-sm blue-600 btn-contact" ng-disabled="!vm.selectedContact">
+                	<button ui-sref="app.contact-edit({id: vm.selectedContact.contactId})" class="md-btn md-fab m-b-sm blue-600 btn-contact" ng-disabled="!vm.selectedContact">
              			<i class="fas fa-pencil-alt"></i>
              		</button>
                 </div>
