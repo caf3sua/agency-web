@@ -4,7 +4,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 padding0 ">
             <label for="cbx21" class="label-cbx margin-right-5"> <input
                     id="cbx21" type="radio" class="invisible" value="personal" ng-model="vm.checkTypePay"
-                    ng-change="vm.changeTypePay()">
+                    >
                 <div class="checkbox">
                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                         <path
@@ -16,8 +16,8 @@
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 padding0 ">
             <label for="cbx22" class="label-cbx margin-right-5"> <input
-                    id="cbx22" type="radio" class="invisible" value="agency" ng-model="vm.checkTypePay"
-                    ng-change="vm.changeTypePay()">
+                    id="cbx22" type="radio" class="invisible" value="agency" ng-model="vm.checkTypePay" checked="checked"
+                    >
                 <div class="checkbox">
                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                         <path
@@ -28,12 +28,12 @@
             </label>
         </div>
     </div>
-    <div ng-show="vm.personal || vm.agency"
+    <div ng-show="vm.checkTypePay == 'agency' || vm.checkTypePay == 'personal'"
             class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
         <p>Qúy khách vui lòng chọn phương thức thanh toán</p>
     </div>
 	<div
-		class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center" ng-show="vm.personal">
+		class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center" ng-show="vm.checkTypePay == 'personal'">
         <div
                 class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0 ">
@@ -99,7 +99,7 @@
             </div>
         </div>
 	</div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center" ng-show="vm.agency">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center" ng-show="vm.checkTypePay == 'agency'">
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
             <label for="cbx17" class="label-cbx margin-right-5"> <input
                     id="cbx17" type="radio" class="invisible" ng-model="vm.typeBank"
