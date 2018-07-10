@@ -38,7 +38,46 @@
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div  class="bv-detail-contact">
-                                <p>Cấp đơn<i class="fas {{vm.arrowContact}}"></i></p>
+                                <p ng-init="vm.isCollapsedAgrement = false" ng-click="vm.isCollapsedAgrement = !vm.isCollapsedAgrement">
+                                	Cấp đơn <i class="fas" ng-class="vm.isCollapsedAgrement ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+                                </p>
+                                <div uib-collapse="vm.isCollapsedAgrement">
+	                                <div class="display-flex">
+	                                    <table st-table="vm.AgreementsInit" st-safe-src="vm.Agreements" class="table table-striped">
+									        <thead>
+									            <tr>
+									                <th>STT</th>
+									                <th>Sản phẩm</th>
+									                <th>Số hợp đồng</th>
+									                <th>Trạng thái hợp đồng</th>
+									            </tr>
+									        </thead>
+									        <tbody>
+										        <tr ng-repeat="item in vm.AgreementsInit track by $index">
+										            <td>
+										                <p class="margin-0">{{$index + 1}}</p>
+										            </td>
+										            <td>
+										                <p class="">{{item.lineName}}</p>
+										            </td>
+										            <td>
+										                <p class="">{{item.gycbhNumber}}</p>
+										            </td>
+										            <td>
+										                <p class="">{{item.statusPolicyName}}</p>
+										            </td>
+										        </tr>
+									        </tbody>
+									        <tfoot>
+										        <tr>
+										          <td colspan="5" class="text-center">
+										            <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
+										          </td>
+										        </tr>
+										     </tfoot>
+									   </table>
+	                                </div>
+                                </div>
                             </div>
                             <div class="bv-detail-contact">
                                 <p ng-init="vm.isCollapsedRelationship = false" ng-click="vm.isCollapsedRelationship = !vm.isCollapsedRelationship">

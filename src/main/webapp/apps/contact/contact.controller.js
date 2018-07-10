@@ -11,10 +11,12 @@
     	vm.contacts = [];
     	vm.selectedContact = null;
     	vm.groupType = 'POTENTIAL';
-    	vm.selectedAgreements = [];
+    	vm.Agreements = [];
+    	vm.AgreementsInit = [];
     	
     	// Function declare
     	vm.changeGroupType = changeGroupType;
+    	vm.getAgrement = getAgrement;
     	vm.selectContact = selectContact;
     	vm.openMailDialog = openMailDialog;
     	
@@ -50,7 +52,7 @@
   			vm.selectedContact.selected = true;
   			
   			// Call service to get agreement by contactcode
-  			vm.selectedAgreements = [];
+  			getAgrement(contact.contactId);
   		};
   		
     	function loadAll() {
@@ -66,6 +68,18 @@
     			
     		}
     	}
+    	
+    	function getAgrement(coId) {
+    		vm.Agreements = [];
+    		ContactService.getAgrement({contactId: coId}, onGetAgrementSuccess, onGetAgrementError);
+    		
+    		function onGetAgrementSuccess(result) {
+    			vm.Agreements = result;
+            }
+
+            function onGetAgrementError(result) {
+            }
+  		}
     }
 })();
 
