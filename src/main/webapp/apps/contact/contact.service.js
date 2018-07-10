@@ -113,7 +113,12 @@
             'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
             'add': { method:'POST' },
             'create': {url : 'api/agency/contact/create', method: 'POST'},
-            'update': {url : 'api/agency/contact/update', method: 'POST'}
+            'update': {url : 'api/agency/contact/update', method: 'POST'},
+            'getAgrement' : {
+            	method : 'GET', 
+            	url : 'api/agency/product/agreement/get-by-contactId/:contactId',
+            	isArray: true
+            }
         });
     }
 })();
