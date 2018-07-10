@@ -88,11 +88,13 @@
 	  			function onSearchSuccess(data) {
 	  				vm.isLoading = false;
 	  				vm.report = data;
+	  				toastr.remove();
 	  				toastr.success("Dữ liệu đã được cập nhật");
 	  			}
 	  			
 	  			function onSearchError() {
 	  				vm.isLoading = false;
+	  				toastr.remove();
 	  				toastr.error("Lỗi khi tìm kiếm data báo cáo!");
 	  			}
 	  		}
