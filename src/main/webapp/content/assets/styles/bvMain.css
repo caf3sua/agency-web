@@ -1755,6 +1755,9 @@ body {
 .navside .nav li a:hover i {
     color: #1964af;
 }
+.bv-img-pay{
+    opacity: 0.5;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
