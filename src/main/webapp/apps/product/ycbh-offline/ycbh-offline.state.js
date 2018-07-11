@@ -11,7 +11,7 @@
         $stateProvider.state('product.ycbh-offline', {
             parent: 'product',
             url: '/ycbh-offline/{productCode}',
-            templateUrl: 'apps/product/ycbh-offline/ycbh-offline.html',
+            templateUrl: 'apps/product/ycbh-offline/view/ycbh-offline.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_YCBH_OFFLINE'

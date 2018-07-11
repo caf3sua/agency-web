@@ -11,7 +11,7 @@
         $stateProvider.state('product.kcare', {
             parent: 'product',
             url: '/kcare',
-            templateUrl: 'apps/product/kcare/kcare.html',
+            templateUrl: 'apps/product/kcare/view/kcare.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_KCARE'

@@ -11,7 +11,7 @@
         $stateProvider.state('product.tnc', {
             parent: 'product',
             url: '/tnc',
-            templateUrl: 'apps/product/tnc/tnc.html',
+            templateUrl: 'apps/product/tnc/view/tnc.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_TNC'

@@ -11,7 +11,7 @@
         $stateProvider.state('product.printed-paper', {
             parent: 'product',
             url: '/printed-paper/{productCode}',
-            templateUrl: 'apps/product/printed-paper/printed-paper.html',
+            templateUrl: 'apps/product/printed-paper/view/printed-paper.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_PRINTED_PAPER'
