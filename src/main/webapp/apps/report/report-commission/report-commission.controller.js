@@ -39,7 +39,7 @@
         		backgroundColor: 'rgba(120,120,120,0.1)'
         	},
     		color: [
-    	        '#1790cf','#1bb2d8','#99d2dd','#88b0bb',
+    			'#518FDA','#6FD4D0','#99d2dd','#88b0bb',
     	        '#1c7099','#038cc4','#75abd0','#afd6dd'
     	    ],
             tooltip : {
@@ -60,7 +60,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data:['Tuần trước','Dự tính']
+                data:['Thời gian trước','Dự tính']
             },
             calculable : true,
             xAxis : [
@@ -76,7 +76,7 @@
             ],
             series : [
                 {
-                    name:'Tuần trước',
+                    name:'Thời gian trước',
                     type:'bar',
                     data:[0, 0, 0, 0, 0, 0, 0],
 //                    markPoint : {
@@ -161,7 +161,7 @@
   				vm.isLoading = false;
   				vm.report = data;
   				toastr.success("Dữ liệu đã được cập nhật!");
-  				updateChartData(vm.filterDate, data.data);
+  				updateChartData(vm.filterDate, data);
   			}
   			
   			function onSearchError() {
@@ -175,23 +175,23 @@
     		switch(type) {
 	    	    case "WEEK":
 	    	    	vm.chartOptions.xAxis[0].data = vm.weekConstant;
-	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data.otherData);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data.data);
 	    	        break;
 	    	    case "MONTH":
-	    	        vm.chartOptions.xAxis[0].data = getXaxisData(data);
-	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.xAxis[0].data = getXaxisData(data.data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data.otherData);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data.data);
 	    	        break;
 	    	    case "YEAR":
 	    	    	vm.chartOptions.xAxis[0].data = vm.yearConstant;
-	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data.otherData);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data.data);
 	    	        break;
 	    	    case "ENHANCE":
 	    	    	vm.chartOptions.xAxis[0].data = getXaxisData(data);
-	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[0].data = getYaxisData(data.otherData);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data.data);
 	    	        break;
 	    	    default:
 	    	    	break;
@@ -210,16 +210,7 @@
   		function getYaxisData(data) {
   			var result = [];
   			angular.forEach(data, function(item) {
-  				result.push(item.totalPremium);
-  			});
-  			
-  			return result;
-  		}
-  		
-  		function getYaxisOtherData(data) {
-  			var result = [];
-  			angular.forEach(data, function(item) {
-  				result.push(Math.floor((Math.random() * 10000000) + 1));
+  				result.push(item.tongHoaHong);
   			});
   			
   			return result;

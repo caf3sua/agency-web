@@ -29,6 +29,9 @@
         })();
 
   		// Properties & function declare
+        vm.allOrderInit = [];
+        vm.allOrder = [];
+        
   		vm.processPayment = processPayment;
   		vm.getAllOrder = getAllOrder;
         vm.newDate = null;

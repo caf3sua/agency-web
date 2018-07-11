@@ -143,7 +143,12 @@
                 <p class="bv-title-from">Số điện thoại <span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="margin-top-5">
-                <input type="tel" class="bv-input" name="byNight" id="byNight" ng-model="vm.policy.byNight" placeholder="Số điện thoại" required-message="'Chưa nhập số điện thoại!'" required/>
+                <input type="text" name="byNight.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.byNight"
+                       ng-pattern = "/^[0-9]{10,11}$/"
+                       validate-on="blur"
+                       invalid-message = "'Số điện thoại không đúng định dạng'"
+                       required-message="'Chưa nhập số điện thoại liên hệ!'"
+                       required/>
             </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Địa chỉ ngôi nhà mua bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>

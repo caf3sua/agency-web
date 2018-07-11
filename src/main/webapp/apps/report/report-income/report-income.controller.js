@@ -36,7 +36,7 @@
             		backgroundColor: 'rgba(120,120,120,0.1)'
             	},
         		color: [
-        	        '#1790cf','#1bb2d8','#99d2dd','#88b0bb',
+        	        '#518FDA','#6FD4D0','#99d2dd','#88b0bb',
         	        '#1c7099','#038cc4','#75abd0','#afd6dd'
         	    ],
         	    tooltip : {
@@ -131,7 +131,7 @@
   			function onSearchSuccess(result) {
   				loadSummaryReport();
   				vm.isLoading = false;
-  				vm.report = result;
+  				vm.data = result;
   				toastr.success("Dữ liệu đã được cập nhật!");
   				updateChartData(vm.filterDate, result.data);
   			}
@@ -193,7 +193,7 @@
   		function getYaxisData(data) {
   			var result = [];
   			angular.forEach(data, function(item) {
-  				result.push(item.tongHoaHong);
+  				result.push(item.totalPremium);
   			});
   			
   			return result;
