@@ -92,7 +92,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
                 <select class="bv-select-box form-control" ng-model="vm.bankCode">
-                    <option value="bank.bankCodeView"
+                    <option value="{{bank.bankCodeView}}"
                             ng-repeat="bank in vm.getListBankObj">
                         {{bank.paymentBankName}}</option>
                 </select>

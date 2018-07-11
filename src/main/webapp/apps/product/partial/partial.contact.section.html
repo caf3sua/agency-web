@@ -37,7 +37,7 @@
 	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
 	</div>
 	<div class="margin-top-5" ng-if="isShowExtendInfo">
-        <input type="text" name="{{name}}-contactIdNumber" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactIdNumber"
+        <input type="text" name="{{name}}-contactIdNumber" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactExtendInfo.cmnd"
             required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
            	required/>
     </div>
@@ -45,7 +45,7 @@
         <p class="bv-title-from">Quan hệ với người bảo hiểm</p>
     </div>
     <div class="margin-top-5" ng-if="isShowExtendInfo">
-        <select name="{{name}}-contactRelation" class="bv-select-box form-control" ng-model="contactRelation"
+        <select name="{{name}}-contactRelation" class="bv-select-box form-control" ng-model="contactExtendInfo.quanhe"
         	required-message="'Chưa lựa chọn quan hệ!'"
            	required>
             <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>

@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductBvpController', ProductBvpController);
 
-    ProductBvpController.$inject = ['$scope', '$controller', 'BvpService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'BvpService', 'DateUtils', 'ProductCommonService', '$state'];
 
-    function ProductBvpController ($scope, $controller, BvpService, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductBvpController ($rootScope, $scope, $controller, BvpService, DateUtils, ProductCommonService, $state) {
     	var vm = this;
         vm.tvc ={
         };
@@ -79,7 +79,7 @@
 	    		}
     		],
     		"ngoaitru": "1",
-    		"ngoaitruPhi": 4290000.0,
+    		"ngoaitruPhi": 0,
     		"nguoidbhCmnd": "",
     		"nguoidbhName": "",
     		"nguoidbhNgaysinh": "",
@@ -115,6 +115,16 @@
     		"tncnPhi": 0,
     		"tncnPhiSi": 0,
     		"tncnSotienbh": 0
+		}
+  		
+  		$rootScope.nguoidbh = {
+			"cmnd" : "", 
+			"quanhe" : ""
+		}
+  		
+  		$rootScope.nguoith = {
+			"cmnd" : "", 
+			"quanhe" : ""
 		}
 
   		vm.onDobChange = onDobChange;
@@ -290,21 +300,50 @@
         		vm.policy.q2 = "0";
         		vm.policy.q3 = "0";
         	}
-
-            vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
-            vm.policy.insurancestartdate = postData.insurancestartdate;
-            vm.policy.numbermonth = postData.numbermonth;
-            vm.policy.numberperson = postData.numberperson;
-            vm.policy.premiumPackage = postData.premiumPackage;
-            vm.policy.premiumPackageplanid = postData.premiumPackage.toString()[0];
-            vm.policy.premiumdiscount = postData.premiumdiscount;
-            vm.policy.premiumnet = postData.premiumnet;
-            vm.policy.premiumtnc = postData.premiumtnc;
+            
+            vm.policy.chuongtrinhBh = postData.chuongTrinh;
+            vm.policy.chuongtrinhPhi = postData.phiBH;
+            vm.policy.expiredDate = postData.thoihanbhDen;
+            vm.policy.inceptionDate = postData.thoihanbhTu;
+            
+            if(vm.product.ngoaitruChk) {
+            	vm.policy.ngoaitru = '1';
+            } else {
+            	vm.policy.ngoaitru = '0';
+            }
+            
+            if(vm.product.nhakhoaChk) {
+            	vm.policy.nhakhoa = '1';
+            } else {
+            	vm.policy.nhakhoa = '0';
+            }
+            
+            if(vm.product.smcnChk) {
+            	vm.policy.sinhmang = '1';
+            	vm.policy.sinhmangSotienbh = vm.product.smcnSi;
+            } else {
+            	vm.policy.sinhmang = '0';
+            	vm.policy.sinhmangSotienbh = 0;
+            }
+            
+            if(vm.product.tncnChk) {
+            	vm.policy.tncn = '1';
+            	vm.policy.tncnSotienbh = vm.product.tncnSi;
+            } else {
+            	vm.policy.tncn = '0';
+            	vm.policy.tncnSotienbh = 0;
+            }
+            
             if(postData.receiveMethod) {
                 vm.policy.receiveMethod = "2";
             } else {
                 vm.policy.receiveMethod = "1";
             }
+            
+            vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
+            vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
+            vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
+            vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
 
             vm.createNewPolicyBase("BVP", vm.policy);
         }

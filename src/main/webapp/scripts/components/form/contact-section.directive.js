@@ -14,8 +14,7 @@
                 title: '@',
                 contactName: '=',
                 contactDob: '=',
-                contactIdNumber: '=',
-                contactRelation: '=',
+                contactExtendInfo: '=',
                 openSearchContact: '&'
             },
             templateUrl : 'apps/product/partial/partial.contact.section.html'

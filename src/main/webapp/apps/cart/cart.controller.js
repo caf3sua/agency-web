@@ -169,17 +169,17 @@
         			toastr.error("Bạn cần chọn ngân hàng hỗ trợ!");
             		return;
         		}
-        	} else {
-        		var paymentData = {
-        			"agreementIds" : vm.agreementIds,
-        			"bankCode": vm.bankCode,
-        			"couponCode": vm.couponCode,
-        			"paymentFee": vm.sumMoney,
-        			"paymentType": vm.typeBank
-            	}
-                	
-            	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
         	}
+        	
+    		var paymentData = {
+    			"agreementIds" : vm.agreementIds,
+    			"bankCode": vm.bankCode,
+    			"couponCode": vm.couponCode,
+    			"paymentFee": vm.sumMoney,
+    			"paymentType": vm.typeBank
+        	}
+            	
+        	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
         }
         
         function onProcessPaymentSuccess(result) {
