@@ -12,6 +12,7 @@
     	  var vm = this;
         
 	        // Declare variable and method
+    	  	vm.isSearchCollapsed = true;
 	        vm.filterDate = '';
 	        vm.changeFilterDate = changeFilterDate;
 	        vm.isLoading = false;
@@ -30,6 +31,8 @@
 	        		  "waitAgency" : [],
 	        		  "waitBaoviet" : []
     		};
+	        
+	        vm.searchReport = searchReport;
 	        
 	        // Test data
 	        vm.p_l_1 = [[1, 6.1], [2, 6.3], [3, 6.4], [4, 6.6], [5, 7.0], [6, 7.7], [7, 8.3]];
@@ -55,12 +58,29 @@
 	  		// Implement function 
 	  		function changeFilterDate(type) {
 	  			vm.filterDate = type;
-	  			
-	  			// Load report
-	  			loadReport();
+	    		
+	    		if (vm.filterDate != 'ENHANCE') {
+	    			vm.isSearchCollapsed = true;
+	    			loadData();
+	    		} else {
+	    			vm.isSearchCollapsed = false;
+	    		}
 	  		}
-          
-	  		function loadReport() {
+	  		
+	  		function searchReport() {
+	        	console.log('search report,' + vm.searchCriterial);
+	        	
+	        	// validate
+	        	if (vm.searchCriterial.fromDate == '' || vm.searchCriterial.toDate == '') {
+	        		toastr.error('Không đủ dữ liệu để tìm kiếm!');
+	        		return;
+	        	}
+	        	
+	        	// Search
+	        	loadData();       	
+	        }
+	  		
+	  		function loadData() {
 	  			vm.isLoading = true;
 	  			vm.report = {
 		        		  "totalOrder" : "",

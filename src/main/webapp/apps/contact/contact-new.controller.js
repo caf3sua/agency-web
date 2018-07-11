@@ -6,9 +6,9 @@
 
 
     	ContactNewController.$inject = ['$rootScope', '$scope', '$http', '$filter',
-    		'ContactService', 'MessageService', '$controller', 'ContactCommonDialogService'];
+    		'ContactService','$controller', 'ContactCommonDialogService'];
         function ContactNewController($rootScope, $scope, $http, $filter
-        		, ContactService, MessageService, $controller, ContactCommonDialogService) {
+        		, ContactService, $controller, ContactCommonDialogService) {
         	
         	var vm = this;
         	
@@ -172,7 +172,7 @@
         		ContactService.create(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			MessageService.showSuccessMessage('Tạo khách hàng thành công');
+        			toastr.success('Tạo khách hàng thành công');
         		}
         		
         		function onError(result) {
