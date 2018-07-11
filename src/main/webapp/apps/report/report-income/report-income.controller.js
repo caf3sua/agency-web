@@ -193,7 +193,7 @@
   		function getYaxisData(data) {
   			var result = [];
   			angular.forEach(data, function(item) {
-  				result.push(item.tongHoaHong);
+  				result.push(item.totalPremium);
   			});
   			
   			return result;

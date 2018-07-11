@@ -60,7 +60,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data:['Tuần trước','Dự tính']
+                data:['Thời gian trước','Dự tính']
             },
             calculable : true,
             xAxis : [
@@ -76,7 +76,7 @@
             ],
             series : [
                 {
-                    name:'Tuần trước',
+                    name:'Thời gian trước',
                     type:'bar',
                     data:[0, 0, 0, 0, 0, 0, 0],
 //                    markPoint : {
@@ -210,7 +210,7 @@
   		function getYaxisData(data) {
   			var result = [];
   			angular.forEach(data, function(item) {
-  				result.push(item.totalPremium);
+  				result.push(item.tongHoaHong);
   			});
   			
   			return result;
