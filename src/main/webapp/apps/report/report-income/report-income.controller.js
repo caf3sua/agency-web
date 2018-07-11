@@ -25,6 +25,7 @@
       		  "toDate": ""
 		};
   		
+        vm.isSearchCollapsed = true;
         vm.report;
   		vm.filterDate = '';
         vm.changeFilterDate = changeFilterDate;
@@ -56,7 +57,7 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['Doanh thu','Đã thanh toán']
+                    data:['Của tôi','Của đại lý']
                 },
                 calculable : true,
                 xAxis : [
@@ -73,14 +74,14 @@
                 ],
                 series : [
                     {
-                        name:'Đã thanh toán',
+                        name:'Của tôi',
                         type:'line',
                         smooth:true,
                         itemStyle: {normal: {areaStyle: {type: 'default'}}},
                         data:[]
                     },
                     {
-                        name:'Doanh thu',
+                        name:'Của đại lý',
                         type:'line',
                         smooth:true,
                         itemStyle: {normal: {areaStyle: {type: 'default'}}},
@@ -95,8 +96,6 @@
 
     	// Init controller
   		(function initController() {
-  			resetData();
-  			
   			changeFilterDate('WEEK');
   		})();
   		
@@ -129,12 +128,12 @@
   			
   			ReportService.getReportIncome(vm.searchCriterial, onSearchSuccess, onSearchError);
   			
-  			function onSearchSuccess(data) {
+  			function onSearchSuccess(result) {
   				loadSummaryReport();
   				vm.isLoading = false;
-  				vm.report = data;
+  				vm.report = result;
   				toastr.success("Dữ liệu đã được cập nhật!");
-  				updateChartData(vm.filterDate, data.data);
+  				updateChartData(vm.filterDate, result.data);
   			}
   			
   			function onSearchError() {
@@ -160,22 +159,22 @@
 	    	    case "WEEK":
 	    	    	vm.chartOptions.xAxis[0].data = vm.weekConstant;
 	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data);
 	    	        break;
 	    	    case "MONTH":
 	    	        vm.chartOptions.xAxis[0].data = getXaxisData(data);
 	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data);
 	    	        break;
 	    	    case "YEAR":
-	    	    	vm.chartOptions.xAxis[0].data = getXaxisData(data);
+	    	    	vm.chartOptions.xAxis[0].data = vm.yearConstant;
 	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data);
 	    	        break;
 	    	    case "ENHANCE":
 	    	    	vm.chartOptions.xAxis[0].data = getXaxisData(data);
 	    	        vm.chartOptions.series[0].data = getYaxisData(data);
-	    	        vm.chartOptions.series[1].data = getYaxisOtherData(data);
+	    	        vm.chartOptions.series[1].data = getYaxisData(data);
 	    	        break;
 	    	    default:
 	    	    	break;
@@ -194,27 +193,29 @@
   		function getYaxisData(data) {
   			var result = [];
   			angular.forEach(data, function(item) {
-  				result.push(item.totalPremium);
+  				result.push(item.tongHoaHong);
   			});
   			
   			return result;
   		}
   		
-  		// TODO
-  		function getYaxisOtherData(data) {
-  			var result = [];
-  			angular.forEach(data, function(item) {
-  				result.push(Math.floor((Math.random() * 10000000) + 1));
-  			});
-  			
-  			return result;
-  		}
+//  		function getYaxisOtherData(data) {
+//  			var result = [];
+//  			angular.forEach(data, function(item) {
+//  				result.push(Math.floor((Math.random() * 10000000) + 1));
+//  			});
+//  			
+//  			return result;
+//  		}
   		
         function changeFilterDate(type) {
     		vm.filterDate = type;
     		
     		if (vm.filterDate != 'ENHANCE') {
+    			vm.isSearchCollapsed = true;
     			loadData();
+    		} else {
+    			vm.isSearchCollapsed = false;
     		}
         }
         

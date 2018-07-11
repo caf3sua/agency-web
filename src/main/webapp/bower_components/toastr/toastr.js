@@ -44,6 +44,7 @@
             ////////////////
 
             function error(message, title, optionsOverride) {
+            	remove();
                 return notify({
                     type: toastType.error,
                     iconClass: getOptions().iconClasses.error,
@@ -80,6 +81,7 @@
             }
 
             function success(message, title, optionsOverride) {
+            	remove();
                 return notify({
                     type: toastType.success,
                     iconClass: getOptions().iconClasses.success,
@@ -90,6 +92,7 @@
             }
 
             function warning(message, title, optionsOverride) {
+            	remove();
                 return notify({
                     type: toastType.warning,
                     iconClass: getOptions().iconClasses.warning,
@@ -162,7 +165,7 @@
                     showEasing: 'swing', //swing and linear are built into jQuery
                     onShown: undefined,
                     hideMethod: 'fadeOut',
-                    hideDuration: 1000,
+                    hideDuration: 200,
                     hideEasing: 'swing',
                     onHidden: undefined,
                     closeMethod: false,
@@ -190,7 +193,8 @@
                     preventDuplicates: false,
                     progressBar: false,
                     progressClass: 'toast-progress',
-                    rtl: false
+                    rtl: false,
+                    maxOpened: 1
                 };
             }
 

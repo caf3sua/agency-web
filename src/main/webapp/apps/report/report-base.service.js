@@ -16,11 +16,11 @@
 			'getReportDashboard' : {
 				method : 'POST',
 				url : 'api/agency/agency-report/report-dashboard'
+			},
+			'getReportCommission' : {
+				method : 'POST',
+				url : 'api/agency/agency-report/report-commission'
 			}
-//			'createNewPolicy' : {
-//				method : 'POST',
-//				url : 'api/agency/product/khc/createPolicy'
-//			}
 		});
 
 		return service;

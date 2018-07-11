@@ -6,9 +6,9 @@
 
 
     	ContactEditController.$inject = ['$rootScope', '$scope', '$http', '$filter', '$state',
-    		'ContactService', 'MessageService', '$controller', 'ContactCommonDialogService', 'entity'];
+    		'ContactService', '$controller', 'ContactCommonDialogService', 'entity'];
         function ContactEditController($rootScope, $scope, $http, $filter, $state
-        		, ContactService, MessageService, $controller, ContactCommonDialogService, entity) {
+        		, ContactService, $controller, ContactCommonDialogService, entity) {
         	
         	var vm = this;
         	
@@ -185,7 +185,7 @@
         		ContactService.update(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			MessageService.showSuccessMessage('Sửa khách hàng thành công');
+        			toastr.success('Sửa khách hàng thành công');
         			$state.go('app.contact');
         		}
         		
