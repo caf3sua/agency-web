@@ -1,0 +1,272 @@
+<div class="bv-step-3-default  padding0  display-flex " id="bv-step-3" >
+    <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step3')">
+        <p class="fas {{ vm.typeArrowThree }}"></p>
+        <p>3</p>
+        <span>TÓM TẮT ĐƠN HÀNG</span>
+    </div>
+    <div class="bv-step-content">
+        <div class="display-flex">
+            <div class="border-right-ccc bv-pading-30 width-100">
+                <div class="text-header-sp" style="margin-bottom: 10px">
+                    <p>Thông tin người được bảo hiểm</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Tên chủ xe</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.insuranceName}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Số CMND/Hộ chiếu</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoceNumber}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Địa chỉ liên lạc</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.insuranceAddress}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Điện thoại</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">098545465</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Quyền sở hữu</p>
+                </div>
+                <div ng-switch="vm.policy.bankId">
+                    <div ng-switch-when="0">
+                        <p class="bv-tile-templateSummary">Chủ sở hữu</p>
+                    </div>
+                    <div ng-switch-when="1">
+                        <p class="bv-tile-templateSummary">Chủ sở hữu cho thuê nhà</p>
+                    </div>
+                    <div ng-switch-when="2">
+                        <p class="bv-tile-templateSummary">Người thuê nhà</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-right-ccc bv-pading-30 width-100">
+                <div class="text-header-sp">
+                    <p>PHÍ BẢO HIỂM (BAO GỒM 10% THUẾ GTGT)</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Tổng tiền thanh toán</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.premiumHome | number:0 }} VND</p>
+                </div>
+
+                <div class="text-header-sp" style="margin-bottom: 10px">
+                    <p>THÔNG TIN GIAO NHẬN GIẤY CHỨNG NHẬN BẢO HIỂM</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Họ và tên người nhận</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Địa chỉ người nhận</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Số điện thoại liên hệ</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Địa chỉ email</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Hình thức giao nhận</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký</p>
+                </div>
+            </div>
+            <div class="width-100 bv-pading-30">
+                <div class="text-header-sp">
+                    <p>THÔNG TIN HÓA ĐƠN GIÁ TRỊ GIA TĂNG</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Họ và tên người mua</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.name}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Tên công ty</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.company}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Mã số thuế</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.taxNo}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Địa chỉ công ty</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.address}}</p>
+                </div>
+                <div class="margin-top-10">
+                    <p class="bv-title-from">Số tài khoản</p>
+                </div>
+                <div>
+                    <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.accountNo}}</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="bv-pading-30 margin-top-20 text-header-sp" style="margin-bottom: 5px">
+                <p>THÔNG TIN NGÔI NHÀ</p>
+            </div>
+            <div style="background: #fafafa">
+                <div class="bv-pading-table-templateSummary">
+                    <div class="margin-top-5">
+                        <p class="bv-title-from">Địa điểm được bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.insuredLocation}}</p>
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Loại hình ngôi nhà</p>
+                    </div>
+                    <div ng-switch="vm.policy.loaiHinh">
+                        <div ng-switch-when="1">
+                            <p class="bv-tile-templateSummary">Nhà liền kề/biệt thự</p>
+                        </div>
+                        <div ng-switch-when="0">
+                            <p class="bv-tile-templateSummary">Chung cư</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">Câu hỏi về tình trạng ngôi nhà:</p>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">- Ngôi nhà được bảo hiểm là công trình xây dựng với mục đích để ở và phục vụ sinh hoạt gia đình?</p>
+                    </div>
+                    <div class="margin-top-5">
+                        <input type="radio" ng-model="vm.policy.windowLocks" value="0" disabled="disabled"/> Có
+                        <input type="radio" ng-model="vm.policy.windowLocks" value="1" style="margin-left: 50px" disabled="disabled"/> Không
+                    </div>
+                    <div class="margin-top-10">
+                        <p class="bv-title-from">Ngôi nhà được bảo hiểm được xây dựng bằng gạch, đá, xi măng?</p>
+                    </div>
+                    <div class="margin-top-5">
+                        <input type="radio" ng-model="vm.policy.bars" value="0" disabled="disabled"/> Có
+                        <input type="radio" ng-model="vm.policy.bars" value="1" style="margin-left: 50px" disabled="disabled"/> Không
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="bv-pading-30 margin-top-20 text-header-sp" style="margin-bottom: 5px">
+                <p>THÔNG TIN BẢO HIỂM</p>
+            </div>
+            <div style="background: #fafafa">
+                <div class="bv-pading-table-templateSummary">
+                    <div>
+                        <p class="bv-title-from">Thời hạn bảo hiểm</p>
+                    </div>
+                    <div class="display-flex">
+                        <div>
+                            <p class="bv-tile-templateSummary">Từ &nbsp {{vm.policy.inceptionDate}}</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">&nbsp Đến &nbsp {{vm.policy.expiredDate}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">Đối tượng bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần I: Ngôi nhà</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Bồi thường tổn thất, thiệt hại vật chất bất ngờ với Ngôi nhà được bảo hiểm do các rủi ro được bảo hiểm theo qui định của đơn</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần II: Tài sản bên trong</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Bồi thường tổn thất, thiệt hại vật chất bất ngờ đối với Tài sản bên trong của Ngôi nhà được bảo hiểm do các rủi ro được bảo hiểm theo quy định của đơn</p>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">Giới hạn bồi thường</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần I: Ngôi nhà {{vm.policy.premiumsi | number}} VND/cả thời gian bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần II- Tài sản bên trong {{vm.policy.premiumsiin | number}} VND/cả thời gian bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Giới hạn bồi thường: 50,000,000 VND/mỗi đồ vật được bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">Phạm vi bảo hiểm</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Theo Quy tắc bảo hiểm Nhà tư nhân của Bảo Hiểm Bảo Việt</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">A. Cháy, Sét đánh</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">B. Nổ</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">C. Giông, Bão, Lũ lụt</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">D. Vỡ hoặc Tràn nước</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">E. Va chạm với ngôi nhà</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">F. Trộm cướp</p>
+                    </div>
+                    <div class="display-flex">
+                        <div>
+                            <p class="bv-tile-templateSummary">Điều khoản mở rộng:</p>
+                        </div>
+                        <div>
+                            <p class="bv-tile-templateSummary">&nbspThuê nhà sau tổn thất (5% giới hạn bồi thường Phần I)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="bv-title-from">Mức khấu trừ&nbsp&nbsp&nbsp</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần I-Ngôi nhà: 5,000,000 VND/mỗi vụ tổn thất</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">Phần II-Tài sản bên trong: 2,000,000 VND/mỗi vụ tổn thất</p>
+                    </div>
+
+                    <div>
+                        <p class="bv-tile-templateSummary display-inline-block"></p>
+                        <button class="bv-btn-step3" ng-click="vm.getPolicyNumber()">
+                            Tạo đơn hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
