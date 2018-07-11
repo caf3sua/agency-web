@@ -252,6 +252,9 @@
                 document.getElementById("bv-step-1").className = 'bv-step-1  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98 display-flex OpenStepOne';
                 document.getElementById("bv-step-2").className = 'bv-step-2  padding0 display-flex  closeStepTwo';
                 document.getElementById("bv-step-3").className = 'bv-step-3-default  padding0  display-flex';
+                document.getElementById("includeStep1").className = 'bv-display-step widthStep98';
+                document.getElementById("includeStep2").className = 'bv-display-step';
+                document.getElementById("includeStep3").className = 'bv-display-step';
                 vm.typeArrowOne = "fa-angle-left";
                 vm.typeArrowThree = "fa-angle-right";
                 vm.typeArrowTwo = "fa-angle-right";
@@ -261,6 +264,9 @@
                     document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
                     document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
                     document.getElementById("bv-step-3").className = 'bv-step-3-default  padding0  display-flex';
+                    document.getElementById("includeStep1").className = 'bv-display-step';
+                    document.getElementById("includeStep2").className = 'bv-display-step widthStep98';
+                    document.getElementById("includeStep3").className = 'bv-display-step';
                     vm.typeArrowOne = "fa-angle-right";
                     vm.typeArrowThree = "fa-angle-right";
                     vm.typeArrowTwo = "fa-angle-left";
@@ -270,6 +276,9 @@
                     document.getElementById("bv-step-2").className = 'bv-step-2  padding0 display-flex  closeStepTwo';
                     document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
                     document.getElementById("bv-step-3").className = 'bv-step-3 display-flex openStepOne col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex  widthStep98';
+                    document.getElementById("includeStep1").className = 'bv-display-step';
+                    document.getElementById("includeStep2").className = 'bv-display-step ';
+                    document.getElementById("includeStep3").className = 'bv-display-step widthStep98';
                     vm.typeArrowOne = "fa-angle-right";
                     vm.typeArrowThree = "fa-angle-left";
                     vm.typeArrowTwo = "fa-angle-right";
