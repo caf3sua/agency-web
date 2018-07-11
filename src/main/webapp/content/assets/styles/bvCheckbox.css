@@ -94,3 +94,9 @@
 .label-cbx input:radio + .checkbox + span {
     color: #0371b6;
 }
+.label-cbx input:radio + .checkbox + span + p {
+    opacity: 1 !important;
+}
+.label-cbx input:checked + .checkbox + span + p {
+    opacity: 1 !important;
+}
