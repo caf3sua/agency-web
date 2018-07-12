@@ -9,6 +9,8 @@
 
     function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService, DateUtils) {
     	var vm = this;
+    	vm.lineId = 'HOM';
+    	
         vm.changeYear = changeYear;
         angular.element(document).ready(function () {
         });

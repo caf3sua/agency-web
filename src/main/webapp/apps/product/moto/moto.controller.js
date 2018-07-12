@@ -9,7 +9,8 @@
 
     function ProductMotoController ($scope, $controller, MotoService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
-
+    	vm.lineId = 'MOT';
+    	
         angular.element(document).ready(function () {
         });
 

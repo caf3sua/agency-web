@@ -9,6 +9,8 @@
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, ProductCommonService) {
     	var vm = this;
+    	vm.lineId = 'TVC';
+    	
     	vm.policy = {
                 agreementId: "",
                 changePremium: null,

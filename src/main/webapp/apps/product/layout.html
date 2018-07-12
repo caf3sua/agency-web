@@ -1,0 +1,43 @@
+<!-- Loading -->
+<div class="bv-loading" ng-show="vm.loading">
+</div>
+
+<!-- Layout -->
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+	<!-- Step title -->
+	<div ng-include="'apps/product/partial/partial.step-title.html'"></div>
+        
+    <!-- Step 1 -->
+    <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">
+	    <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step1')">
+	        <p class="fas {{vm.typeArrowOne}}"></p>
+	        <p>1</p>
+	        <span>Tính phí</span>
+	        <span>,thông tin bảo hiểm</span>
+	    </div>
+	    
+	    <!-- Include content of step 1 -->
+    	<div ng-if="vm.lineId == 'BVP'" ng-include="'apps/product/bvp/view/bvp_step1.html'"></div>
+    </div>
+    
+    <!-- Step 2 -->
+    <div ng-include="'apps/product/partial/partial.product-step-2.html'" class="bv-display-step"></div>
+    
+    <!-- Step 3 -->
+    <div class="bv-step-3-default padding0 display-flex" id="bv-step-3" >
+	    <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step3')">
+	        <p class="fas {{ vm.typeArrowThree }}"></p>
+	        <p>3</p>
+	        <span>Tóm tắt đơn hàng</span>
+	    </div>
+	    
+	    <!-- Include summary -->
+	    <div class="bv-step-content">
+	    	<div ng-if="vm.lineId == 'BVP'" ng-include="'apps/product/bvp/view/summary.html'" id="includeStep3"></div>
+	    	
+	    	
+	    	<!-- Button create -->
+	    	<div ng-include="'apps/product/partial/partial.product-btn-create-policy.html'"></div>
+	    </div>
+	</div>
+</div>

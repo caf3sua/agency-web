@@ -11,7 +11,7 @@
         $stateProvider.state('product.bvp', {
             parent: 'product',
             url: '/bvp',
-            templateUrl: 'apps/product/bvp/view/bvp.html',
+            templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_BVP'

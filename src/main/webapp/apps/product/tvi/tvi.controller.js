@@ -9,6 +9,8 @@
 
     function ProductTviController ($scope, $controller, Principal, $state, $rootScope, TviService, ProductCommonService) {
         var vm = this;
+        vm.lineId = 'TVI';
+        
         vm.policy = {
             bankId: "",
             changePremium: 0,

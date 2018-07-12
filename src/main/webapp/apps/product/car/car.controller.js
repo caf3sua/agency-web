@@ -9,7 +9,8 @@
 
     function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state, $rootScope) {
         var vm = this;
-
+        vm.lineId = 'CAR';
+        
         angular.element(document).ready(function () {
         });
 

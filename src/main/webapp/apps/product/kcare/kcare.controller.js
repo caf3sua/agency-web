@@ -9,6 +9,7 @@
 
     function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductKcareService, ProductCommonService, DateUtils) {
         var vm = this;
+        vm.lineId = 'KCR';
 
         angular.element(document).ready(function () {
         });

@@ -9,7 +9,8 @@
 
     function ProductKhcController ($scope, $controller, KhcService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
-
+    	vm.lineId = 'KHC';
+    	
         angular.element(document).ready(function () {
         });
 

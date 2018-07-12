@@ -9,7 +9,8 @@
 
     function ProductHhvcController ($scope, $controller, HhvcService, ProductCommonService, $state, $rootScope) {
     	var vm = this;
-
+    	vm.lineId = 'HHV';
+    	
         angular.element(document).ready(function () {
         });
 

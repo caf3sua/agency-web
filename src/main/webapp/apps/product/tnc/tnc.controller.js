@@ -9,7 +9,8 @@
 
     function ProductTncController ($scope, $controller, TncService, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
-
+    	vm.lineId = 'TNC';
+    	
         angular.element(document).ready(function () {
         });
 

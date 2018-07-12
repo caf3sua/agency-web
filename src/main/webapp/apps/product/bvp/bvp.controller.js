@@ -9,6 +9,8 @@
 
     function ProductBvpController ($rootScope, $scope, $controller, BvpService, DateUtils, ProductCommonService, $state) {
     	var vm = this;
+    	vm.lineId = 'BVP';
+    	
         vm.tvc ={
         };
         angular.element(document).ready(function () {
