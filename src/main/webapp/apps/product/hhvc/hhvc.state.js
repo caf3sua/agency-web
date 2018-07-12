@@ -11,7 +11,7 @@
         $stateProvider.state('product.hhvc', {
             parent: 'product',
             url: '/hhvc',
-            templateUrl: 'apps/product/hhvc/view/hhvc.html',
+            templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_HHVC'

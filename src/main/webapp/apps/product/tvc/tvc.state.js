@@ -11,7 +11,7 @@
         $stateProvider.state('product.tvc', {
             parent: 'product',
             url: '/tvc',
-            templateUrl: 'apps/product/tvc/view/tvc.html',
+            templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_TVC'

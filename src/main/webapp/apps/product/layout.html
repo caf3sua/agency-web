@@ -3,7 +3,7 @@
 </div>
 
 <!-- Layout -->
-<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
 	<!-- Step title -->
 	<div ng-include="'apps/product/partial/partial.step-title.html'"></div>
         
@@ -17,11 +17,27 @@
 	    </div>
 	    
 	    <!-- Include content of step 1 -->
-    	<div ng-if="vm.lineId == 'BVP'" ng-include="'apps/product/bvp/view/bvp_step1.html'"></div>
+    	<div ng-if="vm.lineId == 'BVP'" ng-include="'apps/product/bvp/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'CAR'" ng-include="'apps/product/car/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'HHV'" ng-include="'apps/product/hhvc/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'HOM'" ng-include="'apps/product/home/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'KCR'" ng-include="'apps/product/kcare/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'KHC'" ng-include="'apps/product/khc/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'MOT'" ng-include="'apps/product/moto/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'TNC'" ng-include="'apps/product/tnc/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'TVC'" ng-include="'apps/product/tvc/view/step1.html'"></div>
+		<div ng-if="vm.lineId == 'TVI'" ng-include="'apps/product/tvi/view/step1.html'"></div>
     </div>
     
     <!-- Step 2 -->
-    <div ng-include="'apps/product/partial/partial.product-step-2.html'" class="bv-display-step"></div>
+    <div class="bv-step-2 closeStepTwo padding0 display-flex " id="bv-step-2" >
+	    <div class="bv-step-title text-center hidden-xs hidden-sm " ng-click="vm.closeOpenStep('step2')">
+	        <p class="fas {{ vm.typeArrowTwo }}"></p>
+	        <p>2</p>
+	        <span>Thông tin giao hàng</span>
+	    </div>
+	    <div ng-include="'apps/product/partial/partial.product-step-2.html'" class="bv-display-step"></div>
+	</div>
     
     <!-- Step 3 -->
     <div class="bv-step-3-default padding0 display-flex" id="bv-step-3" >
@@ -34,7 +50,15 @@
 	    <!-- Include summary -->
 	    <div class="bv-step-content">
 	    	<div ng-if="vm.lineId == 'BVP'" ng-include="'apps/product/bvp/view/summary.html'" id="includeStep3"></div>
-	    	
+			<div ng-if="vm.lineId == 'CAR'" ng-include="'apps/product/car/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'HHV'" ng-include="'apps/product/hhvc/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'HOM'" ng-include="'apps/product/home/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'KCR'" ng-include="'apps/product/kcare/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'KHC'" ng-include="'apps/product/khc/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'MOT'" ng-include="'apps/product/moto/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'TNC'" ng-include="'apps/product/tnc/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'TVC'" ng-include="'apps/product/tvc/view/summary.html'"></div>
+			<div ng-if="vm.lineId == 'TVI'" ng-include="'apps/product/tvi/view/summary.html'"></div>
 	    	
 	    	<!-- Button create -->
 	    	<div ng-include="'apps/product/partial/partial.product-btn-create-policy.html'"></div>

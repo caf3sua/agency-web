@@ -11,7 +11,7 @@
         $stateProvider.state('product.moto', {
             parent: 'product',
             url: '/moto',
-            templateUrl: 'apps/product/moto/view/moto.html',
+            templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],
                 title: 'PRODUCT_MOTO'
