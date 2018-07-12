@@ -13,6 +13,8 @@
     	var vm = this;
         
     	vm.policy;
+    	vm.contactName;
+    	vm.contactDob;
     	vm.gotoOrder = gotoOrder;
     	
         angular.element(document).ready(function () {
@@ -32,6 +34,10 @@
   		})();
   		
   		// Properties & function declare
+  		function loadContactInfo() {
+  			
+  		}
+  		
   		function gotoOrder() {
   			$state.go('app.order');
   		}
