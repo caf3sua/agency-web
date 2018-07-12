@@ -12,6 +12,10 @@
                 method : 'POST',
                 url : 'api/agency/product/agreement/search-order',
                 isArray : true
+            },
+            'getById' : {
+                method : 'GET',
+                url : 'api/agency/product/agreement/get-by-id/:id'
             }
         });
 

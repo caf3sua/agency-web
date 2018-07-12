@@ -1,0 +1,35 @@
+<!-- BVP -->
+<div ng-if="vm.policy.lineId == 'BVP'" ng-include="'apps/product/bvp/view/summary.html'"></div>
+
+<!-- CAR -->
+<div ng-if="vm.policy.lineId == 'CAR'" ng-include="'apps/product/car/view/summary.html'"></div>
+
+<!-- HHVC -->
+<div ng-if="vm.policy.lineId == 'HHVC'" ng-include="'apps/product/hhvc/view/summary.html'"></div>
+
+<!-- HOME -->
+<div ng-if="vm.policy.lineId == 'HOME'" ng-include="'apps/product/home/view/summary.html'"></div>
+
+<!-- KCARE -->
+<div ng-if="vm.policy.lineId == 'KCARE'" ng-include="'apps/product/kcare/view/summary.html'"></div>
+
+<!-- KHC -->
+<div ng-if="vm.policy.lineId == 'KHC'" ng-include="'apps/product/khc/view/summary.html'"></div>
+
+<!-- MOTO -->
+<div ng-if="vm.policy.lineId == 'MOTO'" ng-include="'apps/product/moto/view/summary.html'"></div>
+
+<!-- TNC -->
+<div ng-if="vm.policy.lineId == 'TNC'" ng-include="'apps/product/tnc/view/summary.html'"></div>
+
+<!-- TVC -->
+<div ng-if="vm.policy.lineId == 'TVC'" ng-include="'apps/product/tvc/view/summary.html'"></div>
+
+<!-- TVI -->
+<div ng-if="vm.policy.lineId == 'TVI'" ng-include="'apps/product/tvi/view/summary.html'"></div>
+
+<div>
+    <button class="bv-btn-step3" ng-click="vm.gotoOrder()" >
+        Quay lại
+    </button>
+</div>
