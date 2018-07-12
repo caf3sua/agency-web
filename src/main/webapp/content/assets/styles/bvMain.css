@@ -168,7 +168,7 @@ body {
     margin-top: 85px;
     color: #dfdfdf;
 }
-.closeStepOne>form>.bv-step-content{
+.closeStepOne>div>form>.bv-step-content{
     width: 0;
     min-width: 0;
     display: none;
@@ -267,7 +267,7 @@ body {
     width: 40px;
     text-align: left;
 }
-.closeStepTwo>form>.bv-step-content{
+.closeStepTwo>div>form>.bv-step-content{
     width: 0;
     min-width: 0;
     display: none;

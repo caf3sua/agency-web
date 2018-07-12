@@ -304,7 +304,7 @@
         	}
             
             vm.policy.chuongtrinhBh = postData.chuongTrinh;
-            vm.policy.chuongtrinhPhi = postData.phiBH;
+            vm.policy.chuongtrinhPhi = postData.premiumNet;
             vm.policy.expiredDate = postData.thoihanbhDen;
             vm.policy.inceptionDate = postData.thoihanbhTu;
             
