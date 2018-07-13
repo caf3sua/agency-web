@@ -5,10 +5,10 @@
         .module('app')
         .config(pagerConfig);
 
-    pagerConfig.$inject = ['uibPagerConfig', 'paginationConstants'];
+    pagerConfig.$inject = ['uibPagerConfig', 'PAGINATION_CONSTANTS'];
 
-    function pagerConfig(uibPagerConfig, paginationConstants) {
-        uibPagerConfig.itemsPerPage = paginationConstants.itemsPerPage;
+    function pagerConfig(uibPagerConfig, PAGINATION_CONSTANTS) {
+        uibPagerConfig.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
         uibPagerConfig.previousText = '«';
         uibPagerConfig.nextText = '»';
     }

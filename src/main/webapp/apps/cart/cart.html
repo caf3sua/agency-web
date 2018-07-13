@@ -128,7 +128,7 @@
 	</div>
 	<div
 		class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
-        <table class="table bv-home-block-left-table bv-table-kh" st-table="vm.allOrderInit" st-safe-src="vm.allOrder">
+        <table class="table bv-home-block-left-table bv-table-kh">
 			<col width="5%">
 			<col width="3%">
 			<col width="18%">
@@ -154,7 +154,7 @@
 				</tr>
 			</thead>
             <tbody>
-                <tr ng-repeat="order in vm.allOrderInit track by $index"">
+                <tr ng-repeat="order in vm.allOrder track by $index"">
                     <td>
                         <div class="bv-gh-checkbox" ng-show="vm.type91">
                             <i class="fas fa-exclamation-triangle"></i>
@@ -201,10 +201,11 @@
                 </tr>
             </tbody>
             <tfoot>
-		        <tr>
-					<td colspan="9" class="text-center">
-		            	<div st-pagination="" st-items-by-page="10" st-displayed-pages="7" class="m-a-0"></div>
-		          	</td>
+				<tr>
+		        	<div class="text-center">
+				        <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></bv-item-count>
+				        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+				    </div>
 		        </tr>
 	     	</tfoot>
 		</table>

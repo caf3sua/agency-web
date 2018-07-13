@@ -5,28 +5,17 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils'];
+    CartController.$inject = ['$scope', '$stateParams', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils', 'PAGINATION_CONSTANTS'];
 
-    function CartController ($scope, $location, $window, Principal, $state, $rootScope, CartService, DateUtils) {
+    function CartController ($scope, $stateParams, $location, $window, Principal, $state, $rootScope, CartService, DateUtils, PAGINATION_CONSTANTS) {
     	var vm = this;
         
-        angular.element(document).ready(function () {
-        });
-
-        // Init controller
-        (function initController() {
-            getAllOrder();
-            vm.newDate = new Date();
-            
-            var paymentResult = $location.search().paymentStatus;
-            if(paymentResult) {
-            	if(paymentResult == '3') {
-            		toastr.success("Thanh toán thành công!");
-            	} else {
-            		toastr.error("Thanh toán thất bại!");
-            	}
-            }
-        })();
+        // paging
+        vm.page = 1;
+        vm.totalItems = null;
+        vm.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
+        vm.transition = transition;
+        vm.loadPage = loadPage;
 
   		// Properties & function declare
         vm.allOrderInit = [];
@@ -62,12 +51,39 @@
         vm.agreementIds = [];
         vm.checkTypePay = 'agency'
   		
+    	angular.element(document).ready(function () {
+        });
+
+        // Init controller
+        (function initController() {
+            getAllOrder();
+            vm.newDate = new Date();
+            
+            var paymentResult = $location.search().paymentStatus;
+            if(paymentResult) {
+            	if(paymentResult == '3') {
+            		toastr.success("Thanh toán thành công!");
+            	} else {
+            		toastr.error("Thanh toán thất bại!");
+            	}
+            }
+        })();
+        
   		// Function
         function getAllOrder() {
-            CartService.getAll({}, onGetAllOrderSuccess, onGetAllOrderError);
+            CartService.getAll({
+            	page: $stateParams.page - 1,
+                size: vm.itemsPerPage
+//                sort: sort()
+            }, onGetAllOrderSuccess, onGetAllOrderError);
         }
         
-        function onGetAllOrderSuccess(result) {
+        function onGetAllOrderSuccess(result, headers) {
+//        	vm.links = ParseLinks.parse(headers('link'));
+            vm.totalItems = headers('X-Total-Count');
+            vm.queryCount = vm.totalItems;
+            vm.page = $stateParams.page;
+        	
             vm.allOrder = result;
             for (var i = 0; i <  vm.allOrder.length; i++) {
                 switch(vm.allOrder[i].statusPolicyId) {
@@ -191,6 +207,18 @@
         
         function onProcessPaymentError() {
         	toastr.error("Có lỗi xảy ra khi thanh toán!");
+        }
+        
+        function loadPage (page) {
+            vm.page = page;
+            vm.transition();
+        }
+
+        function transition () {
+            $state.transitionTo($state.$current, {
+                page: vm.page,
+                search: vm.currentSearch
+            });
         }
     }
 })();

@@ -5,10 +5,10 @@
         .module('app')
         .config(paginationConfig);
 
-    paginationConfig.$inject = ['uibPaginationConfig', 'paginationConstants'];
+    paginationConfig.$inject = ['uibPaginationConfig', 'PAGINATION_CONSTANTS'];
 
-    function paginationConfig(uibPaginationConfig, paginationConstants) {
-        uibPaginationConfig.itemsPerPage = paginationConstants.itemsPerPage;
+    function paginationConfig(uibPaginationConfig, PAGINATION_CONSTANTS) {
+        uibPaginationConfig.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
         uibPaginationConfig.maxSize = 5;
         uibPaginationConfig.boundaryLinks = true;
         uibPaginationConfig.firstText = '«';

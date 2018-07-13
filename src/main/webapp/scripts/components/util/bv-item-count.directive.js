@@ -1,11 +1,11 @@
 (function() {
     'use strict';
 
-    var jhiItemCount = {
+    var bvItemCount = {
         template: '<div class="info">' +
-                    'Showing {{(($ctrl.page - 1) * $ctrl.itemsPerPage) == 0 ? 1 : (($ctrl.page - 1) * $ctrl.itemsPerPage + 1)}} - ' +
+                    'Hiển thị {{(($ctrl.page - 1) * $ctrl.itemsPerPage) == 0 ? 1 : (($ctrl.page - 1) * $ctrl.itemsPerPage + 1)}} - ' +
                     '{{($ctrl.page * $ctrl.itemsPerPage) < $ctrl.queryCount ? ($ctrl.page * $ctrl.itemsPerPage) : $ctrl.queryCount}} ' +
-                    'of {{$ctrl.queryCount}} items.' +
+                    'trong số {{$ctrl.queryCount}} bản ghi.' +
                 '</div>',
         bindings: {
             page: '<',
@@ -16,5 +16,5 @@
 
     angular
         .module('app')
-        .component('jhiItemCount', jhiItemCount);
+        .component('bvItemCount', bvItemCount);
 })();
