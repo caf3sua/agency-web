@@ -81,7 +81,7 @@
   				};
   		
   		vm.getPremium = getPremium;
-  		vm.createPolicy = createPolicy;
+  		vm.createNewPolicy = createNewPolicy;
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		vm.siValidator = siValidator;
@@ -95,7 +95,7 @@
             // add a day
             startDate.setDate(startDate.getDate() + 1);
             vm.policy.inceptionDate = DateUtils.convertDate(startDate);
-
+            getPolicyNumber();
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
@@ -140,7 +140,6 @@
   			
   			function onGetPolicyNumberSuccess(data, headers) {
   				vm.policy.gycbhNumber = data.policyNumber;
-  				createPolicy();
                 vm.clearResponseError();
             }
             function onGetPolicyNumberError(error) {
@@ -148,7 +147,7 @@
             }
   		}
 
-  		function createPolicy() {
+  		function createNewPolicy() {
   			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
   			

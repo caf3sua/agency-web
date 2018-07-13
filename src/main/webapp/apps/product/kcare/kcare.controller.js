@@ -132,7 +132,7 @@
   				};
   		
   		vm.getPremium = getPremium;
-  		vm.createPolicy = createPolicy;
+  		vm.createNewPolicy = createNewPolicy;
   		
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
@@ -145,7 +145,6 @@
   		vm.checkQtreatment = checkQtreatment;
   		vm.onDobChange = onDobChange;
         vm.changeNTH = changeNTH;
-  		
   		var ngayKetThuc = "";
   		var tuoi = "";
   		vm.isShowBill1 = false;
@@ -168,6 +167,7 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.ngayKetThuc = DateUtils.convertDate(endDate);
+            getPolicyNumber();
             vm.registerDisableContactInfoValue('vm.product.premiumKCare');
         }
   		
@@ -289,62 +289,6 @@
   			
   			function onGetPolicyNumberSuccess(data, headers) {
   				vm.policy.gycbhNumber = data.policyNumber;
-  				
-  				if(vm.policy.q1 == false){
-  					vm.policy.q1 = 0;
-  				} else {
-  					vm.policy.q1 = 1;
-  				}
-  				
-  				if(vm.policy.q2 == false){
-  					vm.policy.q2 = 0;
-  				} else {
-  					vm.policy.q2 = 1;
-  				}
-  				
-  				if(vm.policy.q3 == false){
-  					vm.policy.q3 = 0;
-  				} else {
-  					vm.policy.q3 = 1;
-  				}
-  				
-  				if(vm.policy.q4 == false){
-  					vm.policy.q4 = 0;
-  				} else {
-  					vm.policy.q4 = 1;
-  				}
-  				
-  				if(vm.policy.q5 == false){
-  					vm.policy.q5 = 0;
-  				} else {
-  					vm.policy.q5 = 1;
-  				}
-  				
-  				if(vm.policy.qresultCan == false){
-  					vm.policy.qresultCan = 0;
-  				} else {
-  					vm.policy.qresultCan = 1;
-  				}
-  				
-  				if(vm.policy.qresultTre == false){
-  					vm.policy.qresultTre = 0;
-  				} else {
-  					vm.policy.qresultTre = 1;
-  				}
-  				
-  				if(vm.policy.qtreatment == false){
-  					vm.policy.qtreatment = 0;
-  				} else {
-  					vm.policy.qtreatment = 1;
-  				}
-  				
-  				if(vm.policy.qtypeCancer == false){
-  					vm.policy.qtypeCancer = 0;
-  				} else {
-  					vm.policy.qtypeCancer = 1;
-  				}
-  				
-  				createPolicy();
                 vm.clearResponseError();
             }
             function onGetPolicyNumberError(error) {
@@ -352,12 +296,65 @@
             }
   		}
   		
-  		function createPolicy() {
+  		function createNewPolicy() {
             vm.loading = true;
   			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
-  			
+            if(vm.policy.q1 == false){
+                vm.policy.q1 = 0;
+            } else {
+                vm.policy.q1 = 1;
+            }
+
+            if(vm.policy.q2 == false){
+                vm.policy.q2 = 0;
+            } else {
+                vm.policy.q2 = 1;
+            }
+
+            if(vm.policy.q3 == false){
+                vm.policy.q3 = 0;
+            } else {
+                vm.policy.q3 = 1;
+            }
+
+            if(vm.policy.q4 == false){
+                vm.policy.q4 = 0;
+            } else {
+                vm.policy.q4 = 1;
+            }
+
+            if(vm.policy.q5 == false){
+                vm.policy.q5 = 0;
+            } else {
+                vm.policy.q5 = 1;
+            }
+
+            if(vm.policy.qresultCan == false){
+                vm.policy.qresultCan = 0;
+            } else {
+                vm.policy.qresultCan = 1;
+            }
+
+            if(vm.policy.qresultTre == false){
+                vm.policy.qresultTre = 0;
+            } else {
+                vm.policy.qresultTre = 1;
+            }
+
+            if(vm.policy.qtreatment == false){
+                vm.policy.qtreatment = 0;
+            } else {
+                vm.policy.qtreatment = 1;
+            }
+
+            if(vm.policy.qtypeCancer == false){
+                vm.policy.qtypeCancer = 0;
+            } else {
+                vm.policy.qtypeCancer = 1;
+            }
+
   			// call base
   			vm.createNewPolicyBase("KCARE", vm.policy);
 //  			//debugger

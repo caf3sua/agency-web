@@ -277,7 +277,13 @@
             vm.loading = false;
             vm.product.premiumNet = result.premiumNet;
             vm.product.phiBH = result.phiBH;
-            
+            vm.product.qlChinhPhi = result.qlChinhPhi;
+            vm.product.ngoaitruPhi = result.ngoaitruPhi;
+            vm.product.tncnPhi = result.tncnPhi;
+            vm.product.nhakhoaPhi = result.nhakhoaPhi;
+            vm.product.sinhmangPhi = result.smcnPhi;
+
+
             if(vm.product.chuongTrinh) {
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
@@ -304,9 +310,16 @@
         	}
             
             vm.policy.chuongtrinhBh = postData.chuongTrinh;
-            vm.policy.chuongtrinhPhi = postData.premiumNet;
+            vm.policy.chuongtrinhPhi = vm.product.qlChinhPhi;
             vm.policy.expiredDate = postData.thoihanbhDen;
             vm.policy.inceptionDate = postData.thoihanbhTu;
+            vm.policy.ngoaitruPhi =vm.product.ngoaitruPhi;
+            vm.policy.tncnPhi =vm.product.tncnPhi;
+            vm.policy.smcnPhi =vm.product.smcnPhi;
+            vm.policy.nhakhoaPhi =vm.product.nhakhoaPhi;
+            vm.policy.sinhmangPhi = postData.sinhmangPhi;
+
+
             
             if(vm.product.ngoaitruChk) {
             	vm.policy.ngoaitru = '1';
