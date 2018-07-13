@@ -20,6 +20,14 @@
             'getByContactCode' : {
                 method : 'POST',
                 url : 'api/agency/contact/get-by-code'
+            },
+            'cancelOrder' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/cancel'
+            },
+            'resendEmail' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/resend-confirm-email'
             }
         });
 

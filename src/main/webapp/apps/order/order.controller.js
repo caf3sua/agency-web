@@ -49,17 +49,28 @@
   		vm.viewDetail = viewDetail;
   		vm.confirmCancelOrder = confirmCancelOrder;
   		vm.searchOrder = searchOrder;
+  		vm.confirmResendEmail = confirmResendEmail;
   		
   		// Function
   		function viewDetail() {
   			
   		}
   		
-  		function cancelOrder() {
+  		function cancelOrder(number) {
   			console.log('doCancelOrder');
+  			OrderService.cancelOrder({gycbhNumber: number}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				searchOrder();
+  				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi hủy đơn hàng!");
+  			}
   		}
   		
-  		function confirmCancelOrder() {
+  		function confirmCancelOrder(gycbhNumber) {
   			$ngConfirm({
                 title: 'Xác nhận',
                 icon: 'fa fa-times',
@@ -73,7 +84,7 @@
                     	text: 'Đồng ý',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	cancelOrder();
+                        	cancelOrder(gycbhNumber);
 	                    }
                     },
                     close: {
@@ -137,5 +148,42 @@
         function storeFilterCondition(order) {
         	$rootScope.orderFilter = order;
         }
+        
+        function confirmResendEmail(gycbhNumber) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn gửi lại email ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	resendEmail(gycbhNumber);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+  		
+  		function resendEmail(number) {
+  			console.log('doResendEmail');
+  			OrderService.resendEmail({gycbhNumber: number}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				toastr.success('Đã gửi lại email với mã đơn hàng: ' + result.gycbhNumber);
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi gửi lại email đơn hàng!");
+  			}
+  		}
     }
 })();
