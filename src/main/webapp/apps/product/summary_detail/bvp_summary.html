@@ -41,13 +41,23 @@
             <p>Quan hệ với người yêu cầu bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.nguoidbhQuanhe, vm.relationOptions)}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Hình thức tham gia</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.insuranceTarget, vm.relationOptions)}}</p>
+            <div ng-switch="vm.policy.nguoidbhQuanhe">
+                <div ng-switch-when="30">
+                    <p class="bv-tile-templateSummary">Bản thân</p>
+                </div>
+                <div ng-switch-when="31">
+                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+                </div>
+                <div ng-switch-when="32">
+                    <p class="bv-tile-templateSummary">Con</p>
+                </div>
+                <div ng-switch-when="33">
+                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+                </div>
+                <div ng-switch-when="34">
+                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="bv-pading-30">
@@ -66,7 +76,23 @@
             <p>Chương trình bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.chuongTrinh, vm.insuranceTypeOptions)}}</p>
+            <div ng-switch="vm.policy.chuongtrinhBh">
+                <div ng-switch-when="1">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Đồng</p>
+                </div>
+                <div ng-switch-when="2">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Bạc</p>
+                </div>
+                <div ng-switch-when="3">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Vàng</p>
+                </div>
+                <div ng-switch-when="4">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Bạch Kim</p>
+                </div>
+                <div ng-switch-when="5">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Kim cương</p>
+                </div>
+            </div>
         </div>
         <div class="bv-title-from">
             <p>Tổng phí bảo hiểm (đã bao gồm VAT)</p>
@@ -199,7 +225,23 @@
             <p>Quan hệ với người yêu cầu bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.getName(vm.policy.nguoithQuanhe, vm.relationOptions)}}</p>
+        	<div ng-switch="vm.policy.nguoithQuanhe">
+                <div ng-switch-when="30">
+                    <p class="bv-tile-templateSummary">Bản thân</p>
+                </div>
+                <div ng-switch-when="31">
+                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+                </div>
+                <div ng-switch-when="32">
+                    <p class="bv-tile-templateSummary">Con</p>
+                </div>
+                <div ng-switch-when="33">
+                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+                </div>
+                <div ng-switch-when="34">
+                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="bv-pading-30">

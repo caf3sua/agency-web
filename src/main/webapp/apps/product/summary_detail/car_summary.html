@@ -54,7 +54,23 @@
                <p class="bv-title-from">Loại xe</p>
            </div>
            <div>
-               <p class="bv-tile-templateSummary">{{vm.getName(vm.product.tndsSoCho, vm.tndsSoChoOptions)}}</p>
+           	   <div ng-switch="vm.policy.tndsSocho">
+	                <div ng-switch-when="1">
+	                    <p class="bv-tile-templateSummary">Loại xe dưới 6 chỗ ngồi</p>
+	                </div>
+	                <div ng-switch-when="2">
+	                    <p class="bv-tile-templateSummary">Loại xe từ 6 đến 11 chỗ ngồi</p>
+	                </div>
+	                <div ng-switch-when="3">
+	                    <p class="bv-tile-templateSummary">Loại xe từ 12 đến 24 chỗ ngồi</p>
+	                </div>
+	                <div ng-switch-when="4">
+	                    <p class="bv-tile-templateSummary">Loại xe trên 24 chỗ ngồi</p>
+	                </div>
+	                <div ng-switch-when="5">
+	                    <p class="bv-tile-templateSummary">Xe vừa chở người vừa chở hàng(Pickup, Minivan)</p>
+	                </div>
+	           </div>
            </div>
            <div class="">
                <p class="bv-title-from">Mục đích sử dụng</p>
