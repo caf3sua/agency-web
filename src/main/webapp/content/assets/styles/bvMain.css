@@ -1758,6 +1758,12 @@ body {
 .bv-img-pay{
     opacity: 0.5;
 }
+.btn-dropdown-bars-contact{
+    background: #fff;
+    border: 0;
+    margin: 10px 0 0 0;
+    font-size: 15px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
