@@ -19,11 +19,9 @@
   		
   		// Properties & function declare
         // paging
-        vm.page = 1;
         vm.totalItems = null;
         vm.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
         vm.transition = transition;
-        vm.loadPage = loadPage;
         
   		vm.isLoading = false;
   		vm.orders = [];
@@ -52,6 +50,12 @@
   		vm.confirmResendEmail = confirmResendEmail;
   		
   		// Function
+  		
+//  		$scope.$watch('vm.page', function() {
+//  	        console.log('page change:' + vm.page);
+//  	    });
+  		
+  		
   		function viewDetail() {
   			
   		}
@@ -94,34 +98,38 @@
             });
   		}
   		
-  		function searchOrder(data) {
-  			vm.queryCount = null;
-  			vm.page = $stateParams.page - 1;
-  			search(vm.searchCriterial);
-  		}
-  		
-  		function search(data) {
+  		function searchOrder() {
   			vm.totalItems = null;
   			vm.isLoading = true;
   			vm.orders = [];
+  			var order = {};
 
-        	// keep filter
-        	storeFilterCondition(data);
+  			// Keep filter from root scope
+        	if ($rootScope.deviceFilter != null) {
+        		order = $rootScope.orderFilter;
+        	} else {
+        		order = vm.searchCriterial;
+            	
+            	// keep filter
+            	storeFilterCondition(order);
+        	}
   			
-  			OrderService.search(data, onSearchSuccess, onSearchError);
+  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
   			function onSearchSuccess(result, headers) {
+                vm.page = order.pageable.page + 1;
+                
   				// Paging
   				vm.orders = result;
   				vm.isLoading = false;
+                
   				vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.page = $stateParams.page;
                 
-//  				$timeout(function () {
-//					$('#footable').trigger('footable_initialized');
-//					$('#footable').trigger('footable_resize');
-//					$('#footable').data('footable').redraw();
-//				}, 1000);
+  				$timeout(function () {
+					$('#footable').trigger('footable_initialized');
+					$('#footable').trigger('footable_resize');
+					$('#footable').data('footable').redraw();
+				}, 1000);
   				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
   	        }
   	        function onSearchError() {
@@ -130,19 +138,36 @@
   	        }
   		}
   		
-  		function loadPage (page) {
-            vm.page = page;
-            vm.transition();
-        }
+  		function search(page) {
+  			console.log('transition, page:' + vm.page);
+  			vm.isLoading = true;
 
-        function transition () {
-        	debugger
-        	var order = {};
-        	order = $rootScope.orderFilter;
-        	order.page = $stateParams.page - 1;
+  			var order = {};
+  			order = vm.searchCriterial;
+  			order.pageable.page = vm.page;
+        	console.log('searchAllTransition, page: ' + order.pageable.page);
         	
+  			OrderService.search(order, onSearchSuccess, onSearchError);
+  			function onSearchSuccess(result, headers) {
+  				// Paging
+  				vm.orders = result;
+  				vm.isLoading = false;
+  				$timeout(function () {
+					$('#footable').trigger('footable_initialized');
+					$('#footable').trigger('footable_resize');
+					$('#footable').data('footable').redraw();
+				}, 1000);
+  				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
+  	        }
+  	        function onSearchError() {
+  	        	vm.isLoading = false;
+  	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
+  	        }
+  		}
+  		
+        function transition () {
         	// search
-        	search(order);
+        	search();
         }
         
         function storeFilterCondition(order) {
