@@ -2,7 +2,7 @@
 	<p class="bv-result-search-dh">Tìm thấy <span>{{vm.orders.length}}</span> đơn hàng phù hợp</p>
 </div>
 <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-    <table class="table footable bv-home-block-left-table bv-table-kh" id="footable" ui-jp="footable" data-page-size="10">
+    <table class="table bv-home-block-left-table bv-table-kh">
         <thead>
             <tr>
                 <th></th>
@@ -57,12 +57,9 @@
 	            </td>
 	        </tr>
         </tbody>
-        <tfoot class="hide-if-no-paging">
-          <tr>
-              <td colspan="10" class="text-center">
-                  <ul class="pagination"></ul>
-              </td>
-          </tr>
-        </tfoot>
     </table>
+    <div class="text-center">
+    	<bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></bv-item-count>
+		<uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
 </div>

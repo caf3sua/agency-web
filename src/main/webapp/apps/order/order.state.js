@@ -11,11 +11,22 @@
         $stateProvider
 	        .state('app.order', {
 	            parent: 'app',
-	            url: '/order',
+	            url: '/order?page',
 	            templateUrl: 'apps/order/order.html',
 	            data : { title: 'ORDER' },
 	            controller: "OrderController",
 	            controllerAs: 'vm',
+	            params: {
+	                page: {
+	                    value: '1',
+	                    squash: true
+	                },
+	                sort: {
+	                    value: 'id,asc',
+	                    squash: true
+	                },
+	                search: null
+	            },
 	            resolve: {
 	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
 	        				$translatePartialLoader.addPart('dashboard');

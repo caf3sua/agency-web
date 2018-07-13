@@ -5,9 +5,9 @@
         .module('app')
         .controller('OrderController', OrderController);
 
-    OrderController.$inject = ['$scope', 'Principal', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout'];
+    OrderController.$inject = ['$scope', '$stateParams', 'Principal', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS'];
 
-    function OrderController ($scope, Principal, $state, $rootScope, OrderService, $ngConfirm, $timeout) {
+    function OrderController ($scope, $stateParams, Principal, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS) {
     	var vm = this;
         
         angular.element(document).ready(function () {
@@ -18,9 +18,20 @@
   		})();
   		
   		// Properties & function declare
+        // paging
+        vm.page = 1;
+        vm.totalItems = null;
+        vm.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
+        vm.transition = transition;
+        vm.loadPage = loadPage;
+        
   		vm.isLoading = false;
   		vm.orders = [];
   		vm.searchCriterial = {
+			  "pageable": {
+			    "page": 0,
+			    "size": vm.itemsPerPage
+			  },
   			  "contactCode": "",
   			  "contactName": "",
   			  "email": "",
@@ -72,20 +83,34 @@
             });
   		}
   		
-  		function searchOrder() {
+  		function searchOrder(data) {
+  			vm.queryCount = null;
+  			vm.page = $stateParams.page - 1;
+  			search(vm.searchCriterial);
+  		}
+  		
+  		function search(data) {
+  			vm.totalItems = null;
   			vm.isLoading = true;
   			vm.orders = [];
+
+        	// keep filter
+        	storeFilterCondition(data);
   			
-  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
-  			
-  			function onSearchSuccess(result) {
+  			OrderService.search(data, onSearchSuccess, onSearchError);
+  			function onSearchSuccess(result, headers) {
+  				// Paging
   				vm.orders = result;
   				vm.isLoading = false;
-  				$timeout(function () {
-					$('#footable').trigger('footable_initialized');
-					$('#footable').trigger('footable_resize');
-					$('#footable').data('footable').redraw();
-				}, 1000);
+  				vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.page = $stateParams.page;
+                
+//  				$timeout(function () {
+//					$('#footable').trigger('footable_initialized');
+//					$('#footable').trigger('footable_resize');
+//					$('#footable').data('footable').redraw();
+//				}, 1000);
   				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
   	        }
   	        function onSearchError() {
@@ -93,5 +118,24 @@
   	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
   	        }
   		}
+  		
+  		function loadPage (page) {
+            vm.page = page;
+            vm.transition();
+        }
+
+        function transition () {
+        	debugger
+        	var order = {};
+        	order = $rootScope.orderFilter;
+        	order.page = $stateParams.page - 1;
+        	
+        	// search
+        	search(order);
+        }
+        
+        function storeFilterCondition(order) {
+        	$rootScope.orderFilter = order;
+        }
     }
 })();

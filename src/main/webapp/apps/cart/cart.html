@@ -127,10 +127,6 @@
 			được hoàn tiền 15% phí bảo hiểm</p>
 	</div>
 	<div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
-        <div class="text-center">
-            <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></bv-item-count>
-        </div>
-
         <table class="table bv-home-block-left-table bv-table-kh">
 			<col width="5%">
 			<col width="3%">
@@ -206,6 +202,7 @@
             <tfoot>
 				<tr>
 		        	<td colspan="10" class="text-center">
+			            <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></bv-item-count>
 				        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
 				    </td>
 		        </tr>
