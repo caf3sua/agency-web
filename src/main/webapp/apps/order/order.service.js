@@ -16,6 +16,10 @@
             'getById' : {
                 method : 'GET',
                 url : 'api/agency/product/agreement/get-by-id/:id'
+            },
+            'getByContactCode' : {
+                method : 'POST',
+                url : 'api/agency/contact/get-by-code'
             }
         });
 
