@@ -127,8 +127,25 @@
             <p class="bv-title-from">Quyền lợi bảo hiểm tóm tắt:</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 500.000.000 VND</p>
-            <p class="bv-tile-templateSummary">3.Vân chuyển y tế cấp cứu: Không giới hạn</p>
+            <div ng-switch="vm.policy.planId">
+                <div ng-switch-when="1">
+                    <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 100.000.000 VND</p>
+                </div>
+                <div ng-switch-when="2">
+                    <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 200.000.000 VND</p>
+                </div>
+                <div ng-switch-when="3">
+                    <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 300.000.000 VND</p>
+                </div>
+                <div ng-switch-when="4">
+                    <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 400.000.000 VND</p>
+                </div>
+                <div ng-switch-when="5">
+                    <p class="bv-tile-templateSummary">1.Tai nạn cá nhân: 500.000.000 VND</p>
+                </div>
+            </div>
+            
+            <p class="bv-tile-templateSummary">2.Vân chuyển y tế cấp cứu: Không giới hạn</p>
             <p class="bv-title-from">(Chi tiết hơn và riêng vơi trẻ em dưới 17 tuổi,người 76 tuổi trở lên quyền lợi bảo hiểm có quy đinh riêng. Qúy khách vui lòng xem tại bảng <a>Bảng quyền lợi bảo hiểm</a>)</p>
             <p class="bv-title-from">Điều khoản điều kiện : Qúy khách vui lòng xem <a>Điều khoản,điều kiện</a></p>
         </div>
