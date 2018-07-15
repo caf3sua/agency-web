@@ -74,9 +74,6 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.product.insuranceEndDate = DateUtils.convertDate(endDate);
 
-            // Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'KHC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-            
             // Register disable 
             vm.registerDisableContactInfoValue('vm.product.premiumKhc');
         }
@@ -212,15 +209,6 @@
             vm.savePolicyBase("KHC", vm.policy);
         }
 
-        function onGetPolicyNumberSuccess(result) {
-            vm.policy.gycbhNumber  = result.policyNumber;
-            vm.clearResponseError();
-        }
-
-        function onGetPolicyNumberError(result) {
-            vm.validateResponse(result, 'getPolicyNumber');
-        }
-        
         function validatorCombo(name) {
         	switch(name) {
   			case "premiumPackage":

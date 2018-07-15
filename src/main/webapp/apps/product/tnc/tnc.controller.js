@@ -81,9 +81,6 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.product.insuranceexpireddate = DateUtils.convertDate(endDate);
 
-            // Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'TNC'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-            
             // Register disable 
             vm.registerDisableContactInfoValue('vm.product.premiumtnc');
         }
@@ -189,15 +186,6 @@
 
             // call base
             vm.savePolicyBase("TNC", vm.policy);
-        }
-
-        function onGetPolicyNumberSuccess(result) {
-            vm.policy.gycbhNumber  = result.policyNumber;
-            vm.clearResponseError();
-        }
-
-        function onGetPolicyNumberError(result) {
-            vm.validateResponse(result, 'getPolicyNumber');
         }
 
         function validatorCombo(name) {

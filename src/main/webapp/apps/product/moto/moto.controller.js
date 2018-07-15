@@ -104,9 +104,6 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.thoihanden = DateUtils.convertDate(endDate);
 
-            // Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'MOT'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-        	
         	// Register disable 
             vm.registerDisableContactInfoValue('vm.product.tongPhi');
         }
@@ -223,15 +220,6 @@
             vm.savePolicyBase("MOTO", vm.policy);
         }
 
-        function onGetPolicyNumberSuccess(result) {
-            vm.policy.gycbhNumber  = result.policyNumber;
-            vm.clearResponseError();
-        }
-
-        function onGetPolicyNumberError(result) {
-            vm.validateResponse(result, 'getPolicyNumber');
-        }
-        
         function validatorNntxSoNguoi() {
         	if(!vm.product.nntxCheck) {
         		return true;

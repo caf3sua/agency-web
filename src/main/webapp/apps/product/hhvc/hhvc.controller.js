@@ -276,9 +276,6 @@
 
         // Function
         function init() {
-            // Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'HHV'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-
             vm.contactRole = "";
         }
 

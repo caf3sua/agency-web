@@ -81,11 +81,32 @@
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
         
         vm.savePolicyBase = savePolicyBase; 
-        vm.showCreatePolicySuccessInfo = showCreatePolicySuccessInfo;
+        vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
         // implement function
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	console.log('save policy: ' + productCode);
+        	// Save or update
+        	if (obj.agreementId != null && obj.agreementId != "") {
+        		// Update
+        		updatePolicy(productCode, obj);
+        	} else {
+        		ProductCommonService.getPolicyNumber({lineId: 'CAR'}).$promise.then(function(result) {
+        			vm.clearResponseError();
+                	console.log('Done get gychbhNumber: ' + result.policyNumber);
+                	// Add ychbhNumber
+                	obj.gycbhNumber  = result.policyNumber;
+                	// Add new
+                	createNewPolicy(productCode, obj);
+                }).catch(function(data, status) {
+        			console.log('Error get gychbhNumber');
+        			vm.clearResponseError();
+        			vm.validateResponse(data, 'getPolicyNumber');
+    		    });
+        	}
+        }
+        
+        function createNewPolicy(productCode, obj) {
+        	console.log('create new policy: ' + productCode);
         	switch(productCode){
 	  	        case "KCARE":
 	  	        	ProductCommonService.createKcarePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
@@ -121,26 +142,84 @@
 	  	            console.log('invalid product code');
 	  	        break;
 	  	    }
-
-  			function onCreatePolicySuccess(data, headers) {
-  				vm.clearResponseError();
-                vm.loading = false;
-  				vm.showCreatePolicySuccessInfo();
-            }
-  			
-            function onCreatePolicyError(error) {
-                vm.loading = false;
-                vm.validateResponse(error, 'createPolicy');
-            }
+	
+			function onCreatePolicySuccess(data, headers) {
+				vm.clearResponseError();
+	            vm.loading = false;
+				vm.showSavePolicySuccessInfo(obj);
+	        }
+				
+	        function onCreatePolicyError(error) {
+	            vm.loading = false;
+	            vm.validateResponse(error, 'createPolicy');
+	        }
         }
         
-        function showCreatePolicySuccessInfo() {
+        function updatePolicy(productCode, obj) {
+        	console.log('update policy: ' + productCode);
+        	switch(productCode){
+	  	        case "KCARE":
+	  	        	ProductCommonService.updateKcarePolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+	  	        case "CAR":
+	  	        	ProductCommonService.updateCarPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+	  	        case "BVP":
+	  	        	ProductCommonService.updateBvpPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+	  	        case "KHC":
+	  	        	ProductCommonService.updateKhcPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+	  	        case "TNC":
+	  	        	ProductCommonService.updateTncPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+		  	    case "TVC":
+		  	    	ProductCommonService.updateTvcPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+	  	            break;
+		  	    case "TVI":
+		  	    	ProductCommonService.updateTviPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+		            break;
+		  	    case "HOME":
+		  	    	ProductCommonService.updateHomePolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+		            break;
+		  	    case "MOTO":
+		  	    	ProductCommonService.updateMotoPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+		            break;
+		  	    case "HHVC":
+		  	    	ProductCommonService.updateHhvcPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+		            break;
+	  	        default: 
+	  	            console.log('invalid product code');
+	  	        break;
+	  	    }
+	
+			function onUpdatePolicySuccess(data, headers) {
+				vm.clearResponseError();
+	            vm.loading = false;
+				vm.showSavePolicySuccessInfo(obj);
+	        }
+				
+	        function onUpdatePolicyError(error) {
+	            vm.loading = false;
+	            vm.validateResponse(error, 'updatePolicy');
+	        }
+        }
+        
+        function showSavePolicySuccessInfo(obj) {
+        	var message = "";
+        	if (obj.agreementId != null && obj.agreementId != "") {
+        		// Update
+        		message = "Cập nhật hợp đồng thành công!";
+        	} else {
+        		message = "Tạo hợp đồng thành công!";
+        	}
+        	
         	$ngConfirm({
                 title: 'Thông báo',
                 icon: 'fa fa-check',
                 theme: 'modern',
                 type: 'blue',
-                content: '<div class="text-center">Tạo hợp đồng thành công!</div>',
+                content: '<div class="text-center">' + message + '</div>',
                 animation: 'scale',
                 closeAnimation: 'scale',
                 buttons: {
@@ -388,6 +467,8 @@
             if(type == 'getPremium') {
                 message = '' + message;
             } else if(type == 'createPolicy') {
+                message = '' + message ;
+            } else if(type == 'updatePolicy') {
                 message = '' + message ;
             } else if(type == 'getPolicyNumber') {
                 message = '' + message ;

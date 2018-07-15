@@ -147,9 +147,6 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.thoihanden = DateUtils.convertDate(endDate);
   			
-  			// Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'CAR'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-  			
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
             vm.registerDisableContactInfoValue('vm.product.premium');
@@ -349,16 +346,6 @@
 	  		vm.savePolicyBase("CAR", vm.policy);
     	}
     	
-    	function onGetPolicyNumberSuccess(result) {
-            vm.policy.gycbhNumber  = result.policyNumber;
-            vm.clearResponseError();
-        }
-
-        function onGetPolicyNumberError(result) {
-        	vm.clearResponseError();
-            vm.validateResponse(result, 'getPolicyNumber');
-        }
-        
         function validatorNntxSoCho() {
         	if(!vm.product.nntxCheck) {
         		return true;

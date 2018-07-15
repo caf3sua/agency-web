@@ -188,8 +188,6 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.product.thoihanbhDen = DateUtils.convertDate(endDate);
 
-            // Get gycbhNumber
-            ProductCommonService.getPolicyNumber({lineId: 'BVP'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
             vm.registerDisableContactInfoValue('vm.product.phiBH');
 
         }

@@ -80,7 +80,6 @@
         vm.product = {};
         vm.getPremium = getPremium;
         vm.onchangePlan = onchangePlan;
-        vm.getPolicyNumber = getPolicyNumber;
         vm.infoPerson = infoPerson;
         vm.onchangeReceiveMethod = false;
         vm.savePolicy = savePolicy;
@@ -97,7 +96,6 @@
         (function initController() {
             // instantiate base controller
             $controller('ProductBaseController', { vm: vm, $scope: $scope });
-            getPolicyNumber();
             vm.registerDisableContactInfoValue('vm.policy.premium');
         })();
         function showChangePremium() {
@@ -109,17 +107,6 @@
         }
         // Properties & function declare
 
-        function getPolicyNumber() {
-            ProductCommonService.getPolicyNumber({lineId: 'TVI'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-        }
-        function onGetPolicyNumberSuccess(result) {
-            vm.policy.gycbhNumber  = result.policyNumber;
-            vm.clearResponseError();
-        }
-
-        function onGetPolicyNumberError(result) {
-            vm.validateResponse(result, 'getPolicyNumber');
-        }
         // Function
         function onchangePlan() {
             getPremium();

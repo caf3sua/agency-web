@@ -134,7 +134,6 @@
   		vm.getPremium = getPremium;
   		vm.savePolicy = savePolicy;
   		
-  		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		vm.checkedChangeBill = checkedChangeBill;
   		vm.checkQ3 = checkQ3;
@@ -167,7 +166,6 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.ngayKetThuc = DateUtils.convertDate(endDate);
-            getPolicyNumber();
             vm.registerDisableContactInfoValue('vm.product.premiumKCare');
         }
   		
@@ -281,19 +279,6 @@
   	    		vm.isShowPremium = false;
                 vm.validateResponse(error, 'getPremium');
   	    	}
-  		}
-  		
-  		function getPolicyNumber() {
-  			console.log('getPolicyNumber');
-  			ProductCommonService.getPolicyNumber({lineId: 'KCR'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-  			
-  			function onGetPolicyNumberSuccess(data, headers) {
-  				vm.policy.gycbhNumber = data.policyNumber;
-                vm.clearResponseError();
-            }
-            function onGetPolicyNumberError(error) {
-                vm.validateResponse(error, 'getPolicyNumber');
-            }
   		}
   		
   		function savePolicy() {

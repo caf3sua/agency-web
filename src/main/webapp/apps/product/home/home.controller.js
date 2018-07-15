@@ -82,7 +82,6 @@
   		
   		vm.getPremium = getPremium;
   		vm.savePolicy = savePolicy;
-  		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		vm.siValidator = siValidator;
   		
@@ -95,7 +94,6 @@
             // add a day
             startDate.setDate(startDate.getDate() + 1);
             vm.policy.inceptionDate = DateUtils.convertDate(startDate);
-            getPolicyNumber();
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
@@ -134,19 +132,6 @@
             }
   		}
   		
-  		function getPolicyNumber() {
-  			console.log('getPolicyNumber');
-  			ProductCommonService.getPolicyNumber({lineId: 'HOM'}, onGetPolicyNumberSuccess, onGetPolicyNumberError);
-  			
-  			function onGetPolicyNumberSuccess(data, headers) {
-  				vm.policy.gycbhNumber = data.policyNumber;
-                vm.clearResponseError();
-            }
-            function onGetPolicyNumberError(error) {
-                vm.validateResponse(error, 'getPolicyNumber');
-            }
-  		}
-
   		function savePolicy() {
   			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);

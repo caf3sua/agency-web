@@ -28,6 +28,10 @@
 				method : 'POST',
 				url : 'api/agency/product/kcare/createPolicy'
 			},
+			'updateKcarePolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/kcare/update'
+			},
 			// CAR
 			'getCarPremium' : {
 				method : 'POST',
@@ -36,6 +40,10 @@
 			'createCarPolicy' : {
 				method : 'POST',
 				url : 'api/agency/product/car/createPolicy'
+			},
+			'updateCarPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/car/update'
 			},
 			// BVP
 			'getBvpPremium' : {
@@ -46,6 +54,10 @@
 				method : 'POST',
 				url : 'api/agency/product/bvp/createPolicy'
 			},
+			'updateBvpPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/bvp/update'
+			},
 			// KHC
 			'getKhcPremium' : {
 				method : 'POST',
@@ -54,6 +66,10 @@
 			'createKhcPolicy' : {
 				method : 'POST',
 				url : 'api/agency/product/khc/createPolicy'
+			},
+			'updateKhcPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/khc/update'
 			},
 			// TNC
 			'getTncPremium' : {
@@ -64,6 +80,10 @@
 				method : 'POST',
 				url : 'api/agency/product/tnc/createPolicy'
 			},
+			'updateTncPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/tnc/update'
+			},
 			// TVC
 			'getTvcPremium' : {
                 method : 'POST',
@@ -72,6 +92,10 @@
             'createTvcPolicy' : {
                 method : 'POST',
                 url : 'api/agency/product/tvc/createPolicy'
+            },
+            'updateTvcPolicy' : {
+                method : 'POST',
+                url : 'api/agency/product/tvc/update'
             },
             // TVI
             'getTviPremium' : {
@@ -82,10 +106,18 @@
                 method : 'POST',
                 url : 'api/agency/product/tvi/createPolicy'
             },
+            'updateTviPolicy' : {
+                method : 'POST',
+                url : 'api/agency/product/tvi/update'
+            },
             // HOME
             'getHomePremium': {url: 'api/agency/product/home/premium', method: 'POST', isArray: false},
             'createHomePolicy': {
             	url: 'api/agency/product/home/createPolicy',  
+            	method:'POST'
+            },
+            'updateHomePolicy': {
+            	url: 'api/agency/product/home/update',  
             	method:'POST'
             },
             // MOTO
@@ -97,6 +129,10 @@
 				method : 'POST',
 				url : 'api/agency/product/moto/createPolicy'
 			},
+			'updateMotoPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/moto/update'
+			},
 			// HHVC
 			'getHhvcPremium' : {
 				method : 'POST',
@@ -105,6 +141,10 @@
 			'createHhvcPolicy' : {
 				method : 'POST',
 				url : 'api/agency/product/hhvc/createPolicy'
+			},
+			'updateHhvcPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/hhvc/update'
 			}
         });
 
