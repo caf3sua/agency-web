@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTviController', ProductTviController);
 
-    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TviService', 'ProductCommonService'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'];
 
-    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, TviService, ProductCommonService) {
+    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService) {
         var vm = this;
         vm.lineId = 'TVI';
         
@@ -128,7 +128,7 @@
                 vm.product.premiumPercentDiscount  = 0;
             }
             vm.product.numberOfDay   = 0;
-            TviService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getTviPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
             vm.loading = false;

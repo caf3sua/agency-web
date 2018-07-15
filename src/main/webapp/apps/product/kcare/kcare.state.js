@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['apps/product/kcare/kcare.service.js', 'apps/product/kcare/kcare.controller.js']);
+                    return $ocLazyLoad.load(['apps/product/kcare/kcare.controller.js']);
                 }
             }
         });

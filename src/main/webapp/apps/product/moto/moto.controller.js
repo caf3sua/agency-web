@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductMotoController', ProductMotoController);
 
-    ProductMotoController.$inject = ['$scope', '$controller', 'MotoService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductMotoController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductMotoController ($scope, $controller, MotoService, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductMotoController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
     	vm.lineId = 'MOT';
     	
@@ -128,7 +128,7 @@
         function getPremium() {
             vm.loading = true;
             var postData = getPostData(false);
-            MotoService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getMotoPremium(postData, onGetPremiumSuccess, onGetPremiumError);
         }
 
         function getPostData(isCreate) {

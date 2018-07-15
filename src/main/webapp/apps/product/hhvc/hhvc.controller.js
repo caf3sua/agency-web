@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductHhvcController', ProductHhvcController);
 
-    ProductHhvcController.$inject = ['$scope', '$controller', 'HhvcService', 'ProductCommonService', '$state', '$rootScope'];
+    ProductHhvcController.$inject = ['$scope', '$controller', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductHhvcController ($scope, $controller, HhvcService, ProductCommonService, $state, $rootScope) {
+    function ProductHhvcController ($scope, $controller, ProductCommonService, $state, $rootScope) {
     	var vm = this;
     	vm.lineId = 'HHV';
     	
@@ -330,7 +330,7 @@
             var postData = getPostData(false);
 
             if(postData.loaiHangHoa != 0 && postData.dieuKhoanBaoHiem != 0 && postData.giaTriHang != 0 && postData.phuongThucThanhToan != 0) {
-                HhvcService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            	ProductCommonService.getHhvcPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             }
         }
 

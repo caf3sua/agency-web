@@ -16,7 +16,7 @@
         <div class="bv-detail-icon-table">
             <i class="icon-pencil"></i>
         </div>
-        <span class="bv-detail-text-table">Sửa</span>
+        <span class="bv-detail-text-table" ui-sref="product.home.edit({id: order.agreementId})">Sửa</span>
     </div>
     <div ng-show="order.statusPolicyId == 91" ng-click="vm.confirmResendEmail(order.gycbhNumber)">
         <div class="bv-detail-icon-table">

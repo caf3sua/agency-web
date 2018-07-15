@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTvcController', ProductTvcController);
 
-    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'TvcService', 'ProductCommonService'];
+    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'];
 
-    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, TvcService, ProductCommonService) {
+    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService) {
     	var vm = this;
     	vm.lineId = 'TVC';
     	
@@ -98,7 +98,7 @@
                 vm.product.premiumDiscount  = 0;
             }
             vm.product.songay  = 0;
-            TvcService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getTvcPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
             vm.loading = false;

@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductKhcController', ProductKhcController);
 
-    ProductKhcController.$inject = ['$scope', '$controller', 'KhcService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductKhcController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductKhcController ($scope, $controller, KhcService, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductKhcController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
     	vm.lineId = 'KHC';
     	
@@ -135,7 +135,7 @@
 
             if(postData.premiumKhcList.length > 0) {
             	vm.loading = true;
-                KhcService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            	ProductCommonService.getKhcPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             }
         }
 

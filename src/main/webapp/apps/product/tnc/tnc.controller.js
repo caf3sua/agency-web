@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTncController', ProductTncController);
 
-    ProductTncController.$inject = ['$scope', '$controller', 'TncService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductTncController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
 
-    function ProductTncController ($scope, $controller, TncService, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductTncController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
     	var vm = this;
     	vm.lineId = 'TNC';
     	
@@ -128,7 +128,7 @@
             var postData = getPostData(false);
             if(postData.numberperson > 0 && postData.premiumPackage > 0) {
                 vm.loading = true;
-                TncService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+                ProductCommonService.getTncPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.product.premiumnet = 0;
                 vm.product.premiumtnc = 0;

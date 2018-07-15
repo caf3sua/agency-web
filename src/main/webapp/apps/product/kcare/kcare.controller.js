@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductKcareController', ProductKcareController);
 
-    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductKcareService', 'ProductCommonService', 'DateUtils'];
+    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService', 'DateUtils'];
 
-    function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductKcareService, ProductCommonService, DateUtils) {
+    function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService, DateUtils) {
         var vm = this;
         vm.lineId = 'KCR';
 
@@ -258,7 +258,7 @@
 
   		function getPremium() {
             vm.loading = true;
-  			ProductKcareService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getKcarePremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;

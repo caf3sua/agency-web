@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/khc/khc.service.js', 'apps/product/khc/khc.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/khc/khc.controller.js']);
 		        }
             }
         });

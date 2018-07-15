@@ -224,7 +224,7 @@
   		function getPremium() {
             vm.loading = true;
   			var postData = getPostData(false);
-  			CarService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+  			ProductCommonService.getCarPremium(postData, onGetPremiumSuccess, onGetPremiumError);
   		}
   		
   		function getPostData(isCreate) {

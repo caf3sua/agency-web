@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductBvpController', ProductBvpController);
 
-    ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'BvpService', 'DateUtils', 'ProductCommonService', '$state'];
+    ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state'];
 
-    function ProductBvpController ($rootScope, $scope, $controller, BvpService, DateUtils, ProductCommonService, $state) {
+    function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService, $state) {
     	var vm = this;
     	vm.lineId = 'BVP';
     	
@@ -245,7 +245,7 @@
 
             if(postData.chuongTrinh) {
             	vm.loading = true;
-            	BvpService.getPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            	ProductCommonService.getBvpPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.product.premiumNet = 0;
                 vm.product.phiBH = 0;

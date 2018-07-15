@@ -9,6 +9,10 @@
 
     function ProductCommonService ($resource) {
         var service = $resource('api/agency/product/', {}, {
+        	'getById' : {
+                method : 'GET',
+                url : 'api/agency/product/agreement/get-by-id/:id'
+            },
         	'getPolicyNumber' : {
 				method : 'GET',
 				url : 'api/agency/common/getPolicyNumber',

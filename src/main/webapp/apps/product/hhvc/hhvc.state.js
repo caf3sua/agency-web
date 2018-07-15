@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/hhvc/hhvc.service.js', 'apps/product/hhvc/hhvc.controller.js']);
+	            		return $ocLazyLoad.load(['apps/product/hhvc/hhvc.controller.js']);
 		        }
             }
         });

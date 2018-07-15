@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductHomeController', ProductHomeController);
 
-    ProductHomeController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductHomeService', 'ProductCommonService', 'DateUtils'];
+    ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService', 'DateUtils'];
 
-    function ProductHomeController ($scope, $controller, Principal, $state, $rootScope, ProductHomeService, ProductCommonService, DateUtils) {
+    function ProductHomeController ($scope, $stateParams, $controller, Principal, $state, $rootScope, ProductCommonService, DateUtils) {
     	var vm = this;
     	vm.lineId = 'HOM';
     	
@@ -100,11 +100,13 @@
             vm.policy.expiredDate = DateUtils.convertDate(endDate);
             vm.registerDisableContactInfoValue('vm.product.premiumHome');
 
+            // Edit
+            console.log($stateParams.id);
         }
   		
   		function getPremium() {
             vm.loading = true;
-  			ProductHomeService.getPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getHomePremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;
