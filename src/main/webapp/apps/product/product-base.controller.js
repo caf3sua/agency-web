@@ -80,12 +80,12 @@
         vm.clearResponseError = clearResponseError;
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
         
-        vm.createNewPolicyBase = createNewPolicyBase; 
+        vm.savePolicyBase = savePolicyBase; 
         vm.showCreatePolicySuccessInfo = showCreatePolicySuccessInfo;
         // implement function
-        function createNewPolicyBase(productCode, obj) {
+        function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	console.log('create new policy: ' + productCode);
+        	console.log('save policy: ' + productCode);
         	switch(productCode){
 	  	        case "KCARE":
 	  	        	ProductCommonService.createKcarePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);

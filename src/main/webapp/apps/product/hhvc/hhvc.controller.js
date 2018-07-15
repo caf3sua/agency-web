@@ -189,7 +189,7 @@
         vm.getRequesterInfo = getRequesterInfo;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
-        vm.createNewPolicy = createNewPolicy;
+        vm.savePolicy = savePolicy;
         vm.itemGroupOptions = [
             {id: '1', name: 'Hàng Bách Hóa (Hàng mới không liệt vào loại dễ vỡ)'},
             {id: '2', name: 'Các chế phẩm nông sản, lâm sản, hải sản, sản phẩm ăn được'},
@@ -383,7 +383,7 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function createNewPolicy() {
+        function savePolicy() {
             var postData = getPostData(true);
 
             if(postData.receiveMethod) {
@@ -393,7 +393,7 @@
             }
 
             // call base
-            vm.createNewPolicyBase("HHVC", vm.policy);
+            vm.savePolicyBase("HHVC", vm.policy);
         }
 
         function getRequesterInfo(type) {

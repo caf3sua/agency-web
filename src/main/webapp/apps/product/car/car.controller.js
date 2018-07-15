@@ -94,7 +94,7 @@
   		vm.processComboResult = processComboResult;
   		vm.checkedChange = checkedChange;
   		vm.getPremium = getPremium;
-  		vm.createNewPolicy = createNewPolicy;
+  		vm.savePolicy = savePolicy;
   		vm.validatorCombo = validatorCombo;
   		vm.validatorNntxSoCho = validatorNntxSoCho;
   		vm.validatorVcxSoTien = validatorVcxSoTien;
@@ -309,7 +309,7 @@
             vm.validateResponse(result, 'getPremium');
     	}
     	
-    	function createNewPolicy() {
+    	function savePolicy() {
     		var postData = getPostData(true);
     		
     	  	vm.policy.actualValue = postData.actualValue;
@@ -346,7 +346,7 @@
 	  		vm.policy.yearOfMake = postData.namSX;
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
 	  		// call base to create policy
-	  		vm.createNewPolicyBase("CAR", vm.policy);
+	  		vm.savePolicyBase("CAR", vm.policy);
     	}
     	
     	function onGetPolicyNumberSuccess(result) {

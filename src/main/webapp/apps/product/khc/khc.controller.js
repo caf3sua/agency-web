@@ -46,7 +46,7 @@
         vm.onDobChange = onDobChange;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
-        vm.createNewPolicy = createNewPolicy;
+        vm.savePolicy = savePolicy;
         vm.premiumPackageOptions = [
             {id: '20000000', name: '20000000 VND'},
             {id: '30000000', name: '30000000 VND'},
@@ -196,7 +196,7 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function createNewPolicy() {
+        function savePolicy() {
             var postData = getPostData(true);
             vm.policy.inceptionDate = postData.insuranceStartDate;
             vm.policy.permanentTotalDisablement = postData.numberPerson;
@@ -209,7 +209,7 @@
             vm.policy.tlAddcollections = postData.premiumKhcList;
 
             // call base
-            vm.createNewPolicyBase("KHC", vm.policy);
+            vm.savePolicyBase("KHC", vm.policy);
         }
 
         function onGetPolicyNumberSuccess(result) {

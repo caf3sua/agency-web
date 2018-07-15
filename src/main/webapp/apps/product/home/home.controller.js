@@ -81,7 +81,7 @@
   				};
   		
   		vm.getPremium = getPremium;
-  		vm.createNewPolicy = createNewPolicy;
+  		vm.savePolicy = savePolicy;
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
   		vm.siValidator = siValidator;
@@ -147,12 +147,12 @@
             }
   		}
 
-  		function createNewPolicy() {
+  		function savePolicy() {
   			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
   			vm.appendCommonData(vm.policy);
   			
   			// call base
-  			vm.createNewPolicyBase("HOME", vm.policy);
+  			vm.savePolicyBase("HOME", vm.policy);
   		}
   		
   		function changeToDate() {

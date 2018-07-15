@@ -52,7 +52,7 @@
         vm.getPolicyNumber = getPolicyNumber;
         vm.infoPerson = infoPerson;
         vm.onchangeReceiveMethod = false;
-        vm.createNewPolicy = createNewPolicy;
+        vm.savePolicy = savePolicy;
         vm.showChangePremium = showChangePremium;
         vm.addOrRemovePerson =addOrRemovePerson
         vm.addNewPerson = addNewPerson;
@@ -138,7 +138,7 @@
             vm.tvcAddBaseVM = {};
             console.log(vm.policy);
         }
-        function createNewPolicy() {
+        function savePolicy() {
             vm.loading = true;
             if(vm.product.receiveMethod){
                 vm.policy.receiveMethod = '2';
@@ -153,7 +153,7 @@
             vm.policy.receiverMoible =  vm.receiverUserData.mobile;
             
             // call base
-            vm.createNewPolicyBase("TVC", vm.policy);
+            vm.savePolicyBase("TVC", vm.policy);
         }
 
         function addOrRemovePerson() {

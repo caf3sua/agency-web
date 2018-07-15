@@ -134,7 +134,7 @@
   		vm.openSearchContactForPanel = openSearchContactForPanel;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
-        vm.createNewPolicy = createNewPolicy;
+        vm.savePolicy = savePolicy;
         vm.validatorCombo = validatorCombo;
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
@@ -300,7 +300,7 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function createNewPolicy() {
+        function savePolicy() {
             var postData = getPostData(true);
             
             if(vm.isHealthyPerson) {
@@ -360,7 +360,7 @@
             vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
             vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
 
-            vm.createNewPolicyBase("BVP", vm.policy);
+            vm.savePolicyBase("BVP", vm.policy);
         }
         
         function openSearchContactForPanel(type) {

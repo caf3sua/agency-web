@@ -49,7 +49,7 @@
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
-        vm.createNewPolicy = createNewPolicy;
+        vm.savePolicy = savePolicy;
         vm.premiumPackageOptions = [
             {id: '20000000', name: '20.000.000 VND'},
             {id: '30000000', name: '30.000.000 VND'},
@@ -169,7 +169,7 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function createNewPolicy() {
+        function savePolicy() {
             var postData = getPostData(true);
 
             vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
@@ -188,7 +188,7 @@
             }
 
             // call base
-            vm.createNewPolicyBase("TNC", vm.policy);
+            vm.savePolicyBase("TNC", vm.policy);
         }
 
         function onGetPolicyNumberSuccess(result) {

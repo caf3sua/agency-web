@@ -132,7 +132,7 @@
   				};
   		
   		vm.getPremium = getPremium;
-  		vm.createNewPolicy = createNewPolicy;
+  		vm.savePolicy = savePolicy;
   		
   		vm.getPolicyNumber = getPolicyNumber;
   		vm.changeToDate = changeToDate;
@@ -296,7 +296,7 @@
             }
   		}
   		
-  		function createNewPolicy() {
+  		function savePolicy() {
             vm.loading = true;
   			console.log('createPolicy');
   			// Append contactCode + invoiceInfo + receiverUser
@@ -356,23 +356,7 @@
             }
 
   			// call base
-  			vm.createNewPolicyBase("KCARE", vm.policy);
-//  			//debugger
-//  			ProductKcareService.createPolicy(vm.policy, onSuccess, onError);
-//  			
-//  			function onSuccess(data, headers) {
-//  				vm.clearResponseError();
-//                vm.loading = false;
-//  				vm.policy = data;
-//  				console.log(vm.policy);
-//  				//toastr.success('Create Invoice Success!', 'Successful!');
-//  				vm.showCreatePolicySuccessInfo();
-//            }
-//  			
-//            function onError(error) {
-//                vm.loading = false;
-//                vm.validateResponse(error, 'createPolicy');
-//            }
+  			vm.savePolicyBase("KCARE", vm.policy);
   		}
   		
   		function changeToDate() {
