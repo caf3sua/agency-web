@@ -28,6 +28,10 @@
             'resendEmail' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/resend-confirm-email'
+            },
+            'getByGycbhNumber' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/get-by-gycbhNumber'
             }
         });
 
