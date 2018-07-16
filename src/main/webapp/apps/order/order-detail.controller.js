@@ -87,9 +87,19 @@
   		}
   		
   		function formatKhcData(data) {
+  			OrderService.getByGycbhNumber({gycbhNumber: data.gycbhNumber}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				vm.policy.totalPremium = result.totalPremium;
+  				vm.policy.expiredDate = result.expiredDate
+  			}
+  			
+  			function onError() {
+  			}
   		}
   		
   		function formatMotoData(data) {
+  			
   		}
   		
   		function formatTncData(data) {
