@@ -11,7 +11,7 @@
         $stateProvider
         	.state('product.home', {
 	            parent: 'product',
-	            url: '/home',
+	            url: '/home?id',
 	            templateUrl: 'apps/product/layout.html',
 	            data: {
 	                authorities: [],
@@ -20,28 +20,9 @@
 	            controller: "ProductHomeController",
 	            controllerAs: 'vm',
 	            resolve: {
-	            		loadPlugin: function ($ocLazyLoad) {
+            		loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load(['apps/product/home/home.controller.js']);
 			        }
-	            }
-	        })
-	        .state('product.home.edit', {
-	            parent: 'product',
-	            url: '/home/edit/{id}',
-	            templateUrl: 'apps/product/layout.html',
-	            data: {
-	                authorities: [],
-	                title: 'PRODUCT_HOME_EDIT'
-	            },
-	            controller: "ProductHomeController",
-	            controllerAs: 'vm',
-	            resolve: {
-            		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/home/home.controller.js']);
-			        }
-//		            entity: ['$stateParams', 'ProductCommonService', function($stateParams, ProductCommonService) {
-//	                    return ProductCommonService.getById({id : $stateParams.id}).$promise;
-//	                }]
 	            }
 	        });
     }

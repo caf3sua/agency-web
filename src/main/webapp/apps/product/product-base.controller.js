@@ -20,10 +20,10 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$state', '$rootScope', '$scope', '$window', '$compile', '$timeout'
+    ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
     	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService'];
 
-    function ProductBaseController(vm, $state, $rootScope, $scope, $window, $compile, $timeout
+    function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
     		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
@@ -79,10 +79,40 @@
         vm.validateResponse = validateResponse;
         vm.clearResponseError = clearResponseError;
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
+        vm.isEditMode = isEditMode;
+        vm.loadPolicyEdit = loadPolicyEdit;
         
         vm.savePolicyBase = savePolicyBase; 
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
+        
         // implement function
+        function loadPolicyEdit(obj) {
+        	if (!isEditMode()) {
+        		return;
+        	}
+        	
+        	// Load policy
+        	$state.current.data.title = $state.current.data.title + '_EDIT';
+        	
+        	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+        		obj = result;
+        		console.log('ProductCommonService');
+        		console.log(obj);
+            }).catch(function(data, status) {
+    			console.log('Error get policy to edit');
+    			vm.clearResponseError();
+    			vm.validateResponse(data, 'getPolicyToEdit');
+		    });
+        }
+        
+        function isEditMode() {
+        	if ($stateParams.id != undefined && $stateParams.id != null && $stateParams.id > 0) {
+        		return true;
+        	}
+        	
+        	return false;
+        }
+        
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
         	// Save or update
@@ -471,6 +501,8 @@
             } else if(type == 'updatePolicy') {
                 message = '' + message ;
             } else if(type == 'getPolicyNumber') {
+                message = '' + message ;
+            } else if(type == 'getPolicyToEdit') {
                 message = '' + message ;
             }
             toastr.error(message, 'Lỗi');
