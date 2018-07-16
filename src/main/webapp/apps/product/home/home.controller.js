@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductHomeController', ProductHomeController);
 
-    ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService', 'DateUtils'];
+    ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
+    	, 'ProductCommonService', 'DateUtils'];
 
-    function ProductHomeController ($scope, $stateParams, $controller, Principal, $state, $rootScope, ProductCommonService, DateUtils) {
+    function ProductHomeController ($scope, $stateParams, $controller, Principal, $state, $rootScope
+    		, ProductCommonService, DateUtils) {
     	var vm = this;
     	vm.lineId = 'HOM';
     	
@@ -47,14 +49,6 @@
   				"insuranceName": "",
   				"insuredLocation": "",
   				"invoceNumber": "",
-//  				"invoiceInfo": {
-//	  				"accountNo": "",
-//	  				"address": "",
-//	  				"check": "0",
-//	  				"company": "",
-//	  				"name": "",
-//	  				"taxNo": ""
-//  				},
   				"loaiHinh": "0",
   				"policyNumber": "",
   				"premiumDiscount": 0,
@@ -63,13 +57,6 @@
   				"premiumsi": 0,
   				"premiumsiin": 0,
   				"receiveMethod": "1",
-//  				"receiverUser": {
-//	  				"address": "",
-//	  				"addressDistrict": "",
-//	  				"email": "",
-//	  				"mobile": "",
-//	  				"name": ""
-//  				},
   				"si": "",
   				"siPremium": 0,
   				"siin": "",
@@ -101,7 +88,21 @@
             vm.registerDisableContactInfoValue('vm.product.premiumHome');
 
             // Edit
-            console.log($stateParams.id);
+            if (vm.isEditMode()) {
+            	vm.loading = true;
+            	// Load policy
+            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	
+            	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		vm.loading = false;
+            		vm.policy = result;
+                }).catch(function(data, status) {
+                	vm.loading = false;
+//        			console.log('Error get policy to edit');
+//        			vm.clearResponseError();
+//        			vm.validateResponse(data, 'getPolicyToEdit');
+    		    });
+            }
         }
   		
   		function getPremium() {

@@ -5,8 +5,8 @@
         .controller('ContactController', ContactController);
 
 
-    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService'];
-    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService) {
+    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS'];
+    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS) {
     	var vm = this;
     	vm.contacts = [];
     	vm.selectedContact = null;
@@ -14,6 +14,12 @@
     	vm.Agreements = [];
     	vm.AgreementsInit = [];
     	
+    	// paging
+        vm.page = 1;
+        vm.totalItems = null;
+        vm.itemsPerPage = 5;
+        vm.transition = transition;
+        
     	// Function declare
     	vm.changeGroupType = changeGroupType;
     	vm.getAgrement = getAgrement;
@@ -52,7 +58,7 @@
   			vm.selectedContact.selected = true;
   			
   			// Call service to get agreement by contactcode
-  			getAgrement(contact.contactId);
+  			getAgrement();
   		};
   		
     	function loadAll() {
@@ -69,17 +75,27 @@
     		}
     	}
     	
-    	function getAgrement(coId) {
+    	function getAgrement() {
     		vm.Agreements = [];
-    		ContactService.getAgrement({contactId: coId}, onGetAgrementSuccess, onGetAgrementError);
+    		ContactService.getAgrement({
+				contactId: vm.selectedContact.contactId,
+    			page: vm.page - 1,
+                size: vm.itemsPerPage
+            }, onGetAgrementSuccess, onGetAgrementError);
     		
-    		function onGetAgrementSuccess(result) {
+    		function onGetAgrementSuccess(result, headers) {
     			vm.Agreements = result;
+    			vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
             }
 
             function onGetAgrementError(result) {
             }
   		}
+    	
+    	function transition () {
+    		getAgrement();
+        }
     }
 })();
 

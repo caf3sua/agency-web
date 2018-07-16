@@ -202,7 +202,7 @@
             <tfoot>
 				<tr>
 		        	<td colspan="10" class="text-center">
-			            <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></bv-item-count>
+			            <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage" ng-show="vm.totalItems > 0"></bv-item-count>
 				        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
 				    </td>
 		        </tr>
