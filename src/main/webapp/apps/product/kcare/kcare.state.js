@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.kcare', {
             parent: 'product',
-            url: '/kcare',
+            url: '/kcare?id',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],

@@ -1,87 +1,95 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Sản phẩm</p>
+        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
     </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input" placeholder="Nhập sản phẩm!" readonly="readonly" disabled="disabled" />
-    </div>
+    <!-- Khách hàng -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Khách hàng<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập khách hàng!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Chọn
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="contactName" class="bv-input" placeholder="Nhập khách hàng" disabled="disabled">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-plus"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Phí bảo hiểm -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập phí bảo hiểm!"
-        />
+        <input type="number" class="bv-input" placeholder="Nhập phí bảo hiểm" /> <!-- numeric-only -->
     </div>
+    <!-- Giấy yêu cầu bảo hiểm -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Giấy yêu cầu bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập giấy yêu cầu bảo hiểm!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy yêu cầu bảo hiểm">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Ấn chỉ -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Ấn chỉ<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập ấn chỉ!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ấn chỉ">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Ảnh giám định -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Ảnh giám định<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập ảnh giám định!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ảnh giám định">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Tài liệu khác -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Tài liệu khác</p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập Tài liệu khác!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập Tài liệu khác">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Button -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
         <button class="bv-gh-tt">
             Thanh toán

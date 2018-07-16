@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.tvc', {
             parent: 'product',
-            url: '/tvc',
+            url: '/tvc?id',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],

@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.bvp', {
             parent: 'product',
-            url: '/bvp',
+            url: '/bvp?id',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],

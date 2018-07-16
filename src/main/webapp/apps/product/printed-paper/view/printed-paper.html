@@ -1,39 +1,47 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
+	<div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
+    </div>
+    <!-- Số ấn chỉ -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Số ấn chỉ</p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập số ấn chỉ!"
-        />
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="soAnchi" class="bv-input" placeholder="Nhập số ấn chỉ" disabled="disabled">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-plus"></span>
+             	</div>
+            </div>
+        </div>
     </div>
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Sản phẩm</p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập sản phẩm!"
-        />
-    </div>
+    
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Tên ấn chỉ</p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập tên ấn chỉ!"
-        />
+        <input type="text" class="bv-input" placeholder="Nhập tên ấn chỉ" disabled="disabled"/>
     </div>
+    <!-- Khách hàng -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Khách hàng<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập khách hàng!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Chọn
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="contactName" class="bv-input" placeholder="Nhập khách hàng" disabled="disabled">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-plus"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Ngày hiệu lực -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Ngày hiệu lực<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
@@ -59,6 +67,7 @@
             </div>
         </div>
     </div>
+    <!-- Tình trạng cấp -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Tình trạng cấp<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
@@ -88,6 +97,7 @@
             </label>
         </div>
     </div>
+    <!-- Ngày cấp -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Ngày cấp<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
@@ -103,62 +113,67 @@
             </div>
         </div>
     </div>
+    <!-- Phí bảo hiểm -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập phí bảo hiểm!"
-        />
+        <input type="number" class="bv-input" placeholder="Nhập phí bảo hiểm"/>
     </div>
+    <!-- Tổng tiền thành toán -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Tổng tiền thành toán<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="text" class="bv-input"   placeholder="Nhập tổng tiền thanh toán!"
-        />
+        <input type="text" class="bv-input" placeholder="Nhập tổng tiền thanh toán"/>
     </div>
+    <!-- GCN -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">GCN<span class="bv-req-red">&nbsp(*)</span></p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập giấy yêu cầu bảo hiểm!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy chứng nhận">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Giấy yêu cầu bảo hiểm</p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập ấn chỉ!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy yêu cầu bảo hiểm">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
         <p class="bv-title-from">Hóa đơn</p>
     </div>
     <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5" >
-            <input type="text" class="bv-input"   placeholder="Nhập ảnh giám định!"
-            />
-        </div>
-        <div class="padding0 " >
-            <button class="bv-gh-tt">
-                Upload
-            </button>
+        <div class="width-100 padding0 margin-right-5">
+        	<div class="input-group display-flex">
+             	<div class="width-100">
+                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy yêu cầu bảo hiểm">
+             	</div>
+             	<div class="input-group-addon bv-date-icon">
+                 	<span class="fa fa-upload"></span>
+             	</div>
+            </div>
         </div>
     </div>
+    <!-- Button -->
     <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
         <button class="bv-gh-tt">
             Thanh toán

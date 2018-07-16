@@ -24,13 +24,13 @@
         </div>
         <span class="bv-detail-text-table">Gửi lại email xác nhận</span>
     </div>
-    <div>
+    <div ng-show="order.statusPolicyId == 91 || order.statusPolicyId == 100" >
         <div class="bv-detail-icon-table">
             <i class="icon-reload-arrow"></i>
         </div>
-        <span class="bv-detail-text-table">Tái túc</span>
+        <span class="bv-detail-text-table">Tái tục</span>
     </div>
-    <div>
+    <div  ng-show="order.statusPolicyId != 89" ng-click="vm.confirmKhachhangnophi(order.gycbhNumber)">
         <div class="bv-detail-icon-table">
             <i class="icon-money"></i>
         </div>

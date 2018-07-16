@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.moto', {
             parent: 'product',
-            url: '/moto',
+            url: '/moto?id',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: [],

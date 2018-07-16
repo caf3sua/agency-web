@@ -10,15 +10,9 @@
     function OrderController ($scope, $stateParams, Principal, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS) {
     	var vm = this;
         
-        angular.element(document).ready(function () {
-        });
-
-    	// Init controller
-  		(function initController() {
-  		})();
-  		
-  		// Properties & function declare
+    	// Properties & function declare
         // paging
+    	vm.page = 1;
         vm.totalItems = null;
         vm.itemsPerPage = PAGINATION_CONSTANTS.itemsPerPage;
         vm.transition = transition;
@@ -42,20 +36,22 @@
   			  "productCode": "",
   			  "toDate": ""
   		};
-  		
+  		vm.sotiennophi;
   		
   		vm.viewDetail = viewDetail;
   		vm.confirmCancelOrder = confirmCancelOrder;
   		vm.searchOrder = searchOrder;
   		vm.confirmResendEmail = confirmResendEmail;
+  		vm.confirmKhachhangnophi = confirmKhachhangnophi;
+  		
+        angular.element(document).ready(function () {
+        });
+
+    	// Init controller
+  		(function initController() {
+  		})();
   		
   		// Function
-  		
-//  		$scope.$watch('vm.page', function() {
-//  	        console.log('page change:' + vm.page);
-//  	    });
-  		
-  		
   		function viewDetail() {
   			
   		}
@@ -105,18 +101,18 @@
   			var order = {};
 
   			// Keep filter from root scope
-        	if ($rootScope.deviceFilter != null) {
-        		order = $rootScope.orderFilter;
-        	} else {
-        		order = vm.searchCriterial;
-            	
-            	// keep filter
-            	storeFilterCondition(order);
-        	}
+//        	if ($rootScope.deviceFilter != null) {
+//        		order = $rootScope.orderFilter;
+//        	} else {
+//        		order = vm.searchCriterial;
+//            	
+//            	// keep filter
+//            	storeFilterCondition(order);
+//        	}
   			
   			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
   			function onSearchSuccess(result, headers) {
-                vm.page = order.pageable.page + 1;
+                vm.page = vm.page - 1;
                 
   				// Paging
   				vm.orders = result;
@@ -125,11 +121,6 @@
   				vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 
-  				$timeout(function () {
-					$('#footable').trigger('footable_initialized');
-					$('#footable').trigger('footable_resize');
-					$('#footable').data('footable').redraw();
-				}, 1000);
   				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
   	        }
   	        function onSearchError() {
@@ -152,11 +143,6 @@
   				// Paging
   				vm.orders = result;
   				vm.isLoading = false;
-  				$timeout(function () {
-					$('#footable').trigger('footable_initialized');
-					$('#footable').trigger('footable_resize');
-					$('#footable').data('footable').redraw();
-				}, 1000);
   				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
   	        }
   	        function onSearchError() {
@@ -170,9 +156,9 @@
         	search();
         }
         
-        function storeFilterCondition(order) {
-        	$rootScope.orderFilter = order;
-        }
+//        function storeFilterCondition(order) {
+//        	$rootScope.orderFilter = order;
+//        }
         
         function confirmResendEmail(gycbhNumber) {
   			$ngConfirm({
@@ -197,6 +183,43 @@
                 },
             });
   		}
+        
+        function doKhachhangnophi(gycbhNumber, sotiennophi) {
+        	vm.sotiennophi = sotiennophi;
+        	console.log('Khách hàng nợ phí,' + vm.sotiennophi);
+        	
+        	toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + gycbhNumber + "</strong> thành công");
+        }
+        
+        function confirmKhachhangnophi(gycbhNumber) {
+        	$ngConfirm({
+                title: 'Khách hàng nợ phí',
+                columnClass: 'col-md-6 col-md-offset-3',
+                contentUrl: 'views/theme/blocks/form-khachhangnophi.html',
+                buttons: {
+                    ok: {
+                        text: 'Đồng ý',
+                        disabled: true,
+                        btnClass: 'btn-green',
+                        action: function (scope) {
+                        	doKhachhangnophi(gycbhNumber, scope.sotiennophi);
+                        }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+                onScopeReady: function (scope) {
+                    var self = this;
+                    scope.textChange = function () {
+                        if (scope.sotiennophi)
+                            self.buttons.ok.setDisabled(false);
+                        else
+                            self.buttons.ok.setDisabled(true);
+                    }
+                }
+            })
+        }
   		
   		function resendEmail(number) {
   			console.log('doResendEmail');

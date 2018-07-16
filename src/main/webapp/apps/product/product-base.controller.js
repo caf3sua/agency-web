@@ -84,6 +84,7 @@
         
         vm.savePolicyBase = savePolicyBase; 
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
+        vm.showWarningEditPolicy = showWarningEditPolicy;
         
         // implement function
         function loadPolicyEdit(obj) {
@@ -233,6 +234,27 @@
 	            vm.loading = false;
 	            vm.validateResponse(error, 'updatePolicy');
 	        }
+        }
+        
+        function showWarningEditPolicy() {
+        	$ngConfirm({
+                title: 'Dữ liệu không hợp lệ',
+                icon: 'fas fa-exclamation-triangle',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Không tìm thấy hợp đồng</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đóng',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	$state.go('app.order');
+	                    }
+                    }
+                },
+            });
         }
         
         function showSavePolicySuccessInfo(obj) {
@@ -505,7 +527,7 @@
             } else if(type == 'getPolicyToEdit') {
                 message = '' + message ;
             }
-            toastr.error(message, 'Lỗi');
+            toastr.error(message);
         }
         
         function clearResponseError() {

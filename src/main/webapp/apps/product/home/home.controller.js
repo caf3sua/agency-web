@@ -98,6 +98,7 @@
             		vm.policy = result;
                 }).catch(function(data, status) {
                 	vm.loading = false;
+                	vm.showWarningEditPolicy();
 //        			console.log('Error get policy to edit');
 //        			vm.clearResponseError();
 //        			vm.validateResponse(data, 'getPolicyToEdit');
