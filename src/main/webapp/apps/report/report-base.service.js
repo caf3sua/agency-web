@@ -9,6 +9,11 @@
 
 	function ReportService($resource) {
 		var service = $resource('', {}, {
+			'getReportTransfer' : {
+				method : 'POST',
+				url : 'api/agency/agency-report/report-transfer',
+				isArray : true
+			},
 			'getReportIncome' : {
 				method : 'POST',
 				url : 'api/agency/agency-report/report-income'

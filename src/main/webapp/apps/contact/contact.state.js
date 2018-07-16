@@ -59,6 +59,36 @@
 		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js', 'apps/contact/contact-edit.controller.js']);
 			        }
 	            }
+	        })
+	        .state('app.contact-loss', {
+	            url: '/contact-loss/{id}',
+	            templateUrl: 'apps/contact/contact-loss.html',
+	            data : { title: 'CONTACT_LOSS' },
+	            controller: "ContactLossController",
+	            controllerAs: 'vm',
+	            resolve: {
+//	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+//	                        return ContactService.get({id : $stateParams.id}).$promise;
+//	                    }],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load(['apps/contact/contact-loss.controller.js']);
+			        }
+	            }
+	        })
+	        .state('app.contact-history-purchase', {
+	            url: '/contact-history-purchase/{id}',
+	            templateUrl: 'apps/contact/contact-history-purchase.html',
+	            data : { title: 'CONTACT_HISTORY_PURCHASE' },
+	            controller: "ContactHistoryPurchaseController",
+	            controllerAs: 'vm',
+	            resolve: {
+//	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+//	                        return ContactService.get({id : $stateParams.id}).$promise;
+//	                    }],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load(['apps/contact/contact-history-purchase.controller.js']);
+			        }
+	            }
 	        });
     }
 })();
