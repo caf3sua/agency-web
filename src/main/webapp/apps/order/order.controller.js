@@ -223,14 +223,31 @@
             });
   		}
         
-        function doKhachhangnophi(gycbhNumber, sotiennophi) {
+        function doKhachhangnophi(order, sotiennophi, note) {
         	vm.sotiennophi = sotiennophi;
+        	vm.note = note;
+        	vm.nophi = {
+        			  "agreementId": order.agreementId,
+        			  "contactId": order.contactId,
+        			  "note": vm.note,
+        			  "result": false,
+        			  "sotien": vm.sotiennophi
+        			};
+        	OrderService.createNophi(vm.nophi, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + order.gycbhNumber + "</strong> thành công");
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi tạo nợ phí!");
+  			}
+        	
         	console.log('Khách hàng nợ phí,' + vm.sotiennophi);
         	
-        	toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + gycbhNumber + "</strong> thành công");
         }
         
-        function confirmKhachhangnophi(gycbhNumber) {
+        function confirmKhachhangnophi(order) {
         	$ngConfirm({
                 title: 'Khách hàng nợ phí',
                 columnClass: 'col-md-6 col-md-offset-3',
@@ -241,7 +258,7 @@
                         disabled: true,
                         btnClass: 'btn-green',
                         action: function (scope) {
-                        	doKhachhangnophi(gycbhNumber, scope.sotiennophi);
+                        	doKhachhangnophi(order, scope.sotiennophi, scope.note);
                         }
                     },
                     close: {
