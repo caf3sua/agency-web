@@ -150,6 +150,21 @@
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
             vm.registerDisableContactInfoValue('vm.product.premium');
+            
+            // Edit
+            if (vm.isEditMode()) {
+            	vm.loading = true;
+            	// Load policy
+            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	
+            	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		vm.loading = false;
+            		vm.policy = result;
+                }).catch(function(data, status) {
+                	vm.loading = false;
+                	vm.showWarningEditPolicy();
+    		    });
+            }
   		}
   		
   		function getCarBranchesSuccess(result) {

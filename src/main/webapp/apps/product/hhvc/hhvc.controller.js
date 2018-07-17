@@ -277,6 +277,21 @@
         // Function
         function init() {
             vm.contactRole = "";
+            
+            // Edit
+            if (vm.isEditMode()) {
+            	vm.loading = true;
+            	// Load policy
+            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	
+            	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		vm.loading = false;
+            		vm.policy = result;
+                }).catch(function(data, status) {
+                	vm.loading = false;
+                	vm.showWarningEditPolicy();
+    		    });
+            }
         }
 
         $scope.$on('selectedContactChange', function() {
