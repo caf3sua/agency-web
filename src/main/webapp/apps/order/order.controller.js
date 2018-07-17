@@ -43,6 +43,7 @@
   		vm.searchOrder = searchOrder;
   		vm.confirmResendEmail = confirmResendEmail;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
+  		vm.confirmTaituc = confirmTaituc;
   		
         angular.element(document).ready(function () {
         });
@@ -175,6 +176,43 @@
                         btnClass: "btn-blue",
                         action: function(scope, button){
                         	resendEmail(gycbhNumber);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+        
+        function taitucPolicy(agreementId) {
+  			console.log('taitucPolicy, agreementId:' + agreementId);
+  			OrderService.createTaituc({agreementId: agreementId}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				toastr.success('Tái tục đơn hàng thành công');
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi tái tục đơn hàng");
+  			}
+        }
+        
+        function confirmTaituc(agreementId) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	taitucPolicy(agreementId);
 	                    }
                     },
                     close: {

@@ -8,6 +8,14 @@
     OrderService.$inject = ['$resource'];
     function OrderService($resource) {
         var service = $resource('', {}, {
+        	'createNophi' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/create-agreement-nophi'
+            },
+        	'createTaituc' : {
+                method : 'GET',
+                url : 'api/agency/product/agreement/create-agreement-taituc/:agreementId'
+            },
         	'search' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/search-order',
