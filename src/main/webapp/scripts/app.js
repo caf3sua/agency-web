@@ -32,7 +32,6 @@
 		 'ui.load',
 		 'ui.jp',
 		 'oc.lazyLoad',
-		 'highcharts-ng',
 		 'ngScrollbars', 
 		 'toastr',
 		 'smart-table',
