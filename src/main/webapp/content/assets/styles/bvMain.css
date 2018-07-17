@@ -1940,6 +1940,10 @@ body {
     }
 }
 @media (min-width:768px) and (max-width:991px) {
+    .bv-report-border-right {
+        border-bottom: 1px solid #ccc;
+        border-right: 0;
+    }
     .bv-collapse-tp{
         display: block;
         text-align: center;
@@ -2136,6 +2140,10 @@ body {
     }
 }
 @media (min-width:480px) and (max-width:767px) {
+    .bv-report-border-right {
+        border-bottom: 1px solid #ccc;
+        border-right: 0;
+    }
     .bv-background-home {
         padding: 25px 10px;
         background: #f8f9fd;
@@ -2411,6 +2419,10 @@ body {
     }
 }
 @media (min-width:320px) and (max-width:480px){
+    .bv-report-border-right {
+        border-bottom: 1px solid #ccc;
+        border-right: 0;
+    }
     .bv-background-home {
         padding: 25px 10px;
         background: #f8f9fd;
@@ -2428,7 +2440,7 @@ body {
         margin-bottom: 5px;
     }
     .row-body {
-        height: 100vh;
+        height: 100%;
     }
     .row-col-xs .row-body {
         overflow: scroll;
