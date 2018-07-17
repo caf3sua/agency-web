@@ -44,6 +44,7 @@
   		vm.confirmResendEmail = confirmResendEmail;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.confirmTaituc = confirmTaituc;
+  		vm.confirmEditAgreement = confirmEditAgreement;
   		
         angular.element(document).ready(function () {
         });
@@ -203,7 +204,7 @@
                 title: 'Xác nhận',
                 icon: 'fa fa-times',
                 theme: 'modern',
-                type: 'red',
+                type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
                 animation: 'scale',
                 closeAnimation: 'scale',
@@ -270,6 +271,67 @@
   			function onError() {
   				toastr.error("Lỗi khi gửi lại email đơn hàng!");
   			}
+  		}
+  		
+  		function confirmEditAgreement(order) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">Bạn chắc chắn sửa hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	editAgreement(order);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+  		
+  		function editAgreement(order) {
+  			switch (order.lineId) {
+				case 'BVP':
+					$state.go("product.bvp", {id: order.agreementId});
+					break;
+				case 'CAR':
+					$state.go("product.car", {id: order.agreementId});
+					break;
+				case 'HOM':
+					$state.go("product.home", {id: order.agreementId});
+					break;
+				case 'KCR':
+					$state.go("product.kcare", {id: order.agreementId});
+					break;
+				case 'MOT':
+					$state.go("product.moto", {id: order.agreementId});
+					break;
+				case 'TNC':
+					$state.go("product.tnc", {id: order.agreementId});
+					break;
+				case 'KHC':
+					$state.go("product.khc", {id: order.agreementId});
+					break;
+				case 'TVC':
+					$state.go("product.tvc", {id: order.agreementId});
+					break;
+				case 'TVI':
+					$state.go("product.tvi", {id: order.agreementId});
+					break;
+				case 'HHV':
+					$state.go("product.hhvc", {id: order.agreementId});
+					break;
+				default:
+					break;
+			}
   		}
     }
 })();
