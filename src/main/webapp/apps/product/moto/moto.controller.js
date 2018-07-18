@@ -232,7 +232,7 @@
             vm.policy.typeOfMotoId = postData.typeOfMoto;
 
             // call base
-            vm.savePolicyBase("MOTO", vm.policy);
+            vm.savePolicyBase("MOT", vm.policy);
         }
 
         function validatorNntxSoNguoi() {

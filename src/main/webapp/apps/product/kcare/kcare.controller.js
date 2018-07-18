@@ -356,7 +356,7 @@
             }
 
   			// call base
-  			vm.savePolicyBase("KCARE", vm.policy);
+  			vm.savePolicyBase("KCR", vm.policy);
   		}
   		
   		function changeToDate() {

@@ -405,7 +405,7 @@
             }
 
             // call base
-            vm.savePolicyBase("HHVC", vm.policy);
+            vm.savePolicyBase("HHV", vm.policy);
         }
 
         function getRequesterInfo(type) {

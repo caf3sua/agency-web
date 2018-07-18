@@ -38,7 +38,6 @@
     height: 1.2em;
     vertical-align: middle;
     fill: currentColor;
-    margin-top: -0.25em;
     /* 4px */
     margin-right: 0.25em;
     /* 4px */
@@ -191,8 +190,8 @@
 }
 
 .inputfile-6 + label {
-    border: 1px solid #0371b6;
-    padding: 10px;
+    border: 1px solid #e0e1e5;
+    padding: 15px 20px;
     border-radius: 5px;
 }
 
@@ -209,7 +208,6 @@
 
 .inputfile-6 + label span {
     width: 100%;
-    min-height: 2em;
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -219,12 +217,13 @@
 
 .inputfile-6 + label strong {
     height: 100%;
-    color: #f1e5e6;
-    background-color: #0371b6;
+    color: #000;
+    background-color: #f8f9fd;
+    border-left: 1px solid #e0e1e5;
     display: inline-block;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 0px;
     padding: 10px;
     border-radius: 0px 5px 5px 0;
 }
@@ -232,7 +231,7 @@
 .inputfile-6:focus + label strong,
 .inputfile-6.has-focus + label strong,
 .inputfile-6 + label:hover strong {
-    background-color: #722040;
+    background-color: #0371b6;
 }
 
 @media screen and (max-width: 50em) {

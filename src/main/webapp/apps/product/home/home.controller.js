@@ -138,7 +138,7 @@
   			vm.appendCommonData(vm.policy);
   			
   			// call base
-  			vm.savePolicyBase("HOME", vm.policy);
+  			vm.savePolicyBase("HOM", vm.policy);
   		}
   		
   		function changeToDate() {
