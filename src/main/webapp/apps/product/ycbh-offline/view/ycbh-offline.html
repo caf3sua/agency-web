@@ -1,101 +1,139 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
-    </div>
-    <!-- Khách hàng -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Khách hàng<span class="bv-req-red">&nbsp(*)</span></p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5">
-        	<div class="input-group display-flex">
-             	<div class="width-100">
-                 	<input type="text" name="contactName" class="bv-input" placeholder="Nhập khách hàng" disabled="disabled">
-             	</div>
-             	<div class="input-group-addon bv-date-icon">
-                 	<span class="fa fa-plus"></span>
-             	</div>
-            </div>
-        </div>
-    </div>
-    <!-- Phí bảo hiểm -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-        <input type="number" class="bv-input" placeholder="Nhập phí bảo hiểm" /> <!-- numeric-only -->
-    </div>
-    <!-- Giấy yêu cầu bảo hiểm -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Giấy yêu cầu bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5">
-        	<div class="input-group display-flex">
-             	<div class="width-100">
-                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy yêu cầu bảo hiểm">
-             	</div>
-             	<div class="input-group-addon bv-date-icon">
-                 	<span class="fa fa-upload"></span>
-             	</div>
-            </div>
-        </div>
-    </div>
-    <!-- Ấn chỉ -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Ấn chỉ<span class="bv-req-red">&nbsp(*)</span></p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5">
-        	<div class="input-group display-flex">
-             	<div class="width-100">
-                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ấn chỉ">
-             	</div>
-             	<div class="input-group-addon bv-date-icon">
-                 	<span class="fa fa-upload"></span>
-             	</div>
-            </div>
-        </div>
-    </div>
-    <!-- Ảnh giám định -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Ảnh giám định<span class="bv-req-red">&nbsp(*)</span></p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5">
-        	<div class="input-group display-flex">
-             	<div class="width-100">
-                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ảnh giám định">
-             	</div>
-             	<div class="input-group-addon bv-date-icon">
-                 	<span class="fa fa-upload"></span>
-             	</div>
-            </div>
-        </div>
-    </div>
-    <!-- Tài liệu khác -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-        <p class="bv-title-from">Tài liệu khác</p>
-    </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
-        <div class="width-100 padding0 margin-right-5">
-        	<div class="input-group display-flex">
-             	<div class="width-100">
-                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập Tài liệu khác">
-             	</div>
-             	<div class="input-group-addon bv-date-icon">
-                 	<span class="fa fa-upload"></span>
-             	</div>
-            </div>
-        </div>
-    </div>
-    <!-- Button -->
-    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-        <button class="bv-gh-tt">
-            Thanh toán
-        </button>
-        <button class="bv-btn-default">
-            Hủy bỏ
-        </button>
-    </div>
+	<form name="form">
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
+	    </div>
+	    <!-- Khách hàng -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Khách hàng<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	        <div class="width-100 padding0 margin-right-5">
+	        	<div class="input-group display-flex">
+	             	<div class="width-100">
+	                 	<input type="text" name="contactName" class="bv-input" placeholder="Nhập khách hàng" disabled="disabled">
+	             	</div>
+	             	<div class="input-group-addon bv-date-icon">
+	                 	<span class="fa fa-plus"></span>
+	             	</div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- Phí bảo hiểm -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
+	        <input type="number" class="bv-input" placeholder="Nhập phí bảo hiểm" /> <!-- numeric-only -->
+	    </div>
+	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Giấy yêu cầu bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	        <div class="width-100 padding0 margin-right-5">
+	        	<div class="input-group display-flex">
+	             	<div class="width-100">
+	                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập giấy yêu cầu bảo hiểm">
+	             	</div>
+	             	<div class="input-group-addon bv-date-icon">
+                 		<span class="fa fa-upload"></span>
+	             	</div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	    	<input type="file" ngf-select="vm.uploadGycbh($file, $invalidFiles)" ng-model="gycbhFile" name="gycbhFile"    
+	             		accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+			<i ng-show="form.gycbhFile.$error.required">*Bắt buộc</i><br>
+	      	<i ng-show="form.gycbhFile.$error.maxSize">File hiện tại {{errorFile.size / 1000000|number:1}}MB: lớn hơn 2M</i>
+	      	<img style="width: 40px" ng-show="form.gycbhFile.$valid" ngf-thumbnail="gycbhFile" class="thumb"> 
+	      	<button ng-click="gycbhFile = null" ng-show="gycbhFile">Remove</button>
+	    </div>
+	    
+	    <!-- Ấn chỉ - Upload -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Ấn chỉ<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	        <div class="width-100 padding0 margin-right-5">
+	        	<div class="input-group display-flex">
+	             	<div class="width-100">
+	                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ấn chỉ">
+	             	</div>
+	             	<div class="input-group-addon bv-date-icon">
+	                 	<span class="fa fa-upload"></span>
+	             	</div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	    	<input type="file" ngf-select="vm.uploadAnchi($file, $invalidFiles)" ng-model="anchiFile" name="anchiFile"    
+	             		accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+			<i ng-show="form.anchiFile.$error.required">*Bắt buộc</i><br>
+	      	<i ng-show="form.anchiFile.$error.maxSize">File hiện tại {{errorFile.size / 1000000|number:1}}MB: lớn hơn 2M</i>
+	      	<img style="width: 40px" ng-show="form.anchiFile.$valid" ngf-thumbnail="anchiFile" class="thumb"> 
+	      	<button ng-click="anchiFile = null" ng-show="anchiFile">Remove</button>
+	    </div>
+	    
+	    <!-- Ảnh giám định - Upload -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Ảnh giám định<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	        <div class="width-100 padding0 margin-right-5">
+	        	<div class="input-group display-flex">
+	             	<div class="width-100">
+	                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập ảnh giám định">
+	             	</div>
+	             	<div class="input-group-addon bv-date-icon">
+	                 	<span class="fa fa-upload"></span>
+	             	</div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	    	<input type="file" ngf-select="vm.uploadImgGiamdinh($file, $invalidFiles)" ng-model="imgGiamdinhFile" name="imgGiamdinhFile"    
+	             		accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+			<i ng-show="form.imgGiamdinhFile.$error.required">*Bắt buộc</i><br>
+	      	<i ng-show="form.imgGiamdinhFile.$error.maxSize">File hiện tại {{errorFile.size / 1000000|number:1}}MB: lớn hơn 2M</i>
+	      	<img style="width: 40px" ng-show="form.imgGiamdinhFile.$valid" ngf-thumbnail="imgGiamdinhFile" class="thumb"> 
+	      	<button ng-click="imgGiamdinhFile = null" ng-show="imgGiamdinhFile">Remove</button>
+	    </div>
+	    <!-- Tài liệu khác -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Tài liệu khác</p>
+	    </div>
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	        <div class="width-100 padding0 margin-right-5">
+	        	<div class="input-group display-flex">
+	             	<div class="width-100">
+	                 	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Nhập Tài liệu khác">
+	             	</div>
+	             	<div class="input-group-addon bv-date-icon">
+	                 	<span class="fa fa-upload"></span>
+	             	</div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
+	    	<input type="file" ngf-select="vm.uploadOtherDoc($file, $invalidFiles)" ng-model="otherDocFile" name="otherDocFile"    
+	             		accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+			<i ng-show="form.otherDocFile.$error.required">*Bắt buộc</i><br>
+	      	<i ng-show="form.otherDocFile.$error.maxSize">File hiện tại {{errorFile.size / 1000000|number:1}}MB: lớn hơn 2M</i>
+	      	<img style="width: 40px" ng-show="form.otherDocFile.$valid" ngf-thumbnail="otherDocFile" class="thumb"> 
+	      	<button ng-click="otherDocFile = null" ng-show="otherDocFile">Remove</button>
+	    </div>
+	    <!-- Button -->
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
+	        <button class="bv-gh-tt">
+	            Thanh toán
+	        </button>
+	        <button class="bv-btn-default">
+	            Hủy bỏ
+	        </button>
+	    </div>
+	</form>
 </div>
