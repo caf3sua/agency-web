@@ -34,8 +34,8 @@
 }
 
 .inputfile + label svg {
-    width: 1em;
-    height: 1em;
+    width: 1.2em;
+    height: 1.2em;
     vertical-align: middle;
     fill: currentColor;
     margin-top: -0.25em;
