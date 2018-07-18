@@ -1773,6 +1773,22 @@ body {
     overflow: hidden;
     vertical-align: top;
 }
+.bv-custom-span-ycbh{
+    width: 100%;
+/* min-height: 2em; */
+    display: inline-block;
+/* text-overflow: ellipsis; */
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    color: #777;
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
