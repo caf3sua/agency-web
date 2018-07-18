@@ -44,6 +44,7 @@
   		vm.confirmResendEmail = confirmResendEmail;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.confirmTaituc = confirmTaituc;
+  		vm.confirmEditAgreement = confirmEditAgreement;
   		
         angular.element(document).ready(function () {
         });
@@ -203,7 +204,7 @@
                 title: 'Xác nhận',
                 icon: 'fa fa-times',
                 theme: 'modern',
-                type: 'red',
+                type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
                 animation: 'scale',
                 closeAnimation: 'scale',
@@ -222,14 +223,31 @@
             });
   		}
         
-        function doKhachhangnophi(gycbhNumber, sotiennophi) {
+        function doKhachhangnophi(order, sotiennophi, note) {
         	vm.sotiennophi = sotiennophi;
+        	vm.note = note;
+        	vm.nophi = {
+        			  "agreementId": order.agreementId,
+        			  "contactId": order.contactId,
+        			  "note": vm.note,
+        			  "result": false,
+        			  "sotien": vm.sotiennophi
+        			};
+        	OrderService.createNophi(vm.nophi, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + order.gycbhNumber + "</strong> thành công");
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi tạo nợ phí!");
+  			}
+        	
         	console.log('Khách hàng nợ phí,' + vm.sotiennophi);
         	
-        	toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + gycbhNumber + "</strong> thành công");
         }
         
-        function confirmKhachhangnophi(gycbhNumber) {
+        function confirmKhachhangnophi(order) {
         	$ngConfirm({
                 title: 'Khách hàng nợ phí',
                 columnClass: 'col-md-6 col-md-offset-3',
@@ -240,7 +258,7 @@
                         disabled: true,
                         btnClass: 'btn-green',
                         action: function (scope) {
-                        	doKhachhangnophi(gycbhNumber, scope.sotiennophi);
+                        	doKhachhangnophi(order, scope.sotiennophi, scope.note);
                         }
                     },
                     close: {
@@ -270,6 +288,67 @@
   			function onError() {
   				toastr.error("Lỗi khi gửi lại email đơn hàng!");
   			}
+  		}
+  		
+  		function confirmEditAgreement(order) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">Bạn chắc chắn sửa hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	editAgreement(order);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+  		
+  		function editAgreement(order) {
+  			switch (order.lineId) {
+				case 'BVP':
+					$state.go("product.bvp", {id: order.agreementId});
+					break;
+				case 'CAR':
+					$state.go("product.car", {id: order.agreementId});
+					break;
+				case 'HOM':
+					$state.go("product.home", {id: order.agreementId});
+					break;
+				case 'KCR':
+					$state.go("product.kcare", {id: order.agreementId});
+					break;
+				case 'MOT':
+					$state.go("product.moto", {id: order.agreementId});
+					break;
+				case 'TNC':
+					$state.go("product.tnc", {id: order.agreementId});
+					break;
+				case 'KHC':
+					$state.go("product.khc", {id: order.agreementId});
+					break;
+				case 'TVC':
+					$state.go("product.tvc", {id: order.agreementId});
+					break;
+				case 'TVI':
+					$state.go("product.tvi", {id: order.agreementId});
+					break;
+				case 'HHV':
+					$state.go("product.hhvc", {id: order.agreementId});
+					break;
+				default:
+					break;
+			}
   		}
     }
 })();

@@ -12,12 +12,12 @@
         </div>
 		<span class="bv-detail-text-table">Hủy</span>
 	</div>
-    <!-- <div>
+    <div ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 89">
         <div class="bv-detail-icon-table">
             <i class="icon-pencil"></i>
         </div>
-        <span class="bv-detail-text-table" ui-sref="product.home.edit({id: order.agreementId})">Sửa</span>
-    </div> -->
+        <span class="bv-detail-text-table" ng-click="vm.confirmEditAgreement(order)">Sửa</span>
+    </div>
     <div ng-show="order.statusPolicyId == 91" ng-click="vm.confirmResendEmail(order.gycbhNumber)">
         <div class="bv-detail-icon-table">
             <i class="icon-mail"></i>
@@ -30,7 +30,7 @@
         </div>
         <span class="bv-detail-text-table">Tái tục</span>
     </div>
-    <div ng-show="order.statusPolicyId != 89" ng-click="vm.confirmKhachhangnophi(order.gycbhNumber)">
+    <div ng-show="order.statusPolicyId != 89" ng-click="vm.confirmKhachhangnophi(order)">
         <div class="bv-detail-icon-table">
             <i class="icon-money"></i>
         </div>

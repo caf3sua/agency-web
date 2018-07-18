@@ -167,6 +167,21 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.ngayKetThuc = DateUtils.convertDate(endDate);
             vm.registerDisableContactInfoValue('vm.product.premiumKCare');
+            
+            // Edit
+            if (vm.isEditMode()) {
+            	vm.loading = true;
+            	// Load policy
+            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	
+            	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		vm.loading = false;
+            		vm.policy = result;
+                }).catch(function(data, status) {
+                	vm.loading = false;
+                	vm.showWarningEditPolicy();
+    		    });
+            }
         }
   		
   		function onDobChange() {

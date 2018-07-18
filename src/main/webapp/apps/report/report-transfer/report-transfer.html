@@ -17,32 +17,32 @@
 						</tr>
 				        <tr>
 				          	<th st-sort="id">#</th>
-				          	<th st-sort="transactionCode">Mã giao dịch</th>
+				          	<th st-sort="mciAddId">Mã giao dịch</th>
 				          	<th st-sort="transactionDate">Ngày giao dịch</th>
-				          	<th st-sort="usernameUpload">Trạng thái giao dịch</th>
-				          	<th st-sort="numberDownload">Nội dung giao dịch</th>
-				          	<th st-sort="note">Số tiền giao dịch</th>
+				          	<th>Trạng thái giao dịch</th>
+				          	<th st-sort="policyNumbers">Nội dung giao dịch</th>
+				          	<th st-sort="amount">Số tiền giao dịch</th>
 				        </tr>
 					</thead>
 			      	<tbody>
-				        <tr ng-repeat="doc in vm.transfersInit track by $index">
+				        <tr ng-repeat="transfer in vm.transfersInit track by $index">
 		                    <td>
 		                        <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="bv-table-text-colorBlue">{{doc.code}}</p>
+		                        <p class="bv-table-text-colorBlue">{{transfer.mciAddId}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{doc.name}}</p>
+		                        <p class="">{{transfer.transactionDate}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{doc.usernameUpload}}</p>
+		                        <p class="">Đã thanh toán</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{doc.numberDownload | number}}</p>
+		                        <p class="">{{transfer.paymentGateway}} - {{transfer.policyNumbers}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="">{{doc.note}}</p>
+		                        <p class="">{{transfer.amount | number:0}}</p>
 		                    </td>
 		                </tr>
 			      	</tbody>

@@ -49,7 +49,7 @@
         }
 
   		function resetData() {
-  			
+  			vm.transfers = [];
   		}
   		
   		function loadData() {
@@ -67,14 +67,14 @@
       			vm.searchCriterial.periodTime = "";
       		}
   			
-//  			ReportService.getReportTransfer({}, onSuccess, onError);
-//            function onSuccess(data, headers) {
-//            	vm.transfers = data;
-//            	toastr.success("Cập nhật dữ liệu thành công");
-//            }
-//            function onError(error) {
-//            	toastr.success("Lỗi khi lấy giao dịch chuyển tiền");
-//            }
+  			ReportService.getReportTransfer(vm.searchCriterial, onSuccess, onError);
+            function onSuccess(data, headers) {
+            	vm.transfers = data;
+            	toastr.success("Cập nhật dữ liệu thành công");
+            }
+            function onError(error) {
+            	toastr.error("Lỗi khi lấy giao dịch chuyển tiền");
+            }
   		}
 
   		function searchReport() {
