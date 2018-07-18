@@ -121,7 +121,7 @@
         		// Update
         		updatePolicy(productCode, obj);
         	} else {
-        		ProductCommonService.getPolicyNumber({lineId: 'CAR'}).$promise.then(function(result) {
+        		ProductCommonService.getPolicyNumber({lineId: productCode}).$promise.then(function(result) {
         			vm.clearResponseError();
                 	console.log('Done get gychbhNumber: ' + result.policyNumber);
                 	// Add ychbhNumber
@@ -139,7 +139,7 @@
         function createNewPolicy(productCode, obj) {
         	console.log('create new policy: ' + productCode);
         	switch(productCode){
-	  	        case "KCARE":
+	  	        case "KCR":
 	  	        	ProductCommonService.createKcarePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 	  	            break;
 	  	        case "CAR":
@@ -160,13 +160,13 @@
 		  	    case "TVI":
 		  	    	ProductCommonService.createTviPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 		            break;
-		  	    case "HOME":
+		  	    case "HOM":
 		  	    	ProductCommonService.createHomePolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 		            break;
-		  	    case "MOTO":
+		  	    case "MOT":
 		  	    	ProductCommonService.createMotoPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 		            break;
-		  	    case "HHVC":
+		  	    case "HHV":
 		  	    	ProductCommonService.createHhvcPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 		            break;
 	  	        default: 
@@ -189,7 +189,7 @@
         function updatePolicy(productCode, obj) {
         	console.log('update policy: ' + productCode);
         	switch(productCode){
-	  	        case "KCARE":
+	  	        case "KCR":
 	  	        	ProductCommonService.updateKcarePolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 	  	            break;
 	  	        case "CAR":
@@ -210,13 +210,13 @@
 		  	    case "TVI":
 		  	    	ProductCommonService.updateTviPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 		            break;
-		  	    case "HOME":
+		  	    case "HOM":
 		  	    	ProductCommonService.updateHomePolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 		            break;
-		  	    case "MOTO":
+		  	    case "MOT":
 		  	    	ProductCommonService.updateMotoPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 		            break;
-		  	    case "HHVC":
+		  	    case "HHV":
 		  	    	ProductCommonService.updateHhvcPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 		            break;
 	  	        default: 
