@@ -12,7 +12,10 @@
             parent: 'app',
             url: '/document',
             templateUrl: 'apps/document/document.html',
-            data : { title: 'DOCUMENT' },
+            data : { 
+        		title: 'DOCUMENT',
+        		authorities : []
+            },
             controller: "DocumentController",
             controllerAs: 'vm',
             resolve: {

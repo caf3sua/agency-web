@@ -22,7 +22,10 @@
         		.state('access.signin', {
         			url: '/signin',
         			templateUrl: 'apps/access/signin/signin.html',
-        			data : { title: 'SignIn' },
+        			data : { 
+    					title: 'SignIn',
+    					authorities : []
+        			},
         			controller: "SigninController",
         			controllerAs: 'vm',
         			resolve: {

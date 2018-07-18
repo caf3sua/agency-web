@@ -12,7 +12,10 @@
 	        .state('app.reminder', {
 	            url: '/reminder',
 	            templateUrl: 'apps/reminder/reminder.html',
-	            data : { title: 'REMINDER' },
+	            data : { 
+	            	title: 'REMINDER',
+	            	authorities : []
+	            },
 	            controller: "ReminderController",
 	            controllerAs: 'vm',
 	            resolve: {
