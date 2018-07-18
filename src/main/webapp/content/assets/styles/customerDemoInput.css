@@ -18,13 +18,11 @@
 
 a {
 	outline: none;
-	color: #d3394c;
 	text-decoration: none;
 }
 
 a:hover,
 a:focus {
-	color: #722040;
 }
 
 .hidden {

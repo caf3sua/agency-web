@@ -1789,6 +1789,20 @@ body {
     font-size: 14px;
     font-style: normal;
 }
+.contact-history-name{
+    font-size: 22px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Roboto;
+}
+.contact-history-info{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Roboto;
+    margin: 0;
+    margin-right: 10px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
