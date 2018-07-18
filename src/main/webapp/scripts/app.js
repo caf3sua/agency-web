@@ -21,6 +21,7 @@
           'infinite-scroll',
           'angular-loading-bar',
           // Theme
+          'ngFileUpload',
 		 'ngAnimate',
 		 'ngResource',
 		 'ngSanitize',
