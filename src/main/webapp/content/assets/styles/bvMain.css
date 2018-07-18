@@ -1764,6 +1764,15 @@ body {
     margin: 10px 0 0 0;
     font-size: 15px;
 }
+.bv-input-choose{
+    width: auto;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
@@ -2091,6 +2100,10 @@ body {
         background: transparent;
         border-color: transparent;
     }
+    .active-contact{
+        background: #0371b6;
+        color: #fff;
+    }
     .bv-btn-header-title>i {
         font-size: 14px;
         color: #0371b6;
@@ -2321,6 +2334,10 @@ body {
         color: #000;
         background: transparent;
         border-color: transparent;
+    }
+    .active-contact{
+        background: #0371b6;
+        color: #fff;
     }
     .bv-btn-header-title>i {
         font-size: 11px;
