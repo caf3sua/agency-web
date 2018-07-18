@@ -12,7 +12,10 @@
 	        .state('app.contact', {
 	            url: '/contact',
 	            templateUrl: 'apps/contact/contact.html',
-	            data : { title: 'CONTACT' },
+	            data : { 
+            		title: 'CONTACT',
+            		authorities : []
+	            },
 	            controller: "ContactController",
 	            controllerAs: 'vm',
 	            resolve: {

@@ -13,7 +13,10 @@
 	            parent: 'app',
 	            url: '/order?page',
 	            templateUrl: 'apps/order/order.html',
-	            data : { title: 'ORDER' },
+	            data : { 
+	            	title: 'ORDER',
+	            	authorities : []
+	            },
 	            controller: "OrderController",
 	            controllerAs: 'vm',
 	            params: {

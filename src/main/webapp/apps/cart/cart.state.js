@@ -12,7 +12,10 @@
             parent: 'app',
             url: '/cart?page',
             templateUrl: 'apps/cart/cart.html',
-            data : { title: 'CART' },
+            data : { 
+            	title: 'CART',
+            	authorities : []
+            },
             controller: "CartController",
             controllerAs: 'vm',
             params: {

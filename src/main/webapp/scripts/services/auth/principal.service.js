@@ -32,13 +32,19 @@
                 return false;
             }
 
+            var result = false;
             for (var i = 0; i < authorities.length; i++) {
                 if (_identity.authorities.indexOf(authorities[i]) !== -1) {
-                    return true;
+                	result = true;
                 }
             }
 
-            return false;
+            // Check role ROLE_ADMIN
+            if (_identity.authorities.indexOf("ROLE_ADMIN") !== -1) {
+            	result = true;
+            }
+
+            return result;
         }
 
         function hasAuthority (authority) {
@@ -47,6 +53,10 @@
             }
 
             return this.identity().then(function(_id) {
+                // Check role ROLE_ADMIN
+            	if (_id.authorities && _id.authorities.indexOf("ROLE_ADMIN") !== -1) {
+            		return true;
+            	}
                 return _id.authorities && _id.authorities.indexOf(authority) !== -1;
             }, function(){
                 return false;

@@ -33,12 +33,15 @@
   <!-- Custom main css -->
   <link rel="stylesheet" href="content/assets/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="content/assets/styles/bvCheckbox.css" type="text/css" />
+    <link rel="stylesheet" href="content/assets/styles/customerDemoInput.css" type="text/css" />
+    <link rel="stylesheet" href="content/assets/styles/customerInput.css" type="text/css" />
   <link rel="stylesheet" href="content/assets/styles/bvMain.css" type="text/css" />
   
   <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css" type="text/css" />
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css" type="text/css" />
   <link rel="stylesheet" href="content/assets/styles/styleIcon.css" type="text/css" />
   <link rel="stylesheet" href="libs/angular/angular-confirm/dist/angular-confirm.min.css" type="text/css" />
+
   <base href="/">
 </head>
 <body ng-app="app" ng-controller="AppCtrl" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
@@ -138,6 +141,7 @@
   	<script src="scripts/services/auth/auth.jwt.service.js"></script>
   	<script src="scripts/services/auth/activate.service.js"></script>
   	<script src="scripts/services/auth/account.service.js"></script>
+    <script src="scripts/controllers/custom-file-input.js"></script>
 	<!-- endbuild -->
 
 	<!-- Component -->

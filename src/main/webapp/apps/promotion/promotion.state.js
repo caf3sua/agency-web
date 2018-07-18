@@ -12,7 +12,10 @@
             parent: 'app',
             url: '/promotion',
             templateUrl: 'apps/promotion/promotion.html',
-            data : { title: 'PROMOTION' },
+            data : { 
+            	title: 'PROMOTION',
+            	authorities : []
+            },
             controller: "PromotionController",
             controllerAs: 'vm',
             resolve: {

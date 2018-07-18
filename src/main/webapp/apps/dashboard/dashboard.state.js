@@ -12,7 +12,10 @@
             parent: 'app',
             url: '/dashboard',
             templateUrl: 'apps/dashboard/dashboard.html',
-            data : { title: 'DASHBOARD' },
+            data : { 
+            	title: 'DASHBOARD',
+        		authorities : []
+            },
             controller: "DashboardController",
             controllerAs: 'vm',
             resolve: {

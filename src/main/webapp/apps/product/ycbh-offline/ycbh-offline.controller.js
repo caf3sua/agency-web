@@ -42,7 +42,7 @@
             	fileReader.onload = function (e) {
             	  var dataUrl = e.target.result;
             	  var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  console.log(base64Data);
+//            	  console.log(base64Data);
             	};
             }
         }
