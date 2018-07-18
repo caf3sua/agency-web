@@ -13,7 +13,7 @@
             url: '/tnc?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_TNC_CREATE'],
                 title: 'PRODUCT_TNC'
             },
             controller: "ProductTncController",

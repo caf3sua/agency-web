@@ -13,7 +13,7 @@
             url: '/commission',
             templateUrl: 'apps/report/report-commission/report-commission.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_REPORT_COMMISSION_VIEW'],
                 title: 'REPORT_COMMISSION'
             },
             controller: "ReportCommissionController",

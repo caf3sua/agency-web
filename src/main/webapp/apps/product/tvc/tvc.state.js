@@ -13,7 +13,7 @@
             url: '/tvc?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_TVC_CREATE'],
                 title: 'PRODUCT_TVC'
             },
             controller: "ProductTvcController",

@@ -13,7 +13,7 @@
             url: '/printed-paper/{productCode}',
             templateUrl: 'apps/product/printed-paper/view/printed-paper.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_AGREEMENT_ANCHI_BVP','PERM_AGREEMENT_ANCHI_CAR','PERM_AGREEMENT_ANCHI_HOM','PERM_AGREEMENT_ANCHI_KCR','PERM_AGREEMENT_ANCHI_MOT','PERM_AGREEMENT_ANCHI_KHC','PERM_AGREEMENT_ANCHI_TNC','PERM_AGREEMENT_ANCHI_TVC','PERM_AGREEMENT_ANCHI_TVI','PERM_AGREEMENT_ANCHI_HHV'],
                 title: 'PRODUCT_PRINTED_PAPER'
             },
             controller: "ProductPrintedPaperController",

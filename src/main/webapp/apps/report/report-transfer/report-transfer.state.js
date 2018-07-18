@@ -13,7 +13,7 @@
             url: '/transfer',
             templateUrl: 'apps/report/report-transfer/report-transfer.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_REPORT_TRANSFER_VIEW'],
                 title: 'REPORT_TRANSFER'
             },
             controller: "ReportTransferController",

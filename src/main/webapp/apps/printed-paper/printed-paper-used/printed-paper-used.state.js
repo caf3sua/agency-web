@@ -13,7 +13,7 @@
             url: '/used',
             templateUrl: 'apps/printed-paper/printed-paper-used/printed-paper-used.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_AGREEMENT_ANCHI_VIEW'],
                 title: 'PRINTED_PAPER_USED'
             },
             controller: "PrintedPaperUsedController",

@@ -13,7 +13,7 @@
             url: '/moto?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_MOT_CREATE'],
                 title: 'PRODUCT_MOTO'
             },
             controller: "ProductMotoController",
