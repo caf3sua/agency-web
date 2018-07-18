@@ -12,6 +12,9 @@
 
         vm.policy = {};
         // Properties & function declare
+        vm.uploadGcn = uploadGcn;
+        vm.uploadGycbh = uploadGycbh;
+        vm.uploadHoadon = uploadHoadon;
         
         angular.element(document).ready(function () {
         });
@@ -26,6 +29,43 @@
   		})();
   		
   		// Function
+  		function uploadGcn(file, errFiles) {
+        	// validate
+            if (file) {
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            	  var dataUrl = e.target.result;
+            	  var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  console.log(base64Data);
+            	};
+            }
+        }
   		
+  		function uploadGycbh(file, errFiles) {
+        	// validate
+            if (file) {
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            	  var dataUrl = e.target.result;
+            	  var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  console.log(base64Data);
+            	};
+            }
+        }
+  		
+  		function uploadHoadon(file, errFiles) {
+        	// validate
+            if (file) {
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            	  var dataUrl = e.target.result;
+            	  var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  console.log(base64Data);
+            	};
+            }
+        }
     }
 })();

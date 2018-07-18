@@ -9,6 +9,16 @@
 
     function ProductCommonService ($resource) {
         var service = $resource('api/agency/product/', {}, {
+        	// Ycbh offline
+        	'saveYcbhOffline' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/createYcbhOffline'
+            },
+            // An chi
+        	'saveAnchiPolicy' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/createYcbhAnchi'
+            },
         	'getById' : {
                 method : 'GET',
                 url : 'api/agency/product/agreement/get-by-id/:id'
