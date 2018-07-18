@@ -12,8 +12,6 @@
         	"itemsPerPage" : 10
         })
         .constant('API_SERVICE_URL', "https://appuat.baoviet.com.vn:7778")
-        
-        
 //        .constant('API_SERVICE_URL', "http://localhost:9090")
 ;
 })();
