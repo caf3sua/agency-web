@@ -20,7 +20,10 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/printed-paper/printed-paper-new/printed-paper-new.controller.js']);
+	            		return $ocLazyLoad.load([
+	            			'apps/printed-paper/printed-paper-base.service.js'
+	            			, 'apps/printed-paper/printed-paper-new/printed-paper-new.controller.js'
+	            	]);
 		        }
             }
         });

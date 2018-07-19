@@ -3,13 +3,13 @@
 
     angular
         .module('app')
-        .controller('PrintedPaperNewController', PrintedPaperNewController);
+        .controller('PrintedPaperNewDialogController', PrintedPaperNewDialogController);
 
-    PrintedPaperNewController.$inject = ['$scope', '$controller', 'Principal'
-    	, '$state', '$rootScope', 'PrintedPaperService'];
+    PrintedPaperNewDialogController.$inject = ['$scope', '$controller', 'Principal'
+    	, '$state', '$rootScope', 'PrintedPaperService', '$uibModalInstance'];
 
-    function PrintedPaperNewController ($scope, $controller, Principal
-    		, $state, $rootScope, PrintedPaperService) {
+    function PrintedPaperNewDialogController ($scope, $controller, Principal
+    		, $state, $rootScope, PrintedPaperService, $uibModalInstance) {
     	var vm = this;
 
     	vm.anchiTypes = [];
@@ -32,10 +32,16 @@
 
     	// Init controller
   		(function initController() {
+//  			$controller('PrintedPaperNewController', { vm: vm, $scope: $scope });
   			loadSelectBoxType();
   		})();
   		
   		// Function
+  		function selectedAnchi(row) {
+  			console.log('selected contact:' + row);
+    		$uibModalInstance.close(row);
+  		}
+  		
   		function loadSelectBoxType() {
   			PrintedPaperService.getListTypes({}, onSearchSuccess, onSearchError);
   			
@@ -70,5 +76,10 @@
   				toastr.error("Lỗi khi tìm kiếm danh sách ấn chỉ chưa sử dụng!");
   			}
   		}
+  		
+    	vm.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
     }
 })();

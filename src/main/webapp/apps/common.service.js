@@ -24,7 +24,7 @@
             modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-search-dialog.html',
-                controller: 'PrintedPaperNewController',
+                controller: 'PrintedPaperNewDialogController',
                 controllerAs: 'vm',
                 size: 'lg',
                 resolve: {
@@ -35,7 +35,7 @@
 		            loadPlugin: function ($ocLazyLoad) {
 		                return $ocLazyLoad.load([ 
 		                	'apps/printed-paper/printed-paper-base.service.js'
-		                	, 'apps/printed-paper/printed-paper-new/printed-paper-new.controller.js'
+		                	, 'apps/printed-paper/printed-paper-new/printed-paper-new-dialog.controller.js'
 	                	]);
 		            }
                 }
