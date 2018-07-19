@@ -24,7 +24,7 @@
             modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-search-dialog.html',
-                controller: 'PrintedPaperSearchDialogController',
+                controller: 'PrintedPaperNewController',
                 controllerAs: 'vm',
                 size: 'lg',
                 resolve: {
@@ -33,7 +33,10 @@
                         return $translate.refresh();
                     }],
 		            loadPlugin: function ($ocLazyLoad) {
-		                return $ocLazyLoad.load([ 'apps/printed-paper/printed-paper-new/printed-paper-search-dialog.controller.js']);
+		                return $ocLazyLoad.load([ 
+		                	'apps/printed-paper/printed-paper-base.service.js'
+		                	, 'apps/printed-paper/printed-paper-new/printed-paper-new.controller.js'
+	                	]);
 		            }
                 }
             });
