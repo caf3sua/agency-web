@@ -20,7 +20,7 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-		        <tr ng-repeat="item in vm.printedPapersInit track by $index" ng-dblclick="vm.selectedAnchi(row)">
+		        <tr ng-repeat="item in vm.printedPapersInit track by $index" ng-dblclick="vm.selectedAnchi(item)">
 		          <td>{{$index + 1}}</td>
 		          <td>{{item.ACHI_KYHIEU_ANCHI_ID}}</td>
 		          <td>{{item.ACHI_SO_ANCHI}}</td>

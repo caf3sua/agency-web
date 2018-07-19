@@ -11,7 +11,7 @@
 	        <div class="width-100 padding0 margin-right-5">
 	        	<div class="input-group display-flex">
 	             	<div class="width-100">
-	                 	<input type="text" name="soAnchi" class="bv-input" placeholder="Tên số ấn chỉ" disabled="disabled">
+	                 	<input type="text" name="soAnchi" ng-model="vm.policy.soAnchi" class="bv-input" placeholder="Tên số ấn chỉ" disabled="disabled">
 	             	</div>
 	             	<div class="input-group-addon bv-date-icon" ng-click="vm.openSearchAnchi()">
 	                 	<span class="fa fa-plus"></span>
@@ -21,10 +21,7 @@
 	    </div>
 	    
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Tên ấn chỉ</p>
-	    </div>
-	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-	        <input type="text" class="bv-input" placeholder="Nhập tên ấn chỉ" disabled="disabled"/>
+	        <p class="bv-title-from">Tên ấn chỉ : {{vm.policy.tenAnchi}}</p>
 	    </div>
 	    <!-- Khách hàng -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">

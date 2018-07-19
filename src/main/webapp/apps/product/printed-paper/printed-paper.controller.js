@@ -49,8 +49,8 @@
   		$scope.$on('selectedAnchiChange', function() {
         	if ($rootScope.selectedAnchi != undefined && $rootScope.selectedAnchi != null) {
         		console.log($rootScope.selectedAnchi);
-        		vm.policy.soAnchi = $rootScope.selectedAnchi.contactCode;
-        		vm.policy.tenAnchi = $rootScope.selectedAnchi.contactName;
+        		vm.policy.soAnchi = $rootScope.selectedAnchi.ACHI_SO_ANCHI;
+        		vm.policy.tenAnchi = $rootScope.selectedAnchi.ACHI_TEN_ANCHI;
         	}
         });
   		

@@ -76,10 +76,6 @@
   			}
   		}
   		
-  		function addNewContact() {
-    		$uibModalInstance.dismiss('cancel');
-    	}
-    	
     	vm.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
