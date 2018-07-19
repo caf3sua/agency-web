@@ -1,7 +1,7 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
-	<form name="form">
+	<form name="form" role="form" ng-submit="vm.saveYcbhOffline()" show-validation>
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
+	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.maSanPham}}">Bảo hiểm ô tô</strong></p>
 	    </div>
 	    <!-- Khách hàng -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
@@ -11,9 +11,10 @@
 	        <div class="width-100 padding0 margin-right-5">
 	        	<div class="input-group display-flex">
 	             	<div class="width-100">
-	                 	<input type="text" name="contactName" class="bv-input" placeholder="Nhập khách hàng" disabled="disabled">
+	                 	<input type="text" name="contactName" ng-model="vm.policy.contactName" class="bv-input" placeholder="Tên khách hàng" disabled="disabled">
+	                 	<input ng-show="false" type="text" name="contactCode" ng-model="vm.policy.contactCode" required>
 	             	</div>
-	             	<div class="input-group-addon bv-date-icon">
+	             	<div class="input-group-addon bv-date-icon" ng-click="vm.openSearchContact()">
 	                 	<span class="fa fa-plus"></span>
 	             	</div>
 	            </div>
@@ -24,7 +25,12 @@
 	        <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-	        <input type="number" class="bv-input" placeholder="Nhập phí bảo hiểm" /> <!-- numeric-only -->
+	        <input type="number" name="totalPremium" class="bv-input" ng-model="vm.policy.totalPremium" placeholder="Nhập phí bảo hiểm" required /> <!-- numeric-only -->
+	        <div ng-show="form.totalPremium.$dirty && form.totalPremium.$invalid">
+              	<p class="help-block" ng-show="form.totalPremium.$error.required">
+                  	Nhập phí bảo hiểm
+              	</p>
+          	</div>
 	    </div>
 	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
@@ -121,10 +127,10 @@
         </div>
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-	        <button class="bv-gh-tt">
-	            Thanh toán
+	    	<button type="submit" class="btn primary" ng-disabled="form.$invalid || vm.isLoading">
+	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Thanh toán
 	        </button>
-	        <button class="bv-btn-default">
+	        <button class="bv-btn-default" ng-click="vm.cancel()">
 	            Hủy bỏ
 	        </button>
 	    </div>

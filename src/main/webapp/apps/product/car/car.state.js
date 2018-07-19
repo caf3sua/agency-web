@@ -13,7 +13,7 @@
             url: '/car?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_CAR_CREATE'],
                 title: 'PRODUCT_CAR'
             },
             controller: "ProductCarController",

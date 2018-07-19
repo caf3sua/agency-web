@@ -15,7 +15,7 @@
 	            templateUrl: 'apps/order/order.html',
 	            data : { 
 	            	title: 'ORDER',
-	            	authorities : []
+	            	authorities : ['PERM_AGREEMENT_VIEW']
 	            },
 	            controller: "OrderController",
 	            controllerAs: 'vm',

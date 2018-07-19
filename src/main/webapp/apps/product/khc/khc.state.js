@@ -13,7 +13,7 @@
             url: '/khc?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_KHC_CREATE'],
                 title: 'PRODUCT_KHC'
             },
             controller: "ProductKhcController",

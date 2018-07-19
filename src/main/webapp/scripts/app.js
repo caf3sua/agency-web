@@ -71,7 +71,6 @@
         			return;
                 } else {
                 	// Check authorities
-                	console.log($rootScope.toState.data.authorities);
                 	if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 
                 			&& !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
 //                		var stateService = $injector.get('$state');

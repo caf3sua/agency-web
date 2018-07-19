@@ -13,7 +13,7 @@
             url: '/income',
             templateUrl: 'apps/report/report-income/report-income.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_REPORT_INCOME_VIEW'],
                 title: 'REPORT_INCOME'
             },
             controller: "ReportIncomeController",

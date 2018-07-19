@@ -13,7 +13,7 @@
             url: '/bvp?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_BVP_CREATE'],
                 title: 'PRODUCT_BVP'
             },
             controller: "ProductBvpController",

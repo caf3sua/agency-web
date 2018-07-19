@@ -13,7 +13,7 @@
             url: '/kcare?id',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_PRODUCT_KCR_CREATE'],
                 title: 'PRODUCT_KCARE'
             },
             controller: "ProductKcareController",

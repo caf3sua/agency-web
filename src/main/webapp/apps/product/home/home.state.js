@@ -14,7 +14,7 @@
 	            url: '/home?id',
 	            templateUrl: 'apps/product/layout.html',
 	            data: {
-	                authorities: [],
+	                authorities: ['PERM_PRODUCT_HOM_CREATE'],
 	                title: 'PRODUCT_HOME'
 	            },
 	            controller: "ProductHomeController",

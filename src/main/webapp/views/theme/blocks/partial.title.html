@@ -4,14 +4,14 @@
     </div>
     <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
         <div class="bv-btn-groud-header">
-            <div class="nav-item dropdown display-inline-block">
+            <div class="nav-item dropdown display-inline-block" has-any-authority="PERM_PRODUCT_BVP_CREATE,PERM_PRODUCT_CAR_CREATE,PERM_PRODUCT_HOM_CREATE,PERM_PRODUCT_KCR_CREATE,PERM_PRODUCT_MOT_CREATE,PERM_PRODUCT_KHC_CREATE,PERM_PRODUCT_TNC_CREATE,PERM_PRODUCT_TVC_CREATE,PERM_PRODUCT_TVI_CREATE,PERM_PRODUCT_HHV_CREATE">
 	            <div  class="bv-btn-header-title"  data-toggle="dropdown">
 	              <i class="icon-documentation"></i>
                 	<span>Tạo đơn hàng mới</span>
 	            </div>
 	            <div ui-include="'views/theme/blocks/widget.products.html'"></div>
          	</div>
-            <div class="bv-btn-header-title" ng-click="openAddContact()">
+            <div class="bv-btn-header-title" ng-click="openAddContact()" has-authority="PERM_CONTACT_VIEW">
                 <i class="icon-employees-01"></i>
                 <span>Tạo khách hàng mới</span>
             </div>

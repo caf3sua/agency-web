@@ -14,7 +14,7 @@
 	            templateUrl: 'apps/contact/contact.html',
 	            data : { 
             		title: 'CONTACT',
-            		authorities : []
+            		authorities : ['PERM_CONTACT_VIEW']
 	            },
 	            controller: "ContactController",
 	            controllerAs: 'vm',

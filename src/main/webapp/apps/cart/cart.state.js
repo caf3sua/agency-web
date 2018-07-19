@@ -14,7 +14,7 @@
             templateUrl: 'apps/cart/cart.html',
             data : { 
             	title: 'CART',
-            	authorities : []
+            	authorities : ['PERM_CART_VIEW']
             },
             controller: "CartController",
             controllerAs: 'vm',

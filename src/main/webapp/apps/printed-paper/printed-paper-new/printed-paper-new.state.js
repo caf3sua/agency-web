@@ -13,7 +13,7 @@
             url: '/new',
             templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-new.html',
             data: {
-                authorities: [],
+                authorities: ['PERM_AGREEMENT_ANCHI_VIEW'],
                 title: 'PRINTED_PAPER_NEW'
             },
             controller: "PrintedPaperNewController",

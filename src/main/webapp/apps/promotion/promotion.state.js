@@ -14,7 +14,7 @@
             templateUrl: 'apps/promotion/promotion.html',
             data : { 
             	title: 'PROMOTION',
-            	authorities : []
+            	authorities : ['PERM_PROMOTION_VIEW']
             },
             controller: "PromotionController",
             controllerAs: 'vm',

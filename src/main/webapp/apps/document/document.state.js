@@ -14,7 +14,7 @@
             templateUrl: 'apps/document/document.html',
             data : { 
         		title: 'DOCUMENT',
-        		authorities : []
+        		authorities : ['PERM_DOCUMENT_VIEW']
             },
             controller: "DocumentController",
             controllerAs: 'vm',
