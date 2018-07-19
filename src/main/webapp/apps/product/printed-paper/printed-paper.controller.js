@@ -5,11 +5,11 @@
         .module('app')
         .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
-    ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, CommonDialogService];
+    ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
+    	, 'CommonDialogService'];
 
-    function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, 'CommonDialogService') {
+    function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
+    		, CommonDialogService) {
         var vm = this;
 
         vm.policy = {
