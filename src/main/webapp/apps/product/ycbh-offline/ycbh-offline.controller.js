@@ -27,13 +27,14 @@
 		 vm.anchiFile = null;
 		 vm.imgGiamdinhFile = null;
         
+		 vm.gycbhFileModel;
+		 vm.documentFileModel;
+		 vm.anchiFileModel;
+		 vm.imgGiamdinhFileModel;
+		 
 		 vm.isLoading = false;
 		 
         // Properties & function declare
-        vm.uploadGycbh = uploadGycbh;
-        vm.uploadImgGiamdinh = uploadImgGiamdinh;
-        vm.uploadOtherDoc = uploadOtherDoc;
-        vm.uploadAnchi = uploadAnchi;
         vm.saveYcbhOffline = saveYcbhOffline;
         vm.cancel = cancel;
         vm.openSearchContact = openSearchContact;
@@ -49,6 +50,83 @@
   			console.log($stateParams.productCode);
   			vm.policy.maSanPham = $stateParams.productCode;
   		})();
+  		
+  		// watch
+  		$scope.$watch('vm.gycbhFileModel', function () {
+  			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
+  				var file = vm.gycbhFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.gycbhFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.gycbhFile = null;
+  			}
+  		});
+  		
+  		$scope.$watch('vm.documentFileModel', function () {
+  			if (vm.documentFileModel != undefined && vm.documentFileModel != null && vm.documentFileModel) {
+  				var file = vm.documentFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.documentFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.documentFile = null;
+  			}
+  		});
+  		
+  		$scope.$watch('vm.anchiFileModel', function () {
+  			if (vm.anchiFileModel != undefined && vm.anchiFileModel != null && vm.anchiFileModel) {
+  				var file = vm.anchiFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.anchiFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.anchiFile = null;
+  			}
+  		});
+  		
+  		$scope.$watch('vm.imgGiamdinhFileModel', function () {
+  			if (vm.imgGiamdinhFileModel != undefined && vm.imgGiamdinhFileModel != null && vm.imgGiamdinhFileModel) {
+  				var file = vm.imgGiamdinhFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.imgGiamdinhFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.imgGiamdinhFile = null;
+  			}
+  		});
   		
   		$scope.$on('selectedContactChange', function() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
@@ -120,82 +198,6 @@
                     }
                 },
             });
-        }
-  		
-  		function uploadGycbh(file, errFiles) {
-        	// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gycbhFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-            } else {
-            	vm.gycbhFile = null;
-            }
-        }
-  		
-  		function uploadImgGiamdinh(file, errFiles) {
-        	// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.imgGiamdinhFile = {
-                			"content": base64Data,
-                		    "fileType": file.type,
-                		    "filename": file.name
-            		};
-            	};
-            } else {
-            	vm.imgGiamdinhFile = null;
-            }
-        }
-  		
-  		function uploadOtherDoc(file, errFiles) {
-        	// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.documentFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-          			};
-            	};
-            } else {
-            	vm.documentFile = null;
-            }
-        }
-  		
-  		function uploadAnchi(file, errFiles) {
-        	// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.anchiFile = {
-                			"content": base64Data,
-                		    "fileType": file.type,
-                		    "filename": file.name
-        			};
-            	};
-            } else {
-            	vm.anchiFile = null;
-            }
         }
     }
 })();

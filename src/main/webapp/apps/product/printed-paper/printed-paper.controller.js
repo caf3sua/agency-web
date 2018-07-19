@@ -34,12 +34,13 @@
         vm.hoadonFile = null;
         vm.gcnFile = null;
         
+        vm.gycbhFileModel;
+        vm.hoadonFileModel;
+        vm.gcnFileModel;
+        
+        
         vm.isLoading = false;
         // Properties & function declare
-        vm.uploadGcn = uploadGcn;
-        vm.uploadGycbh = uploadGycbh;
-        vm.uploadHoadon = uploadHoadon;
-        
         vm.saveAnchiPolicy = saveAnchiPolicy;
         vm.openSearchAnchi = openSearchAnchi;
         vm.openSearchContact = openSearchContact;
@@ -57,6 +58,64 @@
 			vm.policy.productCode = $stateParams.productCode;
 			vm.policy.maSanPham = $stateParams.productCode;
   		})();
+  		
+  		// watch
+  		$scope.$watch('vm.gcnFileModel', function () {
+  			if (vm.gcnFileModel != undefined && vm.gcnFileModel != null && vm.gcnFileModel) {
+  				var file = vm.gcnFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.gcnFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.gcnFile = null;
+  			}
+  		});
+  		
+  		$scope.$watch('vm.hoadonFileModel', function () {
+  			if (vm.hoadonFileModel != undefined && vm.hoadonFileModel != null && vm.hoadonFileModel) {
+  				var file = vm.hoadonFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.hoadonFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.hoadonFile = null;
+  			}
+  		});
+  		
+  		$scope.$watch('vm.gycbhFileModel', function () {
+  			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
+  				var file = vm.gycbhFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.gycbhFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  			} else {
+  				vm.gycbhFile = null;
+  			}
+  		});
   		
   		$scope.$on('selectedAnchiChange', function() {
         	if ($rootScope.selectedAnchi != undefined && $rootScope.selectedAnchi != null) {
@@ -151,63 +210,5 @@
                 },
             });
         }
-  		
-  		function uploadGcn(file, errFiles) {
-        	// validate
-  			if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gcnFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-            } else {
-            	vm.gcnFile = null;
-            }
-        }
-  		
-  		function uploadGycbh(file, errFiles) {
-        	// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gycbhFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-            } else {
-            	vm.gycbhFile = null;
-            }
-        }
-  		
-  		function uploadHoadon(file, errFiles) {
-  			// validate
-            if (file) {
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.hoadonFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-            } else {
-            	vm.hoadonFile = null;
-            }
-        }
-  		
     }
 })();
