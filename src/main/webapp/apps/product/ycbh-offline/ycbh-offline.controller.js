@@ -6,13 +6,14 @@
         .controller('ProductYcbhOfflineController', ProductYcbhOfflineController);
 
     ProductYcbhOfflineController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, 'ContactCommonDialogService', 'ProductCommonService'];
+    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm'];
 
     function ProductYcbhOfflineController ($scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, ContactCommonDialogService, ProductCommonService) {
+    		, ContactCommonDialogService, ProductCommonService, $ngConfirm) {
         var vm = this;
 
         vm.policy = {
+    		  "gycbhNumber": "",
     		  "contactCode": "",
     		  "documentContent": null,
     		  "gycbhAnchi": null,
@@ -74,23 +75,32 @@
   			vm.policy.gycbhContent = vm.gycbhFile;
   			vm.policy.imgGiamdinhContent = vm.imgGiamdinhFile;
   			
-  			// Save ycbh offline
-  			ProductCommonService.saveYcbhOffline(vm.policy, onSuccess, onError);
-  			
-  			function onSuccess(data) {
-  				vm.isLoading = false;
-  				console.log(data);
-  				showSaveSaveYcbhInfo();
-  			}
-  			
-  			function onError(data) {
-  				vm.isLoading = false;
-  				toastr.error("Lỗi khi tạo yêu cầu bảo hiểm offline.");
-  			}
+  			ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
+            	console.log('Done get gychbhNumber: ' + result.policyNumber);
+            	// Add ychbhNumber
+            	vm.policy.gycbhNumber  = result.policyNumber;
+
+            	// Save ycbh offline
+      			ProductCommonService.saveYcbhOffline(vm.policy, onSuccess, onError);
+      			
+      			function onSuccess(data) {
+      				vm.isLoading = false;
+      				console.log(data);
+      				showSaveSaveYcbhInfo(data);
+      			}
+      			
+      			function onError(data) {
+      				vm.isLoading = false;
+      				toastr.error("Lỗi khi tạo yêu cầu bảo hiểm offline.");
+      			}
+            }).catch(function(data, status) {
+    			console.log('Error get gychbhNumber');
+    			toastr.error("Lỗi khi lấy số GYCBH");
+		    });
   		}
   		
-  		function showSaveSaveYcbhInfo() {
-        	var message = "Tạo yêu cầu bảo hiểm offline thành công";
+  		function showSaveSaveYcbhInfo(data) {
+        	var message = "Hợp đồng bảo hiểm offline <strong>" + data.gycbhNumber + "</strong> đã tạo thành công";
         	
         	$ngConfirm({
                 title: 'Thông báo',

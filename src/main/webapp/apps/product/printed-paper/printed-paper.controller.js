@@ -5,16 +5,34 @@
         .module('app')
         .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
-    ProductPrintedPaperController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'];
+    ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
+    	, CommonDialogService];
 
-    function ProductPrintedPaperController ($scope, $stateParams, $controller, Principal, $state, $rootScope) {
+    function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state, $rootScope
+    		, 'CommonDialogService') {
         var vm = this;
 
-        vm.policy = {};
+        vm.policy = {
+        		"contactCode": "string",
+        		  "imgGcn": null,
+        		  "imgGycbh": null,
+        		  "imgHd": null,
+        		  "maSanPham": "",
+        		  "ngayCap": "",
+        		  "ngayHieulucDen": "",
+        		  "ngayHieulucTu": "",
+        		  "phiBaoHiem": "",
+        		  "soAnchi": "",
+        		  "tenAnchi": "",
+        		  "tinhTrangCap": "",
+        		  "tongTienTT": ""
+        };
         // Properties & function declare
         vm.uploadGcn = uploadGcn;
         vm.uploadGycbh = uploadGycbh;
         vm.uploadHoadon = uploadHoadon;
+        
+        vm.openSearchAnchi = openSearchAnchi;
         
         angular.element(document).ready(function () {
         });
@@ -28,7 +46,21 @@
 			vm.policy.productCode = $stateParams.productCode;
   		})();
   		
+  		$scope.$on('selectedAnchiChange', function() {
+        	if ($rootScope.selectedAnchi != undefined && $rootScope.selectedAnchi != null) {
+        		console.log($rootScope.selectedAnchi);
+        		vm.policy.soAnchi = $rootScope.selectedAnchi.contactCode;
+        		vm.policy.tenAnchi = $rootScope.selectedAnchi.contactName;
+        	}
+        });
+  		
   		// Function
+  		function openSearchAnchi() {
+  			console.log('openSearchAnchi');
+  			CommonDialogService.openSearchAnchiDialog();
+  		}
+  		
+  		
   		function uploadGcn(file, errFiles) {
         	// validate
             if (file) {
