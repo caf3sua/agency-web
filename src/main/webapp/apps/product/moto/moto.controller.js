@@ -221,11 +221,6 @@
             vm.policy.nntxSoNguoi = postData.nntxSoNguoi;
             vm.policy.nntxStbh = postData.nntxStbh;
             vm.policy.premium = postData.premium;
-            if(postData.receiveMethod) {
-                vm.policy.receiveMethod = "2";
-            } else {
-                vm.policy.receiveMethod = "1";
-            }
             vm.policy.tndsBbPhi = postData.tndsbbPhi;
             vm.policy.tndsTnNntxPhi = postData.nntxPhi;
             vm.policy.tndsTnPhi = postData.tndstnPhi;

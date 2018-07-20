@@ -171,11 +171,6 @@
         }
         function savePolicy() {
             vm.loading = true;
-            if(vm.product.receiveMethod){
-                vm.policy.receiveMethod = '2';
-            }else{
-                vm.policy.receiveMethod = '1';
-            }
             vm.policy.invoiceInfo.name = vm.invoiceInfoData.name;
             vm.policy.invoiceInfo.company = vm.invoiceInfoData.company;
             vm.policy.invoiceInfo.taxNo = vm.invoiceInfoData.taxNo;

@@ -141,11 +141,6 @@
         }
         function savePolicy() {
             vm.loading = true;
-            if(vm.product.receiveMethod){
-                vm.policy.receiveMethod = '2';
-            }else{
-                vm.policy.receiveMethod = '1';
-            }
             vm.policy.propserName = vm.contactName;
             vm.policy.propserNgaysinh = vm.contactDob;
             vm.policy.propserCellphone  = vm.handPhone;

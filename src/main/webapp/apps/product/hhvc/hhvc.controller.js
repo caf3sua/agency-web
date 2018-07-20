@@ -398,12 +398,6 @@
         function savePolicy() {
             var postData = getPostData(true);
 
-            if(postData.receiveMethod) {
-                vm.policy.receiveMethod = "2";
-            } else {
-                vm.policy.receiveMethod = "1";
-            }
-
             // call base
             vm.savePolicyBase("HHV", vm.policy);
         }

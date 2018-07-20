@@ -359,11 +359,6 @@
 	  		vm.policy.physicalDamageSi = postData.vcxSoTien;
 	  		vm.policy.premium = postData.premium;
 	  		vm.policy.purposeOfUsageId = postData.purposeOfUsageId;
-	  		if(postData.receiveMethod) {
-	  			vm.policy.receiveMethod = "2";
-	  		} else {
-	  			vm.policy.receiveMethod = "1";
-	  		}
 	  		vm.policy.thirdPartyPremium = postData.tndsbbPhi;
 	  		vm.policy.tndsSocho = postData.tndsSoCho;
 	  		vm.policy.tndsbbCheck = postData.tndsbbCheck;

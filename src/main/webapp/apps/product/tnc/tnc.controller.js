@@ -193,11 +193,6 @@
             vm.policy.premiumdiscount = postData.premiumdiscount;
             vm.policy.premiumnet = postData.premiumnet;
             vm.policy.premiumtnc = postData.premiumtnc;
-            if(postData.receiveMethod) {
-                vm.policy.receiveMethod = "2";
-            } else {
-                vm.policy.receiveMethod = "1";
-            }
 
             // call base
             vm.savePolicyBase("TNC", vm.policy);

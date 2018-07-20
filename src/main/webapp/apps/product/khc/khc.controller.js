@@ -223,11 +223,6 @@
             vm.policy.inceptionDate = postData.insuranceStartDate;
             vm.policy.permanentTotalDisablement = postData.numberPerson;
             vm.policy.plan = postData.premiumPackage.toString()[0];
-            if(postData.receiveMethod) {
-                vm.policy.receiveMethod = "2";
-            } else {
-                vm.policy.receiveMethod = "1";
-            }
             vm.policy.tlAddcollections = postData.premiumKhcList;
 
             // call base

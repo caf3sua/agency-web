@@ -227,6 +227,17 @@
             }
         }
         
+        // watch
+        $scope.$watch('$root.nguoith', function () {
+        	vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
+        	vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
+  		}, true);
+        
+        $scope.$watch('$root.nguoidbh', function () {
+        	vm.policy.nguoithCmnd = $rootScope.nguoidbh.cmnd;
+        	vm.policy.nguoithQuanhe = $rootScope.nguoidbh.quanhe;
+  		}, true);
+        
         $scope.$on('selectedContactChange', function() {
             if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
                 switch (vm.panelType) {
@@ -382,16 +393,10 @@
             	vm.policy.tncnSotienbh = 0;
             }
             
-            if(postData.receiveMethod) {
-                vm.policy.receiveMethod = "2";
-            } else {
-                vm.policy.receiveMethod = "1";
-            }
-            
-            vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
-            vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
-            vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
-            vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
+//            vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
+//            vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
+//            vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
+//            vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
 
             vm.savePolicyBase("BVP", vm.policy);
         }
