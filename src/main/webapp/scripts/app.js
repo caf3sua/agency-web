@@ -24,6 +24,7 @@
           'ngFileUpload',
 		 'ngAnimate',
 		 'ngResource',
+		 'ui.select',
 		 'ngSanitize',
 		 'ngTouch',
 		 'ngStorage',

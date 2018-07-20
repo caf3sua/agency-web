@@ -1,0 +1,21 @@
+<div class="margin-top-10">
+	<p class="bv-title-from">Tên phường xã<span ng-show="isRequired" class="bv-req-red">&nbsp(*)</span></p>
+</div>
+<div class="margin-top-5">
+	<input type="text" ng-change="onChange()" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="value"
+		required-message="'Chưa nhập tên phường xã!'"
+	required/>
+</div>
+            	 	
+<ui-select ng-model="addressSelected" theme="bootstrap" on-select="onChange($item)">
+	<ui-select-match class="ui-select-match" placeholder="Tên phường xã ...">{{$select.selected.pkDistrict}}</ui-select-match>
+	<ui-select-choices class="ui-select-choices" repeat="item in lstAddress | filter: $select.search | limitTo: 20">
+		<div ng-bind-html="item.pkDistrict | highlight: $select.search"></div>
+		<small ng-bind-html="item.pkProvince | highlight: $select.search"></small>
+	</ui-select-choices>
+</ui-select>
+<span class="input-group-btn">
+                <button ng-click="scope.addressSelected = undefined" class="btn white">
+                  <span class="fa fa-remove"></span>
+                </button>
+</span>

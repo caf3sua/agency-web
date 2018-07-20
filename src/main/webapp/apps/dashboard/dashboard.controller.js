@@ -6,12 +6,15 @@
       .module('app')
       .controller('DashboardController', DashboardController);
     
-    DashboardController.$inject = ['$scope', 'DashboardService'];
+    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService'];
 
-      function DashboardController($scope, DashboardService) {
+      function DashboardController($scope, DashboardService, ReportService) {
     	  var vm = this;
         
 	        // Declare variable and method
+    	  	vm.weekConstant = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    		vm.yearConstant = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    		
     	  	vm.isSearchCollapsed = true;
 	        vm.filterDate = '';
 	        vm.changeFilterDate = changeFilterDate;
@@ -32,21 +35,16 @@
 	        		  "waitBaoviet" : []
     		};
 	        
+	        
+	        vm.chartIncomeOptions = chartIncomeOptions;
+	        vm.chartCommissionOptions = chartCommissionOptions;
+	        
+	        vm.dataIncome = {};
+	        vm.dataCommission = {};
 	        vm.searchReport = searchReport;
 	        
+	        
 	        // Test data
-	        vm.p_l_1 = [[1, 6.1], [2, 6.3], [3, 6.4], [4, 6.6], [5, 7.0], [6, 7.7], [7, 8.3]];
-	        vm.p_l_2 = [[1, 5.5], [2, 5.7], [3, 6.4], [4, 7.0], [5, 7.2], [6, 7.3], [7, 7.5]];
-	        vm.p_l_3 = [[1, 2], [2, 1.6], [3, 2.4], [4, 2.1], [5, 1.7], [6, 1.5], [7, 1.7]];
-	        vm.p_l_4 = [[1, 3], [2, 2.6], [3, 3.2], [4, 3], [5, 3.5], [6, 3], [7, 3.5]];
-	        vm.p_l_5 = [[1, 3.6], [2, 3.5], [3, 6], [4, 4], [5, 4.3], [6, 3.5], [7, 3.6]];
-	        vm.p_l_6 = [[1, 10], [2, 8], [3, 27], [4, 25], [5, 50], [6, 30], [7, 25]];
-	
-	        vm.p_b_1 = [[1, 2], [2, 4], [3, 5], [4, 7], [5, 6], [6, 4], [7, 5], [8, 4]];
-	        vm.p_b_2 = [[3, 1], [2, 2], [6, 3], [5, 4], [7, 5]];
-	        vm.p_b_3 = [[1, 3], [2, 4], [3, 3], [4, 6], [5, 5], [6, 4], [7, 5], [8, 3]];
-	        vm.p_b_4 = [[1, 2], [2, 3], [3, 2], [4, 5], [5, 4], [6, 3], [7, 4], [8, 2]];
-
 	        angular.element(document).ready(function () {
 	        	changeFilterDate("WEEK");
 	        });
@@ -80,7 +78,23 @@
 	        	loadData();       	
 	        }
 	  		
+	  		function resetData() {
+	  			vm.dataIncome = {};
+		        vm.dataCommission = {};
+		        
+		        // Income
+	  			vm.chartIncomeOptions.xAxis[0].data = vm.weekConstant;
+	  			vm.chartIncomeOptions.series[0].data = [0, 0, 0, 0, 0, 0, 0];
+	  			vm.chartIncomeOptions.series[1].data = [0, 0, 0, 0, 0, 0, 0];
+	  			
+	  			// Commission
+	  			vm.chartCommissionOptions.xAxis[0].data = vm.weekConstant;
+		        vm.chartCommissionOptions.series[0].data = [0, 0, 0, 0, 0, 0, 0];
+		        vm.chartCommissionOptions.series[1].data = [0, 0, 0, 0, 0, 0, 0];
+	  		}
+	  		
 	  		function loadData() {
+	  			resetData();
 	  			vm.isLoading = true;
 	  			vm.report = {
 		        		  "totalOrder" : "",
@@ -110,6 +124,8 @@
 	  				vm.report = data;
 	  				toastr.remove();
 	  				toastr.success("Dữ liệu đã được cập nhật");
+	  				loadReportIncome();
+	  				loadReportCommission();
 	  			}
 	  			
 	  			function onSearchError() {
@@ -117,6 +133,114 @@
 	  				toastr.remove();
 	  				toastr.error("Lỗi khi tìm kiếm data báo cáo!");
 	  			}
+	  		}
+	  		
+	  		function loadReportIncome() {
+	  			ReportService.getReportIncome(vm.searchCriterial, onSearchIncomeSuccess, onSearchIncomeError);
+	  			
+	  			function onSearchIncomeSuccess(result) {
+	  				vm.dataIncome = result;
+	  				updateChartDataIncome(vm.filterDate, result.data);
+	  			}
+	  			
+	  			function onSearchIncomeError() {
+	  			}
+	  		}
+	  		
+	  		function loadReportCommission() {
+	  			ReportService.getReportCommission(vm.searchCriterial, onSearchCommissionSuccess, onSearchCommissionError);
+	  			
+	  			function onSearchCommissionSuccess(result) {
+	  				vm.dataCommission = result;
+	  				updateChartDataCommission(vm.filterDate, result);
+	  			}
+	  			
+	  			function onSearchCommissionError() {
+	  			}
+	  		}
+	  		
+	  		function updateChartDataIncome(type, data) {
+	  			// Update chart xAxis
+	    		switch(type) {
+		    	    case "WEEK":
+		    	    	vm.chartIncomeOptions.xAxis[0].data = vm.weekConstant;
+		    	        vm.chartIncomeOptions.series[0].data = getYaxisDataIncome(data);
+		    	        vm.chartIncomeOptions.series[1].data = getYaxisDataIncome(data);
+		    	        break;
+		    	    case "MONTH":
+		    	        vm.chartIncomeOptions.xAxis[0].data = getXaxisData(data);
+		    	        vm.chartIncomeOptions.series[0].data = getYaxisDataIncome(data);
+		    	        vm.chartIncomeOptions.series[1].data = getYaxisDataIncome(data);
+		    	        break;
+		    	    case "YEAR":
+		    	    	vm.chartIncomeOptions.xAxis[0].data = vm.yearConstant;
+		    	        vm.chartIncomeOptions.series[0].data = getYaxisDataIncome(data);
+		    	        vm.chartIncomeOptions.series[1].data = getYaxisDataIncome(data);
+		    	        break;
+		    	    case "ENHANCE":
+		    	    	vm.chartIncomeOptions.xAxis[0].data = getXaxisData(data);
+		    	        vm.chartIncomeOptions.series[0].data = getYaxisDataIncome(data);
+		    	        vm.chartIncomeOptions.series[1].data = getYaxisDataIncome(data);
+		    	        break;
+		    	    default:
+		    	    	break;
+		    	}
+	  		}
+	  		
+	  		function getYaxisDataIncome(data) {
+	  			var result = [];
+	  			angular.forEach(data, function(item) {
+	  				result.push(item.totalPremium);
+	  			});
+	  			
+	  			return result;
+	  		}
+	  		
+	  		// COmmission
+	  		function updateChartDataCommission(type, data) {
+	  			// Update chart xAxis
+	    		switch(type) {
+		    	    case "WEEK":
+		    	    	vm.chartCommissionOptions.xAxis[0].data = vm.weekConstant;
+		    	        vm.chartCommissionOptions.series[0].data = getYaxisDataCommission(data.otherData);
+		    	        vm.chartCommissionOptions.series[1].data = getYaxisDataCommission(data.data);
+		    	        break;
+		    	    case "MONTH":
+		    	        vm.chartCommissionOptions.xAxis[0].data = getXaxisData(data.data);
+		    	        vm.chartCommissionOptions.series[0].data = getYaxisDataCommission(data.otherData);
+		    	        vm.chartCommissionOptions.series[1].data = getYaxisDataCommission(data.data);
+		    	        break;
+		    	    case "YEAR":
+		    	    	vm.chartCommissionOptions.xAxis[0].data = vm.yearConstant;
+		    	        vm.chartCommissionOptions.series[0].data = getYaxisDataCommission(data.otherData);
+		    	        vm.chartCommissionOptions.series[1].data = getYaxisDataCommission(data.data);
+		    	        break;
+		    	    case "ENHANCE":
+		    	    	vm.chartCommissionOptions.xAxis[0].data = getXaxisData(data);
+		    	        vm.chartCommissionOptions.series[0].data = getYaxisDataCommission(data.otherData);
+		    	        vm.chartCommissionOptions.series[1].data = getYaxisDataCommission(data.data);
+		    	        break;
+		    	    default:
+		    	    	break;
+		    	}
+	  		}
+	  		
+	  		function getXaxisData(data) {
+	  			var result = [];
+	  			angular.forEach(data, function(item) {
+	  				result.push(item.datePayment);
+	  			});
+	  			
+	  			return result;
+	  		}
+	  		
+	  		function getYaxisDataCommission(data) {
+	  			var result = [];
+	  			angular.forEach(data, function(item) {
+	  				result.push(item.tongHoaHong);
+	  			});
+	  			
+	  			return result;
 	  		}
       }
       

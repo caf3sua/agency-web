@@ -70,11 +70,13 @@
 	            controller: "ContactLossController",
 	            controllerAs: 'vm',
 	            resolve: {
-//	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
-//	                        return ContactService.get({id : $stateParams.id}).$promise;
-//	                    }],
+	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+	                        return ContactService.get({id : $stateParams.id}).$promise;
+	                    }],
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/contact/contact-loss.controller.js']);
+		            		return $ocLazyLoad.load([
+		            			'apps/report/report-base.service.js'
+		            			, 'apps/contact/contact-loss.controller.js']);
 			        }
 	            }
 	        })
@@ -85,11 +87,14 @@
 	            controller: "ContactHistoryPurchaseController",
 	            controllerAs: 'vm',
 	            resolve: {
-//	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
-//	                        return ContactService.get({id : $stateParams.id}).$promise;
-//	                    }],
+	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+	                        return ContactService.get({id : $stateParams.id}).$promise;
+	                    }],
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/contact/contact-history-purchase.controller.js']);
+		            		return $ocLazyLoad.load([
+		            			'apps/report/report-base.service.js'
+		            			, 'apps/contact/contact-history-purchase.controller.js'
+	            			]);
 			        }
 	            }
 	        });

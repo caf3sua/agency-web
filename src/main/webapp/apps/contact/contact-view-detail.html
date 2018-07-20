@@ -45,12 +45,12 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="btn dropdown-toggle bv-dropdown-header text-left" type="button" ui-sref="app.contact-loss">
+                                        <a class="btn dropdown-toggle bv-dropdown-header text-left" type="button" ui-sref="app.contact-loss({id: vm.selectedContact.contactId})">
                                             <i class="fa fa-fw m-r-sm fa-user-times"></i>Thông tin tổn thất
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="btn dropdown-toggle bv-dropdown-header text-left" type="button" ui-sref="app.contact-history-purchase">
+                                        <a class="btn dropdown-toggle bv-dropdown-header text-left" type="button" ui-sref="app.contact-history-purchase({id: vm.selectedContact.contactId})">
                                             <i class="fa fa-fw m-r-sm fa-history"></i>Lịch sử mua hàng
                                         </a>
                                     </li>

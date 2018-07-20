@@ -25,6 +25,11 @@
 			'getReportCommission' : {
 				method : 'POST',
 				url : 'api/agency/agency-report/report-commission'
+			},
+			'getReportHistoryPurchase' : {
+				method : 'GET',
+				url : 'api/agency/agency-report/report-history-purchase/:contactId',
+				isArray: true
 			}
 		});
 

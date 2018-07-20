@@ -31,65 +31,7 @@
         vm.changeFilterDate = changeFilterDate;
         vm.searchReport = searchReport;
         
-        vm.chartOptions = {
-        		grid : {
-            		backgroundColor: 'rgba(120,120,120,0.1)'
-            	},
-        		color: [
-        	        '#518FDA','#6FD4D0','#99d2dd','#88b0bb',
-        	        '#1c7099','#038cc4','#75abd0','#afd6dd'
-        	    ],
-        	    tooltip : {
-                	backgroundColor: 'rgba(0,0,0,0.5)',
-                    axisPointer : {            
-                        type : 'line',         
-                        lineStyle : {          
-                            color: '#1790cf',
-                            type: 'dashed'
-                        },
-                        crossStyle: {
-                            color: '#1790cf'
-                        },
-                        shadowStyle : {
-                            color: 'rgba(200,200,200,0.3)'
-                        }
-                    },
-                    trigger: 'axis'
-                },
-                legend: {
-                    data:['Của tôi','Của đại lý']
-                },
-                calculable : true,
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : []
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name:'Của tôi',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[]
-                    },
-                    {
-                        name:'Của đại lý',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[]
-                    }
-                ]
-                    
-            };
+        vm.chartOptions = chartIncomeOptions;
   		
         angular.element(document).ready(function () {
         });

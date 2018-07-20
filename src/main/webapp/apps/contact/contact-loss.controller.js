@@ -6,11 +6,16 @@
 
 
     ContactLossController.$inject = ['$rootScope', '$scope', '$http', '$filter',
-    		'ContactService','$controller'];
+    		'ContactService','$controller', 'entity', 'ReportService'];
         function ContactLossController($rootScope, $scope, $http, $filter
-        		, ContactService, $controller) {
+        		, ContactService, $controller, entity, ReportService) {
         	
         	var vm = this;
+        	vm.contactSelected = entity;
+        	
+        	vm.his = [];
+        	vm.hisInit = [];
+        	vm.totalPremium = 0;
         	
         	// variable
         	angular.element(document).ready(function () {
@@ -19,10 +24,26 @@
         	// Init controller
       		(function initController() {
       			// instantiate base controller
-      		    console.log('Init ContactNewController');
+      			loadAll();
       		})();
       		
       		// function
+      		function loadAll() {
+      			ReportService.getReportHistoryPurchase({contactId: vm.contactSelected.contactId}, onSuccess, onError);
+      			
+      			function onSuccess(data, headers) {
+                	vm.his = data;
+                	calculateTotalPremium(vm.his);
+                }
+                function onError(error) {
+                    console.log(error);
+                }
+      		}
       		
+      		function calculateTotalPremium(data) {
+      			angular.forEach(data, function(value, key) {
+      				vm.totalPremium = vm.totalPremium + value.amount;
+  			 	});
+      		}
         }
 })();
