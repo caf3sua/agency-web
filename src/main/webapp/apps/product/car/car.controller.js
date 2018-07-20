@@ -21,73 +21,90 @@
   		})();
   		
   		// Properties & function declare
-  		vm.product = {
-			"agencyRole": "1",
-			"changePremium": "",
-			"garage": false,
-			"khauHao": false,
-			"khauTru": false,
-			"matCap": false,
-			"namSX": 0,
-			"ngapNuoc": false,
-			"nntxCheck": false,
-			"nntxPhi": 0,
-			"nntxSoCho": "",
-			"nntxSoTien": "",
-			"premium": 0,
-			"purposeOfUsageId": "15",
-			"tndsSoCho": "",
-			"tndsbbCheck": false,
-			"tndsbbPhi": 0,
-			"tndstnCheck": false,
-			"tndstnPhi": 0,
-			"tndstnSoTien": "",
-			"totalPremium": 0,
-			"vcxCheck": false,
-			"vcxPhi": 0,
-			"vcxSoTien": "",
-			"chargeFree" : ""
-		};
+//  		vm.product = {
+//			"agencyRole": "1",
+//			"changePremium": "",
+//			"garage": false,
+//			"khauHao": false,
+//			"khauTru": false,
+//			"matCap": false,
+//			"namSX": 0,
+//			"ngapNuoc": false,
+//			"nntxCheck": false,
+//			"nntxPhi": 0,
+//			"nntxSoCho": "",
+//			"nntxSoTien": "",
+//			"premium": 0,
+//			"purposeOfUsageId": "15",
+//			"tndsSoCho": "",
+//			"tndsbbCheck": false,
+//			"tndsbbPhi": 0,
+//			"tndstnCheck": false,
+//			"tndstnPhi": 0,
+//			"tndstnSoTien": "",
+//			"totalPremium": 0,
+//			"vcxCheck": false,
+//			"vcxPhi": 0,
+//			"vcxSoTien": "",
+//			"chargeFree" : ""
+//		};
   		
-  		vm.policy = {  
-			"actualValue":8929000000,
-			"changePremium":0,
-			"chassisNumber":"",
-			"engineNumber":"",
-			"garageCheck":true,
-			"insuredAddress":"",
-			"insuredName":"",
-			"khaoHaoCheck":true,
-			"khauTruCheck":true,
-			"makeId":"1",
-			"makeName":"MERCEDES-BENZ",
-			"matCapCheck":true,
-			"modelId":"S63",
-			"modelName":"S 63",
-			"ngapNuocCheck":true,
-			"nntxCheck":true,
-			"passengersAccidentNumber":5,
-			"passengersAccidentPremium":1000000,
-			"passengersAccidentSi":200000000,
-			"physicalDamagePremium":179544332,
-			"physicalDamageSi":8929000000,
-			"policyNumber":"",
-			"premium":181734532,
-			"purposeOfUsageId":"15",
-			"receiveMethod" : "1",
-		   	"registrationNumber":"",
-		   	"thirdPartyPremium":480700,
-		   	"thoihanden":"",
-		   	"thoihantu":"",
-		   	"tndsSocho":"1",
-		   	"tndsbbCheck":true,
-		   	"tndstnCheck":true,
-		   	"tndstnPhi":709500,
-		   	"tndstnSotien":150000000,
-		   	"totalPremium":181734532,
-		   	"vcxCheck":true,
-		   	"yearOfMake":"2016"
-		}
+  		vm.policy = {
+  				// Premium
+  	  			"agencyRole": "1",
+  	  			"garage": false,
+  	  			"khauHao": false,
+  				"khauTru": false,
+  				"matCap": false,
+  				"namSX": 0,
+  				"ngapNuoc": false,
+  				"nntxPhi": 0,
+  				"nntxSoCho": "",
+  				"nntxSoTien": "",
+  				"tndsbbPhi": 0,
+  				"vcxPhi": 0,
+  				"vcxSoTien": "",
+  				"chargeFree" : "",
+  	  			
+  	  			// Create policy  				
+  				"actualValue":0,
+  				"changePremium":0,
+  				"chassisNumber":"",
+  				"engineNumber":"",
+  				"garageCheck":false,
+  				"insuredAddress":"",
+  				"insuredName":"",
+  				"khaoHaoCheck":false,
+  				"khauTruCheck":false,
+  				"makeId":"1",
+  				"makeName":"",
+  				"matCapCheck":false,
+  				"modelId":"",
+  				"modelName":"",
+  				"ngapNuocCheck":false,
+  				"nntxCheck":false,
+  				"passengersAccidentNumber":0,
+  				"passengersAccidentPremium":0,
+  				"passengersAccidentSi":0,
+  				"physicalDamagePremium":0,
+  				"physicalDamageSi":0,
+  				"policyNumber":"",
+  				"premium":0,
+  				"purposeOfUsageId":"15",
+  				"receiveMethod" : "1",
+  			   	"registrationNumber":"",
+  			   	"thirdPartyPremium":0,
+  			   	"thoihanden":"",
+  			   	"thoihantu":"",
+  			   	"tndsSocho":"",
+  			   	"tndsbbCheck":false,
+  			   	"tndstnCheck":false,
+  			   	"tndstnPhi":0,
+  			    "tndstnSoTien": "",
+  			   	"totalPremium":0,
+  			   	"vcxCheck":false,
+  			   	"yearOfMake":""
+  			}
   		
   		vm.showChangePremium = showChangePremium;
   		vm.disableExtendedInsurance = disableExtendedInsurance;
@@ -149,7 +166,7 @@
   			
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
-            vm.registerDisableContactInfoValue('vm.product.premium');
+            vm.registerDisableContactInfoValue('vm.policy.premium');
             
             // Edit
             if (vm.isEditMode()) {
@@ -178,14 +195,14 @@
     	}
     	
     	function checkedChange() {
-    		if((!vm.product.tndsbbCheck && !vm.product.tndstnCheck && !vm.product.vcxCheck)) {
-    			vm.product.nntxCheck = false;
+    		if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
+    			vm.policy.nntxCheck = false;
     		}
     	}
   		
   		function showChangePremium() {
-  			if((vm.product.tndsbbCheck && vm.product.tndsSoCho)
-  					|| (vm.product.tndstnCheck && vm.product.tndsSoCho)) {
+  			if((vm.policy.tndsbbCheck && vm.policy.tndsSoCho)
+  					|| (vm.policy.tndstnCheck && vm.policy.tndsSoCho)) {
   				return true;
   			} else {
   				return false;
@@ -193,9 +210,9 @@
   		}
   		
   		function disableExtendedInsurance() {
-  			if((!vm.product.tndsbbCheck && !vm.product.tndstnCheck && !vm.product.vcxCheck)
-  					|| (vm.product.tndsbbCheck && !vm.product.tndsSoCho)
-  					|| (vm.product.tndstnCheck && !vm.product.tndsSoCho)) {
+  			if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)
+  					|| (vm.policy.tndsbbCheck && !vm.policy.tndsSoCho)
+  					|| (vm.policy.tndstnCheck && !vm.policy.tndsSoCho)) {
   				return true;
   			} else {
   				return false;
@@ -212,26 +229,26 @@
 	            	break;
 	            case 'car-manufacturer':
 	            	vm.modelOptions = [];
-	            	vm.product.model = '';
-	            	vm.product.namSX = '';
-	            	vm.product.actualValue = '';
-	            	vm.product.vcxSoTien = '';
+	            	vm.policy.model = '';
+	            	vm.policy.namSX = '';
+	            	vm.policy.actualValue = '';
+	            	vm.policy.vcxSoTien = '';
 	            	data.forEach(function(item, index, arr) {
 	      				vm.modelOptions.push({id: item.carId, name: item.carName});
 	      			})
 	                break;
 	            case 'car-model':
 	            	vm.yearOptions = [];
-	            	vm.product.namSX = '';
-	            	vm.product.actualValue = '';
-	            	vm.product.vcxSoTien = '';
+	            	vm.policy.namSX = '';
+	            	vm.policy.actualValue = '';
+	            	vm.policy.vcxSoTien = '';
 	            	for(var i = data.min; i <= data.max; i++) {
-	            		vm.yearOptions.push({id: i + ":" + vm.product.model, name: i});
+	            		vm.yearOptions.push({id: i + ":" + vm.policy.model, name: i});
 	            	}
 	                break;
 	            case 'car-year':
-	            	vm.product.vcxSoTien = '';
-	            	vm.product.actualValue = data.price;
+	            	vm.policy.vcxSoTien = '';
+	            	vm.policy.actualValue = data.price;
 	                break;
 	        }
   		}
@@ -243,7 +260,7 @@
   		}
   		
   		function getPostData(isCreate) {
-  			var postData = Object.assign({}, vm.product);
+  			var postData = Object.assign({}, vm.policy);
   			if(!postData.changePremium || postData.changePremium == "") {
   				postData.changePremium = 0;
   			}
@@ -282,34 +299,34 @@
   		
   		function onGetPremiumSuccess(result) {
             vm.loading = false;
-    		if(vm.product.tndsbbCheck && vm.product.tndsSoCho) {
+    		if(vm.policy.tndsbbCheck && vm.policy.tndsSoCho) {
     			vm.isShowTndsbbPhi = true;
-    			vm.product.tndsbbPhi = result.tndsbbPhi;
+    			vm.policy.tndsbbPhi = result.tndsbbPhi;
     		}
-    		if(vm.product.tndstnCheck && vm.product.tndsSoCho && vm.product.tndstnSoTien) {
+    		if(vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) {
     			vm.isShowTndstnPhi = true;
-    			vm.product.tndstnPhi = result.tndstnPhi;
+    			vm.policy.tndstnPhi = result.tndstnPhi;
     		}
-    		if(vm.product.nntxCheck && vm.product.nntxSoTien) {
+    		if(vm.policy.nntxCheck && vm.policy.nntxSoTien) {
     			vm.isShowNntxPhi = true;
-    			vm.product.nntxPhi = result.nntxPhi;
+    			vm.policy.nntxPhi = result.nntxPhi;
     		}
-    		if(vm.product.vcxCheck && vm.product.namSX && vm.product.vcxSoTien) {
+    		if(vm.policy.vcxCheck && vm.policy.namSX && vm.policy.vcxSoTien) {
     			vm.isShowVcxPhi = true;
-    			vm.product.vcxPhi = result.vcxPhi;
+    			vm.policy.vcxPhi = result.vcxPhi;
     		}
-    		if(vm.product.changePremium) {
+    		if(vm.policy.changePremium) {
     			vm.isShowChangePremium = true;
     			if(result.changePremium != 0) {
-    				vm.product.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
+    				vm.policy.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
     			}
     		}
-    		if((vm.product.tndsbbCheck && vm.product.tndsSoCho)
-    				|| vm.product.tndstnCheck && vm.product.tndsSoCho && vm.product.tndstnSoTien) {
+    		if((vm.policy.tndsbbCheck && vm.policy.tndsSoCho)
+    				|| vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) {
     			vm.isShowPremium = true;
           		vm.isShowTotalPremium = true;
-          		vm.product.premium = result.premium;
-          		vm.product.totalPremium = result.totalPremium;
+          		vm.policy.premium = result.premium;
+          		vm.policy.totalPremium = result.totalPremium;
     		}
 
             vm.clearResponseError();
@@ -362,23 +379,23 @@
     	}
     	
         function validatorNntxSoCho() {
-        	if(!vm.product.nntxCheck) {
+        	if(!vm.policy.nntxCheck) {
         		return true;
         	}
-        	if(!vm.product.nntxSoCho) {
+        	if(!vm.policy.nntxSoCho) {
         		return "Chưa chọn số người tham gia bảo hiểm!";
         	}
             return true;
         }
         
         function validatorVcxSoTien() {
-        	if(!vm.product.vcxCheck) {
+        	if(!vm.policy.vcxCheck) {
         		return true;
         	}
-        	if(!vm.product.namSX) {
+        	if(!vm.policy.namSX) {
         		return true;
         	}
-        	if(!vm.product.vcxSoTien) {
+        	if(!vm.policy.vcxSoTien) {
         		return "Chưa điền giá trị xe tham gia bảo hiểm!";
         	}
             return true;
@@ -387,50 +404,50 @@
         function validatorCombo(name) {
   			switch(name) {
 	  			case "tndsSoCho":
-	  				if(!vm.product.tndsbbCheck) {
+	  				if(!vm.policy.tndsbbCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(!vm.product.tndsSoCho) {
+	  	        	if(!vm.policy.tndsSoCho) {
 	  	        		return "Chưa lựa chọn số chỗ/trọng tải xe!";
 	  	        	}
 	  	            return true;
 	  			case "tndstnSoTien":
-	  				if(!vm.product.tndstnCheck) {
+	  				if(!vm.policy.tndstnCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(!vm.product.tndstnSoTien) {
+	  	        	if(!vm.policy.tndstnSoTien) {
 	  	        		return "Cần lựa chọn mức trách nhiệm!";
 	  	        	}
 	  	            return true;
 	  			case "nntxSoTien":
-	  				if(!vm.product.nntxCheck) {
+	  				if(!vm.policy.nntxCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(!vm.product.nntxSoTien) {
+	  	        	if(!vm.policy.nntxSoTien) {
 	  	        		return "Cần lựa chọn mức trách nhiệm!";
 	  	        	}
 	  	            return true;
 	  			case "manufacturer":
-	  				if(!vm.product.vcxCheck) {
+	  				if(!vm.policy.vcxCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(!vm.product.manufacturer) {
+	  	        	if(!vm.policy.manufacturer) {
 	  	        		return "Cần lựa chọn hãng xe!";
 	  	        	}
 	  	            return true;
 	  			case "model":
-	  				if(!vm.product.vcxCheck) {
+	  				if(!vm.policy.vcxCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(vm.product.manufacturer && !vm.product.model) {
+	  	        	if(vm.policy.manufacturer && !vm.policy.model) {
 	  	        		return "Cần lựa chọn dòng xe!";
 	  	        	}
 	  	            return true;
 	  			case "namSX":
-	  				if(!vm.product.vcxCheck) {
+	  				if(!vm.policy.vcxCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(vm.product.model && !vm.product.namSX) {
+	  	        	if(vm.policy.model && !vm.policy.namSX) {
 	  	        		return "Cần lựa chọn năm sản xuất!";
 	  	        	}
 	  	            return true;

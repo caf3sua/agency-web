@@ -24,16 +24,16 @@
   		})();
   		
   		// Properties & function declare
-  		vm.product = {
-  			"premiumDiscount": 0,
-  			"premiumHome": 0,
-  			"premiumNet": 0,
-  			"premiumSi": 0,
-  			"premiumSiin": 0,
-  			"si": "",
-  			"siin": "",
-  			"yearBuildCode": "1"
-  		};
+//  		vm.product = {
+//  			"premiumDiscount": 0,
+//  			"premiumHome": 0,
+//  			"premiumNet": 0,
+//  			"premiumSi": 0,
+//  			"premiumSiin": 0,
+//  			"si": "",
+//  			"siin": "",
+//  			"yearBuildCode": "1"
+//  		};
   		
   		vm.policy = {
   				"bankId": "0",
@@ -85,7 +85,7 @@
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.expiredDate = DateUtils.convertDate(endDate);
-            vm.registerDisableContactInfoValue('vm.product.premiumHome');
+            vm.registerDisableContactInfoValue('vm.policy.premiumHome');
 
             // Edit
             if (vm.isEditMode()) {
@@ -105,11 +105,11 @@
   		
   		function getPremium() {
             vm.loading = true;
-            ProductCommonService.getHomePremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getHomePremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;
-  				vm.product = data;
+  				vm.policy = data;
   				vm.policy.si = data.si;
   				vm.policy.siin = data.siin;
   				vm.policy.premiumsi = data.premiumSi;
@@ -118,17 +118,17 @@
   				vm.policy.premiumHome = data.premiumHome;
   				vm.policy.premiumDiscount = data.premiumDiscount;
   				vm.policy.yearBuildCode = data.yearBuildCode;
-  				console.log(vm.product);
+  				console.log(vm.policy);
 
                 vm.clearResponseError();
             }
             function onGetPremiumError(error) {
                 vm.loading = false;
                 console.log(error.data.message);
-                vm.product.premiumHome = 0;
-            	vm.product.premiumNet = 0;
-            	vm.product.premiumSi= 0;
-            	vm.product.premiumSiin= 0;
+                vm.policy.premiumHome = 0;
+            	vm.policy.premiumNet = 0;
+            	vm.policy.premiumSi= 0;
+            	vm.policy.premiumSiin= 0;
                 vm.validateResponse(error, 'getPremium');
             }
   		}
@@ -156,7 +156,7 @@
             return true;
         };
   		function changeYear() {
-            if(vm.product.si != ""){
+            if(vm.policy.si != ""){
                 getPremium();
             }
         }

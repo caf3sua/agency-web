@@ -21,33 +21,36 @@
   		})();
   		
   		// Properties & function declare
-  		vm.product = {
-            "chaynoCheck": false,
-            "chaynoPhi": 0,
-            "chaynoStbh": "",
-            "nntxCheck": false,
-            "nntxPhi": 0,
-            "nntxSoNguoi": "",
-            "nntxStbh": "",
-            "tndsbbCheck": false,
-            "tndsbbPhi": 0,
-            "tndstnCheck": false,
-            "tndstnPhi": 0,
-            "tndstnSotien": "",
-            "tongPhi": 0,
-            "typeOfMoto": ""
-        }
+//  		vm.product = {
+////            "chaynoCheck": false,
+////            "chaynoPhi": 0,
+////            "chaynoStbh": "",
+////            "nntxCheck": false,
+////            "nntxPhi": 0,
+////            "nntxSoNguoi": "",
+////            "nntxStbh": "",
+//            "tndsbbCheck": false,
+//            "tndsbbPhi": 0,
+//            "tndstnCheck": false,
+//            "tndstnPhi": 0,
+//            "tndstnSotien": "",
+//            "tongPhi": 0,
+//            "typeOfMoto": ""
+//        }
 
         vm.policy = {
+  				// premium
+  				"nntxPhi": 0,
+  				//create
             "chaynoCheck":false,
             "chaynoPhi":0,
-            "chaynoStbh":0,
+            "chaynoStbh":"",
             "hieuxe":"",
             "insuredAddress":"",
             "insuredName":"",
             "nntxCheck":false,
-            "nntxSoNguoi":0,
-            "nntxStbh":0,
+            "nntxSoNguoi":"",
+            "nntxStbh":"",
             "policyNumber":"",
             "receiveMethod":"1",
             "registrationNumber":"",
@@ -55,14 +58,14 @@
             "somay":"",
             "thoihanden":"",
             "thoihantu":"",
-            "tndsBbPhi":66000,
+            "tndsBbPhi":0,
             "tndsTnNntxPhi":0,
             "tndsTnPhi":0,
-            "tndsTnSotien":0,
+            "tndsTnSotien":"",
             "tndsbbCheck":true,
             "tndstnCheck":false,
-            "tongPhi":66000,
-            "typeOfMotoId":"2"
+            "tongPhi":0,
+            "typeOfMotoId":""
         }
 
         vm.processComboResult = processComboResult;
@@ -105,7 +108,7 @@
             vm.policy.thoihanden = DateUtils.convertDate(endDate);
 
         	// Register disable 
-            vm.registerDisableContactInfoValue('vm.product.tongPhi');
+            vm.registerDisableContactInfoValue('vm.policy.tongPhi');
             
             // Edit
             if (vm.isEditMode()) {
@@ -124,8 +127,8 @@
         }
 
         function checkedChange() {
-            if((!vm.product.tndsbbCheck && !vm.product.tndstnCheck && !vm.product.vcxCheck)) {
-                vm.product.nntxCheck = false;
+            if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
+                vm.policy.nntxCheck = false;
             }
         }
 
@@ -133,7 +136,7 @@
             console.log(data);
             switch(type){
                 case 'moto-type':
-                    vm.product.tndsbbCheck = true;
+                    vm.policy.tndsbbCheck = true;
                 case 'moto-tndstn-sotien':
                     getPremium();
                     break;
@@ -147,7 +150,7 @@
         }
 
         function getPostData(isCreate) {
-            var postData = Object.assign({}, vm.product);
+            var postData = Object.assign({}, vm.policy);
 
             if(postData.chaynoStbh == "") {
                 postData.chaynoStbh = 0;
@@ -181,24 +184,24 @@
 
         function onGetPremiumSuccess(result) {
             vm.loading = false;
-            if(vm.product.tndsbbCheck) {
+            if(vm.policy.tndsbbCheck) {
                 vm.isShowTndsbbPhi = true;
-                vm.product.tndsbbPhi = result.tndsbbPhi;
+                vm.policy.tndsbbPhi = result.tndsbbPhi;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
-                vm.product.tongPhi = result.tongPhi;
+                vm.policy.tongPhi = result.tongPhi;
             }
-            if(vm.product.tndstnCheck && vm.product.tndstnSotien) {
+            if(vm.policy.tndstnCheck && vm.policy.tndstnSotien) {
                 vm.isShowTndstnPhi = true;
-                vm.product.tndstnPhi = result.tndstnPhi;
+                vm.policy.tndstnPhi = result.tndstnPhi;
             }
-            if(vm.product.nntxCheck) {
+            if(vm.policy.nntxCheck) {
                 vm.isShowNntxPhi = true;
-                vm.product.nntxPhi = result.nntxPhi;
+                vm.policy.nntxPhi = result.nntxPhi;
             }
-            if(vm.product.chaynoCheck && vm.product.chaynoStbh) {
+            if(vm.policy.chaynoCheck && vm.policy.chaynoStbh) {
                 vm.isShowChaynoPhi = true;
-                vm.product.chaynoPhi = result.chaynoPhi;
+                vm.policy.chaynoPhi = result.chaynoPhi;
             }
 
             vm.clearResponseError();
@@ -236,30 +239,30 @@
         }
 
         function validatorNntxSoNguoi() {
-        	if(!vm.product.nntxCheck) {
+        	if(!vm.policy.nntxCheck) {
         		return true;
         	}
-        	if(!vm.product.nntxSoNguoi) {
+        	if(!vm.policy.nntxSoNguoi) {
         		return "Chưa chọn số người tham gia bảo hiểm!";
         	}
             return true;
         }
         
         function validatorNntxStbh() {
-        	if(!vm.product.nntxCheck) {
+        	if(!vm.policy.nntxCheck) {
         		return true;
         	}
-        	if(!vm.product.nntxStbh) {
+        	if(!vm.policy.nntxStbh) {
         		return "Chưa chọn số tiền bảo hiểm!";
         	}
             return true;
         }
         
         function validatorChaynoStbh() {
-        	if(!vm.product.chaynoCheck) {
+        	if(!vm.policy.chaynoCheck) {
         		return true;
         	}
-        	if(!vm.product.nntxStbh) {
+        	if(!vm.policy.nntxStbh) {
         		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
         	}
             return true;
@@ -270,10 +273,10 @@
 	  			case "typeOfMoto":
 	  	            return true;
 	  			case "tndstnSotien":
-	  				if(!vm.product.tndstnCheck) {
+	  				if(!vm.policy.tndstnCheck) {
 	  	        		return true;
 	  	        	}
-	  	        	if(!vm.product.tndstnSotien) {
+	  	        	if(!vm.policy.tndstnSotien) {
 	  	        		return "Cần lựa chọn mức trách nhiệm!";
 	  	        	}
 	  	            return true;

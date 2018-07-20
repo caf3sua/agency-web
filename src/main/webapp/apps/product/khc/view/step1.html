@@ -7,13 +7,13 @@
                 <p class="bv-title-from">Số người tham gia</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" name="numberPerson" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.numberPerson" ng-blur="vm.addOrRemovePerson()"/>
+                <input type="number" name="numberPerson" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.policy.numberPerson" ng-blur="vm.addOrRemovePerson()"/>
             </div>
             <div class="margin-top-10 required">
                 <p class="bv-title-from">Số tiền bảo hiểm</p>
             </div>
             <div class="margin-top-10">
-                <relation-combo name="premiumPackage" type="khc-money" ng-model="vm.product.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
+                <relation-combo name="premiumPackage" type="khc-money" ng-model="vm.policy.premiumPackage" options="vm.premiumPackageOptions" onfinished="vm.processComboResult(data, type)"/>
             </div>
             <div class="margin-top-10 required">
                 <p class="bv-title-from">Thời hạn bảo hiểm</p>
@@ -22,7 +22,7 @@
                 <div class="margin-right-5 width-100">
                     <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                         <div class="width-100">
-                            <input type="text" name="insuranceStartDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.product.insuranceStartDate">
+                            <input type="text" name="insuranceStartDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.insuranceStartDate">
                         </div>
                         <div class="input-group-addon bv-date-icon">
                             <span class="glyphicon glyphicon-th"></span>
@@ -32,7 +32,7 @@
                 <div class="width-100">
                     <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                         <div class="width-100">
-                            <input type="text" class="bv-input" name="insuranceEndDate" placeholder="Đến ngày" ng-model="vm.product.insuranceEndDate" ng-disabled="true">
+                            <input type="text" class="bv-input" name="insuranceEndDate" placeholder="Đến ngày" ng-model="vm.policy.insuranceEndDate" ng-disabled="true">
                         </div>
                         <div class="input-group-addon bv-date-icon">
                             <span class="glyphicon glyphicon-th"></span>
@@ -51,7 +51,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="person in vm.product.premiumKhcList">
+                    <tr ng-repeat="person in vm.policy.premiumKhcList">
                         <td><input type="text"  style="width: 150px" class="form-control" ng-disabled="true" value="Người tham gia bảo hiểm {{$index}}"></td>
                         <td>
                             <div  style="width: 150px" class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
@@ -74,17 +74,17 @@
                 <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
             </div>
             <div ng-show="vm.isShowPremium">
-                <p class="bv-tile-templateSummary">{{vm.product.premiumNet | number:0 }}</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.premiumNet | number:0 }}</p>
             </div>
             <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                 <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
             </div>
             <div ng-show="vm.isShowTotalPremium">
-                <p class="bv-tile-templateSummary">{{vm.product.premiumKhc | number:0}}</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.premiumKhc | number:0}}</p>
             </div>
         </div>
-        <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumKhc == 0">
-            <div class="lock-all" ng-show="vm.product.premiumKhc == 0"></div>
+        <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.premiumKhc == 0">
+            <div class="lock-all" ng-show="vm.policy.premiumKhc == 0"></div>
             <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
             <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
@@ -115,7 +115,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="person in vm.product.premiumKhcList">
+                        <tr ng-repeat="person in vm.policy.premiumKhcList">
                             <td><input style="width: 150px" type="text" name="insuredName{{$index}}" class="form-control" ng-model="person.insuredName"
                                        required-message="'Chưa nhập Họ và Tên!'"
                                        required /></td>

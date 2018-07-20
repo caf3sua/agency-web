@@ -21,18 +21,28 @@
   		})();
 
         // Properties & function declare
-        vm.product = {
-            "insuranceStartDate": "",
+//        vm.policy = {
+//            "insuranceStartDate": "",
+//            "numberMonth": 0,
+//            "numberPerson": "",
+//            "premiumDiscount": 0,
+//            "premiumKhc": 0,
+//            "premiumKhcList":[],
+//            "premiumNet": 0,
+//            "premiumPackage": ""
+//        }
+
+        vm.policy = {
+        	// premium
+    		"insuranceStartDate": "",
             "numberMonth": 0,
             "numberPerson": "",
             "premiumDiscount": 0,
             "premiumKhc": 0,
             "premiumKhcList":[],
             "premiumNet": 0,
-            "premiumPackage": ""
-        }
-
-        vm.policy = {
+            "premiumPackage": "",	
+        	// create
             "inceptionDate":"",
             "permanentTotalDisablement":1,
             "plan":2,
@@ -67,15 +77,15 @@
             var startDate = new Date();
             // add a day
             startDate.setDate(startDate.getDate() + 1);
-            vm.product.insuranceStartDate = DateUtils.convertDate(startDate);
+            vm.policy.insuranceStartDate = DateUtils.convertDate(startDate);
 
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.product.insuranceEndDate = DateUtils.convertDate(endDate);
+            vm.policy.insuranceEndDate = DateUtils.convertDate(endDate);
 
             // Register disable 
-            vm.registerDisableContactInfoValue('vm.product.premiumKhc');
+            vm.registerDisableContactInfoValue('vm.policy.premiumKhc');
             
             // Edit
             if (vm.isEditMode()) {
@@ -94,35 +104,35 @@
         }
 
         function onDobChange(index) {
-            if(vm.product.premiumKhcList[index]) {
+            if(vm.policy.premiumKhcList[index]) {
                 var now = new Date();
                 var nowStr = DateUtils.convertDate(now);
-                vm.product.premiumKhcList[index].yearOld = DateUtils.yearDiff(vm.product.premiumKhcList[index].dob, nowStr);
+                vm.policy.premiumKhcList[index].yearOld = DateUtils.yearDiff(vm.policy.premiumKhcList[index].dob, nowStr);
             }
 
-            if(vm.product.numberPerson > 0 && vm.product.premiumPackage) {
+            if(vm.policy.numberPerson > 0 && vm.policy.premiumPackage) {
                 getPremium();
             }
         }
 
         function addOrRemovePerson() {
-            if(vm.product.numberPerson > 0) {
+            if(vm.policy.numberPerson > 0) {
                 vm.isShowPersonList = true;
             } else {
                 vm.isShowPersonList = false;
             }
-            if(vm.product.numberPerson > vm.product.premiumKhcList.length) {
+            if(vm.policy.numberPerson > vm.policy.premiumKhcList.length) {
                 addNewPerson();
-            } else if(vm.product.numberPerson < vm.product.premiumKhcList.length) {
+            } else if(vm.policy.numberPerson < vm.policy.premiumKhcList.length) {
                 removePerson();
             }
             getPremium();
         }
 
         function addNewPerson() {
-            var lineAdd = vm.product.numberPerson - vm.product.premiumKhcList.length;
+            var lineAdd = vm.policy.numberPerson - vm.policy.premiumKhcList.length;
             for (var i=0; i < lineAdd; i++) {
-                vm.product.premiumKhcList.push({
+                vm.policy.premiumKhcList.push({
                     "dob": "",
                     "insuredName": "",
                     "premium": 0,
@@ -133,7 +143,7 @@
         };
 
         function removePerson() {
-            vm.product.premiumKhcList.splice(vm.product.numberPerson, vm.product.premiumKhcList.length)
+            vm.policy.premiumKhcList.splice(vm.policy.numberPerson, vm.policy.premiumKhcList.length)
         };
 
         function processComboResult(data, type) {
@@ -155,7 +165,7 @@
         }
 
         function getPostData() {
-            var postData = Object.assign({}, vm.product);
+            var postData = Object.assign({}, vm.policy);
 
             vm.postPremiumKhcListIndex = [];
             var realPremiumKhcList = [];
@@ -176,26 +186,26 @@
         function onGetPremiumSuccess(result) {
             vm.loading = false;
             for (var i=0; i < vm.postPremiumKhcListIndex.length; i++) {
-                vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].dob = result.premiumKhcList[i].dob;
-	            vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].insuredName = result.premiumKhcList[i].insuredName;
-	            vm.product.premiumKhcList[vm.postPremiumKhcListIndex[i]].premium = result.premiumKhcList[i].premium;
+                vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].dob = result.premiumKhcList[i].dob;
+	            vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].insuredName = result.premiumKhcList[i].insuredName;
+	            vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].premium = result.premiumKhcList[i].premium;
             }
             
             var count = 0;
-            for (var i=0; i < vm.product.premiumKhcList.length; i++) {
-            	if(vm.product.premiumKhcList[i].premium > 0) {
+            for (var i=0; i < vm.policy.premiumKhcList.length; i++) {
+            	if(vm.policy.premiumKhcList[i].premium > 0) {
             		count++
             	}
             }
 
-            if(vm.product.numberPerson > 0 && count == vm.product.premiumKhcList.length) {
-            	vm.product.premiumNet = result.premiumNet;
-                vm.product.premiumKhc = result.premiumKhc;
+            if(vm.policy.numberPerson > 0 && count == vm.policy.premiumKhcList.length) {
+            	vm.policy.premiumNet = result.premiumNet;
+                vm.policy.premiumKhc = result.premiumKhc;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
             } else {
-            	vm.product.premiumNet = 0;
-                vm.product.premiumKhc = 0;
+            	vm.policy.premiumNet = 0;
+                vm.policy.premiumKhc = 0;
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }

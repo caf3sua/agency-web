@@ -17,7 +17,7 @@
            <div class=" display-flex">
                <div class="cntr margin-right-5">
                    <label for="cbx13" class="label-cbx">
-                       <input id="cbx13" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.product.insuranceTarget" value="New">
+                       <input id="cbx13" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.policy.insuranceTarget" value="New">
                        <div class="checkbox">
                            <svg width="18px" height="18px" viewBox="0 0 20 20">
                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -29,7 +29,7 @@
                </div>
                <div class="cntr">
                    <label for="cbx14" class="label-cbx">
-                       <input id="cbx14" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.product.insuranceTarget" value="Reuse">
+                       <input id="cbx14" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.policy.insuranceTarget" value="Reuse">
                        <div class="checkbox">
                            <svg width="18px" height="18px" viewBox="0 0 20 20">
                                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -40,7 +40,7 @@
                    </label>
                </div>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.insuranceTarget == 'Reuse'">
+           <div class="margin-top-5" ng-show="vm.policy.insuranceTarget == 'Reuse'">
                <input type="text" name="policyNumber" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber"/>
            </div>
            <div class="margin-top-10">
@@ -48,7 +48,7 @@
            </div>
            <div class="cntr margin-top-5">
                <label for="cbx2" class="label-cbx">
-                   <input id="cbx2" name="tndsbbCheck" type="checkbox" class="invisible" ng-model="vm.product.tndsbbCheck" ng-change="vm.checkedChange()">
+                   <input id="cbx2" name="tndsbbCheck" type="checkbox" class="invisible" ng-model="vm.policy.tndsbbCheck" ng-change="vm.checkedChange()">
                    <div class="checkbox">
                        <svg width="18px" height="18px" viewBox="0 0 20 20">
                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -58,15 +58,15 @@
                    <span>Bảo hiểm trách nhiệm dân sự bắt buộc</span>
                </label>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.tndsbbCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.tndsbbCheck">
                <p class="bv-title-from">Số chỗ ngồi / tải trọng xe</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.tndsbbCheck">
-               <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.product.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.tndsbbCheck">
+               <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.policy.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
            <div class="cntr margin-top-5">
                <label for="cbx3" class="label-cbx">
-                   <input id="cbx3" name="tndstnCheck" type="checkbox" class="invisible" ng-model="vm.product.tndstnCheck" ng-change="vm.checkedChange()">
+                   <input id="cbx3" name="tndstnCheck" type="checkbox" class="invisible" ng-model="vm.policy.tndstnCheck" ng-change="vm.checkedChange()">
                    <div class="checkbox">
                        <svg width="18px" height="18px" viewBox="0 0 20 20">
                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -76,21 +76,21 @@
                    <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
                </label>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.tndstnCheck && !vm.product.tndsbbCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.tndstnCheck && !vm.policy.tndsbbCheck">
                <p class="bv-title-from">Số chỗ ngồi / tải trọng xe</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.tndstnCheck && !vm.product.tndsbbCheck">
-               <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.product.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.tndstnCheck && !vm.policy.tndsbbCheck">
+               <relation-combo name="tndsSoCho" type="car-socho" ng-model="vm.policy.tndsSoCho" options="vm.tndsSoChoOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.tndstnCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.tndstnCheck">
                <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.tndstnCheck">
-               <relation-combo name="tndstnSoTien" type="car-tndstn-sotien" ng-model="vm.product.tndstnSoTien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.tndstnCheck">
+               <relation-combo name="tndstnSoTien" type="car-tndstn-sotien" ng-model="vm.policy.tndstnSoTien" options="vm.tndstnSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
            <div class="cntr margin-top-5">
                <label for="cbx4" class="label-cbx">
-                   <input id="cbx4" type="checkbox" name="nntxCheck" class="invisible" ng-model="vm.product.nntxCheck" ng-disabled="vm.disableExtendedInsurance()">
+                   <input id="cbx4" type="checkbox" name="nntxCheck" class="invisible" ng-model="vm.policy.nntxCheck" ng-disabled="vm.disableExtendedInsurance()">
                    <div class="checkbox">
                        <svg width="18px" height="18px" viewBox="0 0 20 20">
                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -100,23 +100,23 @@
                    <span>Bảo hiểm tai nạn người ngồi trên xe</span>
                </label>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.nntxCheck">
                <p class="bv-title-from">Số người tham gia</p>
            </div>
            <div class="margin-top-5">
-               <input type="number" name="nntxSoCho" ng-show="vm.product.nntxCheck" class="bv-input" placeholder="Số người tham gia" ng-model="vm.product.nntxSoCho" ng-blur="vm.getPremium()"
+               <input type="number" name="nntxSoCho" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số người tham gia" ng-model="vm.policy.nntxSoCho" ng-blur="vm.getPremium()"
                	validator= "vm.validatorNntxSoCho() === true"
   					invalid-message = "vm.validatorNntxSoCho()"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.nntxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.nntxCheck">
                <p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.nntxCheck">
-               <relation-combo name="nntxSoTien" type="car-nntx-sotien" ng-model="vm.product.nntxSoTien" options="vm.nntxSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.nntxCheck">
+               <relation-combo name="nntxSoTien" type="car-nntx-sotien" ng-model="vm.policy.nntxSoTien" options="vm.nntxSoTienOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
            <div class="cntr margin-top-5">
                <label for="cbx5" class="label-cbx">
-                   <input id="cbx5" name="vcxCheck" type="checkbox" class="invisible" ng-model="vm.product.vcxCheck" ng-change="vm.checkedChange()">
+                   <input id="cbx5" name="vcxCheck" type="checkbox" class="invisible" ng-model="vm.policy.vcxCheck" ng-change="vm.checkedChange()">
                    <div class="checkbox">
                        <svg width="18px" height="18px" viewBox="0 0 20 20">
                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -126,45 +126,45 @@
                    <span>Bảo hiểm vật chất xe</span>
                </label>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.vcxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.vcxCheck">
                <p class="bv-title-from">Hãng xe</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.vcxCheck">
-               <relation-combo name="manufacturer" type="car-manufacturer" ng-model="vm.product.manufacturer" options="vm.manufacturerOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.vcxCheck">
+               <relation-combo name="manufacturer" type="car-manufacturer" ng-model="vm.policy.manufacturer" options="vm.manufacturerOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.manufacturer && vm.product.vcxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.manufacturer && vm.policy.vcxCheck">
                <p class="bv-title-from">Dòng xe</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.manufacturer && vm.product.vcxCheck">
-               <relation-combo name="model" type="car-model" ng-model="vm.product.model" options="vm.modelOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.manufacturer && vm.policy.vcxCheck">
+               <relation-combo name="model" type="car-model" ng-model="vm.policy.model" options="vm.modelOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.model && vm.product.vcxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.model && vm.policy.vcxCheck">
                <p class="bv-title-from">Năm sản xuất</p>
            </div>
-           <div class="margin-top-5" ng-show="vm.product.model && vm.product.vcxCheck">
-               <relation-combo name="namSX" type="car-year" ng-model="vm.product.namSX" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
+           <div class="margin-top-5" ng-show="vm.policy.model && vm.policy.vcxCheck">
+               <relation-combo name="namSX" type="car-year" ng-model="vm.policy.namSX" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.namSX && vm.product.vcxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <p class="bv-title-from">Giá trị xe theo thị trường</p>
            </div>
            <div class="margin-top-5">
-               <input name="actualValue" type="number" ng-show="vm.product.namSX && vm.product.vcxCheck" class="bv-input" ng-model="vm.product.actualValue" placeholder="Giá trị xe theo thị trường" disabled="disabled"/>
+               <input name="actualValue" type="number" ng-show="vm.policy.namSX && vm.policy.vcxCheck" class="bv-input" ng-model="vm.policy.actualValue" placeholder="Giá trị xe theo thị trường" disabled="disabled"/>
            </div>
-           <div class="margin-top-10 required" ng-show="vm.product.namSX && vm.product.vcxCheck">
+           <div class="margin-top-10 required" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <p class="bv-title-from">Giá trị xe tham gia bảo hiểm</p>
            </div>
            <div class="margin-top-5">
-               <input name="vcxSoTien" type="number" ng-show="vm.product.namSX && vm.product.vcxCheck" class="bv-input" ng-model="vm.product.vcxSoTien" placeholder="Giá trị xe tham gia bảo hiểm" ng-blur="vm.getPremium()"
+               <input name="vcxSoTien" type="number" ng-show="vm.policy.namSX && vm.policy.vcxCheck" class="bv-input" ng-model="vm.policy.vcxSoTien" placeholder="Giá trị xe tham gia bảo hiểm" ng-blur="vm.getPremium()"
                	validator= "vm.validatorVcxSoTien() === true"
   					invalid-message = "vm.validatorVcxSoTien()"/>
            </div>
-           <div class="margin-top-10" ng-show="vm.product.namSX && vm.product.vcxCheck">
+           <div class="margin-top-10" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <p class="bv-title-from">Điều khoản bổ sung</p>
            </div>
-           <div class="cntr margin-top-5" ng-show="vm.product.namSX && vm.product.vcxCheck">
+           <div class="cntr margin-top-5" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <div>
                <label for="cbx6" class="label-cbx">
-                    <input id="cbx6" name="khauTru" type="checkbox" class="invisible" ng-model="vm.product.khauTru" ng-change="vm.getPremium()">
+                    <input id="cbx6" name="khauTru" type="checkbox" class="invisible" ng-model="vm.policy.khauTru" ng-change="vm.getPremium()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -176,7 +176,7 @@
                </div>
                <div>
                 <label for="cbx7" class="label-cbx">
-                    <input id="cbx7" name="khauHao" type="checkbox" class="invisible" ng-model="vm.product.khauHao" ng-change="vm.getPremium()">
+                    <input id="cbx7" name="khauHao" type="checkbox" class="invisible" ng-model="vm.policy.khauHao" ng-change="vm.getPremium()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -188,7 +188,7 @@
                </div>
                <div>
                 <label for="cbx8" class="label-cbx">
-                    <input id="cbx8" name="matCap" type="checkbox" class="invisible" ng-model="vm.product.matCap" ng-change="vm.getPremium()">
+                    <input id="cbx8" name="matCap" type="checkbox" class="invisible" ng-model="vm.policy.matCap" ng-change="vm.getPremium()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -200,7 +200,7 @@
                </div>
                <div>
                 <label for="cbx9" class="label-cbx">
-                    <input id="cbx9" name="ngapNuoc" type="checkbox" class="invisible" ng-model="vm.product.ngapNuoc" ng-change="vm.getPremium()">
+                    <input id="cbx9" name="ngapNuoc" type="checkbox" class="invisible" ng-model="vm.policy.ngapNuoc" ng-change="vm.getPremium()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -212,7 +212,7 @@
                </div>
                <div>
                 <label for="cbx10" class="label-cbx">
-                    <input id="cbx10" name="garage" type="checkbox" class="invisible" ng-model="vm.product.garage" ng-change="vm.getPremium()">
+                    <input id="cbx10" name="garage" type="checkbox" class="invisible" ng-model="vm.policy.garage" ng-change="vm.getPremium()">
                     <div class="checkbox">
                         <svg width="18px" height="18px" viewBox="0 0 20 20">
                             <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
@@ -224,53 +224,53 @@
                </div>
            </div>
            <div class="margin-top-5">
-               <input type="number" name="changePremium" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.changePremium" ng-blur="vm.getPremium()"/>
+               <input type="number" name="changePremium" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.changePremium" ng-blur="vm.getPremium()"/>
            </div>
            <div class="bv-title-from margin-top-20" ng-show="vm.isShowTndsbbPhi">
                <p>Phí bảo hiểm trách nhiệm dân sự bắt buộc (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowTndsbbPhi">
-               <p class="bv-tile-templateSummary">{{vm.product.tndsbbPhi | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.tndsbbPhi | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowTndstnPhi">
                <p>Phí bảo hiểm trách nhiệm dân sự tự nguyện (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowTndstnPhi">
-               <p class="bv-tile-templateSummary">{{vm.product.tndstnPhi | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.tndstnPhi | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowNntxPhi">
                <p>Phí bảo hiểm người ngồi trên xe:</p>
            </div>
            <div ng-show="vm.isShowNntxPhi">
-               <p class="bv-tile-templateSummary">{{vm.product.nntxPhi | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.nntxPhi | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowVcxPhi">
                <p>Phí bảo hiểm Vật chất xe tạm tính (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowVcxPhi">
-               <p class="bv-tile-templateSummary">{{vm.product.vcxPhi | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.vcxPhi | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowPremium">
                <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowPremium">
-               <p class="bv-tile-templateSummary">{{vm.product.premium | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.premium | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowChangePremium">
                <p>Giảm phí:</p>
            </div>
            <div ng-show="vm.isShowChangePremium">
-               <p class="bv-tile-templateSummary">{{vm.product.chargeFree | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.chargeFree | number:0 }}</p>
            </div>
            <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
                <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowTotalPremium">
-               <p class="bv-tile-templateSummary">{{vm.product.totalPremium | number:0 }}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.totalPremium | number:0 }}</p>
            </div>
        </div>
-       <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premium == 0">
-       	<div class="lock-all" ng-show="vm.product.premium == 0"></div>
+       <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.premium == 0">
+       	<div class="lock-all" ng-show="vm.policy.premium == 0"></div>
            <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
            <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 

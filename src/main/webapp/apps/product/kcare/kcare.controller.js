@@ -21,17 +21,26 @@
   		})();
   		
   		// Properties & function declare
-  		vm.product = {
-  			  "gioiTinh": "0",
-  			  "ngayBatDau": "dd/MM/yyyy",
-  			  "ngaySinh": "dd/MM/yyyy",
-  			  "premiumDiscount": 0,
-  			  "premiumKCare": 0,
-  			  "premiumNet": 0,
-  			  "typeOfKcare": ""
-  			};
+//  		vm.product = {
+//  			  "gioiTinh": "0",
+//  			  "ngayBatDau": "dd/MM/yyyy",
+//  			  "ngaySinh": "dd/MM/yyyy",
+//  			  "premiumDiscount": 0,
+//  			  "premiumKCare": 0,
+//  			  "premiumNet": 0,
+//  			  "typeOfKcare": ""
+//  			};
   		
   		vm.policy = {
+  				// premium
+  				  "gioiTinh": "0",
+				  "ngayBatDau": "dd/MM/yyyy",
+				  "ngaySinh": "dd/MM/yyyy",
+				  "premiumDiscount": 0,
+				  "premiumKCare": 0,
+				  "premiumNet": 0,
+				  "typeOfKcare": "",
+  				// create
   				"beneficiaryIdNumber": "",
   				"beneficiaryIdNumberD": "",
   				"beneficiaryName": "",
@@ -41,7 +50,6 @@
   				"beneficiaryRelationship": "",
   				"beneficiaryRelationshipD": "",
   				"changePremium": 0,
-//  				"contactCode": "DUC001",
   				"contactDob": "",
   				"contactName": "",
   				"gycbhNumber": "",
@@ -50,14 +58,6 @@
   				"insuredNgaysinh": "",
   				"insuredRelationship": "",
   				"insuredSex": "0",
-//  				"invoiceInfo": {
-//  				"accountNo": "",
-//  				"address": "",
-//  				"check": "0",
-//  				"company": "",
-//  				"name": "",
-//  				"taxNo": ""
-//  				},
   				"lstTinhtrangSKs": [
 	  				{
 	  				"benhvienorbacsy": "",
@@ -119,13 +119,6 @@
   				"qtreatment": "0",
   				"qtypeCancer": "0",
   				"receiveMethod": "1",
-//  				"receiverUser": {
-//  				"address": "Hai Bà Trưng",
-//  				"addressDistrict": "HN",
-//  				"email": "string@gmail.com",
-//  				"mobile": "0988789456",
-//  				"name": "string"
-//  				},
   				"thoihanden": "",
   				"thoihantu": "",
   				"totalPremium": 0.0
@@ -160,13 +153,13 @@
             var startDate = new Date();
             // add a day
             startDate.setDate(startDate.getDate() + 1);
-            vm.product.ngayBatDau = DateUtils.convertDate(startDate);
+            vm.policy.ngayBatDau = DateUtils.convertDate(startDate);
 
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.ngayKetThuc = DateUtils.convertDate(endDate);
-            vm.registerDisableContactInfoValue('vm.product.premiumKCare');
+            vm.registerDisableContactInfoValue('vm.policy.premiumKCare');
             
             // Edit
             if (vm.isEditMode()) {
@@ -188,7 +181,7 @@
             var now = new Date();
             var nowStr = DateUtils.convertDate(now);
             
-            var dobStr = vm.product.ngaySinh;
+            var dobStr = vm.policy.ngaySinh;
             // var dobStr = DateUtils.convertDate(dob);
             
             vm.tuoi = DateUtils.yearDiff(dobStr, nowStr);
@@ -248,7 +241,7 @@
   		}
   		
   		function checkedChangeBill() {
-  			var type = vm.product.typeOfKcare;
+  			var type = vm.policy.typeOfKcare;
   			
   			if (type == "PGM1") {
   				vm.isShowBill1 = true;
@@ -273,12 +266,12 @@
 
   		function getPremium() {
             vm.loading = true;
-            ProductCommonService.getKcarePremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getKcarePremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
   			
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;
   				vm.isShowPremium = true;
-  				vm.product = data;
+  				vm.policy = data;
   				vm.policy.thoihantu = data.ngayBatDau;
   				vm.policy.thoihanden = vm.ngayKetThuc;
   				vm.policy.changePremium = data.premiumDiscount;
@@ -360,7 +353,7 @@
   		}
   		
   		function changeToDate() {
-  			var toDate = vm.calculateToDate(vm.product.ngayBatDau);
+  			var toDate = vm.calculateToDate(vm.policy.ngayBatDau);
   			vm.ngayKetThuc = toDate;
   		}
   		function changeNTH(data) {

@@ -24,7 +24,7 @@
 
             <div class="">
                 <p class="bv-title-from">Thời hạn bảo hiểm áp dụng<span class="bv-req-red">&nbsp(*)</span></p>
-                <select class="bv-select-box form-control" name="yearBuildCode" ng-model="vm.product.yearBuildCode" ng-change="vm.changeYear()">
+                <select class="bv-select-box form-control" name="yearBuildCode" ng-model="vm.policy.yearBuildCode" ng-change="vm.changeYear()">
                     <option value="1">1 năm</option>
                     <option value="2">2 năm</option>
                 </select>
@@ -34,17 +34,17 @@
             </div>
             <div class="margin-top-5">
                 <input type="number" class="bv-input"
-                       placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" ng-model="vm.product.si"
+                       placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" ng-model="vm.policy.si"
                        ng-blur="vm.getPremium()" name="numberperson"
                        validate-on="blur"
-                       validator="vm.siValidator(vm.product.si) === true"
-                       invalid-message="vm.siValidator(vm.product.si)"
+                       validator="vm.siValidator(vm.policy.si) === true"
+                       invalid-message="vm.siValidator(vm.policy.si)"
                        required-message="'Chưa nhập Giới hạn bồi thường phần ngôi nhà!'" required />
             </div>
 
             <div class="margin-top-5">
                 <p class="bv-title-from">Giới hạn bồi thường phần Tài sản bên trong</p>
-                <select class="bv-select-box form-control" name="siin" ng-model="vm.product.siin" ng-change="vm.getPremium()">
+                <select class="bv-select-box form-control" name="siin" ng-model="vm.policy.siin" ng-change="vm.getPremium()">
                     <option value="">Lựa chọn Giới hạn bồi thường</option>
                     <option value="100000000">100,000,000 VND</option>
                     <option value="300000000">300,000,000 VND</option>
@@ -55,7 +55,7 @@
             </div>
             <div class="">
                 <p class="bv-title-from">Nhập mã giảm giá (nếu có)</p>
-                <input type="text" class="bv-input" ng-model="vm.product.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
+                <input type="text" class="bv-input" ng-model="vm.policy.premiumDiscount" name="premiumDiscount" id="premiumDiscount" placeholder="Mã giảm giá (nếu có)" />
             </div>
             <div class="margin-top-10">
                 <div class="width-100">
@@ -68,7 +68,7 @@
                                     <p class="bv-gh-text-sum-product">Phí bảo hiểm phần ngôi nhà:</p>
                                 </td>
                                 <td class="text-right">
-                                    <p class="">{{vm.product.premiumSi | number:0 }} VND</p>
+                                    <p class="">{{vm.policy.premiumSi | number:0 }} VND</p>
                                 </td>
                             </tr>
                             <tr >
@@ -76,7 +76,7 @@
                                     <p class="bv-gh-text-sum-product">Phí bảo hiểm phần tài sản bên trong:</p>
                                 </td>
                                 <td class="text-right">
-                                    <p class="">{{vm.product.premiumSiin | number:0 }} VND</p>
+                                    <p class="">{{vm.policy.premiumSiin | number:0 }} VND</p>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +84,7 @@
                                     <p class="bv-gh-text-sum-product">Tổng phí bảo hiểm:</p>
                                 </td>
                                 <td class="text-right">
-                                    <p class="">{{vm.product.premiumNet | number:0 }} VND</p>
+                                    <p class="">{{vm.policy.premiumNet | number:0 }} VND</p>
                                 </td>
                             </tr>
                             <tr>
@@ -92,7 +92,7 @@
                                     <p class="bv-gh-text-sum-product">Tổng phí thanh toán:</p>
                                 </td>
                                 <td class="text-right">
-                                    <p class="bv-gh-number-sum-product">{{vm.product.premiumHome | number:0 }} VND</p>
+                                    <p class="bv-gh-number-sum-product">{{vm.policy.premiumHome | number:0 }} VND</p>
                                 </td>
                             </tr>
                         </table>
@@ -101,8 +101,8 @@
             </div>
         </div>
 
-        <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.product.premiumHome == 0">
-            <div class="lock-all" ng-show="vm.product.premiumHome == 0"></div>
+        <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.premiumHome == 0">
+            <div class="lock-all" ng-show="vm.policy.premiumHome == 0"></div>
             <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
             <div ng-include="'apps/product/partial/partial.contact.html'"></div>
             <br/>

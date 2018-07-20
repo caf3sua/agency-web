@@ -21,23 +21,23 @@
   		})();
   		
   		// Properties & function declare
-        vm.product = {
-            "insurancestartdate":"18/05/2018",
-            "numbermonth": 0,
-            "numberperson": "",
-            "premiumPackage": "",
-            "premiumdiscount": 0,
-            "premiumnet": 0,
-            "premiumtnc": 0
-        }
+//        vm.product = {
+//            "insurancestartdate":"18/05/2018",
+//            "numbermonth": 0,
+//            "numberperson": "",
+//            "premiumPackage": "",
+//            "premiumdiscount": 0,
+//            "premiumnet": 0,
+//            "premiumtnc": 0
+//        }
 
         vm.policy = {
-            "insuranceexpireddate":"28/05/2019",
-            "insurancestartdate":"29/05/2018",
+            "insuranceexpireddate":"",
+            "insurancestartdate":"",
             "listTncAdd":[],
             "numbermonth":12,
-            "numberperson":1,
-            "premiumPackage":20000000,
+            "numberperson": "",
+            "premiumPackage":"",
             "premiumPackageplanid":2,
             "premiumdiscount":0,
             "premiumnet":0,
@@ -74,15 +74,15 @@
             var startDate = new Date();
             // add a day
             startDate.setDate(startDate.getDate() + 1);
-            vm.product.insurancestartdate = DateUtils.convertDate(startDate);
+            vm.policy.insurancestartdate = DateUtils.convertDate(startDate);
 
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.product.insuranceexpireddate = DateUtils.convertDate(endDate);
+            vm.policy.insuranceexpireddate = DateUtils.convertDate(endDate);
 
             // Register disable 
-            vm.registerDisableContactInfoValue('vm.product.premiumtnc');
+            vm.registerDisableContactInfoValue('vm.policy.premiumtnc');
             
             // Edit
             if (vm.isEditMode()) {
@@ -101,21 +101,21 @@
         }
 
         function addOrRemovePerson() {
-            if(vm.product.numberperson > 0) {
+            if(vm.policy.numberperson > 0) {
                 vm.isShowPersonList = true;
             } else {
                 vm.isShowPersonList = false;
             }
-            if(vm.product.numberperson > vm.policy.listTncAdd.length) {
+            if(vm.policy.numberperson > vm.policy.listTncAdd.length) {
                 addNewPerson();
-            } else if(vm.product.numberperson < vm.policy.listTncAdd.length) {
+            } else if(vm.policy.numberperson < vm.policy.listTncAdd.length) {
                 removePerson();
             }
             getPremium();
         }
 
         function addNewPerson() {
-            var lineAdd = vm.product.numberperson - vm.policy.listTncAdd.length;
+            var lineAdd = vm.policy.numberperson - vm.policy.listTncAdd.length;
             for (var i=0; i < lineAdd; i++) {
                 vm.policy.listTncAdd.push({
                     "dob":"",
@@ -127,7 +127,7 @@
         };
 
         function removePerson() {
-            vm.policy.listTncAdd.splice(vm.product.numberperson, vm.policy.listTncAdd.length)
+            vm.policy.listTncAdd.splice(vm.policy.numberperson, vm.policy.listTncAdd.length)
         };
 
         function processComboResult(data, type) {
@@ -145,14 +145,14 @@
                 vm.loading = true;
                 ProductCommonService.getTncPremium(postData, onGetPremiumSuccess, onGetPremiumError);
             } else {
-                vm.product.premiumnet = 0;
-                vm.product.premiumtnc = 0;
-                vm.product.premiumAverage = 0;
+                vm.policy.premiumnet = 0;
+                vm.policy.premiumtnc = 0;
+                vm.policy.premiumAverage = 0;
             }
         }
 
         function getPostData() {
-            var postData = Object.assign({}, vm.product);
+            var postData = Object.assign({}, vm.policy);
 
             postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate);
 
@@ -161,18 +161,18 @@
 
         function onGetPremiumSuccess(result) {
             vm.loading = false;
-            if(vm.product.numberperson > 0) {
-            	vm.product.premiumnet = result.premiumnet;
-                vm.product.premiumtnc = result.premiumtnc;
+            if(vm.policy.numberperson > 0) {
+            	vm.policy.premiumnet = result.premiumnet;
+                vm.policy.premiumtnc = result.premiumtnc;
                 vm.isShowPremium = true;
                 vm.isShowTotalPremium = true;
             } else {
-            	vm.product.premiumnet = 0;
-                vm.product.premiumtnc = 0;
+            	vm.policy.premiumnet = 0;
+                vm.policy.premiumtnc = 0;
                 vm.isShowPremium = false;
                 vm.isShowTotalPremium = false;
             }
-            vm.product.premiumAverage = vm.product.premiumtnc / vm.product.numberperson;
+            vm.policy.premiumAverage = vm.policy.premiumtnc / vm.policy.numberperson;
             vm.clearResponseError();
         }
 
