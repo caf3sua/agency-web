@@ -5,10 +5,10 @@
         .module('app')
         .controller('ProductHomeController', ProductHomeController);
 
-    ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
+    ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state'
     	, 'ProductCommonService', 'DateUtils'];
 
-    function ProductHomeController ($scope, $stateParams, $controller, Principal, $state, $rootScope
+    function ProductHomeController ($scope, $stateParams, $controller, Principal, $state
     		, ProductCommonService, DateUtils) {
     	var vm = this;
     	vm.lineId = 'HOM';

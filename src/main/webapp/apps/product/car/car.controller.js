@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductCarController', ProductCarController);
 
-    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'];
 
-    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state) {
         var vm = this;
         vm.lineId = 'CAR';
         

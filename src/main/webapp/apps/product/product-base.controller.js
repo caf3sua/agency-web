@@ -127,9 +127,9 @@
                 	obj.gycbhNumber  = result.policyNumber;
                 	// receiverUserData
                 	
-                	vm.policy.receiverUserData.address = vm.policy.receiverUserData.address 
-                		+ "::" + vm.policy.receiverUserData.addressDistrictData.pkDistrict
-                		+ "::" + vm.policy.receiverUserData.addressDistrictData.pkPostcode;
+                	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
+                		+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
+                		+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
                 	// Add new
                 	createNewPolicy(productCode, obj);
                 }).catch(function(data, status) {
@@ -265,9 +265,9 @@
         	var message = "";
         	if (obj.agreementId != null && obj.agreementId != "") {
         		// Update
-        		message = "Cập nhật hợp đồng thành công!";
+        		message = "Cập nhật hợp đồng " + obj.gycbhNumber + " thành công!";
         	} else {
-        		message = "Tạo hợp đồng thành công!";
+        		message = "Tạo hợp đồng  " + obj.gycbhNumber + " thành công!";
         	}
         	
         	$ngConfirm({
@@ -506,7 +506,7 @@
 
             var message = ResponseValidateService.validateResponse(result.data);
             if(!message) {
-                message = result.data.fieldName + ' is invalid';
+                message = result.data.fieldName + ' dữ liệu không hợp lệ';
             }
             if(type == 'getPremium') {
                 message = '' + message;

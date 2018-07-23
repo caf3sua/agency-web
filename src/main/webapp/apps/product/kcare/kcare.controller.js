@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductKcareController', ProductKcareController);
 
-    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService', 'DateUtils'];
+    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', 'ProductCommonService', 'DateUtils'];
 
-    function ProductKcareController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService, DateUtils) {
+    function ProductKcareController ($scope, $controller, Principal, $state, ProductCommonService, DateUtils) {
         var vm = this;
         vm.lineId = 'KCR';
 

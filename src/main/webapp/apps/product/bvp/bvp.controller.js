@@ -234,8 +234,8 @@
   		}, true);
         
         $scope.$watch('$root.nguoidbh', function () {
-        	vm.policy.nguoithCmnd = $rootScope.nguoidbh.cmnd;
-        	vm.policy.nguoithQuanhe = $rootScope.nguoidbh.quanhe;
+        	vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
+        	vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
   		}, true);
         
         $scope.$on('selectedContactChange', function() {
