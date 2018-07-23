@@ -37,7 +37,12 @@
 	        
 	        
 	        vm.chartIncomeOptions = chartIncomeOptions;
+//	        vm.chartIncomeOptions.yAxis[0].show = false;
+//	        vm.chartIncomeOptions.xAxis[0].show = false;
+	        
 	        vm.chartCommissionOptions = chartCommissionOptions;
+//	        vm.chartCommissionOptions.yAxis[0].show = false;
+//	        vm.chartCommissionOptions.xAxis[0].show = false;
 	        
 	        vm.dataIncome = {};
 	        vm.dataCommission = {};
