@@ -70,7 +70,6 @@
         vm.closeOpenStepMobile = closeOpenStepMobile;
         vm.calculateToDate = calculateToDate;
         vm.openSearchContact = openSearchContact;
-		vm.appendCommonData = appendCommonData;
 		vm.openAddContact = openAddContact;
 
 		vm.getName = getName;
@@ -126,6 +125,11 @@
                 	console.log('Done get gychbhNumber: ' + result.policyNumber);
                 	// Add ychbhNumber
                 	obj.gycbhNumber  = result.policyNumber;
+                	// receiverUserData
+                	
+                	vm.policy.receiverUserData.address = vm.policy.receiverUserData.address 
+                		+ "::" + vm.policy.receiverUserData.addressDistrictData.pkDistrict
+                		+ "::" + vm.policy.receiverUserData.addressDistrictData.pkPostcode;
                 	// Add new
                 	createNewPolicy(productCode, obj);
                 }).catch(function(data, status) {
@@ -295,25 +299,17 @@
 		
         $scope.$on('selectedContactChange', function() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
-        		vm.contactCode = $rootScope.selectedContact.contactCode;
-        		vm.contactName = $rootScope.selectedContact.contactName;
-                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
-                vm.contactEmail = $rootScope.selectedContact.email;
-                vm.contactPhone = $rootScope.selectedContact.handPhone;
-                vm.contactAddress = $rootScope.selectedContact.homeAddress;
-                vm.contactAddressDistrict = $rootScope.selectedContact.homeAddress;
-                vm.handPhone = $rootScope.selectedContact.handPhone;
+        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+        		vm.policy.contactName = $rootScope.selectedContact.contactName;
+//                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
+//                vm.contactEmail = $rootScope.selectedContact.email;
+//                vm.contactPhone = $rootScope.selectedContact.handPhone;
+//                vm.contactAddress = $rootScope.selectedContact.homeAddress;
+//                vm.contactAddressDistrict = $rootScope.selectedContact.homeAddress;
+//                vm.handPhone = $rootScope.selectedContact.handPhone;
         	}
         });
 
-        function appendCommonData(policy) {
-        	policy.contactCode = vm.contactCode;
-        	// concat address + district
-        	vm.receiverUserData.address = vm.receiverUserData.address + "::" + vm.receiverUserData.addressDistrict;
-        	policy.receiverUser = vm.receiverUserData;
-        	policy.invoiceInfo = vm.invoiceInfoData;
-        }
-        
         function openSearchContact() {
         	console.log('openSearchContact');
         	ContactCommonDialogService.openSearchDialog();
@@ -378,8 +374,6 @@
                     vm.typeNameThree = "Tóm tắt đơn hàng";
                 }
 
-                // NamNH fix: Append contactCode + invoiceInfo + receiverUser
-                appendCommonData(vm.policy);
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
                 // document.getElementById("bv-step-2").className = 'bv-step-2 col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex widthStep2';
@@ -435,8 +429,6 @@
                     vm.typeArrowThree = "fa-angle-left";
                     vm.typeArrowTwo = "fa-angle-right";
 
-                    // NamNH fix: Append contactCode + invoiceInfo + receiverUser
-                    appendCommonData(vm.policy);
                 }
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';

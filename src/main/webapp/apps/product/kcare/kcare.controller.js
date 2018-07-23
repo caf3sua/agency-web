@@ -21,16 +21,6 @@
   		})();
   		
   		// Properties & function declare
-//  		vm.product = {
-//  			  "gioiTinh": "0",
-//  			  "ngayBatDau": "dd/MM/yyyy",
-//  			  "ngaySinh": "dd/MM/yyyy",
-//  			  "premiumDiscount": 0,
-//  			  "premiumKCare": 0,
-//  			  "premiumNet": 0,
-//  			  "typeOfKcare": ""
-//  			};
-  		
   		vm.policy = {
   				// premium
   				  "gioiTinh": "0",
@@ -292,8 +282,8 @@
   		function savePolicy() {
             vm.loading = true;
   			console.log('createPolicy');
-  			// Append contactCode + invoiceInfo + receiverUser
-  			vm.appendCommonData(vm.policy);
+            debugger
+            
             if(vm.policy.q1 == false){
                 vm.policy.q1 = 0;
             } else {

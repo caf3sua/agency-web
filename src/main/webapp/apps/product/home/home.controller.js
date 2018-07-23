@@ -134,9 +134,6 @@
   		}
   		
   		function savePolicy() {
-  			// NamNH fix: Append contactCode + invoiceInfo + receiverUser
-  			vm.appendCommonData(vm.policy);
-  			
   			// call base
   			vm.savePolicyBase("HOM", vm.policy);
   		}
