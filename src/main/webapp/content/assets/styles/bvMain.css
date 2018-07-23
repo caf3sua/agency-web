@@ -1803,6 +1803,29 @@ body {
     margin: 0;
     margin-right: 10px;
 }
+#bv-combobox-px>div>button{
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgb(224, 225, 229);
+    border-radius: 5px;
+    color: rgb(3, 113, 182);
+    height: 52px;
+}
+#bv-combobox-px>div>input{
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgb(224, 225, 229);
+    border-radius: 5px;
+    color: rgb(3, 113, 182);
+    height: 52px;
+}
+#bv-combobox-px>div>ul{
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+    margin-top: 48px;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
