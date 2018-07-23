@@ -137,7 +137,7 @@
 
   			var order = {};
   			order = vm.searchCriterial;
-  			order.pageable.page = vm.page;
+  			order.pageable.page = vm.page - 1;
         	console.log('searchAllTransition, page: ' + order.pageable.page);
         	
   			OrderService.search(order, onSearchSuccess, onSearchError);
