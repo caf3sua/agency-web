@@ -282,7 +282,6 @@
   		function savePolicy() {
             vm.loading = true;
   			console.log('createPolicy');
-            debugger
             
             if(vm.policy.q1 == false){
                 vm.policy.q1 = 0;

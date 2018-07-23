@@ -23,31 +23,31 @@
     <p class="bv-title-from">Họ và tên người mua</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfoData.name"/>
+    <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
 </div>
 <div class="margin-top-10">
     <p class="bv-title-from">Tên đơn vị</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfoData.company"/>
+    <input type="text" name="invoiceInfoData.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
 </div>
 <div class="margin-top-10">
     <p class="bv-title-from">Mã số thuế</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfoData.taxNo"/>
+    <input type="text" name="invoiceInfoData.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo"/>
 </div>
 <div class="margin-top-10">
     <p class="bv-title-from">Địa chỉ đơn vị</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfoData.address"/>
+    <input type="text" name="invoiceInfoData.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
 </div>
 <div class="margin-top-10">
     <p class="bv-title-from">Số tài khoản</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.accountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfoData.accountNo"/>
+    <input type="text" name="invoiceInfoData.accountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
 </div>
   
 <div class="margin-top-20 text-header-sp">
@@ -57,7 +57,7 @@
     <p class="bv-title-from">Họ và tên người nhận</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="receiverUserData.name" class="bv-input" placeholder="Họ và tên người nhận" ng-model="vm.policy.receiverUserData.name"
+    <input type="text" name="receiverUserData.name" class="bv-input" placeholder="Họ và tên người nhận" ng-model="vm.policy.receiverUser.name"
 		required-message="'Chưa nhâp họ và tên người nhận!'"
 	 	required/>
 </div>
@@ -65,7 +65,7 @@
     <p class="bv-title-from">Địa chỉ người nhận</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="receiverUserData.address" class="bv-input" placeholder="Địa chỉ người nhận" ng-model="vm.policy.receiverUserData.address"
+    <input type="text" name="receiverUserData.address" class="bv-input" placeholder="Địa chỉ người nhận" ng-model="vm.policy.receiverUser.address"
     	required-message="'Chưa nhập địa chỉ người nhận!'"
 	 	required/>
 </div>
@@ -74,8 +74,8 @@
 </div>
 <div class="margin-top-5">
 	<!-- auto completed list -->
-	<bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.receiverUserData.addressDistrictData"></bv-ward-input>
-    <input type="hidden" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.receiverUserData.addressDistrictData"
+	<bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.receiverUser.addressDistrictData"></bv-ward-input>
+    <input type="hidden" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.receiverUser.addressDistrictData"
     	required-message="'Chưa nhập tên phường xã!'"
 	 	required/>
 </div>
@@ -83,7 +83,7 @@
     <p class="bv-title-from">Số điện thoại liên hệ</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUserData.mobile"
+    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUser.mobile"
     	ng-pattern = "/^[0-9]{10,11}$/"
     	validate-on="blur"
         invalid-message = "'Số điện thoại không đúng định dạng'"
@@ -94,7 +94,7 @@
     <p class="bv-title-from">Email người nhận</p>
 </div>
 <div class="margin-top-5">
-    <input type="text" name="email22" class="bv-input" placeholder="Email người nhận" ng-model="vm.policy.receiverUserData.email"
+    <input type="text" name="email22" class="bv-input" placeholder="Email người nhận" ng-model="vm.policy.receiverUser.email"
     	ng-pattern = "/\S+@\S+\.\S+/"
     	validate-on="blur"
         invalid-message = "'Email không đúng định dạng'"
