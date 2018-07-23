@@ -4079,8 +4079,10 @@ a.text-blue:hover {
   color: rgba(0, 0, 0, 0.87); }
 
 .text-muted {
-  color: inherit !important;
-  opacity: 0.6; }
+  /* color: inherit !important;
+  opacity: 0.6; */
+  color: #777; 
+}
 
 .text-color {
   color: rgba(0, 0, 0, 0.87); }

@@ -6,7 +6,7 @@
     	<div class="input-group display-flex">
          	<div class="width-100" id="bv-combobox-px">
              	<ui-select ng-model="$ctrl.connectionModel" theme="bootstrap" on-select="$ctrl.onChange($item)" required required-message="'Chưa nhập tên phường xã!'">
-					<ui-select-match class="ui-select-match bv-ward-txt" placeholder="{{$ctrl.placeholder}}">{{$select.selected.pkDistrict}}</ui-select-match>
+					<ui-select-match class="ui-select-match" placeholder="{{$ctrl.placeholder}}">{{$select.selected.pkDistrict}}</ui-select-match>
 					<ui-select-choices class="ui-select-choices" repeat="item in $ctrl.lstAddress | filter: $select.search | limitTo: 20">
 						<div ng-bind-html="item.pkDistrict | highlight: $select.search"></div>
 						<small ng-bind-html="item.pkProvince | highlight: $select.search"></small>
@@ -15,15 +15,7 @@
          	</div>
          	<div class="input-group-addon bv-date-icon" ng-click="$ctrl.connectionModel = undefined">
                     <span class="fas fa-times"></span>
-             	<!--<button ng-click="$ctrl.connectionModel = undefined" class="btn blue">-->
-					<!--<span class="fa fa-remove"></span>-->
-				<!--</button>-->
          	</div>
         </div>
     </div>
 </div>
-	    
-<!-- <div class="margin-top-5">
-	<input type="text" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="$ctrl.connectionModel"
-	/>
-</div> -->
