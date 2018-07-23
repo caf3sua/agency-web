@@ -34,10 +34,11 @@
         init();
         
         function init() {
-        	console.log(vm.connectionModel);
-        	$http.get('api/agency/common/getAddress').then(function(result) {
+//        	$http.get('api/agency/common/getAddress').then(function(result) {
+//            	vm.lstAddress = result.data;
+//            });
+        	$http.get('data/address.json').then(function(result) {
             	vm.lstAddress = result.data;
-        		console.log(scope.lstAddress);
             });
         }
         
