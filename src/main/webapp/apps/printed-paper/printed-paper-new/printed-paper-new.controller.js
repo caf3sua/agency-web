@@ -25,7 +25,6 @@
   		
   		// Properties & function declare
   		vm.search = search;
-  		vm.selectedAnchi = selectedAnchi;
         
         angular.element(document).ready(function () {
         });

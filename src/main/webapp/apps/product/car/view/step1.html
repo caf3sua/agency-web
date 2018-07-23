@@ -296,7 +296,12 @@
                />
            </div>
            <div class="margin-top-5">
-               <input type="text" name="insuredAddress" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddress"
+               <!-- <input type="text" name="insuredAddress" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddressDistrict"
+                      required-message="'Cần nhập thông tin Phường/Xã theo đăng ký !'"
+                      required
+               /> -->
+               <bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.insuredAddressDistrict"></bv-ward-input>
+               <input type="hidden" name="insuredAddressDistrict" class="bv-input" placeholder="Phường/Xã" ng-model="vm.policy.insuredAddressDistrict"
                       required-message="'Cần nhập thông tin Phường/Xã theo đăng ký !'"
                       required
                />
