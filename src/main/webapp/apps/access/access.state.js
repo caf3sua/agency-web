@@ -11,7 +11,7 @@
         $stateProvider
         		.state('access', {
         			url: '/access',
-        			template: '<div class="background-fff bg-auto w-full"><div ui-view class="fade-in-right-big smooth pos-rlt"></div></div>',
+        			template: '<div class=" bg-auto w-full"><div ui-view class="fade-in-right-big smooth pos-rlt"></div></div>',
         			resolve: {
         				translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
         					$translatePartialLoader.addPart('account');
