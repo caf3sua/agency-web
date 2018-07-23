@@ -1827,6 +1827,9 @@ body {
     overflow-x: hidden;
     margin-top: 48px;
 }
+.bv-ward-txt{
+    color: #e0e1e5;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
