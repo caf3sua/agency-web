@@ -34,7 +34,7 @@
         		  "toDate": ""
   		};
         
-        vm.chartOptions = chartCommissionOption;
+        vm.chartOptions = chartCommissionOptions;
         
         // Init controller
   		(function initController() {
