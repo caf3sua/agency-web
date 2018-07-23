@@ -17,8 +17,8 @@
 	</div>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 display-flex margin-top-5">
-	<i class="bv-req-red" ng-show="error.required">*Bắt buộc</i><br>
-	<i ng-show="form.gycbhFile.$error.maxSize">File hiện tại {{errorFileGycbh.size / 1000000|number:1}}MB: lớn hơn 2M</i>
+	<p class="bv-req-red" ng-show="error.required">*Bắt buộc</p>
+	<p class="bv-req-red" ng-show="error.maxSize">&nbsp; &nbsp;File hiện tại {{errorFileGycbh.size / 1000000|number:1}}MB: lớn hơn 2MB</p>
 	<img style="width: 40px" ng-show="form.gycbhFile.$valid" ngf-thumbnail="fileModel" class="thumb">
 	<button ng-click="fileModel = null" ng-show="fileModel" style="background: transparent;border: 0;"><i class="fas fa-trash-alt"></i></button>
 </div>
