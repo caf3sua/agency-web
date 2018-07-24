@@ -91,14 +91,9 @@
                 </select>
             </div>
             <div class="margin-top-10">
-                <p class="bv-title-from">Bảng quyền lợi bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+                <p class="bv-title-from">Chương trình bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="margin-top-10">
-                <!--<select class="bv-select-box form-control" ng-model="vm.policy.planId">-->
-                <!--<option value="1">Bạc</option>-->
-                <!--<option value="2">Vàng</option>-->
-                <!--<option value="3">Kim cương</option>-->
-                <!--</select>-->
                 <div class="cntr text-center">
                     <label for="cbx13" class="label-cbx margin-right-5">
                         <input id="cbx13" name="planId" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
@@ -167,6 +162,16 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- Bảng quyền lợi bảo hiểm -->
+            <div class="margin-top-10">
+                <p class="bv-title-from" ng-init="vm.isCollapsedTableRights = true" ng-click="vm.isCollapsedTableRights = !vm.isCollapsedTableRights">
+                	Bảng tóm tắt quyền lợi bảo hiểm <i class="fas" ng-class="vm.isCollapsedTableRights ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+                </p>
+            </div>
+			<div class="margin-top-10" uib-collapse="vm.isCollapsedTableRights">
+			    <div ng-include="'apps/product/partial/partial.table-rights-tvc.html'"></div>
+			</div>
         </div>
         <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.premium == 0">
             <div class="lock-all" ng-show="vm.policy.premium == 0"></div>

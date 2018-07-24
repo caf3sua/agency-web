@@ -178,6 +178,16 @@
             <div ng-show="vm.isShowTotalPremium">
                 <p class="bv-tile-templateSummary">{{vm.policy.phiBH | number:0}}</p>
             </div>
+            
+            <!-- Bảng quyền lợi bảo hiểm -->
+            <div class="margin-top-10">
+                <p class="bv-title-from" ng-init="vm.isCollapsedTableRights = true" ng-click="vm.isCollapsedTableRights = !vm.isCollapsedTableRights">
+                	Bảng tóm tắt quyền lợi bảo hiểm <i class="fas" ng-class="vm.isCollapsedTableRights ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+                </p>
+            </div>
+			<div class="margin-top-10" uib-collapse="vm.isCollapsedTableRights">
+			    <div ng-include="'apps/product/partial/partial.table-rights-bvp.html'"></div>
+			</div>
         </div>
         <div id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.phiBH == 0">
         	<div class="lock-all" ng-show="vm.policy.phiBH == 0"></div>

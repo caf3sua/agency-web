@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/tvc/tvc.service.js']);
+	            		return $ocLazyLoad.load(['apps/product/tvc/tvc.controller.js']);
 		        }
             }
         });

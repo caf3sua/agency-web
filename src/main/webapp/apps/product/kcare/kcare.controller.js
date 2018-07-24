@@ -24,8 +24,8 @@
   		vm.policy = {
   				// premium
   				  "gioiTinh": "0",
-				  "ngayBatDau": "dd/MM/yyyy",
-				  "ngaySinh": "dd/MM/yyyy",
+				  "ngayBatDau": "",
+				  "ngaySinh": "",
 				  "premiumDiscount": 0,
 				  "premiumKCare": 0,
 				  "premiumNet": 0,
