@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductKcareController', ProductKcareController);
 
-    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', 'ProductCommonService', 'DateUtils'];
+    ProductKcareController.$inject = ['$scope', '$controller', 'Principal', '$state', 'ProductCommonService', 'DateUtils'
+    	, '$stateParams'];
 
-    function ProductKcareController ($scope, $controller, Principal, $state, ProductCommonService, DateUtils) {
+    function ProductKcareController ($scope, $controller, Principal, $state, ProductCommonService, DateUtils
+    		, $stateParams) {
         var vm = this;
         vm.lineId = 'KCR';
 
@@ -160,6 +162,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

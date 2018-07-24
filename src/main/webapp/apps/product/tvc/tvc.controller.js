@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductTvcController', ProductTvcController);
 
-    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'];
+    ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
+    	, '$stateParams'];
 
-    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService) {
+    function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
+    		, $stateParams) {
     	var vm = this;
     	vm.lineId = 'TVC';
     	
@@ -77,6 +79,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

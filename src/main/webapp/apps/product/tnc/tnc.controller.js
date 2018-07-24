@@ -5,9 +5,9 @@
         .module('app')
         .controller('ProductTncController', ProductTncController);
 
-    ProductTncController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductTncController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope', '$stateParams'];
 
-    function ProductTncController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductTncController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope, $stateParams) {
     	var vm = this;
     	vm.lineId = 'TNC';
     	
@@ -93,6 +93,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

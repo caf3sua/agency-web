@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductBvpController', ProductBvpController);
 
-    ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state'];
+    ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService'
+    	, '$state', '$stateParams'];
 
-    function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService, $state) {
+    function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService
+    		, $state, $stateParams) {
     	var vm = this;
     	vm.lineId = 'BVP';
     	
@@ -220,6 +222,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

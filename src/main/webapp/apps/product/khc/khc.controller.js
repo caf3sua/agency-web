@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductKhcController', ProductKhcController);
 
-    ProductKhcController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductKhcController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'
+    	, '$stateParams'];
 
-    function ProductKhcController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductKhcController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope
+    		, $stateParams) {
     	var vm = this;
     	vm.lineId = 'KHC';
     	
@@ -96,6 +98,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

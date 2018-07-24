@@ -12,11 +12,11 @@
         </div>
 		<span class="bv-detail-text-table">Hủy</span>
 	</div>
-    <div ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 89">
+    <div ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 89" ng-click="vm.confirmEditAgreement(order)">
         <div class="bv-detail-icon-table">
             <i class="icon-pencil"></i>
         </div>
-        <span class="bv-detail-text-table" ng-click="vm.confirmEditAgreement(order)">Sửa</span>
+        <span class="bv-detail-text-table">Sửa</span>
     </div>
     <div ng-show="order.statusPolicyId == 91" ng-click="vm.confirmResendEmail(order.gycbhNumber)">
         <div class="bv-detail-icon-table">

@@ -78,6 +78,7 @@
         vm.validateResponse = validateResponse;
         vm.clearResponseError = clearResponseError;
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
+        vm.disableContactInfo = disableContactInfo;
         vm.isEditMode = isEditMode;
         vm.loadPolicyEdit = loadPolicyEdit;
         

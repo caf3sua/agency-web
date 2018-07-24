@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductCarController', ProductCarController);
 
-    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'];
+    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'
+    	, '$stateParams'];
 
-    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state) {
+    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state
+    		, $stateParams) {
         var vm = this;
         vm.lineId = 'CAR';
         
@@ -177,6 +179,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

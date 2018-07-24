@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductMotoController', ProductMotoController);
 
-    ProductMotoController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state', '$rootScope'];
+    ProductMotoController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state'
+    	, '$rootScope', '$stateParams'];
 
-    function ProductMotoController ($scope, $controller, DateUtils, ProductCommonService, $state, $rootScope) {
+    function ProductMotoController ($scope, $controller, DateUtils, ProductCommonService, $state
+    		, $rootScope, $stateParams) {
     	var vm = this;
     	vm.lineId = 'MOT';
     	
@@ -119,6 +121,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();

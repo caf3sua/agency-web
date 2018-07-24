@@ -5,9 +5,11 @@
         .module('app')
         .controller('ProductTviController', ProductTviController);
 
-    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'];
+    ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
+    	, '$stateParams'];
 
-    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService) {
+    function ProductTviController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
+    		, $stateParams) {
         var vm = this;
         vm.lineId = 'TVI';
         
@@ -107,6 +109,9 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		vm.loading = false;
             		vm.policy = result;
+            		// Open view and step
+            		vm.nextCount = 2;
+            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
