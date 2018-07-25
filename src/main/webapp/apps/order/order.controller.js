@@ -165,7 +165,7 @@
         function confirmResendEmail(gycbhNumber) {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'fa fa-times',
+                icon: 'fa fa-envelope',
                 theme: 'modern',
                 type: 'red',
                 content: '<div class="text-center">Bạn chắc chắn muốn gửi lại email ?</div>',
@@ -202,7 +202,7 @@
         function confirmTaituc(agreementId) {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'fa fa-times',
+                icon: 'fa fa-history',
                 theme: 'modern',
                 type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
@@ -293,7 +293,7 @@
   		function confirmEditAgreement(order) {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'fa fa-times',
+                icon: 'fa fa-edit',
                 theme: 'modern',
                 type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn sửa hợp đồng ' + order.gycbhNumber + ' này ?</div>',
