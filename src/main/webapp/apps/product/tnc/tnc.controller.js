@@ -48,6 +48,7 @@
         vm.validatorCombo = validatorCombo;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.processComboResult = processComboResult;
+        vm.onThoihanChange = onThoihanChange;
         vm.getPremium = getPremium;
         vm.savePolicy = savePolicy;
         vm.premiumPackageOptions = [
@@ -120,6 +121,12 @@
   			
   			// extra
   		}
+        
+        function onThoihanChange() {
+        	var endDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').format("DD/MM/YYYY");
+            // add a day
+            vm.policy.insuranceEndDate = endDate;
+        }
         
         function addOrRemovePerson() {
             if(vm.policy.numberperson > 0) {

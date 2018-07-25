@@ -45,6 +45,7 @@
         vm.validatorCombo = validatorCombo;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.onDobChange = onDobChange;
+        vm.onThoihanChange = onThoihanChange;
         vm.processComboResult = processComboResult;
         vm.getPremium = getPremium;
         vm.savePolicy = savePolicy;
@@ -55,7 +56,6 @@
             {id: '50000000', name: '50000000 VND'}
         ];
 
-        vm.isShowPersonList = false;
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
 //        vm.postPremiumKhcListIndex = [];
@@ -102,6 +102,14 @@
         }
         
         function formatEditData(result) {
+        	result.premiumKhcList = result.tlAddcollections;
+        	result.premiumPackage = (result.plan * 10000000).toString();
+        	result.numberPerson = result.permanentTotalDisablement;
+        	result.insuranceStartDate = result.inceptionDate;
+        	result.premiumKhc = 0;
+        	result.premiumNet = 0;
+        	result.premiumDiscount = 0;
+//            vm.policy.insuranceEndDate = DateUtils.convertDate(endDate);
   		}
         
         function formatAddressEdit() {
@@ -126,13 +134,14 @@
                 getPremium();
             }
         }
+        
+        function onThoihanChange() {
+        	var endDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').format("DD/MM/YYYY");
+            // add a day
+            vm.policy.insuranceEndDate = endDate;
+        }
 
         function addOrRemovePerson() {
-            if(vm.policy.numberPerson > 0) {
-                vm.isShowPersonList = true;
-            } else {
-                vm.isShowPersonList = false;
-            }
             if(vm.policy.numberPerson > vm.policy.premiumKhcList.length) {
                 addNewPerson();
             } else if(vm.policy.numberPerson < vm.policy.premiumKhcList.length) {
@@ -206,7 +215,7 @@
             vm.loading = false;
             var now = new Date();
             var nowStr = DateUtils.convertDate(now);
-            vm.policy.premiumKhcList = result.premiumKhcList;
+//            vm.policy.premiumKhcList = result.premiumKhcList;
             for (var i=0; i < vm.policy.premiumKhcList.length; i++) {
                 vm.policy.premiumKhcList[i].dob = result.premiumKhcList[i].dob;
 	            vm.policy.premiumKhcList[i].insuredName = result.premiumKhcList[i].insuredName;
@@ -244,7 +253,8 @@
         function savePolicy() {
             vm.policy.inceptionDate = vm.policy.insuranceStartDate;
             vm.policy.tlAddcollections = vm.policy.premiumKhcList;
-
+            vm.policy.permanentTotalDisablement = vm.policy.numberPerson;
+            
             // call base
             vm.savePolicyBase("KHC", vm.policy);
         }
