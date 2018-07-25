@@ -6,16 +6,14 @@
         .controller('ProductHomeController', ProductHomeController);
 
     ProductHomeController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state'
-    	, 'ProductCommonService', 'DateUtils'];
+    	, 'ProductCommonService', 'DateUtils', '$timeout'];
 
     function ProductHomeController ($scope, $stateParams, $controller, Principal, $state
-    		, ProductCommonService, DateUtils) {
+    		, ProductCommonService, DateUtils, $timeout) {
     	var vm = this;
     	vm.lineId = 'HOM';
     	
         vm.changeYear = changeYear;
-        angular.element(document).ready(function () {
-        });
 
     	// Init controller
   		(function initController() {
@@ -72,6 +70,9 @@
   		vm.changeToDate = changeToDate;
   		vm.siValidator = siValidator;
   		
+  		angular.element(document).ready(function () {
+        });
+  		
   		// Initialize
   		init();
   		
@@ -94,11 +95,16 @@
             	$state.current.data.title = $state.current.data.title + '_EDIT';
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		// Format to display and calculate premium again
+            		result.si = Number(result.si);
+            		result.totalUsedArea = Number(result.totalUsedArea);
+            		result.premiumHome = "0";
+            		
             		vm.loading = false;
             		vm.policy = result;
             		// Open view and step
+            		getPremium();
             		vm.nextCount = 2;
-            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
@@ -112,7 +118,6 @@
   			
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;
-  				vm.policy = data;
   				vm.policy.si = data.si;
   				vm.policy.siin = data.siin;
   				vm.policy.premiumsi = data.premiumSi;
@@ -121,7 +126,6 @@
   				vm.policy.premiumHome = data.premiumHome;
   				vm.policy.premiumDiscount = data.premiumDiscount;
   				vm.policy.yearBuildCode = data.yearBuildCode;
-  				console.log(vm.policy);
 
                 vm.clearResponseError();
             }

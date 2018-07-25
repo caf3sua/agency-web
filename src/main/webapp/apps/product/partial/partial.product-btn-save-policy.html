@@ -1,5 +1,6 @@
 <div>
     <button class="bv-btn-step3" ng-click="vm.savePolicy()" >
-        Tạo đơn hàng
+        <span ng-show="!vm.isEditMode()">Tạo đơn hàng</span>
+        <span ng-show="vm.isEditMode()">Cập nhật đơn hàng</span>
     </button>
 </div>
