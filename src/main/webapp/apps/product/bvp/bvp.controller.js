@@ -25,31 +25,6 @@
   		})();
   		
   		// Properties & function declare
-//  		vm.policy = {
-//			"chuongTrinh": "",
-//			"ngaySinh": "",
-//			"tuoi": 0,
-//			"ngoaitruChk": false,
-//			"ngoaitruPhi": 0,
-//			
-//			"tncnChk": false,
-//			"tncnSi": "",
-//			"tncnPhi": 0,
-//			"smcnChk": false,
-//			"smcnSi": "",
-//			"smcnPhi": 0,
-//			"nhakhoaChk": false,
-//			"nhakhoaPhi": 0,
-//			"thaisanChk": false,
-//			"thaisanPhi": 0,
-//			"thoihanbhTu": "",
-//			"qlChinhPhi": 0,
-//			"phiBH": 0,
-//			"premiumNet": 0,
-//			"premiumDiscount": 0,
-//			"pagencyRole": "1"
-//		}
-
         vm.policy = {
   				// premium
   				"chuongTrinh": "",
@@ -220,17 +195,23 @@
             	$state.current.data.title = $state.current.data.title + '_EDIT';
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		// Format to display and calculate premium again
+            		formatEditData(result);
+            		
             		vm.loading = false;
             		vm.policy = result;
-            		// Open view and step
+            		// Open view and step - calculate premium again
+            		getPremium();
             		vm.nextCount = 2;
-            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
     		    });
             }
         }
+        
+        function formatEditData(result) {
+  		}
         
         // watch
         $scope.$watch('$root.nguoith', function () {

@@ -127,11 +127,16 @@
             <div class="margin-top-5">
                 <input type="text" name="insuranceAddress" id="insuranceAddress" ng-model="vm.policy.insuranceAddress" class="bv-input" placeholder="VD: 35 Hai Bà Trưng" required-message="'Chưa nhập địa chỉ liên lạc!'" required/>
             </div>
+            <!-- Phường/Xã -->
+            <!-- auto completed list -->
             <div class="margin-top-10">
                 <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="margin-top-5">
-                <input type="text" name="txt1" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" required-message="'Chưa nhập tên phường/xã!'" required/>
+            	<bv-ward-input isRequired="true" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" connection-model="vm.policy.insuranceAddressDistrict"></bv-ward-input>
+    			<input type="hidden" name="vm.policy.insuranceAddressDistrict" ng-model="vm.policy.insuranceAddressDistrict"
+    				required-message="'Chưa nhập tên phường xã!'"
+	 				required/>
             </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Số điện thoại <span class="bv-req-red">&nbsp(*)</span></p>
@@ -154,7 +159,10 @@
                 <p class="bv-title-from">Tên phường/ xã <span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="margin-top-5">
-                <input type="text" name="txt1" class="bv-input" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" required-message="'Chưa nhập tên phường/xã!'" required/>
+                <bv-ward-input isRequired="true" placeholder="VD: Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội" connection-model="vm.policy.insuredLocationDistrict"></bv-ward-input>
+    			<input type="hidden" name="vm.policy.insuredLocationDistrict" ng-model="vm.policy.insuredLocationDistrict"
+    				required-message="'Chưa nhập tên phường xã!'"
+	 				required/>
             </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Quyền sở hữu ngôi nhà <span class="bv-req-red">&nbsp(*)</span></p>

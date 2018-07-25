@@ -22,17 +22,6 @@
   		})();
   		
   		// Properties & function declare
-//  		vm.product = {
-//  			"premiumDiscount": 0,
-//  			"premiumHome": 0,
-//  			"premiumNet": 0,
-//  			"premiumSi": 0,
-//  			"premiumSiin": 0,
-//  			"si": "",
-//  			"siin": "",
-//  			"yearBuildCode": "1"
-//  		};
-  		
   		vm.policy = {
   				"bankId": "0",
   				"baovietCompanyId": "",
@@ -96,13 +85,11 @@
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
-            		result.si = Number(result.si);
-            		result.totalUsedArea = Number(result.totalUsedArea);
-            		result.premiumHome = "0";
+            		formatEditData(result);
             		
             		vm.loading = false;
             		vm.policy = result;
-            		// Open view and step
+            		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
                 }).catch(function(data, status) {
@@ -112,6 +99,12 @@
             }
         }
   		
+  		function formatEditData(result) {
+  			result.si = Number(result.si);
+    		result.totalUsedArea = Number(result.totalUsedArea);
+    		result.premiumHome = "0";
+  		}
+  		
   		function getPremium() {
             vm.loading = true;
             ProductCommonService.getHomePremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
@@ -120,8 +113,8 @@
                 vm.loading = false;
   				vm.policy.si = data.si;
   				vm.policy.siin = data.siin;
-  				vm.policy.premiumsi = data.premiumSi;
-  				vm.policy.premiumsiin = data.premiumSiin;
+  				vm.policy.premiumsi = data.premiumsi;
+  				vm.policy.premiumsiin = data.premiumsiin;
   				vm.policy.premiumNet = data.premiumNet;
   				vm.policy.premiumHome = data.premiumHome;
   				vm.policy.premiumDiscount = data.premiumDiscount;

@@ -160,17 +160,23 @@
             	$state.current.data.title = $state.current.data.title + '_EDIT';
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		// Format to display and calculate premium again
+            		formatEditData(result);
+            		
             		vm.loading = false;
             		vm.policy = result;
-            		// Open view and step
+            		// Open view and step - calculate premium again
+            		getPremium();
             		vm.nextCount = 2;
-            		vm.disableContactInfo(false);
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
     		    });
             }
         }
+        
+        function formatEditData(result) {
+  		}
   		
   		function onDobChange() {
             var now = new Date();
