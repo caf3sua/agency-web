@@ -92,6 +92,7 @@
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
+            		formatAddressEdit();
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
@@ -103,6 +104,29 @@
   			result.si = Number(result.si);
     		result.totalUsedArea = Number(result.totalUsedArea);
     		result.premiumHome = "0";
+  		}
+  		
+  		function formatAddressEdit() {
+  			// Address at step 2
+  			var receiverAddress = vm.policy.receiverUser.address;
+  			vm.policy.receiverUser.address = vm.formatAddressEdit(receiverAddress);
+  			vm.getAddressByPostCode(receiverAddress).then(function (data) {
+  				vm.policy.receiverUser.addressDistrictData = data;
+    		});
+  			
+  			// extra
+  			var insuranceAddress = vm.policy.insuranceAddress;
+  			var insuredLocation = vm.policy.insuredLocation;
+  			
+    		vm.policy.insuranceAddress = vm.formatAddressEdit(insuranceAddress);
+    		vm.policy.insuredLocation = vm.formatAddressEdit(insuredLocation);
+    		
+    		vm.getAddressByPostCode(insuranceAddress).then(function (data) {
+    			vm.policy.insuranceAddressDistrict = data;
+    		});
+    		vm.getAddressByPostCode(insuredLocation).then(function (data) {
+    			vm.policy.insuredLocationDistrict = data;
+    		});
   		}
   		
   		function getPremium() {
@@ -134,6 +158,12 @@
   		}
   		
   		function savePolicy() {
+  			// Process address
+  			vm.policy.insuranceAddress = vm.policy.insuranceAddress 
+  				+ "::" + vm.policy.insuranceAddressDistrict.pkDistrict + "::" + vm.policy.insuranceAddressDistrict.pkPostcode;
+  			vm.policy.insuredLocation = vm.policy.insuredLocation 
+				+ "::" + vm.policy.insuredLocationDistrict.pkDistrict + "::" + vm.policy.insuredLocationDistrict.pkPostcode;
+
   			// call base
   			vm.savePolicyBase("HOM", vm.policy);
   		}
