@@ -193,6 +193,24 @@
   		}
   		
   		function formatEditData(result) {
+  			result.tndsSoCho = result.tndsSocho.toString();
+  			result.ngapNuoc = result.ngapNuocCheck;
+  			result.tndstnSoTien = result.tndstnSotien;
+  			result.khauHao = result.khaoHaoCheck;
+  			result.khauTru = result.khauTruCheck;
+  			result.garage = result.garageCheck;
+  			result.matCap = result.matCapCheck;
+  			result.vcxPhi = result.physicalDamagePremium;
+  			result.namSX = result.yearOfMake;
+  			result.vcxSoTien = result.physicalDamageSi;
+  			result.nntxSoCho = result.passengersAccidentNumber;
+  			result.nntxSoTien = result.passengersAccidentSi;
+  			result.nntxPhi = result.passengersAccidentPremium;
+  			result.tndsbbPhi = result.thirdPartyPremium;
+  			if (result.oldGycbhNumber == null){
+  				result.insuranceTarget = "New";	
+  			}
+  			
   		}
   		
   		function getCarBranchesSuccess(result) {
@@ -371,7 +389,7 @@
 	  		vm.policy.premium = postData.premium;
 	  		vm.policy.purposeOfUsageId = postData.purposeOfUsageId;
 	  		vm.policy.thirdPartyPremium = postData.tndsbbPhi;
-	  		vm.policy.tndsSocho = postData.tndsSoCho;
+	  		vm.policy.tndsSoCho = postData.tndsSoCho;
 	  		vm.policy.tndsbbCheck = postData.tndsbbCheck;
 	  		vm.policy.tndstnCheck = postData.tndstnCheck;
 	  		vm.policy.tndstnPhi = postData.tndstnPhi;
