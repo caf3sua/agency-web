@@ -33,7 +33,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="person in vm.product.premiumKhcList">
+                    <tr ng-repeat="person in vm.policy.premiumKhcList">
                         <td>{{$index + 1}}</td>
                         <td style="width: 150px"><input type="text" name="insuredName" class="form-control" ng-model="person.insuredName" ng-disabled="true"/></td>
                         <td style="width: 150px"><input type="text" name="idPasswport" class="form-control" ng-model="person.idPasswport" ng-disabled="true"/></td>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td style="width: 150px"><input type="text" name="premiumPackage" class="form-control" ng-model="vm.product.premiumPackage" ng-disabled="true"/></td>
+                        <td style="width: 150px"><input type="text" name="premiumPackage" class="form-control" ng-model="vm.policy.premiumPackage" ng-disabled="true"/></td>
                         <td style="width: 150px"><input type="text" name="premium" class="form-control" ng-model="person.premium" ng-disabled="true"/></td>
                     </tr>
                     </tbody>
@@ -63,13 +63,13 @@
             <p>Số tiền bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.product.premiumPackage | number:0 }}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.premiumPackage | number:0 }}</p>
         </div>
         <div class="bv-title-from">
             <p>Thời hạn bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">Từ {{vm.product.insuranceStartDate}} Đến {{vm.product.insuranceEndDate}}</p>
+            <p class="bv-tile-templateSummary">Từ {{vm.policy.insuranceStartDate}} Đến {{vm.policy.insuranceEndDate}}</p>
         </div>
         <div class="bv-title-from">
             <p>Quyền lợi bảo hiểm</p>
@@ -92,7 +92,7 @@
             <p>Tổng phí phải thanh toán</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.product.premiumKhc | number:0 }}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.premiumKhc | number:0 }}</p>
         </div>
     </div>
     <div class="bv-pading-30">
