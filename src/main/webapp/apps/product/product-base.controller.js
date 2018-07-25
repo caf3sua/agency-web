@@ -315,7 +315,7 @@
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
         		vm.policy.contactName = $rootScope.selectedContact.contactName;
-//                vm.contactDob = $rootScope.selectedContact.dateOfBirth;
+                vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
 //                vm.contactEmail = $rootScope.selectedContact.email;
 //                vm.contactPhone = $rootScope.selectedContact.handPhone;
 //                vm.contactAddress = $rootScope.selectedContact.homeAddress;

@@ -23,17 +23,6 @@
   		})();
 
         // Properties & function declare
-//        vm.policy = {
-//            "insuranceStartDate": "",
-//            "numberMonth": 0,
-//            "numberPerson": "",
-//            "premiumDiscount": 0,
-//            "premiumKhc": 0,
-//            "premiumKhcList":[],
-//            "premiumNet": 0,
-//            "premiumPackage": ""
-//        }
-
         vm.policy = {
         	// premium
     		"insuranceStartDate": "",
@@ -69,7 +58,7 @@
         vm.isShowPersonList = false;
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
-        vm.postPremiumKhcListIndex = [];
+//        vm.postPremiumKhcListIndex = [];
 
         // Initialize
         init();
@@ -179,45 +168,56 @@
         }
 
         function getPremium() {
-            var postData = getPostData(false);
+//            var postData = getPostData(false);
 
-            if(postData.premiumKhcList.length > 0) {
+        	var isValid = true;
+        	angular.forEach(vm.policy.premiumKhcList, function(value, key) {
+        		if (value.dob == "" || value.yearOld == 0) {
+        			isValid = false;
+        		}
+		 	});
+        	
+            if(isValid && vm.policy.premiumKhcList.length > 0 && vm.policy.premiumPackage != "") {
             	vm.loading = true;
-            	ProductCommonService.getKhcPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            	ProductCommonService.getKhcPremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
             }
         }
 
-        function getPostData() {
-            var postData = Object.assign({}, vm.policy);
-
-            vm.postPremiumKhcListIndex = [];
-            var realPremiumKhcList = [];
-            for (var i=0; i < postData.premiumKhcList.length; i++) {
-                if(postData.premiumKhcList[i].dob) {
-                    vm.postPremiumKhcListIndex.push(i);
-                    realPremiumKhcList.push(postData.premiumKhcList[i]);
-                }
-            }
-
-            postData.premiumKhcList = realPremiumKhcList;
-            postData.numberMonth = DateUtils.monthDiff(postData.insuranceStartDate, postData.insuranceEndDate) + 1;
-            postData.numberPerson = realPremiumKhcList.length;
-
-            return postData;
-        }
+//        function getPostData() {
+//            var postData = Object.assign({}, vm.policy);
+//
+//            vm.postPremiumKhcListIndex = [];
+//            var realPremiumKhcList = [];
+//            for (var i=0; i < postData.premiumKhcList.length; i++) {
+//                if(postData.premiumKhcList[i].dob) {
+//                    vm.postPremiumKhcListIndex.push(i);
+//                    realPremiumKhcList.push(postData.premiumKhcList[i]);
+//                }
+//            }
+//
+//            postData.premiumKhcList = realPremiumKhcList;
+//            postData.numberMonth = DateUtils.monthDiff(postData.insuranceStartDate, postData.insuranceEndDate) + 1;
+//            postData.numberPerson = realPremiumKhcList.length;
+//
+//            return postData;
+//        }
 
         function onGetPremiumSuccess(result) {
             vm.loading = false;
-            for (var i=0; i < vm.postPremiumKhcListIndex.length; i++) {
-                vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].dob = result.premiumKhcList[i].dob;
-	            vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].insuredName = result.premiumKhcList[i].insuredName;
-	            vm.policy.premiumKhcList[vm.postPremiumKhcListIndex[i]].premium = result.premiumKhcList[i].premium;
+            var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            vm.policy.premiumKhcList = result.premiumKhcList;
+            for (var i=0; i < vm.policy.premiumKhcList.length; i++) {
+                vm.policy.premiumKhcList[i].dob = result.premiumKhcList[i].dob;
+	            vm.policy.premiumKhcList[i].insuredName = result.premiumKhcList[i].insuredName;
+	            vm.policy.premiumKhcList[i].premium = result.premiumKhcList[i].premium;
+	            vm.policy.premiumKhcList[i].yearOld = DateUtils.yearDiff(vm.policy.premiumKhcList[i].dob, nowStr);
             }
             
             var count = 0;
             for (var i=0; i < vm.policy.premiumKhcList.length; i++) {
             	if(vm.policy.premiumKhcList[i].premium > 0) {
-            		count++
+            		count++;
             	}
             }
 
@@ -242,11 +242,8 @@
         }
 
         function savePolicy() {
-            var postData = getPostData(true);
-            vm.policy.inceptionDate = postData.insuranceStartDate;
-            vm.policy.permanentTotalDisablement = postData.numberPerson;
-            vm.policy.plan = postData.premiumPackage.toString()[0];
-            vm.policy.tlAddcollections = postData.premiumKhcList;
+            vm.policy.inceptionDate = vm.policy.insuranceStartDate;
+            vm.policy.tlAddcollections = vm.policy.premiumKhcList;
 
             // call base
             vm.savePolicyBase("KHC", vm.policy);

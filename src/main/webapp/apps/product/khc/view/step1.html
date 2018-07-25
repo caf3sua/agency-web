@@ -44,7 +44,7 @@
                 <table class="table table-bordered " ng-show="vm.isShowPersonList">
                     <thead>
                     <tr>
-                        <th>Họ và tên</th>
+                        <th style="min-width: 220px">Họ và tên</th>
                         <th>Ngày sinh (dd/MM/yyyy)</th>
                         <th>Tuổi</th>
                         <th>Phí bảo hiểm</th>
@@ -52,7 +52,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="person in vm.policy.premiumKhcList">
-                        <td><input type="text"  style="width: 150px" class="form-control" ng-disabled="true" value="Người tham gia bảo hiểm {{$index}}"></td>
+                        <td><span>Người tham gia bảo hiểm {{$index}}</span></td>
                         <td>
                             <div  style="width: 150px" class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                                 <div class="width-100">
@@ -63,8 +63,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td><input  style="width: 150px" type="number" class="form-control" name="yearOld" ng-model="person.yearOld" ng-disabled="true"/></td>
-                        <td><input   style="width: 150px" type="number" class="form-control" name="premium" ng-model="person.premium" ng-disabled="true"/></td>
+                        <td><span>{{person.yearOld}}</td>
+                        <td><span>{{person.premium | number:0}}</span></td>
                     </tr>
                     </tbody>
                 </table>

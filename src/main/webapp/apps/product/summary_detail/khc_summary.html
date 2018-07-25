@@ -7,13 +7,13 @@
                 <p class="bv-title-from">Họ và tên</p>
             </div>
             <div>
-                <p class="bv-tile-templateSummary">{{vm.contactName}}</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.contactName}}</p>
             </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Ngày sinh</p>
             </div>
             <div>
-                <p class="bv-tile-templateSummary">{{vm.contactDob}}</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.contactDob}}</p>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
                 <p class="bv-title-from">Tổng phí phải thanh toán</p>
             </div>
             <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.totalPremium | number}} VND</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.premiumKhc | number:0}} VND</p>
             </div>
         </div>
     </div>
@@ -44,10 +44,10 @@
         </div>
         <div class="display-flex">
             <div>
-                <p class="bv-tile-templateSummary">Từ &nbsp {{vm.policy.inceptionDate}}</p>
+                <p class="bv-tile-templateSummary">Từ &nbsp {{vm.policy.insuranceStartDate}}</p>
             </div>
             <div>
-                <p class="bv-tile-templateSummary">&nbsp Đến &nbsp {{vm.policy.expiredDate}}</p>
+                <p class="bv-tile-templateSummary">&nbsp Đến &nbsp {{vm.policy.insuranceEndDate}}</p>
             </div>
         </div>
         <div class="margin-top-10">
@@ -78,7 +78,7 @@
             <p class="bv-title-from">Địa chỉ</p>
         </div>
         <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}::{{vm.policy.receiverUser.addressDistrictData.pkDistrict}}::{{vm.policy.receiverUser.addressDistrictData.pkPostcode}}</p>
         </div>
         <div class="margin-top-10">
             <p class="bv-title-from">Số điện thoại liên hệ</p>
