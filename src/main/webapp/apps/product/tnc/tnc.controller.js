@@ -48,7 +48,6 @@
         vm.validatorCombo = validatorCombo;
         vm.addOrRemovePerson = addOrRemovePerson;
         vm.processComboResult = processComboResult;
-        vm.onThoihanChange = onThoihanChange;
         vm.getPremium = getPremium;
         vm.savePolicy = savePolicy;
         vm.premiumPackageOptions = [
@@ -63,7 +62,6 @@
             {id: '100000000', name: '100.000.000 VND'}
         ];
 
-        vm.isShowPersonList = false;
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
 
@@ -72,15 +70,10 @@
 
         // Function
         function init() {
-            var startDate = new Date();
             // add a day
-            startDate.setDate(startDate.getDate() + 1);
-            vm.policy.insurancestartdate = DateUtils.convertDate(startDate);
-
-            var endDate = new Date();
+            vm.policy.insurancestartdate = moment().add(1, 'days').format("DD/MM/YYYY");
             // add a day
-            endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.policy.insuranceexpireddate = DateUtils.convertDate(endDate);
+            vm.policy.insuranceexpireddate = moment(vm.policy.insurancestartdate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
 
             // Register disable 
             vm.registerDisableContactInfoValue('vm.policy.premiumtnc');
@@ -89,7 +82,7 @@
             if (vm.isEditMode()) {
             	vm.loading = true;
             	// Load policy
-            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	$state.current.data.title = "PRODUCT_TNC_EDIT";
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
@@ -109,6 +102,8 @@
         }
         
         function formatEditData(result) {
+        	result.premiumPackage = result.premiumPackage.toString();
+        	result.premiumdiscount = 0;
   		}
 
         function formatAddressEdit() {
@@ -122,18 +117,7 @@
   			// extra
   		}
         
-        function onThoihanChange() {
-        	var endDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').format("DD/MM/YYYY");
-            // add a day
-            vm.policy.insuranceEndDate = endDate;
-        }
-        
         function addOrRemovePerson() {
-            if(vm.policy.numberperson > 0) {
-                vm.isShowPersonList = true;
-            } else {
-                vm.isShowPersonList = false;
-            }
             if(vm.policy.numberperson > vm.policy.listTncAdd.length) {
                 addNewPerson();
             } else if(vm.policy.numberperson < vm.policy.listTncAdd.length) {
@@ -168,23 +152,19 @@
         }
 
         function getPremium() {
-            var postData = getPostData(false);
-            if(postData.numberperson > 0 && postData.premiumPackage > 0) {
+        	var endDate = moment(vm.policy.insurancestartdate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            // add a day
+        	vm.policy.insuranceexpireddate = endDate;
+        	vm.policy.numbermonth = DateUtils.monthDiff(vm.policy.insurancestartdate, vm.policy.insuranceexpireddate);
+        	
+            if(vm.policy.numberperson > 0 && vm.policy.premiumPackage > 0) {
                 vm.loading = true;
-                ProductCommonService.getTncPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+                ProductCommonService.getTncPremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
             } else {
                 vm.policy.premiumnet = 0;
                 vm.policy.premiumtnc = 0;
                 vm.policy.premiumAverage = 0;
             }
-        }
-
-        function getPostData() {
-            var postData = Object.assign({}, vm.policy);
-
-            postData.numbermonth = DateUtils.monthDiff(postData.insurancestartdate, postData.insuranceexpireddate);
-
-            return postData;
         }
 
         function onGetPremiumSuccess(result) {
@@ -210,18 +190,6 @@
         }
 
         function savePolicy() {
-            var postData = getPostData(true);
-
-            vm.policy.insuranceexpireddate = postData.insuranceexpireddate;
-            vm.policy.insurancestartdate = postData.insurancestartdate;
-            vm.policy.numbermonth = postData.numbermonth;
-            vm.policy.numberperson = postData.numberperson;
-            vm.policy.premiumPackage = postData.premiumPackage;
-            vm.policy.premiumPackageplanid = postData.premiumPackage.toString()[0];
-            vm.policy.premiumdiscount = postData.premiumdiscount;
-            vm.policy.premiumnet = postData.premiumnet;
-            vm.policy.premiumtnc = postData.premiumtnc;
-
             // call base
             vm.savePolicyBase("TNC", vm.policy);
         }

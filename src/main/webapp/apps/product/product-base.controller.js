@@ -486,6 +486,8 @@
                 $("#contact-info").addClass("disable-all");
             } else {
                 $("#contact-info").removeClass("disable-all");
+//                $("#contact-info").find("input,button").prop("disabled",false);
+//                $("#contact-info").find(":button").prop("disabled",false);
             }
         }
 

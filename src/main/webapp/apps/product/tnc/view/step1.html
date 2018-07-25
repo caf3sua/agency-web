@@ -23,7 +23,7 @@
             </div>
             <div class=" display-flex margin-top-5">
                 <div class="margin-right-5 width-100">
-                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                         <div class="width-100">
                             <input name="insurancestartdate" type="text" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.insurancestartdate"
                                    ng-change="vm.getPremium()"
@@ -65,11 +65,11 @@
             <!-- Thông tin người yêu cầu bảo hiểm - Contact -->
             <div ng-include="'apps/product/partial/partial.contact.html'"></div>
 
-            <div class="text-header-sp margin-top-20" ng-show="vm.isShowPersonList">
+            <div class="text-header-sp margin-top-20" ng-show="vm.policy.numberperson > 0">
                 <p>2. Thông tin người được bảo hiểm</p>
             </div>
             <div class="table-responsive bv-home-block-left-table-responsive margin-top-10">
-                <table class="table table-bordered " ng-show="vm.isShowPersonList">
+                <table class="table table-bordered" ng-show="vm.policy.numberperson > 0">
                     <thead>
                     <tr>
                         <th>Họ và tên</th>

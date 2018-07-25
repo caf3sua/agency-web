@@ -6,13 +6,13 @@
             <p>Họ tên người yêu cầu bảo hiểm</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.contactName}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.contactName}}</p>
         </div>
         <div class="bv-title-from">
             <p>Ngày sinh</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.contactDob}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.contactDob}}</p>
         </div>
     </div>
     <div class="bv-pading-30">
@@ -116,7 +116,7 @@
             <p>Địa chỉ người nhận</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}, {{vm.policy.receiverUser.addressDistrict}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}::{{vm.policy.receiverUser.addressDistrictData.pkDistrict}}::{{vm.policy.receiverUser.addressDistrictData.pkPostcode}}</p>
         </div>
         <div class="bv-title-from">
             <p>Hình thức giao nhận</p>

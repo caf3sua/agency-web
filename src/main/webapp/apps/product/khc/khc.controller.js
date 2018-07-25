@@ -65,15 +65,10 @@
 
         // Function
         function init() {
-            var startDate = new Date();
+        	// add a day
+        	vm.policy.insuranceStartDate = moment().add(1, 'days').format("DD/MM/YYYY");
             // add a day
-            startDate.setDate(startDate.getDate() + 1);
-            vm.policy.insuranceStartDate = DateUtils.convertDate(startDate);
-
-            var endDate = new Date();
-            // add a day
-            endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.policy.insuranceEndDate = DateUtils.convertDate(endDate);
+        	vm.policy.insuranceEndDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
 
             // Register disable 
             vm.registerDisableContactInfoValue('vm.policy.premiumKhc');

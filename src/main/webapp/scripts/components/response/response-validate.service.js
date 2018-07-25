@@ -37,7 +37,7 @@
         	var elementName = "[name='" + data.fieldName + "']";
         	var message = data.message;
         	if(!message) {
-                message = "This field is invalid!";
+                message = "Dữ liệu không hợp lệ!";
             }
         	$("<label class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
 
