@@ -203,6 +203,7 @@
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
+            		formatAddressEdit();
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
@@ -211,6 +212,17 @@
         }
         
         function formatEditData(result) {
+  		}
+        
+        function formatAddressEdit() {
+  			// Address at step 2
+  			var receiverAddress = vm.policy.receiverUser.address;
+  			vm.policy.receiverUser.address = vm.formatAddressEdit(receiverAddress);
+  			vm.getAddressByPostCode(receiverAddress).then(function (data) {
+  				vm.policy.receiverUser.addressDistrictData = data;
+    		});
+  			
+  			// extra
   		}
         
         // watch

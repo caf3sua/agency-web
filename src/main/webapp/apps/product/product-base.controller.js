@@ -85,6 +85,8 @@
         vm.savePolicyBase = savePolicyBase; 
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
         vm.showWarningEditPolicy = showWarningEditPolicy;
+        vm.formatAddressEdit = formatAddressEdit; 
+        vm.getAddressByPostCode = getAddressByPostCode;
         
         // implement function
         function loadPolicyEdit(obj) {
@@ -114,8 +116,23 @@
         	return false;
         }
         
+        function formatAddressEdit(address) {
+        	return address.substring(0, address.indexOf("::"));
+        }
+        
+        function getAddressByPostCode(address) {
+        	var postcode = address.substring(address.lastIndexOf("::") + 2);
+        	return ProductCommonService.getAddressByPostcode({code: postcode}).$promise;
+        }
+        
+        
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
+        	
+        	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
+    			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
+    			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
+        	
         	// Save or update
         	if (obj.agreementId != null && obj.agreementId != "") {
         		// Update
@@ -126,11 +143,7 @@
                 	console.log('Done get gychbhNumber: ' + result.policyNumber);
                 	// Add ychbhNumber
                 	obj.gycbhNumber  = result.policyNumber;
-                	// receiverUserData
-                	
-                	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
-                		+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
-                		+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
+
                 	// Add new
                 	createNewPolicy(productCode, obj);
                 }).catch(function(data, status) {

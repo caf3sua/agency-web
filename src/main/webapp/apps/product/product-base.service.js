@@ -9,6 +9,11 @@
 
     function ProductCommonService ($resource) {
         var service = $resource('api/agency/product/', {}, {
+        	// Address
+        	'getAddressByPostcode' : {
+                method : 'GET',
+                url : 'api/agency/common/getAddressByCode'
+            },
         	// Ycbh offline
         	'saveYcbhOffline' : {
                 method : 'POST',
