@@ -39,6 +39,7 @@
   				"nhakhoaChk": false,
   				"thaisanChk": false,
   				"thoihanbhTu": "",
+  				"thoihanbhDen": "",
   				"qlChinhPhi": 0,
   				"phiBH": 0,
   				"premiumNet": 0,
@@ -192,7 +193,7 @@
             if (vm.isEditMode()) {
             	vm.loading = true;
             	// Load policy
-            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	$state.current.data.title = 'PRODUCT_BVP_EDIT';
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
@@ -212,6 +213,56 @@
         }
         
         function formatEditData(result) {
+        	result.pagencyRole = "1";
+        	result.chuongTrinh = result.chuongtrinhBh;
+        	if (result.ngoaitru == 1){
+        		result.ngoaitruChk	= true;
+        	} else{
+        		result.ngoaitruChk	= false;
+        	}
+        	if (result.tncn == 1){
+        		result.tncnChk	= true;
+        	} else{
+        		result.tncnChk	= false;
+        	}
+        	result.tncnSi = result.tncnPhiSi.toString();
+        	if (result.sinhmang == 1){
+        		result.smcnChk	= true;
+        	} else{
+        		result.smcnChk	= false;
+        	}
+        	result.smcnSi = result.sinhmangPhiSi.toString();
+        	//result.smcnPhi = result.sinhmangPhi.toString();
+        	if (result.nhakhoa == 1){
+        		result.nhakhoaChk	= true;
+        	} else{
+        		result.nhakhoaChk	= false;
+        	}
+        	if (result.thaisan == 1){
+        		result.thaisanChk	= true;
+        	} else{
+        		result.thaisanChk	= false;
+        	}
+        	result.thoihanbhTu = result.inceptionDate;
+        	result.qlChinhPhi = result.chuongtrinhPhi;
+        	result.ngaySinh = result.nguoidbhNgaysinh;
+        	
+        	var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            result.tuoi = DateUtils.yearDiff(result.ngaySinh, nowStr);
+            result.premiumDiscount = result.discount;
+            if (result.oldGycbhNumber == null){
+  				result.insuranceTarget = "New";	
+  			}
+            result.thoihanbhDen = result.expiredDate;
+            $rootScope.nguoith.cmnd = result.nguoithCmnd;
+            $rootScope.nguoith.quanhe = result.nguoithQuanhe;
+            
+            $rootScope.nguoidbh.cmnd = result.nguoidbhCmnd;
+            $rootScope.nguoidbh.quanhe = result.nguoidbhQuanhe;
+
+            vm.registerDisableContactInfoValue('vm.policy.phiBH');
+            
   		}
         
         function formatAddressEdit() {
