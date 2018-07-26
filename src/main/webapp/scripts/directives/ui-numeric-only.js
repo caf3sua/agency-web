@@ -7,7 +7,6 @@
   	numericOnly.$inject = [];
     function numericOnly() {
       var directive = {
-//          restrict: 'AC',
           require: 'ngModel',
           link: link
       };

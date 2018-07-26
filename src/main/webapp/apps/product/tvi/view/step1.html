@@ -30,11 +30,13 @@
                 <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="">
-                <input type="number" class="bv-input"  name="soNguoiThamGia" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
+                <input type="number" class="bv-input"  name="numberOfPerson" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
+                	   min="1" step="1" max="199"
                        ng-blur="vm.addOrRemovePerson()"
                        required-message="'Chưa chọn số người tham gia!'"
                        required
                 />
+                <!-- <pre>{{myForm.soNguoiThamGia.$error | json}}</pre> -->
             </div>
             <div class="bv-margin-botton-10 margin-top-10">
                 <p class="bv-title-from margin-bottom-0">Ngày khởi hành từ Việt Nam<span class="bv-req-red">&nbsp(*)</span></p>

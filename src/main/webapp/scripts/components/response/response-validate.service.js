@@ -31,15 +31,18 @@
         	// Remove old validation message
         	element.parent().children('.control-label.has-error.validationMessage').remove();
         	element.parent().removeClass('has-error');
+        	$('#response-error-id').remove();
         	
         	// Build and append new message
         	element.parent().addClass('has-error');
+        	element.addClass('data-invalid');
         	var elementName = "[name='" + data.fieldName + "']";
         	var message = data.message;
         	if(!message) {
                 message = "Dữ liệu không hợp lệ!";
             }
-        	$("<label class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
+        	
+        	$("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
 
         	return data.message;
         }
