@@ -30,7 +30,7 @@
                 <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="">
-                <input type="number" class="bv-input"  name="soNguoiThamGia" ng-model="vm.product.soNguoiThamGia" placeholder="Nhập tổng số người tham gia"
+                <input type="number" class="bv-input"  name="soNguoiThamGia" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
                        ng-blur="vm.addOrRemovePerson()"
                        required-message="'Chưa chọn số người tham gia!'"
                        required
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
+                <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
             </div>
             <div class="margin-top-10">
                 <div class="table-responsive">
@@ -205,7 +205,7 @@
                     <p class="bv-title-from-des margin-top-10">(Bỏ chọn ô này để xóa thông tin người yêu cầu bảo hiểm đã được điền sẵn bên dưới)</p>
                 </label>
             </div>
-            <div class="margin-top-10" ng-show="vm.product.soNguoiThamGia > 0">
+            <div class="margin-top-10" ng-show="vm.policy.numberOfPerson > 0">
                 <div class="table-responsive bv-home-block-left-table-responsive">
                     <form >
                         <table class="table bv-tvc-block-left-table" >
