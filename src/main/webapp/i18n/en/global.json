@@ -1,6 +1,15 @@
 {
     "global": {
         "title": "Bảo Việt Agency",
+        "person" : {
+        	"relationship" : {
+        		"30" : "Bản thân",
+        		"31" : "Vợ/Chồng",
+        		"32" : "Con",
+        		"34" : "Bố/Me",
+        		"39" : "Bố Me của vợ/chồng"
+        	}
+        },
         "time" : {
 				"WEEK" : "trong tuần",
 				"MONTH" : "trong tháng",
