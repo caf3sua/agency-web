@@ -8,13 +8,13 @@
                     <p class="bv-title-from">Họ tên người yêu cầu bảo hiểm</p>
                 </div>
                 <div>
-                    <p class="bv-tile-templateSummary">{{vm.contactName}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.policy.contactName}}</p>
                 </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Ngày sinh</p>
                 </div>
                 <div>
-                    <p class="bv-tile-templateSummary">{{vm.contactDob}}</p>
+                    <p class="bv-tile-templateSummary">{{vm.policy.contactDob}}</p>
                 </div>
             </div>
             <div class="bv-pading-30 width-100">
@@ -63,7 +63,7 @@
                             <p class="">{{person.dob}}</p>
                         </td>
                         <td>
-                            <p class="">{{person.relationship}}</p>
+                            <p class="" data-translate="global.person.relationship.{{person.relationshipId}}">Cá nhân</p>
                         </td>
                     </tr>
                     </tbody>

@@ -90,7 +90,6 @@
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
-        vm.isShowPersonList = false;
         angular.element(document).ready(function () {
         });
 
@@ -195,23 +194,11 @@
         }
         function savePolicy() {
             vm.loading = true;
-            vm.policy.invoiceInfo.name = vm.invoiceInfoData.name;
-            vm.policy.invoiceInfo.company = vm.invoiceInfoData.company;
-            vm.policy.invoiceInfo.taxNo = vm.invoiceInfoData.taxNo;
-            vm.policy.invoiceInfo.address = vm.invoiceInfoData.address;
-            vm.policy.invoiceInfo.accountNo = vm.invoiceInfoData.accountNo;
-            vm.policy.receiverUser.name  = vm.receiverUserData.name;
-            vm.policy.receiverUser.address  = vm.receiverUserData.address;
-            vm.policy.receiverUser.addressDistrict  = vm.receiverUserData.addressDistrict;
-            vm.policy.receiverUser.mobile  = vm.receiverUserData.mobile;
-            vm.policy.receiverUser.email  = vm.receiverUserData.email;
-            vm.policy.propserName = vm.contactName;
-            vm.policy.propserNgaysinh = vm.contactDob;
-            vm.policy.propserCellphone  = vm.handPhone;
-            vm.policy.contactCode  = vm.contactCode;
+            vm.policy.propserName = vm.policy.contactName;
+            vm.policy.propserNgaysinh = vm.policy.contactDob;
+            vm.policy.propserCellphone  = vm.policy.contactPhone;
             vm.policy.tvcPackage = vm.policy.travelWithId;
-            vm.policy.policyNumber = vm.policy.gycbhNumber;
-            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.receiverMoible =  vm.policy.receiverUser.mobile;
             vm.policy.chaynoStbh = 0;
             
             // call base
@@ -219,11 +206,6 @@
         }
 
         function addOrRemovePerson() {
-            if(vm.product.soNguoiThamGia > 0) {
-                vm.isShowPersonList = true;
-            } else {
-                vm.isShowPersonList = false;
-            }
             if(vm.product.soNguoiThamGia> vm.policy.listTviAdd.length) {
                 addNewPerson();
             } else if(vm.product.soNguoiThamGia< vm.policy.listTviAdd.length) {
