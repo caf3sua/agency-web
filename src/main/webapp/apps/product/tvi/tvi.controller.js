@@ -194,9 +194,6 @@
         }
         function savePolicy() {
             vm.loading = true;
-            vm.policy.propserName = vm.policy.contactName;
-            vm.policy.propserNgaysinh = vm.policy.contactDob;
-            vm.policy.propserCellphone  = vm.policy.contactPhone;
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.receiverMoible =  vm.policy.receiverUser.mobile;
             vm.policy.chaynoStbh = 0;
