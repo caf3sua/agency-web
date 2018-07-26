@@ -1837,6 +1837,9 @@ body {
     height: 100%;
     border-radius: 5px;
 }
+.has-error{
+    color: #a94442;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
