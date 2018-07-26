@@ -316,8 +316,8 @@
         		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
         		vm.policy.contactName = $rootScope.selectedContact.contactName;
                 vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
-//                vm.contactEmail = $rootScope.selectedContact.email;
-//                vm.contactPhone = $rootScope.selectedContact.handPhone;
+                vm.policy.contactPhone = $rootScope.selectedContact.handPhone;
+//              vm.contactEmail = $rootScope.selectedContact.email;
 //                vm.contactAddress = $rootScope.selectedContact.homeAddress;
 //                vm.contactAddressDistrict = $rootScope.selectedContact.homeAddress;
 //                vm.handPhone = $rootScope.selectedContact.handPhone;

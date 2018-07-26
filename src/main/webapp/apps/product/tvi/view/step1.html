@@ -30,7 +30,7 @@
                 <p class="bv-title-from">Tổng số người tham gia<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div class="">
-                <input type="text" class="bv-input"  name="soNguoiThamGia" ng-model="vm.product.soNguoiThamGia" placeholder="Nhập tổng số người tham gia"
+                <input type="number" class="bv-input"  name="soNguoiThamGia" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
                        ng-blur="vm.addOrRemovePerson()"
                        required-message="'Chưa chọn số người tham gia!'"
                        required
@@ -41,7 +41,7 @@
                 <span class="bv-title-from-des">(Thời gian bảo hiểm từ)</span>
             </div>
             <div class="margin-right-5 width-100">
-                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
                         <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
                                required-message="'Chưa chọn ngày khởi hành!'"
@@ -59,9 +59,7 @@
                 <span class="bv-title-from-des">(Thời hạn bảo hiểm đến)</span>
             </div>
             <div class="margin-right-5 width-100">
-                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy"
-
-                >
+                <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
                         <input type="text" class="bv-input" name="expiredDate" placeholder="Đến ngày"
                                ng-model="vm.policy.expiredDate"
@@ -69,7 +67,6 @@
                                required
                         >
                     </div>
-
                     <div class="input-group-addon bv-date-icon">
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
@@ -98,7 +95,7 @@
                                 <polyline points="4 11 8 15 16 6"></polyline>
                             </svg>
                         </div>
-                        <span>Bạc</span>
+                        <span>Đồng</span>
                     </label>
                     <label for="cbx12" class="label-cbx margin-right-5">
                         <input id="cbx12" name="planId" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
@@ -108,7 +105,7 @@
                                 <polyline points="4 11 8 15 16 6"></polyline>
                             </svg>
                         </div>
-                        <span>Vàng</span>
+                        <span>Bạc</span>
                     </label>
                     <label for="cbx11" class="label-cbx margin-right-5">
                         <input id="cbx11" name="planId" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
@@ -118,7 +115,7 @@
                                 <polyline points="4 11 8 15 16 6"></polyline>
                             </svg>
                         </div>
-                        <span>Kim cương</span>
+                        <span>Vàng</span>
                     </label>
                 </div>
                 <div class="cntr text-center">
@@ -145,7 +142,7 @@
                 </div>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
+                <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
             </div>
             <div class="margin-top-10">
                 <div class="table-responsive">
@@ -208,7 +205,7 @@
                     <p class="bv-title-from-des margin-top-10">(Bỏ chọn ô này để xóa thông tin người yêu cầu bảo hiểm đã được điền sẵn bên dưới)</p>
                 </label>
             </div>
-            <div class="margin-top-10" ng-show="vm.isShowPersonList">
+            <div class="margin-top-10" ng-show="vm.policy.numberOfPerson > 0">
                 <div class="table-responsive bv-home-block-left-table-responsive">
                     <form >
                         <table class="table bv-tvc-block-left-table" >

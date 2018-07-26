@@ -23,6 +23,55 @@
   		})();
   		
   		// Properties & function declare
+  		vm.lstTinhtrangskTemp = [
+				{
+				"benhvienorbacsy": "",
+				"bvSysdate": "",
+				"chitietdieutri": "",
+				"chuandoan": "",
+				"congtybh": "",
+				"dkdacbiet": "",
+				"id": "",
+				"idThamchieu": "",
+				"ketqua": "",
+				"khuoctu": "",
+				"lydodc": "",
+				"lydoycbt": "",
+				"masanpham": "",
+				"ngaybatdau": "",
+				"ngaydieutri": "",
+				"ngayhethan": "",
+				"ngayycbt": "",
+				"questionThamchieu": "",
+				"sohd": "",
+				"sotienbh": 0,
+				"sotienycbt": 0
+				},
+				{
+				"benhvienorbacsy": "",
+				"bvSysdate": "",
+				"chitietdieutri": "",
+				"chuandoan": "",
+				"congtybh": "",
+				"dkdacbiet": "",
+				"id": "",
+				"idThamchieu": "",
+				"ketqua": "",
+				"khuoctu": "",
+				"lydodc": "",
+				"lydoycbt": "",
+				"masanpham": "",
+				"ngaybatdau": "",
+				"ngaydieutri": "",
+				"ngayhethan": "",
+				"ngayycbt": "",
+				"questionThamchieu": "",
+				"sohd": "",
+				"sotienbh": 0,
+				"sotienycbt": 0
+				}
+			];
+  		
   		vm.policy = {
   				// premium
   				  "gioiTinh": "0",
@@ -50,54 +99,7 @@
   				"insuredNgaysinh": "",
   				"insuredRelationship": "",
   				"insuredSex": "0",
-  				"lstTinhtrangSKs": [
-	  				{
-	  				"benhvienorbacsy": "",
-	  				"bvSysdate": "",
-	  				"chitietdieutri": "",
-	  				"chuandoan": "",
-	  				"congtybh": "",
-	  				"dkdacbiet": "",
-	  				"id": "",
-	  				"idThamchieu": "",
-	  				"ketqua": "",
-	  				"khuoctu": "",
-	  				"lydodc": "",
-	  				"lydoycbt": "",
-	  				"masanpham": "",
-	  				"ngaybatdau": "",
-	  				"ngaydieutri": "",
-	  				"ngayhethan": "",
-	  				"ngayycbt": "",
-	  				"questionThamchieu": "",
-	  				"sohd": "",
-	  				"sotienbh": 0,
-	  				"sotienycbt": 0
-	  				},
-	  				{
-	  				"benhvienorbacsy": "",
-	  				"bvSysdate": "",
-	  				"chitietdieutri": "",
-	  				"chuandoan": "",
-	  				"congtybh": "",
-	  				"dkdacbiet": "",
-	  				"id": "",
-	  				"idThamchieu": "",
-	  				"ketqua": "",
-	  				"khuoctu": "",
-	  				"lydodc": "",
-	  				"lydoycbt": "",
-	  				"masanpham": "",
-	  				"ngaybatdau": "",
-	  				"ngaydieutri": "",
-	  				"ngayhethan": "",
-	  				"ngayycbt": "",
-	  				"questionThamchieu": "",
-	  				"sohd": "",
-	  				"sotienbh": 0,
-	  				"sotienycbt": 0
-	  				}
-  				],
+  				"lstTinhtrangSKs": vm.lstTinhtrangskTemp,
   				"netPremium": 0,
   				"planId": "",
   				"policyNumber": "",
@@ -177,6 +179,45 @@
         }
         
         function formatEditData(result) {
+        	result.ngayBatDau = result.thoihantu;
+        	vm.ngayKetThuc = result.thoihanden;
+        	result.ngaySinh = result.insuredNgaysinh;
+        	var now = new Date();
+			var nowStr = DateUtils.convertDate(now);
+			vm.tuoi = DateUtils.yearDiff(result.ngaySinh, nowStr);
+        	result.gioiTinh = result.insuredSex;
+        	result.typeOfKcare = result.planId;
+        	result.premiumDiscount = result.changePremium;
+
+        	if(result.qresultCan == 0){
+        		result.qresultCan = false;
+            } else {
+            	result.qresultCan = true;
+            }
+
+            if(result.qresultTre == 0){
+            	result.qresultTre = false;
+            } else {
+                result.qresultTre = true;
+            }
+
+            if(result.qtreatment == 0){
+                result.qtreatment = false;
+            } else {
+                result.qtreatment = true;
+            }
+
+            if(result.qtypeCancer == 0){
+                result.qtypeCancer = false;
+            } else {
+                result.qtypeCancer = true;
+            }
+            // Init lstTinhtrangsk
+            if (result.lstTinhtrangSKs == null) {
+            	result.lstTinhtrangSKs = vm.lstTinhtrangskTemp;
+            } else{
+            	vm.isq4 = true;
+            }
   		}
         
         function formatAddressEdit() {
@@ -213,7 +254,6 @@
   		
   		function checkQ4() {
   			var check = vm.policy.q4;
-  			
   			if (check == true) {
   				vm.isq4 = true;
   			} else {
@@ -284,7 +324,6 @@
   			function onGetPremiumSuccess(data, headers) {
                 vm.loading = false;
   				vm.isShowPremium = true;
-  				vm.policy = data;
   				vm.policy.thoihantu = data.ngayBatDau;
   				vm.policy.thoihanden = vm.ngayKetThuc;
   				vm.policy.changePremium = data.premiumDiscount;
@@ -292,6 +331,8 @@
   				vm.policy.totalPremium = data.premiumKCare;
   				vm.policy.planId = data.typeOfKcare;
                 vm.policy.insuredNgaysinh = data.ngaySinh;
+                vm.policy.premiumKCare = data.premiumKCare;
+                vm.policy.premiumNet = data.premiumNet;
                 vm.clearResponseError();
   	    	}
   	    	

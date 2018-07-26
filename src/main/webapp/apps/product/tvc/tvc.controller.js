@@ -59,7 +59,6 @@
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
-        vm.isShowPersonList = false;
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
@@ -74,7 +73,7 @@
             if (vm.isEditMode()) {
             	vm.loading = true;
             	// Load policy
-            	$state.current.data.title = $state.current.data.title + '_EDIT';
+            	$state.current.data.title = 'PRODUCT_TVC_EDIT';
             	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
@@ -114,6 +113,7 @@
   		// Properties & function declare
 
         function formatEditData(result) {
+        	result.contactDob = result.propserNgaysinh;
   		}
         
   		// Function
@@ -165,23 +165,17 @@
         }
         function savePolicy() {
             vm.loading = true;
-            vm.policy.propserName = vm.contactName;
-            vm.policy.propserNgaysinh = vm.contactDob;
-            vm.policy.propserCellphone  = vm.handPhone;
+            vm.policy.propserName = vm.policy.contactName;
+            vm.policy.propserNgaysinh = vm.policy.contactDob;
+            vm.policy.propserCellphone  = vm.policy.contactPhone;
             vm.policy.tvcPackage = vm.policy.travelWithId;
-            vm.policy.policyNumber = vm.policy.gycbhNumber;
-            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.receiverMoible =  vm.policy.receiverUser.mobile;
             
             // call base
             vm.savePolicyBase("TVC", vm.policy);
         }
 
         function addOrRemovePerson() {
-            if(vm.policy.soNguoiThamGia > 0) {
-                vm.isShowPersonList = true;
-            } else {
-                vm.isShowPersonList = false;
-            }
             if(vm.policy.soNguoiThamGia> vm.policy.listTvcAddBaseVM.length) {
                 addNewPerson();
             } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {

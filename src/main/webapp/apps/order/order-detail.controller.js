@@ -109,6 +109,9 @@
   		}
   		
   		function formatTviData(data) {
+  			angular.forEach(vm.policy.listTviAdd, function(value, key) {
+  				value.relationshipId = value.relationship;
+		 	});
   		}
   		
   		function formatHhvcData(data) {

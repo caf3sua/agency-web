@@ -79,7 +79,7 @@
             tviPackage: "",
             userAgent: ""
         };
-        vm.product = {};
+
         vm.getPremium = getPremium;
         vm.onchangePlan = onchangePlan;
         vm.infoPerson = infoPerson;
@@ -90,7 +90,6 @@
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
-        vm.isShowPersonList = false;
         angular.element(document).ready(function () {
         });
 
@@ -135,6 +134,10 @@
   		}
         
         function formatEditData(result) {
+        	result.numberOfPerson = result.listTviAdd.length;
+        	angular.forEach(result.listTviAdd, function(data) {
+        		data.relationshipId = data.relationship;
+        	});
   		}
         
         function showChangePremium() {
@@ -152,27 +155,24 @@
         }
         function getPremium() {
             vm.loading = true;
-            vm.product.destination =  vm.policy.destinationId;
-            vm.product.inceptionDate  =  vm.policy.inceptionDate;
-            vm.product.expiredDate   =  vm.policy.expiredDate;
-            vm.product.numberOfPerson  = vm.product.soNguoiThamGia;
-            vm.product.planId  =  vm.policy.planId;
-            vm.product.premiumNet  =  0;
-            vm.product.premiumPackage  =  vm.policy.travelWithId;
-            vm.product.premiumTvi  = 0;
-            vm.product.premiumDiscount = 0;
-            if(vm.product.premiumPercentDiscount > 0 ){
-                vm.product.premiumPercentDiscount = vm.product.premiumPercentDiscount;
+            
+            vm.policy.destination =  vm.policy.destinationId;
+            vm.policy.premiumNet  =  0;
+            vm.policy.premiumPackage  =  vm.policy.travelWithId;
+            vm.policy.premiumTvi  = 0;
+            vm.policy.premiumDiscount = 0;
+
+            if(vm.policy.premiumPercentDiscount > 0 ){
+                vm.policy.premiumPercentDiscount = vm.policy.premiumPercentDiscount;
             }else{
-                vm.product.premiumPercentDiscount  = 0;
+                vm.policy.premiumPercentDiscount  = 0;
             }
-            vm.product.numberOfDay   = 0;
-            ProductCommonService.getTviPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
+            vm.policy.numberOfDay   = 0;
+            ProductCommonService.getTviPremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
             vm.loading = false;
             vm.policy.premium  = result.premiumTvi;
-            vm.policy.soNguoiThamGia  = result.numberOfPerson;
             vm.policy.netPremium   = result.premiumNet;
             vm.policy.changePremium  = result.premiumPercentDiscount;
             if(result.premiumDiscount > 0){
@@ -180,8 +180,6 @@
                 vm.sumPremiumDiscount =   result.premiumDiscount ;
             }
             vm.clearResponseError();
-            // "premiumTvc": 104500,
-            //     "premiumNet": 110000,sumPremiumDiscount
         }
 
         function onGetPremiumError(result) {
@@ -195,23 +193,8 @@
         }
         function savePolicy() {
             vm.loading = true;
-            vm.policy.invoiceInfo.name = vm.invoiceInfoData.name;
-            vm.policy.invoiceInfo.company = vm.invoiceInfoData.company;
-            vm.policy.invoiceInfo.taxNo = vm.invoiceInfoData.taxNo;
-            vm.policy.invoiceInfo.address = vm.invoiceInfoData.address;
-            vm.policy.invoiceInfo.accountNo = vm.invoiceInfoData.accountNo;
-            vm.policy.receiverUser.name  = vm.receiverUserData.name;
-            vm.policy.receiverUser.address  = vm.receiverUserData.address;
-            vm.policy.receiverUser.addressDistrict  = vm.receiverUserData.addressDistrict;
-            vm.policy.receiverUser.mobile  = vm.receiverUserData.mobile;
-            vm.policy.receiverUser.email  = vm.receiverUserData.email;
-            vm.policy.propserName = vm.contactName;
-            vm.policy.propserNgaysinh = vm.contactDob;
-            vm.policy.propserCellphone  = vm.handPhone;
-            vm.policy.contactCode  = vm.contactCode;
             vm.policy.tvcPackage = vm.policy.travelWithId;
-            vm.policy.policyNumber = vm.policy.gycbhNumber;
-            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.receiverMoible =  vm.policy.receiverUser.mobile;
             vm.policy.chaynoStbh = 0;
             
             // call base
@@ -219,20 +202,15 @@
         }
 
         function addOrRemovePerson() {
-            if(vm.product.soNguoiThamGia > 0) {
-                vm.isShowPersonList = true;
-            } else {
-                vm.isShowPersonList = false;
-            }
-            if(vm.product.soNguoiThamGia> vm.policy.listTviAdd.length) {
+            if(vm.policy.numberOfPerson> vm.policy.listTviAdd.length) {
                 addNewPerson();
-            } else if(vm.product.soNguoiThamGia< vm.policy.listTviAdd.length) {
+            } else if(vm.policy.numberOfPerson< vm.policy.listTviAdd.length) {
                 removePerson();
             }
         }
 
         function addNewPerson() {
-            var lineAdd = vm.product.soNguoiThamGia- vm.policy.listTviAdd.length;
+            var lineAdd = vm.policy.numberOfPerson- vm.policy.listTviAdd.length;
             for (var i=0; i < lineAdd; i++) {
                 vm.policy.listTviAdd.push({
                     "address": "",
@@ -260,7 +238,7 @@
         };
 
         function removePerson() {
-            vm.policy.listTviAdd.splice(vm.product.soNguoiThamGia, vm.policy.listTviAdd.length)
+            vm.policy.listTviAdd.splice(vm.policy.numberOfPerson, vm.policy.listTviAdd.length)
         };
     }
 })();
