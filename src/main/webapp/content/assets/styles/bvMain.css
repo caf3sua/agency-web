@@ -1809,7 +1809,7 @@ body {
     border: 1px solid rgb(224, 225, 229);
     border-radius: 5px;
     color: rgb(3, 113, 182);
-    height: 50px;
+    height: 100%;
     font-weight: normal;
 }
 #bv-combobox-px>div>input{
