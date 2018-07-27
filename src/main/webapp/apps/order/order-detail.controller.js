@@ -78,6 +78,18 @@
   		}
   		
   		function formatCarData(data) {
+  			vm.policy.nntxSoTien = data.passengersAccidentSi;
+  			vm.policy.nntxSoCho = data.passengersAccidentNumber;
+  			vm.policy.nntxPhi = data.passengersAccidentPremium;
+  			vm.policy.tndsbbPhi = data.thirdPartyPremium;
+  			vm.policy.tndstnSoTien = data.tndstnSotien;
+  			
+  			vm.policy.manufacturer = data.makeName;// hang xe  		
+  			vm.policy.model = data.modelName;
+  			vm.policy.namSX = data.yearOfMake;
+  			vm.policy.vcxSoTien = data.physicalDamageSi; // só tiền tham gia bảo hiểm
+  			vm.policy.vcxPhi = data.physicalDamagePremium;
+  			
   		}
   		
   		function formatHomeData(data) {
