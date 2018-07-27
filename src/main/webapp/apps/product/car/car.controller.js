@@ -185,6 +185,7 @@
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
+            		formatAddressEdit();
                 }).catch(function(data, status) {
                 	vm.loading = false;
                 	vm.showWarningEditPolicy();
@@ -193,7 +194,9 @@
   		}
   		
   		function formatEditData(result) {
-  			result.tndsSoCho = result.tndsSocho.toString();
+  			result.manufacturer = result.makeName;
+  		    result.model = result.modelId;
+  			result.tndsSoCho = result.tndsSoCho.toString();
   			result.ngapNuoc = result.ngapNuocCheck;
   			result.tndstnSoTien = result.tndstnSotien;
   			result.khauHao = result.khaoHaoCheck;
@@ -211,6 +214,22 @@
   				result.insuranceTarget = "New";	
   			}
   			
+  		}
+  		
+  		function formatAddressEdit() {
+  			// Address at step 2
+  			var receiverAddress = vm.policy.receiverUser.address;
+  			vm.policy.receiverUser.address = vm.formatAddressEdit(receiverAddress);
+  			vm.getAddressByPostCode(receiverAddress).then(function (data) {
+  				vm.policy.receiverUser.addressDistrictData = data;
+    		});
+  			
+  			// extra
+  			var insuredAddress = vm.policy.insuredAddress;
+    		vm.policy.insuredAddress = vm.formatAddressEdit(insuredAddress);
+    		vm.getAddressByPostCode(insuredAddress).then(function (data) {
+    			vm.policy.insuredAddressDistrict = data;
+    		});
   		}
   		
   		function getCarBranchesSuccess(result) {
@@ -397,7 +416,11 @@
 	  		vm.policy.totalPremium = postData.totalPremium;
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
-            vm.policy.receiverMoible =  vm.receiverUserData.mobile;
+            vm.policy.receiverMoible =  vm.receiverUser.mobile;
+            
+            vm.policy.insuredAddress = vm.policy.insuredAddress
+				+ "::" + vm.policy.insuredAddressDistrict.pkDistrict + "::" + vm.policy.insuredAddressDistrict.pkPostcode;
+            
 	  		// call base to create policy
 	  		vm.savePolicyBase("CAR", vm.policy);
     	}

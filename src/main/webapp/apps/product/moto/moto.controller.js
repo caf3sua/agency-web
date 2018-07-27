@@ -77,6 +77,7 @@
         vm.validatorNntxStbh = validatorNntxStbh;
         vm.validatorChaynoStbh = validatorChaynoStbh;
         vm.validatorCombo = validatorCombo;
+        vm.onThoihanChange = onThoihanChange;
         vm.typeOfMotoOptions = [
             {id: '2', name: 'Xe Mô tô 2 bánh dung tích trên 50cc'},
             {id: '1', name: 'Xe Mô tô 2 bánh dung tích từ 50cc trở xuống'}
@@ -138,6 +139,12 @@
         	result.tndstnSotien = result.tndstnSotien.toString();
   		}
         
+        function onThoihanChange() {
+        	var endDate = moment(vm.policy.thoihantu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            // add a day
+        	vm.policy.thoihanden = endDate;
+        }
+        
         function formatAddressEdit() {
   			// Address at step 2
   			var receiverAddress = vm.policy.receiverUser.address;
@@ -147,6 +154,11 @@
     		});
   			
   			// extra
+  			var insuredAddress = vm.policy.insuredAddress;
+    		vm.policy.insuredAddress = vm.formatAddressEdit(insuredAddress);
+    		vm.getAddressByPostCode(insuredAddress).then(function (data) {
+    			vm.policy.insuredAddressDistrict = data;
+    		});
   		}
         
         function checkedChange() {
@@ -236,6 +248,9 @@
         }
 
         function savePolicy() {
+        	vm.policy.insuredAddress = vm.policy.insuredAddress
+				+ "::" + vm.policy.insuredAddressDistrict.pkDistrict + "::" + vm.policy.insuredAddressDistrict.pkPostcode;
+        	
             var postData = getPostData(true);
             vm.policy.chaynoCheck = postData.chaynoCheck;
             vm.policy.chaynoPhi = postData.chaynoPhi;
