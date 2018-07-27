@@ -104,10 +104,8 @@
             startDate.setDate(startDate.getDate() + 1);
             vm.policy.thoihantu = DateUtils.convertDate(startDate);
 
-            var endDate = new Date();
-            // add a day
-            endDate.setFullYear(endDate.getFullYear() + 1);
-            vm.policy.thoihanden = DateUtils.convertDate(endDate);
+            var endDate = moment(vm.policy.thoihantu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+        	vm.policy.thoihanden = endDate;
 
         	// Register disable 
             vm.registerDisableContactInfoValue('vm.policy.tongPhi');
@@ -266,7 +264,7 @@
             vm.policy.tndsbbCheck = postData.tndsbbCheck;
             vm.policy.tongPhi = postData.tongPhi;
             vm.policy.typeOfMotoId = postData.typeOfMoto;
-
+            
             // call base
             vm.savePolicyBase("MOT", vm.policy);
         }
