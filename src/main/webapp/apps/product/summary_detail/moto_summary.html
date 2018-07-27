@@ -30,7 +30,7 @@
                 <p class="bv-title-from">Loại xe</p>
             </div>
             <div>
-	            <div ng-switch="vm.policy.typeOfMotoId">
+	            <div ng-switch="vm.policy.typeOfMoto">
 	                <div ng-switch-when="1">
 	                    <p class="bv-tile-templateSummary">Xe Mô tô 2 bánh dung tích từ 50cc trở xuống</p>
 	                </div>
@@ -73,7 +73,7 @@
                 <p class="bv-title-from">Giá trị bảo hiểm</p>
             </div>
             <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.chaynoStbh | number}} VND</p>
+                <p class="bv-tile-templateSummary">{{vm.policy.chaynoStbh | number : 0}} VND</p>
             </div>
         </div>
         <div class="width-100 bv-pading-30">
@@ -119,7 +119,7 @@
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                <span>{{vm.policy.tndsBbPhi | number:0 }}</span><span> VND</span>
+                                <span>{{vm.policy.tndsbbPhi | number:0 }}</span><span> VND</span>
                             </div>
                         </td>
                     </tr>
@@ -132,16 +132,16 @@
                                     Mức trách nhiệm đối với người thứ 3
                                 </p>
                                 <p class="margin-bottom-0">
-                                    - Về người: {{vm.policy.tndsTnSotien | number:0 }} VND/người/vụ
+                                    - Về người: {{vm.policy.tndstnSotien | number:0 }} VND/người/vụ
                                 </p>
                                 <p class="margin-bottom-0">
-                                    - Về tài sản: {{vm.policy.tndsTnSotien | number:0 }} VND/vụ
+                                    - Về tài sản: {{vm.policy.tndstnSotien | number:0 }} VND/vụ
                                 </p>
                             </div>
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                <span>{{vm.policy.tndsTnPhi | number:0 }}</span><span> VND</span>
+                                <span>{{vm.policy.tndstnPhi | number:0 }}</span><span> VND</span>
                             </div>
                         </td>
                     </tr>
@@ -160,7 +160,7 @@
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                <span>{{vm.policy.tndsTnNntxPhi | number:0 }}</span><span> VND</span>
+                                <span>{{vm.policy.nntxPhi | number:0 }}</span><span> VND</span>
                             </div>
                         </td>
                     </tr>

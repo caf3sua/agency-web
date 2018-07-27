@@ -111,7 +111,7 @@
   		}
   		
   		function formatMotoData(data) {
-  			
+  			vm.policy.tndsBbPhi = data.tndsbbPhi;
   		}
   		
   		function formatTncData(data) {
