@@ -24,13 +24,13 @@
   		
   		// Properties & function declare
 //  		vm.product = {
-////            "chaynoCheck": false,
-////            "chaynoPhi": 0,
-////            "chaynoStbh": "",
-////            "nntxCheck": false,
-////            "nntxPhi": 0,
-////            "nntxSoNguoi": "",
-////            "nntxStbh": "",
+//            "chaynoCheck": false,
+//            "chaynoPhi": 0,
+//            "chaynoStbh": "",
+//            "nntxCheck": false,
+//            "nntxPhi": 0,
+//            "nntxSoNguoi": "",
+//            "nntxStbh": "",
 //            "tndsbbCheck": false,
 //            "tndsbbPhi": 0,
 //            "tndstnCheck": false,
@@ -41,33 +41,32 @@
 //        }
 
         vm.policy = {
-  				// premium
-  				"nntxPhi": 0,
-  				//create
-            "chaynoCheck":false,
-            "chaynoPhi":0,
-            "chaynoStbh":"",
+			// premium
+			"typeOfMoto": "",
+			"chaynoCheck": false,
+            "chaynoPhi": 0,
+            "chaynoStbh": "",
+            "nntxCheck": false,
+            "nntxPhi": 0,
+            "nntxSoNguoi": "",
+            "nntxStbh": "",
+            "tndsbbCheck": false,
+            "tndsbbPhi": 0,
+            "tndstnCheck": false,
+            "tndstnPhi": 0,
+            "tndstnSotien": "",
+			//create
             "hieuxe":"",
             "insuredAddress":"",
             "insuredName":"",
-            "nntxCheck":false,
-            "nntxSoNguoi":"",
-            "nntxStbh":"",
-            "policyNumber":"",
             "receiveMethod":"1",
             "registrationNumber":"",
             "sokhung":"",
             "somay":"",
             "thoihanden":"",
             "thoihantu":"",
-            "tndsBbPhi":0,
-            "tndsTnNntxPhi":0,
-            "tndsTnPhi":0,
-            "tndsTnSotien":"",
-            "tndsbbCheck":true,
-            "tndstnCheck":false,
-            "tongPhi":0,
-            "typeOfMotoId":""
+            
+            "tongPhi":0
         }
 
         vm.processComboResult = processComboResult;
@@ -136,6 +135,7 @@
         }
 
         function formatEditData(result) {
+        	result.tndstnSotien = result.tndstnSotien.toString();
   		}
         
         function formatAddressEdit() {
