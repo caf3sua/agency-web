@@ -110,7 +110,7 @@
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                {{vm.policy.thirdPartyPremium | number}}<span> VND</span>
+                                {{vm.policy.tndsbbPhi | number}}<span> VND</span>
                             </div>
                         </td>
                     </tr>
@@ -120,7 +120,7 @@
                         <td>
                             <div class="bv-tile-templateSummary">
                                 <p class="margin-bottom-0">
-                                     - Số tiền tham gia bảo hiểm: {{vm.policy.tndstnSotien | number}} VND/vụ về tài sản
+                                     - Số tiền tham gia bảo hiểm: {{vm.policy.tndstnSoTien | number}} VND/vụ về tài sản
                                 </p>
                             </div>
                         </td>
@@ -136,16 +136,16 @@
                         <td>
                             <div class="bv-tile-templateSummary">
                                 <p class="margin-bottom-0">
-                                     - Số người: {{vm.policy.passengersAccidentNumber}} người
+                                     - Số người: {{vm.policy.nntxSoCho}} người
                                 </p>
                                 <p class="margin-bottom-0">
-                                     - Số tiền tham gia bảo hiểm: {{vm.policy.passengersAccidentSi | number}} VND/người/vụ
+                                     - Số tiền tham gia bảo hiểm: {{vm.policy.nntxSoTien | number}} VND/người/vụ
                                 </p>
                             </div>
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                {{vm.policy.passengersAccidentPremium | number}}<span> VND</span>
+                                {{vm.policy.nntxPhi | number}}<span> VND</span>
                             </div>
                         </td>
                     </tr>
@@ -155,22 +155,22 @@
                         <td>
                             <div class="bv-tile-templateSummary">
                                 <p class="margin-bottom-0">
-                                     - Hãng xe: {{vm.policy.makeName}}
+                                     - Hãng xe: {{vm.policy.manufacturer}}
                                 </p>
                                 <p class="margin-bottom-0">
-                                     - Dòng xe: {{vm.policy.modelName}}
+                                     - Dòng xe: {{vm.policy.model}}
                                 </p>
                                 <p class="margin-bottom-0">
-                                     - Năm sản xuất: {{vm.policy.yearOfMake}}
+                                     - Năm sản xuất: {{vm.policy.namSX}}
                                 </p>
                                 <p class="margin-bottom-0">
-                                     - Giá trị xe tham gia bảo hiểm: {{vm.policy.physicalDamageSi | number}}
+                                     - Giá trị xe tham gia bảo hiểm: {{vm.policy.vcxSoTien | number}}
                                 </p>
                             </div>
                         </td>
                         <td>
                             <div class="bv-tile-templateSummary">
-                                {{vm.policy.physicalDamagePremium | number}}<span> VND</span>
+                                {{vm.policy.vcxPhi | number}}<span> VND</span>
                             </div>
                         </td>
                     </tr>
