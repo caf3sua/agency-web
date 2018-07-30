@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/apps/access/forgot-password/forgot-password.html=UTF-8
+encoding//src/main/webapp/apps/access/signin/signin.html=UTF-8
 encoding//src/main/webapp/apps/contact/contact-add-dialog.html=UTF-8
 encoding//src/main/webapp/apps/contact/contact-new.html=UTF-8
 encoding//src/main/webapp/apps/contact/contact-search-dialog.html=UTF-8
