@@ -102,8 +102,10 @@
   			OrderService.getByGycbhNumber({gycbhNumber: data.gycbhNumber}, onSuccess, onError);
   			
   			function onSuccess(result) {
-  				vm.policy.totalPremium = result.totalPremium;
-  				vm.policy.expiredDate = result.expiredDate
+  				vm.policy.premiumKhc = result.totalPremium;
+  				vm.policy.insuranceStartDate = result.inceptionDate;
+  				vm.policy.insuranceEndDate = result.expiredDate;
+  				vm.policy.premiumPackage = result.plan * 10000000;
   			}
   			
   			function onError() {

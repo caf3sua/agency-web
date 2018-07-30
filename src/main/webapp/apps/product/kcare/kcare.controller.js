@@ -168,6 +168,7 @@
             		vm.loading = false;
             		vm.policy = result;
             		// Open view and step - calculate premium again
+            		checkedChangeBill();
             		getPremium();
             		vm.nextCount = 2;
             		formatAddressEdit();
@@ -218,6 +219,7 @@
             } else{
             	vm.isq4 = true;
             }
+            
   		}
         
         function formatAddressEdit() {

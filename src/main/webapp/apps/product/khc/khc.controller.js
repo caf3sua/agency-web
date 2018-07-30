@@ -36,7 +36,7 @@
         	// create
             "inceptionDate":"",
             "permanentTotalDisablement":1,
-            "plan":2,
+            "plan": 0,
             "receiveMethod":"1",
             "tlAddcollections":[],
             "userAgent":""
@@ -104,7 +104,7 @@
         	result.premiumKhc = 0;
         	result.premiumNet = 0;
         	result.premiumDiscount = 0;
-//            vm.policy.insuranceEndDate = DateUtils.convertDate(endDate);
+        	result.insuranceEndDate = moment(result.inceptionDate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
   		}
         
         function formatAddressEdit() {
@@ -249,6 +249,7 @@
             vm.policy.inceptionDate = vm.policy.insuranceStartDate;
             vm.policy.tlAddcollections = vm.policy.premiumKhcList;
             vm.policy.permanentTotalDisablement = vm.policy.numberPerson;
+            vm.policy.plan =  vm.policy.premiumPackage / 10000000;
             
             // call base
             vm.savePolicyBase("KHC", vm.policy);
