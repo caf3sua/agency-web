@@ -46,7 +46,7 @@
         			controllerAs: 'vm',
         			resolve: {
         				loadPlugin: function ($ocLazyLoad) {
-        		    			return $ocLazyLoad.load(['apps/access/forgot-password/forgot-password.controller.js']);
+        		    			return $ocLazyLoad.load(['apps/access/forgot-password/forgot-password.service.js', 'apps/access/forgot-password/forgot-password.controller.js']);
         				}
 	        		}
         		});
