@@ -131,7 +131,7 @@
         }
         
         function onThoihanChange() {
-        	var endDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').format("DD/MM/YYYY");
+        	var endDate = moment(vm.policy.insuranceStartDate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
             // add a day
             vm.policy.insuranceEndDate = endDate;
         }
