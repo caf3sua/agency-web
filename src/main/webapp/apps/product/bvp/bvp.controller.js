@@ -135,6 +135,7 @@
         vm.getPremium = getPremium;
         vm.savePolicy = savePolicy;
         vm.validatorCombo = validatorCombo;
+        vm.onThoihanChange = onThoihanChange;
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
             {id: '2', name: 'Bạc'},
@@ -275,6 +276,12 @@
   			
   			// extra
   		}
+        
+        function onThoihanChange() {
+        	var endDate = moment(vm.policy.thoihanbhTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            // add a day
+        	vm.policy.thoihanbhDen = endDate;
+        }
         
         // watch
         $scope.$watch('$root.nguoith', function () {
