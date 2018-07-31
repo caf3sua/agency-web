@@ -65,7 +65,7 @@
                <div class="margin-right-5 width-100">
                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                        <div class="width-100">
-                           <input type="text" name="thoihantu" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu"
+                           <input type="text" name="thoihantu" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu" ng-change="vm.onThoihanChange()"
                                   required-message="'Cần nhập ngày băt đầu !'"
                                   required>
                        </div>

@@ -117,6 +117,12 @@
   		vm.validatorCombo = validatorCombo;
   		vm.validatorNntxSoCho = validatorNntxSoCho;
   		vm.validatorVcxSoTien = validatorVcxSoTien;
+  		vm.onThoihanChange = onThoihanChange;
+  		vm.getCarModelSuccess = getCarModelSuccess;
+  		vm.getCarModelError = getCarModelError;
+  		vm.getCarNamSanXuatMax = getCarNamSanXuatMax;
+  		vm.getCarNamSanXuatMin = getCarNamSanXuatMin;
+  		
   		vm.tndsSoChoOptions = [
   	      {id: '1', name: 'Loại xe dưới 6 chỗ ngồi'},
   	      {id: '2', name: 'Loại xe từ 6 đến 11 chỗ ngồi'},
@@ -194,27 +200,71 @@
   		}
   		
   		function formatEditData(result) {
+  			CarService.getCarModel({model : result.makeName}, getCarModelSuccess, getCarModelError);
+  			getCarNamSanXuatMax(result.modelId);
+  			
+  			result.nntxSoCho = result.passengersAccidentNumber;
+  			result.nntxSoTien = result.passengersAccidentSi.toString();
+  			result.nntxPhi = result.passengersAccidentPremium;
+  			result.tndsbbPhi = result.thirdPartyPremium;
+  		    result.tndsSoCho = result.tndsSoCho.toString();
+  			result.tndstnSoTien = result.tndstnSotien.toString();
   			result.manufacturer = result.makeName;
   		    result.model = result.modelId;
-  			result.tndsSoCho = result.tndsSoCho.toString();
-  			result.ngapNuoc = result.ngapNuocCheck;
-  			result.tndstnSoTien = result.tndstnSotien;
+  		    result.namSX = result.yearOfMake.toString() + ":" + result.modelId;
+  		    result.vcxPhi = result.physicalDamagePremium;
+			result.vcxSoTien = result.physicalDamageSi;
+  		    result.ngapNuoc = result.ngapNuocCheck;
   			result.khauHao = result.khaoHaoCheck;
   			result.khauTru = result.khauTruCheck;
   			result.garage = result.garageCheck;
   			result.matCap = result.matCapCheck;
-  			result.vcxPhi = result.physicalDamagePremium;
-  			result.namSX = result.yearOfMake;
-  			result.vcxSoTien = result.physicalDamageSi;
-  			result.nntxSoCho = result.passengersAccidentNumber;
-  			result.nntxSoTien = result.passengersAccidentSi;
-  			result.nntxPhi = result.passengersAccidentPremium;
-  			result.tndsbbPhi = result.thirdPartyPremium;
+
   			if (result.oldGycbhNumber == null){
   				result.insuranceTarget = "New";	
   			}
-  			
   		}
+  		
+  		function getCarNamSanXuatMax(modelId) {
+  			CarService.getMaxManufactureYear({carId : modelId}, getSuccess, getError);
+  			function getSuccess(result) {
+  				vm.namSxMax = result.max;
+  				getCarNamSanXuatMin(modelId);
+  	    	}
+  	    	
+  	    	function getError(result) {
+  	    		toastr.error('Get data error!', 'Error');
+  	    	}
+    	}
+  		
+  		function getCarNamSanXuatMin(modelId) {
+  			CarService.getMinManufactureYear({carId : modelId}, getSuccess, getError);
+  			function getSuccess(result) {
+  				vm.namSxMin = result.min;
+  				var min = parseInt(vm.namSxMin, 10);
+  				var max = parseInt(vm.namSxMax, 10);
+  				
+  				if (min > 0 && max > 0){
+      				for (var i = min; i < max; i++) { 
+      					vm.yearOptions.push({id: i + ":" + modelId, name: i});
+      				}
+      			}
+  	    	}
+  	    	
+  	    	function getError(result) {
+  	    		toastr.error('Get data error!', 'Error');
+  	    	}
+    	}
+  		
+  		function getCarModelSuccess(data) {
+  			data.forEach(function(item, index, data) {
+  				vm.modelOptions.push({id: item.carId, name: item.carName});
+  			});
+    	}
+    	
+    	function getCarModelError(data) {
+    		toastr.error('Get data error!', 'Error');
+    	}
   		
   		function formatAddressEdit() {
   			// Address at step 2
@@ -231,6 +281,12 @@
     			vm.policy.insuredAddressDistrict = data;
     		});
   		}
+  		
+  		function onThoihanChange() {
+        	var endDate = moment(vm.policy.thoihantu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            // add a day
+        	vm.policy.thoihanden = endDate;
+        }
   		
   		function getCarBranchesSuccess(result) {
   			result.forEach(function(item, index, arr) {
@@ -416,7 +472,7 @@
 	  		vm.policy.totalPremium = postData.totalPremium;
 	  		vm.policy.vcxCheck = postData.vcxCheck;
 	  		vm.policy.yearOfMake = postData.namSX;
-            vm.policy.receiverMoible =  vm.receiverUser.mobile;
+            vm.policy.receiverMoible =  postData.receiverUser.mobile;
             
             vm.policy.insuredAddress = vm.policy.insuredAddress
 				+ "::" + vm.policy.insuredAddressDistrict.pkDistrict + "::" + vm.policy.insuredAddressDistrict.pkPostcode;
@@ -502,3 +558,4 @@
         }
     }
 })();
+
