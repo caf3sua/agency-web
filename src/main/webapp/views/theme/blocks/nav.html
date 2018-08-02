@@ -328,11 +328,26 @@
     </li>
 
 	<!-- Đơn hàng -->
-    <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
-        <a ui-sref="app.order" class="bv-left-menu">
-            <i class="icon-documentation"></i>
+	<li ng-class="{active:$state.includes('order')}" has-authority="PERM_AGREEMENT_VIEW">
+        <a class="bv-left-menu">
+            <span class="nav-caret">
+	          <i class="fa fa-caret-down"></i>
+	        </span>
+            <i class="icon-stamp"></i>
             <span class="nav-text">Đơn hàng</span>
         </a>
+        <ul class="nav-sub">
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+                <a ui-sref="order.me">
+                    <span class="nav-text">Đơn hàng của tôi</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="order.nophi">
+                    <span class="nav-text">Đơn hàng nợ phí</span>
+                </a>
+            </li>
+        </ul>
     </li>
     
     <!-- Báo cáo -->
