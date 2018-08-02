@@ -1,0 +1,39 @@
+<div class="bv-context-menu">
+	<div class="" ui-sref="app.order-detail({id: order.agreementId})">
+		<div class="bv-detail-icon-table">
+			<i class="icon-eye"></i>
+		</div>
+        <span class="bv-detail-text-table">Xem</span>
+	</div>
+
+	<div class="" ng-click="vm.confirmCancelOrder(order.gycbhNumber)" ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 93">
+        <div  class="bv-detail-icon-table">
+            <i class="icon-cancel"></i>
+        </div>
+		<span class="bv-detail-text-table">Hủy</span>
+	</div>
+    <div ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 89" ng-click="vm.confirmEditAgreement(order)">
+        <div class="bv-detail-icon-table">
+            <i class="icon-pencil"></i>
+        </div>
+        <span class="bv-detail-text-table">Sửa</span>
+    </div>
+    <div ng-show="order.statusPolicyId == 91" ng-click="vm.confirmResendEmail(order.gycbhNumber)">
+        <div class="bv-detail-icon-table">
+            <i class="icon-mail"></i>
+        </div>
+        <span class="bv-detail-text-table">Gửi lại email xác nhận</span>
+    </div>
+    <div ng-show="order.canTaituc" ng-click="vm.confirmTaituc(order.agreementId)">
+        <div class="bv-detail-icon-table">
+            <i class="icon-reload-arrow"></i>
+        </div>
+        <span class="bv-detail-text-table">Tái tục</span>
+    </div>
+    <div ng-show="order.statusPolicyId != 89" ng-click="vm.confirmKhachhangnophi(order)">
+        <div class="bv-detail-icon-table">
+            <i class="icon-money"></i>
+        </div>
+        <span class="bv-detail-text-table">Khách hàng nợ phí</span>
+    </div>
+</div>
