@@ -38,11 +38,6 @@
         				}
         			},
         			resolve: {
-//        				authorize: ['Auth',
-//	                        function (Auth) {
-//	                            return Auth.authorize();
-//	                        }
-//	                    ],
 	                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
 	                        $translatePartialLoader.addPart('global');
 	                        return $translate.refresh();
@@ -50,125 +45,6 @@
         			}
         		})
         		
-            // form routers
-//            .state('app.form', {
-//              url: '/form',
-//              template: '<div ui-view></div>'
-//            })
-//              .state('app.form.layout', {
-//                url: '/layout',
-//                templateUrl: '../views/form/form.layout.html',
-//                data : { title: 'Layouts' }
-//              })
-//              .state('app.form.element', {
-//                url: '/element',
-//                templateUrl: '../views/form/form.element.html',
-//                data : { title: 'Elements' }
-//              })              
-//              .state('app.form.validation', {
-//                url: '/validation',
-//                templateUrl: '../views/form/ng.validation.html',
-//                data : { title: 'Validations' }
-//              })
-//              .state('app.form.select', {
-//                url: '/select',
-//                templateUrl: '../views/form/ng.select.html',
-//                data : { title: 'Selects' },
-//                controller: 'SelectCtrl',
-//                resolve: load(['ui.select','scripts/controllers/select.js'])
-//              })
-//              .state('app.form.editor', {
-//                url: '/editor',
-//                templateUrl: '../views/form/ng.editor.html',
-//                data : { title: 'Editor' },
-//                controller: 'EditorCtrl',
-//                resolve: load(['summernote','scripts/controllers/editor.js'])
-//              })
-//              .state('app.form.slider', {
-//                url: '/slider',
-//                templateUrl: '../views/form/ng.slider.html',
-//                data : { title: 'Slider' },
-//                controller: 'SliderCtrl',
-//                resolve: load(['vr.directives.slider','scripts/controllers/slider.js'])
-//              })
-//              .state('app.form.tree', {
-//                url: '/tree',
-//                templateUrl: '../views/form/ng.tree.html',
-//                data : { title: 'Tree' },
-//                controller: 'TreeCtrl',
-//                resolve: load(['angularBootstrapNavTree','scripts/controllers/tree.js'])
-//              })
-//              .state('app.form.file-upload', {
-//                url: '/file-upload',
-//                templateUrl: '../views/form/ng.file-upload.html',
-//                data : { title: 'File upload' },
-//                controller: 'UploadCtrl',
-//                resolve: load(['angularFileUpload', 'scripts/controllers/upload.js'])
-//              })
-//              .state('app.form.image-crop', {
-//                url: '/image-crop',
-//                templateUrl: '../views/form/ng.image-crop.html',
-//                data : { title: 'Image Crop' },
-//                controller: 'ImgCropCtrl',
-//                resolve: load(['ngImgCrop','scripts/controllers/imgcrop.js'])
-//              })
-//              .state('app.form.editable', {
-//                url: '/editable',
-//                templateUrl: '../views/form/ng.xeditable.html',
-//                data : { title: 'Xeditable' },
-//                controller: 'XeditableCtrl',
-//                resolve: load(['xeditable','scripts/controllers/xeditable.js'])
-//              })
-
-//          .state('app.page', {
-//            url: '/page',
-//            template: '<div ui-view></div>'
-//          })
-//            .state('app.page.profile', {
-//              url: '/profile',
-//              templateUrl: '../views/page/profile.html',
-//              data : { title: 'Profile' }
-//            })
-//            .state('app.page.setting', {
-//              url: '/setting',
-//              templateUrl: '../views/page/setting.html',
-//              data : { title: 'Setting' }
-//            })
-//            .state('app.page.search', {
-//              url: '/search',
-//              templateUrl: '../views/page/search.html',
-//              data : { title: 'Search' }
-//            })
-//            .state('app.page.faq', {
-//              url: '/faq',
-//              templateUrl: '../views/page/faq.html',
-//              data : { title: 'FAQ' }
-//            })
-//            .state('app.page.gallery', {
-//              url: '/gallery',
-//              templateUrl: '../views/page/gallery.html',
-//              data : { title: 'Gallery' }
-//            })
-//            .state('app.page.invoice', {
-//              url: '/invoice',
-//              templateUrl: '../views/page/invoice.html',
-//              data : { title: 'Invoice' }
-//            })
-//            .state('app.page.price', {
-//              url: '/price',
-//              templateUrl: '../views/page/price.html',
-//              data : { title: 'Price' }
-//            })
-//            .state('app.page.blank', {
-//              url: '/blank',
-//              templateUrl: '../views/page/blank.html',
-//              data : { title: 'Blank' }
-//            })
-//            .state('app.docs', {
-//              url: '/docs',
-//              templateUrl: '../views/page/docs.html',
-//              data : { title: 'Documents' }
-//            })
             .state('404', {
               url: '/404',
               templateUrl: '../views/misc/404.html'
@@ -184,6 +60,10 @@
             .state('505', {
               url: '/505',
               templateUrl: '../views/misc/505.html'
+            })
+            .state('payment-landing', {
+              url: '/payment-landing',
+              templateUrl: '../views/misc/payment-landing.html'
             })
             	
         		//$locationProvider.html5Mode(true); //activate HTML5 Mode
