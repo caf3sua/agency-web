@@ -62,25 +62,6 @@
 		        }
             }
         })
-        .state('order.order-detail', {
-	        	parent: 'order',
-	            url: '/order-detail/{id}',
-	            templateUrl: 'apps/order/me/order-detail.html',
-	            data : { title: 'ORDER_DETAIL' },
-	            controller: "OrderDetailController",
-	            controllerAs: 'vm',
-	            resolve: {
-	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-	        				$translatePartialLoader.addPart('global');
-	        				return $translate.refresh();
-	            		}],
-	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load([
-		            			'apps/order/me/order-detail.controller.js'
-		            	]);
-			        }
-	            }
-        })
         .state('order.nophi', {
             parent: 'order',
             url: '/nophi',
@@ -114,5 +95,24 @@
 		        }
             }
         })
+        .state('order.order-detail', {
+	        	parent: 'order',
+	            url: '/order-detail/{id}',
+	            templateUrl: 'apps/order/me/order-detail.html',
+	            data : { title: 'ORDER_DETAIL' },
+	            controller: "OrderDetailController",
+	            controllerAs: 'vm',
+	            resolve: {
+	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+	        				$translatePartialLoader.addPart('global');
+	        				return $translate.refresh();
+	            		}],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load([
+		            			'apps/order/me/order-detail.controller.js'
+		            	]);
+			        }
+	            }
+        });
     }
 })();

@@ -14,6 +14,7 @@
                 <th>Hiệu lực từ</th>
                 <th>Hiệu lực đến</th>
                 <th>Phí bảo hiểm</th>
+                <th>KH nợ phí</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,9 @@
 	            </td>
 	            <td>
 	                <p class="">{{order.totalPremium | number}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{order.sotien | number}}</p>
 	            </td>
 	        </tr>
 	        <tr ng-if="order.expand" ng-repeat-end="">
