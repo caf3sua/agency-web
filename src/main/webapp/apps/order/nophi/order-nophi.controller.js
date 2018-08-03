@@ -185,7 +185,7 @@
                 buttons: {
                     ok: {
                         text: 'Đồng ý',
-                        disabled: true,
+                        disabled: false,
                         btnClass: 'btn-green',
                         action: function (scope) {
                         	doKhachhangnophi(order, scope.sotiennophi, scope.note);
@@ -197,12 +197,14 @@
                 },
                 onScopeReady: function (scope) {
                     var self = this;
-                    scope.textChange = function () {
-                        if (scope.sotiennophi)
-                            self.buttons.ok.setDisabled(false);
-                        else
-                            self.buttons.ok.setDisabled(true);
-                    }
+                    scope.sotiennophi = order.sotien;
+                    scope.note = order.note;
+//                    scope.textChange = function () {
+//                        if (scope.sotiennophi)
+//                            self.buttons.ok.setDisabled(false);
+//                        else
+//                            self.buttons.ok.setDisabled(true);
+//                    }
                 }
             })
         }
