@@ -46,7 +46,7 @@
             function authThen () {
                 var isAuthenticated = Principal.isAuthenticated();
 
-                var blackList = ['access.signin', 'access.forgot-password'];
+                var blackList = ['access.signin', 'access.forgot-password', '503', '403', '404', '505', 'payment-landing'];
         		// black list
         		if (blackList.indexOf($rootScope.toState.name) != -1) {
         			return;
