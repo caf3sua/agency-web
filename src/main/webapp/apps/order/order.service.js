@@ -12,6 +12,10 @@
                 method : 'POST',
                 url : 'api/agency/product/agreement/create-agreement-nophi'
             },
+            'updateNophi' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/update-agreement-nophi'
+            },
         	'createTaituc' : {
                 method : 'GET',
                 url : 'api/agency/product/agreement/create-agreement-taituc/:agreementId'
@@ -20,6 +24,15 @@
                 method : 'POST',
                 url : 'api/agency/product/agreement/search-order',
                 isArray : true
+            },
+            'searchNophi' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/search-order-nophi',
+                isArray : true
+            },
+            'deleteOrder' : {
+                method : 'GET',
+                url : 'api/agency/product/agreement/delete-agreement-nophi/:id'
             },
             'getById' : {
                 method : 'GET',
