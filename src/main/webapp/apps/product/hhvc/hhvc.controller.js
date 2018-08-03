@@ -23,25 +23,42 @@
   		})();
   		
   		// Properties & function declare
-        vm.product = {
-            "cuocPhi":0,
-            "dieuKhoanBaoHiem":"",
-            "giaTriHang": "",
-            "hanhTrinhVanChuyen":"",
-            "laiUocTinh":true,
-            "loaiHangHoa":"",
-            "loaiTienTe":"VND",
-            "loaiTienTeHangHoa":"VND",
-            "phuongThucDongGoi":"",
-            "phuongThucThanhToan":2,
-            "phuongTienVanChuyen":"",
-            "premiumDiscount":0,
-            "premiumHHVC":0,
-            "premiumNet":0,
-            "tenHangHoa":""
-        }
+//        vm.product = {
+//            "cuocPhi":0,
+//            "dieuKhoanBaoHiem":"",
+//            "giaTriHang": "",
+//            "hanhTrinhVanChuyen":"",
+//            "laiUocTinh":true,
+//            "loaiHangHoa": "",
+//            "loaiTienTe":"VND",
+//            "loaiTienTeHangHoa":"VND",
+//            "phuongThucDongGoi":"",
+//            "phuongThucThanhToan":2,
+//            "phuongTienVanChuyen":"",
+//            "premiumDiscount":0,
+//            "premiumHHVC":0,
+//            "premiumNet":0,
+//            "tenHangHoa":""
+//        }
 
         vm.policy = {
+        		// premium
+        		"cuocPhi":0,
+        		"dieuKhoanBaoHiem":"",
+        		"giaTriHang": "",
+        		"laiUocTinh":true,
+        		"loaiHangHoa": "",
+        		"loaiTienTe":"VND",
+                "loaiTienTeHangHoa":"VND",
+                "phuongThucThanhToan":"1",
+                "phuongTienVanChuyen":"",
+                "premiumHHVC":0,             
+                "premiumNet":0,
+                "tenHangHoa":"",
+                
+        		// create
+        		"hanhTrinhVanChuyen":"",
+        		"phuongThucDongGoi":"",
             "addressNYCBH":"",
             "agentId":"",
             "agentName":"",
@@ -116,7 +133,6 @@
             "goodsTransportationMethod":0,
             "goodsWeight":0,
             "gycbhEnVi":"11",
-            "hanhTrinhVanChuyen":"1",
             "hhId":"",
             "inceptionDate":"",
             "insuredAddr":"",
@@ -147,9 +163,6 @@
             "packagingMethod":"",
             "passportNYCBH":"",
             "paymentMenthod":"1",
-            "phuongThucDongGoi":"1",
-            "phuongThucThanhToan":"1",
-            "phuongTienVanChuyen":"1",
             "placeOfPaymentIndemnity":"1",
             "policyNumber":"",
             "policySendDate":"",
@@ -373,7 +386,7 @@
         }
 
         function getPostData() {
-            var postData = Object.assign({}, vm.product);
+            var postData = Object.assign({}, vm.policy);
 
             if(postData.dieuKhoanBaoHiem == "") {
                 postData.dieuKhoanBaoHiem = 0;
@@ -399,8 +412,8 @@
 
         function onGetPremiumSuccess(result) {
             vm.loading = false;
-            vm.product.premiumNet = result.premiumNet;
-            vm.product.premiumHHVC = result.premiumHHVC;
+            vm.policy.premiumNet = result.premiumNet;
+            vm.policy.premiumHHVC = result.premiumHHVC;
 
             vm.isShowPremium = true;
             vm.isShowTotalPremium = true;
