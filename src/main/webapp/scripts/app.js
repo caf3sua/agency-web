@@ -59,7 +59,7 @@
     	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     		console.log('stateChange:' + toState.name);
 
-    		var blackList = ['access.signin', 'access.forgot-password', '503', '403'];
+    		var blackList = ['access.signin', 'access.forgot-password', '503', '403', '404', '505', 'payment-landing'];
     		// black list
     		if (blackList.indexOf(toState.name) != -1) {
     			return;
