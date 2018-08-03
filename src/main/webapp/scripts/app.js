@@ -39,7 +39,8 @@
 		 'smart-table',
 		 'disableAll',
          'angularValidator',
-         'cp.ngConfirm'
+         'cp.ngConfirm',
+         'angular-button-spinner'
       ])
       .run(run)
       .run(stateChange);

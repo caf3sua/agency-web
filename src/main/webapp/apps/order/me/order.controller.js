@@ -114,7 +114,7 @@
   			
   			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
   			function onSearchSuccess(result, headers) {
-                vm.page = vm.page - 1;
+//                vm.page = vm.page - 1;
                 
   				// Paging
   				vm.orders = result;
