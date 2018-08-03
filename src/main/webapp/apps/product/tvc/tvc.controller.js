@@ -55,10 +55,12 @@
         vm.onchangeReceiveMethod = false;
         vm.savePolicy = savePolicy;
         vm.showChangePremium = showChangePremium;
-        vm.addOrRemovePerson =addOrRemovePerson
+        vm.addOrRemovePerson =addOrRemovePerson;
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
+        vm.onchangeTravel = onchangeTravel;
+        vm.isShowChangeTravel = false;
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
@@ -117,9 +119,22 @@
   		}
         
   		// Function
+        function onchangeTravel() {
+            if (vm.policy.travelWithId == '1'){
+            	vm.policy.soNguoiThamGia = 1;
+            	addOrRemovePerson();
+            	vm.isShowChangeTravel = true;
+            } else{
+            	vm.policy.soNguoiThamGia = 2;
+            	addOrRemovePerson();
+            	vm.isShowChangeTravel = false;
+            }
+        }
+        
         function onchangePlan() {
             getPremium();
         }
+        
         function getPremium() {
             vm.loading = true;
             vm.product.destination =  vm.policy.destinationId;

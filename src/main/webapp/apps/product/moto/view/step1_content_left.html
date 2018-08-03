@@ -56,9 +56,14 @@
                 <p class="bv-title-from">Số chỗ tham gia bảo hiểm</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="1" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi" ng-blur="vm.getPremium()"
+                <input type="number" min="1" max="5" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi" ng-blur="vm.getPremium()"
                        validator= "vm.validatorNntxSoNguoi() === true"
                        invalid-message = "vm.validatorNntxSoNguoi()"/>
+                <div ng-show="myForm.nntxSoNguoi.$dirty && myForm.nntxSoNguoi.$invalid">
+	                <p class="help-block" ng-show="myForm.nntxSoNguoi.$error.max">
+	                    Vượt quá số lượng người cho phép!
+	                </p>
+	            </div>
             </div>
             <div class="margin-top-10 required" ng-show="vm.policy.nntxCheck">
                 <p class="bv-title-from">Số tiền bảo hiểm</p>

@@ -15,7 +15,7 @@
                 <p class="bv-title-from">Chọn gói bảo hiểm cho<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
             <div>
-                <select name="travelWithId" class="bv-select-box form-control" ng-model="vm.policy.travelWithId"
+                <select name="travelWithId" class="bv-select-box form-control" ng-model="vm.policy.travelWithId" ng-change="vm.onchangeTravel()"
                         required-message="'Chưa chọn gói bảo hiểm!'"
                         required
                 >
@@ -29,12 +29,19 @@
             </div>
             <div class="">
                 <input type="number" class="bv-input"  name="numberOfPerson" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
-                	   min="1" step="1" max="199"
+                	   min="1" step="1" max="120" size="3" ng-disabled="vm.isShowChangeTravel"
                        ng-blur="vm.addOrRemovePerson()"
                        required-message="'Chưa chọn số người tham gia!'"
                        required
                 />
-                <!-- <pre>{{myForm.soNguoiThamGia.$error | json}}</pre> -->
+                <div ng-show="myForm.numberOfPerson.$dirty && myForm.numberOfPerson.$invalid">
+                	<p class="help-block" ng-show="myForm.numberOfPerson.$error.required">
+	                    Nhập tổng số người tham gia
+	                </p>
+	                <p class="help-block" ng-show="myForm.numberOfPerson.$error.max">
+	                    Vượt quá số lượng người cho phép!
+	                </p>
+	            </div>
             </div>
             <div class="bv-margin-botton-10 margin-top-10">
                 <p class="bv-title-from margin-bottom-0">Ngày khởi hành từ Việt Nam<span class="bv-req-red">&nbsp(*)</span></p>

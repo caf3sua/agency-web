@@ -5,10 +5,18 @@
                 <p class="bv-title-from">Số người tham gia</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="0" class="bv-input" placeholder="Số người tham gia" ng-model="vm.policy.numberperson" ng-blur="vm.addOrRemovePerson()"
+                <input type="number" min="1" max="120" class="bv-input" placeholder="Số người tham gia" ng-model="vm.policy.numberperson" ng-blur="vm.addOrRemovePerson()"
                        name="numberperson"
                        required-message="'Chưa nhâp số người tham gia!'"
                        required/>
+                <div ng-show="myForm.numberperson.$dirty && myForm.numberperson.$invalid">
+                	<p class="help-block" ng-show="myForm.numberperson.$error.required">
+	                    Chưa nhâp số người tham gia!
+	                </p>
+	                <p class="help-block" ng-show="myForm.numberperson.$error.max">
+	                    Vượt quá số lượng người cho phép!
+	                </p>
+	            </div>
             </div>
             <div class="margin-top-10 required">
                 <p class="bv-title-from">Số tiền bảo hiểm</p>

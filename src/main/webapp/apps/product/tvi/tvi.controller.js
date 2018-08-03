@@ -26,29 +26,29 @@
             inceptionDate: "",
             invoiceInfo: {},
             listTviAdd: [
-            {
-                address: "",
-                cellPhone: "",
-                city: "",
-                dayTreatment: "",
-                detailTreatment: "",
-                diagnose: "",
-                dob: "",
-                emailAdress: "",
-                homePhone: "",
-                idPasswport: "",
-                insuredName: "",
-                nameDoctor: "",
-                relationship: "",
-                relationshipId: "",
-                relationshipName: "",
-                resultTreatment: "",
-                title: "",
-                travaelcareId: "",
-                tviAddId: "",
-                tviCareId: ""
-            }
-        ],
+		            {
+		                address: "",
+		                cellPhone: "",
+		                city: "",
+		                dayTreatment: "",
+		                detailTreatment: "",
+		                diagnose: "",
+		                dob: "",
+		                emailAdress: "",
+		                homePhone: "",
+		                idPasswport: "",
+		                insuredName: "",
+		                nameDoctor: "",
+		                relationship: "",
+		                relationshipId: "",
+		                relationshipName: "",
+		                resultTreatment: "",
+		                title: "",
+		                travaelcareId: "",
+		                tviAddId: "",
+		                tviCareId: ""
+		            }
+		        ],
             netPremium: 0,
             paymentMethod: "",
             planId: "",
@@ -90,6 +90,8 @@
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.isShowChangePremium = false;
+        vm.onchangeTravel = onchangeTravel;
+        vm.isShowChangeTravel = false;
         angular.element(document).ready(function () {
         });
 
@@ -150,9 +152,22 @@
         // Properties & function declare
 
         // Function
+        function onchangeTravel() {
+            if (vm.policy.travelWithId == '1'){
+            	vm.policy.numberOfPerson = 1;
+            	addOrRemovePerson();
+            	vm.isShowChangeTravel = true;
+            } else{
+            	vm.policy.numberOfPerson = 2;
+            	addOrRemovePerson();
+            	vm.isShowChangeTravel = false;
+            }
+        }
+        
         function onchangePlan() {
             getPremium();
         }
+        
         function getPremium() {
             vm.loading = true;
             
