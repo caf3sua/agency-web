@@ -40,7 +40,8 @@
 		 'disableAll',
          'angularValidator',
          'cp.ngConfirm',
-         'angular-button-spinner'
+         'angular-button-spinner',
+         'number-input'
       ])
       .run(run)
       .run(stateChange);

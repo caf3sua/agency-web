@@ -47,7 +47,7 @@
 	                <p class="">{{order.expiredDate}}</p>
 	            </td>
 	            <td>
-	                <p class="">{{order.totalPremium | number}}</p>
+	                <p class="">{{order.totalPremium | number:0}}</p>
 	            </td>
 	        </tr>
 	        <tr ng-if="order.expand" ng-repeat-end="">

@@ -41,6 +41,18 @@
         		{"productCode": "TNC", "productName" : "Bảo hiểm tai nạn con người"},
         		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
         	];
+        	vm.reminderProducts = [
+        		{"productCode": "CAR", "productName" : "Bảo hiểm ô tô"}, 
+        		{"productCode": "BVP", "productName" : "Bảo hiểm An Gia"},
+        		{"productCode": "KCR", "productName" : "Bảo hiểm bệnh ung thư"},
+        		{"productCode": "TVC", "productName" : "Bảo hiểm du lịch quốc tế"},
+        		{"productCode": "TVI", "productName" : "Bảo hiểm du lịch Việt Nam"},
+        		{"productCode": "MOT", "productName" : "Bảo hiểm xe máy"},
+        		{"productCode": "HOM", "productName" : "Bảo hiểm nhà tư nhân"},
+        		{"productCode": "KHC", "productName" : "Bảo hiểm kết hợp con người"},
+        		{"productCode": "TNC", "productName" : "Bảo hiểm tai nạn con người"},
+        		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
+        	];
         	
         	vm.selRelationship = {};
         	vm.selProduct = null;
@@ -103,7 +115,9 @@
       			}
       			
       			if (vm.contact.listContactProduct.indexOf(vm.selProduct) == -1) {
+      				var index = vm.products.indexOf(vm.selProduct);
       				vm.contact.listContactProduct.push(vm.selProduct);
+      				vm.products.splice(index, 1);
       			}
     		}
       		

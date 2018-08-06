@@ -25,14 +25,14 @@
 	        </div>
 	    </div>
 	    <div class="col-lg-3 bv-kh-padding-left  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <div class="bv-title-from">
+	        <div class="bv-title-from required">
 	            <p>Số CMT/MST</p>
 	        </div>
 	        <div class="margin-top-5">
 	            <div class="input-group display-flex">
 	            	<div class="width-100">
 	                	<input type="text" name="thoihanbhTu" class="bv-input" placeholder="Số CMT/MST" 
-	                 		ng-model="vm.contact.idNumber">
+	                 		ng-model="vm.contact.idNumber" required>
 	             	</div>
 		             <div class="input-group-addon bv-date-icon">
 		                 <span class="glyphicon glyphicon-credit-card"></span>
@@ -168,7 +168,7 @@
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5">
 	        <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
-	            <select class="bv-select-box form-control"  ng-options="selected.productName for selected in vm.products" ng-model="vm.selProductReminder"></select>
+	            <select class="bv-select-box form-control"  ng-options="selected.productName for selected in vm.reminderProducts" ng-model="vm.selProductReminder"></select>
 	        </div>
 	        <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
 	            <input name="content" type="text" class="bv-input" placeholder="Nội dung" ng-model="vm.content"/>

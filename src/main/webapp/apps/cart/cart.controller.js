@@ -49,7 +49,7 @@
         vm.couponCode = null;
         vm.bankCode = null;
         vm.agreementIds = [];
-        vm.checkTypePay = 'agency'
+        vm.checkTypePay = 'agency';
   		
     	angular.element(document).ready(function () {
         });
@@ -68,6 +68,14 @@
             	}
             }
         })();
+        
+        $scope.$watch('vm.checkTypePay', function () {
+  			if (vm.checkTypePay == 'agency') {
+  				vm.typeBank = 'ViettelPay';
+  			} else {
+  				vm.typeBank = 'Momo';
+  			}
+  		});
         
   		// Function
         function getAllOrder() {
