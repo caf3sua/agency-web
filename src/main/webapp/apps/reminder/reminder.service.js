@@ -83,6 +83,14 @@
         return $resource(resourceUrl, {}, {
         	'search': {url : 'api/agency/contact/search-reminder', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-contact-reminder', method: 'GET', isArray: true},
+            'getCountAllReminder': {url : 'api/agency/contact/get-count-all-contact-reminder', method: 'GET',
+            	transformResponse : function(data) {
+					data = angular.fromJson({
+						count : data
+					});
+					return data;
+				}
+            },
             'add': { method:'POST' },
             'create': {url : 'api/agency/contact/create-reminder', method: 'POST'},
             'getCountReminder': {url : 'api/agency/contact/get-count-contact-reminder/:numberDay', method: 'GET',

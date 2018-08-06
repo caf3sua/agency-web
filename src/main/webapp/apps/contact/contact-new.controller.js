@@ -59,7 +59,8 @@
       			  "listRelationship": [],
       			  "listReminders": [],
       			  "occupation": "",
-      			  "phone": ""
+      			  "phone": "",
+      			  "facebookId" : ""
       			}
         	
         	// function

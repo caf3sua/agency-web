@@ -36,7 +36,8 @@
 			    }
 			  ],
 			  "occupation": "Công nghệ thông tin",
-			  "phone": "0989888999"
+			  "phone": "0989888999",
+			  "facebookId": ""
 			}
         	
         	vm.contacts = [];

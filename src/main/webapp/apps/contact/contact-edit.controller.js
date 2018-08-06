@@ -59,7 +59,8 @@
       			  "listRelationship": [],
       			  "listReminders": [],
       			  "occupation": "",
-      			  "phone": ""
+      			  "phone": "",
+      			  "facebookId" : ""
       			}
         	
         	// function
@@ -82,6 +83,7 @@
       		    console.log('Init ContactEditController');
       		    
       		    // Get object Contact
+      		    debugger
       		    vm.contact = entity;
 	      		if (vm.contact.listRelationship == null){
 	      			vm.contact.listRelationship = [];

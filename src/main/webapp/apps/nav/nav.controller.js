@@ -399,7 +399,8 @@
   		}
   		
   		function countReminder() {
-  			ReminderService.getCountReminder({numberDay: CONSTANT_REMINDER_RANGER_DATE}, onSuccess, onError);
+//  			ReminderService.getCountReminder({numberDay: CONSTANT_REMINDER_RANGER_DATE}, onSuccess, onError);
+  			ReminderService.getCountAllReminder(onSuccess, onError);
     		
     		function onSuccess(result) {
     			vm.countReminder = result.count;
