@@ -118,6 +118,10 @@
             	method : 'GET', 
             	url : 'api/agency/product/agreement/get-by-contactId/:contactId',
             	isArray: true
+            },
+            'getByCode' : {
+            	method : 'POST', 
+            	url : 'api/agency/contact/get-by-code'
             }
         });
     }
