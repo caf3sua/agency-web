@@ -23,7 +23,11 @@
 				method : 'POST',
 				url : 'api/agency/printed-paper/search-used',
 				isArray : true
-			}
+			},
+			'getByGycbhNumber' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/getAnchi-by-gycbhNumber'
+            }
 		});
 
 		return service;

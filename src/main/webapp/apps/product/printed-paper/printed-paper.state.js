@@ -23,6 +23,7 @@
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
 	            			'apps/product/printed-paper/printed-paper.controller.js'
+	            			, 'apps/product/printed-paper/printed-paper.service.js'
             			]);
 		        }
             }

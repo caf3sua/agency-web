@@ -1,5 +1,5 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
-	<form name="form" role="form" ng-submit="vm.saveYcbhOffline()" show-validation>
+	<form name="vm.form" role="form" ng-submit="vm.saveYcbhOffline()" show-validation>
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.maSanPham}}">Bảo hiểm ô tô</strong></p>
 	    </div>
@@ -35,22 +35,25 @@
 	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
 	    <bv-fileupload input-id="upload-1" label="Giấy yêu cầu bảo hiểm" is-required="true" 
 	    	place-holder="Nhập giấy yêu cầu bảo hiểm" file-model="vm.gycbhFileModel"></bv-fileupload>
+    	<input type="hidden" name="gycbhFile" ng-model="vm.gycbhFile" required>
         
 	    <!-- Ấn chỉ - Upload -->
 	    <bv-fileupload input-id="upload-2" label="Ấn chỉ" is-required="true" 
 	    	place-holder="Nhập ấn chỉ" file-model="vm.anchiFileModel" ></bv-fileupload>
+	    <input type="hidden" name="anchiFile" ng-model="vm.anchiFile" required>
 	    
 	    <!-- Ảnh giám định - Upload -->
 	    <bv-fileupload input-id="upload-3" label="Ảnh giám định" is-required="true" 
 	    	place-holder="Nhập ảnh giám định" file-model="vm.imgGiamdinhFileModel" ></bv-fileupload>
-	    	
+    	<input type="hidden" name="imgGiamdinhFile" ng-model="vm.imgGiamdinhFile" required>
+    	
 	    <!-- Tài liệu khác -->
 	    <bv-fileupload input-id="upload-4" label="Tài liệu khác" is-required="false" 
 	    	place-holder="Nhập tài liệu khác" file-model="vm.documentFileModel"></bv-fileupload>
 	    	
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-	    	<button type="submit" class="btn primary" ng-disabled="form.$invalid || vm.isLoading">
+	    	<button type="submit" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading">
 	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Thanh toán
 	        </button>
 	        <button class="bv-btn-default" ng-click="vm.cancel()">

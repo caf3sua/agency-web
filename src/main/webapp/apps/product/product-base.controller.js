@@ -268,7 +268,7 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	$state.go('app.order');
+                        	$state.go('app.cart');
 	                    }
                     }
                 },

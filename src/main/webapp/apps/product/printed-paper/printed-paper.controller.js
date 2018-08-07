@@ -6,10 +6,10 @@
         .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
-    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'PrintedPaperService', 'ContactService'];
+    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
-    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, PrintedPaperService, ContactService) {
+    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
@@ -55,8 +55,8 @@
   		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
   		    
   		    console.log($stateParams.productCode);
-//			vm.policy.productCode = $stateParams.productCode;
-//			vm.policy.maSanPham = $stateParams.productCode;
+			vm.policy.productCode = $stateParams.productCode;
+			vm.policy.maSanPham = $stateParams.productCode;
 			
   		    
 			vm.gycbhNumber = {
@@ -64,7 +64,7 @@
   		    };
   		    vm.gycbhNumber = $stateParams.id;
   		    if (vm.gycbhNumber != null) {
-  		    	PrintedPaperService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+  		    	ProductPrintedPaperService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
 	  			
 	  			function onSuccess(data) {
 	  				vm.policy = data;
@@ -76,6 +76,9 @@
               		    "fileType": "",
               		    "filename": ""
               		};
+	  				
+	  				// Load file
+	  				loadFileInEditMode();
 	  				
 	  				ContactService.getByCode({contactCode : data.contactCode} , onGetContactSuccess, onGetContactError);
 	  				function onGetContactSuccess(result) {
@@ -92,6 +95,32 @@
 	  			}
   		    }
   		})();
+  		
+  		function dataURLtoFile(dataurl, filename) {
+  		    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+  		        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  		    while(n--){
+  		        u8arr[n] = bstr.charCodeAt(n);
+  		    }
+  		    return new File([u8arr], filename, {type:mime});
+  		}
+
+  		function loadFileInEditMode() {
+  			if (vm.policy.imgGcn) {
+  				let gcnFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGcn.content, 'gnc.jpg');
+  	  	  		vm.gcnFileModel = gcnFile;
+  			}
+  	  		
+  			if (vm.policy.imgGycbh) {
+  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGycbh.content, 'gycbhFile.jpg');
+  	  	  		vm.gycbhFileModel = imgGycbhFile;
+  			}
+  			
+  			if (vm.policy.imgHd) {
+  				let imgHdFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgHdFile.content, 'hoadon.jpg');
+  	  	  		vm.hoadonFileModel = imgHdFile;
+  			}
+  		}
   		
   		// watch
   		$scope.$watch('vm.gcnFileModel', function () {
@@ -182,9 +211,12 @@
   		}
   		
   		function saveAnchiPolicy() {
+  			if (vm.form.$invalid) {
+  				return;
+  			}
+  			
   			console.log('saveAnchiPolicy');
   			vm.isLoading = true;
-  			console.log('saveAnchiPolicy');
   			vm.policy.imgGcn = vm.gcnFile;
   			vm.policy.imgHd = vm.hoadonFile;
   			vm.policy.imgGycbh = vm.gycbhFile;

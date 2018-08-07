@@ -3,10 +3,10 @@
 
     angular
         .module('app')
-        .factory('PrintedPaperService', PrintedPaperService);
+        .factory('ProductPrintedPaperService', ProductPrintedPaperService);
 
-    PrintedPaperService.$inject = ['$resource'];
-    function PrintedPaperService($resource) {
+    ProductPrintedPaperService.$inject = ['$resource'];
+    function ProductPrintedPaperService($resource) {
         var service = $resource('', {}, {
             'getByGycbhNumber' : {
                 method : 'POST',

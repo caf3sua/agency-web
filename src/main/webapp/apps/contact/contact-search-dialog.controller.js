@@ -5,8 +5,8 @@
         .controller('ContactSearchDialogController', ContactSearchDialogController);
 
 
-    	ContactSearchDialogController.$inject = ['$scope', '$http', '$filter', '$uibModalInstance', 'ContactService'];
-        function ContactSearchDialogController($scope, $http, $filter, $uibModalInstance, ContactService) {
+    	ContactSearchDialogController.$inject = ['$scope', '$state', '$http', '$filter', '$uibModalInstance', 'ContactService'];
+        function ContactSearchDialogController($scope, $state, $http, $filter, $uibModalInstance, ContactService) {
         	var vm = this;
         	vm.contactCode;
         	vm.searchContact = searchContact;
@@ -33,6 +33,11 @@
         		ContactService.search(vm.searchCriterial, onSuccess, onError);
         		
         		function onSuccess(result) {
+        			let count = 1;
+        			angular.forEach(result, function(value, key) {
+        				value.id = count;
+        				count++;
+      			 	});
         			vm.contacts = result;
         		}
         		
@@ -43,6 +48,7 @@
         	
         	function addNewContact() {
         		$uibModalInstance.dismiss('cancel');
+        		$state.go('app.contact-new');
         	}
         	
         	vm.cancel = function () {

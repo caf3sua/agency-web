@@ -1,5 +1,5 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
-	<form name="form" role="form" ng-submit="vm.saveAnchiPolicy()" show-validation>
+	<form name="vm.form" role="form" ng-submit="vm.saveAnchiPolicy()" show-validation>
 		<div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
 	    </div>
@@ -129,10 +129,12 @@
 	    <!-- GCN Upload-->
 	    <bv-fileupload input-id="upload-1" label="GCN" is-required="true" 
 	    	place-holder="Nhập giấy chứng nhận" file-model="vm.gcnFileModel"></bv-fileupload>
-	    	    
+   	    <input type="hidden" name="gcnFile" ng-model="vm.gcnFile" required>
+   	    
 	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
 	    <bv-fileupload input-id="upload-2" label="Giấy yêu cầu bảo hiểm" is-required="true" 
 	    	place-holder="Nhập giấy yêu cầu bảo hiểm" file-model="vm.gycbhFileModel"></bv-fileupload>
+	    <input type="hidden" name="gycbhFile" ng-model="vm.gycbhFile" required>
 	    
 	    <!-- Hóa đơn -->
 	    <bv-fileupload input-id="upload-3" label="Hóa đơn" is-required="false" 
@@ -140,10 +142,10 @@
 	    
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-	    	<button type="submit" class="btn primary" ng-disabled="form.$invalid || vm.isLoading" ng-click="vm.isSaveAndNewFlag = false">
+	    	<button type="submit" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading" ng-click="vm.isSaveAndNewFlag = false">
 	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Thanh toán
 	        </button>
-	        <button type="submit" class="btn primary" ng-disabled="form.$invalid || vm.isLoading" ng-click="vm.isSaveAndNewFlag = true">
+	        <button type="submit" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading" ng-click="vm.isSaveAndNewFlag = true">
 	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Lưu và tạo mới
 	        </button>
 	        <button class="bv-btn-default" ng-click="vm.cancel()">

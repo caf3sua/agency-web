@@ -35,7 +35,7 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-		        <tr ng-repeat="row in vm.contactsInit" ng-dblclick="vm.selectedContact(row)">
+		        <tr ng-repeat="row in vm.contactsInit track by $index" ng-dblclick="vm.selectedContact(row)">
 		          <td>{{row.id}}</td>
 		          <td>{{row.contactName}}</td>
 		          <td>{{row.idNumber}}</td>

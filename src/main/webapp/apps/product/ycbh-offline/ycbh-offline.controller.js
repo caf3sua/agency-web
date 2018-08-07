@@ -51,6 +51,8 @@
   			vm.policy.maSanPham = $stateParams.productCode;
   		})();
   		
+  		
+  		
   		// watch
   		$scope.$watch('vm.gycbhFileModel', function () {
   			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
@@ -146,6 +148,10 @@
   		}
   		
   		function saveYcbhOffline() {
+  			if (vm.form.$invalid) {
+  				return;
+  			}
+  			
   			vm.isLoading = true;
   			console.log('saveYcbhOffline');
   			vm.policy.documentContent = vm.documentFile;
