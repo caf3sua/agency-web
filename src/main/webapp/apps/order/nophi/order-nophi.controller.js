@@ -5,9 +5,9 @@
         .module('app')
         .controller('OrderNophiController', OrderNophiController);
 
-    OrderNophiController.$inject = ['$scope', '$stateParams', 'Principal', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS'];
+    OrderNophiController.$inject = ['$scope', '$controller', '$stateParams', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS'];
 
-    function OrderNophiController ($scope, $stateParams, Principal, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS) {
+    function OrderNophiController ($scope, $controller, $stateParams, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS) {
     	var vm = this;
         
     	// Properties & function declare
@@ -38,7 +38,6 @@
   		};
   		vm.sotiennophi;
   		
-  		vm.viewDetail = viewDetail;
   		vm.confirmDeleteOrder = confirmDeleteOrder;
   		vm.searchOrder = searchOrder;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
@@ -49,13 +48,12 @@
 
     	// Init controller
   		(function initController() {
+  			// instantiate base controller
+  		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
   		})();
   		
   		// Function
-  		function viewDetail() {
-  			
-  		}
-  		
+
   		function gotoDetail(id) {
   			$state.go("order.order-detail", {id: id});
   		}

@@ -34,7 +34,7 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/cart/cart.service.js', 'apps/cart/cart.controller.js']);
+	            		return $ocLazyLoad.load(['apps/cart/cart.service.js', 'apps/cart/cart.controller.js', 'apps/agreement-base.controller.js']);
 		        }
             }
         });

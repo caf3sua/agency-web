@@ -25,6 +25,7 @@
 		            loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load([
 		            			'apps/order/order.service.js'
+		            			, 'apps/agreement-base.controller.js'
 	            			]);
 			        }
 		        }

@@ -25,7 +25,7 @@
 			</tr>
 		</thead>
         <tbody>
-            <tr ng-repeat="order in vm.allOrder track by $index"">
+            <tr ng-repeat-start="order in vm.allOrder track by $index" ng-click="order.expand = !order.expand">
                  <td>
                      <div class="bv-gh-checkbox" ng-show="vm.type91">
                          <i class="fas fa-exclamation-triangle"></i>
@@ -70,6 +70,9 @@
                     <p style="width: 150px">{{order.totalPremium | number:0}}</p>
                    </td>
                </tr>
+               <tr ng-if="order.expand" ng-repeat-end="">
+           			<td colspan="9"><div ng-include="'apps/cart/cart-context-menu.html'"></div></td>
+				</tr>
            </tbody>
         <tfoot>
 			<tr>
