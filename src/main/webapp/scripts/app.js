@@ -42,6 +42,7 @@
          'cp.ngConfirm',
          'angular-button-spinner',
          'number-input'
+//         'uiGmapgoogle-maps'
       ])
       .run(run)
       .run(stateChange);
