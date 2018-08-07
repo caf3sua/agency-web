@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center padding-bottom-35 padding-bottom-ccc">
-                            <a class="bv-icon-contact-detail display-inline-block" ng-disabled="true">
+                            <a class="bv-icon-contact-detail display-inline-block" href="tel:{{vm.selectedContact.phone}}">
                                 <i class="icon-telephone"></i>
                                 <p class="bv-text-icon-contact-detail">Gọi điện</p>
                             </a>
@@ -36,7 +36,7 @@
                                 <i class="icon-signs"></i>
                                 <p class="bv-text-icon-contact-detail">Tìm đường</p>
                             </a>
-                            <a class="bv-icon-contact-detail display-inline-block" ng-disabled="true">
+                            <a class="bv-icon-contact-detail display-inline-block" target="_blank" href="{{vm.selectedContact.facebookId}}">
                                 <i class="icon-facebook-logo"></i>
                                 <p class="bv-text-icon-contact-detail">Chat</p>
                             </a>
@@ -169,7 +169,7 @@
 	                                    <p class="bv-title-from">Facebook message</p>
 	                                </div>
 	                                <div>
-	                                    <p class="bv-tile-templateSummary"></p>
+	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.facebookId}}</p>
 	                                </div>
                                 </div>
                             </div>
