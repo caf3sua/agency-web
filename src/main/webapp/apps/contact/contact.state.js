@@ -99,6 +99,27 @@
 	            			]);
 			        }
 	            }
-	        });
+	        })
+	        .state('app.contact-map', {
+	            url: '/contact-map/{id}',
+	            templateUrl: 'apps/contact/map/contact-map.html',
+	            data : { title: 'CONTACT_MAP' },
+	            controller: "ContactMapController",
+	            controllerAs: 'vm',
+	            resolve: {
+	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+	        				$translatePartialLoader.addPart('global');
+	        				return $translate.refresh();
+	            		}],
+	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+	                        return ContactService.get({id : $stateParams.id}).$promise;
+	                    }],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js'
+		            			, 'apps/product/product-base.service.js'
+		            			, 'apps/contact/map/contact-map.controller.js']);
+			        }
+	            }
+	        })
     }
 })();
