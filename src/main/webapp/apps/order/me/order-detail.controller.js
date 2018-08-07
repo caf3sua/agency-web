@@ -99,6 +99,7 @@
   		}
   		
   		function formatKhcData(data) {
+  			vm.policy.premiumKhcList = data.tlAddcollections;
   			OrderService.getByGycbhNumber({gycbhNumber: data.gycbhNumber}, onSuccess, onError);
   			
   			function onSuccess(result) {

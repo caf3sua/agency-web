@@ -29,6 +29,31 @@
             </div>
         </div>
     </div>
+    
+    <div class="bv-pading-30">
+    	<div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
+            <p>THÔNG TIN NGƯỜI ĐƯỢC BẢO HIỂM</p>
+        </div>
+    	<div class="table-responsive bv-home-block-left-table-responsive">
+             <table class="table table-bordered" >
+                 <thead>
+                 <tr>
+                     <th>Họ và tên</th>
+                     <th>Số Hộ chiếu/CMND</th>
+                     <th>Ngày sinh</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+	                 <tr ng-repeat="person in vm.policy.premiumKhcList">
+	                     <td><p>{{person.insuredName}}</p></td>
+	                     <td><p>{{person.idPasswport}}</p></td>
+	                     <td><p>{{person.dob}}</p></td>
+	                 </tr>
+                 </tbody>
+             </table>
+         </div>
+    </div>
+    
     <div class="bv-pading-30">
         <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
             <p>Thông tin bảo hiểm</p>
@@ -60,7 +85,7 @@
             <p class="bv-title-from">Điều khoản, điều kiện</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">Theo điều khoản bảo hiểm Kết hợp con người của Bảo hiểm Bảo Việt. Quý khách vui lòng xem <b>Điều khoản, điều kiện</b></p>
+            <p class="bv-tile-templateSummary">Theo điều khoản bảo hiểm Kết hợp con người của Bảo hiểm Bảo Việt. Quý khách vui lòng xem <a href="https://baovietonline.com.vn/View?id=151" target="_blank" style="color: #337ab7;">Điều khoản, điều kiện</a></p>
         </div>
     </div>
 

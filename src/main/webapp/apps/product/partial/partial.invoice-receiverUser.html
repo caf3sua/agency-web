@@ -16,38 +16,40 @@
         <p class="bv-title-from-des">- Khu vực còn lại: 4-5 ngày</p>
     </label>
 </div>
-<div class="margin-top-20 text-header-sp">
-  	<p>Thông tin hóa đơn giá trị gia tăng</p>
+<div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTableRights = true" ng-click="vm.isCollapsedTableRights = !vm.isCollapsedTableRights">
+  	<p>Thông tin hóa đơn giá trị gia tăng <i class="pull-right fas fa-question-circle" style="color: #1964af !important;font-size: 20px;"></i> </p>
 </div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Họ và tên người mua</p>
-</div>
-<div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
-</div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Tên đơn vị</p>
-</div>
-<div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
-</div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Mã số thuế</p>
-</div>
-<div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo"/>
-</div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Địa chỉ đơn vị</p>
-</div>
-<div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
-</div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Số tài khoản</p>
-</div>
-<div class="margin-top-5">
-    <input type="text" name="invoiceInfoData.accountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
+<div uib-collapse="vm.isCollapsedTableRights">
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Họ và tên người mua</p>
+	</div>
+	<div class="margin-top-5">
+	    <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
+	</div>
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Tên đơn vị</p>
+	</div>
+	<div class="margin-top-5">
+	    <input type="text" name="invoiceInfoData.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
+	</div>
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Mã số thuế</p>
+	</div>
+	<div class="margin-top-5">
+	    <input type="text" name="invoiceInfoData.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo"/>
+	</div>
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Địa chỉ đơn vị</p>
+	</div>
+	<div class="margin-top-5">
+	    <input type="text" name="invoiceInfoData.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
+	</div>
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Số tài khoản</p>
+	</div>
+	<div class="margin-top-5">
+	    <input type="text" name="invoiceInfoData.accountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
+	</div>
 </div>
   
 <div class="margin-top-20 text-header-sp">

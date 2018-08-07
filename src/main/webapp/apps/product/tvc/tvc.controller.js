@@ -6,14 +6,17 @@
         .controller('ProductTvcController', ProductTvcController);
 
     ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
-    	, '$stateParams'];
+    	, '$stateParams' , 'DateUtils'];
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
-    		, $stateParams) {
+    		, $stateParams, DateUtils) {
     	var vm = this;
     	vm.lineId = 'TVC';
     	
     	vm.policy = {
+    			// premium
+    			premiumDiscount: "",
+    			//
                 agreementId: "",
                 changePremium: null,
                 contactCode: "",
@@ -26,10 +29,10 @@
                  },
                 listTvcAddBaseVM: [
                 ],
-                loaitien: "",
+                loaitien: "USD",
                 netPremium: 0,
                 paymentMethod:"paymentMethod",
-                planId:"",
+                planId:"2",
                 policyNumber: "",
                 premium: 0,
                 propserCellphone: "",
@@ -61,6 +64,10 @@
         vm.isShowChangePremium = false;
         vm.onchangeTravel = onchangeTravel;
         vm.isShowChangeTravel = false;
+        vm.isShowUSD = true;
+        vm.isShowEUR = false;
+        vm.changeLoaitien = changeLoaitien;
+        
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
@@ -71,6 +78,11 @@
   		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
             vm.registerDisableContactInfoValue('vm.policy.premium');
 
+            var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.inceptionDate = DateUtils.convertDate(startDate);
+            
             // Edit
             if (vm.isEditMode()) {
             	vm.loading = true;
@@ -131,8 +143,25 @@
             }
         }
         
+        function changeLoaitien() {
+  			var loaitien = vm.policy.loaitien;
+  			
+  			if (loaitien == "USD") {
+  				vm.isShowUSD = true;
+  	  	        vm.isShowEUR = false;
+  			} else if (loaitien == "EUR") {
+  				vm.isShowUSD = false;
+  	  	        vm.isShowEUR = true;
+  			} else {
+  				vm.isShowUSD = false;
+  	  	        vm.isShowEUR = false;
+  			}
+  		}
+        
         function onchangePlan() {
-            getPremium();
+        	if (vm.policy.expiredDate != ""){
+        		getPremium();	
+        	}
         }
         
         function getPremium() {
@@ -146,7 +175,7 @@
             vm.product.premiumPackage  =  vm.policy.travelWithId;
             vm.product.premiumTvc  = 0;
             if(vm.product.premiumDiscount > 0 ){
-                vm.product.premiumDiscount = vm.product.premiumDiscount;
+                vm.product.premiumDiscount = vm.policy.premiumDiscount;
             }else{
                 vm.product.premiumDiscount  = 0;
             }

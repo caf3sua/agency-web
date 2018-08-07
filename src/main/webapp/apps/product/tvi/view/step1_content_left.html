@@ -68,7 +68,7 @@
             <div class="margin-right-5 width-100">
                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
-                        <input type="text" class="bv-input" name="expiredDate" placeholder="Đến ngày"
+                        <input type="text" class="bv-input" name="expiredDate" placeholder="Đến ngày" ng-change="vm.onchangePlan()"
                                ng-model="vm.policy.expiredDate"
                                required-message="'Chưa chọn ngày kết thúc!'"
                                required
@@ -78,16 +78,6 @@
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
                 </div>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Loại tiền trong bảng quyền lợi<span class="bv-req-red">&nbsp(*)</span></p>
-            </div>
-            <div>
-                <select class="bv-select-box form-control"  name="bankId" ng-model ="vm.policy.bankId">
-                    <option value="" selected="" disabled="">--- Chọn loại tiền ---</option>
-                    <option value="USD">VND/USD</option>
-                    <option value="EUR">VND/EUR</option>
-                </select>
             </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Chương trình bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>

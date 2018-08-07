@@ -6,10 +6,10 @@
         .controller('ProductTviController', ProductTviController);
 
     ProductTviController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
-    	, '$stateParams'];
+    	, '$stateParams', 'DateUtils'];
 
     function ProductTviController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
-    		, $stateParams) {
+    		, $stateParams, DateUtils) {
         var vm = this;
         vm.lineId = 'TVI';
         
@@ -51,7 +51,7 @@
 		        ],
             netPremium: 0,
             paymentMethod: "",
-            planId: "",
+            planId: "1",
             policyNumber: "",
             premium: 0,
             propserAddress: "",
@@ -100,6 +100,11 @@
             // instantiate base controller
             $controller('ProductBaseController', { vm: vm, $scope: $scope });
             vm.registerDisableContactInfoValue('vm.policy.premium');
+            
+            var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.inceptionDate = DateUtils.convertDate(startDate);
             
             // Edit
             if (vm.isEditMode()) {

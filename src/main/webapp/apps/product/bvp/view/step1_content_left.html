@@ -6,7 +6,7 @@
             </div>
             <div class=" display-flex margin-top-10">
                 <div class="margin-right-5 width-100">
-                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                         <div class="width-100">
                             <input type="text" name="thoihanbhTu" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihanbhTu" ng-change="vm.onThoihanChange()">
                         </div>
@@ -170,11 +170,11 @@
             <div ng-show="vm.isShowPremium">
                 <p class="bv-tile-templateSummary">{{vm.policy.premiumNet | number:0}}</p>
             </div>
-            <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
+            <div class="bv-gh-text-sum-product" ng-show="vm.isShowTotalPremium">
                 <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
             </div>
             <div ng-show="vm.isShowTotalPremium">
-                <p class="bv-tile-templateSummary">{{vm.policy.phiBH | number:0}}</p>
+                <p class="bv-gh-number-sum-product">{{vm.policy.phiBH | number:0}}</p>
             </div>
             
             <!-- Bảng quyền lợi bảo hiểm -->
