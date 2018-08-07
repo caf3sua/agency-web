@@ -55,9 +55,6 @@
           	</tr>
         </tbody>
     </table>
-    <pre>{{vm.page}}</pre>
-    <pre>{{vm.queryCount}}</pre>
-    <pre>{{vm.itemsPerPage}}</pre>
     <div class="text-center">
     	<bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage" ng-show="vm.totalItems > 0"></bv-item-count>
 		<uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
