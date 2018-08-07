@@ -5,10 +5,10 @@
         .controller('ContactNewController', ContactNewController);
 
 
-    	ContactNewController.$inject = ['$rootScope', '$scope', '$http', '$filter',
-    		'ContactService','$controller', 'ContactCommonDialogService'];
-        function ContactNewController($rootScope, $scope, $http, $filter
-        		, ContactService, $controller, ContactCommonDialogService) {
+    	ContactNewController.$inject = ['$rootScope', '$state', '$scope', '$http', '$filter',
+    		'ContactService','$controller', 'ContactCommonDialogService', '$ngConfirm'];
+        function ContactNewController($rootScope, $state, $scope, $http, $filter
+        		, ContactService, $controller, ContactCommonDialogService, $ngConfirm) {
         	
         	var vm = this;
         	
@@ -182,18 +182,43 @@
       		
       		
         	function saveContact() {
-        		console.log('createNewContact');
-        		
+        		// append address
+        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict + "::" 
+        				+ vm.contact.addressDistrict.pkProvince + "::" + vm.contact.addressDistrict.pkPostcode;
+        		console.log('createNewContact : ' + vm.contact);
         		ContactService.create(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			toastr.success('Tạo khách hàng thành công');
+        			showSaveContactSuccess();
         		}
         		
         		function onError(result) {
-        			toastr.error('Error!', 'Error');
+        			let message = result.data.message || 'Lỗi khi tạo khách hàng mới';
+        			toastr.error(message);
         		}
         	}
         	
+        	function showSaveContactSuccess() {
+            	let message = "Tạo khách hàng thành công!";
+            	
+            	$ngConfirm({
+                    title: 'Thông báo',
+                    icon: 'fa fa-check',
+                    theme: 'modern',
+                    type: 'blue',
+                    content: '<div class="text-center">' + message + '</div>',
+                    animation: 'scale',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        ok: {
+                        	text: 'Đóng',
+                            btnClass: "btn-blue",
+                            action: function(scope, button){
+                            	$state.go('app.contact');
+    	                    }
+                        }
+                    },
+                });
+            }
         }
 })();

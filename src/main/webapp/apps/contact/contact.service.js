@@ -112,6 +112,7 @@
         	'search': {url : 'api/agency/contact/search', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-ower', method: 'GET', isArray: true},
             'add': { method:'POST' },
+            'delete': {url : 'api/agency/contact/delete-contact/:contactId', method: 'GET'},
             'create': {url : 'api/agency/contact/create', method: 'POST'},
             'update': {url : 'api/agency/contact/update', method: 'POST'},
             'getAgrement' : {
@@ -122,6 +123,10 @@
             'getByCode' : {
             	method : 'POST', 
             	url : 'api/agency/contact/get-by-code'
+            },
+            'getAddressByPostcode' : {
+                method : 'GET',
+                url : 'api/agency/common/getAddressByCode'
             }
         });
     }

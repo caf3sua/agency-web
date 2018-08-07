@@ -6,9 +6,9 @@
 
 
     	ContactEditController.$inject = ['$rootScope', '$scope', '$http', '$filter', '$state',
-    		'ContactService', '$controller', 'ContactCommonDialogService', 'entity'];
+    		'ContactService', '$controller', 'ContactCommonDialogService', 'entity', 'ProductCommonService'];
         function ContactEditController($rootScope, $scope, $http, $filter, $state
-        		, ContactService, $controller, ContactCommonDialogService, entity) {
+        		, ContactService, $controller, ContactCommonDialogService, entity, ProductCommonService) {
         	
         	var vm = this;
         	
@@ -83,7 +83,6 @@
       		    console.log('Init ContactEditController');
       		    
       		    // Get object Contact
-      		    debugger
       		    vm.contact = entity;
 	      		if (vm.contact.listRelationship == null){
 	      			vm.contact.listRelationship = [];
@@ -93,9 +92,24 @@
 	      		}
 	      		if (vm.contact.listReminders == null){
 	      			vm.contact.listReminders = [];
-	      		} 
-      		    
+	      		}
+	      		
+	      		// Địa chỉ
+	      		formatAddressEdit();
       		})();
+      		
+      		
+      		
+      		function formatAddressEdit() {
+      			// Address at step 2
+      			let address = vm.contact.homeAddress;
+      			vm.contact.address = address.substring(0, address.indexOf("::"));
+      			
+  	        	var postcode = address.substring(address.lastIndexOf("::") + 2);
+  	        	ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function (data) {
+  	        		vm.contact.addressDistrict = data;
+        		});
+      		}
       		
       		$scope.$on('selectedContactChange', function() {
             	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
@@ -183,6 +197,8 @@
       		
         	function saveContact() {
         		console.log('edit Contact');
+        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict + "::" 
+				+ vm.contact.addressDistrict.pkProvince + "::" + vm.contact.addressDistrict.pkPostcode;
         		
         		ContactService.update(vm.contact, onSuccess, onError);
         		

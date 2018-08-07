@@ -59,7 +59,9 @@
 	                        return ContactService.get({id : $stateParams.id}).$promise;
 	                    }],
 	            		loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js', 'apps/contact/contact-edit.controller.js']);
+		            		return $ocLazyLoad.load(['apps/contact/contact-search-dialog.controller.js'
+		            			, 'apps/product/product-base.service.js'
+		            			, 'apps/contact/contact-edit.controller.js']);
 			        }
 	            }
 	        })

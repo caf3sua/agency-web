@@ -5,8 +5,8 @@
         .controller('ContactController', ContactController);
 
 
-    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS'];
-    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS) {
+    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm'];
+    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm) {
     	var vm = this;
     	vm.contacts = [];
     	vm.selectedContact = null;
@@ -25,6 +25,7 @@
     	vm.getAgrement = getAgrement;
     	vm.selectContact = selectContact;
     	vm.openMailDialog = openMailDialog;
+    	vm.confirmDeleteContact = confirmDeleteContact;
     	
     	angular.element(document).ready(function () {
         });
@@ -96,6 +97,45 @@
     	function transition () {
     		getAgrement();
         }
+    	
+    	
+    	function deleteContact(selContact) {
+    		console.log(vm.selectedContact);
+    		ContactService.delete({contactId: vm.selectedContact.contactId}, onSucess, onError);
+    		
+    		function onSucess() {
+    			loadAll();
+    			toastr.success('Xóa khách hàng thành công!');
+    		}
+    		
+    		function onError() {
+    			toastr.error('Xóa khách hàng lỗi!');
+    		}
+    	}
+    	
+    	function confirmDeleteContact() {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn xóa khách hàng này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	deleteContact();
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
     }
 })();
 
