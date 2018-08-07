@@ -146,7 +146,7 @@
                <p class="bv-title-from">Giá trị xe theo thị trường</p>
            </div>
            <div class="margin-top-5">
-               <input name="actualValue" type="number" ng-show="vm.policy.namSX && vm.policy.vcxCheck" class="bv-input" ng-model="vm.policy.actualValue" placeholder="Giá trị xe theo thị trường" disabled="disabled"/>
+           	   <p class="bv-tile-templateSummary" ng-show="vm.policy.namSX && vm.policy.vcxCheck">{{vm.policy.actualValue | number:0 }}</p>
            </div>
            <div class="margin-top-10 required" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <p class="bv-title-from">Giá trị xe tham gia bảo hiểm</p>
@@ -260,10 +260,10 @@
            <div ng-show="vm.isShowChangePremium">
                <p class="bv-tile-templateSummary">{{vm.policy.chargeFree | number:0 }}</p>
            </div>
-           <div class="bv-title-from" ng-show="vm.isShowTotalPremium">
+           <div class="bv-gh-text-sum-product" ng-show="vm.isShowTotalPremium">
                <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
            </div>
            <div ng-show="vm.isShowTotalPremium">
-               <p class="bv-tile-templateSummary">{{vm.policy.totalPremium | number:0 }}</p>
+               <p class="bv-gh-number-sum-product">{{vm.policy.totalPremium | number:0 }}</p>
            </div>
        

@@ -31,8 +31,9 @@
     		{"lineId": "MOTO", "lineName" : "Bảo hiểm xe máy"},
     		{"lineId": "HOME", "lineName" : "Bảo hiểm nhà tư nhân"},
     		{"lineId": "KHC", "lineName" : "Bảo hiểm kết hợp con người"},
-    		{"lineId": "TNC", "lineName" : "Bảo hiểm tai nạn con người"},
-    		{"lineId": "HHVC", "lineName" : "Bảo hiểm vận chuyển hàng hóa"}
+    		{"lineId": "TNC", "lineName" : "Bảo hiểm tai nạn con người"}
+//    		,
+//    		{"lineId": "HHVC", "lineName" : "Bảo hiểm vận chuyển hàng hóa"}
     	];
     	vm.selProduct = "";
     	vm.premium;
