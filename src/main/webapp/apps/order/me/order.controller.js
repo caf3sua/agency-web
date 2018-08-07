@@ -45,6 +45,7 @@
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.confirmTaituc = confirmTaituc;
   		vm.confirmEditAgreement = confirmEditAgreement;
+  		vm.confirmViewAgreement = confirmViewAgreement;
   		
         angular.element(document).ready(function () {
         });
@@ -317,7 +318,11 @@
   		function editAgreement(order) {
   			switch (order.lineId) {
 				case 'BVP':
-					$state.go("product.bvp", {id: order.agreementId});
+					if (order.createType == "0"){
+						$state.go("product.bvp", {id: order.agreementId});
+		  			} else {
+		  				$state.go("product.printed-paper-edit", {id: order.gycbhNumber});
+		  			}
 					break;
 				case 'CAR':
 					$state.go("product.car", {id: order.agreementId});
@@ -349,6 +354,14 @@
 				default:
 					break;
 			}
+  		}
+  		
+  		function confirmViewAgreement(order) {
+  			if (order.createType == "0"){
+  				$state.go("order.order-detail", {id: order.agreementId});
+  			} else {
+  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
+  			}
   		}
     }
 })();

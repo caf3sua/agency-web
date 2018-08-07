@@ -6,10 +6,10 @@
         .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
-    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm'];
+    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'PrintedPaperService', 'ContactService'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
-    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm) {
+    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, PrintedPaperService, ContactService) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
@@ -55,8 +55,42 @@
   		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
   		    
   		    console.log($stateParams.productCode);
-			vm.policy.productCode = $stateParams.productCode;
-			vm.policy.maSanPham = $stateParams.productCode;
+//			vm.policy.productCode = $stateParams.productCode;
+//			vm.policy.maSanPham = $stateParams.productCode;
+			
+  		    
+			vm.gycbhNumber = {
+	  		    	  "gycbhNumber": ""
+  		    };
+  		    vm.gycbhNumber = $stateParams.id;
+  		    if (vm.gycbhNumber != null) {
+  		    	PrintedPaperService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+	  			
+	  			function onSuccess(data) {
+	  				vm.policy = data;
+	  				vm.policy.productCode = data.maSanPham;
+	  				vm.policy.maSanPham = data.maSanPham;
+	  				
+	  				vm.gcnFile = {
+              			"content": vm.policy.imgGcn.content,
+              		    "fileType": "",
+              		    "filename": ""
+              		};
+	  				
+	  				ContactService.getByCode({contactCode : data.contactCode} , onGetContactSuccess, onGetContactError);
+	  				function onGetContactSuccess(result) {
+	  					vm.policy.contactName = result.contactName;
+	  	  			}
+	  				
+	  				function onGetContactError() {
+	  	  			}
+	  				
+	  				toastr.success('Tải thông tin chi tiết hợp đồng');
+	  			}
+	  			
+	  			function onError() {
+	  			}
+  		    }
   		})();
   		
   		// watch
