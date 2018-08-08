@@ -97,6 +97,11 @@
             <div class="margin-top-5">
                 <p class="bv-title-from">Giảm phí (%)</p>
                 <input type="number" name="premiumDiscount" min="0" max="30" ng-show="vm.isShowPremium" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.premiumDiscount" ng-blur="vm.getPremium()"/>
+                <div ng-show="myForm.premiumDiscount.$dirty && myForm.premiumDiscount.$invalid">
+	                <p class="help-block" ng-show="myForm.premiumDiscount.$error.max">
+	                    Vượt quá số (%) giảm phí cho phép!
+	                </p>
+	            </div>
             </div>
             <div ng-show="vm.isShowPremium">
                 <div class="bv-title-from margin-top-10">

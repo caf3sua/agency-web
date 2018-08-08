@@ -75,9 +75,10 @@
         vm.savePolicy = savePolicy;
         vm.validatorNntxSoNguoi = validatorNntxSoNguoi;
         vm.validatorNntxStbh = validatorNntxStbh;
-        vm.validatorChaynoStbh = validatorChaynoStbh;
+//        vm.validatorChaynoStbh = validatorChaynoStbh;
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
+        vm.siValidator = siValidator;
         vm.typeOfMotoOptions = [
             {id: '2', name: 'Xe Mô tô 2 bánh dung tích trên 50cc'},
             {id: '1', name: 'Xe Mô tô 2 bánh dung tích từ 50cc trở xuống'}
@@ -284,20 +285,32 @@
         		return true;
         	}
         	if(!vm.policy.nntxStbh) {
-        		return "Chưa chọn số tiền bảo hiểm!";
+        		return;
         	}
+        	if (vm.policy.nntxStbh < 3000000 || vm.policy.nntxStbh > 500000000) {
+                return "Số tiền bảo hiểm người ngồi trên xe tối thiểu từ 3 triệu đồng đến tối đa 500 triệu đồng";
+            }
             return true;
         }
         
-        function validatorChaynoStbh() {
-        	if(!vm.policy.chaynoCheck) {
-        		return true;
-        	}
-        	if(!vm.policy.nntxStbh) {
-        		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
-        	}
+//        function validatorChaynoStbh() {
+//        	if(!vm.policy.chaynoCheck) {
+//        		return true;
+//        	}
+//        	if(!vm.policy.nntxStbh) {
+//        		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
+//        	}
+//            return true;
+//        }
+        
+        function siValidator(chaynoStbh) {
+            if(!chaynoStbh){return;}
+
+            if (chaynoStbh < 10000000 || chaynoStbh > 100000000) {
+                return "Số tiền bảo hiểm cháy nổ trong khoảng từ 10 triệu đồng đến tối đa 100 triệu đồng";
+            }
             return true;
-        }
+        };
         
         function validatorCombo(name) {
   			switch(name) {

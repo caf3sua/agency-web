@@ -56,7 +56,7 @@
                 <p class="bv-title-from">Số chỗ tham gia bảo hiểm</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="1" max="5" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi" ng-blur="vm.getPremium()"
+                <input type="number" min="1" max="2" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi" ng-blur="vm.getPremium()"
                        validator= "vm.validatorNntxSoNguoi() === true"
                        invalid-message = "vm.validatorNntxSoNguoi()"/>
                 <div ng-show="myForm.nntxSoNguoi.$dirty && myForm.nntxSoNguoi.$invalid">
@@ -69,9 +69,9 @@
                 <p class="bv-title-from">Số tiền bảo hiểm</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="0" name="nntxStbh" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm" ng-model="vm.policy.nntxStbh" ng-blur="vm.getPremium()"
-                       validator= "vm.validatorNntxStbh() === true"
-                       invalid-message = "vm.validatorNntxStbh()"/>
+                <input type="text" format="number" name="nntxStbh" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm với số tiền tối thiểu từ 3 triệu đồng đến tối đa 500 triệu đồng" ng-model="vm.policy.nntxStbh" ng-blur="vm.getPremium()"
+                       validate-on="blur" validator= "vm.validatorNntxStbh() === true"
+                       invalid-message = "vm.validatorNntxStbh()" required-message="'Chưa nhập số tiền bảo hiểm!'" required/>
             </div>
             <div class="cntr margin-top-5">
                 <label for="cbx5" class="label-cbx">
@@ -89,9 +89,9 @@
                 <p class="bv-title-from">Số tiền bảo hiểm cháy nổ</p>
             </div>
             <div class="margin-top-5">
-                <input type="number" min="0" name="chaynoStbh" ng-show="vm.policy.chaynoCheck" class="bv-input" ng-model="vm.policy.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ" ng-blur="vm.getPremium()"
-                       validator= "vm.validatorChaynoStbh() === true"
-                       invalid-message = "vm.validatorChaynoStbh()"/>
+                <input type="text" format="number" name="chaynoStbh" ng-show="vm.policy.chaynoCheck" class="bv-input" ng-model="vm.policy.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ với số tiền tối thiểu từ 10 triệu đồng đến tối đa 100 triệu đồng" ng-blur="vm.getPremium()"
+                       validate-on="blur" validator="vm.siValidator(vm.policy.chaynoStbh) === true"
+                       invalid-message="vm.siValidator(vm.policy.chaynoStbh)" required-message="'Chưa nhập số tiền bảo hiểm!'" required/>
             </div>
             <div class="margin-top-5">
                 <input type="number" min="1" name="changePremium" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.changePremium" ng-blur="vm.getPremium()"/>

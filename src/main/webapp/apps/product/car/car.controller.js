@@ -116,7 +116,7 @@
   		vm.savePolicy = savePolicy;
   		vm.validatorCombo = validatorCombo;
   		vm.validatorNntxSoCho = validatorNntxSoCho;
-  		vm.validatorVcxSoTien = validatorVcxSoTien;
+//  		vm.validatorVcxSoTien = validatorVcxSoTien;
   		vm.onThoihanChange = onThoihanChange;
   		vm.getCarModelSuccess = getCarModelSuccess;
   		vm.getCarModelError = getCarModelError;
@@ -491,18 +491,18 @@
             return true;
         }
         
-        function validatorVcxSoTien() {
-        	if(!vm.policy.vcxCheck) {
-        		return true;
-        	}
-        	if(!vm.policy.namSX) {
-        		return true;
-        	}
-        	if(!vm.policy.vcxSoTien) {
-        		return "Chưa điền giá trị xe tham gia bảo hiểm!";
-        	}
-            return true;
-        }
+//        function validatorVcxSoTien() {
+//        	if(!vm.policy.vcxCheck) {
+//        		return true;
+//        	}
+//        	if(!vm.policy.namSX) {
+//        		return true;
+//        	}
+//        	if(!vm.policy.vcxSoTien) {
+//        		return "Chưa điền giá trị xe tham gia bảo hiểm!";
+//        	}
+//            return true;
+//        }
         
         function validatorCombo(name) {
   			switch(name) {
