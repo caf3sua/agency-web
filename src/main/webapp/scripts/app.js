@@ -40,8 +40,9 @@
 		 'disableAll',
          'angularValidator',
          'cp.ngConfirm',
-         'angular-button-spinner',
-         'number-input'
+         'angular-button-spinner'
+//     	 'ui.numericInput'
+//         'number-input'
 //         'uiGmapgoogle-maps'
       ])
       .run(run)

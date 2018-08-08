@@ -13,7 +13,7 @@
             urlTemplate: 'i18n/{lang}/{part}.json' + (BUILD_TIMESTAMP ? '?build=' + BUILD_TIMESTAMP : '')
         });
 
-        $translateProvider.preferredLanguage('vi');
+        $translateProvider.preferredLanguage('en');
         $translateProvider.useStorage('translationStorageProvider');
         $translateProvider.useSanitizeValueStrategy('escaped');
         $translateProvider.addInterpolation('$translateMessageFormatInterpolation');
