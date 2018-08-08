@@ -50,10 +50,10 @@
         vm.getPremium = getPremium;
         vm.savePolicy = savePolicy;
         vm.premiumPackageOptions = [
-            {id: '20000000', name: '20000000 VND'},
-            {id: '30000000', name: '30000000 VND'},
-            {id: '40000000', name: '40000000 VND'},
-            {id: '50000000', name: '50000000 VND'}
+            {id: '20000000', name: '20.000.000 VND'},
+            {id: '30000000', name: '30.000.000 VND'},
+            {id: '40000000', name: '40.000.000 VND'},
+            {id: '50000000', name: '50.000.000 VND'}
         ];
 
         vm.isShowPremium = false;

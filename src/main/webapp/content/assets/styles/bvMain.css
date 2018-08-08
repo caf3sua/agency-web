@@ -2971,3 +2971,7 @@ button[disabled] {
 #pac-input:focus {
   border-color: #4d90fe;
 }
+
+.header-border-bottom {
+	border-bottom: 1px solid #a6c6ec;
+}
