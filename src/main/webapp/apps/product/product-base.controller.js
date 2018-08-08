@@ -330,10 +330,11 @@
                 vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
                 vm.policy.contactPhone = $rootScope.selectedContact.phone;
                 vm.policy.contactEmail = $rootScope.selectedContact.email;
+                vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
                 
                 let address = $rootScope.selectedContact.homeAddress;
                 vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
-                
+
                 let postcode = address.substring(address.lastIndexOf("::") + 2);
                 vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
                 ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
@@ -344,6 +345,23 @@
                     	vm.policy.insuredName = vm.policy.contactName;
                     	vm.policy.insuredAddress = vm.policy.contactAddress;
                     	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+                    } else if (vm.lineId == 'TVI') {
+                    	// Bảo hiểm du lịch Việt Nam
+                    	vm.policy.listTviAdd[0].insuredName = vm.policy.contactName;
+                		vm.policy.listTviAdd[0].idPasswport = vm.policy.contactIdNumber;
+                		vm.policy.listTviAdd[0].dob = vm.policy.contactDob;
+                		vm.policy.listTviAdd[0].relationshipId = "30"; // Ban than
+                    } else if (vm.lineId == 'TVC') {
+                    	// Bảo hiểm du lịch Quoc te
+                    	vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+                		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+                		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+                		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+                    } else if (vm.lineId == 'TNC') {
+                    	// Bảo hiểm tai nạn con người
+                    	vm.policy.listTncAdd[0].insuredName = vm.policy.contactName;
+                		vm.policy.listTncAdd[0].idPasswport = vm.policy.contactIdNumber;
+                		vm.policy.listTncAdd[0].dob = vm.policy.contactDob;
                     }
                 });
         	}
