@@ -23,34 +23,6 @@
   		})();
   		
   		// Properties & function declare
-//  		vm.product = {
-//			"agencyRole": "1",
-//			"changePremium": "",
-//			"garage": false,
-//			"khauHao": false,
-//			"khauTru": false,
-//			"matCap": false,
-//			"namSX": 0,
-//			"ngapNuoc": false,
-//			"nntxCheck": false,
-//			"nntxPhi": 0,
-//			"nntxSoCho": "",
-//			"nntxSoTien": "",
-//			"premium": 0,
-//			"purposeOfUsageId": "15",
-//			"tndsSoCho": "",
-//			"tndsbbCheck": false,
-//			"tndsbbPhi": 0,
-//			"tndstnCheck": false,
-//			"tndstnPhi": 0,
-//			"tndstnSoTien": "",
-//			"totalPremium": 0,
-//			"vcxCheck": false,
-//			"vcxPhi": 0,
-//			"vcxSoTien": "",
-//			"chargeFree" : ""
-//		};
-  		
   		vm.policy = {
   				// Premium
   	  			"agencyRole": "1",

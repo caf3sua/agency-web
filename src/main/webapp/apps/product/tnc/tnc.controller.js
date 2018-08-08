@@ -64,7 +64,9 @@
 
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
-
+        vm.ngYcbhDicung = true;
+        vm.changeNgYcbhDicung = changeNgYcbhDicung;
+        
         // Initialize
         init();
 
@@ -116,6 +118,16 @@
   			
   			// extra
   		}
+        
+        function changeNgYcbhDicung() {
+        	if (vm.ngYcbhDicung) {
+        		vm.policy.listTncAdd[0].insuredName = vm.policy.contactName;
+        		vm.policy.listTncAdd[0].idPasswport = vm.policy.contactIdNumber;
+        		vm.policy.listTncAdd[0].dob = vm.policy.contactDob;
+        	} else {
+        		vm.policy.listTncAdd[0] = {};
+        	}
+        }
         
         function addOrRemovePerson() {
             if(vm.policy.numberperson > vm.policy.listTncAdd.length) {

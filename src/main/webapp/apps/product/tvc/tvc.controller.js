@@ -67,6 +67,8 @@
         vm.isShowUSD = true;
         vm.isShowEUR = false;
         vm.changeLoaitien = changeLoaitien;
+        vm.ngYcbhDicung = true;
+        vm.changeNgYcbhDicung = changeNgYcbhDicung;
         
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
@@ -131,6 +133,17 @@
   		}
         
   		// Function
+        function changeNgYcbhDicung() {
+        	if (vm.ngYcbhDicung) {
+        		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+        		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+        		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+        		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+        	} else {
+        		vm.policy.listTvcAddBaseVM[0] = {};
+        	}
+        }
+        
         function onchangeTravel() {
             if (vm.policy.travelWithId == '1'){
             	vm.policy.soNguoiThamGia = 1;
