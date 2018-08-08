@@ -34,7 +34,8 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/cart/cart.service.js', 'apps/cart/cart.controller.js', 'apps/agreement-base.controller.js']);
+	            		return $ocLazyLoad.load(['apps/cart/cart.service.js', 'apps/cart/cart.controller.js', 'apps/agreement-base.controller.js', 'apps/order/order.service.js',
+	            			'apps/product/printed-paper/printed-paper.service.js']);
 		        }
             }
         });

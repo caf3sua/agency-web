@@ -8,10 +8,10 @@
       .controller('AgreementBaseController', AgreementBaseController);
 
     AgreementBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$timeout'
-    	, '$ngConfirm'];
+    	, '$ngConfirm', 'OrderService'];
 
     function AgreementBaseController(vm, $state, $stateParams, $rootScope, $scope, $timeout
-    		, $ngConfirm){
+    		, $ngConfirm, OrderService){
 		vm.message = { name: 'default entry from AgreementBaseController' };
 
 		vm.confirmCancelOrder = confirmCancelOrder;

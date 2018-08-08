@@ -5,9 +5,9 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', '$stateParams', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils', 'PAGINATION_CONSTANTS'];
+    CartController.$inject = ['$scope', '$stateParams', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils', 'PAGINATION_CONSTANTS', '$controller', '$ngConfirm', 'OrderService'];
 
-    function CartController ($scope, $stateParams, $location, $window, Principal, $state, $rootScope, CartService, DateUtils, PAGINATION_CONSTANTS) {
+    function CartController ($scope, $stateParams, $location, $window, Principal, $state, $rootScope, CartService, DateUtils, PAGINATION_CONSTANTS, $controller, $ngConfirm, OrderService) {
     	var vm = this;
         
         // paging
@@ -51,11 +51,14 @@
         vm.agreementIds = [];
         vm.checkTypePay = 'agency';
   		
+        vm.confirmViewAgreement = confirmViewAgreement;
+        vm.confirmCancelCart = confirmCancelCart;
     	angular.element(document).ready(function () {
         });
 
         // Init controller
         (function initController() {
+        	$controller('AgreementBaseController', { vm: vm, $scope: $scope });
             getAllOrder();
             vm.newDate = new Date();
             
@@ -228,5 +231,51 @@
                 search: vm.currentSearch
             });
         }
+        
+        function confirmViewAgreement(order) {
+  			if (order.createType == "0"){
+  				$state.go("order.order-detail", {id: order.agreementId});
+  			} else {
+  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
+  			}
+  		}
+        
+        function confirmCancelCart(gycbhNumber) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fa fa-times',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn hủy hợp đồng này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	cancelOrder(gycbhNumber);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+		
+		function cancelOrder(number) {
+  			console.log('doCancelOrder');
+  			OrderService.cancelOrder({gycbhNumber: number}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				getAllOrder();
+  				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi hủy đơn hàng!");
+  			}
+  		}
     }
 })();
