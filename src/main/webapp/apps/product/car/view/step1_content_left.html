@@ -152,9 +152,8 @@
                <p class="bv-title-from">Giá trị xe tham gia bảo hiểm</p>
            </div>
            <div class="margin-top-5">
-               <input name="vcxSoTien" type="number" ng-show="vm.policy.namSX && vm.policy.vcxCheck" class="bv-input" ng-model="vm.policy.vcxSoTien" placeholder="Giá trị xe tham gia bảo hiểm" ng-blur="vm.getPremium()"
-               	validator= "vm.validatorVcxSoTien() === true"
-  					invalid-message = "vm.validatorVcxSoTien()"/>
+               <input name="vcxSoTien" type="text" format="number" ng-show="vm.policy.namSX && vm.policy.vcxCheck" class="bv-input" ng-model="vm.policy.vcxSoTien" placeholder="Giá trị xe tham gia bảo hiểm" ng-blur="vm.getPremium()"
+               	validate-on="blur" required-message="'Chưa điền giá trị xe tham gia bảo hiểm!'" required/>
            </div>
            <div class="margin-top-10" ng-show="vm.policy.namSX && vm.policy.vcxCheck">
                <p class="bv-title-from">Điều khoản bổ sung</p>
@@ -222,7 +221,12 @@
                </div>
            </div>
            <div class="margin-top-5">
-               <input type="number" name="changePremium" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.changePremium" ng-blur="vm.getPremium()"/>
+               <input type="number" name="changePremium" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.changePremium" ng-blur="vm.getPremium()"/>
+               <div ng-show="myForm.changePremium.$dirty && myForm.changePremium.$invalid">
+	                <p class="help-block" ng-show="myForm.changePremium.$error.max">
+	                    Vượt quá số (%) giảm phí cho phép!
+	                </p>
+	            </div>
            </div>
            <div class="bv-title-from margin-top-20" ng-show="vm.isShowTndsbbPhi">
                <p>Phí bảo hiểm trách nhiệm dân sự bắt buộc (đã bao gồm VAT):</p>
