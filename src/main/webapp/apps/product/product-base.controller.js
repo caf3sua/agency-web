@@ -88,6 +88,18 @@
         vm.formatAddressEdit = formatAddressEdit; 
         vm.getAddressByPostCode = getAddressByPostCode;
         
+        vm.changeCopyFromContact = changeCopyFromContact;
+        
+        function changeCopyFromContact() {
+        	vm.policy.receiverUser = {};
+	      	if (vm.copyFromContact) {
+	      		vm.policy.receiverUser.name = vm.policy.contactName;
+	      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+	      		vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
+	      		vm.policy.receiverUser.email = vm.policy.contactEmail;
+	      	}
+        }
         // implement function
         function loadPolicyEdit(obj) {
         	if (!isEditMode()) {
@@ -316,11 +328,24 @@
         		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
         		vm.policy.contactName = $rootScope.selectedContact.contactName;
                 vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
-                vm.policy.contactPhone = $rootScope.selectedContact.handPhone;
-//              vm.contactEmail = $rootScope.selectedContact.email;
-//                vm.contactAddress = $rootScope.selectedContact.homeAddress;
-//                vm.contactAddressDistrict = $rootScope.selectedContact.homeAddress;
-//                vm.handPhone = $rootScope.selectedContact.handPhone;
+                vm.policy.contactPhone = $rootScope.selectedContact.phone;
+                vm.policy.contactEmail = $rootScope.selectedContact.email;
+                
+                let address = $rootScope.selectedContact.homeAddress;
+                vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
+                
+                let postcode = address.substring(address.lastIndexOf("::") + 2);
+                vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
+                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+                	vm.policy.contactAddressDistrictData = data;
+                	
+                	// Xy ly load THÔNG TIN CHỦ XE cho rieng CAR
+                    if (vm.lineId == 'CAR') {
+                    	vm.policy.insuredName = vm.policy.contactName;
+                    	vm.policy.insuredAddress = vm.policy.contactAddress;
+                    	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+                    }
+                });
         	}
         });
 
