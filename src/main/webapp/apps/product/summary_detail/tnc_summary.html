@@ -116,7 +116,7 @@
             <p>Địa chỉ người nhận</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}::{{vm.policy.receiverUser.addressDistrictData.pkDistrict}}::{{vm.policy.receiverUser.addressDistrictData.pkPostcode}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address | address}}</p> <!-- ::{{vm.policy.receiverUser.addressDistrictData.pkDistrict}}::{{vm.policy.receiverUser.addressDistrictData.pkPostcode}} -->
         </div>
         <div class="bv-title-from">
             <p>Hình thức giao nhận</p>

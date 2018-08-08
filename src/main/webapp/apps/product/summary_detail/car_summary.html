@@ -13,7 +13,7 @@
                <p class="bv-title-from">Địa chỉ</p>
            </div>
            <div>
-               <p class="bv-tile-templateSummary">{{vm.policy.insuredAddress}}</p>
+               <p class="bv-tile-templateSummary">{{vm.policy.insuredAddress | address}}</p>
            </div>
            <div class="margin-top-10">
                <p class="bv-title-from">Điện thoại</p>
@@ -223,7 +223,7 @@
             <p>Địa chỉ người nhận</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address}}, {{vm.policy.receiverUser.addressDistrict}}</p>
+            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address | address}}</p>
         </div>
         <div class="bv-title-from">
             <p>Hình thức giao nhận</p>
