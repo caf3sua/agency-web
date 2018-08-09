@@ -172,8 +172,10 @@
   		}
   		
   		function formatEditData(result) {
-  			CarService.getCarModel({model : result.makeName}, getCarModelSuccess, getCarModelError);
-  			getCarNamSanXuatMax(result.modelId);
+  			if (result.makeName) {
+  				CarService.getCarModel({model : result.makeName}, getCarModelSuccess, getCarModelError);
+  				getCarNamSanXuatMax(result.modelId);
+  			}
   			
   			result.nntxSoCho = result.passengersAccidentNumber;
   			result.nntxSoTien = result.passengersAccidentSi.toString();
@@ -205,7 +207,7 @@
   	    	}
   	    	
   	    	function getError(result) {
-  	    		toastr.error('Get data error!', 'Error');
+  	    		toastr.error('Không thể lấy thông tin năm sản xuất của xe');
   	    	}
     	}
   		
@@ -224,7 +226,7 @@
   	    	}
   	    	
   	    	function getError(result) {
-  	    		toastr.error('Get data error!', 'Error');
+  	    		toastr.error('Không thể lấy thông tin năm sản xuất của xe');
   	    	}
     	}
   		
@@ -235,7 +237,7 @@
     	}
     	
     	function getCarModelError(data) {
-    		toastr.error('Get data error!', 'Error');
+    		toastr.error('Không thể lấy thông tin hãng xe');
     	}
   		
   		function formatAddressEdit() {
