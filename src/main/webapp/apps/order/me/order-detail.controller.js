@@ -6,17 +6,17 @@
         .controller('OrderDetailController', OrderDetailController);
 
     OrderDetailController.$inject = ['$scope', 'Principal', '$state'
-    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout'];
+    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', '$window'];
 
     function OrderDetailController ($scope, Principal, $state
-    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout) {
+    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout, $window) {
     	var vm = this;
         
     	vm.policy;
     	vm.contactName;
     	vm.contactDob;
     	vm.insuranceEndDate;
-    	vm.gotoOrder = gotoOrder;
+    	vm.gotoBack = gotoBack;
     	
         angular.element(document).ready(function () {
         });
@@ -148,8 +148,9 @@
   			}
   		}
   		
-  		function gotoOrder() {
-  			$state.go('order.me');
+  		function gotoBack() {
+  			//$state.go('order.me');
+  			$window.history.back();
   		}
     }
 })();

@@ -10,10 +10,15 @@
     function ResponseValidateService () {
         var service = {
             validateResponse: validateResponse,
-            cleanResponseError: cleanResponseError
+            cleanResponseError: cleanResponseError,
+            cleanAllResponseError: cleanAllResponseError
         };
 
         return service;
+        
+        function cleanAllResponseError() {
+        	$('.validationMessage').remove();
+        }
         
         function cleanResponseError(fieldName) {
         	var modelName = 'vm.product.' + fieldName;

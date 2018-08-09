@@ -1,14 +1,21 @@
 <!-- Thông tin hóa đơn giá trị gia tăng -->
 <div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTableRights = true" ng-click="vm.isCollapsedTableRights = !vm.isCollapsedTableRights">
-  	<p class="header-border-bottom">Thông tin hóa đơn giá trị gia tăng <i class="pull-right fas fa-question-circle" style="color: #1964af !important;font-size: 20px;"></i> </p>
+  	<p class="header-border-bottom">Thông tin hóa đơn giá trị gia tăng 
+  		<i class="pull-right fas" ng-class="vm.isCollapsedTableRights ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
+  	</p>
 </div>
 <div uib-collapse="vm.isCollapsedTableRights">
 	<div class="margin-top-10">
 	    <p class="bv-title-from">Họ và tên người mua</p>
 	</div>
-	<div class="margin-top-5">
-	    <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
-	</div>
+    <div class="margin-top-5 input-group display-flex">
+        <div class="width-100">
+            <input type="text" name="invoiceInfoData.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
+        </div>
+        <div class="input-group-addon bv-date-icon" ng-click="vm.openSearchContactInvoice()">
+            <span class="fa fa-plus"></span>
+        </div>
+    </div>
 	<div class="margin-top-10">
 	    <p class="bv-title-from">Tên đơn vị</p>
 	</div>
@@ -37,7 +44,9 @@
 
 <!-- Thông tin nhận đơn bảo hiểm -->
 <div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedReceiverInfo = false" ng-click="vm.isCollapsedReceiverInfo = !vm.isCollapsedReceiverInfo">
- 	<p class="header-border-bottom">Thông tin nhận đơn bảo hiểm</p>
+ 	<p class="header-border-bottom">Thông tin nhận đơn bảo hiểm
+ 		<i class="pull-right fas" ng-class="vm.isCollapsedReceiverInfo ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i>
+ 	</p>
 </div>
 <div uib-collapse="vm.isCollapsedReceiverInfo">
 	<label for="common2" class="label-cbx">
@@ -51,59 +60,69 @@
         </div>
         <span>Theo thông tin Người Yêu cầu bảo hiểm</span>
     </label>
-	<div class="margin-top-10 required">
-	    <p class="bv-title-from">Họ và tên người nhận</p>
-	</div>
-	<div class="margin-top-5">
-	    <input type="text" name="receiverUserData.name" class="bv-input" placeholder="Họ và tên người nhận" ng-model="vm.policy.receiverUser.name"
-			required-message="'Chưa nhâp họ và tên người nhận!'"
-		 	required/>
-	</div>
-	<div class="margin-top-10 required">
-	    <p class="bv-title-from">Địa chỉ người nhận</p>
-	</div>
-	<div class="margin-top-5">
-	    <input type="text" name="receiverUserData.address" class="bv-input" placeholder="Địa chỉ người nhận" ng-model="vm.policy.receiverUser.address"
-	    	required-message="'Chưa nhập địa chỉ người nhận!'"
-		 	required/>
-	</div>
-	<div class="margin-top-10 required">
-	    <p class="bv-title-from">Tên phường xã</p>
-	</div>
-	<div class="margin-top-5">
-		<!-- auto completed list -->
-		<bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.receiverUser.addressDistrictData"></bv-ward-input>
-	    <input type="hidden" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.receiverUser.addressDistrictData"
-	    	required-message="'Chưa nhập tên phường xã!'"
-		 	required/>
-	</div>
-	<div class="margin-top-10 required">
-	    <p class="bv-title-from">Số điện thoại liên hệ</p>
-	</div>
-	<div class="margin-top-5">
-	    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUser.mobile"
-	    	ng-pattern = "/^[0-9]{10,11}$/"
-	    	validate-on="blur"
-	        invalid-message = "'Số điện thoại không đúng định dạng'"
-	    	required-message="'Chưa nhập số điện thoại liên hệ!'"
-		 	required/>
-	</div>
-	<div class="margin-top-10 required">
-	    <p class="bv-title-from">Email người nhận</p>
-	</div>
-	<div class="margin-top-5">
-	    <input type="text" name="email22" class="bv-input" placeholder="Email người nhận" ng-model="vm.policy.receiverUser.email"
-	    	ng-pattern = "/\S+@\S+\.\S+/"
-	    	validate-on="blur"
-	        invalid-message = "'Email không đúng định dạng'"
-	    	required-message="'Chưa nhập email người nhận!'"
-		 	required/>
+    <div class="" style="position: relative;">
+    	<div class="lock-receiver" ng-show="vm.copyFromContact"></div>
+		<div class="margin-top-10 required">
+		    <p class="bv-title-from">Họ và tên người nhận</p>
+		</div>
+		<div class="margin-top-5 input-group display-flex">
+	        <div class="width-100">
+	           <input type="text" name="receiverUserData.name" class="bv-input" placeholder="Họ và tên người nhận" ng-model="vm.policy.receiverUser.name"
+				required-message="'Chưa nhâp họ và tên người nhận!'"
+			 	required/>
+	        </div>
+	        <div class="input-group-addon bv-date-icon" ng-click="vm.openSearchContactReceiver()">
+	            <span class="fa fa-plus"></span>
+	        </div>
+	    </div>
+		<div class="margin-top-10 required">
+		    <p class="bv-title-from">Địa chỉ người nhận</p>
+		</div>
+		<div class="margin-top-5">
+		    <input type="text" name="receiverUserData.address" class="bv-input" placeholder="Địa chỉ người nhận" ng-model="vm.policy.receiverUser.address"
+		    	required-message="'Chưa nhập địa chỉ người nhận!'"
+			 	required/>
+		</div>
+		<div class="margin-top-10 required">
+		    <p class="bv-title-from">Tên phường xã</p>
+		</div>
+		<div class="margin-top-5">
+			<!-- auto completed list -->
+			<bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.receiverUser.addressDistrictData"></bv-ward-input>
+		    <input type="hidden" name="receiverUserData.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.receiverUser.addressDistrictData"
+		    	required-message="'Chưa nhập tên phường xã!'"
+			 	required/>
+		</div>
+		<div class="margin-top-10 required">
+		    <p class="bv-title-from">Số điện thoại liên hệ</p>
+		</div>
+		<div class="margin-top-5">
+		    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUser.mobile"
+		    	ng-pattern = "/^[0-9]{10,11}$/"
+		    	validate-on="blur"
+		        invalid-message = "'Số điện thoại không đúng định dạng'"
+		    	required-message="'Chưa nhập số điện thoại liên hệ!'"
+			 	required/>
+		</div>
+		<div class="margin-top-10 required">
+		    <p class="bv-title-from">Email người nhận</p>
+		</div>
+		<div class="margin-top-5">
+		    <input type="text" name="email22" class="bv-input" placeholder="Email người nhận" ng-model="vm.policy.receiverUser.email"
+		    	ng-pattern = "/\S+@\S+\.\S+/"
+		    	validate-on="blur"
+		        invalid-message = "'Email không đúng định dạng'"
+		    	required-message="'Chưa nhập email người nhận!'"
+			 	required/>
+		</div>
 	</div>
 </div>
 
 <!-- Phương thức nhận đơn bảo hiểm -->
-<div class="text-header-sp" ng-init="vm.isCollapsedReceiveMethodInfo = true" ng-click="vm.isCollapsedReceiveMethodInfo = !vm.isCollapsedReceiveMethodInfo">
-    <p class="header-border-bottom">Phương thức nhận đơn bảo hiểm</p>
+<div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedReceiveMethodInfo = true" ng-click="vm.isCollapsedReceiveMethodInfo = !vm.isCollapsedReceiveMethodInfo">
+    <p class="header-border-bottom">Phương thức nhận đơn bảo hiểm
+    	<i class="pull-right fas" ng-class="vm.isCollapsedReceiveMethodInfo ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i>
+    </p>
 </div>
 <div uib-collapse="vm.isCollapsedReceiveMethodInfo">
 	<div class="cntr margin-right-5">

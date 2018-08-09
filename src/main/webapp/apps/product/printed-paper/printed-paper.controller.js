@@ -6,10 +6,12 @@
         .controller('ProductPrintedPaperController', ProductPrintedPaperController);
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
-    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'];
+    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'
+    	, 'PrintedPaperService'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
-    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService) {
+    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService
+    		, PrintedPaperService) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
@@ -58,10 +60,10 @@
   		    console.log($stateParams.productCode);
 			vm.policy.productCode = $stateParams.productCode;
 			vm.policy.maSanPham = $stateParams.productCode;
-			
+			loadAnchiInfo($stateParams.anchiId);
   		    
 			vm.gycbhNumber = {
-	  		    	  "gycbhNumber": ""
+				"gycbhNumber": ""
   		    };
   		    vm.gycbhNumber = $stateParams.id;
   		    if (vm.gycbhNumber != null) {
@@ -90,6 +92,28 @@
 	  			}
   		    }
   		})();
+  		
+  		function loadAnchiInfo(anchiId) {
+  			if (anchiId == null || anchiId == undefined) {
+  				return;
+  			}
+  			
+  			vm.searchNew = {
+				"number" : decodeURIComponent(anchiId)
+  			};
+  			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
+  			
+  			function onSuccess(data) {
+  				if (data != null && data.length == 1) {
+  					let item = data[0];
+  					vm.policy.soAnchi = item.ACHI_SO_ANCHI;
+  	        		vm.policy.tenAnchi = item.ACHI_TEN_ANCHI;
+  				}
+  			}
+  			
+  			function onError() {
+  			}
+  		}
   		
   		function dataURLtoFile(dataurl, filename) {
   		    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],

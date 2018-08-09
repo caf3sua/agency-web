@@ -178,6 +178,9 @@
         }
 
         function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
             var postData = getPostData(false);
             ProductCommonService.getMotoPremium(postData, onGetPremiumSuccess, onGetPremiumError);

@@ -178,6 +178,9 @@
         }
         
         function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
             vm.product.destination =  vm.policy.destinationId;
             vm.product.ngayDi =  vm.policy.inceptionDate;

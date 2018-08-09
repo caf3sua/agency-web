@@ -164,6 +164,9 @@
         }
 
         function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
         	var endDate = moment(vm.policy.insurancestartdate, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
             // add a day
         	vm.policy.insuranceexpireddate = endDate;

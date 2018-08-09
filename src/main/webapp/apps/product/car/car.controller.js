@@ -330,6 +330,9 @@
   		}
   		
   		function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
   			var postData = getPostData(false);
   			ProductCommonService.getCarPremium(postData, onGetPremiumSuccess, onGetPremiumError);
