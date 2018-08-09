@@ -16,6 +16,7 @@
 
 		vm.confirmCancelOrder = confirmCancelOrder;
 		vm.confirmEditAgreement = confirmEditAgreement;
+		vm.searchOrder = searchOrder;
 		
 		function confirmEditAgreement(order) {
   			$ngConfirm({
@@ -46,15 +47,19 @@
 				case 'BVP':
 					if (order.createType == "0"){
 						$state.go("product.bvp", {id: order.agreementId});
-		  			} else {
+		  			} else if (order.createType == "2"){
 		  				$state.go("product.printed-paper-edit", {id: order.gycbhNumber});
+		  			} else{
+		  				$state.go("product.ycbh-offline-edit", {id: order.gycbhNumber});
 		  			}
 					break;
 				case 'CAR':
 					if (order.createType == "0"){
 						$state.go("product.car", {id: order.agreementId});
-		  			} else {
+		  			} else if (order.createType == "2"){
 		  				$state.go("product.printed-paper-edit", {id: order.gycbhNumber});
+		  			} else{
+		  				$state.go("product.ycbh-offline-edit", {id: order.gycbhNumber});
 		  			}
 					break;
 				case 'HOM':
@@ -152,5 +157,29 @@
   				toastr.error("Lỗi khi hủy đơn hàng!");
   			}
   		}
+		
+		function searchOrder() {
+  			vm.totalItems = null;
+  			vm.isLoading = true;
+  			vm.orders = [];
+  			var order = {};
+
+  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
+  			function onSearchSuccess(result, headers) {
+  				// Paging
+  				vm.orders = result;
+  				vm.isLoading = false;
+                
+  				vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                
+  				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
+  	        }
+  	        function onSearchError() {
+  	        	vm.isLoading = false;
+  	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
+  	        }
+  		}
+		
     }
 })();

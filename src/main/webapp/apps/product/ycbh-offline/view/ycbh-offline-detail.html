@@ -25,7 +25,7 @@
 	        <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-	        <input type="text" format="number" name="totalPremium" class="bv-input" ng-model="vm.policy.totalPremium" placeholder="Nhập phí bảo hiểm" required /> <!-- numeric-only -->
+	        <input type="text" format="number" name="totalPremium" class="bv-input" ng-model="vm.policy.totalPremium" placeholder="Nhập phí bảo hiểm" required readonly="readonly"/> <!-- numeric-only -->
 	        <div ng-show="form.totalPremium.$dirty && form.totalPremium.$invalid">
               	<p class="help-block" ng-show="form.totalPremium.$error.required">
                   	Nhập phí bảo hiểm
@@ -33,31 +33,49 @@
           	</div>
 	    </div>
 	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
-	    <bv-fileupload input-id="upload-1" label="Giấy yêu cầu bảo hiểm" is-required="true" 
-	    	place-holder="Nhập giấy yêu cầu bảo hiểm" file-model="vm.gycbhFileModel"></bv-fileupload>
-    	<input type="hidden" name="gycbhFile" ng-model="vm.gycbhFile" required>
+	   <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Giấy yêu cầu bảo hiểm</p>
+	    </div>
+	    <div class="bv-promotion-block-detail">
+             <div class="" ng-show="vm.policy.gycbhContent.content">
+                 <img src="data:image/*;base64,{{vm.policy.gycbhContent.content}}" height="250px">
+             </div>
+         </div>
         
 	    <!-- Ấn chỉ - Upload -->
-	    <bv-fileupload input-id="upload-2" label="Ấn chỉ" is-required="true" 
-	    	place-holder="Nhập ấn chỉ" file-model="vm.anchiFileModel" ></bv-fileupload>
-	    <input type="hidden" name="anchiFile" ng-model="vm.anchiFile" required>
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Ấn chỉ</p>
+	    </div>
+	    <div class="bv-promotion-block-detail">
+             <div class="" ng-show="vm.policy.anchiContent.content">
+                 <img src="data:image/*;base64,{{vm.policy.anchiContent.content}}" height="250px">
+             </div>
+         </div>
 	    
 	    <!-- Ảnh giám định - Upload -->
-	    <bv-fileupload input-id="upload-3" label="Ảnh giám định" is-required="true" 
-	    	place-holder="Nhập ảnh giám định" file-model="vm.imgGiamdinhFileModel" ></bv-fileupload>
-    	<input type="hidden" name="imgGiamdinhFile" ng-model="vm.imgGiamdinhFile" required>
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Ảnh giám định</p>
+	    </div>
+	    <div class="bv-promotion-block-detail">
+             <div class="" ng-show="vm.policy.imgGiamdinhContent.content">
+                 <img src="data:image/*;base64,{{vm.policy.imgGiamdinhContent.content}}" height="250px">
+             </div>
+         </div>
     	
 	    <!-- Tài liệu khác -->
-	    <bv-fileupload input-id="upload-4" label="Tài liệu khác" is-required="false" 
-	    	place-holder="Nhập tài liệu khác" file-model="vm.documentFileModel"></bv-fileupload>
-	    	
+	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Tài liệu khác</p>
+	    </div>
+	    <div class="bv-promotion-block-detail">
+             <div class="" ng-show="vm.policy.documentContent.content">
+                 <img src="data:image/*;base64,{{vm.policy.documentContent.content}}" height="250px">
+             </div>
+         </div>
+         
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-	    	<button type="button" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading" ng-click="vm.saveYcbhOffline()">
-	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Thanh toán
-	        </button>
-	        <button class="bv-btn-default" ng-click="$state.go('order.me')">
-	            Hủy bỏ
+	        <button class="bv-btn-step3" ng-click="$state.go('order.me')">
+	            Quay lại
 	        </button>
 	    </div>
 	</form>

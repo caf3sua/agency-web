@@ -41,7 +41,8 @@
         
         vm.isLoading = false;
         // Properties & function declare
-        vm.saveAnchiPolicy = saveAnchiPolicy;
+        vm.saveAnchiPolicyCart = saveAnchiPolicyCart;
+        vm.saveAnchiPolicyReload = saveAnchiPolicyReload;
         vm.openSearchAnchi = openSearchAnchi;
         vm.openSearchContact = openSearchContact;
         vm.cancel = cancel;
@@ -70,12 +71,6 @@
 	  				vm.policy = data;
 	  				vm.policy.productCode = data.maSanPham;
 	  				vm.policy.maSanPham = data.maSanPham;
-	  				
-	  				vm.gcnFile = {
-              			"content": vm.policy.imgGcn.content,
-              		    "fileType": "",
-              		    "filename": ""
-              		};
 	  				
 	  				// Load file
 	  				loadFileInEditMode();
@@ -117,7 +112,7 @@
   			}
   			
   			if (vm.policy.imgHd) {
-  				let imgHdFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgHdFile.content, 'hoadon.jpg');
+  				let imgHdFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgHd.content, 'hoadon.jpg');
   	  	  		vm.hoadonFileModel = imgHdFile;
   			}
   		}
@@ -207,42 +202,67 @@
         }
   		
   		function cancel() {
-  			$state.go("app.order");
+  			$state.go('app.order');
   		}
   		
-  		function saveAnchiPolicy() {
+  		function saveAnchiPolicyCart() {
+  			vm.isSaveAndNewFlag = false;
+  			saveBase();
+  		}
+  		
+  		function saveAnchiPolicyReload() {
+  			vm.isSaveAndNewFlag = true;
+  			saveBase();
+  		}
+  		
+  		function saveBase() {
   			if (vm.form.$invalid) {
   				return;
   			}
-  			
   			console.log('saveAnchiPolicy');
   			vm.isLoading = true;
   			vm.policy.imgGcn = vm.gcnFile;
   			vm.policy.imgHd = vm.hoadonFile;
   			vm.policy.imgGycbh = vm.gycbhFile;
   			
-  			ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
-            	console.log('Done get gychbhNumber: ' + result.policyNumber);
-            	// Add ychbhNumber
-            	vm.policy.gycbhNumber  = result.policyNumber;
-
-            	// Save ycbh offline
-      			ProductCommonService.saveAnchiPolicy(vm.policy, onSuccess, onError);
+  			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
+  				// Edit
+  				ProductCommonService.saveAnchiPolicy(vm.policy, onSuccess, onError);
       			
       			function onSuccess(data) {
       				vm.isLoading = false;
       				console.log(data);
-      				showSaveAnchiPolicy(data);
+      				showUpdateAnchiPolicy(data);
       			}
       			
       			function onError(data) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi cấp đơn ấn chỉ.");
+      				toastr.error("Lỗi khi cập nhật yêu cầu bảo hiểm offline.");
       			}
-            }).catch(function(data, status) {
-    			console.log('Error get gychbhNumber');
-    			toastr.error("Lỗi khi lấy số GYCBH");
-		    });
+  			} else{
+  				ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
+  	            	console.log('Done get gychbhNumber: ' + result.policyNumber);
+  	            	// Add ychbhNumber
+  	            	vm.policy.gycbhNumber  = result.policyNumber;
+
+  	            	// Save ycbh offline
+  	      			ProductCommonService.saveAnchiPolicy(vm.policy, onSuccess, onError);
+  	      			
+  	      			function onSuccess(data) {
+  	      				vm.isLoading = false;
+  	      				console.log(data);
+  	      				showSaveAnchiPolicy(data);
+  	      			}
+  	      			
+  	      			function onError(data) {
+  	      				vm.isLoading = false;
+  	      				toastr.error("Lỗi khi cấp đơn ấn chỉ.");
+  	      			}
+  	            }).catch(function(data, status) {
+  	    			console.log('Error get gychbhNumber');
+  	    			toastr.error("Lỗi khi lấy số GYCBH");
+  			    });
+  			}
   		}
   		
   		function gotoAfterSave() {
@@ -276,5 +296,29 @@
                 },
             });
         }
+  		
+  		function showUpdateAnchiPolicy(data) {
+        	var message = "Cập nhật đơn Ấn chỉ <strong>" + data.gycbhNumber + "</strong> thành công";
+        	
+        	$ngConfirm({
+                title: 'Thông báo',
+                icon: 'fa fa-check',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">' + message + '</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đóng',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	gotoAfterSave();
+	                    }
+                    }
+                },
+            });
+        }
+  		
     }
 })();

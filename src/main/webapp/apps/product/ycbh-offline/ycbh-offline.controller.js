@@ -6,21 +6,21 @@
         .controller('ProductYcbhOfflineController', ProductYcbhOfflineController);
 
     ProductYcbhOfflineController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm'];
+    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductYcbhOfflineService', 'ContactService'];
 
     function ProductYcbhOfflineController ($scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, ContactCommonDialogService, ProductCommonService, $ngConfirm) {
+    		, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductYcbhOfflineService, ContactService) {
         var vm = this;
 
         vm.policy = {
     		  "gycbhNumber": "",
     		  "contactCode": "",
     		  "documentContent": null,
-    		  "gycbhAnchi": null,
+    		  "gycbhContent": null,
     		  "anchiContent": null,
     		  "imgGiamdinhContent": null,
     		  "maSanPham": "",
-    		  "totalPremium": null
+    		  "totalPremium": ""
         };
 		 vm.gycbhFile = null;
 		 vm.documentFile = null;
@@ -49,9 +49,67 @@
   			
   			console.log($stateParams.productCode);
   			vm.policy.maSanPham = $stateParams.productCode;
+  			
+  			vm.gycbhNumber = {
+	  		    	  "gycbhNumber": ""
+		    };
+		    vm.gycbhNumber = $stateParams.id;
+		    if (vm.gycbhNumber != null) {
+		    	ProductYcbhOfflineService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+	  			
+	  			function onSuccess(data) {
+	  				vm.policy = data;
+	  				vm.policy.maSanPham = data.maSanPham;
+	  				
+	  				// Load file
+	  				loadFileInEditMode();
+	  				
+	  				ContactService.getByCode({contactCode : data.contactCode} , onGetContactSuccess, onGetContactError);
+	  				function onGetContactSuccess(result) {
+	  					vm.policy.contactName = result.contactName;
+	  	  			}
+	  				
+	  				function onGetContactError() {
+	  	  			}
+	  				
+	  				toastr.success('Tải thông tin chi tiết hợp đồng');
+	  			}
+	  			
+	  			function onError() {
+	  			}
+		    }
   		})();
   		
+  		function loadFileInEditMode() {
+  			if (vm.policy.documentContent) {
+  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.documentContent.content, 'document.jpg');
+  				vm.documentFileModel = docFile;
+  			}
+  	  		
+  			if (vm.policy.gycbhContent) {
+  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.gycbhContent.content, 'gycbhFile.jpg');
+  	  	  		vm.gycbhFileModel = imgGycbhFile;
+  			}
+  			
+  			if (vm.policy.anchiContent) {
+  				let anchiFile = dataURLtoFile('data:image/*;base64,' + vm.policy.anchiContent.content, 'anchi.jpg');
+  				vm.anchiFileModel = anchiFile;
+  			}
+  			
+  			if (vm.policy.imgGiamdinhContent) {
+  				let imgFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGiamdinhContent.content, 'giamdinh.jpg');
+  				vm.imgGiamdinhFileModel = imgFile;
+  			}
+  		}
   		
+  		function dataURLtoFile(dataurl, filename) {
+  		    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+  		        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  		    while(n--){
+  		        u8arr[n] = bstr.charCodeAt(n);
+  		    }
+  		    return new File([u8arr], filename, {type:mime});
+  		}
   		
   		// watch
   		$scope.$watch('vm.gycbhFileModel', function () {
@@ -159,32 +217,73 @@
   			vm.policy.gycbhContent = vm.gycbhFile;
   			vm.policy.imgGiamdinhContent = vm.imgGiamdinhFile;
   			
-  			ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
-            	console.log('Done get gychbhNumber: ' + result.policyNumber);
-            	// Add ychbhNumber
-            	vm.policy.gycbhNumber  = result.policyNumber;
-
-            	// Save ycbh offline
+  			// Edit
+  			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
+  				// Edit
+				// Save ycbh offline
       			ProductCommonService.saveYcbhOffline(vm.policy, onSuccess, onError);
       			
       			function onSuccess(data) {
       				vm.isLoading = false;
       				console.log(data);
-      				showSaveSaveYcbhInfo(data);
+      				showUpdateYcbhInfo(data);
       			}
       			
       			function onError(data) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi tạo yêu cầu bảo hiểm offline.");
+      				toastr.error("Lỗi khi cập nhật yêu cầu bảo hiểm offline.");
       			}
-            }).catch(function(data, status) {
-    			console.log('Error get gychbhNumber');
-    			toastr.error("Lỗi khi lấy số GYCBH");
-		    });
+  			} else {
+  				ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
+  	            	console.log('Done get gychbhNumber: ' + result.policyNumber);
+  	            	// Add ychbhNumber
+  	            	vm.policy.gycbhNumber  = result.policyNumber;
+
+  	            	// Save ycbh offline
+  	      			ProductCommonService.saveYcbhOffline(vm.policy, onSuccess, onError);
+  	      			
+  	      			function onSuccess(data) {
+  	      				vm.isLoading = false;
+  	      				console.log(data);
+  	      				showSaveSaveYcbhInfo(data);
+  	      			}
+  	      			
+  	      			function onError(data) {
+  	      				vm.isLoading = false;
+  	      				toastr.error("Lỗi khi tạo yêu cầu bảo hiểm offline.");
+  	      			}
+  	            }).catch(function(data, status) {
+  	    			console.log('Error get gychbhNumber');
+  	    			toastr.error("Lỗi khi lấy số GYCBH");
+  			    });
+  			}
   		}
   		
   		function showSaveSaveYcbhInfo(data) {
         	var message = "Hợp đồng bảo hiểm offline <strong>" + data.gycbhNumber + "</strong> đã tạo thành công";
+        	
+        	$ngConfirm({
+                title: 'Thông báo',
+                icon: 'fa fa-check',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">' + message + '</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đóng',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	$state.go('app.cart');
+	                    }
+                    }
+                },
+            });
+        }
+  		
+  		function showUpdateYcbhInfo(data) {
+        	var message = "Hợp đồng bảo hiểm offline <strong>" + data.gycbhNumber + "</strong> đã cập nhật thành công";
         	
         	$ngConfirm({
                 title: 'Thông báo',

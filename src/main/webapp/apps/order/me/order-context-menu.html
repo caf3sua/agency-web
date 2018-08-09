@@ -30,7 +30,7 @@
         </div>
         <span class="bv-detail-text-table">Tái tục</span>
     </div>
-    <div ng-show="order.statusPolicyId != 89" ng-click="vm.confirmKhachhangnophi(order)">
+    <div ng-show="order.statusPolicyId != 89 && order.createType != 1" ng-click="vm.confirmKhachhangnophi(order)">
         <div class="bv-detail-icon-table">
             <i class="icon-money"></i>
         </div>
