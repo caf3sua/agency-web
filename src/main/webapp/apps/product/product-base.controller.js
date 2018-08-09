@@ -21,10 +21,10 @@
         }]);
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
-    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService'];
+    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
-    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService){
+    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService, $filter){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -90,6 +90,23 @@
         
         vm.changeCopyFromContact = changeCopyFromContact;
         
+        vm.openSearchContactInvoice = openSearchContactInvoice;
+        vm.openSearchContactReceiver = openSearchContactReceiver;
+        vm.loadContactForInvoice = false;
+    	vm.loadContactForReceiver = false;
+    	
+    	function openSearchContactInvoice() {
+    		console.log('openSearchContactInvoice');
+    		vm.loadContactForInvoice = true;
+        	ContactCommonDialogService.openSearchDialog();
+    	}
+    	
+    	function openSearchContactReceiver() {
+    		console.log('openSearchContactReceiver');
+    		vm.loadContactForReceiver = true;
+        	ContactCommonDialogService.openSearchDialog();
+    	}
+    	
         function changeCopyFromContact() {
         	vm.policy.receiverUser = {};
 	      	if (vm.copyFromContact) {
@@ -325,6 +342,36 @@
 		
         $scope.$on('selectedContactChange', function() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+        		if (vm.loadContactForInvoice) {
+        			if (vm.policy.invoiceInfo == null || vm.policy.invoiceInfo == undefined) {
+        				vm.policy.invoiceInfo = {};
+        			}
+        			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
+        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
+                    // reset
+                    vm.loadContactForInvoice = false;
+            		return;
+            	} else if (vm.loadContactForReceiver) {
+            		if (vm.policy.receiverUser == null || vm.policy.receiverUser == undefined) {
+            			vm.policy.receiverUser = {};
+        			}
+            		vm.policy.receiverUser.name = $rootScope.selectedContact.contactName;
+            		vm.policy.receiverUser.mobile = $rootScope.selectedContact.phone;
+            		vm.policy.receiverUser.email = $rootScope.selectedContact.email;
+            		
+            		let addressReceiver = $rootScope.selectedContact.homeAddress;
+            		vm.policy.receiverUser.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
+
+                    let postcodeReceiver = addressReceiver.substring(addressReceiver.lastIndexOf("::") + 2);
+                    ProductCommonService.getAddressByPostcode({code: postcodeReceiver}).$promise.then(function(data) {
+                    	vm.policy.receiverUser.addressDistrictData = data;
+                    });
+            		
+                    // reset
+                    vm.loadContactForReceiver = false;
+            		return;
+            	}
+        		
         		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
         		vm.policy.contactName = $rootScope.selectedContact.contactName;
                 vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
@@ -336,7 +383,7 @@
                 vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
 
                 let postcode = address.substring(address.lastIndexOf("::") + 2);
-                vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
+                //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
                 ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
                 	vm.policy.contactAddressDistrictData = data;
                 	
