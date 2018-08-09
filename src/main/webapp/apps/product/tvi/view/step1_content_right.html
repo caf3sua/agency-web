@@ -29,38 +29,38 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="person in  vm.policy.listTviAdd">
+                            <tr ng-repeat="person in vm.policy.listTviAdd track by $index">
                                 <td>
-                                    <input type="text" name="insuredName" class="bv-input" ng-model="person.insuredName"
+                                    <input type="text" name="insuredName{{$index}}" class="bv-input" ng-model="person.insuredName"
                                            required-message="'Chưa thêm họ và tên !'"
-                                           required
+                                           required ng-disabled="$index == 0 && vm.ngYcbhDicung"
                                     />
                                 </td>
                                 <td>
-                                    <input type="text" name="idPasswport" class="bv-input" ng-model="person.idPasswport "
+                                    <input type="text" name="idPasswport{{$index}}" class="bv-input" ng-model="person.idPasswport "
                                            required-message="'Chưa thêm sô Hộ chiếu/CMND !'"
-                                           required
+                                           required ng-disabled="$index == 0 && vm.ngYcbhDicung"
                                     />
                                 </td>
                                 <td>
                                     <div class=" width-100">
-                                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                        <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" ng-disabled="$index == 0 && vm.ngYcbhDicung">
                                             <div class="width-100">
-                                                <input type="text" class="bv-input" name="dob" placeholder="Ngày sinh" ng-model="person.dob"
+                                                <input type="text" class="bv-input" name="dob{{$index}}" placeholder="Ngày sinh" ng-model="person.dob"
                                                        required-message="'Chưa thêm ngày sinh !'"
-                                                       required
+                                                       required ng-disabled="$index == 0 && vm.ngYcbhDicung"
                                                 >
                                             </div>
-                                            <div class="input-group-addon bv-date-icon">
+                                            <div class="input-group-addon bv-date-icon" ng-disabled="$index == 0 && vm.ngYcbhDicung">
                                                 <span class="glyphicon glyphicon-th"></span>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <select class="bv-select-box form-control" name="relationshipId" ng-model ="person.relationshipId"
+                                    <select class="bv-select-box form-control" name="relationshipId{{$index}}" ng-model ="person.relationshipId"
                                             required-message="'Chưa chọn mối quan hệ !'"
-                                            required
+                                            required ng-disabled="$index == 0 && vm.ngYcbhDicung"
                                     >
                                         <option value="30">Bản thân</option>
                                         <option value="31">Vợ/Chồng</option>

@@ -15,7 +15,7 @@
                     <th>Đơn vị</th>
                 </tr>
                 </thead>
-                <tr ng-repeat="item in vm.printedPapers track by $index">
+                <tr ng-repeat-start="item in vm.printedPapers track by $index" ng-click="item.expand = !item.expand">
                     <td>
                         <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
                     </td>
@@ -23,7 +23,7 @@
                         <p class="bv-table-text-colorBlue">{{item.ACHI_KYHIEU_ANCHI_ID}}</p> <!-- Mã ấn chỉ -->
                     </td>
                     <td>
-                        <p class="">{{item.ACHI_SO_ANCHI}}</p>
+                        <p class="bv-table-text-colorBlue">{{item.ACHI_SO_ANCHI}}</p>
                     </td>
                     <td>
                         <p class="">{{item.ACHI_TEN_ANCHI}}</p>
@@ -35,5 +35,8 @@
                         <p class="">{{item.ACHI_DLQL_NAME}}</p>
                     </td>
                 </tr>
+                <tr ng-if="item.expand" ng-repeat-end="">
+           			<td colspan="6"><div ng-include="'apps/printed-paper/printed-paper-new/context-menu.html'"></div></td>
+				</tr>
             </table>
 

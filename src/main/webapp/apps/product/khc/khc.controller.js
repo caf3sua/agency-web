@@ -58,7 +58,9 @@
 
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
-//        vm.postPremiumKhcListIndex = [];
+        
+        vm.ngYcbhDicung = false;
+        vm.changeNgYcbhDicung = changeNgYcbhDicung;
 
         // Initialize
         init();
@@ -118,6 +120,16 @@
   			// extra
   		}
 
+        function changeNgYcbhDicung() {
+        	if (vm.ngYcbhDicung) {
+        		vm.policy.premiumKhcList[0].insuredName = vm.policy.contactName;
+        		vm.policy.premiumKhcList[0].idPasswport = vm.policy.contactIdNumber;
+        		vm.policy.premiumKhcList[0].dob = vm.policy.contactDob;
+        	} else {
+        		vm.policy.premiumKhcList[0] = {};
+        	}
+        }
+        
         function onDobChange(index) {
             if(vm.policy.premiumKhcList[index]) {
                 var now = new Date();
@@ -172,8 +184,9 @@
         }
 
         function getPremium() {
-//            var postData = getPostData(false);
-
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
         	var isValid = true;
         	angular.forEach(vm.policy.premiumKhcList, function(value, key) {
         		if (value.dob == "" || value.yearOld == 0) {
@@ -186,25 +199,6 @@
             	ProductCommonService.getKhcPremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
             }
         }
-
-//        function getPostData() {
-//            var postData = Object.assign({}, vm.policy);
-//
-//            vm.postPremiumKhcListIndex = [];
-//            var realPremiumKhcList = [];
-//            for (var i=0; i < postData.premiumKhcList.length; i++) {
-//                if(postData.premiumKhcList[i].dob) {
-//                    vm.postPremiumKhcListIndex.push(i);
-//                    realPremiumKhcList.push(postData.premiumKhcList[i]);
-//                }
-//            }
-//
-//            postData.premiumKhcList = realPremiumKhcList;
-//            postData.numberMonth = DateUtils.monthDiff(postData.insuranceStartDate, postData.insuranceEndDate) + 1;
-//            postData.numberPerson = realPremiumKhcList.length;
-//
-//            return postData;
-//        }
 
         function onGetPremiumSuccess(result) {
             vm.loading = false;

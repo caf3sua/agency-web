@@ -26,28 +26,6 @@
             inceptionDate: "",
             invoiceInfo: {},
             listTviAdd: [
-		            {
-		                address: "",
-		                cellPhone: "",
-		                city: "",
-		                dayTreatment: "",
-		                detailTreatment: "",
-		                diagnose: "",
-		                dob: "",
-		                emailAdress: "",
-		                homePhone: "",
-		                idPasswport: "",
-		                insuredName: "",
-		                nameDoctor: "",
-		                relationship: "",
-		                relationshipId: "",
-		                relationshipName: "",
-		                resultTreatment: "",
-		                title: "",
-		                travaelcareId: "",
-		                tviAddId: "",
-		                tviCareId: ""
-		            }
 		        ],
             netPremium: 0,
             paymentMethod: "",
@@ -189,6 +167,9 @@
         }
         
         function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
             
             vm.policy.destination =  vm.policy.destinationId;
@@ -202,7 +183,7 @@
             }else{
                 vm.policy.premiumPercentDiscount  = 0;
             }
-            vm.policy.numberOfDay   = 0;
+            vm.policy.numberOfDay = 0;
             ProductCommonService.getTviPremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {

@@ -320,6 +320,9 @@
   		}
 
   		function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
             ProductCommonService.getKcarePremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
   			

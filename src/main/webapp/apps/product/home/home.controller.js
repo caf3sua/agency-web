@@ -130,6 +130,9 @@
   		}
   		
   		function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             vm.loading = true;
             ProductCommonService.getHomePremium(vm.policy, onGetPremiumSuccess, onGetPremiumError);
   			

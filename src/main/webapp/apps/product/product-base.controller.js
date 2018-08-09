@@ -90,6 +90,8 @@
         
         vm.changeCopyFromContact = changeCopyFromContact;
         
+        vm.cleanAllResponseError = cleanAllResponseError;
+        
         vm.openSearchContactInvoice = openSearchContactInvoice;
         vm.openSearchContactReceiver = openSearchContactReceiver;
         vm.loadContactForInvoice = false;
@@ -632,5 +634,9 @@
         	ResponseValidateService.cleanResponseError(vm.errorField);
         }
 
+        function cleanAllResponseError() {
+        	ResponseValidateService.cleanAllResponseError();
+        }
+        
     }
 })();

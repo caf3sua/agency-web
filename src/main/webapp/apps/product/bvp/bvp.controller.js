@@ -343,6 +343,9 @@
         }
 
         function getPremium() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
             var postData = getPostData(false);
 
             if(postData.chuongTrinh) {
