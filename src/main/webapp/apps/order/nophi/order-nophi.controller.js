@@ -64,11 +64,11 @@
   			
   			function onSuccess(result) {
   				searchOrder();
-  				toastr.success('Xóa thành công');
+  				toastr.success('Hủy thành công');
   			}
   			
   			function onError() {
-  				toastr.error("Lỗi khi xóa nợ phi!");
+  				toastr.error("Lỗi khi hủy hợp đồng!");
   			}
   		}
   		

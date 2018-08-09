@@ -85,7 +85,7 @@
 	  				function onGetContactError() {
 	  	  			}
 	  				
-	  				toastr.success('Tải thông tin chi tiết hợp đồng');
+	  				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
 	  			}
 	  			
 	  			function onError() {
@@ -261,7 +261,7 @@
       			
       			function onError(data) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi cập nhật yêu cầu bảo hiểm offline.");
+      				toastr.error("Lỗi khi cập nhật đơn ấn chỉ.");
       			}
   			} else{
   				ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
@@ -283,7 +283,6 @@
   	      				toastr.error("Lỗi khi cấp đơn ấn chỉ.");
   	      			}
   	            }).catch(function(data, status) {
-  	    			console.log('Error get gychbhNumber');
   	    			toastr.error("Lỗi khi lấy số GYCBH");
   			    });
   			}

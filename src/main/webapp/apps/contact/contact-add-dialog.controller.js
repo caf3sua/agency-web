@@ -77,12 +77,12 @@
         		ContactService.create(vm.contactAdd, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			toastr.success('Success!', 'Successful!');
+        			toastr.success('Tạo khách hàng thành công');
         			$uibModalInstance.dismiss('cancel');
         		}
         		
         		function onError(result) {
-        			toastr.error('Error!', 'Error');
+        			toastr.error('Lỗi khi tạo khách hàng mới');
         			$uibModalInstance.dismiss('cancel');
         		}
         	}

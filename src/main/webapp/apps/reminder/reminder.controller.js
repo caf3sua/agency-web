@@ -45,7 +45,7 @@
   			ReminderService.delete({id: id}, onDeleteSuccess, onDeleteError);
   			
   			function onDeleteSuccess(data) {
-  				toastr.success('Successful!');
+  				toastr.success('Xóa nhắc nhở thành công');
   				loadAll();
             }
             function onDeleteError(error) {

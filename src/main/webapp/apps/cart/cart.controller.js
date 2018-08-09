@@ -150,7 +150,7 @@
         }
         
         function onGetAllOrderError() {
-            toastr.error("error!");
+            toastr.error("Lỗi khi lấy đơn hàng");
         }
         
         function dateUtil(date) {
@@ -182,7 +182,7 @@
         }
         
         function onGetListBankError() {
-            toastr.error("error!");
+            toastr.error("Lỗi khi lấy danh sách ngân hàng");
         }
 
         function processPayment() {

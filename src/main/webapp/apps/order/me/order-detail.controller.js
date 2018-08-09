@@ -65,7 +65,7 @@
 						break;
   				}
   				
-  				toastr.success('Tải thông tin chi tiết hợp đồng');
+  				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
   			}
   			
   			function onError() {
@@ -141,7 +141,7 @@
   			function onSuccess(result) {
   				vm.contactName = result.contactName;
   				vm.contactDob = result.dateOfBirth;
-  				toastr.success('Tải thông tin chi tiết hợp đồng');
+  				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
   			}
   			
   			function onError() {

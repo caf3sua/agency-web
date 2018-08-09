@@ -70,7 +70,7 @@
   				function onGetContactError() {
   	  			}
   				
-  				toastr.success('Tải thông tin chi tiết hợp đồng');
+  				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
   			}
   			
   			function onError() {

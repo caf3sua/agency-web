@@ -57,7 +57,7 @@
             }).catch(function () {
             	vm.isLoading = false;
                 vm.authenticationError = true;
-                toastr.error('Kiểm tra lại username và password!', 'Đăng nhập Lỗi!');
+                toastr.error('Kiểm tra lại tên và mật khẩu');
             });
         }
         

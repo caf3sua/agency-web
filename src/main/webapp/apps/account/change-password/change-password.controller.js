@@ -37,12 +37,12 @@
             ChangePasswordService.postChangePassword(vm.changePassword, onActionChangePasswordSuccess, onActionChangePasswordError);
         }
         function onActionChangePasswordSuccess(result) {
-            toastr.success('Change Password Success!', 'Successful!');
+            toastr.success('Đổi mật khẩu thành công');
 
         }
 
         function onActionChangePasswordError(result) {
-            toastr.error('Change Password  Error!', 'Error!');
+            toastr.error('Đổi mật khẩu lỗi');
         }
 
 

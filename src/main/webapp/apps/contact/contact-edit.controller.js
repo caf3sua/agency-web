@@ -203,12 +203,12 @@
         		ContactService.update(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
-        			toastr.success('Sửa khách hàng thành công');
+        			toastr.success('Cập nhật khách hàng thành công');
         			$state.go('app.contact');
         		}
         		
         		function onError(result) {
-        			toastr.error('Error!', 'Error');
+        			toastr.error('Cập nhật khách hàng lỗi');
         		}
         	}
         	

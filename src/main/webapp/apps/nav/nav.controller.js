@@ -252,7 +252,7 @@
   	  			})
             }
             function onError(error) {
-                vm.validateResponse(error, 'Get data error!');
+                vm.validateResponse(error, 'Lỗi khi lấy dữ liệu hãng xe!');
             }
   		}
     	
@@ -272,7 +272,7 @@
         	}, onError);
     		
             function onError(error) {
-                vm.validateResponse(error, 'Get data error!');
+                vm.validateResponse(error, 'Lỗi khi lấy dữ liệu hãng xe!');
             }
   		}
     	
@@ -284,7 +284,7 @@
   				vm.car.vcxSoTien = result.price;
             }
             function onError(error) {
-                vm.validateResponse(error, 'Get data error!');
+                vm.validateResponse(error, 'Lỗi khi lấy dữ liệu năm sản xuất của xe!');
             }
   		}
     	

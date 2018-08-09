@@ -127,16 +127,16 @@
 	  			function onSearchSuccess(data) {
 	  				vm.isLoading = false;
 	  				vm.report = data;
-	  				toastr.remove();
-	  				toastr.success("Dữ liệu đã được cập nhật");
+//	  				toastr.remove();
+//	  				toastr.success("Dữ liệu đã được cập nhật");
 	  				loadReportIncome();
 	  				loadReportCommission();
 	  			}
 	  			
 	  			function onSearchError() {
 	  				vm.isLoading = false;
-	  				toastr.remove();
-	  				toastr.error("Lỗi khi tìm kiếm data báo cáo!");
+//	  				toastr.remove();
+//	  				toastr.error("Lỗi khi tìm kiếm data báo cáo!");
 	  			}
 	  		}
 	  		
