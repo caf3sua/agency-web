@@ -89,4 +89,14 @@
             <div ng-show="vm.isShowTotalPremium">
                 <p class="bv-gh-number-sum-product">{{vm.policy.premiumKhc | number:0}}</p>
             </div>
+            
+            <!-- Bảng quyền lợi bảo hiểm -->
+            <div class="margin-top-10">
+                <p class="bv-title-from" ng-init="vm.isCollapsedTableRights = true" ng-click="vm.isCollapsedTableRights = !vm.isCollapsedTableRights">
+                	Bảng tóm tắt quyền lợi bảo hiểm <i class="pull-right fas fa-question-circle" style="color: #1964af !important;font-size: 20px;"></i>
+                </p>
+            </div>
+			<div class="margin-top-10" uib-collapse="vm.isCollapsedTableRights">
+			    <div ng-include="'apps/product/partial/partial.table-rights-khc.html'"></div>
+			</div>
         
