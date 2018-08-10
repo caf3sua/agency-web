@@ -1840,6 +1840,9 @@ body {
 .has-error{
     color: #a94442;
 }
+.color-0d47a1{
+    color: #0d47a1 !important;
+}
 @media (min-width:1200px) and (max-width:1300px) {
     .bv-collapse-tp{
         display: flex;
