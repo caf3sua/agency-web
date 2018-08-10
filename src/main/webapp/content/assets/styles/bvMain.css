@@ -1647,10 +1647,10 @@ body {
     border-right: 1px solid rgba(120, 130, 140, 0.13);
 }
 .bv-context-menu{
-    display: flex;
     margin-left: 50px;
 }
 .bv-context-menu>div{
+    display: inline-block;
     margin-left: 15px;
     cursor: pointer;
 }
@@ -1895,6 +1895,9 @@ body {
     }
 }
 @media (min-width:992px) and (max-width:1200px) {
+    .bv-kh-padding-left{
+        padding-left: 0;
+    }
     .bv-display-step {
         display: block;
     }
