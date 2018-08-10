@@ -3005,3 +3005,7 @@ button[disabled] {
 .txt-2,.txt-anchi {
 	color: #4caf50 !important;
 }
+
+.label-gray {
+	color: gray;
+}

@@ -24,7 +24,7 @@
                     </td>
                     <td>
                         <p class="bv-table-text-colorBlue">{{item.ACHI_SO_ANCHI}} 
-                        	<i class="fas fa-lock"></i>
+                        	<i class="fas fa-lock label-gray" ng-show="item.anchiUsing" uib-tooltip="Ấn chỉ đang được sử dụng"></i>
                         </p>
                     </td>
                     <td>
@@ -38,7 +38,7 @@
                     </td>
                 </tr>
                 <tr ng-if="item.expand" ng-repeat-end="">
-           			<td colspan="6"><div ng-include="'apps/printed-paper/printed-paper-new/context-menu.html'"></div></td>
+           			<td colspan="6" ng-show="!item.anchiUsing"><div ng-include="'apps/printed-paper/printed-paper-new/context-menu.html'"></div></td>
 				</tr>
             </table>
 

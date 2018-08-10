@@ -32,7 +32,6 @@
 
     	// Init controller
   		(function initController() {
-//  			$controller('PrintedPaperNewController', { vm: vm, $scope: $scope });
   			loadSelectBoxType();
   		})();
   		
@@ -67,8 +66,15 @@
   			
   			function onSearchSuccess(data) {
   				vm.isLoading = false;
-  				vm.printedPapers = data;
-  				toastr.success('Tìm thấy ' + data.length + ' ấn chỉ phù hợp');
+  				let count = 0;
+  				angular.forEach(data, function(item) {
+  					if (!item.anchiUsing) {
+  						item.id = count++;
+  	  					vm.printedPapers.push(item);
+  					}
+  	            });
+  				
+  				toastr.success('Tìm thấy ' + vm.printedPapers.length + ' ấn chỉ phù hợp');
   			}
   			
   			function onSearchError() {

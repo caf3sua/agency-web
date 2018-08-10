@@ -259,9 +259,10 @@
       				showUpdateAnchiPolicy(data);
       			}
       			
-      			function onError(data) {
+      			function onError(result) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi cập nhật đơn ấn chỉ.");
+      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ.";
+      				toastr.error(message);
       			}
   			} else{
   				ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
@@ -278,9 +279,10 @@
   	      				showSaveAnchiPolicy(data);
   	      			}
   	      			
-  	      			function onError(data) {
+  	      			function onError(result) {
   	      				vm.isLoading = false;
-  	      				toastr.error("Lỗi khi cấp đơn ấn chỉ.");
+  	      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ.";
+  	      				toastr.error(message);
   	      			}
   	            }).catch(function(data, status) {
   	    			toastr.error("Lỗi khi lấy số GYCBH");
