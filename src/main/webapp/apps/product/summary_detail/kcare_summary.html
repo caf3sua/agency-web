@@ -424,38 +424,5 @@
         </div>
     </div>
 
-    <div class="bv-pading-30">
-        <div class="margin-top-20 text-header-sp" style="margin-bottom: 10px">
-            <p>Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
-        </div>
-        <div class="margin-top-10">
-            <p class="bv-title-from">Họ và tên</p>
-        </div>
-        <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
-        </div>
-        <div class="margin-top-10">
-            <p class="bv-title-from">Địa chỉ</p>
-        </div>
-        <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address | address}}</p>
-        </div>
-        <div class="margin-top-10">
-            <p class="bv-title-from">Số điện thoại liên hệ</p>
-        </div>
-        <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
-        </div>
-        <div class="margin-top-10">
-            <p class="bv-title-from">Địa chỉ email</p>
-        </div>
-        <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
-        </div>
-        <div class="margin-top-10">
-            <p class="bv-title-from">Hình thức giao nhận</p>
-        </div>
-        <div class="margin-top-5">
-            <p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký.</p>
-        </div>
-    </div>
+<!-- Include Thông tin giao nhận giấy chứng nhận bảo hiểm và Thông tin hóa đơn giá trị gia tăng -->
+<div ng-include="'apps/product/summary_detail/partial/step2_summary.html'"></div>

@@ -52,75 +52,6 @@
             <div>
                 <p class="bv-tile-templateSummary">{{vm.policy.premiumHome | number:0 }} VND</p>
             </div>
-
-            <div class="text-header-sp" style="margin-bottom: 10px">
-                <p>THÔNG TIN GIAO NHẬN GIẤY CHỨNG NHẬN BẢO HIỂM</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Họ và tên người nhận</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.name}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Địa chỉ người nhận</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.address | address}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Số điện thoại liên hệ</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Địa chỉ email</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.email}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Hình thức giao nhận</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký</p>
-            </div>
-        </div>
-        <div class="width-100 bv-pading-30">
-            <div class="text-header-sp">
-                <p>THÔNG TIN HÓA ĐƠN GIÁ TRỊ GIA TĂNG</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Họ và tên người mua</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.name}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Tên công ty</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.company}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Mã số thuế</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.taxNo}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Địa chỉ công ty</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.address}}</p>
-            </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Số tài khoản</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.invoiceInfo.accountNo}}</p>
-            </div>
         </div>
     </div>
     <div>
@@ -258,3 +189,6 @@
             </div>
         </div>
     </div>
+    
+<!-- Include Thông tin giao nhận giấy chứng nhận bảo hiểm và Thông tin hóa đơn giá trị gia tăng -->
+<div ng-include="'apps/product/summary_detail/partial/step2_summary.html'"></div>
