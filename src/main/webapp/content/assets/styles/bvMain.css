@@ -2990,3 +2990,15 @@ button[disabled] {
 .anchi-center {
     text-align: center;
 }
+
+.txt-0,.txt-online {
+	color: #2196f3 !important;
+}
+
+.txt-1,.txt-offline {
+	color: #673ab7 !important;
+}
+
+.txt-2,.txt-anchi {
+	color: #4caf50 !important;
+}
