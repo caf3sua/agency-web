@@ -21,23 +21,23 @@
 	</div>
 
     <div class="pull-right">
-        <div class="display-inline-block" ng-click="vm.confirmDeleteOrder(order.id)">
+        <div class="display-inline-block" ng-show="order.createType == 0">
             <div  class="bv-detail-icon-table">
-                <i class="icon-cancel"></i>
+                <i class="fa fa-cloud-upload"></i>
             </div>
-            <span class="bv-detail-text-table">Xóa tiep</span>
+            <span class="bv-detail-text-table">Đơn online</span>
         </div>
-        <div class="display-inline-block" ng-click="vm.confirmDeleteOrder(order.id)">
+        <div class="display-inline-block" ng-show="order.createType == 1">
             <div  class="bv-detail-icon-table">
-                <i class="icon-cancel"></i>
+                <i class="fa fa-cloud-download"></i>
             </div>
-            <span class="bv-detail-text-table">Xóa tiep</span>
+            <span class="bv-detail-text-table">Đơn offline</span>
         </div>
-        <div class="display-inline-block" ng-click="vm.confirmDeleteOrder(order.id)">
+        <div class="display-inline-block" ng-show="order.createType == 2">
             <div  class="bv-detail-icon-table">
-                <i class="icon-cancel"></i>
+                <i class="icon-stamp"></i>
             </div>
-            <span class="bv-detail-text-table">Xóa tiep</span>
+            <span class="bv-detail-text-table">Đơn ấn chỉ</span>
         </div>
     </div>
 
