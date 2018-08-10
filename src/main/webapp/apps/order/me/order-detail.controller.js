@@ -17,6 +17,7 @@
     	vm.contactDob;
     	vm.insuranceEndDate;
     	vm.gotoBack = gotoBack;
+    	vm.isEditMode = isEditMode;
     	
         angular.element(document).ready(function () {
         });
@@ -71,6 +72,10 @@
   			function onError() {
   			}
   		})();
+  		
+  		function isEditMode() {
+  			return true;
+  		}
   		
   		function formatBvpData(data) {
   			vm.policy.premiumNet = data.chuongtrinhPhi + data.ngoaitruPhi + data.tncnPhi + data.sinhmangPhi + data.nhakhoaPhi + data.thaisanPhi;
