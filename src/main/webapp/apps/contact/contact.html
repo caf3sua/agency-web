@@ -58,7 +58,7 @@
                     <div class="row-body scrollable ">
                         <div class="row-inner">
                             <div class="list inset">
-                                <div ng-repeat="contact in vm.contacts | filter:{groupType:vm.groupType} | filter:searchName | orderBy:'contactName' track by $index" class="list-item pointer" ng-class="{'dker': contact.selected }" ng-click="vm.selectContact(contact)">
+                                <div ng-repeat="contact in vm.contacts | filter:{groupType:vm.groupType} | filter:{contactName:searchName} | orderBy:'contactName' track by $index" class="list-item pointer" ng-class="{'dker': contact.selected }" ng-click="vm.selectContact(contact)">
                                     <div class="list-body">
                                         {{ contact.contactName }}
                                         <span ng-hide="contact.contactName">Không tên</span>
