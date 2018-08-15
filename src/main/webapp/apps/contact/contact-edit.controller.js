@@ -120,7 +120,7 @@
       		
       		// Implement function
       		function goBack() {
-      			$state.go("app.contact", {selected: vm.contact.contactId, groupType: 'POTENTIAL'});
+      			$state.go("app.contact", {selected: vm.contact.contactId, groupType: $rootScope.contactGroupType});
       		}
       		
       		function openSearchContact() {
@@ -207,7 +207,7 @@
         		
         		function onSuccess(result) {
         			toastr.success('Cập nhật khách hàng thành công');
-        			$state.go('app.contact');
+        			goBack();
         		}
         		
         		function onError(result) {

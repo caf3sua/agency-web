@@ -28,6 +28,12 @@
       			  "facebookId" : ""
       			};
         	vm.addressContact;
+        	vm.goBack = goBack;
+        	
+        	function goBack() {
+      			$state.go("app.contact", {selected: vm.contact.contactId, groupType: $rootScope.contactGroupType});
+      		}
+        	
 //        	vm.map = {
 //                    center: {
 //                        latitude: 21.046018,

@@ -5,8 +5,8 @@
         .controller('ContactController', ContactController);
 
 
-    ContactController.$inject = ['$scope', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm'];
-    function ContactController($scope, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm) {
+    ContactController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm'];
+    function ContactController($rootScope, $scope, $stateParams, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm) {
     	var vm = this;
     	vm.contacts = [];
     	vm.selectedContact = null;
@@ -42,6 +42,7 @@
   		
   		function changeGroupType(type) {
   			vm.groupType = type;
+  			$rootScope.contactGroupType = type;
   			resetSelectContact();
   		}
   		
@@ -69,10 +70,33 @@
     		
     		function onSuccess(result) {
     			vm.contacts = result;
+    			changeGroupType('POTENTIAL');
+    			// load state
+    			loadSelectedContact()
     		}
     		
     		function onError(result) {
     			
+    		}
+    	}
+    	
+    	function findSelectedContact(selectedId) {
+    		let selContact;
+    		angular.forEach(vm.contacts, function(contact) {
+  				if (contact.contactId == selectedId) {
+  					selContact = contact;
+  				}
+  			});
+    		return selContact;
+    	}
+    	
+    	function loadSelectedContact() {
+    		let groupType = $stateParams.groupType;
+    		let selected = $stateParams.selected;
+    		if (groupType != null && groupType != undefined && selected != null && selected != undefined) {
+    			changeGroupType(groupType);
+    			let contact = findSelectedContact(selected);
+    			selectContact(contact);
     		}
     	}
     	

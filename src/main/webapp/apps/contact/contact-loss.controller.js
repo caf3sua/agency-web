@@ -5,9 +5,9 @@
         .controller('ContactLossController', ContactLossController);
 
 
-    ContactLossController.$inject = ['$rootScope', '$scope', '$http', '$filter',
+    ContactLossController.$inject = ['$rootScope', '$scope', '$state', '$http', '$filter',
     		'ContactService','$controller', 'entity', 'ReportService'];
-        function ContactLossController($rootScope, $scope, $http, $filter
+        function ContactLossController($rootScope, $scope, $state, $http, $filter
         		, ContactService, $controller, entity, ReportService) {
         	
         	var vm = this;
@@ -16,6 +16,7 @@
         	vm.his = [];
         	vm.hisInit = [];
         	vm.totalPremium = 0;
+        	vm.goBack = goBack;
         	
         	// variable
         	angular.element(document).ready(function () {
@@ -28,6 +29,10 @@
       		})();
       		
       		// function
+      		function goBack() {
+      			$state.go("app.contact", {selected: vm.contactSelected.contactId, groupType: $rootScope.contactGroupType});
+      		}
+      		
       		function loadAll() {
       			ReportService.getReportHistoryPurchase({contactId: vm.contactSelected.contactId}, onSuccess, onError);
       			
