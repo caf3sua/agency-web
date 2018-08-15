@@ -48,6 +48,7 @@
         vm.openSearchAnchi = openSearchAnchi;
         vm.openSearchContact = openSearchContact;
         vm.cancel = cancel;
+        vm.changeDate = changeDate;
         
         angular.element(document).ready(function () {
         });
@@ -229,14 +230,28 @@
   			$state.go('app.order');
   		}
   		
+  		function changeDate(){
+  			if (vm.policy.ngayHieulucTu != "" && vm.policy.ngayHieulucDen != ""){
+  				if(!vm.checkDate(vm.policy.ngayHieulucTu, vm.policy.ngayHieulucDen)){
+  					toastr.error("Thời gian từ ngày - đến ngày không phù hợp");
+  					return false;
+  				}
+  				return true;
+  			}
+  		}
+  		
   		function saveAnchiPolicyCart() {
-  			vm.isSaveAndNewFlag = false;
-  			saveBase();
+  			if(changeDate()){
+  				vm.isSaveAndNewFlag = false;
+  	  			saveBase();	
+  			} 
   		}
   		
   		function saveAnchiPolicyReload() {
-  			vm.isSaveAndNewFlag = true;
-  			saveBase();
+  			if(changeDate()){
+  				vm.isSaveAndNewFlag = true;
+  	  			saveBase();	
+  			}
   		}
   		
   		function saveBase() {

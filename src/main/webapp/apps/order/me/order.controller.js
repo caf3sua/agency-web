@@ -43,6 +43,7 @@
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.confirmTaituc = confirmTaituc;
   		vm.confirmViewAgreement = confirmViewAgreement;
+  		vm.changeDate = changeDate;
   		
         angular.element(document).ready(function () {
         });
@@ -50,30 +51,44 @@
     	// Init controller
   		(function initController() {
   			// instantiate base controller
+  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
+  			
   		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
   		})();
   		
+  		function changeDate(){
+  			if (vm.searchCriterial.fromDate != "" && vm.searchCriterial.toDate != ""){
+  				if(!vm.checkDate(vm.searchCriterial.fromDate, vm.searchCriterial.toDate)){
+  					toastr.error("Thời gian từ ngày - đến ngày không phù hợp");
+  					return false;
+  				}
+  			}
+  			return true;
+  		}
+  		
   		function searchOrder() {
-  			vm.totalItems = null;
-  			vm.isLoading = true;
-  			vm.orders = [];
-  			var order = {};
+  			if (changeDate()) {
+  				vm.totalItems = null;
+  	  			vm.isLoading = true;
+  	  			vm.orders = [];
+  	  			var order = {};
 
-  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
-  			function onSearchSuccess(result, headers) {
-  				// Paging
-  				vm.orders = result;
-  				vm.isLoading = false;
-                
-  				vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                
-  				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
-  	        }
-  	        function onSearchError() {
-  	        	vm.isLoading = false;
-  	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
-  	        }
+  	  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
+  	  			function onSearchSuccess(result, headers) {
+  	  				// Paging
+  	  				vm.orders = result;
+  	  				vm.isLoading = false;
+  	                
+  	  				vm.totalItems = headers('X-Total-Count');
+  	                vm.queryCount = vm.totalItems;
+  	                
+  	  				toastr.success('Tìm thấy ' + vm.orders.length + ' đơn hàng phù hợp');
+  	  	        }
+  	  	        function onSearchError() {
+  	  	        	vm.isLoading = false;
+  	  	            toastr.error("Lỗi khi tìm kiếm đơn hàng!");
+  	  	        }
+  			}
   		}
   		
   		function search(page) {
@@ -217,7 +232,7 @@
                 }
             })
         }
-  		
+        
   		function resendEmail(number) {
   			console.log('doResendEmail');
   			OrderService.resendEmail({gycbhNumber: number}, onSuccess, onError);

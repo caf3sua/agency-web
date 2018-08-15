@@ -173,7 +173,11 @@
         
         function onchangePlan() {
         	if (vm.policy.expiredDate != ""){
-        		getPremium();	
+        		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
+        			getPremium();	
+        		} else{
+        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+        		}
         	}
         }
         

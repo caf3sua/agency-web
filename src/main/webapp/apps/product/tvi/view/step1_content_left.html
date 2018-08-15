@@ -44,13 +44,13 @@
 	            </div>
             </div>
             <div class="bv-margin-botton-10 margin-top-10">
-                <p class="bv-title-from margin-bottom-0">Ngày khởi hành từ Việt Nam<span class="bv-req-red">&nbsp(*)</span></p>
+                <p class="bv-title-from margin-bottom-0">Ngày khởi hành<span class="bv-req-red">&nbsp(*)</span></p>
                 <span class="bv-title-from-des">(Thời gian bảo hiểm từ)</span>
             </div>
             <div class="margin-right-5 width-100">
                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
-                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate" ng-change="vm.onchangePlan()"
                                required-message="'Chưa chọn ngày khởi hành!'"
                                required
                         >

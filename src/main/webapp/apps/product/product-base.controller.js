@@ -97,6 +97,23 @@
         vm.loadContactForInvoice = false;
     	vm.loadContactForReceiver = false;
     	
+    	// 15.08
+    	vm.checkDate = checkDate;
+    	
+    	function checkDate(startDate, endDate){
+    		var splitStart = startDate.split('/');
+    	    var dateStart = new Date(splitStart[2], splitStart[1] - 1, splitStart[0]); //Y M D 
+    	    var timesStart = dateStart.getTime();
+    		
+    		var splitEnd = endDate.split('/');
+    	    var dateEnd = new Date(splitEnd[2], splitEnd[1] - 1, splitEnd[0]); //Y M D 
+    	    var timesEnd = dateEnd.getTime();
+    	    if (timesEnd < timesStart) {
+    	        return false;
+    	    }
+    	    return true;
+    	}
+    	
     	function openSearchContactInvoice() {
     		console.log('openSearchContactInvoice');
     		vm.loadContactForInvoice = true;
