@@ -63,7 +63,7 @@
     			"khauHao": false,
     			"khauTru": false,
     			"matCap": false,
-    			"namSX": 0,
+    			"namSX": "",
     			"ngapNuoc": false,
     			"nntxCheck": false,
     			"nntxPhi": 0,
@@ -194,7 +194,9 @@
     	vm.onCarMakesSel = onCarMakesSel;
     	vm.onCarModelSel = onCarModelSel;
     	vm.onYearSel = onYearSel;
-
+    	
+    	vm.isCollapsedQuickPremium = true;
+    	
     	// Init controller
   		(function initController() {
   			console.log('NavController initController');
@@ -202,6 +204,11 @@
   			// Load init for car
   			NavCommonService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
   		})();
+  		
+
+    	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    		vm.isCollapsedQuickPremium = true;
+    	});
 
   		$scope.$watch('vm.khc.insuranceStartDate', function (value) {
   			console.log('change vm.khc.insuranceStartDate' + vm.khc.insuranceStartDate);
@@ -422,6 +429,5 @@
     		console.log('logout');
             $state.go('access.signin');
         }
-
     }
 })();
