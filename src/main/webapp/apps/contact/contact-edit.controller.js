@@ -211,7 +211,8 @@
         		}
         		
         		function onError(result) {
-        			toastr.error('Cập nhật khách hàng lỗi');
+        			let message = result.data.message || 'Lỗi khi cập nhật khách hàng';
+        			toastr.error(message);
         		}
         	}
         	

@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 ">
-    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="d">
         <input type="text" class="bv-input" placeholder="Ngày sinh" ng-model="vm.bvp.ngaySinh">
         <div class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
@@ -22,7 +22,7 @@
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
         <input type="text" class="bv-input" placeholder="Bắt đầu từ (*)" ng-model="vm.bvp.thoihanbhTu">
         <div class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
