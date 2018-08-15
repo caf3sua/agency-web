@@ -10,7 +10,7 @@
     function stateConfig($stateProvider, $urlRouterProvider, MODULE_CONFIG) {
         $stateProvider
 	        .state('app.contact', {
-	            url: '/contact',
+	            url: '/contact?groupType&selected',
 	            templateUrl: 'apps/contact/contact.html',
 	            data : { 
             		title: 'CONTACT',

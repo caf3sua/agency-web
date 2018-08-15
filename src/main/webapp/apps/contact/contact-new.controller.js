@@ -84,7 +84,7 @@
         	vm.deleteContactProduct = deleteContactProduct;
         	vm.deleteRelationship = deleteRelationship;
         	vm.deleteReminderProduct = deleteReminderProduct;
-        	
+        	vm.goBack = goBack;
         	
         	angular.element(document).ready(function () {
             });
@@ -104,6 +104,10 @@
             });
       		
       		// Implement function
+      		function goBack() {
+      			$state.go('app.contact');
+      		}
+      		
       		function openSearchContact() {
             	console.log('openSearchContact');
             	ContactCommonDialogService.openSearchDialog();

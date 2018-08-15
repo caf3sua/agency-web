@@ -72,7 +72,7 @@
         	vm.deleteContactProduct = deleteContactProduct;
         	vm.deleteRelationship = deleteRelationship;
         	vm.deleteReminderProduct = deleteReminderProduct;
-        	
+        	vm.goBack = goBack;
         	
         	angular.element(document).ready(function () {
             });
@@ -99,7 +99,6 @@
       		})();
       		
       		
-      		
       		function formatAddressEdit() {
       			// Address at step 2
       			let address = vm.contact.homeAddress;
@@ -120,6 +119,10 @@
             });
       		
       		// Implement function
+      		function goBack() {
+      			$state.go("app.contact", {selected: vm.contact.contactId, groupType: 'POTENTIAL'});
+      		}
+      		
       		function openSearchContact() {
             	console.log('openSearchContact');
             	ContactCommonDialogService.openSearchDialog();
