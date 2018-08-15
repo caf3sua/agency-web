@@ -33,8 +33,7 @@
             <div class="margin-top-5">
                 <input type="text" format="number" class="bv-input"
                        placeholder="Giới hạn bồi thường phần ngôi nhà với số tiền tối thiểu 300 triệu đồng đến tối đa 5 tỷ đồng" ng-model="vm.policy.si"
-                       ng-blur="vm.getPremium()" name="numberperson"
-                       validate-on="blur"
+                       ng-blur="vm.getPremium()" validate-on="blur"
                        validator="vm.siValidator(vm.policy.si) === true"
                        invalid-message="vm.siValidator(vm.policy.si)"
                        required-message="'Chưa nhập Giới hạn bồi thường phần ngôi nhà!'" required />

@@ -38,6 +38,7 @@
     	vm.selProduct = "";
     	vm.premium;
     	vm.urlCreatePolicy;
+    	vm.siValidator = siValidator;
     	
     	// Product
     	vm.kcare = {
@@ -159,7 +160,7 @@
     			"premiumNet": 0,
     			"premiumSi": 0,
     			"premiumSiin": 0,
-    			"si": "",
+    			"si": 300000000,
     			"siin": "",
     			"yearBuildCode": "" // Thoi han bao hiem
     			};
@@ -287,6 +288,12 @@
                 vm.validateResponse(error, 'Lỗi khi lấy dữ liệu năm sản xuất của xe!');
             }
   		}
+    	
+    	function siValidator(siStr) {
+            if (siStr < 300000000 || siStr > 5000000000) {
+            	vm.home.si = 300000000;
+            }
+        };
     	
   		function calculatePremium() {
   			vm.isCanPremium = false;

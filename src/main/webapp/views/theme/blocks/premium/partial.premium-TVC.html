@@ -1,3 +1,4 @@
+<form name="myFormTvc" id="myFormTvc" style="width: 100%">
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 ">
     <select class="bv-select-box form-control" ng-model="vm.tvc.destination">
     <option value="">Chọn nơi đến (*)</option>
@@ -15,7 +16,16 @@
 	</select>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <input type="text" class="bv-input-tp" placeholder="Số ngày (*)" ng-model="vm.tvc.songay"/>
+    <input type="number" min="1" step="1" max="180" name="soNgay" class="bv-input-tp" placeholder="Số ngày (*)" ng-model="vm.tvc.songay" required-message="'Chưa thêm số ngày!'"
+                       required/>
+    <div ng-show="myFormTvc.soNgay.$dirty && myFormTvc.soNgay.$invalid">
+       	 <p class="help-block" ng-show="myFormTvc.soNgay.$error.required">
+             Chưa thêm số ngày du lịch!
+         </p>
+         <p class="help-block" ng-show="myFormTvc.soNgay.$error.max">
+             Thời gian du lịch quá 180 ngày!
+         </p>
+     </div>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
     <select class="bv-select-box form-control" ng-model="vm.tvc.planId">
@@ -25,3 +35,4 @@
    	<option value="4">Chương trình Bảo hiểm Kim Cương</option>
 	</select>
 </div>
+</form>
