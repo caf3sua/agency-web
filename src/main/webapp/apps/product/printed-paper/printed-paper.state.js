@@ -25,6 +25,7 @@
 	            			'apps/product/printed-paper/printed-paper.controller.js'
 	            			, 'apps/product/printed-paper/printed-paper.service.js'
 	            			, 'apps/printed-paper/printed-paper-base.service.js'
+	            			, 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
             			]);
 		        }
             }
@@ -45,6 +46,7 @@
 	            		return $ocLazyLoad.load([
 	            			'apps/product/printed-paper/printed-paper.controller.js',
 	            			'apps/product/printed-paper/printed-paper.service.js'
+	            			, 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
             			]);
 		        }
             }
