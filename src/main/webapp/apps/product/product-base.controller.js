@@ -50,7 +50,7 @@
 			"mobile":"",
 			"name":""
 		};
-        vm.invoiceInfoData = {  
+        vm.invoiceInfo = {  
 				"accountNo":"",
 				"address":"",
 				"check":"0",
@@ -96,6 +96,7 @@
         vm.openSearchContactReceiver = openSearchContactReceiver;
         vm.loadContactForInvoice = false;
     	vm.loadContactForReceiver = false;
+    	vm.validateInvoice = validateInvoice;
     	
     	// 15.08
     	vm.checkDate = checkDate;
@@ -112,6 +113,20 @@
     	        return false;
     	    }
     	    return true;
+    	}
+    	
+    	function validateInvoice() {
+    		console.log('validateInvoice');
+    		if (vm.policy.invoiceInfo != null){
+    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+    				return true;        				
+    			}
+    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && vm.policy.invoiceInfo.taxNo == '' && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == ''){
+    				return true;        				
+    			}
+        		return false; 
+    		}
+    		return true;
     	}
     	
     	function openSearchContactInvoice() {
@@ -480,7 +495,7 @@
                     vm.typeNameThree = "3";
                 }
             }else if(type == "step3"){
-                if(vm.nextCount >= 2) {
+        		if(vm.nextCount >= 2) {
                     document.getElementById("bv-step-2").className = 'bv-step-2  padding0 display-flex  closeStepTwo';
                     document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
                     document.getElementById("bv-step-3").className = 'bv-step-3 display-flex openStepOne col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex  widthStep98';
@@ -495,8 +510,7 @@
                     vm.typeNameOne = "1";
                     vm.typeNameTwo = "2";
                     vm.typeNameThree = "Tóm tắt đơn hàng";
-                }
-
+                }            		
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
                 // document.getElementById("bv-step-2").className = 'bv-step-2 col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex widthStep2';
@@ -539,20 +553,23 @@
                     vm.typeArrowTwo = "fa-angle-left";
                 }
             }else if(type == "step3"){
-                if(vm.nextCount >= 2) {
-                    document.getElementById("bv-step-2").className = 'bv-step-2  padding0 display-flex  closeStepTwo';
-                    document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
-                    document.getElementById("bv-step-3").className = 'bv-step-3 display-flex openStepOne col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex  widthStep98';
-                    if(document.getElementById("includeStep1")) {
-                    	document.getElementById("includeStep1").className = 'bv-display-step';
-                        document.getElementById("includeStep2").className = 'bv-display-step ';
-                        document.getElementById("includeStep3").className = 'bv-display-step widthStep98';
-                    }
-                    vm.typeArrowOne = "fa-angle-right";
-                    vm.typeArrowThree = "fa-angle-left";
-                    vm.typeArrowTwo = "fa-angle-right";
-
-                }
+            	if(validateInvoice()){
+	                if(vm.nextCount >= 2) {
+	                    document.getElementById("bv-step-2").className = 'bv-step-2  padding0 display-flex  closeStepTwo';
+	                    document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
+	                    document.getElementById("bv-step-3").className = 'bv-step-3 display-flex openStepOne col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex  widthStep98';
+	                    if(document.getElementById("includeStep1")) {
+	                    	document.getElementById("includeStep1").className = 'bv-display-step';
+	                        document.getElementById("includeStep2").className = 'bv-display-step ';
+	                        document.getElementById("includeStep3").className = 'bv-display-step widthStep98';
+	                    }
+	                    vm.typeArrowOne = "fa-angle-right";
+	                    vm.typeArrowThree = "fa-angle-left";
+	                    vm.typeArrowTwo = "fa-angle-right";
+	                }
+            	} else{
+            		toastr.error("Cần nhập đầy đủ thông tin hóa đơn GTGT"); 
+            	}
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
                 // document.getElementById("bv-step-2").className = 'bv-step-2 col-lg-5  col-md-5 col-sm-12 col-xs-12 padding0 display-flex widthStep2';

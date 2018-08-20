@@ -46,10 +46,18 @@
                     mobile: "",
                     name: ""
                 },
-            soNguoiThamGia: 0,
-            travelCareId: 1,
-            travelWithId: "",
-            tvcPackage: ""
+                invoiceInfo:{  
+					accountNo:"",
+					address:"",
+					check:"0",
+					company:"",
+					name:"",
+					taxNo:""
+  		        },
+	            soNguoiThamGia: 0,
+	            travelCareId: 1,
+	            travelWithId: "",
+	            tvcPackage: ""
         };
         vm.product = {};
         vm.getPremium = getPremium;

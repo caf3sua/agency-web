@@ -51,7 +51,15 @@
   				"totalUsedArea": "",
   				"userAgent": "",
   				"windowLocks": "0",
-  				"yearBuildCode": "1"
+  				"yearBuildCode": "1",
+  				"invoiceInfo": {  
+  	            	"accountNo":"",
+  					"address":"",
+  					"check":"0",
+  					"company":"",
+  					"name":"",
+  					"taxNo":""
+  		        }
   				};
   		
   		vm.getPremium = getPremium;

@@ -39,7 +39,15 @@
             "plan": 0,
             "receiveMethod":"1",
             "tlAddcollections":[],
-            "userAgent":""
+            "userAgent":"",
+            "invoiceInfo": {  
+            	"accountNo":"",
+				"address":"",
+				"check":"0",
+				"company":"",
+				"name":"",
+				"taxNo":""
+	        }
         }
 
         vm.validatorCombo = validatorCombo;

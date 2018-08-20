@@ -115,7 +115,15 @@
     		"tncn": "0",
     		"tncnPhi": 0,
     		"tncnPhiSi": 0,
-    		"tncnSotienbh": 0
+    		"tncnSotienbh": 0,
+    		"invoiceInfo": {  
+            	"accountNo":"",
+				"address":"",
+				"check":"0",
+				"company":"",
+				"name":"",
+				"taxNo":""
+	        }
 		}
   		
   		$rootScope.nguoidbh = {

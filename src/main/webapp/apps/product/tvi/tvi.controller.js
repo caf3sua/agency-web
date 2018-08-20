@@ -50,6 +50,14 @@
                 mobile: "",
                 name: ""
             },
+            invoiceInfo:{  
+				accountNo:"",
+				address:"",
+				check:"0",
+				company:"",
+				name:"",
+				taxNo:""
+		        },
             soGycbh: "",
             statusPolicyId: "",
             teamId: "",

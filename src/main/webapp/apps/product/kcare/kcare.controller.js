@@ -115,7 +115,15 @@
   				"receiveMethod": "1",
   				"thoihanden": "",
   				"thoihantu": "",
-  				"totalPremium": 0.0
+  				"totalPremium": 0.0,
+  				"invoiceInfo": {  
+  	            	"accountNo":"",
+  					"address":"",
+  					"check":"0",
+  					"company":"",
+  					"name":"",
+  					"taxNo":""
+  		        }
   				};
   		
   		vm.getPremium = getPremium;
@@ -190,6 +198,12 @@
         	result.typeOfKcare = result.planId;
         	result.premiumDiscount = result.changePremium;
 
+        	if(result.q3 == 0){
+        		result.q3 = true;
+            } else {
+            	result.q3 = false;
+            }
+        	
         	if(result.qresultCan == 0){
         		result.qresultCan = false;
             } else {
@@ -338,6 +352,7 @@
                 vm.policy.insuredNgaysinh = data.ngaySinh;
                 vm.policy.premiumKCare = data.premiumKCare;
                 vm.policy.premiumNet = data.premiumNet;
+                vm.policy.insuredSex = vm.policy.gioiTinh;
                 vm.clearResponseError();
   	    	}
   	    	
@@ -365,9 +380,9 @@
             }
 
             if(vm.policy.q3 == false){
-                vm.policy.q3 = 0;
-            } else {
                 vm.policy.q3 = 1;
+            } else {
+                vm.policy.q3 = 0;
             }
 
             if(vm.policy.q4 == false){
