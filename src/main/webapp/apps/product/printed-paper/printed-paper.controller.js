@@ -103,7 +103,8 @@
   			}
   			
   			vm.searchNew = {
-				"number" : decodeURIComponent(anchiId)
+				"number" : decodeURIComponent(anchiId),
+				"type" : vm.policy.maSanPham
   			};
   			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
   			
