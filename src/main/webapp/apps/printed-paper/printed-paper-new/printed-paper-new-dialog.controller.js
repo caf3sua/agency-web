@@ -32,7 +32,8 @@
 
     	// Init controller
   		(function initController() {
-  			loadSelectBoxType();
+//  			loadSelectBoxType();
+  			vm.searchCriterial.type = $rootScope.product_code_selected;
   		})();
   		
   		// Function
@@ -41,22 +42,22 @@
     		$uibModalInstance.close(row);
   		}
   		
-  		function loadSelectBoxType() {
-  			PrintedPaperService.getListTypes({}, onSearchSuccess, onSearchError);
-  			
-  			function onSearchSuccess(data) {
-  				// convert number -> string
-  				angular.forEach(data, function(item) {
-  					if (item.ACHI_LOAI_ANCHI_ID != null) {
-  						item.ACHI_LOAI_ANCHI_ID = item.ACHI_LOAI_ANCHI_ID.toString();
-  					}
-  	            });
-  				vm.anchiTypes = data;
-  			}
-  			
-  			function onSearchError() {
-  			}
-  		}
+//  		function loadSelectBoxType() {
+//  			PrintedPaperService.getListTypes({}, onSearchSuccess, onSearchError);
+//  			
+//  			function onSearchSuccess(data) {
+//  				// convert number -> string
+//  				angular.forEach(data, function(item) {
+//  					if (item.ACHI_LOAI_ANCHI_ID != null) {
+//  						item.ACHI_LOAI_ANCHI_ID = item.ACHI_LOAI_ANCHI_ID.toString();
+//  					}
+//  	            });
+//  				vm.anchiTypes = data;
+//  			}
+//  			
+//  			function onSearchError() {
+//  			}
+//  		}
   		
   		function search() {
   			vm.isLoading = true;

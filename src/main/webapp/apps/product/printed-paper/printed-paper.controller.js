@@ -61,6 +61,9 @@
   		    console.log($stateParams.productCode);
 			vm.policy.productCode = $stateParams.productCode;
 			vm.policy.maSanPham = $stateParams.productCode;
+			//  save to global
+  			$rootScope.product_code_selected = $stateParams.productCode;
+			
 			loadAnchiInfo($stateParams.anchiId);
   		    
 			vm.gycbhNumber = {

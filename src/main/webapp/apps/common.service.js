@@ -23,7 +23,7 @@
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-search-dialog.html',
+                templateUrl: 'apps/printed-paper/printed-paper-new/printed-paper-search-product-dialog.html',
                 controller: 'PrintedPaperNewDialogController',
                 controllerAs: 'vm',
                 size: 'lg',
