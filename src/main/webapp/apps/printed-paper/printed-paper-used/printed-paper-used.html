@@ -30,7 +30,35 @@
                         </a>
                     </td>
                     <td>
-                        <p class="">{{item.lineId}}</p>
+                        <div ng-switch="item.lineId">
+			                <div ng-switch-when="CAR">
+			                    <p class="">Ô tô</p>
+			                </div>
+			                <div ng-switch-when="BVP">
+			                    <p class="">An Gia</p>
+			                </div>
+			                <div ng-switch-when="KCR">
+			                    <p class="">Ung thư</p>
+			                </div>
+			                <div ng-switch-when="TVC">
+			                    <p class="">Du lịch quốc tế</p>
+			                </div>
+			                <div ng-switch-when="TVI">
+			                    <p class="">Du lịch việt nam</p>
+			                </div>
+			                <div ng-switch-when="MOT">
+			                    <p class="">Mô tô</p>
+			                </div>
+			                <div ng-switch-when="HOM">
+			                    <p class="">Nhà tư nhân</p>
+			                </div>
+			                <div ng-switch-when="KHC">
+			                    <p class="">Kết hợp con người</p>
+			                </div>
+			                <div ng-switch-when="TNC">
+			                    <p class="">Tai nạn con người</p>
+			                </div>
+			            </div>
                     </td>
                     <td>
                         <p class="">{{item.achiTenAnchi}}</p>
