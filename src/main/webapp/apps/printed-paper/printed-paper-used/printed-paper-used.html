@@ -8,11 +8,13 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th>Mã ấn chỉ</th>
+                    <th>Mã thanh toán</th>
                     <th>Số ấn chỉ</th>
+                    <th>Sản phẩm</th>
                     <th>Tên ấn chỉ</th>
-                    <th>Mã vạch</th>
-                    <th>Đơn vị</th>
+                    <th>Ngày sử dụng</th>
+                    <th>Phí bảo hiểm</th>
+                    <th>Số tiền thanh toán</th>
                 </tr>
                 </thead>
                 <tr ng-repeat="item in vm.printedPapers track by $index">
@@ -20,7 +22,7 @@
                         <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
                     </td>
                     <td>
-                        <p class="bv-table-text-colorBlue">{{item.achiMaAnchi}}</p>
+                        <p class="">{{item.mciAddId}}</p>
                     </td>
                     <td>
                         <a class="bv-table-text-colorBlue" ui-sref="product.printed-paper-detail({id: item.policyNumber})">
@@ -28,13 +30,19 @@
                         </a>
                     </td>
                     <td>
+                        <p class="">{{item.lineId}}</p>
+                    </td>
+                    <td>
                         <p class="">{{item.achiTenAnchi}}</p>
                     </td>
                     <td>
-                        <p class="">{{item.insurejUrn}}</p>
+                        <p class="">{{item.achiTungay}}</p>
                     </td>
                     <td>
-                        <p class="">{{item.achiDonvi}}</p>
+                        <p class="">{{item.achiPhibh | number:0}}</p>
+                    </td>
+                    <td>
+                        <p class="">{{item.achiStienvn | number:0}}</p>
                     </td>
                 </tr>
             </table>
