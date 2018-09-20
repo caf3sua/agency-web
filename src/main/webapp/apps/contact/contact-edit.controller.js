@@ -42,6 +42,8 @@
         		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
         	];
         	
+        	vm.reminderProducts = [];
+        	
         	vm.selRelationship = {};
         	vm.selProduct = null;
         	vm.selProductReminder = {};
@@ -73,6 +75,7 @@
         	vm.deleteRelationship = deleteRelationship;
         	vm.deleteReminderProduct = deleteReminderProduct;
         	vm.goBack = goBack;
+        	vm.getAllCategoryReminder = getAllCategoryReminder;
         	
         	angular.element(document).ready(function () {
             });
@@ -94,10 +97,16 @@
 	      			vm.contact.listReminders = [];
 	      		}
 	      		
+	      		getAllCategoryReminder();
 	      		// Địa chỉ
 	      		formatAddressEdit();
       		})();
       		
+      		function getAllCategoryReminder() {
+      			ContactService.getAllCategoryReminder().$promise.then(function (data) {
+      				vm.reminderProducts = data;
+        		});
+      		}
       		
       		function formatAddressEdit() {
       			// Address at step 2

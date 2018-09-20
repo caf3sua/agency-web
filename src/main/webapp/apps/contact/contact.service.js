@@ -115,6 +115,7 @@
             'delete': {url : 'api/agency/contact/delete-contact/:contactId', method: 'GET'},
             'create': {url : 'api/agency/contact/create', method: 'POST'},
             'update': {url : 'api/agency/contact/update', method: 'POST'},
+            'getAllCategoryReminder': {url : 'api/agency/contact/getCategoryReminder', method: 'GET', isArray: true},
             'getAgrement' : {
             	method : 'GET', 
             	url : 'api/agency/product/agreement/get-by-contactId/:contactId',
