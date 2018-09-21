@@ -323,10 +323,14 @@
             return true;
         }
         
-        function siValidator(chaynoStbh) {
-            if(!chaynoStbh){return;}
-
-            if (chaynoStbh < 10000000 || chaynoStbh > 100000000) {
+        function siValidator() {
+        	if(!vm.policy.chaynoCheck) {
+        		return true;
+        	}
+        	if(!vm.policy.chaynoStbh) {
+        		return;
+        	}
+        	if (vm.policy.chaynoStbh < 10000000 || vm.policy.chaynoStbh > 100000000) {
                 return "Số tiền bảo hiểm cháy nổ trong khoảng từ 10 triệu đồng đến tối đa 100 triệu đồng";
             }
             return true;

@@ -90,8 +90,8 @@
             </div>
             <div class="margin-top-5">
                 <input type="text" format="number" name="chaynoStbh" ng-show="vm.policy.chaynoCheck" class="bv-input" ng-model="vm.policy.chaynoStbh" placeholder="Số tiền bảo hiểm cháy nổ với số tiền tối thiểu từ 10 triệu đồng đến tối đa 100 triệu đồng" ng-blur="vm.getPremium()"
-                       validate-on="blur" validator="vm.siValidator(vm.policy.chaynoStbh) === true"
-                       invalid-message="vm.siValidator(vm.policy.chaynoStbh)" required-message="'Chưa nhập số tiền bảo hiểm!'" required/>
+                       validate-on="blur" validator="vm.siValidator() === true"
+                       invalid-message="vm.siValidator()" required-message="'Chưa nhập số tiền bảo hiểm!'" required/>
             </div>
             <!-- <div class="margin-top-5">
                 <input type="number" min="1" name="changePremium" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.changePremium" ng-blur="vm.getPremium()"/>
