@@ -160,7 +160,23 @@
                 contact-cmnd="vm.policy.nguoithCmnd"
                 contact-extend-info="nguoith"
                 open-search-contact="vm.openSearchContactForPanel('requirement')"></contact-section>
-
+            
+            <div class="margin-top-20"/>
+            <div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTable = true" ng-click="vm.isCollapsedTable = !vm.isCollapsedTable">
+			  	<p class="header-border-bottom">5. THÔNG TIN NGƯỜI NHẬN TIỀN BẢO HIỂM 
+			  		<i class="pull-right fas" ng-class="vm.isCollapsedTable ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
+			  	</p>
+			</div>
+			<div uib-collapse="vm.isCollapsedTable">
+	            <contact-section
+	            	name="nguoinhanName"
+	                is-show-extend-info="true"
+	                contact-name="vm.policy.nguoinhanName" contact-dob="vm.policy.nguoinhanNgaysinh"
+	                contact-cmnd="vm.policy.nguoinhanCmnd"
+	                contact-extend-info="nguoinhan"
+	                open-search-contact="vm.openSearchContactForPanel('receive')"></contact-section>
+			</div>
+			
             <div class="margin-top-5 padding-bottom-35">
                 <button type="submit" class="bv-btn-step3">Tiếp theo</button>
             </div>

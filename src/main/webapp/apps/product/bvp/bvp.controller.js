@@ -123,7 +123,8 @@
 				"company":"",
 				"name":"",
 				"taxNo":""
-	        }
+	        },
+	        "insuranceTarget": "New"
 		}
   		
   		$rootScope.nguoidbh = {
@@ -317,15 +318,19 @@
                     	vm.policy.nguoithName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoithNgaysinh = $rootScope.selectedContact.dateOfBirth;
                         break;
+                    case 'receive':
+                    	vm.policy.nguoinhanName = $rootScope.selectedContact.contactName;
+                    	vm.policy.nguoinhanNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                        break;
                 }
             }
         });
         
         function isHealthyPersonChange() {
         	if(vm.isHealthyPerson) {
-        		vm.policy.q1 = "";
-        		vm.policy.q2 = "";
-        		vm.policy.q3 = "";
+        		vm.policy.q1 = "0";
+        		vm.policy.q2 = "0";
+        		vm.policy.q3 = "0";
         	}
         }
         

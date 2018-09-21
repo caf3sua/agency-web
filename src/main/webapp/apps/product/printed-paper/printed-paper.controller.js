@@ -7,11 +7,11 @@
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
     	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'
-    	, 'PrintedPaperService'];
+    	, 'PrintedPaperService', 'DateUtils'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
     		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService
-    		, PrintedPaperService) {
+    		, PrintedPaperService, DateUtils) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
@@ -65,6 +65,16 @@
   			$rootScope.product_code_selected = $stateParams.productCode;
 			
 			loadAnchiInfo($stateParams.anchiId);
+			
+			var startDate = new Date();
+			vm.policy.ngayCap = DateUtils.convertDate(startDate);
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.ngayHieulucTu = DateUtils.convertDate(startDate);
+
+            var endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            vm.policy.ngayHieulucDen = endDate;
+			
   		    
 			vm.gycbhNumber = {
 				"gycbhNumber": ""
@@ -240,6 +250,9 @@
   					toastr.error("Thời gian từ ngày - đến ngày không phù hợp");
   					return false;
   				}
+  				
+  				let endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+  	            vm.policy.ngayHieulucDen = endDate;
   				return true;
   			}
   		}
@@ -267,6 +280,7 @@
   			vm.policy.imgGcn = vm.gcnFile;
   			vm.policy.imgHd = vm.hoadonFile;
   			vm.policy.imgGycbh = vm.gycbhFile;
+  			vm.policy.tongTienTT = vm.policy.phiBaoHiem;
   			
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
   				// Edit
