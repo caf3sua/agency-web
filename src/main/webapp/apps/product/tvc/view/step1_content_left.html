@@ -54,7 +54,7 @@
             <div class="margin-right-5 width-100">
                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
-                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate" ng-change="vm.onchangePlan()"
                                required-message="'Nhập vào ngày khời hành Việt Nam !'"
                                required
                         >
@@ -131,9 +131,9 @@
                     </label>
                 </div>
             </div>
-            <div class="margin-top-5">
+            <!-- <div class="margin-top-5">
                 <input type="number" name="premiumDiscount" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.product.premiumDiscount" ng-blur="vm.getPremium()"/>
-            </div>
+            </div> -->
             <div class="margin-top-10">
                 <div class="table-responsive">
                     <table class="table table-sum-product" >

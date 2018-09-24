@@ -42,16 +42,16 @@
         		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
         	];
         	vm.reminderProducts = [
-        		{"productCode": "CAR", "productName" : "Bảo hiểm ô tô"}, 
-        		{"productCode": "BVP", "productName" : "Bảo hiểm An Gia"},
-        		{"productCode": "KCR", "productName" : "Bảo hiểm bệnh ung thư"},
-        		{"productCode": "TVC", "productName" : "Bảo hiểm du lịch quốc tế"},
-        		{"productCode": "TVI", "productName" : "Bảo hiểm du lịch Việt Nam"},
-        		{"productCode": "MOT", "productName" : "Bảo hiểm xe máy"},
-        		{"productCode": "HOM", "productName" : "Bảo hiểm nhà tư nhân"},
-        		{"productCode": "KHC", "productName" : "Bảo hiểm kết hợp con người"},
-        		{"productCode": "TNC", "productName" : "Bảo hiểm tai nạn con người"},
-        		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
+//        		{"productCode": "CAR", "productName" : "Bảo hiểm ô tô"}, 
+//        		{"productCode": "BVP", "productName" : "Bảo hiểm An Gia"},
+//        		{"productCode": "KCR", "productName" : "Bảo hiểm bệnh ung thư"},
+//        		{"productCode": "TVC", "productName" : "Bảo hiểm du lịch quốc tế"},
+//        		{"productCode": "TVI", "productName" : "Bảo hiểm du lịch Việt Nam"},
+//        		{"productCode": "MOT", "productName" : "Bảo hiểm xe máy"},
+//        		{"productCode": "HOM", "productName" : "Bảo hiểm nhà tư nhân"},
+//        		{"productCode": "KHC", "productName" : "Bảo hiểm kết hợp con người"},
+//        		{"productCode": "TNC", "productName" : "Bảo hiểm tai nạn con người"},
+//        		{"productCode": "HHV", "productName" : "Bảo hiểm hàng hóa vận chuyển"}
         	];
         	
         	vm.selRelationship = {};
@@ -85,6 +85,8 @@
         	vm.deleteRelationship = deleteRelationship;
         	vm.deleteReminderProduct = deleteReminderProduct;
         	vm.goBack = goBack;
+        	vm.dateBeforeShowDate = dateBeforeShowDate;
+        	vm.getAllCategoryReminder = getAllCategoryReminder;
         	
         	angular.element(document).ready(function () {
             });
@@ -93,6 +95,7 @@
       		(function initController() {
       			// instantiate base controller
       		    console.log('Init ContactNewController');
+      		    getAllCategoryReminder();
       		})();
       		
       		$scope.$on('selectedContactChange', function() {
@@ -104,6 +107,17 @@
             });
       		
       		// Implement function
+      		function dateBeforeShowDate(date) {
+      			console.log('dateBeforeShowDate');
+      			debugger
+      		}
+      		
+      		function getAllCategoryReminder() {
+      			ContactService.getAllCategoryReminder().$promise.then(function (data) {
+      				vm.reminderProducts = data;
+        		});
+      		}
+      		
       		function goBack() {
       			$state.go('app.contact');
       		}
@@ -144,7 +158,7 @@
       				      "contactId": "",
       				      "content": vm.content,
       				      "note": "",
-      				      "productCode": vm.selProductReminder.productName,
+      				      "productCode": vm.selProductReminder.code,
       				      "remindeDate": vm.dateReminder
       				    };
       				

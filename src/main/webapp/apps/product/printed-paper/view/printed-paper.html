@@ -48,7 +48,7 @@
 	        <div class="margin-right-5 width-100">
 	            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
 	                <div class="width-100">
-	                    <input type="text"  class="bv-input " placeholder="Từ ngày" ng-model="vm.policy.ngayHieulucTu" required-message="'Cần nhập ngày băt đầu !'" required name="ngayHieulucTu" >
+	                    <input type="text"  class="bv-input " placeholder="Từ ngày" ng-model="vm.policy.ngayHieulucTu" required-message="'Cần nhập ngày băt đầu !'" required name="ngayHieulucTu" ng-change="vm.changeDate()">
 	                </div>
 	                <div class="input-group-addon bv-date-icon">
 	                    <span class="glyphicon glyphicon-calendar"></span>
@@ -56,9 +56,9 @@
 	            </div>
 	        </div>
 	        <div class="width-100">
-	            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
+	            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d" >
 	                <div class="width-100">
-	                    <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.ngayHieulucDen" required name="ngayHieulucDen">
+	                    <input type="text" class="bv-input" placeholder="Đến ngày" ng-model="vm.policy.ngayHieulucDen" required name="ngayHieulucDen" ng-change="vm.changeDate()" disabled="disabled">
 	                </div>
 	                <div class="input-group-addon bv-date-icon">
 	                    <span class="glyphicon glyphicon-calendar"></span>
@@ -80,7 +80,7 @@
 	                        <polyline points="4 11 8 15 16 6"></polyline>
 	                    </svg>
 	                </div>
-	                <span>Mới</span>
+	                <span>Cấp mới</span>
 	            </label>
 	        </div>
 	        <div class="cntr">
@@ -92,7 +92,7 @@
 	                        <polyline points="4 11 8 15 16 6"></polyline>
 	                    </svg>
 	                </div>
-	                <span>Tái tục</span>
+	                <span>Cấp lại</span>
 	            </label>
 	        </div>
 	    </div>
@@ -124,7 +124,7 @@
 	        <p class="bv-title-from">Tổng tiền thành toán<span class="bv-req-red">&nbsp(*)</span></p>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
-	        <input type="text" format="number" required ng-model="vm.policy.tongTienTT" class="bv-input" placeholder="Nhập tổng tiền thanh toán"/>
+	        <input type="text" format="number" required ng-model="vm.policy.phiBaoHiem" class="bv-input" placeholder="Nhập tổng tiền thanh toán" disabled="disabled"/>
 	    </div>
 	    <!-- GCN Upload-->
 	    <bv-fileupload input-id="upload-1" label="GCN" is-required="true" 

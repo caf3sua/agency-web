@@ -77,7 +77,15 @@
   			    "tndstnSoTien": "",
   			   	"totalPremium":0,
   			   	"vcxCheck":false,
-  			   	"yearOfMake":""
+  			   	"yearOfMake":"",
+	  			"invoiceInfo": {  
+	              	"accountNo":"",
+	  				"address":"",
+	  				"check":"0",
+	  				"company":"",
+	  				"name":"",
+	  				"taxNo":""
+	  	        }
   			}
   		
   		vm.showChangePremium = showChangePremium;
@@ -276,6 +284,8 @@
     		if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
     			vm.policy.nntxCheck = false;
     		}
+    		// tính lại phí
+    		getPremium();
     	}
   		
   		function showChangePremium() {
@@ -384,17 +394,33 @@
     			vm.isShowTndsbbPhi = true;
     			vm.policy.tndsbbPhi = result.tndsbbPhi;
     		}
+    		if(vm.policy.tndsbbCheck == false) {
+    			vm.isShowTndsbbPhi = false;
+    			vm.policy.tndsbbPhi = 0;
+    		}
     		if(vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) {
     			vm.isShowTndstnPhi = true;
     			vm.policy.tndstnPhi = result.tndstnPhi;
+    		}
+    		if(vm.policy.tndstnCheck == false) {
+    			vm.isShowTndstnPhi = false;
+    			vm.policy.tndstnPhi = 0;
     		}
     		if(vm.policy.nntxCheck && vm.policy.nntxSoTien) {
     			vm.isShowNntxPhi = true;
     			vm.policy.nntxPhi = result.nntxPhi;
     		}
+    		if(vm.policy.nntxCheck == false) {
+    			vm.isShowNntxPhi = false;
+    			vm.policy.nntxPhi = 0;
+    		}
     		if(vm.policy.vcxCheck && vm.policy.namSX && vm.policy.vcxSoTien) {
     			vm.isShowVcxPhi = true;
     			vm.policy.vcxPhi = result.vcxPhi;
+    		}
+    		if(vm.policy.vcxCheck == false) {
+    			vm.isShowVcxPhi = false;
+    			vm.policy.vcxPhi = 0;
     		}
     		if(vm.policy.changePremium) {
     			vm.isShowChangePremium = true;
@@ -403,9 +429,14 @@
     			}
     		}
     		if((vm.policy.tndsbbCheck && vm.policy.tndsSoCho)
-    				|| vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) {
+    				|| (vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) || (vm.policy.vcxCheck && vm.policy.vcxSoTien)) {
     			vm.isShowPremium = true;
           		vm.isShowTotalPremium = true;
+          		vm.policy.premium = result.premium;
+          		vm.policy.totalPremium = result.totalPremium;
+    		} else{
+    			vm.isShowPremium = false;
+          		vm.isShowTotalPremium = false;
           		vm.policy.premium = result.premium;
           		vm.policy.totalPremium = result.totalPremium;
     		}

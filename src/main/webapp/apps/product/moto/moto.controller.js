@@ -65,8 +65,15 @@
             "somay":"",
             "thoihanden":"",
             "thoihantu":"",
-            
-            "tongPhi":0
+            "tongPhi":0,
+            "invoiceInfo": {  
+              	"accountNo":"",
+  				"address":"",
+  				"check":"0",
+  				"company":"",
+  				"name":"",
+  				"taxNo":""
+  	        }
         }
 
         vm.processComboResult = processComboResult;
@@ -75,7 +82,7 @@
         vm.savePolicy = savePolicy;
         vm.validatorNntxSoNguoi = validatorNntxSoNguoi;
         vm.validatorNntxStbh = validatorNntxStbh;
-//        vm.validatorChaynoStbh = validatorChaynoStbh;
+        vm.validatorChaynoStbh = validatorChaynoStbh;
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
         vm.siValidator = siValidator;
@@ -164,6 +171,7 @@
             if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
                 vm.policy.nntxCheck = false;
             }
+            getPremium();
         }
 
         function processComboResult(data, type) {
@@ -189,26 +197,23 @@
         function getPostData(isCreate) {
             var postData = Object.assign({}, vm.policy);
 
-            if(postData.chaynoStbh == "") {
+            if(postData.chaynoCheck == false) {
                 postData.chaynoStbh = 0;
                 postData.chaynoCheck = false;
+                postData.chaynoPhi = 0;
             }
 
-            if(postData.nntxSoNguoi == "") {
+            if(postData.nntxCheck == false) {
                 postData.nntxSoNguoi = 0;
                 postData.nntxCheck = false;
                 postData.nntxStbh = 0;
+                postData.nntxPhi = 0;
             }
 
-            if(postData.nntxStbh == "") {
-                postData.nntxSoNguoi = 0;
-                postData.nntxCheck = false;
-                postData.nntxStbh = 0;
-            }
-
-            if(postData.tndstnSotien == "") {
+            if(postData.tndstnCheck == false) {
                 postData.tndstnSotien = 0;
                 postData.tndstnCheck = false;
+                postData.tndstnPhi = 0;
             }
 
             // Remove unuse
@@ -232,13 +237,25 @@
                 vm.isShowTndstnPhi = true;
                 vm.policy.tndstnPhi = result.tndstnPhi;
             }
+            if(vm.policy.tndstnCheck == false) {
+                vm.isShowTndstnPhi = false;
+                vm.policy.tndstnPhi = 0;
+            }
             if(vm.policy.nntxCheck) {
                 vm.isShowNntxPhi = true;
                 vm.policy.nntxPhi = result.nntxPhi;
             }
+            if(vm.policy.nntxCheck == false) {
+                vm.isShowNntxPhi = false;
+                vm.policy.nntxPhi = 0;
+            }
             if(vm.policy.chaynoCheck && vm.policy.chaynoStbh) {
                 vm.isShowChaynoPhi = true;
                 vm.policy.chaynoPhi = result.chaynoPhi;
+            }
+            if(vm.policy.chaynoCheck == false) {
+                vm.isShowChaynoPhi = false;
+                vm.policy.chaynoPhi = 0;
             }
 
             vm.clearResponseError();
@@ -296,20 +313,24 @@
             return true;
         }
         
-//        function validatorChaynoStbh() {
-//        	if(!vm.policy.chaynoCheck) {
-//        		return true;
-//        	}
-//        	if(!vm.policy.nntxStbh) {
-//        		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
-//        	}
-//            return true;
-//        }
+        function validatorChaynoStbh() {
+        	if(!vm.policy.chaynoCheck) {
+        		return true;
+        	}
+        	if(!vm.policy.chaynoStbh) {
+        		return "Chưa nhâp số tiền bảo hiểm cháy nổ!";
+        	}
+            return true;
+        }
         
-        function siValidator(chaynoStbh) {
-            if(!chaynoStbh){return;}
-
-            if (chaynoStbh < 10000000 || chaynoStbh > 100000000) {
+        function siValidator() {
+        	if(!vm.policy.chaynoCheck) {
+        		return true;
+        	}
+        	if(!vm.policy.chaynoStbh) {
+        		return;
+        	}
+        	if (vm.policy.chaynoStbh < 10000000 || vm.policy.chaynoStbh > 100000000) {
                 return "Số tiền bảo hiểm cháy nổ trong khoảng từ 10 triệu đồng đến tối đa 100 triệu đồng";
             }
             return true;

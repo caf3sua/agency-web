@@ -20,7 +20,7 @@
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/report/report-commission/report-commission.controller.js']);
+	            		return $ocLazyLoad.load(['apps/report/report-commission/report-commission.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js']);
 		        }
             }
         });

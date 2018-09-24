@@ -115,7 +115,16 @@
     		"tncn": "0",
     		"tncnPhi": 0,
     		"tncnPhiSi": 0,
-    		"tncnSotienbh": 0
+    		"tncnSotienbh": 0,
+    		"invoiceInfo": {  
+            	"accountNo":"",
+				"address":"",
+				"check":"0",
+				"company":"",
+				"name":"",
+				"taxNo":""
+	        },
+	        "insuranceTarget": "New"
 		}
   		
   		$rootScope.nguoidbh = {
@@ -136,6 +145,8 @@
         vm.savePolicy = savePolicy;
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
+        vm.changeCopyFromNth = changeCopyFromNth;
+        
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
             {id: '2', name: 'Bạc'},
@@ -309,15 +320,19 @@
                     	vm.policy.nguoithName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoithNgaysinh = $rootScope.selectedContact.dateOfBirth;
                         break;
+                    case 'receive':
+                    	vm.policy.nguoinhanName = $rootScope.selectedContact.contactName;
+                    	vm.policy.nguoinhanNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                        break;
                 }
             }
         });
         
         function isHealthyPersonChange() {
         	if(vm.isHealthyPerson) {
-        		vm.policy.q1 = "";
-        		vm.policy.q2 = "";
-        		vm.policy.q3 = "";
+        		vm.policy.q1 = "0";
+        		vm.policy.q2 = "0";
+        		vm.policy.q3 = "0";
         	}
         }
         
@@ -499,5 +514,19 @@
 	  	            return true;
   			}
         }
+        
+        function changeCopyFromNth() {
+        	vm.policy.nguoinhanName = "";
+        	vm.policy.nguoinhanNgaysinh = "";
+        	vm.policy.nguoinhanCmnd = "";
+        	vm.policy.nguoinhanQuanhe = "";
+	      	if (vm.copyFromNth) {
+	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
+	        	vm.policy.nguoinhanNgaysinh = vm.policy.nguoithNgaysinh;
+	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
+	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
+	      	}
+        }
+        
     }
 })();

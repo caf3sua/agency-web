@@ -7,11 +7,11 @@
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
     	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'
-    	, 'PrintedPaperService'];
+    	, 'PrintedPaperService', 'DateUtils'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
     		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService
-    		, PrintedPaperService) {
+    		, PrintedPaperService, DateUtils) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
@@ -48,6 +48,7 @@
         vm.openSearchAnchi = openSearchAnchi;
         vm.openSearchContact = openSearchContact;
         vm.cancel = cancel;
+        vm.changeDate = changeDate;
         
         angular.element(document).ready(function () {
         });
@@ -60,7 +61,20 @@
   		    console.log($stateParams.productCode);
 			vm.policy.productCode = $stateParams.productCode;
 			vm.policy.maSanPham = $stateParams.productCode;
+			//  save to global
+  			$rootScope.product_code_selected = $stateParams.productCode;
+			
 			loadAnchiInfo($stateParams.anchiId);
+			
+			var startDate = new Date();
+			vm.policy.ngayCap = DateUtils.convertDate(startDate);
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.ngayHieulucTu = DateUtils.convertDate(startDate);
+
+            var endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            vm.policy.ngayHieulucDen = endDate;
+			
   		    
 			vm.gycbhNumber = {
 				"gycbhNumber": ""
@@ -99,7 +113,8 @@
   			}
   			
   			vm.searchNew = {
-				"number" : decodeURIComponent(anchiId)
+				"number" : decodeURIComponent(anchiId),
+				"type" : vm.policy.maSanPham
   			};
   			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
   			
@@ -229,14 +244,31 @@
   			$state.go('app.order');
   		}
   		
+  		function changeDate(){
+  			if (vm.policy.ngayHieulucTu != "" && vm.policy.ngayHieulucDen != ""){
+  				if(!vm.checkDate(vm.policy.ngayHieulucTu, vm.policy.ngayHieulucDen)){
+  					toastr.error("Thời gian từ ngày - đến ngày không phù hợp");
+  					return false;
+  				}
+  				
+  				let endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+  	            vm.policy.ngayHieulucDen = endDate;
+  				return true;
+  			}
+  		}
+  		
   		function saveAnchiPolicyCart() {
-  			vm.isSaveAndNewFlag = false;
-  			saveBase();
+  			if(changeDate()){
+  				vm.isSaveAndNewFlag = false;
+  	  			saveBase();	
+  			} 
   		}
   		
   		function saveAnchiPolicyReload() {
-  			vm.isSaveAndNewFlag = true;
-  			saveBase();
+  			if(changeDate()){
+  				vm.isSaveAndNewFlag = true;
+  	  			saveBase();	
+  			}
   		}
   		
   		function saveBase() {
@@ -248,6 +280,7 @@
   			vm.policy.imgGcn = vm.gcnFile;
   			vm.policy.imgHd = vm.hoadonFile;
   			vm.policy.imgGycbh = vm.gycbhFile;
+  			vm.policy.tongTienTT = vm.policy.phiBaoHiem;
   			
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
   				// Edit

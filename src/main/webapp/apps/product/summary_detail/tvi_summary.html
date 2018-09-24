@@ -51,10 +51,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="person in  vm.policy.listTviAdd">
+                    <tr ng-repeat="person in vm.policy.listTviAdd">
                         <td>{{$index + 1}}</td>
                         <td>
-                            <p class="">{{person.insuredName}}</p>
+                            <p class="" style="width: 200px">{{person.insuredName}}</p>
                         </td>
                         <td>
                             <p class="">{{person.idPasswport}}</p>
@@ -63,7 +63,7 @@
                             <p class="">{{person.dob}}</p>
                         </td>
                         <td>
-                            <p class="" data-translate="global.person.relationship.{{person.relationshipId}}">Cá nhân</p>
+                            <p class="" style="width: 200px" data-translate="global.person.relationship.{{person.relationshipId}}">Cá nhân</p>
                         </td>
                     </tr>
                     </tbody>

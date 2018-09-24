@@ -46,9 +46,9 @@
 	            <p>Ngày sinh</p>
 	        </div>
 	        <div class="margin-top-5">
-	        	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d">
+	        	<div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d" data-before-show="vm.dateBeforeShowDate(date)">
 	                <div class="width-100">
-	                    <input type="text" name="ngaySinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.contact.dateOfBirth" required>
+	                    <input type="text" name="ngaySinh" class="bv-input" placeholder="Ngày sinh" ng-model="vm.contact.dateOfBirth" format-date required>
 	                </div>
 	                <div class="input-group-addon bv-date-icon">
 	                    <span class="glyphicon glyphicon-th"></span>
@@ -131,17 +131,14 @@
 	</div>
 	<!-- <textarea rows="5" type="text" class="bv-input" placeholder="Địa chỉ nhà riêng" ng-model="vm.contact.homeAddress" /> -->
 	
-	<!-- Mối quan hệ -->
+	<!-- Quan hệ với khách hàng -->
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-kh-padding-left">
 	        <div class="bv-title-from">
-	            <p>Mối quan hệ</p>
+	            <p>Quan hệ với khách hàng</p>
 	        </div>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5">
-	        <div class="col-lg-4  bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
-	            <select class="bv-select-box form-control" ng-options="selected.relationName for selected in vm.relationships" ng-model="vm.selRelationship"></select>
-	        </div>
 	        <div class="col-lg-4   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
 	            <div class="input-group " >
 	                <input name="contactName" type="text" class="bv-input" placeholder="Họ và tên" ng-model="vm.contactRelationName" readonly="readonly"/>
@@ -149,6 +146,9 @@
 	                    <i class="fa fa-search-plus"></i>
 	                </div>
 	            </div>
+	        </div>
+	        <div class="col-lg-4  bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
+	            <select class="bv-select-box form-control" ng-options="selected.relationName for selected in vm.relationships" ng-model="vm.selRelationship"></select>
 	        </div>
 	        <div class="col-lg-4 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
 	        	<button class="btn btn-info" type="button" ng-click="vm.addRelationship()"><i class="fa fa-plus"></i> Thêm</button>
@@ -193,7 +193,7 @@
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5">
 	        <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
-	            <select class="bv-select-box form-control"  ng-options="selected.productName for selected in vm.reminderProducts" ng-model="vm.selProductReminder"></select>
+	            <select class="bv-select-box form-control"  ng-options="selected.name for selected in vm.reminderProducts" ng-model="vm.selProductReminder"></select>
 	        </div>
 	        <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
 	            <input name="content" type="text" class="bv-input" placeholder="Nội dung" ng-model="vm.content"/>

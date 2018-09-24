@@ -50,6 +50,14 @@
                 mobile: "",
                 name: ""
             },
+            invoiceInfo:{  
+				accountNo:"",
+				address:"",
+				check:"0",
+				company:"",
+				name:"",
+				taxNo:""
+		        },
             soGycbh: "",
             statusPolicyId: "",
             teamId: "",
@@ -163,6 +171,13 @@
         }
         
         function onchangePlan() {
+        	if (vm.policy.expiredDate != ""){
+        		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
+        			getPremium();	
+        		} else{
+        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+        		}
+        	}
             getPremium();
         }
         

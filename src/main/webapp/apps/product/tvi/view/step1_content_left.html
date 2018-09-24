@@ -29,7 +29,7 @@
             </div>
             <div class="">
                 <input type="number" class="bv-input"  name="numberOfPerson" ng-model="vm.policy.numberOfPerson" placeholder="Nhập tổng số người tham gia"
-                	   min="1" step="1" max="120" size="3" ng-disabled="vm.isShowChangeTravel"
+                	   step="1" size="3" ng-disabled="vm.isShowChangeTravel"
                        ng-blur="vm.addOrRemovePerson()"
                        required-message="'Chưa chọn số người tham gia!'"
                        required
@@ -38,19 +38,19 @@
                 	<p class="help-block" ng-show="myForm.numberOfPerson.$error.required">
 	                    Nhập tổng số người tham gia
 	                </p>
-	                <p class="help-block" ng-show="myForm.numberOfPerson.$error.max">
-	                    Vượt quá số lượng người cho phép!
+	                <p class="help-block" ng-show="myForm.numberOfPerson.$error.min">
+	                    Số lượng người cho phép không phù hợp!
 	                </p>
 	            </div>
             </div>
             <div class="bv-margin-botton-10 margin-top-10">
-                <p class="bv-title-from margin-bottom-0">Ngày khởi hành từ Việt Nam<span class="bv-req-red">&nbsp(*)</span></p>
+                <p class="bv-title-from margin-bottom-0">Ngày khởi hành<span class="bv-req-red">&nbsp(*)</span></p>
                 <span class="bv-title-from-des">(Thời gian bảo hiểm từ)</span>
             </div>
             <div class="margin-right-5 width-100">
                 <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
                     <div class="width-100">
-                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate"
+                        <input type="text" name="inceptionDate" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.inceptionDate" ng-change="vm.onchangePlan()"
                                required-message="'Chưa chọn ngày khởi hành!'"
                                required
                         >
@@ -138,9 +138,9 @@
                     </label>
                 </div>
             </div>
-            <div class="margin-top-5">
+            <!-- <div class="margin-top-5">
                 <input type="number" min="0" max="30" ng-show="vm.showChangePremium()" class="bv-input" placeholder="Giảm phí (%)" ng-model="vm.policy.premiumPercentDiscount" name="premiumPercentDiscount" ng-blur="vm.getPremium()"/>
-            </div>
+            </div> -->
             <div class="margin-top-10">
                 <div class="table-responsive">
                     <table class="table table-sum-product" >

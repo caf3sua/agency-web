@@ -32,12 +32,15 @@
         vm.searchReport = searchReport;
         
         vm.chartOptions = chartIncomeOptions;
+        vm.changeDate = changeDate;
   		
         angular.element(document).ready(function () {
         });
 
     	// Init controller
   		(function initController() {
+  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
+  			
   			changeFilterDate('WEEK');
   		})();
   		
@@ -169,10 +172,21 @@
         		toastr.error('Không đủ dữ liệu để tìm kiếm!');
         		return;
         	}
-        	
-        	// Search
-        	loadData();       	
+        	if(changeDate()){
+        		// Search
+            	loadData();	
+        	}
         }
+        
+        function changeDate(){
+  			if (vm.searchCriterial.fromDate != "" && vm.searchCriterial.toDate != ""){
+  				if(!vm.checkDate(vm.searchCriterial.fromDate, vm.searchCriterial.toDate)){
+  					toastr.error("Thời gian tìm kiếm từ ngày - đến ngày không phù hợp");
+  					return false;
+  				}
+  				return true;
+  			}
+  		}
 
     }
 })();

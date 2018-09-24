@@ -6,9 +6,9 @@
       .module('app')
       .controller('DashboardController', DashboardController);
     
-    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService'];
+    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller'];
 
-      function DashboardController($scope, DashboardService, ReportService) {
+      function DashboardController($scope, DashboardService, ReportService, $controller) {
     	  var vm = this;
         
 	        // Declare variable and method
@@ -47,6 +47,7 @@
 	        vm.dataIncome = {};
 	        vm.dataCommission = {};
 	        vm.searchReport = searchReport;
+	        vm.changeDate = changeDate;
 	        
 	        
 	        // Test data
@@ -56,6 +57,7 @@
 
 	    	// Init controller
 	  		(function initController() {
+	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
 	  		})();
 
 	  		// Implement function 
@@ -79,9 +81,21 @@
 	        		return;
 	        	}
 	        	
-	        	// Search
-	        	loadData();       	
+	        	if(changeDate()){
+	        		// Search
+	            	loadData();	
+	        	}     	
 	        }
+	  		
+	  		function changeDate(){
+	  			if (vm.searchCriterial.fromDate != "" && vm.searchCriterial.toDate != ""){
+	  				if(!vm.checkDate(vm.searchCriterial.fromDate, vm.searchCriterial.toDate)){
+	  					toastr.error("Thời gian tìm kiếm từ ngày - đến ngày không phù hợp");
+	  					return false;
+	  				}
+	  				return true;
+	  			}
+	  		}
 	  		
 	  		function resetData() {
 	  			vm.dataIncome = {};

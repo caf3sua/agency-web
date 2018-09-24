@@ -46,10 +46,18 @@
                     mobile: "",
                     name: ""
                 },
-            soNguoiThamGia: 0,
-            travelCareId: 1,
-            travelWithId: "",
-            tvcPackage: ""
+                invoiceInfo:{  
+					accountNo:"",
+					address:"",
+					check:"0",
+					company:"",
+					name:"",
+					taxNo:""
+  		        },
+	            soNguoiThamGia: 0,
+	            travelCareId: 1,
+	            travelWithId: "",
+	            tvcPackage: ""
         };
         vm.product = {};
         vm.getPremium = getPremium;
@@ -173,7 +181,11 @@
         
         function onchangePlan() {
         	if (vm.policy.expiredDate != ""){
-        		getPremium();	
+        		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
+        			getPremium();	
+        		} else{
+        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+        		}
         	}
         }
         
