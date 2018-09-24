@@ -33,7 +33,7 @@
                 <div class="margin-right-5 width-100">
                     <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
                         <div class="width-100">
-                            <input type="text" class="bv-input" name="ngaySinh" placeholder="Ngày sinh" ng-model="vm.policy.ngaySinh" ng-change="vm.onDobChange()"
+                            <input type="text" class="bv-input" id="ngaySinh" name="ngaySinh" placeholder="Ngày sinh" ng-model="vm.policy.ngaySinh" ng-change="vm.onDobChange()"
                                    required-message="'Chưa nhập ngày sinh!'"
                                    required
                             >
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="margin-top-5" ng-show="vm.policy.insuranceTarget == 'Reuse'">
-                <input type="text" name="policyNumber" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber"/>
+                <input type="text" id = "policyNumber" name="policyNumber" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber" ng-blur="vm.checkGycbh()"/>
             </div>
             <div class="margin-top-10 required">
                 <p class="bv-title-from">Lựa chọn chương trình bảo hiểm</p>

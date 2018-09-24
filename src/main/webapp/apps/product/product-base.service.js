@@ -164,7 +164,11 @@
 			'updateHhvcPolicy' : {
 				method : 'POST',
 				url : 'api/agency/product/hhvc/update'
-			}
+			},
+			'getByGycbhNumber' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/get-by-gycbhNumber'
+            }
         });
 
         return service;
