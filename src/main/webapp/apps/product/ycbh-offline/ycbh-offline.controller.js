@@ -99,8 +99,8 @@
   			
   			if (vm.policy.imgKhaisinhContents) {
   				var files = vm.policy.imgKhaisinhContents;
-				angular.forEach(files, function(file) {
-					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'khaisinh.jpg');
+				angular.forEach(files, function(file, key) {
+					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'khaisinh'+key+'.jpg');
 					vm.khaisinhFileModel.push(docFile);
 			 	});
 				console.log(vm.khaisinhFileModel);
@@ -119,6 +119,7 @@
   		// watch
   		$scope.$watch('vm.gycbhFileModel', function () {
   			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel && vm.gycbhFileModel.length > 0) {
+  				vm.gycbhFiles = [];
   				var files = vm.gycbhFileModel;
   				
   				angular.forEach(files, function(file) {
@@ -143,6 +144,7 @@
   		
   		$scope.$watch('vm.documentFileModel', function () {
   			if (vm.documentFileModel != undefined && vm.documentFileModel != null && vm.documentFileModel && vm.documentFileModel.length > 0) {
+  				vm.documentFiles = [];
   				var files = vm.documentFileModel;
   				
   				angular.forEach(files, function(file) {
@@ -167,6 +169,7 @@
   		
   		$scope.$watch('vm.khaisinhFileModel', function () {
   			if (vm.khaisinhFileModel != undefined && vm.khaisinhFileModel != null && vm.khaisinhFileModel && vm.khaisinhFileModel.length > 0) {
+  				vm.khaisinhFiles = [];
   				var files = vm.khaisinhFileModel;
   				
   				angular.forEach(files, function(file) {

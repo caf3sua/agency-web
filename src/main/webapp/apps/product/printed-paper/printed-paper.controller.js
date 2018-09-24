@@ -18,9 +18,8 @@
         vm.policy = {
         		  "gycbhNumber": "",
         		  "contactCode": "",
-        		  "imgGcn": null,
-        		  "imgGycbh": null,
-        		  "imgHd": null,
+        		  "imgGcns": null,
+        		  "imgGycbhs": null,
         		  "maSanPham": "",
         		  "ngayCap": "",
         		  "ngayHieulucDen": "",
@@ -32,12 +31,11 @@
         		  "tongTienTT": ""
         };
         
-        vm.gycbhFile = null;
-        vm.hoadonFile = null;
-        vm.gcnFile = null;
+        vm.gycbhFiles = [];
+        vm.gcnFiles = [];
         
-        vm.gycbhFileModel;
-        vm.gcnFileModel;
+        vm.gycbhFileModel = [];
+        vm.gcnFileModel = [];
         
         
         vm.isLoading = false;
@@ -139,55 +137,75 @@
   		}
 
   		function loadFileInEditMode() {
-  			if (vm.policy.imgGcn) {
-  				let gcnFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGcn.content, 'gnc.jpg');
-  	  	  		vm.gcnFileModel = gcnFile;
+  			if (vm.policy.imgGcns) {
+  	  	  		var files = vm.policy.imgGcns;
+				angular.forEach(files, function(file, key) {
+					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'gnc'+key+'.jpg');
+					vm.gcnFileModel.push(docFile);
+			 	});
+				console.log(vm.gcnFileModel);
   			}
-  	  		
-  			if (vm.policy.imgGycbh) {
-  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGycbh.content, 'gycbhFile.jpg');
-  	  	  		vm.gycbhFileModel = imgGycbhFile;
+  			
+  			if (vm.policy.imgGycbhs) {
+	  	  	  	var files = vm.policy.imgGycbhs;
+				angular.forEach(files, function(file, key) {
+					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'gnc'+key+'.jpg');
+					vm.gycbhFileModel.push(docFile);
+			 	});
+				console.log(vm.gycbhFileModel);
   			}
   		}
   		
   		// watch
   		$scope.$watch('vm.gcnFileModel', function () {
   			if (vm.gcnFileModel != undefined && vm.gcnFileModel != null && vm.gcnFileModel) {
-  				var file = vm.gcnFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gcnFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
+  				vm.gcnFiles = [];
+  				var files = vm.gcnFileModel;
+  				
+  				angular.forEach(files, function(file) {
+  					var fileReader = new FileReader();
+  					fileReader.readAsDataURL(file);
+  	            	fileReader.onload = function (e) {
+  	            		var dataUrl = e.target.result;
+  	            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+  	            	  	let gcnFile = {
+  	              			"content": base64Data,
+  	              		    "fileType": file.type,
+  	              		    "filename": file.name
+  	              		};
+  	            	  	vm.gcnFiles.push(gcnFile);
+  	            	};
+  			 	});
+  				console.log(vm.gcnFiles);
   			} else {
-  				vm.gcnFile = null;
+  				vm.gcnFiles = [];
   			}
-  		});
+  		}, true);
   		
   		$scope.$watch('vm.gycbhFileModel', function () {
   			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
-  				var file = vm.gycbhFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gycbhFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
+  				vm.gycbhFiles = [];
+  				var files = vm.gycbhFileModel;
+            	
+  				angular.forEach(files, function(file) {
+  					var fileReader = new FileReader();
+  					fileReader.readAsDataURL(file);
+  	            	fileReader.onload = function (e) {
+  	            		var dataUrl = e.target.result;
+  	            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+  	            	  	let gycbhFile = {
+  	              			"content": base64Data,
+  	              		    "fileType": file.type,
+  	              		    "filename": file.name
+  	              		};
+  	            	  	vm.gycbhFiles.push(gycbhFile);
+  	            	};
+  			 	});
+  				console.log(vm.gycbhFiles);
   			} else {
-  				vm.gycbhFile = null;
+  				vm.gycbhFiles = [];
   			}
-  		});
+  		}, true);
   		
   		$scope.$on('selectedAnchiChange', function() {
         	if ($rootScope.selectedAnchi != undefined && $rootScope.selectedAnchi != null) {
@@ -252,9 +270,8 @@
   			}
   			console.log('saveAnchiPolicy');
   			vm.isLoading = true;
-  			vm.policy.imgGcn = vm.gcnFile;
-  			vm.policy.imgHd = vm.hoadonFile;
-  			vm.policy.imgGycbh = vm.gycbhFile;
+  			vm.policy.imgGcns = vm.gcnFile;
+  			vm.policy.imgGycbhs = vm.gycbhFile;
   			vm.policy.tongTienTT = vm.policy.phiBaoHiem;
   			
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
