@@ -37,6 +37,11 @@
             		printFilename();
             	}
             	
+            	scope.removeInvalid = function(f) {
+            		let index = scope.invalidFiles.indexOf(f);
+            		scope.invalidFiles.splice(index, 1);
+            	}
+            	
             	function printFilename() {
             		if (scope.fileModel != undefined) {
             			console.log(scope.fileModel);
