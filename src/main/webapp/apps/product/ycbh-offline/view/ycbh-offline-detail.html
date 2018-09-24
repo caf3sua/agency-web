@@ -36,41 +36,25 @@
 	   <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Giấy yêu cầu bảo hiểm</p>
 	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.gycbhContent.content">
-                 <img src="data:image/*;base64,{{vm.policy.gycbhContent.content}}" height="250px">
-             </div>
-         </div>
+	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgGycbhContents">
+			<img src="data:image/*;base64,{{f.content}}" height="150px">
+		</div>
         
-	    <!-- Ấn chỉ - Upload -->
+	    <!-- Ảnh GKS - Upload -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Ấn chỉ</p>
+	        <p class="bv-title-from">Giấy khai sinh</p>
 	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.anchiContent.content">
-                 <img src="data:image/*;base64,{{vm.policy.anchiContent.content}}" height="250px">
-             </div>
-         </div>
-	    
-	    <!-- Ảnh giám định - Upload -->
-	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Ảnh giám định</p>
-	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.imgGiamdinhContent.content">
-                 <img src="data:image/*;base64,{{vm.policy.imgGiamdinhContent.content}}" height="250px">
-             </div>
-         </div>
+	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgKhaisinhContents">
+			<img src="data:image/*;base64,{{f.content}}" height="150px">
+		</div>
     	
 	    <!-- Tài liệu khác -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Tài liệu khác</p>
 	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.documentContent.content">
-                 <img src="data:image/*;base64,{{vm.policy.documentContent.content}}" height="250px">
-             </div>
-         </div>
+        <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgDocumentContents">
+			<img src="data:image/*;base64,{{f.content}}" height="150px">
+		</div>
          
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">

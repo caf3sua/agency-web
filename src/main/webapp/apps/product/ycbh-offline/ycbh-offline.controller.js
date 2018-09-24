@@ -25,9 +25,9 @@
 		 vm.documentFiles = [];
 		 vm.khaisinhFiles = [];
         
-		 vm.gycbhFileModel;
-		 vm.documentFileModel;
-		 vm.khaisinhFileModel;
+		 vm.gycbhFileModel = [];
+		 vm.documentFileModel = [];
+		 vm.khaisinhFileModel = [];
 		 
 		 vm.isLoading = false;
 		 
@@ -79,19 +79,34 @@
   		
   		function loadFileInEditMode() {
   			if (vm.policy.imgDocumentContents) {
-  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgDocumentContents[0].content, 'document.jpg');
-  				vm.documentFileModel = docFile;
-  				debugger
+//  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgDocumentContents[0].content, 'document.jpg');
+//  				vm.documentFileModel = docFile;
+  				
+  				var files = vm.policy.imgDocumentContents;
+  				angular.forEach(files, function(file, key) {
+  					debugger
+  					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'document'+key+'.jpg');
+  					vm.documentFileModel.push(docFile);
+  			 	});
+  				console.log(vm.documentFileModel);
   			}
   	  		
   			if (vm.policy.imgGycbhContents) {
-  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGycbhContents[0].content, 'gycbhFile.jpg');
-  	  	  		vm.gycbhFileModel = imgGycbhFile;
+  	  	  		var files = vm.policy.imgGycbhContents;
+				angular.forEach(files, function(file, key) {
+					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'gycbhFile'+key+'.jpg');
+					vm.gycbhFileModel.push(docFile);
+			 	});
+				console.log(vm.gycbhFileModel);
   			}
   			
   			if (vm.policy.imgKhaisinhContents) {
-  				let imgFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgKhaisinhContents[0].content, 'khaisinh.jpg');
-  				vm.khaisinhFileModel = imgFile;
+  				var files = vm.policy.imgKhaisinhContents;
+				angular.forEach(files, function(file) {
+					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'khaisinh.jpg');
+					vm.khaisinhFileModel.push(docFile);
+			 	});
+				console.log(vm.khaisinhFileModel);
   			}
   		}
   		

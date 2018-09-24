@@ -37,7 +37,6 @@
         vm.gcnFile = null;
         
         vm.gycbhFileModel;
-        vm.hoadonFileModel;
         vm.gcnFileModel;
         
         
@@ -149,11 +148,6 @@
   				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGycbh.content, 'gycbhFile.jpg');
   	  	  		vm.gycbhFileModel = imgGycbhFile;
   			}
-  			
-  			if (vm.policy.imgHd) {
-  				let imgHdFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgHd.content, 'hoadon.jpg');
-  	  	  		vm.hoadonFileModel = imgHdFile;
-  			}
   		}
   		
   		// watch
@@ -173,25 +167,6 @@
             	};
   			} else {
   				vm.gcnFile = null;
-  			}
-  		});
-  		
-  		$scope.$watch('vm.hoadonFileModel', function () {
-  			if (vm.hoadonFileModel != undefined && vm.hoadonFileModel != null && vm.hoadonFileModel) {
-  				var file = vm.hoadonFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.hoadonFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-  			} else {
-  				vm.hoadonFile = null;
   			}
   		});
   		
