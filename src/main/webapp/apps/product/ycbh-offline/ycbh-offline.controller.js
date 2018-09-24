@@ -15,22 +15,19 @@
         vm.policy = {
     		  "gycbhNumber": "",
     		  "contactCode": "",
-    		  "documentContent": null,
-    		  "gycbhContent": null,
-    		  "anchiContent": null,
-    		  "imgGiamdinhContent": null,
+    		  "imgDocumentContents": null,
+    		  "imgGycbhContents": null,
+    		  "imgKhaisinhContents": null,
     		  "maSanPham": "",
     		  "totalPremium": ""
         };
-		 vm.gycbhFile = null;
-		 vm.documentFile = null;
-		 vm.anchiFile = null;
-		 vm.imgGiamdinhFile = null;
+		 vm.gycbhFiles = [];
+		 vm.documentFiles = [];
+		 vm.khaisinhFiles = [];
         
 		 vm.gycbhFileModel;
 		 vm.documentFileModel;
-		 vm.anchiFileModel;
-		 vm.imgGiamdinhFileModel;
+		 vm.khaisinhFileModel;
 		 
 		 vm.isLoading = false;
 		 
@@ -81,24 +78,20 @@
   		})();
   		
   		function loadFileInEditMode() {
-  			if (vm.policy.documentContent) {
-  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.documentContent.content, 'document.jpg');
+  			if (vm.policy.imgDocumentContents) {
+  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgDocumentContents[0].content, 'document.jpg');
   				vm.documentFileModel = docFile;
+  				debugger
   			}
   	  		
-  			if (vm.policy.gycbhContent) {
-  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.gycbhContent.content, 'gycbhFile.jpg');
+  			if (vm.policy.imgGycbhContents) {
+  				let imgGycbhFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGycbhContents[0].content, 'gycbhFile.jpg');
   	  	  		vm.gycbhFileModel = imgGycbhFile;
   			}
   			
-  			if (vm.policy.anchiContent) {
-  				let anchiFile = dataURLtoFile('data:image/*;base64,' + vm.policy.anchiContent.content, 'anchi.jpg');
-  				vm.anchiFileModel = anchiFile;
-  			}
-  			
-  			if (vm.policy.imgGiamdinhContent) {
-  				let imgFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGiamdinhContent.content, 'giamdinh.jpg');
-  				vm.imgGiamdinhFileModel = imgFile;
+  			if (vm.policy.imgKhaisinhContents) {
+  				let imgFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgKhaisinhContents[0].content, 'khaisinh.jpg');
+  				vm.khaisinhFileModel = imgFile;
   			}
   		}
   		
@@ -114,77 +107,73 @@
   		// watch
   		$scope.$watch('vm.gycbhFileModel', function () {
   			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
-  				var file = vm.gycbhFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.gycbhFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
+  				var files = vm.gycbhFileModel;
+  				
+  				angular.forEach(files, function(file) {
+  					var fileReader = new FileReader();
+  					fileReader.readAsDataURL(file);
+  	            	fileReader.onload = function (e) {
+  	            		var dataUrl = e.target.result;
+  	            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+  	            	  	let gycbhFiles = {
+  	              			"content": base64Data,
+  	              		    "fileType": file.type,
+  	              		    "filename": file.name
+  	              		};
+  	            	  	vm.gycbhFiles.push(gycbhFiles);
+  	            	};
+  			 	});
+  				console.log(vm.gycbhFiles);
   			} else {
-  				vm.gycbhFile = null;
+  				vm.gycbhFiles = [];
   			}
   		});
   		
   		$scope.$watch('vm.documentFileModel', function () {
   			if (vm.documentFileModel != undefined && vm.documentFileModel != null && vm.documentFileModel) {
-  				var file = vm.documentFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.documentFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
+  				var files = vm.documentFileModel;
+  				
+  				angular.forEach(files, function(file) {
+  					var fileReader = new FileReader();
+  					fileReader.readAsDataURL(file);
+  	            	fileReader.onload = function (e) {
+  	            		var dataUrl = e.target.result;
+  	            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+  	            	  	let docFiles = {
+  	              			"content": base64Data,
+  	              		    "fileType": file.type,
+  	              		    "filename": file.name
+  	              		};
+  	            	  vm.documentFiles.push(docFiles);
+  	            	};
+  			 	});
+  				console.log(vm.documentFiles);
   			} else {
-  				vm.documentFile = null;
+  				vm.documentFiles = [];
   			}
   		});
   		
-  		$scope.$watch('vm.anchiFileModel', function () {
-  			if (vm.anchiFileModel != undefined && vm.anchiFileModel != null && vm.anchiFileModel) {
-  				var file = vm.anchiFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.anchiFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
+  		$scope.$watch('vm.khaisinhFileModel', function () {
+  			if (vm.khaisinhFileModel != undefined && vm.khaisinhFileModel != null && vm.khaisinhFileModel) {
+  				var files = vm.khaisinhFileModel;
+  				
+  				angular.forEach(files, function(file) {
+  					var fileReader = new FileReader();
+  					fileReader.readAsDataURL(file);
+  	            	fileReader.onload = function (e) {
+  	            		var dataUrl = e.target.result;
+  	            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+  	            	  	let khaisinhFiles = {
+  	              			"content": base64Data,
+  	              		    "fileType": file.type,
+  	              		    "filename": file.name
+  	              		};
+  	            	  vm.khaisinhFiles.push(khaisinhFiles);
+  	            	};
+  			 	});
+  				console.log(vm.khaisinhFiles);
   			} else {
-  				vm.anchiFile = null;
-  			}
-  		});
-  		
-  		$scope.$watch('vm.imgGiamdinhFileModel', function () {
-  			if (vm.imgGiamdinhFileModel != undefined && vm.imgGiamdinhFileModel != null && vm.imgGiamdinhFileModel) {
-  				var file = vm.imgGiamdinhFileModel;
-            	var fileReader = new FileReader();
-            	fileReader.readAsDataURL(file);
-            	fileReader.onload = function (e) {
-            		var dataUrl = e.target.result;
-            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
-            	  	vm.imgGiamdinhFile = {
-              			"content": base64Data,
-              		    "fileType": file.type,
-              		    "filename": file.name
-              		};
-            	};
-  			} else {
-  				vm.imgGiamdinhFile = null;
+  				vm.khaisinhFiles = [];
   			}
   		});
   		
@@ -212,10 +201,9 @@
   			
   			vm.isLoading = true;
   			console.log('saveYcbhOffline');
-  			vm.policy.documentContent = vm.documentFile;
-  			vm.policy.anchiContent = vm.anchiFile;
-  			vm.policy.gycbhContent = vm.gycbhFile;
-  			vm.policy.imgGiamdinhContent = vm.imgGiamdinhFile;
+  			vm.policy.imgDocumentContents = vm.documentFiles;
+  			vm.policy.imgGycbhContents = vm.gycbhFiles;
+  			vm.policy.imgKhaisinhContents = vm.khaisinhFiles;
   			
   			// Edit
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
