@@ -146,6 +146,7 @@
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
         vm.changeCopyFromNth = changeCopyFromNth;
+        vm.checkGycbh = checkGycbh;
         
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
@@ -313,8 +314,13 @@
                     	vm.policy.nguoiycNgaysinh = $rootScope.selectedContact.dateOfBirth;
                         break;
                     case 'insured':
+                    	debugger
                     	vm.policy.nguoidbhName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoidbhNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
+                    		toastr.error("Ngày sinh người được BH phải giống Ngày sinh trong gói BH tính phí");
+            				angular.element('#ngaySinh').focus();
+                    	}
                         break;
                     case 'requirement':
                     	vm.policy.nguoithName = $rootScope.selectedContact.contactName;
@@ -342,6 +348,12 @@
             vm.policy.tuoi = DateUtils.yearDiff(vm.policy.ngaySinh, nowStr);
             
             if(vm.policy.chuongTrinh) {
+            	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
+            		if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
+                		toastr.error("Ngày sinh người được BH phải giống Ngày sinh trong gói BH tính phí");
+        				angular.element('#ngaySinh').focus();
+                	}
+            	}
             	getPremium();
             }
         }
@@ -526,6 +538,24 @@
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
 	      	}
+        }
+        
+        function checkGycbh() {
+            if(vm.policy.insuranceTarget == 'Reuse') {
+            	vm.gycbhNumber = {
+        		    	  "gycbhNumber": ""
+        		    };
+    		    vm.gycbhNumber = vm.policy.policyNumber;
+    		    ProductCommonService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+    			
+    			function onSuccess() {
+    			}
+    			
+    			function onError() {
+    				toastr.error("Số hợp đồng bảo hiểm cũ không tồn tại");
+    				angular.element('#policyNumber').focus();
+    			}
+            } 
         }
         
     }
