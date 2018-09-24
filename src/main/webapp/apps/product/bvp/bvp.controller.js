@@ -145,6 +145,8 @@
         vm.savePolicy = savePolicy;
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
+        vm.changeCopyFromNth = changeCopyFromNth;
+        
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
             {id: '2', name: 'Bạc'},
@@ -512,5 +514,19 @@
 	  	            return true;
   			}
         }
+        
+        function changeCopyFromNth() {
+        	vm.policy.nguoinhanName = "";
+        	vm.policy.nguoinhanNgaysinh = "";
+        	vm.policy.nguoinhanCmnd = "";
+        	vm.policy.nguoinhanQuanhe = "";
+	      	if (vm.copyFromNth) {
+	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
+	        	vm.policy.nguoinhanNgaysinh = vm.policy.nguoithNgaysinh;
+	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
+	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
+	      	}
+        }
+        
     }
 })();
