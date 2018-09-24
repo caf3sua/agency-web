@@ -78,13 +78,10 @@
   		})();
   		
   		function loadFileInEditMode() {
+  			console.log('loadFileInEditMode');
   			if (vm.policy.imgDocumentContents) {
-//  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgDocumentContents[0].content, 'document.jpg');
-//  				vm.documentFileModel = docFile;
-  				
   				var files = vm.policy.imgDocumentContents;
   				angular.forEach(files, function(file, key) {
-  					debugger
   					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'document'+key+'.jpg');
   					vm.documentFileModel.push(docFile);
   			 	});
@@ -121,7 +118,7 @@
   		
   		// watch
   		$scope.$watch('vm.gycbhFileModel', function () {
-  			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel) {
+  			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel && vm.gycbhFileModel.length > 0) {
   				var files = vm.gycbhFileModel;
   				
   				angular.forEach(files, function(file) {
@@ -142,10 +139,10 @@
   			} else {
   				vm.gycbhFiles = [];
   			}
-  		});
+  		}, true);
   		
   		$scope.$watch('vm.documentFileModel', function () {
-  			if (vm.documentFileModel != undefined && vm.documentFileModel != null && vm.documentFileModel) {
+  			if (vm.documentFileModel != undefined && vm.documentFileModel != null && vm.documentFileModel && vm.documentFileModel.length > 0) {
   				var files = vm.documentFileModel;
   				
   				angular.forEach(files, function(file) {
@@ -166,10 +163,10 @@
   			} else {
   				vm.documentFiles = [];
   			}
-  		});
+  		}, true);
   		
   		$scope.$watch('vm.khaisinhFileModel', function () {
-  			if (vm.khaisinhFileModel != undefined && vm.khaisinhFileModel != null && vm.khaisinhFileModel) {
+  			if (vm.khaisinhFileModel != undefined && vm.khaisinhFileModel != null && vm.khaisinhFileModel && vm.khaisinhFileModel.length > 0) {
   				var files = vm.khaisinhFileModel;
   				
   				angular.forEach(files, function(file) {
@@ -190,7 +187,7 @@
   			} else {
   				vm.khaisinhFiles = [];
   			}
-  		});
+  		}, true);
   		
   		$scope.$on('selectedContactChange', function() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
@@ -222,6 +219,7 @@
   			
   			// Edit
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
+  				console.log('Update ycbh offline' + JSON.stringify(vm.policy));
   				// Edit
 				// Save ycbh offline
       			ProductCommonService.saveYcbhOffline(vm.policy, onSuccess, onError);

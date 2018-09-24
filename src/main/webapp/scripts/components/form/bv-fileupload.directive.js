@@ -28,7 +28,7 @@
             	scope.$watch("fileModel", function() {
                     console.log("Changed");
                     printFilename();
-                 });
+                 }, true);
             	
             	scope.remove = function(f) {
             		let index = scope.fileModel.indexOf(f);
@@ -43,7 +43,7 @@
             	}
             	
             	function printFilename() {
-            		if (scope.fileModel != undefined) {
+            		if (scope.fileModel != undefined && scope.fileModel.length > 0) {
             			console.log(scope.fileModel);
             			let filenames = [];
             			angular.forEach(scope.fileModel, function(value, key) {
