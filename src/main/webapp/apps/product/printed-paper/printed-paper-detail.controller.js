@@ -6,33 +6,32 @@
         .controller('ProductPrintedPaperDetailController', ProductPrintedPaperController);
 
     ProductPrintedPaperController.$inject = ['$rootScope', '$scope', '$stateParams', '$controller', 'Principal', '$state'
-    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'PrintedPaperService', 'ContactService'];
+    	, 'CommonDialogService', 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductPrintedPaperService', 'ContactService'];
 
     function ProductPrintedPaperController ($rootScope, $scope, $stateParams, $controller, Principal, $state
-    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, PrintedPaperService, ContactService) {
+    		, CommonDialogService, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductPrintedPaperService, ContactService) {
         var vm = this;
 
         vm.isSaveAndNewFlag = false;
         vm.policy = {
-        		  "gycbhNumber": "",
-        		  "contactCode": "",
-        		  "imgGcn": null,
-        		  "imgGycbh": null,
-        		  "imgHd": null,
-        		  "maSanPham": "",
-        		  "ngayCap": "",
-        		  "ngayHieulucDen": "",
-        		  "ngayHieulucTu": "",
-        		  "phiBaoHiem": "",
-        		  "soAnchi": "",
-        		  "tenAnchi": "",
-        		  "tinhTrangCap": "TTCM",
-        		  "tongTienTT": ""
-        };
+      		  "gycbhNumber": "",
+      		  "contactCode": "",
+      		  "imgGcns": null,
+      		  "imgGycbhs": null,
+      		  "maSanPham": "",
+      		  "ngayCap": "",
+      		  "ngayHieulucDen": "",
+      		  "ngayHieulucTu": "",
+      		  "phiBaoHiem": "",
+      		  "soAnchi": "",
+      		  "tenAnchi": "",
+      		  "tinhTrangCap": "TTCM",
+      		  "tongTienTT": ""
+      };
         
-        vm.gycbhFile = null;
+        vm.gycbhFiles = [];
+        vm.gcnFiles = [];
         vm.hoadonFile = null;
-        vm.gcnFile = null;
         
         vm.gycbhFileModel;
         vm.hoadonFileModel;
@@ -55,7 +54,7 @@
   		    };
   		    vm.gycbhNumber = $stateParams.id;
   		    
-  		    PrintedPaperService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+  		    ProductPrintedPaperService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
   			
   			function onSuccess(data) {
   				vm.policy = data;

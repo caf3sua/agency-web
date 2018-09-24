@@ -130,12 +130,12 @@
 	    <!-- GCN Upload-->
 	    <bv-fileupload input-id="upload-1" label="GCN (Ảnh ấn chỉ)" is-required="true" 
 	    	place-holder="Nhập giấy chứng nhận" file-model="vm.gcnFileModel"></bv-fileupload>
-   	    <input type="hidden" name="gcnFile" ng-model="vm.gcnFile" required>
+   	    <input type="hidden" name="gcnFile" ng-model="vm.gcnFiles" required>
    	    
 	    <!-- Giấy tờ khác có liên quan - Upload -->
 	    <bv-fileupload input-id="upload-2" label="Giấy tờ khác có liên quan"
 	    	place-holder="Nhập giấy tờ khác có liên quan" file-model="vm.gycbhFileModel"></bv-fileupload>
-	    <input type="hidden" name="gycbhFile" ng-model="vm.gycbhFile">
+	    <input type="hidden" name="gycbhFile" ng-model="vm.gycbhFiles">
 	    
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center" ng-show="!vm.policy.agreementId">

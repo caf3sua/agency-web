@@ -112,34 +112,20 @@
 	    </div>
 	    <!-- GCN Upload-->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">GCN<span class="bv-req-red">&nbsp(*)</span></p>
+	        <p class="bv-title-from">GCN (Ảnh ấn chỉ)<span class="bv-req-red">&nbsp(*)</span></p>
 	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.imgGcn.content">
-                 <img src="data:image/*;base64,{{vm.policy.imgGcn.content}}" height="250px">
-             </div>
-         </div>
+	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgGcns">
+			<img src="data:image/*;base64,{{f.content}}" height="150px">
+		</div>
 	    	    
-	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
+	    <!-- Giấy tờ khác có liên quan - Upload -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Giấy yêu cầu bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+	        <p class="bv-title-from">Giấy tờ khác có liên quan</p>
 	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.imgGycbh.content">
-                 <img src="data:image/*;base64,{{vm.policy.imgGycbh.content}}"  height="250px">
-             </div>
-         </div>
-	    
-	    <!-- Hóa đơn -->
-	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Hóa đơn</p>
-	    </div>
-	    <div class="bv-promotion-block-detail">
-             <div class="" ng-show="vm.policy.imgHd.content">
-                 <img src="data:image/*;base64,{{vm.policy.imgHd.content}}" height="250px">
-             </div>
-         </div>
-	    
+	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgGycbhs">
+			<img src="data:image/*;base64,{{f.content}}" height="150px">
+		</div>
+		
 	    <!-- Button -->
 	    <button class="bv-btn-step3" ng-click="vm.gotoBack()" >
         Quay lại
