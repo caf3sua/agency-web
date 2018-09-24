@@ -314,7 +314,6 @@
                     	vm.policy.nguoiycNgaysinh = $rootScope.selectedContact.dateOfBirth;
                         break;
                     case 'insured':
-                    	debugger
                     	vm.policy.nguoidbhName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoidbhNgaysinh = $rootScope.selectedContact.dateOfBirth;
                     	if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
@@ -535,6 +534,10 @@
 	      	if (vm.copyFromNth) {
 	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
 	        	vm.policy.nguoinhanNgaysinh = vm.policy.nguoithNgaysinh;
+	        	vm.policy.nguoinhanExtend = {
+	        			cmnd : vm.policy.nguoithCmnd,
+	        			quanhe: vm.policy.nguoithQuanhe
+	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
 	      	}
