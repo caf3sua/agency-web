@@ -87,7 +87,6 @@
     		"nguoidbhQuanhe": "",
     		"nguoinhanCmnd": "",
     		"nguoinhanName": "",
-    		"nguoinhanNgaysinh": "",
     		"nguoinhanQuanhe": "",
     		"nguointNgaysinh": "",
     		"nguoithCmnd": "",
@@ -219,6 +218,11 @@
             		
             		vm.loading = false;
             		vm.policy = result;
+            		
+            		vm.policy.nguoinhanExtend = {
+    	        			cmnd : vm.policy.nguoinhanCmnd,
+    	        			quanhe: vm.policy.nguoinhanQuanhe
+    	        	}
             		if (vm.policy.tuoi < 18){
             			vm.isShowPolicyParent = true;
             			loadFileInEditMode();
@@ -320,7 +324,7 @@
             
             $rootScope.nguoidbh.cmnd = result.nguoidbhCmnd;
             $rootScope.nguoidbh.quanhe = result.nguoidbhQuanhe;
-
+            
             vm.registerDisableContactInfoValue('vm.policy.phiBH');
             
   		}
@@ -363,6 +367,10 @@
                     case 'insured':
                     	vm.policy.nguoidbhName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoidbhNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	$rootScope.nguoidbh = {
+        	        			cmnd : $rootScope.selectedContact.idNumber
+        	        	}
+                    	vm.policy.nguoidbhCmnd = $rootScope.selectedContact.idNumber;
                     	if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
                     		toastr.error("Ngày sinh người được BH phải giống Ngày sinh trong gói BH tính phí");
             				angular.element('#ngaySinh').focus();
@@ -371,10 +379,18 @@
                     case 'requirement':
                     	vm.policy.nguoithName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoithNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	$rootScope.nguoith = {
+        	        			cmnd : $rootScope.selectedContact.idNumber
+        	        	}
+                    	vm.policy.nguoithCmnd = $rootScope.selectedContact.idNumber;
                         break;
                     case 'receive':
                     	vm.policy.nguoinhanName = $rootScope.selectedContact.contactName;
-                    	vm.policy.nguoinhanNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	vm.policy.nguointNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	vm.policy.nguoinhanExtend = {
+        	        			cmnd : $rootScope.selectedContact.idNumber
+        	        	}
+                    	vm.policy.nguoinhanCmnd = $rootScope.selectedContact.idNumber;
                         break;
                 }
             }
@@ -485,7 +501,9 @@
         function savePolicy() {
             var postData = getPostData(true);
             
-            vm.policy.files = vm.gksFile.content;
+            if (vm.gksFile != null && vm.gksFile.length > 0){
+            	vm.policy.files = vm.gksFile.content;	
+            }
             
             if(vm.isHealthyPerson) {
         		vm.policy.q1 = "0";
@@ -581,12 +599,12 @@
         
         function changeCopyFromNth() {
         	vm.policy.nguoinhanName = "";
-        	vm.policy.nguoinhanNgaysinh = "";
+        	vm.policy.nguointNgaysinh = "";
         	vm.policy.nguoinhanCmnd = "";
         	vm.policy.nguoinhanQuanhe = "";
 	      	if (vm.copyFromNth) {
 	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
-	        	vm.policy.nguoinhanNgaysinh = vm.policy.nguoithNgaysinh;
+	        	vm.policy.nguointNgaysinh = vm.policy.nguoithNgaysinh;
 	        	vm.policy.nguoinhanExtend = {
 	        			cmnd : vm.policy.nguoithCmnd,
 	        			quanhe: vm.policy.nguoithQuanhe
