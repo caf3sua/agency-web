@@ -6,10 +6,10 @@
         .controller('ProductYcbhOfflineController', ProductYcbhOfflineController);
 
     ProductYcbhOfflineController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductYcbhOfflineService', 'ContactService'];
+    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'ProductYcbhOfflineService', 'ContactService', 'DateUtils'];
 
     function ProductYcbhOfflineController ($scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductYcbhOfflineService, ContactService) {
+    		, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductYcbhOfflineService, ContactService, DateUtils) {
         var vm = this;
 
         vm.policy = {
@@ -30,8 +30,10 @@
 		 vm.khaisinhFileModel = [];
 		 
 		 vm.isLoading = false;
+		 vm.isShowGKS = false;
 		 
         // Properties & function declare
+		vm.validator = validator;
         vm.saveYcbhOffline = saveYcbhOffline;
         vm.cancel = cancel;
         vm.openSearchContact = openSearchContact;
@@ -196,6 +198,17 @@
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
         		vm.policy.contactName = $rootScope.selectedContact.contactName;
+        		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
+        		
+        		var now = new Date();
+                var nowStr = DateUtils.convertDate(now);
+                vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
+                
+                if (vm.policy.tuoi < 18){
+                	vm.isShowGKS = true;
+                } else{
+                	vm.isShowGKS = false;
+                }
         	}
         });
   		
@@ -210,6 +223,8 @@
   		}
   		
   		function saveYcbhOffline() {
+  			if (validator()){
+  			
   			if (vm.form.$invalid) {
   				return;
   			}
@@ -261,6 +276,7 @@
   	    			toastr.error("Lỗi khi lấy số GYCBH");
   			    });
   			}
+  			}
   		}
   		
   		function showSaveSaveYcbhInfo(data) {
@@ -308,5 +324,36 @@
                 },
             });
         }
+  		
+  		function validator() {
+        	if(vm.policy.totalPremium <= 0) {
+        		toastr.error("Cấn nhập số tiền bảo hiểm");
+        		angular.element('#totalPremium').focus();
+        		return false;
+        	}
+        	if(vm.gycbhFiles.length == 0) {
+        		toastr.error("Cấn nhập giấy yêu cầu bảo hiểm");
+        		angular.element('#upload-1').focus();
+        		return false;
+        	}
+        	
+        	var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
+            debugger
+            if (vm.policy.tuoi < 18){
+            	vm.isShowGKS = true;
+            	if(vm.khaisinhFiles.length == 0) {
+            		toastr.error("Cấn nhập giấy khai sinh");
+            		angular.element('#upload-3').focus();
+            		return false;
+            	}
+            } else{
+            	vm.isShowGKS = false;
+            }
+        	
+        	return true;
+        };
+  		
     }
 })();
