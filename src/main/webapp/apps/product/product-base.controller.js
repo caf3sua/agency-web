@@ -144,11 +144,27 @@
         function changeCopyFromContact() {
         	vm.policy.receiverUser = {};
 	      	if (vm.copyFromContact) {
-	      		vm.policy.receiverUser.name = vm.policy.contactName;
-	      		vm.policy.receiverUser.address = vm.policy.contactAddress;
-	      		vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
-	      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
-	      		vm.policy.receiverUser.email = vm.policy.contactEmail;
+	      		if (vm.lineId == 'BVP') {
+	      			var dataBVP = $rootScope.saveNguoiYcBVP;
+	      			debugger
+	      			let address = dataBVP.homeAddress;
+	      			vm.policy.receiverUser.name = dataBVP.contactName;
+		      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
+		      		vm.policy.receiverUser.mobile = dataBVP.phone;
+		      		vm.policy.receiverUser.email = dataBVP.email;
+
+	                let postcode = address.substring(address.lastIndexOf("::") + 2);
+	                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+	                	vm.policy.receiverUser.addressDistrictData = data;
+	                });
+		      		
+	      		} else {
+	      			vm.policy.receiverUser.name = vm.policy.contactName;
+		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+		      		vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
+		      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
+		      		vm.policy.receiverUser.email = vm.policy.contactEmail;
+	      		}
 	      	}
         }
         // implement function

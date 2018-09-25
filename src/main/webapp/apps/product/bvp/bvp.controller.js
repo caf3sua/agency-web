@@ -145,6 +145,7 @@
         vm.validatorCombo = validatorCombo;
         vm.onThoihanChange = onThoihanChange;
         vm.changeCopyFromNth = changeCopyFromNth;
+        vm.changeCopyFromNdbh = changeCopyFromNdbh;
         vm.checkGycbh = checkGycbh;
         vm.checkGycbhParent = checkGycbhParent;
         
@@ -363,6 +364,7 @@
                     case 'contact':
                     	vm.policy.nguoiycName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoiycNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	$rootScope.saveNguoiYcBVP = $rootScope.selectedContact;
                         break;
                     case 'insured':
                     	vm.policy.nguoidbhName = $rootScope.selectedContact.contactName;
@@ -611,6 +613,19 @@
 	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
+	      	}
+        }
+        
+        function changeCopyFromNdbh() {
+        	vm.policy.nguoidbhName = "";
+        	vm.policy.nguoidbhNgaysinh = "";
+	      	if (vm.copyFromNdbh) {
+	      		vm.policy.nguoidbhName = vm.policy.nguoiycName;
+	        	vm.policy.nguoidbhNgaysinh = vm.policy.nguoiycNgaysinh;
+	        	$rootScope.nguoidbh = {
+	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
+	        			quanhe: "30"
+	        	}
 	      	}
         }
         
