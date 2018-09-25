@@ -87,6 +87,17 @@
             <div class="margin-top-5" ng-show="vm.policy.insuranceTarget == 'Reuse'">
                 <input type="text" id = "policyNumber" name="policyNumber" class="bv-input" placeholder="Nhập số hợp đồng bảo hiểm cũ" ng-model="vm.policy.policyNumber" ng-blur="vm.checkGycbh()"/>
             </div>
+            
+            <div class="margin-top-10 required" ng-show="vm.isShowPolicyParent">
+                <p class="bv-title-from">Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ)</p>
+            </div>
+			<div class="margin-top-5" ng-show="vm.isShowPolicyParent">
+                <input type="text" id = "policyParent" name="policyParent" class="bv-input" placeholder="Nhập Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ)" ng-model="vm.policy.policyParent" ng-blur="vm.checkGycbhParent()"/>
+            </div>
+            <bv-fileupload input-id="upload-gks" label="Ảnh chụp Giấy khai sinh" is-required="vm.isShowPolicyParent" ng-show="vm.isShowPolicyParent" multiple="false"
+		    	place-holder="Nhập Ảnh chụp Giấy khai sinh" file-model="vm.gksFileModel"></bv-fileupload>
+	   	    <input type="hidden" name="gksFile" ng-model="vm.gksFile" required>
+            
             <div class="margin-top-10 required">
                 <p class="bv-title-from">Lựa chọn chương trình bảo hiểm</p>
             </div>

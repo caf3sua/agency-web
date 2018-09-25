@@ -14,7 +14,9 @@
             	inputId: '@',
             	placeHolder: '@',
             	label: '@',
+            	multiple : '=',
 //            	funcUploadCallback: '&',
+            	keepMode : '=',
             	isRequired: '=',
             	fileModel: '='
             },

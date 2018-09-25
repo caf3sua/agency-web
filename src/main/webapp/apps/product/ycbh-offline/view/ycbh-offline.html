@@ -33,17 +33,17 @@
           	</div>
 	    </div>
 	    <!-- Giấy yêu cầu bảo hiểm - Upload -->
-	    <bv-fileupload input-id="upload-1" label="Giấy yêu cầu bảo hiểm" is-required="true" 
+	    <bv-fileupload input-id="upload-1" label="Giấy yêu cầu bảo hiểm" is-required="true" multiple="true" keep-mode="'distinct'"
 	    	place-holder="Nhập giấy yêu cầu bảo hiểm" file-model="vm.gycbhFileModel"></bv-fileupload>
     	<input type="hidden" name="gycbhFile" ng-model="vm.gycbhFiles" required>
         
 	    <!-- Giấy khai sinh - Upload -->
-	    <bv-fileupload input-id="upload-3" label="Giấy khai sinh" is-required="true" 
+	    <bv-fileupload input-id="upload-3" label="Giấy khai sinh" is-required="true"  multiple="true" keep-mode="'distinct'"
 	    	place-holder="Nhập giấy khai sinh" file-model="vm.khaisinhFileModel" ></bv-fileupload>
     	<input type="hidden" name="imgKhaisinhFile" ng-model="vm.khaisinhFiles">
     	
 	    <!-- Tài liệu khác -->
-	    <bv-fileupload input-id="upload-4" label="Tài liệu khác" is-required="false" 
+	    <bv-fileupload input-id="upload-4" label="Tài liệu khác" is-required="false"  multiple="true" keep-mode="'distinct'"
 	    	place-holder="Nhập tài liệu khác" file-model="vm.documentFileModel"></bv-fileupload>
 	    <input type="hidden" name="documentFile" ng-model="vm.documentFiles">
 	    	

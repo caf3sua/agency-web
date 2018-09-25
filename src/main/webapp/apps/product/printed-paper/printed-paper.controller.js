@@ -273,7 +273,6 @@
   			vm.policy.imgGcns = vm.gcnFiles;
   			vm.policy.imgGycbhs = vm.gycbhFiles;
   			vm.policy.tongTienTT = vm.policy.phiBaoHiem;
-  			debugger
   			
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
   				// Edit

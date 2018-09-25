@@ -147,6 +147,10 @@
         vm.onThoihanChange = onThoihanChange;
         vm.changeCopyFromNth = changeCopyFromNth;
         vm.checkGycbh = checkGycbh;
+        vm.checkGycbhParent = checkGycbhParent;
+        
+        vm.gksFile = null;
+        vm.gksFileModel;
         
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
@@ -184,6 +188,7 @@
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
         vm.isHealthyPerson = false;
+        vm.isShowPolicyParent = false;
 
         // Initialize
         init();
@@ -214,6 +219,11 @@
             		
             		vm.loading = false;
             		vm.policy = result;
+            		if (vm.policy.tuoi < 18){
+            			vm.isShowPolicyParent = true;
+            			loadFileInEditMode();
+            		}
+            		
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
@@ -224,6 +234,43 @@
     		    });
             }
         }
+        
+        // watch
+  		$scope.$watch('vm.gksFileModel', function () {
+  			if (vm.gksFileModel != undefined && vm.gksFileModel != null && vm.gksFileModel) {
+  				var file = vm.gksFileModel;
+            	var fileReader = new FileReader();
+            	fileReader.readAsDataURL(file);
+            	fileReader.onload = function (e) {
+            		var dataUrl = e.target.result;
+            	  	var base64Data = dataUrl.substr(dataUrl.indexOf('base64,') + 'base64,'.length);
+            	  	vm.gksFile = {
+              			"content": base64Data,
+              		    "fileType": file.type,
+              		    "filename": file.name
+              		};
+            	};
+  				console.log(vm.gksFile);
+  			} else {
+  				vm.gksFile = null;
+  			}
+  		});
+
+		function loadFileInEditMode() {
+			if (vm.policy.files) {
+  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.files, 'gks.jpg');
+  				vm.gksFileModel = docFile;
+  			}
+		}
+		
+		function dataURLtoFile(dataurl, filename) {
+  		    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+  		        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  		    while(n--){
+  		        u8arr[n] = bstr.charCodeAt(n);
+  		    }
+  		    return new File([u8arr], filename, {type:mime});
+  		}
         
         function formatEditData(result) {
         	result.pagencyRole = "1";
@@ -346,6 +393,12 @@
             var nowStr = DateUtils.convertDate(now);
             vm.policy.tuoi = DateUtils.yearDiff(vm.policy.ngaySinh, nowStr);
             
+            if (vm.policy.tuoi < 18){
+            	vm.isShowPolicyParent = true;
+            } else{
+            	vm.isShowPolicyParent = false;
+            }
+            
             if(vm.policy.chuongTrinh) {
             	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
             		if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
@@ -432,6 +485,8 @@
         function savePolicy() {
             var postData = getPostData(true);
             
+            vm.policy.files = vm.gksFile.content;
+            
             if(vm.isHealthyPerson) {
         		vm.policy.q1 = "0";
         		vm.policy.q2 = "0";
@@ -448,8 +503,6 @@
             vm.policy.nhakhoaPhi =vm.policy.nhakhoaPhi;
             vm.policy.sinhmangPhi = postData.sinhmangPhi;
 
-
-            
             if(vm.policy.ngoaitruChk) {
             	vm.policy.ngoaitru = '1';
             } else {
@@ -540,7 +593,6 @@
 	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
-	        	debugger
 	      	}
         }
         
@@ -560,6 +612,23 @@
     				angular.element('#policyNumber').focus();
     			}
             } 
+        }
+        
+        function checkGycbhParent() {
+        	vm.gycbhNumber = {
+    		    	  "gycbhNumber": ""
+    		    };
+        	
+		    vm.gycbhNumber = vm.policy.policyParent;
+		    ProductCommonService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
+			
+			function onSuccess() {
+			}
+			
+			function onError() {
+				toastr.error("Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ) không tồn tại");
+				angular.element('#policyParent').focus();
+			}
         }
         
     }
