@@ -146,6 +146,7 @@
         vm.onThoihanChange = onThoihanChange;
         vm.changeCopyFromNth = changeCopyFromNth;
         vm.changeCopyFromNdbh = changeCopyFromNdbh;
+//        vm.changeCopyFromNdbhtoNth = changeCopyFromNdbhtoNth;
         vm.checkGycbh = checkGycbh;
         vm.checkGycbhParent = checkGycbhParent;
         
@@ -615,6 +616,23 @@
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
 	      	}
         }
+        
+//        function changeCopyFromNdbhtoNth() {
+//        	vm.policy.nguoithName = "";
+//        	vm.policy.nguoithNgaysinh = "";
+//        	vm.policy.nguoithCmnd = "";
+//        	vm.policy.nguoithQuanhe = "";
+//	      	if (vm.copyFromNdbhtoNth) {
+//	      		vm.policy.nguoithName = vm.policy.nguoidbhName;
+//	        	vm.policy.nguoithNgaysinh = vm.policy.nguoidbhNgaysinh;
+//	        	$rootScope.nguoith = {
+//	        			cmnd : vm.policy.nguoidbhCmnd,
+//	        			quanhe: vm.policy.nguoidbhQuanhe
+//	        	}
+//	        	vm.policy.nguoithCmnd = vm.policy.nguoidbhCmnd;
+//	        	vm.policy.nguoithQuanhe = vm.policy.nguoidbhQuanhe;
+//	      	}
+//        }
         
         function changeCopyFromNdbh() {
         	vm.policy.nguoidbhName = "";
