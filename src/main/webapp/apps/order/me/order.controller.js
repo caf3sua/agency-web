@@ -34,7 +34,8 @@
   			  ],
   			  "phone": "",
   			  "productCode": "",
-  			  "toDate": ""
+  			  "toDate": "",
+  			  "createType": ""
   		};
   		vm.sotiennophi;
   		
