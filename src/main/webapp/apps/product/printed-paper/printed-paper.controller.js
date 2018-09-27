@@ -37,6 +37,7 @@
         vm.gycbhFileModel = [];
         vm.gcnFileModel = [];
         
+        vm.dataAnChiModel = [];
         
         vm.isLoading = false;
         // Properties & function declare
@@ -46,6 +47,9 @@
         vm.openSearchContact = openSearchContact;
         vm.cancel = cancel;
         vm.changeDate = changeDate;
+        
+        vm.onChange = onChange; // anchi
+        vm.selected;
         
         angular.element(document).ready(function () {
         });
@@ -60,7 +64,8 @@
 			vm.policy.maSanPham = $stateParams.productCode;
 			//  save to global
   			$rootScope.product_code_selected = $stateParams.productCode;
-			
+  			loadAllAnchi();
+  			
 			loadAnchiInfo($stateParams.anchiId);
 			
 			var startDate = new Date();
@@ -104,11 +109,16 @@
   		    }
   		})();
   		
+  		function onChange(item) {
+        	console.log(item);
+        	vm.policy.soAnchi = item.ACHI_SO_ANCHI;
+        	vm.policy.tenAnchi = item.ACHI_TEN_ANCHI;
+        }
+  		
   		function loadAnchiInfo(anchiId) {
   			if (anchiId == null || anchiId == undefined) {
   				return;
   			}
-  			
   			vm.searchNew = {
 				"number" : decodeURIComponent(anchiId),
 				"type" : vm.policy.maSanPham
@@ -120,6 +130,23 @@
   					let item = data[0];
   					vm.policy.soAnchi = item.ACHI_SO_ANCHI;
   	        		vm.policy.tenAnchi = item.ACHI_TEN_ANCHI;
+  				}
+  			}
+  			
+  			function onError() {
+  			}
+  		}
+  		
+  		function loadAllAnchi() {
+  			vm.searchNew = {
+				"number" : "",
+				"type" : vm.policy.productCode
+  			};
+  			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
+  			
+  			function onSuccess(data) {
+  				if (data != null && data.length > 0) {
+  					vm.dataAnChiModel = data;
   				}
   			}
   			
@@ -210,6 +237,7 @@
   		$scope.$on('selectedAnchiChange', function() {
         	if ($rootScope.selectedAnchi != undefined && $rootScope.selectedAnchi != null) {
         		console.log($rootScope.selectedAnchi);
+        		vm.selected = $rootScope.selectedAnchi;
         		vm.policy.soAnchi = $rootScope.selectedAnchi.ACHI_SO_ANCHI;
         		vm.policy.tenAnchi = $rootScope.selectedAnchi.ACHI_TEN_ANCHI;
         	}

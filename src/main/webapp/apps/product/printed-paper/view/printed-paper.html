@@ -9,14 +9,30 @@
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
 	        <div class="width-100 padding0 margin-right-5">
-	        	<div class="input-group display-flex">
+	        	<!-- <div class="input-group display-flex">
 	             	<div class="width-100">
-	                 	<input type="text" required name="soAnchi" ng-model="vm.policy.soAnchi" class="bv-input" placeholder="Tên số ấn chỉ" disabled="disabled">
+	                 	<input type="text" required name="soAnchi" ng-model="vm.policy.soAnchi" class="bv-input" placeholder="Tên số ấn chỉ">
 	             	</div>
 	             	<div class="input-group-addon bv-date-icon" ng-click="vm.openSearchAnchi()">
 	                 	<span class="fa fa-plus"></span>
 	             	</div>
-	            </div>
+	            </div> -->
+	            
+	            <div class="input-group display-flex">
+		         	<div class="width-100" id="bv-combobox-px">
+		             	<ui-select ng-model="vm.selected" theme="bootstrap" on-select="vm.onChange($item)" required required-message="'Chưa nhập số ấn chỉ!'">
+							<ui-select-match class="ui-select-match" placeholder="Số ấn chỉ">{{$select.selected.ACHI_SO_ANCHI}}</ui-select-match>
+							<ui-select-choices class="ui-select-choices" repeat="item in vm.dataAnChiModel | filter: $select.search | limitTo: 20">
+								<div ng-bind-html="item.ACHI_SO_ANCHI | highlight: $select.search"></div>
+								<small ng-bind-html="item.ACHI_TEN_ANCHI | highlight: $select.search"></small>
+							</ui-select-choices>
+						</ui-select>
+		         	</div>
+		         	<div class="input-group-addon bv-date-icon" ng-click="vm.openSearchAnchi()">
+	                 	<span class="fa fa-plus"></span>
+	             	</div>
+		        </div>
+	            
 	        </div>
 	    </div>
 	    
