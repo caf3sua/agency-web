@@ -644,6 +644,12 @@
 	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
 	        			quanhe: "30"
 	        	}
+	        	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
+            		if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
+                		toastr.error("Ngày sinh người được BH phải giống Ngày sinh trong gói BH tính phí");
+        				angular.element('#ngaySinh').focus();
+                	}
+            	}
 	      	}
         }
         

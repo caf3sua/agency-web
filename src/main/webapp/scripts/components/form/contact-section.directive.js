@@ -11,6 +11,7 @@
             scope: {
             	name: '@',
             	isShowExtendInfo: '=',
+            	isShowExtendInfoNth: '=',
                 title: '@',
                 contactName: '=',
                 contactDob: '=',

@@ -56,4 +56,27 @@
             <option value="34">Bố mẹ của Vợ/Chồng</option>
         </select>
     </div>
+    
+    <!-- Người thụ hưởng, người nhận tiền -->
+    <div class="margin-top-10 required" ng-if="isShowExtendInfoNth">
+	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
+	</div>
+	<div class="margin-top-5" ng-if="isShowExtendInfoNth">
+        <input type="text" name="{{name}}-contactIdNumber" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactExtendInfo.cmnd"
+            required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
+           	required/>
+    </div>
+    <div class="margin-top-10 required" ng-if="isShowExtendInfoNth">
+        <p class="bv-title-from">Quan hệ với khách hàng</p>
+    </div>
+    <div class="margin-top-5" ng-if="isShowExtendInfoNth">
+        <select name="{{name}}-contactRelation" class="bv-select-box form-control" ng-model="contactExtendInfo.quanhe"
+        	required-message="'Chưa lựa chọn quan hệ!'"
+           	required>
+            <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>
+            <option value="31">Vợ/Chồng</option>
+            <option value="32">Con</option>
+            <option value="33">Bố/Mẹ</option>
+        </select>
+    </div>
 </div>
