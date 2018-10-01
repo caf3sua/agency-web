@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.tvi', {
             parent: 'product',
-            url: '/tvi?id',
+            url: '/tvi?id&copy',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_TVI_CREATE'],

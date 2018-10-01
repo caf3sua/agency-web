@@ -80,6 +80,7 @@
         vm.registerDisableContactInfoValue = registerDisableContactInfoValue;
         vm.disableContactInfo = disableContactInfo;
         vm.isEditMode = isEditMode;
+        vm.isCopyMode = isCopyMode;
         vm.loadPolicyEdit = loadPolicyEdit;
         
         vm.savePolicyBase = savePolicyBase; 
@@ -188,7 +189,15 @@
         }
         
         function isEditMode() {
-        	if ($stateParams.id != undefined && $stateParams.id != null && $stateParams.id > 0) {
+        	if ($stateParams.id != undefined && $stateParams.id != null && $stateParams.id > 0 && $stateParams.copy == "false") {
+        		return true;
+        	}
+        	
+        	return false;
+        }
+        
+        function isCopyMode() {
+        	if ($stateParams.id != undefined && $stateParams.id != null && $stateParams.id > 0 && $stateParams.copy == "true") {
         		return true;
         	}
         	

@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.moto', {
             parent: 'product',
-            url: '/moto?id',
+            url: '/moto?id&copy',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_MOT_CREATE'],

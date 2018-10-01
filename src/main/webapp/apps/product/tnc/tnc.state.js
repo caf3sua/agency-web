@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.tnc', {
             parent: 'product',
-            url: '/tnc?id',
+            url: '/tnc?id&copy',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_TNC_CREATE'],

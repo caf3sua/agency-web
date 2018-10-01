@@ -90,6 +90,16 @@
 	  				vm.policy.productCode = data.maSanPham;
 	  				vm.policy.maSanPham = data.maSanPham;
 	  				
+	  				var copyAgreement = $stateParams.copy;
+	  	  			if (copyAgreement == "false"){
+	  	  				vm.selected = {
+		  					"ACHI_SO_ANCHI": vm.policy.soAnchi,
+		  	        		"ACHI_TEN_ANCHI": vm.policy.tenAnchi
+		  				}
+	  	  			} else {
+	  	  				vm.policy.agreementId = null; // copy đơn
+	  	  			}
+	  				
 	  				// Load file
 	  				loadFileInEditMode();
 	  				
@@ -301,6 +311,12 @@
   			vm.policy.imgGcns = vm.gcnFiles;
   			vm.policy.imgGycbhs = vm.gycbhFiles;
   			vm.policy.tongTienTT = vm.policy.phiBaoHiem;
+  			
+  			var copyAgreement = $stateParams.copy;
+  			if (copyAgreement == "true"){
+  				vm.policy.agreementId = null;
+  				vm.policy.gycbhNumber =  null;
+  			}
   			
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
   				// Edit

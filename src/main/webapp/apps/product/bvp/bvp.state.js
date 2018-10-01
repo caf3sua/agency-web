@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.bvp', {
             parent: 'product',
-            url: '/bvp?id',
+            url: '/bvp?id&copy',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_BVP_CREATE'],

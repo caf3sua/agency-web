@@ -53,7 +53,10 @@
 	  		    	  "gycbhNumber": ""
 		    };
 		    vm.gycbhNumber = $stateParams.id;
+		    
+		    // Edit
 		    if (vm.gycbhNumber != null) {
+		    	
 		    	ProductYcbhOfflineService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
 	  			
 	  			function onSuccess(data) {
@@ -66,6 +69,7 @@
 	  				ContactService.getByCode({contactCode : data.contactCode} , onGetContactSuccess, onGetContactError);
 	  				function onGetContactSuccess(result) {
 	  					vm.policy.contactName = result.contactName;
+	  					vm.policy.dateOfBirth = result.dateOfBirth;
 	  	  			}
 	  				
 	  				function onGetContactError() {
@@ -77,6 +81,7 @@
 	  			function onError() {
 	  			}
 		    }
+		    
   		})();
   		
   		function loadFileInEditMode() {
@@ -235,6 +240,12 @@
   			vm.policy.imgGycbhContents = vm.gycbhFiles;
   			vm.policy.imgKhaisinhContents = vm.khaisinhFiles;
   			
+  			var copyAgreement = $stateParams.copy;
+  			if (copyAgreement == "true"){
+  				vm.policy.agreementId = null;
+  				vm.policy.gycbhNumber =  null;
+  			}
+  			
   			// Edit
   			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
   				console.log('Update ycbh offline' + JSON.stringify(vm.policy));
@@ -340,7 +351,7 @@
         	var now = new Date();
             var nowStr = DateUtils.convertDate(now);
             vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
-            debugger
+            
             if (vm.policy.tuoi < 18){
             	vm.isShowGKS = true;
             	if(vm.khaisinhFiles.length == 0) {

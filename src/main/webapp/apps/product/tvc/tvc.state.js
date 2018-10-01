@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.tvc', {
             parent: 'product',
-            url: '/tvc?id',
+            url: '/tvc?id&copy',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_TVC_CREATE'],

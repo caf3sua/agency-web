@@ -101,6 +101,35 @@
                 	vm.showWarningEditPolicy();
     		    });
             }
+            
+            // Copy
+            if (vm.isCopyMode()) {
+            	vm.loading = true;
+            	// Load policy
+            	$state.current.data.title = "PRODUCT_TNC";
+            	
+            	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
+            		// Format to display and calculate premium again
+            		formatEditData(result);
+            		
+            		vm.loading = false;
+            		vm.policy = result;
+            		
+            		// copy
+            		vm.policy.agreementId = null;
+            		vm.policy.gycbhId = null;
+            		vm.policy.gycbhNumber =  null;
+            		
+            		// Open view and step - calculate premium again
+            		getPremium();
+            		vm.nextCount = 2;
+            		formatAddressEdit();
+                }).catch(function(data, status) {
+                	vm.loading = false;
+                	vm.showWarningEditPolicy();
+    		    });
+            }
+            
         }
         
         function formatEditData(result) {
