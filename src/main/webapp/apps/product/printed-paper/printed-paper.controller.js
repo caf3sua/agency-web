@@ -64,10 +64,9 @@
 			vm.policy.maSanPham = $stateParams.productCode;
 			//  save to global
   			$rootScope.product_code_selected = $stateParams.productCode;
+  			
   			loadAllAnchi();
   			
-			loadAnchiInfo($stateParams.anchiId);
-			
 			var startDate = new Date();
 			vm.policy.ngayCap = DateUtils.convertDate(startDate);
             // add a day
@@ -77,7 +76,12 @@
             var endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
             vm.policy.ngayHieulucDen = endDate;
 			
-  		    
+            var anchiId = $stateParams.anchiId;
+            if (anchiId != undefined && anchiId != null) {
+            	
+            	loadAnchiInfo($stateParams.anchiId);            	
+            }
+            
 			vm.gycbhNumber = {
 				"gycbhNumber": ""
   		    };
@@ -133,34 +137,41 @@
 				"number" : decodeURIComponent(anchiId),
 				"type" : vm.policy.maSanPham
   			};
-  			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
   			
-  			function onSuccess(data) {
+  			PrintedPaperService.searchNew(vm.searchNew, onSuccessNew, onErrorNew);
+  			
+  			function onSuccessNew(data) {
   				if (data != null && data.length == 1) {
   					let item = data[0];
   					vm.policy.soAnchi = item.ACHI_SO_ANCHI;
   	        		vm.policy.tenAnchi = item.ACHI_TEN_ANCHI;
+  	        		
+  	        		vm.selected = {
+	  					"ACHI_SO_ANCHI": vm.policy.soAnchi,
+	  	        		"ACHI_TEN_ANCHI": vm.policy.tenAnchi
+	  				};
   				}
   			}
   			
-  			function onError() {
+  			function onErrorNew() {
   			}
   		}
   		
   		function loadAllAnchi() {
-  			vm.searchNew = {
+  			vm.searchAll = {
 				"number" : "",
 				"type" : vm.policy.productCode
   			};
-  			PrintedPaperService.searchNew(vm.searchNew, onSuccess, onError);
+  			PrintedPaperService.searchNew(vm.searchAll, onSuccessAll, onErrorAll);
   			
-  			function onSuccess(data) {
+  			function onSuccessAll(data) {
   				if (data != null && data.length > 0) {
   					vm.dataAnChiModel = data;
+  					
   				}
   			}
   			
-  			function onError() {
+  			function onErrorAll() {
   			}
   		}
   		
@@ -330,7 +341,7 @@
       			
       			function onError(result) {
       				vm.isLoading = false;
-      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ.";
+      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ kiểm tra lại số ấn chỉ đã sử dụng.";
       				toastr.error(message);
       			}
   			} else{
@@ -350,7 +361,7 @@
   	      			
   	      			function onError(result) {
   	      				vm.isLoading = false;
-  	      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ.";
+  	      				let message = result.data.message || "Lỗi khi cấp đơn ấn chỉ kiểm tra lại số ấn chỉ đã sử dụng.";
   	      				toastr.error(message);
   	      			}
   	            }).catch(function(data, status) {
