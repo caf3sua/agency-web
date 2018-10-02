@@ -21,10 +21,10 @@
         }]);
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
-    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter'];
+    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
-    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService, $filter){
+    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -85,6 +85,7 @@
         
         vm.savePolicyBase = savePolicyBase; 
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
+        vm.showOTPSavePolicySuccessInfo = showOTPSavePolicySuccessInfo;
         vm.showWarningEditPolicy = showWarningEditPolicy;
         vm.formatAddressEdit = formatAddressEdit; 
         vm.getAddressByPostCode = getAddressByPostCode;
@@ -101,6 +102,7 @@
     	
     	// 15.08
     	vm.checkDate = checkDate;
+    	var modalInstance = null;
     	
     	function checkDate(startDate, endDate){
     		var splitStart = startDate.split('/');
@@ -283,7 +285,13 @@
 			function onCreatePolicySuccess(data, headers) {
 				vm.clearResponseError();
 	            vm.loading = false;
-				vm.showSavePolicySuccessInfo(obj);
+
+	            var checkOTP = vm.currentAccount.sendOtp;
+	            if (checkOTP == 1){
+	            	vm.showOTPSavePolicySuccessInfo();
+	            } else {
+	            	vm.showSavePolicySuccessInfo(obj);	
+	            }
 	        }
 				
 	        function onCreatePolicyError(error) {
@@ -362,6 +370,23 @@
                 },
             });
         }
+        
+        function showOTPSavePolicySuccessInfo() {
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/product/partial/partial-OTP.html',
+                controller: 'AgreementOtpController',
+                controllerAs: 'vm',
+                size: 'sg',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            });
+            
+    	}
         
         function showSavePolicySuccessInfo(obj) {
         	var message = "";

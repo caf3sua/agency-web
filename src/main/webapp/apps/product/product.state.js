@@ -32,6 +32,7 @@
                                 , 'scripts/components/form/contact-section.directive.js'
 		            			, 'apps/product/product-base.service.js'
 		            			, 'apps/contact/contact-search-dialog.controller.js'
+		            			, 'apps/product/agreement-otp.controller.js'
 		            			, 'apps/product/product-base.controller.js']);
 			        }
 		        }
