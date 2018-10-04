@@ -508,6 +508,14 @@
             	postData.smcnSi = 0;
             }
             
+            if (vm.policy.tncnChk == false) {
+            	postData.tncnSi = 0;
+            }
+            
+            if (vm.policy.smcnChk == false) {
+            	postData.smcnSi = 0;
+            }
+            
             return postData;
         }
 

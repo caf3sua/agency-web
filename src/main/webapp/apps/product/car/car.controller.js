@@ -42,7 +42,7 @@
   	  			
   	  			// Create policy  				
   				"actualValue":0,
-  				"changePremium":0,
+  				"changePremium": "",
   				"chassisNumber":"",
   				"engineNumber":"",
   				"garageCheck":false,
@@ -152,6 +152,8 @@
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.thoihanden = DateUtils.convertDate(endDate);
   			
+            vm.policy.insuranceTarget = "New";
+            
   			// Load car branches
   			CarService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
             vm.registerDisableContactInfoValue('vm.policy.premium');
@@ -233,6 +235,8 @@
 
   			if (result.oldGycbhNumber == null){
   				result.insuranceTarget = "New";	
+  			} else {
+  				result.insuranceTarget = "Reuse";
   			}
   		}
   		
@@ -313,8 +317,35 @@
     		if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
     			vm.policy.nntxCheck = false;
     		}
-    		// tính lại phí
-    		getPremium();
+    		
+    		// tnds bb
+    		if (!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck) {
+    			vm.policy.tndsSoCho = "";
+    			getPremium();
+    		}
+    		if (vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && vm.policy.tndsSoCho != undefined && vm.policy.tndsSoCho != null && vm.policy.tndsSoCho != "") {
+        		getPremium();
+    		}
+    		// tnds tn
+    		if ((!vm.policy.tndstnCheck || vm.policy.tndstnCheck) && vm.policy.tndstnSoTien != "") {
+        		getPremium();
+    		}
+    		// tn nntx
+    		if (!vm.policy.nntxCheck && vm.policy.nntxSoTien != "") {
+    			getPremium();
+    		}
+    		
+    		if (!vm.policy.vcxCheck) {
+    			vm.policy.vcxSoTien = "";
+    		}
+    		
+    		if (vm.policy.vcxCheck && vm.policy.vcxSoTien == "" && vm.policy.namSX != ""){
+    			angular.element('#vcxSoTien').focus();
+    		}
+    		
+    		if ((vm.policy.vcxCheck == false || vm.policy.vcxCheck == true) && vm.policy.vcxSoTien != "") {
+    			getPremium();
+    		}
     	}
   		
   		function showChangePremium() {
@@ -339,8 +370,21 @@
   		function processComboResult(data, type) {
   			console.log(data);
   			switch(type){
-	  			case 'car-socho':
 	            case 'car-tndstn-sotien':
+	            	if(vm.policy.tndstnSoTien != "") {
+	            		getPremium();	
+	            		break;
+	            	}
+	            case 'car-socho':
+	            	if (vm.policy.tndstnCheck == true && vm.policy.tndstnSoTien != "") {
+	            		getPremium();	
+	            		break;
+	            	} else if (vm.policy.tndsbbCheck == true && vm.policy.tndsSoCho != undefined && vm.policy.tndsSoCho != null && vm.policy.tndsSoCho != "") {
+	            		getPremium();	
+	            		break;
+	            	} else {
+	            		break;
+	            	}
 	            case 'car-nntx-sotien':
 	            	getPremium();
 	            	break;
@@ -404,6 +448,7 @@
   			} else {
   				postData.namSX = postData.namSX.split(":")[0];
   			}
+  			
   			
   			// Remove unuse
   			if(!isCreate) {
