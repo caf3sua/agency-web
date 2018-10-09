@@ -168,6 +168,10 @@
 			'getByGycbhNumber' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/get-by-gycbhNumber'
+            },
+			'checkOTP' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/check-OTP'
             }
         });
 

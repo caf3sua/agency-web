@@ -149,7 +149,6 @@
 	      	if (vm.copyFromContact) {
 	      		if (vm.lineId == 'BVP') {
 	      			var dataBVP = $rootScope.saveNguoiYcBVP;
-	      			debugger
 	      			let address = dataBVP.homeAddress;
 	      			vm.policy.receiverUser.name = dataBVP.contactName;
 		      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
@@ -285,13 +284,18 @@
 			function onCreatePolicySuccess(data, headers) {
 				vm.clearResponseError();
 	            vm.loading = false;
-
-	            var checkOTP = vm.currentAccount.sendOtp;
-	            if (checkOTP == 1){
-	            	vm.showOTPSavePolicySuccessInfo();
-	            } else {
-	            	vm.showSavePolicySuccessInfo(obj);	
-	            }
+				// kiểm tra nếu TH đang soạn thì ko bật otp
+				if (data.statusPolicy == "90"){
+					var checkOTP = vm.currentAccount.sendOtp;
+		            if (checkOTP == 1){
+		            	$rootScope.gycbhNumber = data.gycbhNumber;
+		            	vm.showOTPSavePolicySuccessInfo();
+		            } else {
+		            	vm.showSavePolicySuccessInfo(obj);	
+		            }	
+				} else {
+					vm.showSavePolicySuccessInfo(obj);
+				}
 	        }
 				
 	        function onCreatePolicyError(error) {
@@ -341,7 +345,18 @@
 			function onUpdatePolicySuccess(data, headers) {
 				vm.clearResponseError();
 	            vm.loading = false;
-				vm.showSavePolicySuccessInfo(obj);
+	            // kiểm tra nếu TH đang soạn thì ko bật otp
+				if (data.statusPolicy == "90"){
+					var checkOTP = vm.currentAccount.sendOtp;
+		            if (checkOTP == 1){
+		            	$rootScope.gycbhNumber = data.gycbhNumber;
+		            	vm.showOTPSavePolicySuccessInfo();
+		            } else {
+		            	vm.showSavePolicySuccessInfo(obj);	
+		            }	
+				} else {
+					vm.showSavePolicySuccessInfo(obj);
+				}
 	        }
 				
 	        function onUpdatePolicyError(error) {
@@ -455,46 +470,55 @@
                     vm.loadContactForReceiver = false;
             		return;
             	}
-        		
-        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
-        		vm.policy.contactName = $rootScope.selectedContact.contactName;
-                vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
-                vm.policy.contactPhone = $rootScope.selectedContact.phone;
-                vm.policy.contactEmail = $rootScope.selectedContact.email;
-                vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
-                
-                let address = $rootScope.selectedContact.homeAddress;
-                vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
+        		// xử lý trường hợp chọn contact ở BVP và KCR khi có nhiều selectedContactChange
+        		if (vm.lineId == 'BVP' && vm.policy.nguoiycName != ""){
+        			
+        		} else if (vm.lineId == 'KCR' && vm.policy.contactCode != "" && vm.policy.contactCode != null && vm.policy.contactCode != undefined){
+        			
+        		} else {
+        			
+        			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+            		vm.policy.contactName = $rootScope.selectedContact.contactName;
+                    vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
+                    vm.policy.contactPhone = $rootScope.selectedContact.phone;
+                    vm.policy.contactEmail = $rootScope.selectedContact.email;
+                    vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
+                    
+                    let address = $rootScope.selectedContact.homeAddress;
+                    vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
 
-                let postcode = address.substring(address.lastIndexOf("::") + 2);
-                //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
-                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-                	vm.policy.contactAddressDistrictData = data;
-                	
-                	// Xy ly load THÔNG TIN CHỦ XE cho rieng CAR
-                    if (vm.lineId == 'CAR') {
-                    	vm.policy.insuredName = vm.policy.contactName;
-                    	vm.policy.insuredAddress = vm.policy.contactAddress;
-                    	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
-                    } else if (vm.lineId == 'TVI') {
-                    	// Bảo hiểm du lịch Việt Nam
-                    	vm.policy.listTviAdd[0].insuredName = vm.policy.contactName;
-                		vm.policy.listTviAdd[0].idPasswport = vm.policy.contactIdNumber;
-                		vm.policy.listTviAdd[0].dob = vm.policy.contactDob;
-                		vm.policy.listTviAdd[0].relationshipId = "30"; // Ban than
-                    } else if (vm.lineId == 'TVC') {
-                    	// Bảo hiểm du lịch Quoc te
-                    	vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
-                		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
-                		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
-                		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
-                    } else if (vm.lineId == 'TNC') {
-                    	// Bảo hiểm tai nạn con người
-                    	vm.policy.listTncAdd[0].insuredName = vm.policy.contactName;
-                		vm.policy.listTncAdd[0].idPasswport = vm.policy.contactIdNumber;
-                		vm.policy.listTncAdd[0].dob = vm.policy.contactDob;
-                    }
-                });
+                    let postcode = address.substring(address.lastIndexOf("::") + 2);
+                    //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
+                    ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+                    	vm.policy.contactAddressDistrictData = data;
+                    	
+                    	// Xy ly load THÔNG TIN CHỦ XE cho rieng CAR
+                        if (vm.lineId == 'CAR') {
+                        	vm.policy.insuredName = vm.policy.contactName;
+                        	vm.policy.insuredAddress = vm.policy.contactAddress;
+                        	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+                        } else if (vm.lineId == 'TVI') {
+                        	// Bảo hiểm du lịch Việt Nam
+                        	vm.policy.listTviAdd[0].insuredName = vm.policy.contactName;
+                    		vm.policy.listTviAdd[0].idPasswport = vm.policy.contactIdNumber;
+                    		vm.policy.listTviAdd[0].dob = vm.policy.contactDob;
+                    		vm.policy.listTviAdd[0].relationshipId = "30"; // Ban than
+                        } else if (vm.lineId == 'TVC') {
+                        	// Bảo hiểm du lịch Quoc te
+                        	vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+                    		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+                    		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+                    		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+                        } else if (vm.lineId == 'TNC') {
+                        	// Bảo hiểm tai nạn con người
+                        	vm.policy.listTncAdd[0].insuredName = vm.policy.contactName;
+                    		vm.policy.listTncAdd[0].idPasswport = vm.policy.contactIdNumber;
+                    		vm.policy.listTncAdd[0].dob = vm.policy.contactDob;
+                        }
+                    });
+        			
+        		}
+        	
         	}
         });
 
