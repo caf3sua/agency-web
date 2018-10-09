@@ -22,7 +22,7 @@
 		function confirmCopyAgreement(order) {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'fa fa-edit',
+                icon: 'fas fa-copy',
                 theme: 'modern',
                 type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn sao chép hợp đồng ' + order.gycbhNumber + ' này ?</div>',

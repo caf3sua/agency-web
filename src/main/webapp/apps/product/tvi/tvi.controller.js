@@ -251,7 +251,13 @@
             vm.tvcAddBaseVM = {};
             console.log(vm.policy);
         }
-        function savePolicy() {
+        function savePolicy(type) {
+        	if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+        	} else {
+        		vm.policy.statusPolicy = "90"; // cho thanh toan
+        	}
+        	
             vm.loading = true;
             vm.policy.tvcPackage = vm.policy.travelWithId;
             vm.policy.receiverMoible =  vm.policy.receiverUser.mobile;

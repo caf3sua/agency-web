@@ -264,7 +264,13 @@
             vm.tvcAddBaseVM = {};
             console.log(vm.policy);
         }
-        function savePolicy() {
+        function savePolicy(type) {
+        	if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+        	} else {
+        		vm.policy.statusPolicy = "90"; // cho thanh toan
+        	}
+        	
             vm.loading = true;
             vm.policy.propserName = vm.policy.contactName;
             vm.policy.propserNgaysinh = vm.policy.contactDob;

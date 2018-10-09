@@ -296,7 +296,13 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function savePolicy() {
+        function savePolicy(type) {
+        	if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+        	} else {
+        		vm.policy.statusPolicy = "90"; // cho thanh toan
+        	}
+        	
         	vm.policy.insuredAddress = vm.policy.insuredAddress
 				+ "::" + vm.policy.insuredAddressDistrict.pkDistrict + "::" + vm.policy.insuredAddressDistrict.pkPostcode;
         	

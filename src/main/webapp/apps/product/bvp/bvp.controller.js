@@ -346,7 +346,17 @@
         	} else{
         		result.thaisanChk	= false;
         	}
-        	result.thoihanbhTu = result.inceptionDate;
+//        	result.thoihanbhTu = result.inceptionDate;
+//        	result.thoihanbhDen = result.expiredDate;
+        	var startDate = new Date();
+        	var endDate = new Date();
+        	// add a day
+            startDate.setDate(startDate.getDate() + 1);
+            result.thoihanbhTu = DateUtils.convertDate(startDate);
+            // add a day
+            endDate.setFullYear(endDate.getFullYear() + 1);
+            result.thoihanbhDen = DateUtils.convertDate(endDate);
+        	
         	result.qlChinhPhi = result.chuongtrinhPhi;
         	result.ngaySinh = result.nguoidbhNgaysinh;
         	
@@ -357,7 +367,7 @@
             if (result.oldGycbhNumber == null){
   				result.insuranceTarget = "New";	
   			}
-            result.thoihanbhDen = result.expiredDate;
+            
             $rootScope.nguoith.cmnd = result.nguoithCmnd;
             $rootScope.nguoith.quanhe = result.nguoithQuanhe;
             
@@ -546,7 +556,13 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-        function savePolicy() {
+        function savePolicy(type) {
+        	if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+        	} else {
+        		vm.policy.statusPolicy = "90"; // cho thanh toan
+        	}
+        	
             var postData = getPostData(true);
             
             if (vm.gksFile != null && vm.gksFile.length > 0){

@@ -195,7 +195,13 @@
             }
   		}
   		
-  		function savePolicy() {
+  		function savePolicy(type) {
+  			if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+        	} else {
+        		vm.policy.statusPolicy = "90"; // cho thanh toan
+        	}
+  			
   			// Process address
   			vm.policy.insuranceAddress = vm.policy.insuranceAddress 
   				+ "::" + vm.policy.insuranceAddressDistrict.pkDistrict + "::" + vm.policy.insuranceAddressDistrict.pkPostcode;
