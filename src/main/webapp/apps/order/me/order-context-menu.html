@@ -12,7 +12,7 @@
         </div>
 		<span class="bv-detail-text-table">Hủy</span>
 	</div>
-    <div ng-show="order.statusPolicyId == 90 || order.statusPolicyId == 89" ng-click="vm.confirmEditAgreement(order)">
+    <div ng-show="order.statusPolicyId == 80 || order.statusPolicyId == 81 || order.statusPolicyId == 90 || order.statusPolicyId == 89" ng-click="vm.confirmEditAgreement(order)">
         <div class="bv-detail-icon-table">
             <i class="icon-pencil"></i>
         </div>
@@ -36,15 +36,22 @@
         </div>
         <span class="bv-detail-text-table">Khách hàng nợ phí</span>
     </div>
+    
     <div ng-click="vm.confirmCopyAgreement(order)">
         <div class="bv-detail-icon-table">
-            <i class="icon-pencil"></i>
+            <i class="fas fa-copy"></i>
         </div>
         <span class="bv-detail-text-table">Sao chép Đơn hàng</span>
     </div>
+    <div ng-click="vm.confirmResendOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span class="bv-detail-text-table">Gửi lại OTP xác nhận</span>
+    </div>
     
     <div class="pull-right">
-        <div class="display-inline-block color-0d47a1"   ng-show="order.createType == 0">
+        <div class="display-inline-block color-0d47a1" ng-show="order.createType == 0">
             <div  class="bv-detail-icon-table color-0d47a1"  >
                 <i class="fas fa-lightbulb color-0d47a1" ></i>
             </div>

@@ -53,6 +53,10 @@
             'getByGycbhNumber' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/get-by-gycbhNumber'
+            },
+            'resendOtp' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/resend-confirm-otp'
             }
         });
 
