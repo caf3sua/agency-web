@@ -96,17 +96,17 @@
                 <div class="margin-top-5">
                     <select class="bv-select-box-kh form-control" ng-model="vm.searchCriterial.lstStatusPolicy[0]">
                     	<option value="">-- Trạng thái hợp đồng --</option>
-                    	<option value="91">Thanh toán thành công</option>
-                        <option value="90">Chưa thanh toán</option>
-                        <option value="89">Hủy hợp đồng</option>
-                        <option value="92">Chờ giám định của đại lý</option>
-                        <option value="93">Chờ giám định của Bảo Việt</option>
+                    	<option value="90">Chờ thanh toán</option>
+                    	<option value="91">Chờ Bảo Việt cấp đơn</option>
+						<option value="89">Đại lý, Khách hàng hủy đơn</option>                        
+                        <option value="92">Chờ Bảo Việt cấp GCNBH (bản cứng)</option>
+                        <option value="93">Chờ BV giám định</option>
                     </select>
                 </div>
             </div>
             <!-- Button -->
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30">
-                <button class="bv-btn-step2" ng-click="vm.searchOrder()" button-spinner="vm.isLoading" button-prepend="fa fa-search" ng-disabled="vm.isLoading">
+                <button class="bv-btn-step2" ng-click="vm.searchOrderNophi()" button-spinner="vm.isLoading" button-prepend="fa fa-search" ng-disabled="vm.isLoading">
                 	Tìm kiếm
                 </button>
             </div>

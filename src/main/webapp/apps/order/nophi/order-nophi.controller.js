@@ -39,7 +39,7 @@
   		vm.sotiennophi;
   		
   		vm.confirmDeleteOrder = confirmDeleteOrder;
-  		vm.searchOrder = searchOrder;
+  		vm.searchOrderNophi = searchOrderNophi;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.gotoDetail = gotoDetail;
   		
@@ -63,7 +63,7 @@
   			OrderService.deleteOrder({id: id}, onSuccess, onError);
   			
   			function onSuccess(result) {
-  				searchOrder();
+  				searchOrderNophi();
   				toastr.success('Hủy thành công');
   			}
   			
@@ -96,7 +96,7 @@
             });
   		}
   		
-  		function searchOrder() {
+  		function searchOrderNophi() {
   			vm.totalItems = null;
   			vm.isLoading = true;
   			vm.orders = [];
@@ -164,7 +164,7 @@
   			
   			function onSuccess(result) {
   				toastr.success("Cập nhật khách hàng nợ phí cho hợp đồng <strong>" + order.gycbhNumber + "</strong> thành công");
-  				searchOrder();
+  				searchOrderNophi();
   			}
   			
   			function onError() {
