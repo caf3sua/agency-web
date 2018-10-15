@@ -285,7 +285,7 @@
 				vm.clearResponseError();
 	            vm.loading = false;
 				// kiểm tra nếu TH đang soạn thì ko bật otp
-				if (data.statusPolicy == "90"){
+//				if (data.statusPolicy == "90"){
 					var checkOTP = vm.currentAccount.sendOtp;
 		            if (checkOTP == 1){
 		            	$rootScope.gycbhNumber = data.gycbhNumber;
@@ -293,9 +293,9 @@
 		            } else {
 		            	vm.showSavePolicySuccessInfo(obj);	
 		            }	
-				} else {
-					vm.showSavePolicySuccessInfo(obj);
-				}
+//				} else {
+//					vm.showSavePolicySuccessInfo(obj);
+//				}
 	        }
 				
 	        function onCreatePolicyError(error) {
@@ -346,7 +346,7 @@
 				vm.clearResponseError();
 	            vm.loading = false;
 	            // kiểm tra nếu TH đang soạn thì ko bật otp
-				if (data.statusPolicy == "90"){
+//				if (data.statusPolicy == "90"){
 					var checkOTP = vm.currentAccount.sendOtp;
 		            if (checkOTP == 1){
 		            	$rootScope.gycbhNumber = data.gycbhNumber;
@@ -354,9 +354,9 @@
 		            } else {
 		            	vm.showSavePolicySuccessInfo(obj);	
 		            }	
-				} else {
-					vm.showSavePolicySuccessInfo(obj);
-				}
+//				} else {
+//					vm.showSavePolicySuccessInfo(obj);
+//				}
 	        }
 				
 	        function onUpdatePolicyError(error) {

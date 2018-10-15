@@ -393,12 +393,13 @@
   	    	}
   		}
   		
-  		function savePolicy(type) {
-  			if (type == "0"){
-        		vm.policy.statusPolicy = "80"; // dang soan
-        	} else {
-        		vm.policy.statusPolicy = "90"; // cho thanh toan
-        	}
+//      function savePolicy(type) {		// TH để lưu tạm
+  		function savePolicy() {
+//      	if (type == "0"){
+//      		vm.policy.statusPolicy = "80"; // dang soan
+//      	} else {
+//      		vm.policy.statusPolicy = "90"; // cho thanh toan
+//      	}
   			
             vm.loading = true;
   			console.log('createPolicy');
