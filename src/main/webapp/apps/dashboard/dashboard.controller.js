@@ -6,9 +6,9 @@
       .module('app')
       .controller('DashboardController', DashboardController);
     
-    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller'];
+    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller', '$state'];
 
-      function DashboardController($scope, DashboardService, ReportService, $controller) {
+      function DashboardController($scope, DashboardService, ReportService, $controller, $state) {
     	  var vm = this;
         
 	        // Declare variable and method
@@ -44,11 +44,23 @@
 //	        vm.chartCommissionOptions.yAxis[0].show = false;
 //	        vm.chartCommissionOptions.xAxis[0].show = false;
 	        
+	        // paging
+	        vm.page = 1;
+	        vm.itemsPerPage = 3;
+	        
+	        vm.totalItemsAgency = 0;
+	        vm.totalItemsAgreement = 0;
+	        
 	        vm.dataIncome = {};
 	        vm.dataCommission = {};
 	        vm.searchReport = searchReport;
 	        vm.changeDate = changeDate;
+	        vm.goOrder = goOrder;
+	        vm.getAllWaitAgency = getAllWaitAgency;
+	        vm.getAllWaitAgreement = getAllWaitAgreement;
 	        
+	        vm.AllWaitAgency = [];
+	        vm.AllWaitAgreement = [];
 	        
 	        // Test data
 	        angular.element(document).ready(function () {
@@ -58,6 +70,8 @@
 	    	// Init controller
 	  		(function initController() {
 	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
+	  			getAllWaitAgency();
+	  			getAllWaitAgreement();
 	  		})();
 
 	  		// Implement function 
@@ -70,6 +84,44 @@
 	    		} else {
 	    			vm.isSearchCollapsed = false;
 	    		}
+	  		}
+	  		
+	  		function getAllWaitAgency() {
+	    		vm.AllWaitAgency = [];
+	    		DashboardService.getAllWaitAgency({
+	    			page: vm.page - 1,
+	                size: vm.itemsPerPage
+	            }, onSuccess, onError);
+	    		
+	    		function onSuccess(result, headers) {
+	    			vm.totalItemsAgency = headers('X-Total-Count');
+	    			vm.AllWaitAgency = result;
+	            }
+
+	            function onError(result) {
+	            	
+	            }
+	  		}
+	  		
+	  		function getAllWaitAgreement() {
+	    		vm.AllWaitAgreement = [];
+	    		DashboardService.getAllWaitAgreement({
+	    			page: vm.page - 1,
+	                size: vm.itemsPerPage
+	            }, onSuccess, onError);
+	    		
+	    		function onSuccess(result, headers) {
+	    			vm.totalItemsAgreement = headers('X-Total-Count');
+	    			vm.AllWaitAgreement = result;
+	            }
+
+	            function onError(result) {
+	            	
+	            }
+	  		}
+	  		
+	  		function goOrder() {
+	  			$state.go('order.me');
 	  		}
 	  		
 	  		function searchReport() {

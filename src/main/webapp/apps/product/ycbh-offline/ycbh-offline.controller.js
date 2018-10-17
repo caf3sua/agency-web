@@ -19,7 +19,8 @@
     		  "imgGycbhContents": null,
     		  "imgKhaisinhContents": null,
     		  "maSanPham": "",
-    		  "totalPremium": ""
+    		  "totalPremium": "",
+    		  "statusPolicy": "93"
         };
 		 vm.gycbhFiles = [];
 		 vm.documentFiles = [];
@@ -227,12 +228,18 @@
   			$state.go("app.order");
   		}
   		
-  		function saveYcbhOffline() {
+  		function saveYcbhOffline(type) {
   			if (validator()){
   			
   			if (vm.form.$invalid) {
   				return;
   			}
+  			
+        	if (type == "0"){
+        		vm.policy.statusPolicy = "80"; // dang soan
+	    	} else {
+	    		vm.policy.statusPolicy = "93"; // gửi BV giám định
+	    	}
   			
   			vm.isLoading = true;
   			console.log('saveYcbhOffline');
