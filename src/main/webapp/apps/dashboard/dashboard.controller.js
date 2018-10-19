@@ -58,6 +58,7 @@
 	        vm.goOrder = goOrder;
 	        vm.getAllWaitAgency = getAllWaitAgency;
 	        vm.getAllWaitAgreement = getAllWaitAgreement;
+	        vm.confirmViewAgreement = confirmViewAgreement;
 	        
 	        vm.AllWaitAgency = [];
 	        vm.AllWaitAgreement = [];
@@ -121,7 +122,18 @@
 	  		}
 	  		
 	  		function goOrder() {
-	  			$state.go('order.me');
+//	  			$state.go("order.me", {status: 81});
+	  			$state.go("order.me");
+	  		}
+	  		
+	  		function confirmViewAgreement(order) {
+	  			if (order.createType == "0"){
+	  				$state.go("order.order-detail", {id: order.agreementId});
+	  			} else if (order.createType == "2") {
+	  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
+	  			} else {
+	  				$state.go("product.ycbh-offline-detail", {id: order.gycbhNumber});
+	  			}
 	  		}
 	  		
 	  		function searchReport() {

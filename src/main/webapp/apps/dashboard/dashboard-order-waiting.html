@@ -28,8 +28,8 @@
                         <p class="margin-0 bv-table-sub-text">{{item.contactPhone}}</p>
                     </td>
                     <td>
-                        <i class="icon-telephone margin-right-5 bv-table-icon" href="tel:{{item.contactPhone}}"></i>
-                        <i class="icon-information bv-table-icon"></i>
+                        <a href="tel:{{item.contactPhone}}"><i class="icon-telephone margin-right-5 bv-table-icon"></i></a>
+                        <i class="icon-information bv-table-icon" ng-click="vm.confirmViewAgreement(item)"></i>
                     </td>
                 </tr>
             </table>

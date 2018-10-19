@@ -30,9 +30,10 @@
 			        }
 		        }
 		})
+		
 		.state('order.me', {
             parent: 'order',
-            url: '/me',
+            url: '/me?status',
             templateUrl: 'apps/order/me/order.html',
             data : { 
             	title: 'ORDER_ME',
@@ -63,6 +64,7 @@
 		        }
             }
         })
+        
         .state('order.nophi', {
             parent: 'order',
             url: '/nophi',
