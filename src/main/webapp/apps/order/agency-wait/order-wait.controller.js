@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('OrderController', OrderController);
+        .controller('OrderAgencyController', OrderAgencyController);
 
-    OrderController.$inject = ['$scope', '$stateParams', '$controller', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS', '$uibModal'];
+    OrderAgencyController.$inject = ['$scope', '$stateParams', '$controller', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS', '$uibModal'];
 
-    function OrderController ($scope, $stateParams, $controller, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS, $uibModal) {
+    function OrderAgencyController ($scope, $stateParams, $controller, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS, $uibModal) {
     	var vm = this;
         
     	// Properties & function declare
@@ -29,9 +29,7 @@
   			  "email": "",
   			  "fromDate": "",
   			  "gycbhNumber": "",
-  			  "lstStatusPolicy": [
-  			    ""
-  			  ],
+  			  "statusPolicy": "",
   			  "phone": "",
   			  "productCode": "",
   			  "toDate": "",
@@ -39,7 +37,7 @@
   		};
   		vm.sotiennophi;
   		
-  		vm.searchOrder = searchOrder;
+  		vm.searchAgencyOrder = searchAgencyOrder;
   		vm.confirmResendEmail = confirmResendEmail;
   		vm.confirmKhachhangnophi = confirmKhachhangnophi;
   		vm.confirmTaituc = confirmTaituc;
@@ -58,11 +56,7 @@
   			
   		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
   		   
-  		    var status = $stateParams.status;
-  		    if (status != undefined && status != null){
-  		    	vm.searchCriterial.lstStatusPolicy.push(status);
-  		    }
-  		    searchOrder();
+  		    searchAgencyOrder();
   		})();
   		
   		function changeDate(){
@@ -75,14 +69,14 @@
   			return true;
   		}
   		
-  		function searchOrder() {
+  		function searchAgencyOrder() {
   			if (changeDate()) {
   				vm.totalItems = null;
   	  			vm.isLoading = true;
   	  			vm.orders = [];
   	  			var order = {};
 
-  	  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
+  	  			OrderService.searchOrderAgency(vm.searchCriterial, onSearchSuccess, onSearchError);
   	  			function onSearchSuccess(result, headers) {
   	  				// Paging
   	  				vm.orders = result;
@@ -109,7 +103,7 @@
   			order.pageable.page = vm.page - 1;
         	console.log('searchAllTransition, page: ' + order.pageable.page);
         	
-  			OrderService.search(order, onSearchSuccess, onSearchError);
+  			OrderService.searchOrderAgency(order, onSearchSuccess, onSearchError);
   			function onSearchSuccess(result, headers) {
   				// Paging
   				vm.orders = result;

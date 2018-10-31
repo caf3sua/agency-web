@@ -338,6 +338,16 @@
         </a>
         <ul class="nav-sub">
             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+                <a ui-sref="order.baoviet">
+                    <span class="nav-text">Chờ Bảo Việt giải quyết</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+                <a ui-sref="order.agency">
+                    <span class="nav-text">Chờ đại lý giải quyết</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
                 <a ui-sref="order.me">
                     <span class="nav-text">Đơn hàng của tôi</span>
                 </a>
@@ -345,6 +355,11 @@
             <li ui-sref-active="active">
                 <a ui-sref="order.nophi">
                     <span class="nav-text">Đơn hàng nợ phí</span>
+                </a>
+            </li>
+             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+                <a ui-sref="order.other">
+                    <span class="nav-text">Yêu cầu bảo hiểm khác</span>
                 </a>
             </li>
         </ul>

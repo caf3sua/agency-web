@@ -56,6 +56,7 @@
 	        vm.searchReport = searchReport;
 	        vm.changeDate = changeDate;
 	        vm.goOrder = goOrder;
+	        vm.goOrderWait = goOrderWait;
 	        vm.getAllWaitAgency = getAllWaitAgency;
 	        vm.getAllWaitAgreement = getAllWaitAgreement;
 	        vm.confirmViewAgreement = confirmViewAgreement;
@@ -123,7 +124,11 @@
 	  		
 	  		function goOrder() {
 //	  			$state.go("order.me", {status: 81});
-	  			$state.go("order.me");
+	  			$state.go("order.agency");
+	  		}
+	  		
+	  		function goOrderWait() {
+	  			$state.go("order.baoviet");
 	  		}
 	  		
 	  		function confirmViewAgreement(order) {
