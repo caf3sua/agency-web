@@ -54,7 +54,7 @@
       			  "contactSex": "1",
       			  "dateOfBirth": "",
       			  "email": "",
-      			  "groupType": "POTENTIAL",
+      			  "groupType": "",
       			  "homeAddress": "",
       			  "idNumber": "",
       			  "listContactProduct": [],

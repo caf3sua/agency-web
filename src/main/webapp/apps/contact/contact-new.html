@@ -82,25 +82,24 @@
 	            <input type="text" class="bv-input" placeholder="Nghề nghiệp" ng-model="vm.contact.occupation" />
 	        </div>
 	    </div>
-	
 		<div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
-	        <div class="bv-title-from">
-	            <p>Loại khách hàng</p>
-	        </div>
-	        <div class="margin-top-5">
-	            <select class="bv-select-box form-control" name="groupType" ng-model="vm.contact.groupType">
-                    <option value="POTENTIAL">Khách hàng tiềm năng</option>
-                    <option value="FAMILIAR">Khách hàng thân thiện</option>
-                    <option value="VIP">Khách hàng VIP</option>
-                </select>
-	        </div>
-	    </div>
-	    <div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
 	        <div class="bv-title-from">
 	            <p>Link Facebook</p>
 	        </div>
 	        <div class="margin-top-5">
 	            <input rows="5" type="text" class="bv-input" placeholder="Link facebook" ng-model="vm.contact.facebookId" />
+	        </div>
+	    </div>
+		<div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
+	        <div class="bv-title-from">
+	            <p>Loại khách hàng</p>
+	        </div>
+	        <div class="margin-top-5">
+	            <select class="bv-select-box form-control" name="groupType" ng-model="vm.contact.groupType" ng-disabled="vm.contact.groupType == 'POTENTIAL'">
+                    <option value="POTENTIAL">Khách hàng tiềm năng</option>
+                    <option value="FAMILIAR">Khách hàng thân thiện</option>
+                    <option value="VIP">Khách hàng VIP</option>
+                </select>
 	        </div>
 	    </div>
 	</div>

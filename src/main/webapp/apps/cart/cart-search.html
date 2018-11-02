@@ -89,19 +89,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
+            <!-- <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
                 <div class="bv-title-from">
                     <p>Trạng thái</p>
                 </div>
                 <div class="margin-top-5">
                     <select class="bv-select-box-kh form-control" ng-model="vm.searchCriterial.statusPolicy">
                     	<option value="">-- Trạng thái hợp đồng --</option>
-                    	<option value="89">Đại lý, Khách hàng hủy đơn</option>
-                    	<option value="99">Bảo Việt từ chối</option>
-                    	<option value="84">Đơn quá  hạn thanh toán</option>
+                    	<option value="90">Chờ thanh toán</option>
+                    	<option value="100">Hoàn thành</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
                 <div class="bv-title-from">
                     <p>Hình thức cấp</p>
@@ -119,12 +118,12 @@
 		<!-- Button -->
 		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">
         <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;">
-            <button class="bv-btn-step2" ng-click="vm.searchOrderOther()" button-spinner="vm.isLoading" button-prepend="fa fa-search" ng-disabled="vm.isLoading">
+            <button class="bv-btn-step2" ng-click="vm.searchCart()" button-spinner="vm.isLoading" button-prepend="fa fa-search" ng-disabled="vm.isLoading">
             	Tìm kiếm
             </button>
             </div>
         </div>
         
-        <!-- Table data -->
-        <div ng-include="'apps/order/other/order-other-wait-table.html'"></div>
+        <!-- Table content -->
+	<div ng-include="'apps/cart/cart-data-content.html'"></div>
     </div>

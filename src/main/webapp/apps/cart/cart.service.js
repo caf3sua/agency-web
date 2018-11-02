@@ -13,6 +13,11 @@
                 url : 'api/agency/product/agreement/get-cart',
                 isArray : true
             },
+            'searchCart' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/search-cart',
+                isArray : true
+            },
             'getBanksByPaymentCode' : {
                 method : 'GET',
                 url : 'api/agency/payment/getBanksByPaymentCode',
