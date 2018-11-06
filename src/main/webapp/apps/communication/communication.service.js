@@ -10,8 +10,9 @@
         var service = $resource('', {}, {
             'getByGycbhNumber' : {
                 method : 'POST',
-                url : 'api/agency/product/agreement/getYcbhOffline-by-gycbhNumber'
-            }
+                url : 'api/agency/product/agreement/get-by-gycbhNumber'
+            },
+            'saveCommunication': {url : 'api/agency/common/createCommunication', method: 'POST'}
         });
 
         return service;

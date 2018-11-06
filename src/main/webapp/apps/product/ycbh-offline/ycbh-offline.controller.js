@@ -141,6 +141,7 @@
   	              		    "fileType": file.type,
   	              		    "filename": file.name
   	              		};
+  	            	  	debugger
   	            	  	vm.gycbhFiles.push(gycbhFiles);
   	            	};
   			 	});

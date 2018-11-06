@@ -57,11 +57,7 @@
   			$controller('ProductBaseController', { vm: vm, $scope: $scope });
   			
   		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
-  		   
-  		    var status = $stateParams.status;
-  		    if (status != undefined && status != null){
-  		    	vm.searchCriterial.lstStatusPolicy.push(status);
-  		    }
+
   		    searchOrder();
   		})();
   		

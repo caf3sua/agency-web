@@ -261,7 +261,6 @@
     			"paymentFee": vm.sumMoney,
     			"paymentType": vm.typeBank
         	}
-            debugger
         	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
         }
         

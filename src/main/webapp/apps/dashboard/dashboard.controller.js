@@ -6,9 +6,9 @@
       .module('app')
       .controller('DashboardController', DashboardController);
     
-    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller', '$state'];
+    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller', '$state', '$uibModal', '$ngConfirm', '$rootScope'];
 
-      function DashboardController($scope, DashboardService, ReportService, $controller, $state) {
+      function DashboardController($scope, DashboardService, ReportService, $controller, $state, $uibModal, $ngConfirm, $rootScope) {
     	  var vm = this;
         
 	        // Declare variable and method
@@ -59,10 +59,11 @@
 	        vm.goOrderWait = goOrderWait;
 	        vm.getAllWaitAgency = getAllWaitAgency;
 	        vm.getAllWaitAgreement = getAllWaitAgreement;
-	        vm.confirmViewAgreement = confirmViewAgreement;
+	        vm.confirmCommunication = confirmCommunication;
 	        
 	        vm.AllWaitAgency = [];
 	        vm.AllWaitAgreement = [];
+	        var modalInstance = null;
 	        
 	        // Test data
 	        angular.element(document).ready(function () {
@@ -131,14 +132,50 @@
 	  			$state.go("order.baoviet");
 	  		}
 	  		
-	  		function confirmViewAgreement(order) {
-	  			if (order.createType == "0"){
-	  				$state.go("order.order-detail", {id: order.agreementId});
-	  			} else if (order.createType == "2") {
-	  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
-	  			} else {
-	  				$state.go("product.ycbh-offline-detail", {id: order.gycbhNumber});
-	  			}
+	  		$scope.$on('saveCommunicationSuccess', function() {
+	  			getAllWaitAgency();
+	  			getAllWaitAgreement();
+            });
+	  		
+	  		function confirmCommunication(order) {
+	  			$ngConfirm({
+	                title: 'Xác nhận',
+	                icon: 'fas fa-comments',
+	                theme: 'modern',
+	                type: 'red',
+	                content: '<div class="text-center">Bạn chắc chắn muốn trao đổi hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+	                animation: 'scale',
+	                closeAnimation: 'scale',
+	                buttons: {
+	                    ok: {
+	                    	text: 'Đồng ý',
+	                        btnClass: "btn-blue",
+	                        action: function(scope, button){
+	                        	communication(order);
+		                    }
+	                    },
+	                    close: {
+	                    	text: 'Hủy'
+	                    }
+	                },
+	            });
+	  		}
+	  		
+	  		function communication(order) {
+	  			$rootScope.communication_GycbhNumber = order.gycbhNumber;
+	            modalInstance = $uibModal.open({
+	                animation: true,
+	                templateUrl: 'apps/communication/view/communication-dialog.html',
+	                controller: 'CommunicationController',
+	                controllerAs: 'vm',
+	                size: 'lg',
+	                resolve: {
+	                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+	                        $translatePartialLoader.addPart('global');
+	                        return $translate.refresh();
+	                    }]
+	                }
+	            });	            
 	  		}
 	  		
 	  		function searchReport() {

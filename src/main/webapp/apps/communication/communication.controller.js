@@ -6,10 +6,10 @@
         .controller('CommunicationController', CommunicationController);
 
     CommunicationController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, 'ContactCommonDialogService', 'ProductCommonService', '$ngConfirm', 'CommunicationService', 'ContactService', 'DateUtils'];
+    	, 'ProductCommonService', '$ngConfirm', 'CommunicationService', 'DateUtils', '$uibModalInstance'];
 
     function CommunicationController ($scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, ContactCommonDialogService, ProductCommonService, $ngConfirm, CommunicationService, ContactService, DateUtils) {
+    		, ProductCommonService, $ngConfirm, CommunicationService, DateUtils, $uibModalInstance) {
         var vm = this;
 
         vm.policy = {
@@ -19,7 +19,7 @@
     		  "conversationContent": ""
         };
 		 vm.gycbhFiles = [];
-		 vm.gycbhFileModel = [];
+		 vm.fileModel = [];
 		 vm.isLoading = false;
 		 
         // Properties & function declare
@@ -36,13 +36,10 @@
   			// instantiate base controller
   			$controller('ProductBaseController', { vm: vm, $scope: $scope });
   			
-  			console.log($stateParams.productCode);
-  			vm.policy.maSanPham = $stateParams.productCode;
-  			
   			vm.gycbhNumber = {
 	  		    	  "gycbhNumber": ""
 		    };
-		    vm.gycbhNumber = $stateParams.id;
+		    vm.gycbhNumber = $rootScope.communication_GycbhNumber;
 		    
 		    // Edit
 		    if (vm.gycbhNumber != null) {
@@ -50,21 +47,10 @@
 	  			
 	  			function onSuccess(data) {
 	  				vm.policy = data;
-	  				vm.policy.maSanPham = data.maSanPham;
+	  				vm.policy.maSanPham = data.lineId;
 	  				
 	  				// Load file
 	  				loadFileInEditMode();
-	  				
-	  				ContactService.getByCode({contactCode : data.contactCode} , onGetContactSuccess, onGetContactError);
-	  				function onGetContactSuccess(result) {
-	  					vm.policy.contactName = result.contactName;
-	  					vm.policy.dateOfBirth = result.dateOfBirth;
-	  	  			}
-	  				
-	  				function onGetContactError() {
-	  	  			}
-	  				
-	  				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
 	  			}
 	  			function onError() {
 	  			}
@@ -78,9 +64,9 @@
   	  	  		var files = vm.policy.imgGycbhContents;
 				angular.forEach(files, function(file, key) {
 					let docFile = dataURLtoFile('data:image/*;base64,' + file.content, 'gycbhFile'+key+'.jpg');
-					vm.gycbhFileModel.push(docFile);
+					vm.fileModel.push(docFile);
 			 	});
-				console.log(vm.gycbhFileModel);
+				console.log(vm.fileModel);
   			}
   		}
   		
@@ -94,10 +80,10 @@
   		}
   		
   		// watch
-  		$scope.$watch('vm.gycbhFileModel', function () {
-  			if (vm.gycbhFileModel != undefined && vm.gycbhFileModel != null && vm.gycbhFileModel && vm.gycbhFileModel.length > 0) {
+  		$scope.$watch('vm.fileModel', function () {
+  			if (vm.fileModel != undefined && vm.fileModel != null && vm.fileModel && vm.fileModel.length > 0) {
   				vm.gycbhFiles = [];
-  				var files = vm.gycbhFileModel;
+  				var files = vm.fileModel;
   				
   				angular.forEach(files, function(file) {
   					var fileReader = new FileReader();
@@ -121,80 +107,37 @@
   		
   		// Function
   		function cancel() {
-  			$state.go("app.order");
+  			$uibModalInstance.dismiss('cancel');
   		}
   		
-  		function saveCommunication(type) {
+  		function saveCommunication() {
   			if (validator()){
-  			
-  			if (vm.form.$invalid) {
-  				return;
-  			}
-  			
-        	if (type == "0"){
-        		vm.policy.statusPolicy = "80"; // dang soan
-	    	} else {
-	    		vm.policy.statusPolicy = "93"; // gửi BV giám định
-	    	}
-  			
-  			vm.isLoading = true;
-  			console.log('saveCommunication');
-  			vm.policy.imgDocumentContents = vm.documentFiles;
-  			vm.policy.imgGycbhContents = vm.gycbhFiles;
-  			vm.policy.imgKhaisinhContents = vm.khaisinhFiles;
-  			
-  			var copyAgreement = $stateParams.copy;
-  			if (copyAgreement == "true"){
-  				vm.policy.agreementId = null;
-  				vm.policy.gycbhNumber =  null;
-  			}
-  			
-  			// Edit
-  			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined) {
-  				console.log('Update ycbh offline' + JSON.stringify(vm.policy));
-  				// Edit
-				// Save ycbh offline
-      			ProductCommonService.saveCommunication(vm.policy, onSuccess, onError);
+	  			if (vm.form.$invalid) {
+	  				return;
+	  			}
+	  			
+	  			vm.isLoading = true;
+	  			vm.policy.imgGycbhContents = vm.gycbhFiles;
+	  			
+  				console.log('save communication' + JSON.stringify(vm.policy));
+				// Save
+  				CommunicationService.saveCommunication(vm.policy, onSuccess, onError);
       			
       			function onSuccess(data) {
       				vm.isLoading = false;
       				console.log(data);
-      				showUpdateYcbhInfo(data);
+      				showSaveSuccess(data);
       			}
       			
       			function onError(data) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi cập nhật yêu cầu bảo hiểm offline.");
+      				toastr.error("Lỗi khi tạo trao đổi thông tin.");
       			}
-  			} else {
-  				ProductCommonService.getPolicyNumber({lineId: vm.policy.maSanPham}).$promise.then(function(result) {
-  	            	console.log('Done get gychbhNumber: ' + result.policyNumber);
-  	            	// Add ychbhNumber
-  	            	vm.policy.gycbhNumber  = result.policyNumber;
-
-  	            	// Save ycbh offline
-  	      			ProductCommonService.saveCommunication(vm.policy, onSuccess, onError);
-  	      			
-  	      			function onSuccess(data) {
-  	      				vm.isLoading = false;
-  	      				console.log(data);
-  	      				showSaveSaveYcbhInfo(data);
-  	      			}
-  	      			
-  	      			function onError(data) {
-  	      				vm.isLoading = false;
-  	      				toastr.error("Lỗi khi tạo yêu cầu bảo hiểm offline.");
-  	      			}
-  	            }).catch(function(data, status) {
-  	    			console.log('Error get gychbhNumber');
-  	    			toastr.error("Lỗi khi lấy số GYCBH");
-  			    });
-  			}
-  			}
+	  		}
   		}
   		
-  		function showSaveSaveYcbhInfo(data) {
-        	var message = "Hợp đồng bảo hiểm offline <strong>" + data.gycbhNumber + "</strong> đã tạo thành công";
+  		function showSaveSuccess(data) {
+        	var message = "Trao đổi hợp đồng bảo hiểm đã tạo thành công";
         	
         	$ngConfirm({
                 title: 'Thông báo',
@@ -209,30 +152,8 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	$state.go('app.cart');
-	                    }
-                    }
-                },
-            });
-        }
-  		
-  		function showUpdateYcbhInfo(data) {
-        	var message = "Hợp đồng bảo hiểm offline <strong>" + data.gycbhNumber + "</strong> đã cập nhật thành công";
-        	
-        	$ngConfirm({
-                title: 'Thông báo',
-                icon: 'fa fa-check',
-                theme: 'modern',
-                type: 'blue',
-                content: '<div class="text-center">' + message + '</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đóng',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	$state.go('app.cart');
+                        	$rootScope.$broadcast('saveCommunicationSuccess');
+                        	$uibModalInstance.dismiss('cancel');
 	                    }
                     }
                 },
@@ -245,11 +166,11 @@
         		angular.element('#title').focus();
         		return false;
         	}
-        	if(vm.gycbhFiles.length == 0) {
-        		toastr.error("Cấn nhập giấy yêu cầu bảo hiểm");
-        		angular.element('#upload-1').focus();
-        		return false;
-        	}
+//        	if(vm.gycbhFiles.length == 0) {
+//        		toastr.error("Cấn nhập giấy yêu cầu bảo hiểm");
+//        		angular.element('#upload-1').focus();
+//        		return false;
+//        	}
         	
         	return true;
         };

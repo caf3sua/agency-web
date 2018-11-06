@@ -33,7 +33,7 @@
 		
 		.state('order.me', {
             parent: 'order',
-            url: '/me?status',
+            url: '/me',
             templateUrl: 'apps/order/me/order.html',
             data : { 
             	title: 'ORDER_ME',

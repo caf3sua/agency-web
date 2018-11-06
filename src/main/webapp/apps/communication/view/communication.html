@@ -1,7 +1,7 @@
 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0  margin-top-10">
 	<form name="vm.form" role="form" show-validation>
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.maSanPham}}">Bảo hiểm ô tô</strong></p>
+	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.maSanPham}}">Bảo hiểm ô tô</strong> - <strong>{{vm.gycbhNumber}}</strong></p>
 	    </div>
 	    <!-- Tiêu đề -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
@@ -29,16 +29,16 @@
 	    
 	    <!-- File đính kèm - Upload -->
 	    <bv-fileupload input-id="upload-1" label="File đính kèm" is-required="false" multiple="true" keep-mode="'distinct'"
-	    	place-holder="Nhập file đính kèm" file-model="vm.gycbhFileModel"></bv-fileupload>
+	    	place-holder="Nhập file đính kèm" file-model="vm.fileModel"></bv-fileupload>
     	<input type="hidden" name="gycbhFile" ng-model="vm.gycbhFiles">
         
 	    	
 	    <!-- Button -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-	    	<button type="button" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading" ng-click="vm.saveYcbhOffline(1)">
+	    	<button type="button" class="btn primary" ng-disabled="vm.form.$invalid || vm.isLoading" ng-click="vm.saveCommunication()">
 	        	<i class="fa fa-spinner fa-spin" ng-show="vm.isLoading"></i> Gửi
 	        </button>
-	        <button class="bv-btn-default" ng-click="$state.go('order.me')">
+	        <button class="bv-btn-default" ng-click="vm.cancel()">
 	            Hủy bỏ
 	        </button>
 	    </div>

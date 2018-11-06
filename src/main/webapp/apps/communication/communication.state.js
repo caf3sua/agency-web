@@ -11,17 +11,17 @@
         $stateProvider
         .state('app.communication', {
             parent: 'app',
-            url: '/communication',
+            url: '/communication/{id}',
             templateUrl: 'apps/communication/view/communication.html',
             data: {
                 authorities: ['PERM_AGREEMENT_OFFLINE_BVP'],
                 title: 'COMMUNICATION'
             },
-            controller: "ProductYcbhOfflineController",
+            controller: "CommunicationController",
             controllerAs: 'vm',
             resolve: {
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/product/ycbh-offline/ycbh-offline.controller.js', 'apps/product/ycbh-offline/ycbh-offline.service.js']);
+	            		return $ocLazyLoad.load(['apps/communication/communication.controller.js', 'apps/communication/communication.service.js']);
 		        }
             }
         }) ;
