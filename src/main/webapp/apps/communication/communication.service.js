@@ -12,7 +12,12 @@
                 method : 'POST',
                 url : 'api/agency/product/agreement/get-by-gycbhNumber'
             },
-            'saveCommunication': {url : 'api/agency/common/createCommunication', method: 'POST'}
+            'saveCommunication': {url : 'api/agency/common/createCommunication', method: 'POST'},
+            'getOrderTransactions' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/get-orderHis-by-gycbhNumber',
+                isArray : true
+            }
         });
 
         return service;

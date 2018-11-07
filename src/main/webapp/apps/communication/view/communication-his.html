@@ -1,0 +1,12 @@
+Lịch sử
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 margin-top-10">
+	<div ng-repeat="row in vm.hisOrder">
+	    <div class="text-header-sp">
+            <p>{{row.statusPolicyName}} - {{row.hisDate}}</p>
+        </div>
+        <div ng-show="row.filesContent != null">
+        	<p>Nội dung chi tiết: {{row.content}}</p>
+        	<p>File đính kèm: {{row.filesContent[0].filename}}</p>
+        </div>
+	</div>
+</div>

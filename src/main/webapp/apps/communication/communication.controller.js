@@ -18,6 +18,8 @@
     		  "sendEmail": "",
     		  "conversationContent": ""
         };
+        vm.hisOrder = [];
+        
 		 vm.gycbhFiles = [];
 		 vm.fileModel = [];
 		 vm.isLoading = false;
@@ -49,8 +51,16 @@
 	  				vm.policy = data;
 	  				vm.policy.maSanPham = data.lineId;
 	  				
+	  				CommunicationService.getOrderTransactions({gycbhNumber: vm.gycbhNumber}, onOrderSuccess, onError);
+	  				
 	  				// Load file
 	  				loadFileInEditMode();
+	  				
+	  				function onOrderSuccess(result) {
+	  					debugger
+	  					vm.hisOrder = result;
+	  				}
+	  				
 	  			}
 	  			function onError() {
 	  			}
