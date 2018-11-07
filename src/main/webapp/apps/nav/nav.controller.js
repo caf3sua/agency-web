@@ -426,6 +426,7 @@
   		}
   		
     	function logout() {
+    		delete $localStorage.current_department_id;
     		console.log('logout');
             $state.go('access.signin');
         }

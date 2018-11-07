@@ -6,9 +6,9 @@
       .module('app')
       .controller('DashboardController', DashboardController);
     
-    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller', '$state', '$uibModal', '$ngConfirm', '$rootScope'];
+    DashboardController.$inject = ['$scope', 'DashboardService', 'ReportService', '$controller', '$state', '$uibModal', '$ngConfirm', '$rootScope', 'Principal', '$timeout', '$localStorage'];
 
-      function DashboardController($scope, DashboardService, ReportService, $controller, $state, $uibModal, $ngConfirm, $rootScope) {
+      function DashboardController($scope, DashboardService, ReportService, $controller, $state, $uibModal, $ngConfirm, $rootScope, Principal, $timeout, $localStorage) {
     	  var vm = this;
         
 	        // Declare variable and method
@@ -64,10 +64,13 @@
 	        vm.AllWaitAgency = [];
 	        vm.AllWaitAgreement = [];
 	        var modalInstance = null;
+	        vm.arrDepartment = [];
+	        vm.department = {};
 	        
 	        // Test data
 	        angular.element(document).ready(function () {
 	        	changeFilterDate("WEEK");
+	        	console.log('current_department_id:' + $rootScope.current_department_id);
 	        });
 
 	    	// Init controller
@@ -75,31 +78,52 @@
 	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
 	  			getAllWaitAgency();
 	  			getAllWaitAgreement();
+	  			chooseDepartment();
 	  		})();	
 
 	  		$rootScope.$on('authenticationSuccess', function() {
 	  			console.log('login success');
 	  			// ngConfirm open popup chon department
-	  			chooseDepartment();
 	        });
 	  		
 	  		// Implement function 
 	  		function chooseDepartment() {
-	  			let lstDepartment = vm.currentAccount.lstDepartment;
-	  			console.log(vm.currentAccount);
-	  			if (lstDepartment == null || lstDepartment == undefined) {
-	  				$rootScope.current_department_id = null;
-	  			}
-	  			
-	  			if (lstDepartment.length > 1) {
-	  				// neu nieu -> popup
-		  			$rootScope.current_department_id = "";
-	  			} else {
-		  			// neu 1 BU -> set rootScope
-	  				$rootScope.current_department_id = lstDepartment[0].departmentId;
+	  			if ($localStorage.current_department_id == undefined || $localStorage.current_department_id == null) {
+	  				Principal.identity().then(function(account) {
+			  			vm.arrDepartment = account.lstDepartment;
+			  			console.log(vm.currentAccount);
+			  			if (vm.arrDepartment == null || vm.arrDepartment == undefined) {
+			  				$rootScope.current_department_id = null;
+			  			}
+			  			
+			  			$scope.selectedDepartment = vm.arrDepartment[0].departmentId;
+			  			if (vm.arrDepartment.length > 1) {
+			  				$ngConfirm({
+				                title: 'Chọn phòng ban',
+				                icon: 'fas fa-users',
+				                theme: 'modern',
+				                type: 'blue',
+				                contentUrl: 'views/theme/blocks/form-department.html',
+				                scope: $scope,
+				                animation: 'scale',
+				                closeAnimation: 'scale',
+				                buttons: {
+				                    ok: {
+				                    	text: 'Đồng ý',
+				                        btnClass: 'btn-green',
+				                        action: function (scope) {
+				                        	$localStorage.current_department_id = scope.selectedDepartment;
+				                        }
+				                    }
+				                },
+				            })
+			  			} else {
+				  			// neu 1 BU -> set rootScope
+			  				$localStorage.current_department_id = vm.arrDepartment[0].departmentId;
+			  			}
+		            });
 	  			}
 	  		}
-	  		
 	  		
 	  		function changeFilterDate(type) {
 	  			vm.filterDate = type;
