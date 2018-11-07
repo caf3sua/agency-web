@@ -50,9 +50,8 @@
             	vm.isLoading = false;
             		$rootScope.isAuthentication = true;
                 vm.authenticationError = false;
-                $rootScope.$broadcast('authenticationSuccess');
-
                 $state.go('app.dashboard');
+                $rootScope.$broadcast('authenticationSuccess');
                 toastr.success('Đăng nhập thành công');
             }).catch(function () {
             	vm.isLoading = false;

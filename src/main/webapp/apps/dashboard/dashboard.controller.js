@@ -75,9 +75,32 @@
 	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
 	  			getAllWaitAgency();
 	  			getAllWaitAgreement();
-	  		})();
+	  		})();	
 
+	  		$rootScope.$on('authenticationSuccess', function() {
+	  			console.log('login success');
+	  			// ngConfirm open popup chon department
+	  			chooseDepartment();
+	        });
+	  		
 	  		// Implement function 
+	  		function chooseDepartment() {
+	  			let lstDepartment = vm.currentAccount.lstDepartment;
+	  			console.log(vm.currentAccount);
+	  			if (lstDepartment == null || lstDepartment == undefined) {
+	  				$rootScope.current_department_id = null;
+	  			}
+	  			
+	  			if (lstDepartment.length > 1) {
+	  				// neu nieu -> popup
+		  			$rootScope.current_department_id = "";
+	  			} else {
+		  			// neu 1 BU -> set rootScope
+	  				$rootScope.current_department_id = lstDepartment[0].departmentId;
+	  			}
+	  		}
+	  		
+	  		
 	  		function changeFilterDate(type) {
 	  			vm.filterDate = type;
 	    		
