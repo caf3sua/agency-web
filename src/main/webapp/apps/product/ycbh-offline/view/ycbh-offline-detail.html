@@ -3,9 +3,20 @@
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.maSanPham}}">Bảo hiểm ô tô</strong></p>
 	    </div>
+	    <!-- Phòng/ban -->
+		<div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Phòng/ban</p>
+	    </div>
+		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+			<select name="selectedDepartment" class="bv-select-box form-control" disabled="disabled"
+				ng-model="vm.policy.departmentId"
+				ng-options="selected.departmentId as selected.departmentName for selected in vm.currentAccount.lstDepartment"
+			>
+			</select>
+		</div>
 	    <!-- Khách hàng -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Khách hàng<span class="bv-req-red">&nbsp(*)</span></p>
+	        <p class="bv-title-from">Khách hàng</p>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex" >
 	        <div class="width-100 padding0 margin-right-5">
@@ -22,7 +33,7 @@
 	    </div>
 	    <!-- Phí bảo hiểm -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">Phí bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
+	        <p class="bv-title-from">Phí bảo hiểm</p>
 	    </div>
 	    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
 	        <input type="text" format="number" name="totalPremium" class="bv-input" ng-model="vm.policy.totalPremium" placeholder="Nhập phí bảo hiểm" required readonly="readonly"/> <!-- numeric-only -->

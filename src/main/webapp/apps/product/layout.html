@@ -5,11 +5,11 @@
 <!-- Layout -->
 
 <!-- Phòng/ban -->
-<div >
+<div>
 	<div class="margin-top-10 required">
     	<p class="bv-title-from">Chọn phòng/ban</p>
 	</div>
-	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding0 bv-display-step margin-top-10">
+	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0 bv-display-step margin-top-10">
 		<select name="selectedDepartment" class="bv-select-box form-control"
 			ng-model="vm.policy.departmentId"
 			ng-options="selected.departmentId as selected.departmentName for selected in vm.currentAccount.lstDepartment"

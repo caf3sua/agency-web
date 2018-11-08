@@ -3,6 +3,19 @@
 		<div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Sản phẩm <strong data-translate="global.product.name.{{vm.policy.productCode}}">Bảo hiểm ô tô</strong></p>
 	    </div>
+	    <!-- Phòng/ban -->
+		<div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+	        <p class="bv-title-from">Chọn phòng/ban<span class="bv-req-red">&nbsp(*)</span></p>
+	    </div>
+		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" >
+			<select name="selectedDepartment" class="bv-select-box form-control"
+				ng-model="vm.policy.departmentId"
+				ng-options="selected.departmentId as selected.departmentName for selected in vm.currentAccount.lstDepartment"
+	                            required-message="'Chưa chọn phòng ban!'"
+	                            required  ng-disabled="vm.currentAccount.lstDepartment.length < 2"
+			>
+			</select>
+		</div>
 	    <!-- Số ấn chỉ -->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
 	        <p class="bv-title-from">Số ấn chỉ<span class="bv-req-red">&nbsp(*)</span></p>

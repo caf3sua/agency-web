@@ -28,6 +28,7 @@
         		  "soAnchi": "",
         		  "tenAnchi": "",
         		  "tinhTrangCap": "TTCM",
+        		  "departmentId": "",
         		  "tongTienTT": ""
         };
         
