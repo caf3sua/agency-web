@@ -6,10 +6,10 @@
         .controller('CommunicationController', CommunicationController);
 
     CommunicationController.$inject = ['$scope', '$stateParams', '$controller', 'Principal', '$state', '$rootScope'
-    	, 'ProductCommonService', '$ngConfirm', 'CommunicationService', 'DateUtils', '$uibModalInstance'];
+    	, 'ProductCommonService', '$ngConfirm', 'CommunicationService', 'DateUtils', '$uibModalInstance', '$window', 'API_SERVICE_URL'];
 
     function CommunicationController ($scope, $stateParams, $controller, Principal, $state, $rootScope
-    		, ProductCommonService, $ngConfirm, CommunicationService, DateUtils, $uibModalInstance) {
+    		, ProductCommonService, $ngConfirm, CommunicationService, DateUtils, $uibModalInstance, $window, API_SERVICE_URL) {
         var vm = this;
 
         vm.policy = {
@@ -28,6 +28,7 @@
 		vm.validator = validator;
         vm.saveCommunication = saveCommunication;
         vm.cancel = cancel;
+        vm.downloadAttachment = downloadAttachment;
         
         angular.element(document).ready(function () {
         	
@@ -57,7 +58,6 @@
 	  				loadFileInEditMode();
 	  				
 	  				function onOrderSuccess(result) {
-	  					debugger
 	  					vm.hisOrder = result;
 	  				}
 	  				
@@ -67,6 +67,11 @@
 		    }
 		    
   		})();
+  		
+  		function downloadAttachment(file) {
+  			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-attachment/' + file.attachmentId;
+            $window.location = templateRoute;
+  		}
   		
   		function loadFileInEditMode() {
   			console.log('loadFileInEditMode');
