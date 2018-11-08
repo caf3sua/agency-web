@@ -3,10 +3,27 @@
 </div>
 
 <!-- Layout -->
+
+<!-- Phòng/ban -->
+<div >
+	<div class="margin-top-10 required">
+    	<p class="bv-title-from">Chọn phòng/ban</p>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding0 bv-display-step margin-top-10">
+		<select name="selectedDepartment" class="bv-select-box form-control"
+			ng-model="vm.policy.departmentId"
+			ng-options="selected.departmentId as selected.departmentName for selected in vm.currentAccount.lstDepartment"
+                            required-message="'Chưa chọn phòng ban!'"
+                            required  ng-disabled="vm.currentAccount.lstDepartment.length < 2"
+		>
+		</select>
+	</div>
+</div>
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 bv-display-step margin-top-10">
 	<!-- Step title -->
 	<div ng-include="'apps/product/partial/partial.step-title.html'"></div>
-        
+    
     <!-- Step 1 -->
     <div class="bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98" id="bv-step-1">
 	    <div class="bv-step-title text-center hidden-xs hidden-sm hidden-md" ng-click="vm.closeOpenStep('step1')">

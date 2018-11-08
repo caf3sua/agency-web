@@ -222,7 +222,7 @@
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
         	
-        	obj.departmentId = $localStorage.current_department_id;
+//        	obj.departmentId = $localStorage.current_department_id;
         	
         	// Save or update
         	if (obj.agreementId != null && obj.agreementId != "") {
@@ -246,6 +246,11 @@
         }
         
         function createNewPolicy(productCode, obj) {
+        	if (vm.policy.departmentId == undefined || vm.policy.departmentId == null || vm.policy.departmentId == "") {
+        		toastr.error("Cần chọn phòng ban");
+        		return;
+        	}
+        	
         	console.log('create new policy: ' + productCode);
         	switch(productCode){
 	  	        case "KCR":
@@ -438,6 +443,9 @@
 		function getAccount() {
   			Principal.identity().then(function(account) {
                 vm.currentAccount = account;
+                if (vm.currentAccount.lstDepartment != null && vm.currentAccount.lstDepartment.length > 0) {
+                	vm.policy.departmentId = vm.currentAccount.lstDepartment[0].departmentId;
+                }
             });
   		}
 		

@@ -227,7 +227,7 @@
         
         vm.logout = function() {
     		console.log('logout');
-    		delete $localStorage.current_department_id;
+//    		delete $localStorage.current_department_id;
 //            Auth.logout();
 //            vm.isAuthenticated = null;
 //            $rootScope.$broadcast('logoutSuccess');

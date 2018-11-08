@@ -78,7 +78,7 @@
 	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
 	  			getAllWaitAgency();
 	  			getAllWaitAgreement();
-	  			chooseDepartment();
+//	  			chooseDepartment();
 	  		})();	
 
 	  		$rootScope.$on('authenticationSuccess', function() {
@@ -87,43 +87,43 @@
 	        });
 	  		
 	  		// Implement function 
-	  		function chooseDepartment() {
-	  			if ($localStorage.current_department_id == undefined || $localStorage.current_department_id == null) {
-	  				Principal.identity().then(function(account) {
-			  			vm.arrDepartment = account.lstDepartment;
-			  			console.log(vm.currentAccount);
-			  			if (vm.arrDepartment == null || vm.arrDepartment == undefined) {
-			  				$rootScope.current_department_id = null;
-			  			}
-			  			
-			  			$scope.selectedDepartment = vm.arrDepartment[0].departmentId;
-			  			if (vm.arrDepartment.length > 1) {
-			  				$ngConfirm({
-				                title: 'Chọn phòng ban',
-				                icon: 'fas fa-users',
-				                theme: 'modern',
-				                type: 'blue',
-				                contentUrl: 'views/theme/blocks/form-department.html',
-				                scope: $scope,
-				                animation: 'scale',
-				                closeAnimation: 'scale',
-				                buttons: {
-				                    ok: {
-				                    	text: 'Đồng ý',
-				                        btnClass: 'btn-green',
-				                        action: function (scope) {
-				                        	$localStorage.current_department_id = scope.selectedDepartment;
-				                        }
-				                    }
-				                },
-				            })
-			  			} else {
-				  			// neu 1 BU -> set rootScope
-			  				$localStorage.current_department_id = vm.arrDepartment[0].departmentId;
-			  			}
-		            });
-	  			}
-	  		}
+//	  		function chooseDepartment() {
+//	  			if ($localStorage.current_department_id == undefined || $localStorage.current_department_id == null) {
+//	  				Principal.identity().then(function(account) {
+//			  			vm.arrDepartment = account.lstDepartment;
+//			  			console.log(vm.currentAccount);
+//			  			if (vm.arrDepartment == null || vm.arrDepartment == undefined) {
+//			  				$rootScope.current_department_id = null;
+//			  			}
+//			  			
+//			  			$scope.selectedDepartment = vm.arrDepartment[0].departmentId;
+//			  			if (vm.arrDepartment.length > 1) {
+//			  				$ngConfirm({
+//				                title: 'Chọn phòng ban',
+//				                icon: 'fas fa-users',
+//				                theme: 'modern',
+//				                type: 'blue',
+//				                contentUrl: 'views/theme/blocks/form-department.html',
+//				                scope: $scope,
+//				                animation: 'scale',
+//				                closeAnimation: 'scale',
+//				                buttons: {
+//				                    ok: {
+//				                    	text: 'Đồng ý',
+//				                        btnClass: 'btn-green',
+//				                        action: function (scope) {
+//				                        	$localStorage.current_department_id = scope.selectedDepartment;
+//				                        }
+//				                    }
+//				                },
+//				            })
+//			  			} else {
+//				  			// neu 1 BU -> set rootScope
+//			  				$localStorage.current_department_id = vm.arrDepartment[0].departmentId;
+//			  			}
+//		            });
+//	  			}
+//	  		}
 	  		
 	  		function changeFilterDate(type) {
 	  			vm.filterDate = type;
