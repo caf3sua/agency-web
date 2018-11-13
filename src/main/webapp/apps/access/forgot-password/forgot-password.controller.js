@@ -39,6 +39,7 @@
         	}
         	
         	function onError(result) {
+        		debugger
         		toastr.error("Lỗi khi gửi lại mật khẩu.");
         	}
         }
