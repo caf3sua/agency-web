@@ -47,7 +47,7 @@
   				"pagencyRole": "1",
   				
   				// create policy
-    		"chuongtrinhBh": "5",
+    		"chuongtrinhBh": "0",
     		"chuongtrinhPhi": 0,
     		"discount": 0,
     		"expiredDate": "",
@@ -200,11 +200,13 @@
             // add a day
             startDate.setDate(startDate.getDate() + 1);
             vm.policy.thoihanbhTu = DateUtils.convertDate(startDate);
+            vm.policy.inceptionDate = vm.policy.thoihanbhTu;
 
             var endDate = new Date();
             // add a day
             endDate.setFullYear(endDate.getFullYear() + 1);
             vm.policy.thoihanbhDen = DateUtils.convertDate(endDate);
+            vm.policy.expiredDate = vm.policy.thoihanbhDen;
 
             vm.registerDisableContactInfoValue('vm.policy.phiBH');
 
@@ -393,6 +395,8 @@
         	var endDate = moment(vm.policy.thoihanbhTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
             // add a day
         	vm.policy.thoihanbhDen = endDate;
+        	vm.policy.inceptionDate = vm.policy.thoihanbhTu;
+        	vm.policy.expiredDate = vm.policy.thoihanbhDen;
         }
         
         // watch
@@ -464,7 +468,6 @@
             } else{
             	vm.isShowPolicyParent = false;
             }
-            
             if(vm.policy.chuongTrinh) {
             	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
             		if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
@@ -538,6 +541,7 @@
             vm.policy.tncnPhi = result.tncnPhi;
             vm.policy.nhakhoaPhi = result.nhakhoaPhi;
             vm.policy.sinhmangPhi = result.smcnPhi;
+            vm.policy.chuongtrinhBh = result.chuongTrinh;
 
 
             if(vm.policy.chuongTrinh) {
@@ -556,17 +560,10 @@
             vm.validateResponse(result, 'getPremium');
         }
 
-//        function savePolicy(type) {		// TH để lưu tạm
         function savePolicy() {
-//        	if (type == "0"){
-//        		vm.policy.statusPolicy = "80"; // dang soan
-//        	} else {
-//        		vm.policy.statusPolicy = "90"; // cho thanh toan
-//        	}
-        	
             var postData = getPostData(true);
             
-            if (vm.gksFile != null && vm.gksFile.length > 0){
+            if (vm.gksFile != null && vm.gksFile.content.length > 0){
             	vm.policy.files = vm.gksFile.content;	
             }
             

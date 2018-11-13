@@ -6,10 +6,10 @@
         .controller('OrderDetailController', OrderDetailController);
 
     OrderDetailController.$inject = ['$scope', 'Principal', '$state'
-    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', '$window'];
+    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', '$window', 'DateUtils'];
 
     function OrderDetailController ($scope, Principal, $state
-    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout, $window) {
+    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout, $window, DateUtils) {
     	var vm = this;
         
     	vm.policy;
@@ -18,6 +18,10 @@
     	vm.insuranceEndDate;
     	vm.gotoBack = gotoBack;
     	vm.isEditMode = isEditMode;
+    	vm.gksFile = {
+    		"content": ""
+	    };
+    	vm.isShowPolicyParent = false;
     	
         angular.element(document).ready(function () {
         });
@@ -30,7 +34,6 @@
   				vm.policy = data;
   				// Load contact
   				loadContactInfo(data.contactCode);
-  				
   				switch (data.lineId) {
   					case 'BVP':
   						formatBvpData(data);
@@ -78,6 +81,16 @@
   		}
   		
   		function formatBvpData(data) {
+  			var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            var tuoi = DateUtils.yearDiff(data.nguoidbhNgaysinh, nowStr);
+            debugger
+            if (tuoi < 18) {
+            	vm.isShowPolicyParent = true;
+            } else {
+            	vm.isShowPolicyParent = false;
+            }
+  			vm.gksFile.content = data.files;
   			vm.policy.premiumNet = data.chuongtrinhPhi + data.ngoaitruPhi + data.tncnPhi + data.sinhmangPhi + data.nhakhoaPhi + data.thaisanPhi;
 			vm.policy.phiBH = data.chuongtrinhPhi + data.ngoaitruPhi + data.tncnPhi + data.sinhmangPhi + data.nhakhoaPhi + data.thaisanPhi - data.tanggiamPhi;
   		}
