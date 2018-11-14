@@ -34,7 +34,8 @@
     			  "phone": "",
     			  "productCode": "",
     			  "toDate": "",
-    			  "createType": ""
+    			  "createType": "",
+    			  "departmentId": ""
     		};
         
   		vm.processPayment = processPayment;
@@ -73,6 +74,8 @@
         vm.searchCart = searchCart;
         vm.showPayment;
         vm.nextStep = nextStep;
+        
+        vm.selectedDepartmentId;
         
     	angular.element(document).ready(function () {
         });
@@ -137,6 +140,12 @@
         
         function searchCart() {
   			if (changeDate()) {
+  				if (vm.selectedDepartmentId != null && vm.selectedDepartmentId != undefined){
+  					vm.searchCriterial.departmentId = vm.selectedDepartmentId;	
+  				} else {
+  					vm.searchCriterial.departmentId = "";
+  				}
+  				
   				CartService.searchCart(vm.searchCriterial, onGetAllOrderSuccess, onGetAllOrderError);
   			}
   		}

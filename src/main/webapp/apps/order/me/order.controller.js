@@ -35,7 +35,8 @@
   			  "phone": "",
   			  "productCode": "",
   			  "toDate": "",
-  			  "createType": ""
+  			  "createType": "",
+  			  "departmentId": ""
   		};
   		vm.sotiennophi;
   		
@@ -47,6 +48,8 @@
   		vm.changeDate = changeDate;
   		vm.confirmResendOTP = confirmResendOTP;
   		vm.showOTPSavePolicySuccessInfo = showOTPSavePolicySuccessInfo;
+  		
+  		vm.selectedDepartmentId;
   		
         angular.element(document).ready(function () {
         });
@@ -78,6 +81,12 @@
   	  			vm.orders = [];
   	  			var order = {};
 
+	  	  		if (vm.selectedDepartmentId != null && vm.selectedDepartmentId != undefined){
+					vm.searchCriterial.departmentId = vm.selectedDepartmentId;	
+				} else {
+					vm.searchCriterial.departmentId = "";
+				}
+  	  			
   	  			OrderService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
   	  			function onSearchSuccess(result, headers) {
   	  				// Paging
@@ -100,6 +109,12 @@
   			console.log('transition, page:' + vm.page);
   			vm.isLoading = true;
 
+  			if (vm.selectedDepartmentId != null && vm.selectedDepartmentId != undefined){
+				vm.searchCriterial.departmentId = vm.selectedDepartmentId;	
+			} else {
+				vm.searchCriterial.departmentId = "";
+			}
+  			
   			var order = {};
   			order = vm.searchCriterial;
   			order.pageable.page = vm.page - 1;
