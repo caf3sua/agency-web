@@ -69,10 +69,10 @@
             <div>
                 <p class="bv-tile-templateSummary">{{vm.policy.hieuxe}}</p>
             </div>
-            <div class="">
+            <div class="" ng-show="vm.policy.chaynoStbh > 0">
                 <p class="bv-title-from">Giá trị bảo hiểm</p>
             </div>
-            <div>
+            <div ng-show="vm.policy.chaynoStbh > 0">
                 <p class="bv-tile-templateSummary">{{vm.policy.chaynoStbh | number : 0}} VND</p>
             </div>
         </div>
