@@ -167,6 +167,40 @@
             }
         })
         
+        .state('order.expire', {
+            parent: 'order',
+            url: '/order-expire',
+            templateUrl: 'apps/order/expire/order-expire.html',
+            data : { 
+            	title: 'ORDER_EXPIRE',
+            	authorities : ['PERM_AGREEMENT_VIEW']
+            },
+            controller: "OrderExpireController",
+            controllerAs: 'vm',
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
+            resolve: {
+            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+        				$translatePartialLoader.addPart('dashboard');
+        				return $translate.refresh();
+            		}],
+            		loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load([
+	            			'apps/order/expire/order-expire.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            		]);
+		        }
+            }
+        })
+        
         .state('order.nophi', {
             parent: 'order',
             url: '/nophi',

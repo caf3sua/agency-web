@@ -40,6 +40,11 @@
                 url : 'api/agency/product/agreement/search-order-other',
                 isArray : true
             },
+            'searchOrderExpire' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/search-order-expire',
+                isArray : true
+            },
             'searchNophi' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/search-order-nophi',

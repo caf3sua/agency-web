@@ -76,6 +76,7 @@
         		"ORDER_AGENCY" : "Danh sách đơn hàng chờ đại lý giải quyết",
         		"ORDER_BAOVIET" : "Danh sách đơn hàng chờ BV giải quyết",
         		"ORDER_OTHER" : "Danh sách yêu cầu bảo hiểm khác",
+        		"ORDER_EXPIRE" : "Danh sách đơn hàng quá hạn",
         		"ORDER_NOPHI" : "Danh sách đơn hàng nợ phí",
         		"ORDER_DETAIL" : "Chi tiết đơn hàng",
         		"REPORT_INCOME" : "Báo cáo doanh thu",
