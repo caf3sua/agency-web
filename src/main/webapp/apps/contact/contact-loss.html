@@ -32,22 +32,22 @@
 		                      <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
 		                  </td>
 		                  <td>
-		                      <p class="bv-table-text-colorBlue">{{item.policyNumbers}}</p>
+		                      <p class=""></p>
 		                  </td>
 		                  <td>
-		                      <p class="">{{item.mciAddId}}</p>
+		                      <p class="bv-table-text-colorBlue">{{item.policy_number}}</p>
 		                  </td>
 		                  <td>
-		                      <p class="">{{item.payStartDate}}</p>
+		                      <p class=""></p>
 		                  </td>
 		                  <td>
-		                      <p class="">{{item.amount | number:0}}</p>
+		                      <p class=""></p>
 		                  </td>
 		                  <td>
-		                      <p class="">{{item.transactionDate}}</p>
+		                      <p class="">{{item.numberClaim | number:0}}</p>
 		                  </td>
 		                  <td>
-		                  		<p class="" data-translate="global.policy.status.{{item.status}}">Đã thanh toán</p>
+		                  		{{item.claim_amount | number:0}}
 		                  </td>
 		              	</tr>
 			      	</tbody>
@@ -57,9 +57,9 @@
 				          	<th>Tổng số vụ bồi thường</th>
 				          	<th></th>
 				          	<th></th>
+				          	<th></th>
+				          	<th>{{vm.totalNumberClaim | number:0}}</th>
 				          	<th>{{vm.totalPremium | number:0}}</th>
-				          	<th></th>
-				          	<th></th>
 				        </tr>
 			     	</tfoot>
 		    </table>

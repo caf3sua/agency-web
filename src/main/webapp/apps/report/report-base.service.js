@@ -30,6 +30,11 @@
 				method : 'GET',
 				url : 'api/agency/agency-report/report-history-purchase/:contactId',
 				isArray: true
+			},
+			'getReportHistoryLoss' : {
+				method : 'GET',
+				url : 'api/agency/agency-report/report-history-loss/:contactId',
+				isArray: true
 			}
 		});
 
