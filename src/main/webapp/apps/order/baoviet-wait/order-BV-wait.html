@@ -116,6 +116,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
+                <div class="bv-title-from">
+                    <p>Đơn vị</p>
+                </div>
+                <div class="margin-top-5">
+                    <select class="bv-select-box-kh form-control" ng-model="vm.selectedDepartmentId" ng-options="selected.departmentId as selected.departmentName for selected in vm.currentAccount.lstDepartment">
+                    	<option value="">-- Chọn đơn vị --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 		<!-- Button -->
 		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">
         <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;">
