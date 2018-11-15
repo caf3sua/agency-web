@@ -10,7 +10,7 @@
     function stateConfig($stateProvider, $urlRouterProvider,   MODULE_CONFIG) {
         $stateProvider.state('app.cart', {
             parent: 'app',
-            url: '/cart?page',
+            url: '/cart?page&sel',
             templateUrl: 'apps/cart/cart.html',
             data : { 
             	title: 'CART',

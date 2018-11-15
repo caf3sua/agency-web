@@ -24,7 +24,7 @@
         		ProductCommonService.checkOTP(vm.checkOtp, onSuccess, onError);
         		
         		function onSuccess(data, headers) {
-        			$state.go('app.cart');
+        			$state.go('app.cart', {sel: $rootScope.gycbhNumber});
             		$uibModalInstance.dismiss('cancel');
         		}
     				
@@ -34,7 +34,7 @@
         	}
         	
         	vm.cancel = function () {
-        		$state.go('app.cart');
+        		$state.go('app.cart', {sel: $rootScope.gycbhNumber});
                 $uibModalInstance.dismiss('cancel');
             };
             

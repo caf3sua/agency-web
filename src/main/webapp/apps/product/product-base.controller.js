@@ -432,7 +432,7 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	$state.go('app.cart');
+                        	$state.go('app.cart', {sel: obj.gycbhNumber});
 	                    }
                     }
                 },

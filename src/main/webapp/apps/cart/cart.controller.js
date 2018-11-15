@@ -77,6 +77,9 @@
         
         vm.selectedDepartmentId;
         
+        vm.flagInit = true;
+        vm.selectedGycbhNumber;
+        
     	angular.element(document).ready(function () {
         });
 
@@ -207,6 +210,20 @@
                     default:
                         break;
                 }
+            }
+            
+            // Init selected
+            if (vm.flagInit) {
+            	vm.flagInit = false;
+            	let gycbhNumber = $stateParams.sel;
+            	if (gycbhNumber != null && gycbhNumber != undefined) {
+            		angular.forEach(vm.allOrder, function(item, key) {
+            			if (item.policyNumber == gycbhNumber) {
+            				item.check = true;
+            				selectCheckBoxCart(item);
+            			}
+    			 	});
+            	}
             }
         }
         

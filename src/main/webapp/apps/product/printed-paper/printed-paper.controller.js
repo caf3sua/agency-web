@@ -371,12 +371,12 @@
   			}
   		}
   		
-  		function gotoAfterSave() {
+  		function gotoAfterSave(gycbhNumber) {
   			if (vm.isSaveAndNewFlag == true) {
   				// reload
   				$state.reload();
   			} else {
-  				$state.go('app.cart');
+  				$state.go('app.cart', {sel: gycbhNumber});
   			}
   		}
   		
@@ -396,7 +396,7 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	gotoAfterSave();
+                        	gotoAfterSave(data.gycbhNumber);
 	                    }
                     }
                 },
@@ -419,7 +419,7 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	gotoAfterSave();
+                        	gotoAfterSave(data.gycbhNumber);
 	                    }
                     }
                 },
