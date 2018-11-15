@@ -34,15 +34,13 @@
 	<div class="margin-top-5">
 	    <input type="text" name="invoiceInfo.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
 	</div>
-	<div class="margin-top-10 required">
+	<div class="margin-top-10">
 		    <p class="bv-title-from">Tên phường xã</p>
 	</div>
 	<div class="margin-top-5">
 		<!-- auto completed list -->
-		<bv-ward-input isRequired="true" placeholder="Phường/Xã" connection-model="vm.policy.invoiceInfo.addressDistrictData"></bv-ward-input>
-	    <input type="hidden" name="invoiceInfo.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData"
-	    	required-message="'Chưa nhập tên phường xã!'"
-		 	required/>
+		<bv-ward-input placeholder="Phường/Xã"></bv-ward-input>
+	    <input type="hidden" name="invoiceInfo.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData" />
 	</div>
 	<div class="margin-top-10">
 	    <p class="bv-title-from">Số tài khoản</p>

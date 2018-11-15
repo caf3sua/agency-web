@@ -8,16 +8,19 @@
       .controller('AgreementBaseController', AgreementBaseController);
 
     AgreementBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$timeout'
-    	, '$ngConfirm', 'OrderService', 'Principal'];
+    	, '$ngConfirm', 'OrderService', 'Principal', '$uibModal'];
 
     function AgreementBaseController(vm, $state, $stateParams, $rootScope, $scope, $timeout
-    		, $ngConfirm, OrderService, Principal){
+    		, $ngConfirm, OrderService, Principal, $uibModal){
 		vm.message = { name: 'default entry from AgreementBaseController' };
 
 		vm.confirmCancelOrder = confirmCancelOrder;
 		vm.confirmEditAgreement = confirmEditAgreement;
 		vm.confirmCopyAgreement = confirmCopyAgreement;
+		vm.confirmHistoryAgreement = confirmHistoryAgreement;
 		vm.searchOrder = searchOrder;
+		
+		var modalInstance = null;
 		
 		// Init controller
   		(function initController() {
@@ -47,6 +50,47 @@
                         btnClass: "btn-blue",
                         action: function(scope, button){
                         	editAgreement(order, true);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+		
+		function communication(order) {
+  			$rootScope.communication_GycbhNumber = order.gycbhNumber;
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/communication/view/communication-hisorder.html',
+                controller: 'CommunicationController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            });	            
+  		}
+		
+		function confirmHistoryAgreement(order) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fas fa-history',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">Bạn chắc chắn muốn xem lịch sử hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	communication(order);
 	                    }
                     },
                     close: {

@@ -43,6 +43,14 @@
         </div>
         <span class="bv-detail-text-table">Sao chép Đơn hàng</span>
     </div>
+    
+    <div ng-click="vm.confirmHistoryAgreement(order)">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-history"></i>
+        </div>
+        <span class="bv-detail-text-table">Lịch sử Đơn hàng</span>
+    </div>
+    
     <div ng-click="vm.confirmResendOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
         <div class="bv-detail-icon-table">
             <i class="fas fa-sync-alt"></i>

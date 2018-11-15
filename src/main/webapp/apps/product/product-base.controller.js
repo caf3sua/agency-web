@@ -121,6 +121,7 @@
     	
     	function validateInvoice() {
     		console.log('validateInvoice');
+    		debugger
     		if (vm.policy.invoiceInfo != null){
     			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
     				return true;        				
@@ -223,9 +224,11 @@
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
         	
-        	vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
-			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
-			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;
+        	if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+        		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
+    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
+    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
+        	}
         	
 //        	obj.departmentId = $localStorage.current_department_id;
         	
