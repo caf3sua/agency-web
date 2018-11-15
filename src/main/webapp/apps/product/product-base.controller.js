@@ -53,6 +53,7 @@
         vm.invoiceInfo = {  
 				"accountNo":"",
 				"address":"",
+				"addressDistrict":"",
 				"check":"0",
 				"company":"",
 				"name":"",
@@ -120,6 +121,7 @@
     	
     	function validateInvoice() {
     		console.log('validateInvoice');
+    		debugger
     		if (vm.policy.invoiceInfo != null){
     			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
     				return true;        				
@@ -221,6 +223,12 @@
         	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
+        	
+        	if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+        		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
+    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
+    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
+        	}
         	
 //        	obj.departmentId = $localStorage.current_department_id;
         	
@@ -456,7 +464,16 @@
         				vm.policy.invoiceInfo = {};
         			}
         			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
-        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
+//        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
+        			
+        			let addressReceiver = $rootScope.selectedContact.homeAddress;
+            		vm.policy.invoiceInfo.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
+
+                    let postcodeReceiver = addressReceiver.substring(addressReceiver.lastIndexOf("::") + 2);
+                    ProductCommonService.getAddressByPostcode({code: postcodeReceiver}).$promise.then(function(data) {
+                    	vm.policy.invoiceInfo.addressDistrictData = data;
+                    });
+        			
                     // reset
                     vm.loadContactForInvoice = false;
             		return;

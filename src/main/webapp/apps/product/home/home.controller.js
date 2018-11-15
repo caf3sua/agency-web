@@ -149,6 +149,13 @@
   				vm.policy.receiverUser.addressDistrictData = data;
     		});
   			
+  			// invoice
+  			var invoiceInfoAddress = vm.policy.invoiceInfo.address;
+  			vm.policy.invoiceInfo.address = vm.formatAddressEdit(invoiceInfoAddress);
+  			vm.getAddressByPostCode(invoiceInfoAddress).then(function (data) {
+  				vm.policy.invoiceInfo.addressDistrictData = data;
+    		});
+  			
   			// extra
   			var insuranceAddress = vm.policy.insuranceAddress;
   			var insuredLocation = vm.policy.insuredLocation;
