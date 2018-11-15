@@ -47,7 +47,12 @@
                 message = "Dữ liệu không hợp lệ!";
             }
         	
-        	$("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
+        	// tip-trick
+        	if ($(elementName).length > 1) {
+        		$(elementName).append("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>");
+        	} else {
+        		$("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
+        	}
 
         	return data.message;
         }
