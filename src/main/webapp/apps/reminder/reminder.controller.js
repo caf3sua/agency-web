@@ -11,6 +11,7 @@
     	
     	vm.reminders = [];
     	vm.remindersInit = [];
+    	vm.updateReminderStatus = updateReminderStatus;
     	
         angular.element(document).ready(function () {
         });
@@ -24,6 +25,17 @@
   		
   		// Function
   		vm.deleteReminder = deleteReminder;
+  		
+  		function updateReminderStatus() {
+  			ReminderService.updateStatus({id: id}, onUpdateStatusSuccess, onUpdateStatusError);
+  			
+  			function onUpdateStatusSuccess(data) {
+//  				loadAll();
+            }
+            function onUpdateStatusError(error) {
+                vm.validateResponse(error, 'deleteReminder');
+            }
+  		}
   		
   		function loadAll() {
   			console.log('searchReminder');

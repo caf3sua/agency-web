@@ -17,6 +17,7 @@
 				          	<th st-sort="productCode">Mã sản phẩm bảo hiểm</th>
 				          	<th st-sort="remindeDate">Ngày thông báo</th>
 				          	<th st-sort="content">Nội dung</th>
+				          	<th st-sort="active">Trạng thái</th>
 				          	<th st-sort="note">Ghi chú</th>
 				          	<th></th>
 				        </tr>
@@ -37,6 +38,11 @@
 		                    </td>
 		                    <td>
 		                        <p class="">{{reminder.content}}</p>
+		                    </td>
+		                    <td>
+		                        <label class="ui-switch m-t-xs m-r">
+		                        	<input type="checkbox" ng-model="reminder.active" ng-true-value="'1'" ng-false-value="'0'" ng-change="vm.updateReminderStatus(reminder)"> <i></i>
+		                        </label>
 		                    </td>
 		                    <td>
 		                        <p class="">{{reminder.note}}</p>

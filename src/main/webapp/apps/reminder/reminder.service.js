@@ -81,6 +81,7 @@
     	var resourceUrl =  'api/agency/contact/:id';
 
         return $resource(resourceUrl, {}, {
+        	'updateStatus': {url : 'api/agency/contact/update-status-reminder', method: 'POST', isArray: false},
         	'search': {url : 'api/agency/contact/search-reminder', method: 'POST', isArray: true},
             'getAll': {url : 'api/agency/contact/get-all-contact-reminder', method: 'GET', isArray: true},
             'getCountAllReminder': {url : 'api/agency/contact/get-count-all-contact-reminder', method: 'GET',
