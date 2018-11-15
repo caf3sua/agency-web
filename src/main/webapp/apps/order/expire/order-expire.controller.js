@@ -33,7 +33,8 @@
   			  "phone": "",
   			  "productCode": "",
   			  "toDate": "",
-  			  "createType": ""
+  			  "createType": "",
+  			  "departmentId": ""
   		};
   		vm.sotiennophi;
   		
@@ -41,13 +42,15 @@
   		vm.confirmViewAgreement = confirmViewAgreement;
   		vm.changeDate = changeDate;
   		
+  		vm.selectedDepartmentId;
+  		
         angular.element(document).ready(function () {
         });
 
     	// Init controller
   		(function initController() {
   			// instantiate base controller
-//  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
+  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
   			
   		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
   		   
@@ -71,7 +74,12 @@
   	  			vm.orders = [];
   	  			var order = {};
 
-  	  			debugger
+	  	  		if (vm.selectedDepartmentId != null && vm.selectedDepartmentId != undefined){
+					vm.searchCriterial.departmentId = vm.selectedDepartmentId;	
+				} else {
+					vm.searchCriterial.departmentId = "";
+				}
+  	  			
   	  			OrderService.searchOrderExpire(vm.searchCriterial, onSearchSuccess, onSearchError);
   	  			function onSearchSuccess(result, headers) {
   	  				// Paging
