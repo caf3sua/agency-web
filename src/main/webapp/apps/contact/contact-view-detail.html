@@ -176,6 +176,22 @@
 	                                <div>
 	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.facebookId}}</p>
 	                                </div>
+	                                <div class="margin-top-10">
+	                                    <p class="bv-title-from">Nghề nghiệp</p>
+	                                </div>
+	                                <div>
+	                                    <p class="bv-tile-templateSummary">{{vm.selectedContact.occupation}}</p>
+	                                </div>
+	                                <div class="margin-top-10">
+	                                    <p class="bv-title-from">Mục khai thác</p>
+	                                </div>
+	                                <div>
+										<ul>
+										  <li ng-repeat="item in vm.selectedContact.listContactProduct">
+										      <span>{{item.productName}}</span>
+										  </li>
+										</ul>
+									</div>
                                 </div>
                             </div>
                         </div>

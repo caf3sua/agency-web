@@ -380,6 +380,17 @@
 	            		getPremium();	
 	            		break;
 	            	} else if (vm.policy.tndsbbCheck == true && vm.policy.tndsSoCho != undefined && vm.policy.tndsSoCho != null && vm.policy.tndsSoCho != "") {
+	            		if (vm.policy.tndsSoCho == 1){
+	            			vm.policy.nntxSoCho = 5;
+	            		} else if (vm.policy.tndsSoCho == 2){
+	            			vm.policy.nntxSoCho = 11;
+	            		} else if (vm.policy.tndsSoCho == 3){
+	            			vm.policy.nntxSoCho = 24;
+	            		} else if (vm.policy.tndsSoCho == 4){
+	            			vm.policy.nntxSoCho = 50;
+	            		} else {
+	            			vm.policy.nntxSoCho = 5;
+	            		}
 	            		getPremium();	
 	            		break;
 	            	} else {
@@ -410,6 +421,9 @@
 	            case 'car-year':
 	            	vm.policy.vcxSoTien = '';
 	            	vm.policy.actualValue = data.price;
+	            	vm.policy.vcxSoTien = data.price;
+	            	vm.policy.khauHao = true;
+	            	getPremium();
 	                break;
 	        }
   		}
@@ -500,7 +514,12 @@
     			vm.isShowChangePremium = true;
     			if(result.changePremium != 0) {
     				vm.policy.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
+    			} else {
+    				vm.policy.chargeFree = 0;
     			}
+    		} else {
+    			vm.isShowChangePremium = false;
+    			vm.policy.chargeFree = 0;
     		}
     		if((vm.policy.tndsbbCheck && vm.policy.tndsSoCho)
     				|| (vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) || (vm.policy.vcxCheck && vm.policy.vcxSoTien)) {
