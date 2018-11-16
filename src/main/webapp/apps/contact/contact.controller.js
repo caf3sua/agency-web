@@ -5,8 +5,10 @@
         .controller('ContactController', ContactController);
 
 
-    ContactController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', 'ContactService', 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm'];
-    function ContactController($rootScope, $scope, $stateParams, $http, $filter, ContactService, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm) {
+	ContactController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', 'ContactService'
+		, 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm', 'ReminderService'];
+	function ContactController($rootScope, $scope, $stateParams, $http, $filter, ContactService
+		, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm, ReminderService) {
     	var vm = this;
     	vm.contacts = [];
     	vm.selectedContact = null;
@@ -25,7 +27,8 @@
     	vm.getAgrement = getAgrement;
     	vm.selectContact = selectContact;
     	vm.openMailDialog = openMailDialog;
-    	vm.confirmDeleteContact = confirmDeleteContact;
+		vm.confirmDeleteContact = confirmDeleteContact;
+		vm.lstReminder = [];
     	
     	angular.element(document).ready(function () {
         });
@@ -60,8 +63,22 @@
   			vm.selectedContact.selected = true;
   			
   			// Call service to get agreement by contactcode
-  			getAgrement();
-  		};
+			  getAgrement();
+			  
+			  getReminderByContact();
+		  };
+		  
+		function getReminderByContact() {
+			vm.lstReminder = [];
+			ReminderService.search({active: '1', contactId: vm.selectedContact.contactId}, onSuccess, onError);
+			
+			function onSuccess(result) {
+				vm.lstReminder = result;
+    		}
+    		
+    		function onError(result) {
+    		}
+		}
   		
     	function loadAll() {
     		console.log('searchContact');
