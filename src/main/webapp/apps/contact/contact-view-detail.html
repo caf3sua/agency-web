@@ -84,7 +84,6 @@
 									        <thead>
 									            <tr>
 									                <th>STT</th>
-									                <th>Mã sản phẩm bảo hiểm</th>
 													<th>Ngày thông báo</th>
 													<th>Nội dung</th>
 													<th>Ghi chú</th>
@@ -94,9 +93,6 @@
 										        <tr ng-repeat="item in vm.lstReminder track by $index">
 										            <td>
 										                <p class="margin-0">{{$index + 1}}</p>
-										            </td>
-										            <td>
-										                <p class="">{{item.productCode}}</p>
 										            </td>
 										            <td>
 										                <p class="">{{item.remindeDate}}</p>

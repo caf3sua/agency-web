@@ -27,7 +27,7 @@
   		vm.deleteReminder = deleteReminder;
   		
   		function updateReminderStatus(reminder) {
-  			ReminderService.updateStatus({id: reminder.id, active: reminder.active}, onUpdateStatusSuccess, onUpdateStatusError);
+  			ReminderService.updateStatus({reminderId: reminder.id, active: reminder.active}, onUpdateStatusSuccess, onUpdateStatusError);
   			
   			function onUpdateStatusSuccess(data) {
 				  console.log('onUpdateStatusSuccess reminder');

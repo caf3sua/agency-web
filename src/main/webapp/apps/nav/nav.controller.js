@@ -7,11 +7,11 @@
 
     NavController.$inject = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll'
     	, '$timeout', '$window', 'Auth', '$state', 'Principal', 'ContactCommonDialogService', 'ReminderService', 'CONSTANT_REMINDER_RANGER_DATE'
-    	, 'NavCommonService'];
+    	, 'NavCommonService','DateUtils'];
 
     function NavController ($scope, $localStorage, $location, $rootScope, $anchorScroll
     		, $timeout, $window, Auth, $state, Principal, ContactCommonDialogService, ReminderService, CONSTANT_REMINDER_RANGER_DATE
-    		, NavCommonService) {
+    		, NavCommonService, DateUtils) {
     	var vm = this;
     	vm.countReminder = 0;
     	vm.maxYear = 0;
@@ -56,10 +56,10 @@
     	vm.yearOfMakeCars = [];
     	
     	vm.car = {
-    			"GARAGE": true,
+    			"GARAGE": false,
     			"agencyRole": "1",
     			"changePremium": 0,
-    			"garage": true,
+    			"garage": false,
     			"khauHao": false,
     			"khauTru": false,
     			"matCap": false,
@@ -72,8 +72,8 @@
     			"premium": 0,
     			"purposeOfUsageId": "15",
     			"tndsSoCho": "1",
-    			"tndsbbCheck": true,
-    			"tndsbbPhi": 5000000,
+    			"tndsbbCheck": false,
+    			"tndsbbPhi": 0,
     			"tndstnCheck": false,
     			"tndstnPhi": 0,
     			"tndstnSoTien": 0,
@@ -200,6 +200,12 @@
     	// Init controller
   		(function initController() {
   			console.log('NavController initController');
+  			
+  			var startDate = new Date();
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.bvp.thoihanbhTu = DateUtils.convertDate(startDate);
+  			
   			countReminder();
   			// Load init for car
   			NavCommonService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
