@@ -65,7 +65,17 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+							</div>
+							<!--Include menu tao don -->
+							<div ng-include="'views/partial/partial.contact-product-menu.html'"></div>
+							<div class="dropdown  pull-left open">
+                                <button class="btn-dropdown-bars-contact" type="button">
+                                    <div class="label-yellow">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                </button>
+							</div>
+
                             <div  class="bv-detail-contact">
                                 <p ng-init="vm.isCollapsedAgrement = false" ng-click="vm.isCollapsedAgrement = !vm.isCollapsedAgrement">
                                 	Cấp đơn <i class="fas" ng-class="vm.isCollapsedAgrement ? 'fa-chevron-right' : 'fa-chevron-down'"></i>

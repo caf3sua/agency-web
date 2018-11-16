@@ -3018,3 +3018,7 @@ button[disabled] {
     background: #cfd2d4 !important;
     border: 1px solid #cfd2d4 !important;
 }
+
+.label-yellow {
+    color: #d6d609;
+}

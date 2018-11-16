@@ -26,14 +26,16 @@
   		// Function
   		vm.deleteReminder = deleteReminder;
   		
-  		function updateReminderStatus() {
-  			ReminderService.updateStatus({id: id}, onUpdateStatusSuccess, onUpdateStatusError);
+  		function updateReminderStatus(reminder) {
+  			ReminderService.updateStatus({id: reminder.id, active: reminder.active}, onUpdateStatusSuccess, onUpdateStatusError);
   			
   			function onUpdateStatusSuccess(data) {
+				  console.log('onUpdateStatusSuccess reminder');
 //  				loadAll();
             }
             function onUpdateStatusError(error) {
-                vm.validateResponse(error, 'deleteReminder');
+				let message = error.data.message || 'Lỗi khi cập nhật trạng thái thông báo';
+				toastr.error(message);
             }
   		}
   		
