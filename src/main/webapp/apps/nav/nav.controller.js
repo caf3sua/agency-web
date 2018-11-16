@@ -103,7 +103,7 @@
     	vm.tvi = {
     			"expiredDate": "",
     			"inceptionDate": "",
-    			"numberOfDay": "",
+    			"numberOfDay": 1,
     			"numberOfPerson": 1,
     			"planId": "",
     			"premiumDiscount": 0,
@@ -359,10 +359,14 @@
 	  	            break;
 		  	    case "TVC":
 		  	    	console.log('calculate premium TVC');
-		  	    	var ngayDi = moment().format('DD/MM/YYYY');
-		  	    	var ngayVe = moment().add(vm.tvc.songay, 'd').format('DD/MM/YYYY');
-		  	    	vm.tvc.ngayDi = ngayDi;
-		  	    	vm.tvc.ngayVe = ngayVe;
+		  	    	var startDate = new Date();
+		            // add a day
+		            startDate.setDate(startDate.getDate() + 1);
+		            vm.tvc.ngayDi = DateUtils.convertDate(startDate);
+
+		            var endDate = moment(vm.tvc.ngayDi, "DD/MM/YYYY").add(vm.tvc.songay - 1, 'days').format("DD/MM/YYYY");
+		            vm.tvc.ngayVe = endDate;
+		  	    	
 		  	    	if (vm.tvc.premiumPackage == 1){
 		  	    		vm.tvc.numberOfPerson = 1;
 		  	    	} else {
@@ -377,10 +381,14 @@
 	  	            break;
 		  	    case "TVI":
 		  	    	console.log('calculate premium TVI');
-		  	    	var inceptionDate = moment().format('DD/MM/YYYY');
-		  	    	var expiredDate = moment().add(vm.tvi.numberOfDay, 'd').format('DD/MM/YYYY');
-		  	    	vm.tvi.inceptionDate = inceptionDate;
-		  	    	vm.tvi.expiredDate = expiredDate;
+		  	    	var startDate = new Date();
+		            // add a day
+		            startDate.setDate(startDate.getDate() + 1);
+		            vm.tvi.inceptionDate = DateUtils.convertDate(startDate);
+
+		            var endDate = moment(vm.tvi.inceptionDate, "DD/MM/YYYY").add(vm.tvi.numberOfDay - 1, 'days').format("DD/MM/YYYY");
+		            vm.tvi.expiredDate = endDate;
+		  	    	
 	  	            NavCommonService.getTviPremium(vm.tvi, function (data) {
 		  	            	vm.isCanPremium = true;
 		  	            	vm.premium = data.premiumTvi;

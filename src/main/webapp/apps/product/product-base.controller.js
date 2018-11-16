@@ -121,7 +121,6 @@
     	
     	function validateInvoice() {
     		console.log('validateInvoice');
-    		debugger
     		if (vm.policy.invoiceInfo != null){
     			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
     				return true;        				
