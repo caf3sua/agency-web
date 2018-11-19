@@ -234,7 +234,7 @@
 		function confirmRestoreAgreement(order) {
   			$ngConfirm({
                 title: 'Xác nhận',
-                icon: 'far fa-window-restore',
+                icon: 'fas fa-recycle',
                 theme: 'modern',
                 type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn muốn khôi phục hợp đồng ' + order.gycbhNumber + ' này ?</div>',
