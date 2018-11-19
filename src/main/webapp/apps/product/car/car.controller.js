@@ -5,10 +5,10 @@
         .module('app')
         .controller('ProductCarController', ProductCarController);
 
-    ProductCarController.$inject = ['$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'
+    ProductCarController.$inject = ['$rootScope', '$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'
     	, '$stateParams'];
 
-    function ProductCarController ($scope, $controller, CarService, DateUtils, ProductCommonService, $state
+    function ProductCarController ($rootScope, $scope, $controller, CarService, DateUtils, ProductCommonService, $state
     		, $stateParams) {
         var vm = this;
         vm.lineId = 'CAR';
@@ -208,6 +208,9 @@
                 	vm.showWarningEditPolicy();
     		    });
             }
+            
+            // Load contact
+  		    vm.selectedContactMode();
   		}
   		
   		function formatEditData(result) {

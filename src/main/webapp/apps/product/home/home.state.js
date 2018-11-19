@@ -11,7 +11,7 @@
         $stateProvider
         	.state('product.home', {
 	            parent: 'product',
-	            url: '/home?id&copy',
+	            url: '/home?id&copy&selContactId',
 	            templateUrl: 'apps/product/layout.html',
 	            data: {
 	                authorities: ['PERM_PRODUCT_HOM_CREATE'],

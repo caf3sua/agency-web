@@ -143,6 +143,9 @@
     		    });
             }
             
+            // Load contact
+  		    vm.selectedContactMode();
+            
   		})();
   		
   		function formatAddressEdit() {

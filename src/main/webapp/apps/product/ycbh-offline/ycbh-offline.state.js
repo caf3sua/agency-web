@@ -11,7 +11,7 @@
         $stateProvider
         .state('product.ycbh-offline', {
             parent: 'product',
-            url: '/ycbh-offline/{productCode}',
+            url: '/ycbh-offline/{productCode}?selContactId',
             templateUrl: 'apps/product/ycbh-offline/view/ycbh-offline.html',
             data: {
                 authorities: ['PERM_AGREEMENT_OFFLINE_BVP','PERM_AGREEMENT_OFFLINE_CAR','PERM_AGREEMENT_OFFLINE_HOM','PERM_AGREEMENT_OFFLINE_KCR','PERM_AGREEMENT_OFFLINE_MOT','PERM_AGREEMENT_OFFLINE_KHC','PERM_AGREEMENT_OFFLINE_TNC','PERM_AGREEMENT_OFFLINE_TVC','PERM_AGREEMENT_OFFLINE_TVI','PERM_AGREEMENT_OFFLINE_HHV'],

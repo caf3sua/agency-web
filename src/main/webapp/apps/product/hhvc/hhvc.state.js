@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.hhvc', {
             parent: 'product',
-            url: '/hhvc?id',
+            url: '/hhvc?id&selContactId',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_HHV_CREATE'],

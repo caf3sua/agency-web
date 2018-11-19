@@ -21,10 +21,12 @@
         }]);
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
-    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal', 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage'];
+    	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal'
+    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
-    		, ContactCommonDialogService, ResponseValidateService, Principal, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage){
+    		, ContactCommonDialogService, ResponseValidateService, Principal
+    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -82,6 +84,7 @@
         vm.disableContactInfo = disableContactInfo;
         vm.isEditMode = isEditMode;
         vm.isCopyMode = isCopyMode;
+        vm.selectedContactMode = selectedContactMode;
         vm.loadPolicyEdit = loadPolicyEdit;
         
         vm.savePolicyBase = savePolicyBase; 
@@ -101,9 +104,13 @@
     	vm.loadContactForReceiver = false;
     	vm.validateInvoice = validateInvoice;
     	
+    	vm.selectedContactChange = selectedContactChange;
+    	
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
+    	
+    	$scope.$on('selectedContactChange', selectedContactChange);
     	
     	function checkDate(startDate, endDate){
     		var splitStart = startDate.split('/');
@@ -205,6 +212,21 @@
         	
         	return false;
         }
+        
+        function selectedContactMode() {
+        	if ($stateParams.selContactId != undefined && $stateParams.selContactId != null) {
+        		ContactService.get({id : $stateParams.selContactId}).$promise.then(function(result) {
+        			// Store into rootScope
+          			$rootScope.selectedContact = result;
+          			selectedContactChange();
+          			
+                }).catch(function(data, status) {
+        			console.log('Error get gychbhNumber');
+    		    });
+        	}
+        }
+        
+        
         
         function formatAddressEdit(address) {
         	return address.substring(0, address.indexOf("::"));
@@ -517,7 +539,7 @@
             });
   		}
 		
-        $scope.$on('selectedContactChange', function() {
+        function selectedContactChange() {
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		if (vm.loadContactForInvoice) {
         			if (vm.policy.invoiceInfo == null || vm.policy.invoiceInfo == undefined) {
@@ -562,15 +584,31 @@
         			
         		} else if (vm.lineId == 'KCR' && vm.policy.contactCode != "" && vm.policy.contactCode != null && vm.policy.contactCode != undefined){
         			
+        		} else if (vm.lineId == 'ANC'){
+        			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+            		vm.policy.contactName = $rootScope.selectedContact.contactName;
+        		} else if (vm.lineId == 'OFF'){
+        			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+            		vm.policy.contactName = $rootScope.selectedContact.contactName;
+            		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
+            		
+            		var now = new Date();
+                    var nowStr = DateUtils.convertDate(now);
+                    vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
+                    
+                    if (vm.policy.tuoi < 18){
+                    	vm.isShowGKS = true;
+                    } else{
+                    	vm.isShowGKS = false;
+                    }
         		} else {
-        			
         			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
             		vm.policy.contactName = $rootScope.selectedContact.contactName;
                     vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
                     vm.policy.contactPhone = $rootScope.selectedContact.phone;
                     vm.policy.contactEmail = $rootScope.selectedContact.email;
                     vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
-                    
+
                     let address = $rootScope.selectedContact.homeAddress;
                     vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
 
@@ -607,7 +645,7 @@
         		}
         	
         	}
-        });
+        }
 
         function openSearchContact() {
         	console.log('openSearchContact');

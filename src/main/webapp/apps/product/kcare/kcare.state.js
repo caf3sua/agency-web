@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.kcare', {
             parent: 'product',
-            url: '/kcare?id&copy',
+            url: '/kcare?id&copy&selContactId',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_KCR_CREATE'],

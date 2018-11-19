@@ -12,6 +12,7 @@
     		, ContactCommonDialogService, ProductCommonService, $ngConfirm, ProductYcbhOfflineService, ContactService, DateUtils) {
         var vm = this;
 
+        vm.lineId = 'OFF';
         vm.policy = {
     		  "gycbhNumber": "",
     		  "contactCode": "",
@@ -83,6 +84,8 @@
 	  			}
 		    }
 		    
+		    // Load contact
+  		    vm.selectedContactMode();
   		})();
   		
   		function loadFileInEditMode() {
@@ -200,23 +203,23 @@
   			}
   		}, true);
   		
-  		$scope.$on('selectedContactChange', function() {
-        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
-        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
-        		vm.policy.contactName = $rootScope.selectedContact.contactName;
-        		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
-        		
-        		var now = new Date();
-                var nowStr = DateUtils.convertDate(now);
-                vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
-                
-                if (vm.policy.tuoi < 18){
-                	vm.isShowGKS = true;
-                } else{
-                	vm.isShowGKS = false;
-                }
-        	}
-        });
+//  		$scope.$on('selectedContactChange', function() {
+//        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+//        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+//        		vm.policy.contactName = $rootScope.selectedContact.contactName;
+//        		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
+//        		
+//        		var now = new Date();
+//                var nowStr = DateUtils.convertDate(now);
+//                vm.policy.tuoi = DateUtils.yearDiff(vm.policy.dateOfBirth, nowStr);
+//                
+//                if (vm.policy.tuoi < 18){
+//                	vm.isShowGKS = true;
+//                } else{
+//                	vm.isShowGKS = false;
+//                }
+//        	}
+//        });
   		
   		// Function
   		function openSearchContact() {

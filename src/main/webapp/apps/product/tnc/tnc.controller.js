@@ -130,6 +130,9 @@
     		    });
             }
             
+            // Load contact
+  		    vm.selectedContactMode();
+            
         }
         
         function formatEditData(result) {

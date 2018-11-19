@@ -14,6 +14,7 @@
     		, PrintedPaperService, DateUtils) {
         var vm = this;
 
+        vm.lineId = 'ANC';
         vm.isSaveAndNewFlag = false;
         vm.policy = {
         		  "gycbhNumber": "",
@@ -122,6 +123,9 @@
 	  			function onError() {
 	  			}
   		    }
+  		    
+  		    // Load contact
+  		    vm.selectedContactMode();
   		})();
   		
   		function onChange(item) {
@@ -265,12 +269,12 @@
         	}
         });
   		
-  		$scope.$on('selectedContactChange', function() {
-        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
-        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
-        		vm.policy.contactName = $rootScope.selectedContact.contactName;
-        	}
-        });
+//  		$scope.$on('selectedContactChange', function() {
+//        	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
+//        		vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+//        		vm.policy.contactName = $rootScope.selectedContact.contactName;
+//        	}
+//        });
   		
   		// Function
   		function openSearchAnchi() {

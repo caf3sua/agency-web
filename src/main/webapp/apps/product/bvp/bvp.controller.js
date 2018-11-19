@@ -278,6 +278,9 @@
                 	vm.showWarningEditPolicy();
     		    });
             }
+            
+            // Load contact
+  		    vm.selectedContactMode();
         }
         
         // watch

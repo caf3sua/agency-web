@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.car', {
             parent: 'product',
-            url: '/car?id&copy',
+            url: '/car?id&copy&selContactId',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_CAR_CREATE'],

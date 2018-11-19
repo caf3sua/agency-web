@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('product.khc', {
             parent: 'product',
-            url: '/khc?id&copy',
+            url: '/khc?id&copy&selContactId',
             templateUrl: 'apps/product/layout.html',
             data: {
                 authorities: ['PERM_PRODUCT_KHC_CREATE'],
