@@ -5,6 +5,12 @@
 		</div>
         <span class="bv-detail-text-table">Xem</span>
 	</div>
+	<div ng-show="order.statusPolicyId == 89" ng-click="vm.confirmRestoreAgreement(order)">
+        <div class="bv-detail-icon-table">
+            <i class="far fa-window-restore"></i>
+        </div>
+        <span class="bv-detail-text-table">Khôi phục</span>
+    </div>
 
     <div ng-click="vm.confirmCopyAgreement(order)">
         <div class="bv-detail-icon-table">

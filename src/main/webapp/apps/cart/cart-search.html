@@ -89,18 +89,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
-                <div class="bv-title-from">
-                    <p>Trạng thái</p>
-                </div>
-                <div class="margin-top-5">
-                    <select class="bv-select-box-kh form-control" ng-model="vm.searchCriterial.statusPolicy">
-                    	<option value="">-- Trạng thái hợp đồng --</option>
-                    	<option value="90">Chờ thanh toán</option>
-                    	<option value="100">Hoàn thành</option>
-                    </select>
-                </div>
-            </div> -->
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
                 <div class="bv-title-from">
                     <p>Hình thức cấp</p>
@@ -114,8 +102,25 @@
                     </select>
                 </div>
             </div>
-
             <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0">
+                <div class="bv-title-from">
+                    <p>Ngày nhập</p>
+                </div>
+                <div class="margin-top-5">
+                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+                        <div class="width-100">
+                            <input type="text" name="createDate" class="bv-input" placeholder="Ngày nhập" ng-model="vm.searchCriterial.createDate">
+                        </div>
+                        <div class="input-group-addon bv-date-icon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
                 <div class="bv-title-from">
                     <p>Đơn vị</p>
                 </div>
@@ -126,6 +131,7 @@
                 </div>
             </div>
         </div>
+        
 		<!-- Button -->
 		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">
         <div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;">

@@ -22,6 +22,7 @@
 		vm.confirmViewAgreement = confirmViewAgreement;
 		vm.confirmKhachhangnophi = confirmKhachhangnophi;
 		vm.confirmTaituc = confirmTaituc;
+		vm.confirmRestoreAgreement = confirmRestoreAgreement;
 		
 		var modalInstance = null;
 		
@@ -213,6 +214,30 @@
                 theme: 'modern',
                 type: 'blue',
                 content: '<div class="text-center">Bạn chắc chắn sửa hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	editAgreement(order, false);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+		
+		function confirmRestoreAgreement(order) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'far fa-window-restore',
+                theme: 'modern',
+                type: 'blue',
+                content: '<div class="text-center">Bạn chắc chắn muốn khôi phục hợp đồng ' + order.gycbhNumber + ' này ?</div>',
                 animation: 'scale',
                 closeAnimation: 'scale',
                 buttons: {

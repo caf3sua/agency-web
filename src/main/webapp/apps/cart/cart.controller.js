@@ -35,7 +35,8 @@
     			  "productCode": "",
     			  "toDate": "",
     			  "createType": "",
-    			  "departmentId": ""
+    			  "departmentId": "",
+    			  "createDate": ""
     		};
         
   		vm.processPayment = processPayment;
