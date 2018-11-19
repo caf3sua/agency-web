@@ -172,6 +172,10 @@
 			'checkOTP' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/check-OTP'
+            },
+            'resendOtp' : {
+                method : 'POST',
+                url : 'api/agency/product/agreement/resend-confirm-otp'
             }
         });
 

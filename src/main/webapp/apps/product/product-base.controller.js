@@ -22,11 +22,11 @@
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
     	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal'
-    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService', 'OrderService'];
+    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
     		, ContactCommonDialogService, ResponseValidateService, Principal
-    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService, OrderService){
+    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -473,7 +473,7 @@
   		function resendOTP(number) {
   			console.log('resendOTP');
   			$rootScope.gycbhNumber = number;
-  			OrderService.resendOtp({gycbhNumber: number}, onSuccess, onError);
+  			ProductCommonService.resendOtp({gycbhNumber: number}, onSuccess, onError);
   			
   			function onSuccess(result) {
   				showOTPSavePolicySuccessInfo();
