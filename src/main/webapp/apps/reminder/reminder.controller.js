@@ -30,10 +30,8 @@
   			ReminderService.updateStatus({reminderId: reminder.id, active: reminder.active}, onUpdateStatusSuccess, onUpdateStatusError);
   			
   			function onUpdateStatusSuccess(data) {
-				  debugger
 				  console.log('onUpdateStatusSuccess reminder');
 				  $rootScope.$broadcast('reminderChangeSuccess');
-//  				loadAll();
             }
             function onUpdateStatusError(error) {
 				let message = error.data.message || 'Lỗi khi cập nhật trạng thái thông báo';
