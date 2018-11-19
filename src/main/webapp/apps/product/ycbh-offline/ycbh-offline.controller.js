@@ -21,7 +21,9 @@
     		  "imgKhaisinhContents": null,
     		  "maSanPham": "",
     		  "totalPremium": "",
-    		  "statusPolicy": "93"
+    		  "statusPolicy": "93",
+    		  "ngayHieulucDen": "",
+    		  "ngayHieulucTu": ""
         };
 		 vm.gycbhFiles = [];
 		 vm.documentFiles = [];
@@ -39,6 +41,7 @@
         vm.saveYcbhOffline = saveYcbhOffline;
         vm.cancel = cancel;
         vm.openSearchContact = openSearchContact;
+        vm.changeDate = changeDate;
         
         angular.element(document).ready(function () {
         });
@@ -55,6 +58,15 @@
 	  		    	  "gycbhNumber": ""
 		    };
 		    vm.gycbhNumber = $stateParams.id;
+		    
+		    var startDate = new Date();
+			vm.policy.ngayCap = DateUtils.convertDate(startDate);
+            // add a day
+            startDate.setDate(startDate.getDate() + 1);
+            vm.policy.ngayHieulucTu = DateUtils.convertDate(startDate);
+
+            var endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+            vm.policy.ngayHieulucDen = endDate;
 		    
 		    // Edit
 		    if (vm.gycbhNumber != null) {
@@ -229,6 +241,19 @@
   		
   		function cancel() {
   			$state.go("app.order");
+  		}
+  		
+  		function changeDate(){
+  			if (vm.policy.ngayHieulucTu != "" && vm.policy.ngayHieulucDen != ""){
+  				if(!vm.checkDate(vm.policy.ngayHieulucTu, vm.policy.ngayHieulucDen)){
+  					toastr.error("Thời gian từ ngày - đến ngày không phù hợp");
+  					return false;
+  				}
+  				
+  				let endDate = moment(vm.policy.ngayHieulucTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
+  	            vm.policy.ngayHieulucDen = endDate;
+  				return true;
+  			}
   		}
   		
   		function saveYcbhOffline(type) {
