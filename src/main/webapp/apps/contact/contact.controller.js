@@ -6,9 +6,9 @@
 
 
 	ContactController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', 'ContactService'
-		, 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm', 'ReminderService'];
+		, 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm', 'ReminderService', '$controller'];
 	function ContactController($rootScope, $scope, $stateParams, $http, $filter, ContactService
-		, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm, ReminderService) {
+		, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm, ReminderService, $controller) {
     	var vm = this;
     	vm.contacts = [];
     	vm.selectedContact = null;
@@ -35,6 +35,8 @@
 
     	// Init controller
   		(function initController() {
+  			$controller('AgreementBaseController', { vm: vm, $scope: $scope });
+  			
   			loadAll();
   		})();
   		

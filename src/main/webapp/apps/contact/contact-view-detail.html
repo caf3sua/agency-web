@@ -115,49 +115,8 @@
                                 	Cấp đơn <i class="fas" ng-class="vm.isCollapsedAgrement ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
                                 </p>
                                 <div uib-collapse="vm.isCollapsedAgrement">
-	                                <div class="display-flex table-responsive">
-	                                    <table class="table table-striped">
-									        <thead>
-									            <tr>
-									                <th>STT</th>
-									                <th>Sản phẩm</th>
-									                <th>Số hợp đồng</th>
-									                <th>Trạng thái hợp đồng</th>
-									            </tr>
-									        </thead>
-									        <tbody>
-										        <tr ng-repeat="item in vm.Agreements track by $index">
-										            <td>
-										                <p class="margin-0">{{$index + 1}}</p>
-										            </td>
-										            <td>
-										                <p class="">{{item.lineName}}</p>
-										            </td>
-										            <td>
-										                <p class="">{{item.gycbhNumber}}</p>
-										            </td>
-										            <td>
-										                <p class="">{{item.statusPolicyName}}</p>
-										            </td>
-										        </tr>
-									        </tbody>
-									        <!-- <tfoot>
-										        <tr>
-										          <td colspan="5" class="text-center">
-										            <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
-										          </td>
-										        </tr>
-										     </tfoot> -->
-										     <tfoot>
-												<tr>
-										        	<td colspan="5" class="text-center">
-											            <bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage" ng-show="vm.totalItems > 0"></bv-item-count>
-												        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-												    </td>
-										        </tr>
-									     	</tfoot>
-									   </table>
-	                                </div>
+                                	<!-- Include -->
+	                                <div ng-include="'apps/contact/partial.contact-view-detail-agreement.html'"></div>
                                 </div>
                             </div>
                             <div class="bv-detail-contact">

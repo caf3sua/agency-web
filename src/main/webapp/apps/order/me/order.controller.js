@@ -42,8 +42,6 @@
   		
   		vm.searchOrder = searchOrder;
   		vm.confirmResendEmail = confirmResendEmail;
-  		vm.confirmKhachhangnophi = confirmKhachhangnophi;
-  		vm.confirmTaituc = confirmTaituc;
   		vm.confirmViewAgreement = confirmViewAgreement;
   		vm.changeDate = changeDate;
   		vm.confirmResendOTP = confirmResendOTP;
@@ -161,97 +159,6 @@
                 },
             });
   		}
-        
-        function taitucPolicy(agreementId) {
-  			console.log('taitucPolicy, agreementId:' + agreementId);
-  			OrderService.createTaituc({agreementId: agreementId}, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				toastr.success('Tái tục đơn hàng thành công');
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi tái tục đơn hàng");
-  			}
-        }
-        
-        function confirmTaituc(agreementId) {
-  			$ngConfirm({
-                title: 'Xác nhận',
-                icon: 'fa fa-history',
-                theme: 'modern',
-                type: 'blue',
-                content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	taitucPolicy(agreementId);
-	                    }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-            });
-  		}
-        
-        function doKhachhangnophi(order, sotiennophi, note) {
-        	vm.sotiennophi = sotiennophi;
-        	vm.note = note;
-        	vm.nophi = {
-        			  "agreementId": order.agreementId,
-        			  "contactId": order.contactId,
-        			  "note": vm.note,
-        			  "result": false,
-        			  "sotien": vm.sotiennophi
-        			};
-        	OrderService.createNophi(vm.nophi, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + order.gycbhNumber + "</strong> thành công");
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi tạo nợ phí!");
-  			}
-        	
-        	console.log('Khách hàng nợ phí,' + vm.sotiennophi);
-        	
-        }
-        
-        function confirmKhachhangnophi(order) {
-        	$ngConfirm({
-                title: 'Khách hàng nợ phí',
-                columnClass: 'col-md-6 col-md-offset-3',
-                contentUrl: 'views/theme/blocks/form-khachhangnophi.html',
-                buttons: {
-                    ok: {
-                        text: 'Đồng ý',
-                        disabled: true,
-                        btnClass: 'btn-green',
-                        action: function (scope) {
-                        	doKhachhangnophi(order, scope.sotiennophi, scope.note);
-                        }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-                onScopeReady: function (scope) {
-                    var self = this;
-                    scope.textChange = function () {
-                        if (scope.sotiennophi)
-                            self.buttons.ok.setDisabled(false);
-                        else
-                            self.buttons.ok.setDisabled(true);
-                    }
-                }
-            })
-        }
         
   		function resendEmail(number) {
   			console.log('doResendEmail');

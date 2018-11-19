@@ -68,7 +68,6 @@
         vm.agreementIds = [];
         vm.checkTypePay = 'agency';
   		
-        vm.confirmViewAgreement = confirmViewAgreement;
         vm.confirmCancelCart = confirmCancelCart;
         vm.changeDate = changeDate;
         vm.searchCart = searchCart;
@@ -303,16 +302,6 @@
             vm.transition();
         }
 
-        function confirmViewAgreement(order) {
-  			if (order.createType == "0"){
-  				$state.go("order.order-detail", {id: order.agreementId});
-  			} else if (order.createType == "2") {
-  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
-  			} else {
-  				$state.go("product.ycbh-offline-detail", {id: order.gycbhNumber});
-  			}
-  		}
-        
         function confirmCancelCart(gycbhNumber) {
   			$ngConfirm({
                 title: 'Xác nhận',
