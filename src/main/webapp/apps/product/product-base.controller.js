@@ -398,22 +398,83 @@
                     }
                 },
             });
-        }
+		}
+		
+		function updateAgreementOTP(option, otp) {
+			// option == 1 -> update OTP check
+			if (option == "1") {
+				var gycbhNumber = $rootScope.gycbhNumber;
+        		vm.checkOtp = {  
+        				"otp": vm.otp,
+        				"gycbhNumber": gycbhNumber
+        			};
+        		
+        		ProductCommonService.checkOTP(vm.checkOtp, onSuccess, onError);
+        		
+        		function onSuccess(data, headers) {
+        			$state.go('app.cart', {sel: $rootScope.gycbhNumber});
+        		}
+    				
+    	        function onError(error) {
+    	        	toastr.error('Mã xác thực không chính xác. Đề nghị kiểm tra lại');
+				}
+			} else {
+				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
+			}
+		}
         
         function showOTPSavePolicySuccessInfo() {
-            modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'apps/product/partial/partial-OTP.html',
-                controller: 'AgreementOtpController',
-                controllerAs: 'vm',
-                size: 'sg',
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('global');
-                        return $translate.refresh();
-                    }]
-                }
-            });
+			$ngConfirm({
+					title: 'Xác thực OTP',
+                    icon: 'fa fa-info',
+					theme: 'modern',
+					type: 'blue',
+					contentUrl: 'apps/product/partial/partial-OTP-modal.html',
+                    closeIcon: false,
+                    buttons: {
+                        complete: {
+							text: 'Hoàn thành',
+                            disabled: true,
+                            btnClass: 'btn-green',
+                            action: function (scope) {
+								updateAgreementOTP(scope.otpOptions, scope.otp);
+                            }
+                        }
+                    },
+                    onScopeReady: function (scope) {
+						var self = this;
+						scope.otpOptions = "1";
+						scope.optionChange = function () {
+							if (scope.otpOptions == "0") {
+								self.buttons.complete.setDisabled(false);
+								scope.otp = "";
+							} else {
+								self.buttons.complete.setDisabled(true);
+							}
+						}
+						
+						scope.otpChange = function () {
+                            if (scope.otp != null && scope.otp.length == 6)
+                                self.buttons.complete.setDisabled(false);
+                            else
+                                self.buttons.complete.setDisabled(true);
+                        }
+                    }
+                });
+            // modalInstance = $uibModal.open({
+			// 	backdrop: true,
+            //     animation: true,
+            //     templateUrl: 'apps/product/partial/partial-OTP.html',
+            //     controller: 'AgreementOtpController',
+            //     controllerAs: 'vm',
+            //     size: 'sg',
+            //     resolve: {
+            //         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+            //             $translatePartialLoader.addPart('global');
+            //             return $translate.refresh();
+            //         }]
+            //     }
+            // });
             
     	}
         

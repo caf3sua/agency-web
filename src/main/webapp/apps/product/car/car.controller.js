@@ -19,7 +19,7 @@
     	// Init controller
   		(function initController() {
   			// instantiate base controller
-  		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
+			  $controller('ProductBaseController', { vm: vm, $scope: $scope });
   		})();
   		
   		// Properties & function declare
