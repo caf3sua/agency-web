@@ -427,7 +427,7 @@
 			if (option == "1") {
 				var gycbhNumber = $rootScope.gycbhNumber;
         		vm.checkOtp = {  
-        				"otp": vm.otp,
+        				"otp": otp,
         				"gycbhNumber": gycbhNumber
         			};
         		
