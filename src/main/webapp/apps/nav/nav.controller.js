@@ -210,7 +210,11 @@
   			// Load init for car
   			NavCommonService.getCarBranches({}, getCarBranchesSuccess, getCarBranchesError);
   		})();
-  		
+		  
+		$rootScope.$on('reminderChangeSuccess', function() {
+			console.log('rootscope reminder change');
+			countReminder();
+	    });
 
     	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     		vm.isCollapsedQuickPremium = true;
@@ -428,14 +432,13 @@
   		}
   		
   		function countReminder() {
-//  			ReminderService.getCountReminder({numberDay: CONSTANT_REMINDER_RANGER_DATE}, onSuccess, onError);
+			  console.log('countReminder');
   			ReminderService.getCountAllReminder(onSuccess, onError);
     		
     		function onSuccess(result) {
     			vm.countReminder = result.count;
     		}
     		function onError(result) {
-    			
     		}
   		}
   		

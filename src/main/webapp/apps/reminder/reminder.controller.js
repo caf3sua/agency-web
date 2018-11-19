@@ -5,8 +5,8 @@
         .controller('ReminderController', ReminderController);
 
 
-    ReminderController.$inject = ['$scope', '$http', '$filter', 'ReminderService'];
-    function ReminderController($scope, $http, $filter, ReminderService) {
+    ReminderController.$inject = ['$rootScope', '$scope', '$http', '$filter', 'ReminderService'];
+    function ReminderController($rootScope, $scope, $http, $filter, ReminderService) {
     	var vm = this;
     	
     	vm.reminders = [];
@@ -30,7 +30,9 @@
   			ReminderService.updateStatus({reminderId: reminder.id, active: reminder.active}, onUpdateStatusSuccess, onUpdateStatusError);
   			
   			function onUpdateStatusSuccess(data) {
+				  debugger
 				  console.log('onUpdateStatusSuccess reminder');
+				  $rootScope.$broadcast('reminderChangeSuccess');
 //  				loadAll();
             }
             function onUpdateStatusError(error) {
@@ -59,8 +61,9 @@
   			ReminderService.delete({id: id}, onDeleteSuccess, onDeleteError);
   			
   			function onDeleteSuccess(data) {
-  				toastr.success('Xóa nhắc nhở thành công');
-  				loadAll();
+				toastr.success('Xóa nhắc nhở thành công');
+				$rootScope.$broadcast('reminderChangeSuccess');
+				loadAll();
             }
             function onDeleteError(error) {
                 vm.validateResponse(error, 'deleteReminder');
