@@ -141,6 +141,8 @@
   		}
         
         function searchCart() {
+        	resetCartValue();
+        	
   			if (changeDate()) {
   				if (vm.selectedDepartmentId != null && vm.selectedDepartmentId != undefined){
   					vm.searchCriterial.departmentId = vm.selectedDepartmentId;	
@@ -233,6 +235,11 @@
         
         function dateUtil(date) {
             return DateUtils.convertLocalDateToServer(date);
+        }
+        
+        function resetCartValue() {
+        	vm.sumMoney = 0;
+            vm.agreementIds = [];
         }
         
         function selectCheckBoxCart(data) {
