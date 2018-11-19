@@ -186,19 +186,15 @@
             	vm.loading = true;
             	// Load policy
             	$state.current.data.title = 'PRODUCT_CAR';
-            	
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
             		formatEditData(result);
-            		
             		vm.loading = false;
             		vm.policy = result;
-            		
             		// copy
             		vm.policy.agreementId = null;
             		vm.policy.gycbhId = null;
             		vm.policy.gycbhNumber =  null;
-            		
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
@@ -294,10 +290,12 @@
   			
   			// invoice
   			var invoiceInfoAddress = vm.policy.invoiceInfo.address;
-  			vm.policy.invoiceInfo.address = vm.formatAddressEdit(invoiceInfoAddress);
-  			vm.getAddressByPostCode(invoiceInfoAddress).then(function (data) {
-  				vm.policy.invoiceInfo.addressDistrictData = data;
-    		});
+  			if (invoiceInfoAddress != null && invoiceInfoAddress != undefined) {
+  				vm.policy.invoiceInfo.address = vm.formatAddressEdit(invoiceInfoAddress);
+  	  			vm.getAddressByPostCode(invoiceInfoAddress).then(function (data) {
+  	  				vm.policy.invoiceInfo.addressDistrictData = data;
+  	    		});
+  			}
   			
   			// extra
   			var insuredAddress = vm.policy.insuredAddress;

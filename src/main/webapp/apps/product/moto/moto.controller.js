@@ -193,10 +193,12 @@
   			
   			// invoice
   			var invoiceInfoAddress = vm.policy.invoiceInfo.address;
-  			vm.policy.invoiceInfo.address = vm.formatAddressEdit(invoiceInfoAddress);
-  			vm.getAddressByPostCode(invoiceInfoAddress).then(function (data) {
-  				vm.policy.invoiceInfo.addressDistrictData = data;
-    		});
+  			if (invoiceInfoAddress != null && invoiceInfoAddress != undefined) {
+  				vm.policy.invoiceInfo.address = vm.formatAddressEdit(invoiceInfoAddress);
+  	  			vm.getAddressByPostCode(invoiceInfoAddress).then(function (data) {
+  	  				vm.policy.invoiceInfo.addressDistrictData = data;
+  	    		});
+  			}
   			
   			// extra
   			var insuredAddress = vm.policy.insuredAddress;
