@@ -59,7 +59,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/me/order.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            			'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/me/order.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -93,7 +93,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/agency-wait/order-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            			'apps/order/agency-wait/order-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -127,7 +127,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/baoviet-wait/order-BV-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            			'apps/order/baoviet-wait/order-BV-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -161,7 +161,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            			'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -195,7 +195,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/expire/order-expire.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/product/agreement-otp.controller.js'
+	            			'apps/order/expire/order-expire.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }

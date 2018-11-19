@@ -44,8 +44,6 @@
   		vm.confirmTaituc = confirmTaituc;
   		vm.confirmViewAgreement = confirmViewAgreement;
   		vm.changeDate = changeDate;
-  		vm.confirmResendOTP = confirmResendOTP;
-  		vm.showOTPSavePolicySuccessInfo = showOTPSavePolicySuccessInfo;
   		
   		vm.selectedDepartmentId;
   		
@@ -273,64 +271,6 @@
   				$state.go("product.ycbh-offline-detail", {id: order.gycbhNumber});
   			}
   		}
-  		
-  		function confirmResendOTP(gycbhNumber) {
-  			$ngConfirm({
-                title: 'Xác nhận',
-                icon: 'fas fa-sync-alt',
-                theme: 'modern',
-                type: 'red',
-                content: '<div class="text-center">Bạn chắc chắn muốn gửi lại otp ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	resendOTP(gycbhNumber);
-	                    }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-            });
-  		}
-  		
-  		function resendOTP(number) {
-  			console.log('resendOTP');
-  			$rootScope.gycbhNumber = number;
-  			OrderService.resendOtp({gycbhNumber: number}, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				showOTPSavePolicySuccessInfo();
-  				toastr.success('Đã gửi lại otp với mã đơn hàng: ' + result.gycbhNumber);
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi gửi lại otp đơn hàng!");
-  			}
-  		}
-  		
-  		var modalInstance = null;
-  		function showOTPSavePolicySuccessInfo() {
-            modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'apps/product/partial/partial-OTP.html',
-                controller: 'AgreementOtpController',
-                controllerAs: 'vm',
-                size: 'sg',
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('global');
-                        return $translate.refresh();
-                    }]
-                }
-            });
-            
-    	}
-  		
   		
     }
 })();

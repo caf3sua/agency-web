@@ -22,11 +22,11 @@
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
     	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal'
-    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService'];
+    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService', 'OrderService'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
     		, ContactCommonDialogService, ResponseValidateService, Principal
-    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService){
+    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService, OrderService){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -90,6 +90,7 @@
         vm.savePolicyBase = savePolicyBase; 
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
         vm.showOTPSavePolicySuccessInfo = showOTPSavePolicySuccessInfo;
+        vm.confirmResendOTP = confirmResendOTP;
         vm.showWarningEditPolicy = showWarningEditPolicy;
         vm.formatAddressEdit = formatAddressEdit; 
         vm.getAddressByPostCode = getAddressByPostCode;
@@ -444,6 +445,45 @@
 				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
 			}
 		}
+		
+		function confirmResendOTP(gycbhNumber) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fas fa-sync-alt',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn gửi lại otp ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	resendOTP(gycbhNumber);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+  		
+  		function resendOTP(number) {
+  			console.log('resendOTP');
+  			$rootScope.gycbhNumber = number;
+  			OrderService.resendOtp({gycbhNumber: number}, onSuccess, onError);
+  			
+  			function onSuccess(result) {
+  				showOTPSavePolicySuccessInfo();
+  				toastr.success('Đã gửi lại otp với mã đơn hàng: ' + result.gycbhNumber);
+  			}
+  			
+  			function onError() {
+  				toastr.error("Lỗi khi gửi lại otp đơn hàng!");
+  			}
+  		}
         
         function showOTPSavePolicySuccessInfo() {
 			$ngConfirm({
@@ -483,22 +523,7 @@
                         }
                     }
                 });
-            // modalInstance = $uibModal.open({
-			// 	backdrop: true,
-            //     animation: true,
-            //     templateUrl: 'apps/product/partial/partial-OTP.html',
-            //     controller: 'AgreementOtpController',
-            //     controllerAs: 'vm',
-            //     size: 'sg',
-            //     resolve: {
-            //         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-            //             $translatePartialLoader.addPart('global');
-            //             return $translate.refresh();
-            //         }]
-            //     }
-            // });
-            
-    	}
+        	}
         
         function showSavePolicySuccessInfo(obj) {
         	var message = "";
