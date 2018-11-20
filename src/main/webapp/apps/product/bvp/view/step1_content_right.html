@@ -140,36 +140,52 @@
                     </label>
                 </div>
             </div>
-            <table class="table table-bordered margin-top-10" ng-show="vm.policy.q3 == 1">
-                <thead>
-                <tr>
-                    <th style="width: 195px">Ngày khám/điều trị</th>
-                    <th>Chuẩn đoán</th>
-                    <th>Chi tiết điều trị</th>
-                    <th>Kết quả</th>
-                    <th>Tên, địa chỉ bác sĩ/bệnh viện</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in vm.policy.lstAdd">
-                        <td>
-                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
-                                <div class="width-100">
-                                    <input type="text" name="ngaydieutri" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
-                                </div>
-                                <div class="input-group-addon bv-date-icon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="text" name="chuandoan" class="form-control" ng-model="item.chuandoan" /></td>
-                        <td><input type="text" name="chitietdieutri" class="form-control" ng-model="item.chitietdieutri" /></td>
-                        <td><input type="text" name="ketqua" class="form-control" ng-model="item.ketqua" /></td>
-                        <td><input type="text" name="benhvienorbacsy" class="form-control" ng-model="item.benhvienorbacsy" /></td>
-                    </tr>
-                </tbody>
-            </table>
-
+            
+            <!-- <div class=" col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10 ng-scope">
+    		<table class="table bv-home-block-left-table bv-table-kh"> -->
+            
+            <div class="scroll-container">
+            	<div class="horizontal-scroll-wrapper squares">
+				  <div>item 1</div>
+				  <div>item 2</div>
+				  <div>item 3</div>
+				  <div>item 4</div>
+				  <div>item 5</div>
+				  <div>item 6</div>
+				  <div>item 7</div>
+				  <div>item 8</div>
+				</div>
+			
+	            <table class="table table-bordered margin-top-10" ng-show="vm.policy.q3 == 1">
+	                <thead>
+	                <tr>
+	                    <th style="width: 195px">Ngày khám/điều trị</th>
+	                    <th>Chuẩn đoán</th>
+	                    <th>Chi tiết điều trị</th>
+	                    <th>Kết quả</th>
+	                    <th>Tên, địa chỉ bác sĩ/bệnh viện</th>
+	                </tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-repeat="item in vm.policy.lstAdd">
+	                        <td>
+	                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+	                                <div class="width-100">
+	                                    <input type="text" name="ngaydieutri" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
+	                                </div>
+	                                <div class="input-group-addon bv-date-icon">
+	                                    <span class="glyphicon glyphicon-th"></span>
+	                                </div>
+	                            </div>
+	                        </td>
+	                        <td><input type="text" name="chuandoan" class="form-control" ng-model="item.chuandoan" /></td>
+	                        <td><input type="text" name="chitietdieutri" class="form-control" ng-model="item.chitietdieutri" /></td>
+	                        <td><input type="text" name="ketqua" class="form-control" ng-model="item.ketqua" /></td>
+	                        <td><input type="text" name="benhvienorbacsy" class="form-control" ng-model="item.benhvienorbacsy" /></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+			</div>
             <div class="margin-top-20"/>
 		
             <contact-section
