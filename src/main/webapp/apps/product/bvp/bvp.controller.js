@@ -6,10 +6,10 @@
         .controller('ProductBvpController', ProductBvpController);
 
     ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService'
-    	, '$state', '$stateParams'];
+    	, '$state', '$stateParams', 'ContactService'];
 
     function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService
-    		, $state, $stateParams) {
+    		, $state, $stateParams, ContactService) {
     	var vm = this;
     	vm.lineId = 'BVP';
     	
@@ -280,7 +280,21 @@
             }
             
             // Load contact
-  		    vm.selectedContactMode();
+  		    selectedContactModeBVP();
+        }
+        
+        function selectedContactModeBVP() {
+        	if ($stateParams.selContactId != undefined && $stateParams.selContactId != null) {
+        		ContactService.get({id : $stateParams.selContactId}).$promise.then(function(result) {
+        			// Store into rootScope
+          			$rootScope.selectedContact = result;
+          			vm.panelType = 'contact';
+          			selectedContactChange();
+          			
+                }).catch(function(data, status) {
+        			console.log('Error get gychbhNumber');
+    		    });
+        	}
         }
         
         // watch
@@ -421,8 +435,8 @@
         	vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
         	vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
   		}, true);
-        
-        $scope.$on('selectedContactChange', function() {
+
+        function selectedContactChange() {
             if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
                 switch (vm.panelType) {
                     case 'contact':
@@ -460,7 +474,9 @@
                         break;
                 }
             }
-        });
+        }
+        
+        $scope.$on('selectedContactChange', selectedContactChange);
         
         function isHealthyPersonChange() {
         	if(vm.isHealthyPerson) {

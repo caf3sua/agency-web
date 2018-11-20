@@ -3022,3 +3022,17 @@ button[disabled] {
 .label-yellow {
     color: #d6d609;
 }
+
+.icon-reminder {
+    margin-bottom: -15px !important;
+}
+
+a.customer-check {
+	font-size: 20px;
+	color: #999 !important;
+}
+
+a.customer-check:hover {
+	font-size: 20px;
+	color: #1964af !important;
+}

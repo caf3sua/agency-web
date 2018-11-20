@@ -5,7 +5,7 @@
   	</p>
 </div>
 <div uib-collapse="vm.isCollapsedTableRights">
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Họ và tên người mua</p>
 	</div>
     <div class="margin-top-5 input-group display-flex">
@@ -16,25 +16,25 @@
             <span class="fa fa-plus"></span>
         </div>
     </div>
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Tên đơn vị</p>
 	</div>
 	<div class="margin-top-5">
 	    <input type="text" name="invoiceInfo.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
 	</div>
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Mã số thuế</p>
 	</div>
 	<div class="margin-top-5">
 	    <input type="text" name="invoiceInfo.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo" maxlength="20" numeric-only/>
 	</div>
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Địa chỉ đơn vị</p>
 	</div>
 	<div class="margin-top-5">
 	    <input type="text" name="invoiceInfo.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
 	</div>
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 		    <p class="bv-title-from">Tên phường xã</p>
 	</div>
 	<div class="margin-top-5">
@@ -42,7 +42,7 @@
 		<input type="hidden" name="invoiceInfo.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData"
 					 />
 	</div>
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Số tài khoản</p>
 	</div>
 	<div class="margin-top-5">

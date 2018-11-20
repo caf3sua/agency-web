@@ -45,6 +45,13 @@
                                 <i class="icon-facebook-logo icon-disabled"></i>
                                 <p class="bv-text-icon-contact-detail">Chat</p>
                             </div>
+                            <!-- Nhắc nhở -->
+                            <div class="bv-icon-contact-detail display-inline-block" ng-init="vm.isCollapsedReminder = true" ng-click="vm.isCollapsedReminder = !vm.isCollapsedReminder">
+                                <i class="fas fa-bell" style="margin-bottom:-15px"></i>
+                                <p class="bv-text-icon-contact-detail">
+                                	Nhắc nhở <span class="label rounded primary">{{vm.lstReminder.length}}</span>
+                               	</p>
+                            </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="dropdown  pull-right open" ng-show = "vm.selectedContact.groupType != 'POTENTIAL'">
@@ -68,13 +75,13 @@
 							</div>
 							<!--Include menu tao don -->
 							<div ng-include="'views/partial/partial.contact-product-menu.html'"></div>
-							<div class="dropdown  pull-left open" ng-init="vm.isCollapsedReminder = true">
+							<!-- <div class="dropdown  pull-left open" ng-init="vm.isCollapsedReminder = true">
                                 <button class="btn-dropdown-bars-contact" type="button" ng-click="vm.isCollapsedReminder = !vm.isCollapsedReminder">
                                     <div class="label-yellow">
                                         <i class="fas fa-bell"></i>
                                     </div>
                                 </button>
-							</div>
+							</div> -->
 
 							<div class="bv-detail-contact" uib-collapse="vm.isCollapsedReminder">
                                 <p>Nhắc nhở</p>

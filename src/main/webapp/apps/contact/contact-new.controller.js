@@ -109,7 +109,6 @@
       		// Implement function
       		function dateBeforeShowDate(date) {
       			console.log('dateBeforeShowDate');
-      			debugger
       		}
       		
       		function getAllCategoryReminder() {
@@ -146,12 +145,10 @@
     		}
       		
       		function addReminder() {
-      			debugger
       			if (vm.selProductReminder == null || vm.selProductReminder == "") {
       				toastr.error('Dữ liệu không hợp lệ');
       				return;
       			}
-      			debugger
       			if (vm.selProductReminder != null && vm.dateReminder != null && vm.content != ""
       				&& vm.dateReminder != "") {
       				// Add to list
@@ -208,6 +205,7 @@
         		ContactService.create(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
+        			$rootScope.$broadcast('reminderChangeSuccess');
         			showSaveContactSuccess();
         		}
         		

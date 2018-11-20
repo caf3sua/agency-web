@@ -166,7 +166,7 @@
       				      "contactId": "",
       				      "content": vm.content,
       				      "note": "",
-      				      "productCode": vm.selProductReminder.productName,
+      				      "productCode": vm.selProductReminder.code,
       				      "remindeDate": vm.dateReminder
       				    };
       				
@@ -215,6 +215,7 @@
         		ContactService.update(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
+        			$rootScope.$broadcast('reminderChangeSuccess');
         			toastr.success('Cập nhật khách hàng thành công');
         			goBack();
         		}

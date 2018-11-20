@@ -227,8 +227,6 @@
         	}
         }
         
-        
-        
         function formatAddressEdit(address) {
         	return address.substring(0, address.indexOf("::"));
         }

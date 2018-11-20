@@ -28,7 +28,11 @@
 		                        <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
 		                    </td>
 		                    <td>
-		                        <p class="bv-table-text-colorBlue">{{reminder.contactName}}</p>
+		                        <p class="bv-table-text-colorBlue">
+		                        	<a ui-sref="app.contact({groupType: reminder.groupType, selected: reminder.contactId})">
+		                        		{{reminder.contactName}}
+		                        	</a>
+		                        </p>
 		                    </td>
 		                    <td>
 		                        <p class="">{{reminder.productName}}</p>
