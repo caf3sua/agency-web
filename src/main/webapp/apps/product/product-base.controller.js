@@ -241,12 +241,12 @@
         
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	
+        	debugger
         	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
         	
-        	if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+        	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.accountNo != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
         		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
     			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
@@ -442,7 +442,8 @@
     	        	toastr.error('Mã xác thực không chính xác. Đề nghị kiểm tra lại');
 				}
 			} else {
-				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
+//				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
+				$state.go('order.agency');
 			}
 		}
 		

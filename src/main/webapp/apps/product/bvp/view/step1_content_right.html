@@ -22,7 +22,13 @@
 		        </div>
 		        <span>Theo thông tin Người yêu cầu bảo hiểm</span>
 		    </label>
+		    
 		    <div class="" style="position: relative;">
+    			<div class="lock-receiver" ng-show="vm.copyFromNdbh"></div>
+	            <div ng-include="'apps/product/partial/partial.contact-ndbh.html'"></div>
+	        </div>
+		    
+		    <!-- <div class="" style="position: relative;">
     			<div class="lock-receiver" ng-show="vm.copyFromNdbh"></div>
 	            <contact-section
 	            	name="nguoidbhName"
@@ -30,7 +36,7 @@
 	                contact-name="vm.policy.nguoidbhName" contact-dob="vm.policy.nguoidbhNgaysinh"
 	                contact-extend-info="nguoidbh"
 	                open-search-contact="vm.openSearchContactForPanel('insured')"></contact-section>
-	        </div>
+	        </div> -->
 			
             <div class="margin-top-20 text-header-sp">
                 <p>3. Thông tin tình trạng sức khỏe</p>

@@ -60,6 +60,12 @@
             </div>
         </div>
         <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
+            <p>Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ)</p>
+        </div>
+        <div ng-show="vm.isShowPolicyParent">
+        	<p class="bv-tile-templateSummary">{{vm.policy.policyParent}}</p>
+        </div>
+        <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
             <p>Giấy khai sinh</p>
         </div>
         <div ng-show="vm.isShowPolicyParent">
