@@ -33,12 +33,14 @@
 <!-- Only one -->
 <div ng-show="{{!multiple}}">
 	<span class="bv-req-red" ng-show="errorFileGycbh">&nbsp; &nbsp;File {{fileModel.name}} size: {{fileModel.size / 1000000|number:1}}MB, lớn hơn 2MB</span>
+	<span ng-show="!fileModel.isImage">{{fileModel.name}}</span>
 	<img style="width: 40px" ng-show="form.gycbhFile.$valid" ngf-thumbnail="fileModel" class="thumb">
 	<button ng-click="fileModel = null" ng-show="fileModel" style="background: transparent;border: 0;"><i class="fas fa-trash-alt"></i></button>
 </div>
 <!-- multiple -->
 <div ng-show="{{multiple}}">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 display-flex margin-top-5" ng-repeat="f in fileModel">
+		<span ng-show="!f.isImage">{{f.name}}</span>
 		<img style="width: 40px" ng-show="form.gycbhFile.$valid" ngf-thumbnail="f" class="thumb">
 		<button ng-click="remove(f)" ng-show="f" style="background: transparent;border: 0;"><i class="fas fa-trash-alt"></i></button>
 	</div>

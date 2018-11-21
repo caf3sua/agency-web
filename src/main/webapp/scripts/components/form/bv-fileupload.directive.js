@@ -8,14 +8,12 @@
     function bvFileupload () {
         var directive = {
             restrict: 'E',
-//            replace: true,
             require:  '^form',
             scope: {
             	inputId: '@',
             	placeHolder: '@',
             	label: '@',
             	multiple : '=',
-//            	funcUploadCallback: '&',
             	keepMode : '=',
             	isRequired: '=',
             	fileModel: '='
@@ -23,10 +21,7 @@
             templateUrl : 'views/theme/components/partial.fileupload.section.html',
             link: function(scope, elem, attr) {
             	scope.error = elem.find('input').controller('ngModel').$error;
-//            	scope.callback = function($file, $invalidFiles) {
-//            		debugger
-//                    scope.funcUploadCallback($file, $invalidFiles);
-//            	} 
+
             	scope.$watch("fileModel", function() {
                     console.log("Changed");
                     printFilename();
@@ -49,29 +44,36 @@
             			console.log(scope.fileModel);
             			let filenames = [];
             			angular.forEach(scope.fileModel, function(value, key) {
+            				console.log(value);
             				filenames.push(value.name);
+            				
+            				if (isImageType(value)) {
+            					value.isImage = true;
+            				} else {
+            					value.isImage = false;	
+            				}
           			 	});
             			
             			scope.fileNameInput = filenames.join(", ");
             		} else {
             			scope.fileNameInput = "";
+            			
+            			if (isImageType(scope.fileModel)) {
+            				scope.fileModel.isImage = true;
+        				} else {
+        					scope.fileModel.isImage = false;	
+        				}
             		}
             	}
             	
-//            	scope.printFilename = function() {
-//            		if (scope.fileModel != undefined) {
-//            			debugger
-//            			console.log(scope.fileModel);
-//            			let filenames = [];
-//            			angular.forEach(data, function(value, key) {
-//            				filenames.push(value.name);
-//          			 	});
-//            			
-//            			return filenames.join(", ");
-//            		}
-//            		
-//            		return "";
-//            	}
+            	function isImageType(f) {
+            		if (f.type.indexOf('image/') != -1) {
+            			return true;
+            		}
+            		
+            		return false;
+            	}
+            	
             }
         };
 
