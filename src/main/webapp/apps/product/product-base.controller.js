@@ -765,19 +765,21 @@
                 vm.typeArrowTwo = "fa-angle-right";
                 checkCloseStepOne = true;
             }else if(type == "step2"){
-                if(vm.nextCount >= 1) {
-                    document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
-                    document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
-                    document.getElementById("bv-step-3").className = 'bv-step-3-default  padding0  display-flex';
-                    if(document.getElementById("includeStep1")) {
-                    	document.getElementById("includeStep1").className = 'bv-display-step';
-                        document.getElementById("includeStep2").className = 'bv-display-step widthStep98';
-                        document.getElementById("includeStep3").className = 'bv-display-step';
+            	if (validatorBVP()) {
+            		if(vm.nextCount >= 1) {
+                        document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
+                        document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
+                        document.getElementById("bv-step-3").className = 'bv-step-3-default  padding0  display-flex';
+                        if(document.getElementById("includeStep1")) {
+                        	document.getElementById("includeStep1").className = 'bv-display-step';
+                            document.getElementById("includeStep2").className = 'bv-display-step widthStep98';
+                            document.getElementById("includeStep3").className = 'bv-display-step';
+                        }
+                        vm.typeArrowOne = "fa-angle-right";
+                        vm.typeArrowThree = "fa-angle-right";
+                        vm.typeArrowTwo = "fa-angle-left";
                     }
-                    vm.typeArrowOne = "fa-angle-right";
-                    vm.typeArrowThree = "fa-angle-right";
-                    vm.typeArrowTwo = "fa-angle-left";
-                }
+            	}
             }else if(type == "step3"){
             	if(validateInvoice()){
 	                if(vm.nextCount >= 2) {
@@ -803,6 +805,25 @@
                 checkCloseStepOne = false;
                 vm.typeArrowOne = "fa-angle-left";
             }
+        }
+        
+        function validatorBVP() {
+        	if(vm.policy.q3 == 1) {
+        		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
+        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu 1 dòng)");
+        			return false
+        		}
+        		
+        		for (var i = 1; i < vm.policy.lstAdd.length; i ++ ){
+        			if (vm.policy.lstAdd[i].ngaydieutri != "" || vm.policy.lstAdd[i].chuandoan != "" || vm.policy.lstAdd[i].chitietdieutri != "" || vm.policy.lstAdd[i].ketqua != "" || vm.policy.lstAdd[i].benhvienorbacsy != ""){
+        				if (vm.policy.lstAdd[i].ngaydieutri == "" || vm.policy.lstAdd[i].chuandoan == "" || vm.policy.lstAdd[i].chitietdieutri == "" || vm.policy.lstAdd[i].ketqua == "" || vm.policy.lstAdd[i].benhvienorbacsy == ""){
+        					toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả dòng thứ " + (i+1));
+        					return false;
+                		}
+            		} 
+        		}
+        	}
+            return true;
         }
         
         function calculateToDate(fromDate) {
