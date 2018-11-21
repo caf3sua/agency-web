@@ -33,24 +33,24 @@
                 <div class="margin-right-5 width-100">
                     <input type="text" name="registrationNumber" class="bv-input" placeholder="Biển kiểm soát" ng-model="vm.policy.registrationNumber"
                            required-message="'Chưa nhập biển kiểm soát!'"
-                           required/>
+                           required accepted-character maxlength="20"/>
                 </div>
                 <div class="width-100">
                     <input type="text" name="hieuxe" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe"
                            required-message="'Chưa nhập nhãn hiệu xe!'"
-                           required/>
+                           required accepted-character maxlength="20" />
                 </div>
             </div>
             <div class=" display-flex margin-top-5">
                 <div class="margin-right-5 width-100">
                     <input type="text" name="sokhung" class="bv-input" placeholder="Số khung" ng-model="vm.policy.sokhung"
                            required-message="'Chưa nhâp số khung!'"
-                           required/>
+                           required accepted-character  maxlength="20"/>
                 </div>
                 <div class="width-100">
                     <input type="text" name="somay" class="bv-input" placeholder="Số máy" ng-model="vm.policy.somay"
                            required-message="'Chưa nhập số máy!'"
-                           required/>
+                           required accepted-character  maxlength="20"/>
                 </div>
             </div>
             <div class="margin-top-10 required">
