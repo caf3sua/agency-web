@@ -14,7 +14,7 @@
     </div>
     <div class="dropdown background-fff navbar-custom-menu pull-right">
         <button class="dropdown-toggle bv-btn-header-dropdown" type="button" data-toggle="dropdown">
-            <span class="hidden-sm hidden-xs">Bạn đang đăng nhâp dưới tên <strong>{{account.ten}}</strong></span>
+            <span class="hidden-sm hidden-xs">Bạn đang đăng nhâp dưới tên </span><span><strong>{{account.ten | limitTo: 20}}</strong></span>
             <div class="bv-menu-tab-user display-inline-block">
                 <i class="icon-quality"></i>
             </div>
