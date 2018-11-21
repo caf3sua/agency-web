@@ -76,6 +76,9 @@
 	    	// Init controller
 	  		(function initController() {
 	  			$controller('ProductBaseController', { vm: vm, $scope: $scope });
+	  			
+	  			$controller('AgreementBaseController', { vm: vm, $scope: $scope });
+	  			
 	  			getAllWaitAgency();
 	  			getAllWaitAgreement();
 //	  			chooseDepartment();
