@@ -22,11 +22,11 @@
 
     ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
     	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal'
-    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService'];
+    	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService', 'API_SERVICE_URL'];
 
     function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
     		, ContactCommonDialogService, ResponseValidateService, Principal
-    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService){
+    		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService, API_SERVICE_URL){
 		vm.message = { name: 'default entry from ProductBaseController' };
 
 		var checkCloseStepOne = false;
@@ -106,6 +106,9 @@
     	vm.validateInvoice = validateInvoice;
     	
     	vm.selectedContactChange = selectedContactChange;
+    	
+    	vm.isImageFile = isImageFile;
+    	vm.downloadAttachment = downloadAttachment;
     	
     	// 15.08
     	vm.checkDate = checkDate;
@@ -894,6 +897,22 @@
         function cleanAllResponseError() {
         	ResponseValidateService.cleanAllResponseError();
         }
+
+        function isImageFile(f) {
+        	if (f == null || f == undefined || f.fileType == null || f.fileType == undefined ) {
+        		return false;
+        	}
+        	
+        	if (f.fileType.indexOf('image/') != -1) {
+    			return true;
+    		}
+        	
+        	return false;
+        }
         
+        function downloadAttachment(file) {
+  			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-attachment/' + file.attachmentId;
+            $window.location = templateRoute;
+  		}
     }
 })();
