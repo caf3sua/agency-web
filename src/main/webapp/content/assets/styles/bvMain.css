@@ -3061,3 +3061,13 @@ div#insideDiv{
 .dropdown-menu-contact {
 	margin-top: -40px;
 }
+
+.bv-home-block-left-order {
+    margin-right: 5px;
+    width: 100%;
+}
+
+.bv-home-block-right-order {
+    margin-left: 5px;
+    width: 100%;
+}

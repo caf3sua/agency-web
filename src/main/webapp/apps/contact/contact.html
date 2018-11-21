@@ -4,17 +4,17 @@
             <div class="bv-block-two-button">
                 <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'POTENTIAL' }" ng-click="vm.changeGroupType('POTENTIAL')">
                     <i class="icon-employees-01"></i>
-                    <span class="hidden-xs hidden-sm">Khách hàng tiềm năng</span>
+                    Khách hàng tiềm năng
                     <span class="label label-sm up blue-100">{{(vm.contacts | filter:{groupType:'POTENTIAL'}).length}}</span>
                 </div>
                 <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'FAMILIAR' }" ng-click="vm.changeGroupType('FAMILIAR')">
                     <i class="fas fa-user"></i>
-                    <span class="hidden-xs hidden-sm">Khách hàng thân thiện</span>
+                    Khách hàng thân thiết
                     <span class="label label-sm up blue-100">{{(vm.contacts | filter:{groupType:'FAMILIAR'}).length}}</span>
                 </div>
                 <div class="bv-btn-header-title border-transparent" ng-class="{'active-contact': vm.groupType == 'VIP' }" ng-click="vm.changeGroupType('VIP')">
                     <i class="icon-broken-arm"></i>
-                    <span class="hidden-xs hidden-sm">Khách hàng VIP</span>
+                    Khách hàng VIP
                     <span class="label label-sm up blue-100">{{(vm.contacts | filter:{groupType:'VIP'}).length}}</span>
                 </div>
             </div>
