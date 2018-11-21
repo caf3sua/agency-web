@@ -123,7 +123,13 @@
 				"name":"",
 				"taxNo":""
 	        },
-	        "insuranceTarget": "New"
+	        "insuranceTarget": "New",
+	        "imgGks": {
+	            "attachmentId": "",
+	            "content": "",
+	            "fileType": "",
+	            "filename": ""
+	          },
 		}
   		
   		$rootScope.nguoidbh = {
@@ -594,7 +600,7 @@
         function savePolicy() {
             var postData = getPostData(true);
             if (vm.gksFile != null && vm.gksFile.content.length > 0){
-            	vm.policy.files = vm.gksFile.content;	
+            	vm.policy.imgGks = vm.gksFile;	
             }
             
             if(vm.isHealthyPerson) {
