@@ -124,10 +124,17 @@
 	    </div>
 	    <!-- GCN Upload-->
 	    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
-	        <p class="bv-title-from">GCN (Ảnh ấn chỉ)<span class="bv-req-red">&nbsp(*)</span></p>
+	        <p class="bv-title-from">GCN (Ảnh ấn chỉ)</p>
 	    </div>
 	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgGcns">
-			<img src="data:image/*;base64,{{f.content}}" height="150px">
+			<div class="" ng-repeat="f in vm.policy.imgGcns">
+				<a ng-click="vm.downloadAttachment(f)" ng-show="!vm.isImageFile(f)">
+					<span>{{f.filename}}</span> <i class="fas fa-paperclip"></i>		                	
+               	</a>
+               	<a ng-click="vm.downloadAttachment(f)" ng-show="vm.isImageFile(f)">
+					<img src="data:image/*;base64,{{f.content}}" height="150px" ng-show="vm.isImageFile(f)">		                	
+               	</a>
+			</div>
 		</div>
 	    	    
 	    <!-- Giấy tờ khác có liên quan - Upload -->
@@ -135,7 +142,12 @@
 	        <p class="bv-title-from">Giấy tờ khác có liên quan</p>
 	    </div>
 	    <div class="bv-promotion-block-detail" ng-repeat="f in vm.policy.imgGycbhs">
-			<img src="data:image/*;base64,{{f.content}}" height="150px">
+			<a ng-click="vm.downloadAttachment(f)" ng-show="!vm.isImageFile(f)">
+				<span>{{f.filename}}</span> <i class="fas fa-paperclip"></i>		                	
+           	</a>
+           	<a ng-click="vm.downloadAttachment(f)" ng-show="vm.isImageFile(f)">
+				<img src="data:image/*;base64,{{f.content}}" height="150px" ng-show="vm.isImageFile(f)">		                	
+           	</a>
 		</div>
 		
 	    <!-- Button -->

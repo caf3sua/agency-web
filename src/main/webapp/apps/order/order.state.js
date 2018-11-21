@@ -248,7 +248,7 @@
 	            		}],
 	            		loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load([
-		            			'apps/order/me/order-detail.controller.js'
+		            			'apps/order/me/order-detail.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 		            	]);
 			        }
 	            }

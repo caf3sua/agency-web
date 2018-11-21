@@ -6,10 +6,10 @@
         .controller('OrderDetailController', OrderDetailController);
 
     OrderDetailController.$inject = ['$scope', 'Principal', '$state'
-    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', '$window', 'DateUtils'];
+    	, '$stateParams', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', '$window', 'DateUtils', '$controller'];
 
     function OrderDetailController ($scope, Principal, $state
-    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout, $window, DateUtils) {
+    		, $stateParams, $rootScope, OrderService, $ngConfirm, $timeout, $window, DateUtils, $controller) {
     	var vm = this;
         
     	vm.policy;
@@ -28,6 +28,9 @@
 
     	// Init controller
   		(function initController() {
+  			// instantiate base controller
+  		    $controller('ProductBaseController', { vm: vm, $scope: $scope });
+  			
   			OrderService.getById({id: $stateParams.id}, onSuccess, onError);
   			
   			function onSuccess(data) {
@@ -84,7 +87,6 @@
   			var now = new Date();
             var nowStr = DateUtils.convertDate(now);
             var tuoi = DateUtils.yearDiff(data.nguoidbhNgaysinh, nowStr);
-            debugger
             if (tuoi < 18) {
             	vm.isShowPolicyParent = true;
             } else {
