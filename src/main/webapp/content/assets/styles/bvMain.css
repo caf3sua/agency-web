@@ -2833,7 +2833,7 @@ body {
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 5px;
-    height: 5px;
+    height: 8px;
 }
  
 /* Track */
@@ -3037,34 +3037,23 @@ a.customer-check:hover {
 	color: #1964af !important;
 }
 
-.horizontal-scroll-wrapper{
-  position:absolute;
-  display:block;
-  top:0;
-  left:0;
-  width:80px;
-  max-height:500px;
-  margin:0;
-  background:#abc;
-  overflow-y:auto;
-  overflow-x:hidden;
-  transform:rotate(-90deg) translateY(-80px);
-  transform-origin:right top;
-}
-.horizontal-scroll-wrapper > div{
-  display:block;
-  padding:5px;
-  background:#cab;
-  transform:rotate(90deg);
-  transform-origin: right top;
+.scroll-container-outer {
+	height: 300px;	
+	position: relative;
 }
 
-.squares{
-  padding:60px 0 0 0;
+.scroll-container {
+	position: absolute;
+    width: 100%;
+    left: 0;
 }
 
-.squares > div{
-  width:60px;
-  height:60px;
-  margin:10px;
+#myWorkContent{
+    width:auto;
+    height:300px;
+    overflow-x: scroll;
+    overflow-y: auto;
+}
+div#insideDiv{
+    width:800px;
 }
