@@ -49,6 +49,19 @@
         </div>
         <span class="bv-detail-text-table">Gửi lại OTP xác nhận</span>
     </div>
+    <div ng-click="vm.confirmResendOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span class="bv-detail-text-table">Gửi lại OTP xác nhận</span>
+    </div>
+    
+    <div ng-click="vm.confirmCommunication(order)" ng-show="order.statusPolicyId == 83">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-comments"></i>
+        </div>
+        <span class="bv-detail-text-table">Trao đổi</span>
+    </div>
     
     <div class="pull-right">
         <div class="display-inline-block color-0d47a1" ng-show="order.createType == 0">
