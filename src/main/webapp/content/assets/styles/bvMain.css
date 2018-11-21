@@ -2260,7 +2260,7 @@ body {
         padding: 10px;
         text-align: center;
         font-size: 20px;
-        width: 30px;
+        width: 40px;
         justify-content: center;
         vertical-align: middle;
     }
@@ -3056,4 +3056,8 @@ a.customer-check:hover {
 }
 div#insideDiv{
     width:800px;
+}
+
+.dropdown-menu-contact {
+	margin-top: -40px;
 }

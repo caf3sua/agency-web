@@ -1,4 +1,11 @@
-<ul class="dropdown-menu dropdown-menu-contact">
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center padding-bottom-35 padding-bottom-ccc">
+						    <div class="bv-icon-contact-detail display-inline-block dropdown-toggle btn-dropdown-bars-contact" type="button" data-toggle="dropdown" aria-expanded="true">
+						        <i class="icon-suitcase"></i>
+                                <p class="bv-text-icon-contact-detail">
+                                	Cấp đơn
+                               	</p>
+						    </div>
+						    <ul class="dropdown-menu dropdown-menu-contact">
 						        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_CAR_CREATE, PERM_AGREEMENT_OFFLINE_CAR, PERM_AGREEMENT_ANCHI_CAR">
 						            <a class="dropdown-item dropdown-toggle"><i class="icon-car"></i> Bảo hiểm ô tô</a>
 						            <ul class="dropdown-menu">
@@ -72,3 +79,32 @@
 						            </ul>
 						        </li>
 						    </ul>
+                            <a class="bv-icon-contact-detail display-inline-block" href="tel:{{vm.selectedContact.phone}}">
+                                <i class="icon-telephone"></i>
+                                <p class="bv-text-icon-contact-detail">Gọi điện</p>
+                            </a>
+                            <a class="bv-icon-contact-detail display-inline-block" href="mailto:{{vm.selectedContact.email}}" target="_top">
+                                <i class="icon-mail-black-envelope-symbol"></i>
+                                <p class="bv-text-icon-contact-detail">Gửi thư</p>
+                            </a>
+                            <a class="bv-icon-contact-detail display-inline-block" ui-sref="app.contact-map({id: vm.selectedContact.contactId})">
+                                <i class="icon-signs"></i>
+                                <p class="bv-text-icon-contact-detail">Tìm đường</p>
+                            </a>
+                            <!-- FacebookID -->
+                            <a class="bv-icon-contact-detail display-inline-block" target="_blank" href="{{vm.selectedContact.facebookId}}" ng-show="vm.selectedContact.facebookId">
+                                <i class="icon-facebook-logo"></i>
+                                <p class="bv-text-icon-contact-detail">Chat</p>
+                            </a>
+                            <div class="bv-icon-contact-detail display-inline-block" ng-show="!vm.selectedContact.facebookId">
+                                <i class="icon-facebook-logo icon-disabled"></i>
+                                <p class="bv-text-icon-contact-detail">Chat</p>
+                            </div>
+                            <!-- Nhắc nhở -->
+                            <div class="bv-icon-contact-detail display-inline-block" ng-init="vm.isCollapsedReminder = true" ng-click="vm.isCollapsedReminder = !vm.isCollapsedReminder">
+                                <i class="fas fa-bell" style="margin-bottom:-15px"></i>
+                                <p class="bv-text-icon-contact-detail">
+                                	Nhắc nhở <span class="label rounded primary">{{vm.lstReminder.length}}</span>
+                               	</p>
+                            </div>
+                        </div>

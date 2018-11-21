@@ -23,36 +23,10 @@
                                 <div class="inline">{{vm.selectedContact.contactName}}</div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center padding-bottom-35 padding-bottom-ccc">
-                            <a class="bv-icon-contact-detail display-inline-block" href="tel:{{vm.selectedContact.phone}}">
-                                <i class="icon-telephone"></i>
-                                <p class="bv-text-icon-contact-detail">Gọi điện</p>
-                            </a>
-                            <a class="bv-icon-contact-detail display-inline-block" href="mailto:{{vm.selectedContact.email}}" target="_top">
-                                <i class="icon-mail-black-envelope-symbol"></i>
-                                <p class="bv-text-icon-contact-detail">Gửi thư</p>
-                            </a>
-                            <a class="bv-icon-contact-detail display-inline-block" ui-sref="app.contact-map({id: vm.selectedContact.contactId})">
-                                <i class="icon-signs"></i>
-                                <p class="bv-text-icon-contact-detail">Tìm đường</p>
-                            </a>
-                            <!-- FacebookID -->
-                            <a class="bv-icon-contact-detail display-inline-block" target="_blank" href="{{vm.selectedContact.facebookId}}" ng-show="vm.selectedContact.facebookId">
-                                <i class="icon-facebook-logo"></i>
-                                <p class="bv-text-icon-contact-detail">Chat</p>
-                            </a>
-                            <div class="bv-icon-contact-detail display-inline-block" ng-show="!vm.selectedContact.facebookId">
-                                <i class="icon-facebook-logo icon-disabled"></i>
-                                <p class="bv-text-icon-contact-detail">Chat</p>
-                            </div>
-                            <!-- Nhắc nhở -->
-                            <div class="bv-icon-contact-detail display-inline-block" ng-init="vm.isCollapsedReminder = true" ng-click="vm.isCollapsedReminder = !vm.isCollapsedReminder">
-                                <i class="fas fa-bell" style="margin-bottom:-15px"></i>
-                                <p class="bv-text-icon-contact-detail">
-                                	Nhắc nhở <span class="label rounded primary">{{vm.lstReminder.length}}</span>
-                               	</p>
-                            </div>
-                        </div>
+                        
+                        <!-- Toolbar/ menu -->
+                        <div ng-include="'views/partial/partial.contact-toolbar.html'"></div>
+                        
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="dropdown  pull-right open" ng-show = "vm.selectedContact.groupType != 'POTENTIAL'">
                                 <button class="dropdown-toggle btn-dropdown-bars-contact" type="button" data-toggle="dropdown" aria-expanded="true">
@@ -73,15 +47,6 @@
                                     </li>
                                 </ul>
 							</div>
-							<!--Include menu tao don -->
-							<div ng-include="'views/partial/partial.contact-product-menu.html'"></div>
-							<!-- <div class="dropdown  pull-left open" ng-init="vm.isCollapsedReminder = true">
-                                <button class="btn-dropdown-bars-contact" type="button" ng-click="vm.isCollapsedReminder = !vm.isCollapsedReminder">
-                                    <div class="label-yellow">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                </button>
-							</div> -->
 
 							<div class="bv-detail-contact" uib-collapse="vm.isCollapsedReminder">
                                 <p>Nhắc nhở</p>
@@ -117,7 +82,7 @@
                                 </div>
 							</div>
 							
-                            <div class="bv-detail-contact">
+                            <div class="bv-detail-contact" ng-show="vm.selectedContact.groupType != 'POTENTIAL'">
                                 <p ng-init="vm.isCollapsedAgrement = false" ng-click="vm.isCollapsedAgrement = !vm.isCollapsedAgrement">
                                 	Cấp đơn <i class="fas" ng-class="vm.isCollapsedAgrement ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
                                 </p>
