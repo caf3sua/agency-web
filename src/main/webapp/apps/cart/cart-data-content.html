@@ -22,6 +22,7 @@
 				<th>Hiệu lực từ</th>
 				<th>Hiệu lực đến</th>
 				<th>Phí bảo hiểm</th>
+				<th>Ngày tạo</th>
 			</tr>
 		</thead>
         <tbody>
@@ -61,14 +62,17 @@
                      <p style="width: 150px">{{order.statusPolicyName}}</p>
                 </td>
                 <td>
-                    <p style="width: 150px">{{order.inceptionDate}}</p>
+                    <p style="width: 80px">{{order.inceptionDate}}</p>
                 </td>
                 <td>
-                    <p style="width: 150px">{{order.expiredDate}}</p>
+                    <p style="width: 80px">{{order.expiredDate}}</p>
                 </td>
                 <td>
                     <p style="width: 150px">{{order.totalPremium | number:0}}</p>
-                   </td>
+                </td>
+                <td>
+                	<p style="width: 80px">{{order.agreementSysdate}}</p>
+	            </td>
                </tr>
                <tr ng-if="order.expand" ng-repeat-end="">
            			<td colspan="9"><div ng-include="'apps/cart/cart-context-menu.html'"></div></td>
