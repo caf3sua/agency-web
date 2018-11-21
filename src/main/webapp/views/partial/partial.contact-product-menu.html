@@ -5,76 +5,76 @@
         </div>
     </button>
     <ul class="dropdown-menu">
-        <li class="dropdown-submenu">
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_CAR_CREATE, PERM_AGREEMENT_OFFLINE_CAR, PERM_AGREEMENT_ANCHI_CAR">
             <a class="dropdown-item dropdown-toggle"><i class="icon-car"></i> Bảo hiểm ô tô</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.car({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'CAR', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'CAR', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+                <li has-authority="PERM_PRODUCT_CAR_CREATE"><a class="dropdown-item" ui-sref="product.car({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_CAR"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'CAR', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_CAR"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'CAR', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle"><i class="icon-insurance2"></i> Bảo hiểm An gia</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.bvp({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'BVP', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'BVP', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle"><i class="icon-cardiogram"></i> Bảo hiểm bệnh ung thư</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.kcare({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'KCR', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'KCR', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle"><i class="icon-airplane"></i> Bảo hiểm du lịch quốc tế</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.tvc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TVC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TVC', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle"><i class="icon-vn"></i> Bảo hiểm du lịch VIệt Nam</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.tvi({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TVI', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TVI', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu">
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_MOT_CREATE, PERM_AGREEMENT_OFFLINE_MOT, PERM_AGREEMENT_ANCHI_MOT">
             <a class="dropdown-item dropdown-toggle"><i class="icon-motorbike"></i> Bảo hiểm xe máy</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.moto({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'MOT', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'MOT', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+                <li has-authority="PERM_PRODUCT_MOT_CREATE"><a class="dropdown-item" ui-sref="product.moto({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_MOT"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'MOT', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_MOT"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'MOT', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu">
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_BVP_CREATE, PERM_AGREEMENT_OFFLINE_BVP, PERM_AGREEMENT_ANCHI_BVP">
+            <a class="dropdown-item dropdown-toggle"><i class="icon-insurance2"></i> Bảo hiểm An gia</a>
+            <ul class="dropdown-menu">
+                <li has-authority="PERM_PRODUCT_BVP_CREATE"><a class="dropdown-item" ui-sref="product.bvp({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_BVP"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'BVP', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_BVP"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'BVP', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_KCR_CREATE, PERM_AGREEMENT_OFFLINE_KCR, PERM_AGREEMENT_ANCHI_KCR">
+            <a class="dropdown-item dropdown-toggle"><i class="icon-cardiogram"></i> Bảo hiểm bệnh ung thư</a>
+            <ul class="dropdown-menu">
+                <li has-authority="PERM_PRODUCT_KCR_CREATE"><a class="dropdown-item" ui-sref="product.kcare({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_KCR"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'KCR', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_KCR"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'KCR', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_TVC_CREATE, PERM_AGREEMENT_OFFLINE_TVC, PERM_AGREEMENT_ANCHI_TVC">
+            <a class="dropdown-item dropdown-toggle"><i class="icon-airplane"></i> Bảo hiểm du lịch quốc tế</a>
+            <ul class="dropdown-menu">
+                <li has-authority="PERM_PRODUCT_TVC_CREATE"><a class="dropdown-item" ui-sref="product.tvc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_TVC"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TVC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_TVC"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TVC', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_TVI_CREATE, PERM_AGREEMENT_OFFLINE_TVI, PERM_AGREEMENT_ANCHI_TVI">
+            <a class="dropdown-item dropdown-toggle"><i class="icon-vn"></i> Bảo hiểm du lịch VIệt Nam</a>
+            <ul class="dropdown-menu">
+                <li has-authority="PERM_PRODUCT_TVI_CREATE"><a class="dropdown-item" ui-sref="product.tvi({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_TVI"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TVI', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_TVI"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TVI', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_HOM_CREATE, PERM_AGREEMENT_OFFLINE_HOM, PERM_AGREEMENT_ANCHI_HOM">
             <a class="dropdown-item dropdown-toggle"><i class="icon-mortgage"></i> Bảo hiểm nhà tư nhân</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.home({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'HOM', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'HOM', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+                <li has-authority="PERM_PRODUCT_HOM_CREATE"><a class="dropdown-item" ui-sref="product.home({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_HOM"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'HOM', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_HOM"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'HOM', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu">
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_KHC_CREATE, PERM_AGREEMENT_OFFLINE_KHC, PERM_AGREEMENT_ANCHI_KHC">
             <a class="dropdown-item dropdown-toggle"><i class="icon-insurance"></i> Bảo hiểm kết hợp con người</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.khc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'KHC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'KHC', selContactId: vm.selectedContact.contactId})"">Cấp đơn Ấn chỉ</a></li>
+                <li has-authority="PERM_PRODUCT_KHC_CREATE"><a class="dropdown-item" ui-sref="product.khc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_KHC"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'KHC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_KHC"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'KHC', selContactId: vm.selectedContact.contactId})"">Cấp đơn Ấn chỉ</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu">
+        <li class="dropdown-submenu" has-any-authority="PERM_PRODUCT_TNC_CREATE,PERM_AGREEMENT_OFFLINE_TNC,PERM_AGREEMENT_ANCHI_TNC">
             <a class="dropdown-item dropdown-toggle"><i class="icon-broken-arm"></i> Bảo hiểm tai nạn con người</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" ui-sref="product.tnc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
-                <li><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TNC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
-                <li><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TNC', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
+                <li has-authority="PERM_PRODUCT_TNC_CREATE"><a class="dropdown-item" ui-sref="product.tnc({selContactId: vm.selectedContact.contactId})">Cấp đơn Online</a></li>
+                <li has-authority="PERM_AGREEMENT_OFFLINE_TNC"><a class="dropdown-item" ui-sref="product.ycbh-offline({productCode:'TNC', selContactId: vm.selectedContact.contactId})">Cấp đơn Offline</a></li>
+                <li has-authority="PERM_AGREEMENT_ANCHI_TNC"><a class="dropdown-item" ui-sref="product.printed-paper({productCode:'TNC', selContactId: vm.selectedContact.contactId})">Cấp đơn Ấn chỉ</a></li>
             </ul>
         </li>
     </ul>
