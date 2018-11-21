@@ -160,7 +160,7 @@
 				                <tbody>
 				                    <tr ng-repeat="item in vm.policy.lstAdd">
 				                        <td>
-				                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true">
+				                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="d">
 				                                <div class="width-100">
 				                                    <input type="text" name="ngaydieutri" class="bv-input" placeholder="dd/MM/yyyy" ng-model="item.ngaydieutri">
 				                                </div>
@@ -227,5 +227,5 @@
 			
 			
             <div class="margin-top-5 padding-bottom-35">
-                <button type="submit" class="bv-btn-step3">Tiếp theo</button>
+                <button type="submit" class="bv-btn-step3" ng-click="vm.validatorTTKB()">Tiếp theo</button>
             </div>

@@ -149,6 +149,7 @@
 //        vm.changeCopyFromNdbhtoNth = changeCopyFromNdbhtoNth;
         vm.checkGycbh = checkGycbh;
         vm.checkGycbhParent = checkGycbhParent;
+        vm.validatorTTKB = validatorTTKB;
         
         vm.gksFile = null;
         vm.gksFileModel;
@@ -416,6 +417,25 @@
   			
   			// extra
   		}
+        
+        function validatorTTKB() {
+        	if(vm.policy.q3 == 1) {
+        		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
+        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu 1 dòng)");
+        			return false
+        		}
+        		
+        		for (var i = 1; i < vm.policy.lstAdd.length; i ++ ){
+        			if (vm.policy.lstAdd[i].ngaydieutri != "" || vm.policy.lstAdd[i].chuandoan != "" || vm.policy.lstAdd[i].chitietdieutri != "" || vm.policy.lstAdd[i].ketqua != "" || vm.policy.lstAdd[i].benhvienorbacsy != ""){
+        				if (vm.policy.lstAdd[i].ngaydieutri == "" || vm.policy.lstAdd[i].chuandoan == "" || vm.policy.lstAdd[i].chitietdieutri == "" || vm.policy.lstAdd[i].ketqua == "" || vm.policy.lstAdd[i].benhvienorbacsy == ""){
+        					toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả dòng thứ " + (i+1));
+        					return false;
+                		}
+            		} 
+        		}
+        	}
+            return true;
+        }
         
         function onThoihanChange() {
         	var endDate = moment(vm.policy.thoihanbhTu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
