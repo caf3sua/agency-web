@@ -40,6 +40,11 @@
         	
         	vm.saveContact = saveContact;
         	
+        	// Init controller
+      		(function initController() {
+      			searchContact();
+      		})();
+        	
         	// Implement function
         	function saveContact() {
         		// append address
