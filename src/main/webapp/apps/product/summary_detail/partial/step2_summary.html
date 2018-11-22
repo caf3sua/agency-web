@@ -39,10 +39,16 @@
             <p>Hình thức giao nhận</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary display-inline-block">Gửi tới địa chỉ người nhận</p>
+        	<p class="bv-tile-templateSummary display-inline-block">Bảo Việt sẽ giao bản cứng Giấy chứng nhận bảo hiểm cho Quý khách trong khoảng thời gian sau kể từ thời điểm quý khách thanh toán đủ phí bảo hiểm:</p>
         </div>
+         <div>
+         	<p class="bv-tile-templateSummary display-inline-block">- Hà Nội và Trung tâm tỉnh/Thành phố khác: 2-4 ngày</p>
+         </div>
+         <div>
+         	<p class="bv-tile-templateSummary display-inline-block">- Khu vực còn lại: 4-5 ngày</p>
+         </div>
 </div>
-<div class="bv-pading-30">
+<div class="bv-pading-30" ng-show="vm.policy.invoiceInfo.name != ''">
         <div class="text-header-sp">
             <p class="header-border-bottom">Thông tin hóa đơn giá trị gia tăng</p>
         </div>
@@ -84,8 +90,5 @@
         </div>
         <div>
             <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">Ngay sau khi Quý khách thanh toán phí bảo hiểm thành công, Bảo Việt sẽ gửi bản mềm Giấy chứng nhận bảo hiểm tới địa chỉ email Quý khách đăng ký</p>
         </div>
 </div>

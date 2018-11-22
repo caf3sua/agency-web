@@ -81,6 +81,7 @@
 	  			"invoiceInfo": {  
 	              	"accountNo":"",
 	  				"address":"",
+	  				"addressDistrict":"",
 	  				"check":"0",
 	  				"company":"",
 	  				"name":"",

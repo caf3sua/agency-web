@@ -10,7 +10,7 @@
 	</div>
     <div class="margin-top-5 input-group display-flex">
         <div class="width-100">
-            <input type="text" name="invoiceInfo.name" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
+            <input type="text" name="invoiceInfo.name" id="invoiceInfoName" class="bv-input" placeholder="Họ và tên người mua" ng-model="vm.policy.invoiceInfo.name"/>
         </div>
         <div class="input-group-addon bv-date-icon" ng-click="vm.openSearchContactInvoice()">
             <span class="fa fa-plus"></span>
@@ -20,33 +20,33 @@
 	    <p class="bv-title-from">Tên đơn vị</p>
 	</div>
 	<div class="margin-top-5">
-	    <input type="text" name="invoiceInfo.company" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
+	    <input type="text" name="invoiceInfo.company" id="invoiceInfoCompany" class="bv-input" placeholder="Tên đơn vị" ng-model="vm.policy.invoiceInfo.company"/>
 	</div>
 	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Mã số thuế</p>
 	</div>
 	<div class="margin-top-5">
-	    <input type="text" name="invoiceInfo.taxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo" maxlength="20" numeric-only/>
+	    <input type="text" name="invoiceInfo.taxNo" id="invoiceInfoTaxNo" class="bv-input" placeholder="Mã số thuế" ng-model="vm.policy.invoiceInfo.taxNo" maxlength="20" numeric-only/>
 	</div>
 	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Địa chỉ đơn vị</p>
 	</div>
 	<div class="margin-top-5">
-	    <input type="text" name="invoiceInfo.address" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
+	    <input type="text" name="invoiceInfo.address" id="invoiceInfoAddress" class="bv-input" placeholder="Địa chỉ đơn vị" ng-model="vm.policy.invoiceInfo.address"/>
 	</div>
 	<div class="margin-top-10 required">
 		    <p class="bv-title-from">Tên phường xã</p>
 	</div>
 	<div class="margin-top-5">
 		<bv-ward-input isRequired="false" placeholder="Phường/Xã" connection-model="vm.policy.invoiceInfo.addressDistrictData"></bv-ward-input>
-		<input type="hidden" name="invoiceInfo.addressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData"
+		<input type="hidden" name="invoiceInfo.addressDistrict" id="invoiceInfoAddressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData"
 					 />
 	</div>
 	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Số tài khoản</p>
 	</div>
 	<div class="margin-top-5">
-	    <input type="text" name="invoiceInfo.accountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
+	    <input type="text" name="invoiceInfo.accountNo" id="invoiceInfoAccountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
 	</div>
 </div>
 
@@ -135,7 +135,7 @@
 <div uib-collapse="vm.isCollapsedReceiveMethodInfo">
 	<div class="cntr margin-right-5">
 	    <label for="common1" class="label-cbx">
-	    	<input id="common1" name="receiveMethod" type="checkbox" class="invisible" ng-model="vm.policy.receiveMethod" ng-true-value="'2'" ng-false-value="'1'">
+	    	<input id="common1" name="receiveMethod" type="checkbox" class="invisible" ng-model="vm.policy.receiveMethod" ng-true-value="'2'" ng-false-value="'1'" disabled="disabled">
 	        <div class="checkbox">
 	            <svg width="18px" height="18px" viewBox="0 0 20 20">
 	                <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>

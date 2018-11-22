@@ -134,12 +134,13 @@
     	function validateInvoice() {
     		console.log('validateInvoice');
     		if (vm.policy.invoiceInfo != null){
-    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != "" && vm.policy.invoiceInfo.addressDistrict != ""){
     				return true;        				
     			}
-    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && vm.policy.invoiceInfo.taxNo == '' && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == ''){
+    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && vm.policy.invoiceInfo.addressDistrict == ""){
     				return true;        				
     			}
+    			
         		return false; 
     		}
     		return true;
@@ -838,7 +839,41 @@
 	                    vm.typeArrowTwo = "fa-angle-right";
 	                }
             	} else{
-            		toastr.error("Cần nhập đầy đủ thông tin hóa đơn GTGT"); 
+            		if (vm.policy.invoiceInfo.name == ""){
+        				angular.element('#invoiceInfoName').focus();
+        				toastr.error("Cần nhập Họ và tên người mua");
+        				return false;
+        			}
+        			
+        			if (vm.policy.invoiceInfo.company == ""){
+        				angular.element('#invoiceInfoCompany').focus();
+        				toastr.error("Cần nhập Tên đơn vị");
+        				return false;
+        			}
+        			
+        			if (vm.policy.invoiceInfo.taxNo == "" || vm.policy.invoiceInfo.taxNo == null || vm.policy.invoiceInfo.taxNo == undefined){
+        				angular.element('#invoiceInfoTaxNo').focus();
+        				toastr.error("Cần nhập Mã số thuế");
+        				return false;
+        			}
+        			
+        			if (vm.policy.invoiceInfo.address == ""){
+        				angular.element('#invoiceInfoAddress').focus();
+        				toastr.error("Cần nhập Địa chỉ đơn vị");
+        				return false;
+        			}
+        			
+        			if (vm.policy.invoiceInfo.addressDistrict == "" || vm.policy.invoiceInfo.addressDistrict == null || vm.policy.invoiceInfo.addressDistrict == undefined){
+        				angular.element('#invoiceInfoAddressDistrict').focus();
+        				toastr.error("Cần nhập Tên phường xã");
+        				return false;
+        			}
+        			
+        			if (vm.policy.invoiceInfo.accountNo == "" || vm.policy.invoiceInfo.accountNo == null || vm.policy.invoiceInfo.accountNo == undefined){
+        				angular.element('#invoiceInfoAccountNo').focus();
+        				toastr.error("Cần nhập Số tài khoản");
+        				return false;
+        			}
             	}
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
