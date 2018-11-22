@@ -932,8 +932,10 @@
         }
         
         function downloadAttachment(file) {
-  			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-attachment/' + file.attachmentId;
-            $window.location = templateRoute;
+        	if (file.attachmentId != "" && file.attachmentId != null && file.attachmentId != undefined){
+        		var templateRoute = API_SERVICE_URL + '/api/agency/document/download-attachment/' + file.attachmentId;
+                $window.location = templateRoute;	
+        	}
   		}
     }
 })();

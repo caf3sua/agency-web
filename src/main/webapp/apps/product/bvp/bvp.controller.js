@@ -129,7 +129,7 @@
 	            "content": "",
 	            "fileType": "",
 	            "filename": ""
-	          },
+	          }
 		}
   		
   		$rootScope.nguoidbh = {
@@ -533,6 +533,10 @@
         	
             var postData = getPostData(false);
 
+            if (vm.isShowPolicyParent == true){
+            	vm.policy.imgGks = vm.gksFile;
+            }
+            
             if(postData.chuongTrinh) {
             	vm.loading = true;
             	ProductCommonService.getBvpPremium(postData, onGetPremiumSuccess, onGetPremiumError);
