@@ -1,0 +1,20 @@
+<div class="bv-context-menu">
+	<div class="" ng-click="vm.confirmViewAgreement(order)">
+		<div class="bv-detail-icon-table">
+			<i class="icon-eye"></i>
+		</div>
+        <span class="bv-detail-text-table">Xem</span>
+	</div>
+	<div ng-show="order.statusPolicyId == 80 || order.statusPolicyId == 81" ng-click="vm.confirmEditAgreement(order)">
+        <div class="bv-detail-icon-table">
+            <i class="icon-pencil"></i>
+        </div>
+        <span class="bv-detail-text-table">Sửa</span>
+    </div>
+    <div ng-click="vm.confirmResendOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span class="bv-detail-text-table">Gửi lại OTP xác nhận</span>
+    </div>
+</div>

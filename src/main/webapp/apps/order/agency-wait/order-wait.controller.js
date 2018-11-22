@@ -37,18 +37,13 @@
   			  "departmentId": "",
   			  "createDate": ""
   		};
-  		vm.sotiennophi;
   		
   		vm.searchAgencyOrder = searchAgencyOrder;
-  		vm.confirmResendEmail = confirmResendEmail;
-  		vm.confirmKhachhangnophi = confirmKhachhangnophi;
-  		vm.confirmTaituc = confirmTaituc;
-  		vm.confirmViewAgreement = confirmViewAgreement;
   		vm.changeDate = changeDate;
-  		vm.confirmCommunication = confirmCommunication;
   		
   		var modalInstance = null;
   		vm.selectedDepartmentId;
+  		vm.sotiennophi;
   		
         angular.element(document).ready(function () {
         });
@@ -76,47 +71,6 @@
   		$scope.$on('saveCommunicationSuccess', function() {
   			searchAgencyOrder();
         });
-  		
-  		function confirmCommunication(order) {
-  			$ngConfirm({
-                title: 'Xác nhận',
-                icon: 'fas fa-comments',
-                theme: 'modern',
-                type: 'red',
-                content: '<div class="text-center">Bạn chắc chắn muốn trao đổi hợp đồng ' + order.gycbhNumber + ' này ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	communication(order);
-	                    }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-            });
-  		}
-  		
-  		function communication(order) {
-  			$rootScope.communication_GycbhNumber = order.gycbhNumber;
-            modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'apps/communication/view/communication-dialog.html',
-                controller: 'CommunicationController',
-                controllerAs: 'vm',
-                size: 'lg',
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('global');
-                        return $translate.refresh();
-                    }]
-                }
-            });	            
-  		}
   		
   		function searchAgencyOrder() {
   			if (changeDate()) {
@@ -181,144 +135,5 @@
         	// search
         	search();
         }
-        
-        function confirmResendEmail(gycbhNumber) {
-  			$ngConfirm({
-                title: 'Xác nhận',
-                icon: 'fa fa-envelope',
-                theme: 'modern',
-                type: 'red',
-                content: '<div class="text-center">Bạn chắc chắn muốn gửi lại email ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	resendEmail(gycbhNumber);
-	                    }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-            });
-  		}
-        
-        function taitucPolicy(agreementId) {
-  			console.log('taitucPolicy, agreementId:' + agreementId);
-  			OrderService.createTaituc({agreementId: agreementId}, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				toastr.success('Tái tục đơn hàng thành công');
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi tái tục đơn hàng");
-  			}
-        }
-        
-        function confirmTaituc(agreementId) {
-  			$ngConfirm({
-                title: 'Xác nhận',
-                icon: 'fa fa-history',
-                theme: 'modern',
-                type: 'blue',
-                content: '<div class="text-center">Bạn chắc chắn muốn tái tục hợp đồng này ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	taitucPolicy(agreementId);
-	                    }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-            });
-  		}
-        
-        function doKhachhangnophi(order, sotiennophi, note) {
-        	vm.sotiennophi = sotiennophi;
-        	vm.note = note;
-        	vm.nophi = {
-        			  "agreementId": order.agreementId,
-        			  "contactId": order.contactId,
-        			  "note": vm.note,
-        			  "result": false,
-        			  "sotien": vm.sotiennophi
-        			};
-        	OrderService.createNophi(vm.nophi, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				toastr.success("Bổ xung khách hàng nợ phí cho hợp đồng <strong>" + order.gycbhNumber + "</strong> thành công");
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi tạo nợ phí!");
-  			}
-        	
-        	console.log('Khách hàng nợ phí,' + vm.sotiennophi);
-        	
-        }
-        
-        function confirmKhachhangnophi(order) {
-        	$ngConfirm({
-                title: 'Khách hàng nợ phí',
-                columnClass: 'col-md-6 col-md-offset-3',
-                contentUrl: 'views/theme/blocks/form-khachhangnophi.html',
-                buttons: {
-                    ok: {
-                        text: 'Đồng ý',
-                        disabled: true,
-                        btnClass: 'btn-green',
-                        action: function (scope) {
-                        	doKhachhangnophi(order, scope.sotiennophi, scope.note);
-                        }
-                    },
-                    close: {
-                    	text: 'Hủy'
-                    }
-                },
-                onScopeReady: function (scope) {
-                    var self = this;
-                    scope.textChange = function () {
-                        if (scope.sotiennophi)
-                            self.buttons.ok.setDisabled(false);
-                        else
-                            self.buttons.ok.setDisabled(true);
-                    }
-                }
-            })
-        }
-        
-  		function resendEmail(number) {
-  			console.log('doResendEmail');
-  			OrderService.resendEmail({gycbhNumber: number}, onSuccess, onError);
-  			
-  			function onSuccess(result) {
-  				toastr.success('Đã gửi lại email với mã đơn hàng: ' + result.gycbhNumber);
-  			}
-  			
-  			function onError() {
-  				toastr.error("Lỗi khi gửi lại email đơn hàng!");
-  			}
-  		}
-  		
-  		function confirmViewAgreement(order) {
-  			if (order.createType == "0"){
-  				$state.go("order.order-detail", {id: order.agreementId});
-  			} else if (order.createType == "2") {
-  				$state.go("product.printed-paper-detail", {id: order.gycbhNumber});
-  			} else {
-  				$state.go("product.ycbh-offline-detail", {id: order.gycbhNumber});
-  			}
-  		}
-  		
     }
 })();

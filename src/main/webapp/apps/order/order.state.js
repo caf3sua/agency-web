@@ -161,7 +161,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
+	            			'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }

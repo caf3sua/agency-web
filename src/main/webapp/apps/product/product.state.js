@@ -32,7 +32,10 @@
                                 , 'scripts/components/form/contact-section.directive.js'
 		            			, 'apps/product/product-base.service.js'
 		            			, 'apps/contact/contact-search-dialog.controller.js'
-		            			, 'apps/product/product-base.controller.js']);
+		            			, 'apps/product/product-base.controller.js'
+		            			, 'apps/communication/communication.controller.js'
+		            			, 'apps/communication/communication.state.js'
+		            			]);
 			        }
 		        }
 		});    

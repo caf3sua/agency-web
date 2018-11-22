@@ -91,6 +91,7 @@
         vm.showSavePolicySuccessInfo = showSavePolicySuccessInfo;
         vm.showOTPSavePolicySuccessInfo = showOTPSavePolicySuccessInfo;
         vm.confirmResendOTP = confirmResendOTP;
+        vm.confirmCommunication = confirmCommunication;
         vm.showWarningEditPolicy = showWarningEditPolicy;
         vm.formatAddressEdit = formatAddressEdit; 
         vm.getAddressByPostCode = getAddressByPostCode;
@@ -447,6 +448,47 @@
 				$state.go('order.agency');
 			}
 		}
+		
+		function confirmCommunication(order) {
+  			$ngConfirm({
+                title: 'Xác nhận',
+                icon: 'fas fa-comments',
+                theme: 'modern',
+                type: 'red',
+                content: '<div class="text-center">Bạn chắc chắn muốn trao đổi hợp đồng ' + order.gycbhNumber + ' này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	doCommunication(order);
+	                    }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+            });
+  		}
+		
+		function doCommunication(order) {
+  			$rootScope.communication_GycbhNumber = order.gycbhNumber;
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/communication/view/communication-dialog.html',
+                controller: 'CommunicationController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            });	            
+  		}
 		
 		function confirmResendOTP(gycbhNumber) {
   			$ngConfirm({

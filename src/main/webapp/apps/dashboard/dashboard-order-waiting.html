@@ -15,23 +15,26 @@
         </div>
         <div>
             <table style="width:100%" class="bv-home-block-left-table">
-                <tr ng-repeat="item in vm.AllWaitAgency track by $index">
+                <tr ng-repeat-start="order in vm.AllWaitAgency track by $index" ng-click="order.expand = !order.expand">
                     <td>
                         <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
                     </td>
                     <td>
-                        <p class="bv-table-text-colorBlue">{{item.gycbhNumber}}</p>
-                        <p class="margin-0 bv-table-sub-text">{{item.inceptionDate}}</p>
+                        <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
+                        <p class="margin-0 bv-table-sub-text">{{order.inceptionDate}}</p>
                     </td>
                     <td>
-                        <p class="bv-table-text-colorBlack">{{item.contactName}}</p>
-                        <p class="margin-0 bv-table-sub-text">{{item.contactPhone}}</p>
+                        <p class="bv-table-text-colorBlack">{{order.contactName}}</p>
+                        <p class="margin-0 bv-table-sub-text">{{order.contactPhone}}</p>
                     </td>
                     <td>
-                        <a href="tel:{{item.contactPhone}}"><i class="icon-telephone margin-right-5 bv-table-icon"></i></a>
-                        <i class="fas fa-comments bv-table-icon" ng-click="vm.confirmCommunication(item)"></i>
+                        <a href="tel:{{order.contactPhone}}"><i class="icon-telephone margin-right-5 bv-table-icon"></i></a>
+                        <i class="fas fa-comments bv-table-icon" ng-click="vm.confirmCommunication(order)"></i>
                     </td>
                 </tr>
+                <tr ng-if="order.expand" ng-repeat-end="">
+	           		<td colspan="9"><div ng-include="'apps/dashboard/order-dashboard-context-menu.html'"></div></td>
+	          	</tr>
             </table>
         </div>
     </div>
