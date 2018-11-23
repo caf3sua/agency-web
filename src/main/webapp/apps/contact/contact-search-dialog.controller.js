@@ -5,14 +5,27 @@
         .controller('ContactSearchDialogController', ContactSearchDialogController);
 
 
-    	ContactSearchDialogController.$inject = ['$rootScope', '$scope', '$state', '$http', '$filter', '$uibModalInstance', 'ContactService', '$uibModal', '$ngConfirm'];
-        function ContactSearchDialogController($rootScope, $scope, $state, $http, $filter, $uibModalInstance, ContactService, $uibModal, $ngConfirm) {
+    	ContactSearchDialogController.$inject = ['$rootScope', '$scope', '$state', '$http', '$filter', '$uibModalInstance'
+    		, 'ContactService', '$uibModal', '$ngConfirm', 'PAGINATION_CONSTANTS'];
+        function ContactSearchDialogController($rootScope, $scope, $state, $http, $filter, $uibModalInstance
+        		, ContactService, $uibModal, $ngConfirm, PAGINATION_CONSTANTS) {
         	var vm = this;
+        	// paging
+        	vm.page = 1;
+            vm.totalItems = null;
+            vm.itemsPerPage = 5;
+            vm.transition = transition;
+            
         	vm.contactCode;
         	vm.searchContact = searchContact;
         	vm.addNewContact = addNewContact;
         	vm.selectedContact = selectedContact;
+        	
         	vm.searchCriterial = {
+    			"pageable": {
+    			    "page": 0,
+    			    "size": vm.itemsPerPage
+    			},
     			"contactName": "",
     			"phone": "",
     			"idNumber": "",
@@ -38,79 +51,59 @@
 			  "facebookId": ""
 			};
         	
-        	vm.saveContact = saveContact;
-        	
         	// Init controller
       		(function initController() {
       			searchContact();
       		})();
-        	
-        	// Implement function
-        	function saveContact() {
-        		// append address
-        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict + "::" 
-        				+ vm.contact.addressDistrict.pkProvince + "::" + vm.contact.addressDistrict.pkPostcode;
-        		console.log('createNewContact : ' + vm.contact);
-        		ContactService.create(vm.contact, onSuccess, onError);
-        		
-        		function onSuccess(result) {
-        			$rootScope.selectedContact = result;
-                    $rootScope.$broadcast('selectedContactChange');
-                    modalInstance = null;
-        			showSaveContactSuccess();
-        		}
-        		
-        		function onError(result) {
-        			let message = result.data.message || 'Lỗi khi tạo khách hàng mới';
-        			toastr.error(message);
-        		}
-        	}
-        	
-        	function showSaveContactSuccess() {
-            	let message = "Tạo khách hàng thành công!";
+
+      		function transition () {
+            	// search
+      			console.log('transition, page:' + vm.page);
+      			vm.isLoading = true;
+
+      			var contact = {};
+      			contact = vm.searchCriterial;
+      			contact.pageable.page = vm.page - 1;
+            	console.log('searchAllTransition, page: ' + contact.pageable.page);
             	
-            	$ngConfirm({
-                    title: 'Thông báo',
-                    icon: 'fa fa-check',
-                    theme: 'modern',
-                    type: 'blue',
-                    content: '<div class="text-center">' + message + '</div>',
-                    animation: 'scale',
-                    closeAnimation: 'scale',
-                    buttons: {
-                        ok: {
-                        	text: 'Đóng',
-                            btnClass: "btn-blue",
-                            action: function(scope, button){
-                            	$uibModalInstance.dismiss('cancel');
-    	                    }
-                        }
-                    },
-                });
+            	ContactService.search(contact, onSearchSuccess, onSearchError);
+      			function onSearchSuccess(result, headers) {
+      				// Paging
+  	  				vm.contacts = result;
+  	  				vm.isLoading = false;
+      	        }
+      	        function onSearchError() {
+      	        	vm.isLoading = false;
+      	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
+      	        }
             }
-        	
+      		
         	function selectedContact(row) {
         		console.log('selected contact:' + row);
         		$uibModalInstance.close(row);
         	}
         	
         	function searchContact() {
-        		console.log('searchContact');
-        		
-        		ContactService.search(vm.searchCriterial, onSuccess, onError);
-        		
-        		function onSuccess(result) {
-        			let count = 1;
-        			angular.forEach(result, function(value, key) {
-        				value.id = count;
-        				count++;
-      			 	});
-        			vm.contacts = result;
-        		}
-        		
-        		function onError(result) {
-        			
-        		}
+        		vm.totalItems = null;
+  	  			vm.isLoading = true;
+  	  			vm.contacts = [];
+  	  			var contact = {};
+  	  			contact = vm.searchCriterial;
+  	  			contact.pageable.page = vm.page - 1;
+
+  	  			ContactService.search(contact, onSearchSuccess, onSearchError);
+  	  			function onSearchSuccess(result, headers) {
+  	  				// Paging
+  	  				vm.contacts = result;
+  	  				vm.isLoading = false;
+  	                
+  	  				vm.totalItems = headers('X-Total-Count');
+  	                vm.queryCount = vm.totalItems;
+  	  	        }
+  	  	        function onSearchError() {
+  	  	        	vm.isLoading = false;
+  	  	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
+  	  	        }
         	}
         	
         	function addNewContact() {
