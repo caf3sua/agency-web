@@ -134,11 +134,14 @@
     	function validateInvoice() {
     		console.log('validateInvoice');
     		if (vm.policy.invoiceInfo != null){
-    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != "" && vm.policy.invoiceInfo.addressDistrictData != undefined){
+    			if (isNotEmptyString(vm.policy.invoiceInfo.name) && isNotEmptyString(vm.policy.invoiceInfo.company) 
+    					&& isNotEmptyString(vm.policy.invoiceInfo.taxNo) && isNotEmptyString(vm.policy.invoiceInfo.address) 
+    					&& isNotEmptyString(vm.policy.invoiceInfo.accountNo) && vm.policy.invoiceInfo.addressDistrictData != undefined){
     				return true;        				
     			}
-    			debugger
-    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && (vm.policy.invoiceInfo.addressDistrictData == "" || vm.policy.invoiceInfo.addressDistrictData == null || vm.policy.invoiceInfo.addressDistrictData == undefined)){
+    			if (isEmptyString(vm.policy.invoiceInfo.name) && isEmptyString(vm.policy.invoiceInfo.company)
+    					&& isEmptyString(vm.policy.invoiceInfo.taxNo) && isEmptyString(vm.policy.invoiceInfo.address) 
+    					&& isEmptyString(vm.policy.invoiceInfo.accountNo) && isEmptyString(vm.policy.invoiceInfo.addressDistrictData)){
     				return true;        				
     			}
     			
