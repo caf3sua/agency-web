@@ -341,7 +341,11 @@
                     	text: 'Đóng',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	$state.go('app.cart', {sel: data.gycbhNumber});
+                        	if (data.statusPolicy == "80"){
+                        		$state.go('order.agency');
+                        	} else {
+                        		$state.go('app.cart', {sel: data.gycbhNumber});
+                        	}
 	                    }
                     }
                 },
