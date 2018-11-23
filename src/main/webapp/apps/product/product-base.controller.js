@@ -438,7 +438,11 @@
         		ProductCommonService.checkOTP(vm.checkOtp, onSuccess, onError);
         		
         		function onSuccess(data, headers) {
-        			$state.go('app.cart', {sel: $rootScope.gycbhNumber});
+        			if (data.statusPolicyId == "93"){
+        				$state.go('order.baoviet');
+        			} else {
+        				$state.go('app.cart', {sel: $rootScope.gycbhNumber});	
+        			}
         		}
     				
     	        function onError(error) {

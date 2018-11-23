@@ -15,8 +15,13 @@
 	        <div class="margin-top-5">
 	        	<div class="input-group display-flex">
 	            	<div class="width-100">
-	                	<input type="text" name="phone" class="bv-input" placeholder="Số điện thoại" 
-	                 		ng-model="vm.contact.phone" maxlength="12" numeric-only required>
+	                	<input type="text" name="phone" class="bv-input" placeholder="Số điện thoại" ng-model="vm.contact.phone" min="10" maxlength="11"
+	                	ng-pattern = "/^[0-9]{10,11}$/"
+				    	validate-on="blur"
+				        invalid-message = "'Số điện thoại không đúng định dạng'"
+				    	required-message="'Chưa nhập số điện thoại liên hệ!'"
+					 	required
+	                	>
 	             	</div>
 		             <div class="input-group-addon bv-date-icon">
 		                 <span class="glyphicon glyphicon-earphone"></span>

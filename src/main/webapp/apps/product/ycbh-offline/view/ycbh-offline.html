@@ -79,8 +79,8 @@
     	<input type="hidden" name="gycbhFile" ng-model="vm.gycbhFiles" required>
         
 	    <!-- Giấy khai sinh - Upload -->
-	    <bv-fileupload input-id="upload-3" label="Giấy khai sinh" is-required="vm.isShowGKS"  multiple="true" keep-mode="'distinct'" required
-	    	place-holder="Nhập giấy khai sinh" file-model="vm.khaisinhFileModel" ></bv-fileupload>
+	    <bv-fileupload input-id="upload-3" label="{{vm.policy.maSanPham == 'MOT' ? 'Giấy tờ xe' : vm.policy.maSanPham == 'CAR' ? 'Giấy tờ xe' : 'Giấy khai sinh'}}" is-required="vm.isShowGKS"  multiple="true" keep-mode="'distinct'" required
+	    	place-holder="{{vm.policy.maSanPham == 'MOT' ? 'Nhập giấy tờ xe' : vm.policy.maSanPham == 'CAR' ? 'Nhập giấy tờ xe' : 'Nhập giấy khai sinh'}}" file-model="vm.khaisinhFileModel" ></bv-fileupload>
     	<input type="hidden" name="imgKhaisinhFile" ng-model="vm.khaisinhFiles" required>
     	
 	    <!-- Tài liệu khác -->
