@@ -137,8 +137,11 @@
     			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != "" && vm.policy.invoiceInfo.addressDistrictData != undefined){
     				return true;        				
     			}
-    			debugger
-    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && (vm.policy.invoiceInfo.addressDistrictData == "" || vm.policy.invoiceInfo.addressDistrictData == null || vm.policy.invoiceInfo.addressDistrictData == undefined)){
+    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && vm.policy.invoiceInfo.addressDistrictData == undefined){
+    				return true;        				
+    			}
+    			
+    			if (vm.policy.invoiceInfo.name == null && vm.policy.invoiceInfo.company == null && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == null && vm.policy.invoiceInfo.accountNo == null && vm.policy.invoiceInfo.addressDistrictData == undefined){
     				return true;        				
     			}
     			
