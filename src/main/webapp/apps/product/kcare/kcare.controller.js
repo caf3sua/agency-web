@@ -117,13 +117,14 @@
   				"thoihantu": "",
   				"totalPremium": 0.0,
   				"invoiceInfo": {  
-  	            	"accountNo":"",
-  					"address":"",
-  					"check":"0",
-  					"company":"",
-  					"name":"",
-  					"taxNo":""
-  		        }
+  	              	"accountNo":"",
+  	  				"address":"",
+  	  				"addressDistrict":"",
+  	  				"check":"0",
+  	  				"company":"",
+  	  				"name":"",
+  	  				"taxNo":""
+  	  	        }
   				};
   		
   		vm.getPremium = getPremium;

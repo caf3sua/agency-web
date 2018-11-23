@@ -42,7 +42,16 @@
             "premiumdiscount":0,
             "premiumnet":0,
             "premiumtnc":0,
-            "receiveMethod":"1"
+            "receiveMethod":"1",
+            "invoiceInfo": {  
+              	"accountNo":"",
+  				"address":"",
+  				"addressDistrict":"",
+  				"check":"0",
+  				"company":"",
+  				"name":"",
+  				"taxNo":""
+  	        }
         }
 
         vm.validatorCombo = validatorCombo;

@@ -41,13 +41,14 @@
             "tlAddcollections":[],
             "userAgent":"",
             "invoiceInfo": {  
-            	"accountNo":"",
-				"address":"",
-				"check":"0",
-				"company":"",
-				"name":"",
-				"taxNo":""
-	        }
+              	"accountNo":"",
+  				"address":"",
+  				"addressDistrict":"",
+  				"check":"0",
+  				"company":"",
+  				"name":"",
+  				"taxNo":""
+  	        }
         }
 
         vm.validatorCombo = validatorCombo;

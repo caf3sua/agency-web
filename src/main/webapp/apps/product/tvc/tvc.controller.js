@@ -46,14 +46,15 @@
                     mobile: "",
                     name: ""
                 },
-                invoiceInfo:{  
-					accountNo:"",
-					address:"",
-					check:"0",
-					company:"",
-					name:"",
-					taxNo:""
-  		        },
+                invoiceInfo: {  
+                  	accountNo:"",
+      				address:"",
+      				addressDistrict:"",
+      				check:"0",
+      				company:"",
+      				name:"",
+      				taxNo:""
+      	        },
 	            soNguoiThamGia: 0,
 	            travelCareId: 1,
 	            travelWithId: "",

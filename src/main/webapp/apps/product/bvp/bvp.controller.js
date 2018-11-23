@@ -115,14 +115,15 @@
     		"tncnPhi": 0,
     		"tncnPhiSi": 0,
     		"tncnSotienbh": 0,
-    		"invoiceInfo": {  
-            	"accountNo":"",
-				"address":"",
-				"check":"0",
-				"company":"",
-				"name":"",
-				"taxNo":""
-	        },
+	        "invoiceInfo": {  
+              	"accountNo":"",
+  				"address":"",
+  				"addressDistrict":"",
+  				"check":"0",
+  				"company":"",
+  				"name":"",
+  				"taxNo":""
+  	        },
 	        "insuranceTarget": "New",
 	        "imgGks": {
 	            "attachmentId": "",

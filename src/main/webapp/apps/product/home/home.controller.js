@@ -53,13 +53,14 @@
   				"windowLocks": "0",
   				"yearBuildCode": "1",
   				"invoiceInfo": {  
-  	            	"accountNo":"",
-  					"address":"",
-  					"check":"0",
-  					"company":"",
-  					"name":"",
-  					"taxNo":""
-  		        }
+  	              	"accountNo":"",
+  	  				"address":"",
+  	  				"addressDistrict":"",
+  	  				"check":"0",
+  	  				"company":"",
+  	  				"name":"",
+  	  				"taxNo":""
+  	  	        }
   				};
   		
   		vm.getPremium = getPremium;
