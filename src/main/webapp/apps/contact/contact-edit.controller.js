@@ -209,8 +209,8 @@
       		
         	function saveContact() {
         		console.log('edit Contact');
-        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict + "::" 
-				+ vm.contact.addressDistrict.pkProvince + "::" + vm.contact.addressDistrict.pkPostcode;
+        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict 
+					+ "::" + vm.contact.addressDistrict.pkPostcode;
         		
         		ContactService.update(vm.contact, onSuccess, onError);
         		

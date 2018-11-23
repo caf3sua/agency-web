@@ -199,8 +199,8 @@
       		
         	function saveContact() {
         		// append address
-        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict + "::" 
-        				+ vm.contact.addressDistrict.pkProvince + "::" + vm.contact.addressDistrict.pkPostcode;
+        		vm.contact.homeAddress = vm.contact.address + "::" + vm.contact.addressDistrict.pkDistrict 
+        				+ "::" + vm.contact.addressDistrict.pkPostcode;
         		console.log('createNewContact : ' + vm.contact);
         		ContactService.create(vm.contact, onSuccess, onError);
         		
