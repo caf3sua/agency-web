@@ -134,10 +134,11 @@
     	function validateInvoice() {
     		console.log('validateInvoice');
     		if (vm.policy.invoiceInfo != null){
-    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != "" && vm.policy.invoiceInfo.addressDistrict != ""){
+    			if (vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != "" && vm.policy.invoiceInfo.addressDistrictData != undefined){
     				return true;        				
     			}
-    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && vm.policy.invoiceInfo.addressDistrict == ""){
+    			debugger
+    			if (vm.policy.invoiceInfo.name == '' && vm.policy.invoiceInfo.company == '' && (vm.policy.invoiceInfo.taxNo == '' || vm.policy.invoiceInfo.taxNo == null) && vm.policy.invoiceInfo.address == '' && vm.policy.invoiceInfo.accountNo == '' && (vm.policy.invoiceInfo.addressDistrictData == "" || vm.policy.invoiceInfo.addressDistrictData == null || vm.policy.invoiceInfo.addressDistrictData == undefined)){
     				return true;        				
     			}
     			
@@ -866,8 +867,7 @@
         				toastr.error("Cần nhập Địa chỉ đơn vị");
         				return false;
         			}
-        			
-        			if (vm.policy.invoiceInfo.addressDistrict == "" || vm.policy.invoiceInfo.addressDistrict == null || vm.policy.invoiceInfo.addressDistrict == undefined){
+        			if (vm.policy.invoiceInfo.addressDistrictData == "" || vm.policy.invoiceInfo.addressDistrictData == null || vm.policy.invoiceInfo.addressDistrictData == undefined){
         				angular.element('#invoiceInfoAddressDistrict').focus();
         				toastr.error("Cần nhập Tên phường xã");
         				return false;

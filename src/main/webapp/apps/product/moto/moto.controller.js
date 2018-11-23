@@ -23,23 +23,6 @@
   		})();
   		
   		// Properties & function declare
-//  		vm.product = {
-//            "chaynoCheck": false,
-//            "chaynoPhi": 0,
-//            "chaynoStbh": "",
-//            "nntxCheck": false,
-//            "nntxPhi": 0,
-//            "nntxSoNguoi": "",
-//            "nntxStbh": "",
-//            "tndsbbCheck": false,
-//            "tndsbbPhi": 0,
-//            "tndstnCheck": false,
-//            "tndstnPhi": 0,
-//            "tndstnSotien": "",
-//            "tongPhi": 0,
-//            "typeOfMoto": ""
-//        }
-
         vm.policy = {
 			// premium
 			"typeOfMoto": "",
@@ -102,6 +85,7 @@
         vm.isShowChaynoPhi = false;
         vm.isShowPremium = false;
         vm.isShowTotalPremium = false;
+        vm.changeCopyFromNycbh = changeCopyFromNycbh;
 
         // Initialize
         init();
@@ -172,6 +156,17 @@
             
             // Load contact
   		    vm.selectedContactMode();
+        }
+        
+        function changeCopyFromNycbh() {
+        	vm.policy.insuredName = "";
+        	vm.policy.insuredAddress= "";
+        	vm.policy.insuredAddressDistrict = "";
+	      	if (vm.copyFromNguoiycbh) {
+	      		vm.policy.insuredName = vm.policy.contactName;
+	      		vm.policy.insuredAddress = vm.policy.contactAddress;
+	      		vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+	      	}
         }
 
         function formatEditData(result) {
