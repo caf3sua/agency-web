@@ -324,6 +324,7 @@
         <a ui-sref="app.cart"  class="bv-left-menu">
             <i class="icon-cart"></i>
             <span class="nav-text">Giỏ hàng</span>
+            <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countCart}}</span>
         </a>
     </li>
     
@@ -339,32 +340,50 @@
         <ul class="nav-sub">
             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
                 <a ui-sref="order.baoviet">
-                    <span class="nav-text">Chờ Bảo Việt giải quyết</span>
+                	<div class="bv-menu-container">
+	                    <span class="">Chờ Bảo Việt giải quyết</span>
+	                    <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countBvWaiting}}</span>
+                    </div>
                 </a>
             </li>
             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
                 <a ui-sref="order.agency">
-                    <span class="nav-text">Chờ đại lý giải quyết</span>
+                	<div class="bv-menu-container">
+	                    <span class="">Chờ đại lý giải quyết</span>
+	                    <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countAgencyWaiting}}</span>
+                    </div>
                 </a>
             </li>
             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
                 <a ui-sref="order.me">
-                    <span class="nav-text">Đơn hàng của tôi</span>
+                	<div class="bv-menu-container">
+	                    <span class="">Đơn hàng của tôi</span>
+	                    <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countOrderMe}}</span>
+                    </div>
                 </a>
             </li>
             <li ui-sref-active="active">
                 <a ui-sref="order.nophi">
-                    <span class="nav-text">Đơn hàng nợ phí</span>
+                	<div class="bv-menu-container">
+	                    <span class="">Đơn hàng nợ phí</span>
+	                    <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countOrderDebit}}</span>
+                    </div>
                 </a>
             </li>
             <li ui-sref-active="active">
                 <a ui-sref="order.expire">
-                    <span class="nav-text">Đơn hàng quá hạn</span>
+                	<div class="bv-menu-container">
+                    	<span >Đơn hàng quá hạn</span>
+                    	<span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countOrderExpire}}</span>
+                    </div>
                 </a>
             </li>
              <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
                 <a ui-sref="order.other">
-                    <span class="nav-text">Yêu cầu bảo hiểm khác</span>
+                	<div class="bv-menu-container">
+                		<span class="">Yêu cầu bảo hiểm khác</span>
+                    	<span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countOrderOther}}</span>
+                	</div>
                 </a>
             </li>
         </ul>

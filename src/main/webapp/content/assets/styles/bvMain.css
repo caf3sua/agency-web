@@ -3071,3 +3071,13 @@ div#insideDiv{
     margin-left: 5px;
     width: 100%;
 }
+
+.bv-menu-label-sum {
+    font-size: 13px;
+    margin-left: 5px;
+}
+.bv-menu-container {
+	margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}

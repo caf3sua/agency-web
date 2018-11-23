@@ -31,6 +31,7 @@
         		},
         };
         
+    	
         getAccount();
         
         // config
@@ -132,6 +133,12 @@
   				"sref": "product.hhvc"
   			},
   		];
+  		
+  		vm.sumInfo = {
+    			"a" : "1",
+    			"b" : "2",
+    			"c" : "3"
+    	};
   		
   		$scope.$on('authenticationSuccess', function() {
   			getAccount();

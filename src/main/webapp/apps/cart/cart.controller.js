@@ -299,6 +299,7 @@
         
         function onProcessPaymentSuccess(result) {
         	$window.location.href = result.redirectUrl;
+        	$rootScope.$broadcast('agreementChangeSuccess');
         }
         
         function onProcessPaymentError() {
@@ -341,6 +342,7 @@
   			function onSuccess(result) {
 //  				getAllOrder();
   				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
+  				$rootScope.$broadcast('agreementChangeSuccess');
   			}
   			
   			function onError() {

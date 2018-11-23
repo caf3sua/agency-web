@@ -9,6 +9,11 @@
 
 	function ReportService($resource) {
 		var service = $resource('', {}, {
+			'getCountAllOrder' : {
+				method : 'GET',
+				url : 'api/agency/agency-report/get-count-all-order',
+				isArray : false
+			},
 			'getReportTransfer' : {
 				method : 'POST',
 				url : 'api/agency/agency-report/report-transfer',

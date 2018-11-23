@@ -245,7 +245,6 @@
         
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	debugger
         	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
@@ -444,6 +443,7 @@
         			} else {
         				$state.go('app.cart', {sel: $rootScope.gycbhNumber});	
         			}
+        			$rootScope.$broadcast('agreementChangeSuccess');
         		}
     				
     	        function onError(error) {
@@ -452,6 +452,7 @@
 			} else {
 //				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
 				$state.go('order.agency');
+				$rootScope.$broadcast('agreementChangeSuccess');
 			}
 		}
 		
@@ -602,6 +603,8 @@
                     }
                 },
             });
+        	
+        	$rootScope.$broadcast('agreementChangeSuccess');
         }
         
         
