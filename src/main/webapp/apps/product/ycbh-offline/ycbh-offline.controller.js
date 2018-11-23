@@ -344,7 +344,7 @@
                         	if (data.statusPolicy == "80"){
                         		$state.go('order.agency');
                         	} else {
-                        		$state.go('app.cart', {sel: data.gycbhNumber});
+                        		$state.go('order.baoviet');
                         	}
 	                    }
                     }
