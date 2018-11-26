@@ -113,14 +113,17 @@
                 modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'apps/contact/contact-new-dialog.html',
-                    controller: 'ContactSearchDialogController',
+                    controller: 'ContactNewController',
                     controllerAs: 'vm',
                     size: 'lg',
                     resolve: {
                         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('global');
                             return $translate.refresh();
-                        }]
+                        }],
+                        loadPlugin: function ($ocLazyLoad) {
+    	            		return $ocLazyLoad.load(['apps/contact/contact-new.controller.js']);
+                        }
                     }
                 });
         	}

@@ -236,6 +236,17 @@
         	}
         }
         
+        $scope.$on('contactCreateSuccess', function() {
+        	if ($rootScope.createContact != undefined && $rootScope.createContact != null) {
+        		vm.policy.contactCode = $rootScope.createContact.contactCode;
+        		vm.policy.contactName = $rootScope.createContact.contactName;
+                vm.policy.contactDob = $rootScope.createContact.dateOfBirth;
+                vm.policy.contactPhone = $rootScope.createContact.phone;
+                vm.policy.contactEmail = $rootScope.createContact.email;
+                vm.policy.contactIdNumber = $rootScope.createContact.idNumber;
+        	}
+        });
+        
         function formatAddressEdit(address) {
         	return address.substring(0, address.indexOf("::"));
         }

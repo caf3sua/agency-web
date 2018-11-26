@@ -6,9 +6,9 @@
 
 
     	ContactNewController.$inject = ['$rootScope', '$state', '$scope', '$http', '$filter',
-    		'ContactService','$controller', 'ContactCommonDialogService', '$ngConfirm'];
+    		'ContactService','$controller', 'ContactCommonDialogService', '$ngConfirm', '$uibModalInstance'];
         function ContactNewController($rootScope, $state, $scope, $http, $filter
-        		, ContactService, $controller, ContactCommonDialogService, $ngConfirm) {
+        		, ContactService, $controller, ContactCommonDialogService, $ngConfirm, $uibModalInstance) {
         	
         	var vm = this;
         	
@@ -206,6 +206,8 @@
         		
         		function onSuccess(result) {
         			$rootScope.$broadcast('reminderChangeSuccess');
+        			$rootScope.$broadcast('contactCreateSuccess');
+        			$rootScope.createContact = result;
         			showSaveContactSuccess();
         		}
         		
@@ -231,7 +233,7 @@
                         	text: 'Đóng',
                             btnClass: "btn-blue",
                             action: function(scope, button){
-                            	$state.go('app.contact');
+                            	$uibModalInstance.dismiss('cancel');
     	                    }
                         }
                     },
