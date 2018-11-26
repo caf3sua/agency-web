@@ -102,7 +102,7 @@
     		"q1": "",
     		"q2": "",
     		"q3": "",
-    		"receiveMethod": "1",
+    		"receiveMethod": "2",
     		"sinhmang": "1",
     		"sinhmangPhi": 0,
     		"sinhmangPhiSi": 0,

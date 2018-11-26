@@ -37,7 +37,7 @@
             "inceptionDate":"",
             "permanentTotalDisablement":1,
             "plan": 0,
-            "receiveMethod":"1",
+            "receiveMethod":"2",
             "tlAddcollections":[],
             "userAgent":"",
             "invoiceInfo": {  

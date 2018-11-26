@@ -42,7 +42,7 @@
             "premiumdiscount":0,
             "premiumnet":0,
             "premiumtnc":0,
-            "receiveMethod":"1",
+            "receiveMethod":"2",
             "invoiceInfo": {  
               	"accountNo":"",
   				"address":"",

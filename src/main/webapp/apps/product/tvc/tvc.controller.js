@@ -38,7 +38,7 @@
                 propserCellphone: "",
                 propserName: "",
                 propserNgaysinh: "",
-                receiveMethod: "1",
+                receiveMethod: "2",
                 receiverUser: {
                     address: "",
                     addressDistrict: "",

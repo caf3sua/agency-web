@@ -42,7 +42,7 @@
             propserNgaysinh: "",
             propserProvince: "",
             propserTitle: "",
-            receiveMethod: "1",
+            receiveMethod: "2",
             receiverUser: {
                 address: "",
                 addressDistrict: "",

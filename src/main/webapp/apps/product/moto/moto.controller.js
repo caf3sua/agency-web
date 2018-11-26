@@ -31,7 +31,7 @@
             "chaynoStbh": "",
             "nntxCheck": false,
             "nntxPhi": 0,
-            "nntxSoNguoi": "",
+            "nntxSoNguoi": 1,
             "nntxStbh": "",
             "tndsbbCheck": false,
             "tndsbbPhi": 0,
@@ -42,7 +42,7 @@
             "hieuxe":"",
             "insuredAddress":"",
             "insuredName":"",
-            "receiveMethod":"1",
+            "receiveMethod":"2",
             "registrationNumber":"",
             "sokhung":"",
             "somay":"",
@@ -205,6 +205,13 @@
   		}
         
         function checkedChange() {
+        	if (vm.policy.nntxCheck){
+        		vm.policy.nntxSoNguoi = 1;
+        		angular.element('#nntxStbh').focus();
+        	} else {
+        		vm.policy.nntxSoNguoi = "";
+        	}
+        	
             if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
                 vm.policy.nntxCheck = false;
             }
@@ -339,7 +346,8 @@
         		return true;
         	}
         	if(!vm.policy.nntxSoNguoi) {
-        		return "Chưa chọn số người tham gia bảo hiểm!";
+        		vm.policy.nntxSoNguoi = 1;
+        		return false;
         	}
             return true;
         }

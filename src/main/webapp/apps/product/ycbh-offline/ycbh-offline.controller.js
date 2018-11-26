@@ -240,7 +240,15 @@
         }
   		
   		function cancel() {
-  			$state.go("app.order");
+  			vm.policy.contactName = "";
+  			vm.policy.totalPremium = "";
+  			vm.gycbhFiles = [];
+  			vm.documentFiles = [];
+  			vm.khaisinhFiles = [];
+  	        
+  			vm.gycbhFileModel = [];
+  			vm.documentFileModel = [];
+  			vm.khaisinhFileModel = [];
   		}
   		
   		function changeDate(){
