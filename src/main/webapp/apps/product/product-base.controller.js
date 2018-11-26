@@ -97,6 +97,7 @@
         vm.getAddressByPostCode = getAddressByPostCode;
         
         vm.changeCopyFromContact = changeCopyFromContact;
+        vm.changeCopyFromContactInvoice = changeCopyFromContactInvoice;
         
         vm.cleanAllResponseError = cleanAllResponseError;
         
@@ -187,6 +188,29 @@
 	      		}
 	      	}
         }
+        
+        function changeCopyFromContactInvoice() {
+        	vm.policy.invoiceInfo = {};
+	      	if (vm.copyFromContactInvoice) {
+	      		if (vm.lineId == 'BVP') {
+	      			var dataBVP = $rootScope.saveNguoiYcBVP;
+	      			let address = dataBVP.homeAddress;
+	      			vm.policy.invoiceInfo.name = dataBVP.contactName;
+		      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
+
+	                let postcode = address.substring(address.lastIndexOf("::") + 2);
+	                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+	                	vm.policy.invoiceInfo.addressDistrictData = data;
+	                });
+		      		
+	      		} else {
+	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
+		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
+		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      		}
+	      	}
+        }
+        
         // implement function
         function loadPolicyEdit(obj) {
         	if (!isEditMode()) {
