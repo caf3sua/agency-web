@@ -294,10 +294,16 @@
             		return;
         		}
         	} else if (vm.typeBank == 'PAYMENT_LATER') {
-        		CartService.paymentLater(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
+        		CartService.paymentLater(paymentData, onProcessPaymentLaterSuccess, onProcessPaymentError)
+        		return;
         	}
     		
         	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
+        }
+        
+        function onProcessPaymentLaterSuccess(result) {
+        	$rootScope.$broadcast('agreementChangeSuccess');
+        	$state.go('order.later');
         }
         
         function onProcessPaymentSuccess(result) {
