@@ -29,7 +29,8 @@
     			"contactName": "",
     			"phone": "",
     			"idNumber": "",
-    			"dateOfBirth": ""
+    			"dateOfBirth": "",
+    			"categoryType" : ""
         	}
         	vm.contacts = [];
         	vm.contactsInit = [];

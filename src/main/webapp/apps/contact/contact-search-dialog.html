@@ -15,6 +15,16 @@
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12 ">Ngày sinh</div>
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12  padding0"><input type="text"  class="bv-input-contact" placeholder="Ngày sinh" ng-model="vm.searchCriterial.dateOfBirth"/></div>
 	</div>
+	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5">
+		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12 ">Khách hàng là</div>
+		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12  padding0">
+			<select class="bv-input-contact" ng-model="vm.searchCriterial.categoryType"  >
+                <option value="">-- Tất cả --</option>
+                <option value="PERSON">Cá nhân</option>
+                <option value="CATEGORY">Tổ chức</option>
+            </select>
+		</div>
+	</div>
 	
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 text-right margin-top-10">
 		<button class="btn btn-primary" type="button" ng-click="vm.searchContact()">Tìm</button>
