@@ -39,7 +39,14 @@
 	                <p class="">{{order.contactPhone}}</p>
 	            </td>
 	            <td>
-	                <p class=""><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+		            <div ng-switch="order.statusPolicyId">
+		              <div ng-switch-when ="91">
+		                  <p class="">Thanh toán sau</p>
+		              </div>
+		              <div ng-switch-when ="100">
+		                  <p class=""><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+		              </div>
+		            </div>
 	            </td>
 	            <td>
 	                <p class="">{{order.inceptionDate}}</p>
