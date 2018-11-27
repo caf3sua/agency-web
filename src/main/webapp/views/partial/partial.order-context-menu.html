@@ -54,7 +54,13 @@
         <div class="bv-detail-icon-table">
             <i class="fas fa-sync-alt"></i>
         </div>
-        <span class="bv-detail-text-table">Gửi lại OTP xác nhận</span>
+        <span class="bv-detail-text-table">Gửi lại OTP</span>
+    </div>
+    <div ng-click="vm.confirmOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-key"></i>
+        </div>
+        <span class="bv-detail-text-table">Nhập OTP</span>
     </div>
     
     <div ng-click="vm.confirmCommunication(order)" ng-show="order.statusPolicyId == 83">
