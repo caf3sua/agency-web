@@ -241,10 +241,10 @@
             $state.go('access.signin');
         }
 
-        vm.openAddContact = function() {
+        vm.openAddContact = function(categoryType) {
         	console.log('openAddContact');
         	//ContactCommonDialogService.openAddDialog();
-        	$state.go('app.contact-new');
+        	$state.go('app.contact-new', {categoryType : categoryType});
         }
       }
 })();

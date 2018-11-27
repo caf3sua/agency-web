@@ -126,6 +126,8 @@
                 vm.policy.contactPhone = $rootScope.createContact.phone;
                 vm.policy.contactEmail = $rootScope.createContact.email;
                 vm.policy.contactIdNumber = $rootScope.createContact.idNumber;
+                vm.policy.contactCategoryType = $rootScope.createContact.categoryType;
+                vm.policy.contactAddress = $rootScope.createContact.homeAddress;
         	}
         });
     	
@@ -707,6 +709,8 @@
         			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
             		vm.policy.contactName = $rootScope.selectedContact.contactName;
             		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
+            		vm.policy.contactCategoryType = $rootScope.selectedContact.categoryType;
+            		vm.policy.contactAddress = $rootScope.selectedContact.homeAddress;
             		
             		var now = new Date();
                     var nowStr = DateUtils.convertDate(now);
@@ -724,10 +728,10 @@
                     vm.policy.contactPhone = $rootScope.selectedContact.phone;
                     vm.policy.contactEmail = $rootScope.selectedContact.email;
                     vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
+                    vm.policy.contactCategoryType = $rootScope.selectedContact.categoryType;
 
+                    vm.policy.contactAddress = $filter('address')($rootScope.selectedContact.homeAddress);
                     let address = $rootScope.selectedContact.homeAddress;
-                    vm.policy.contactAddress = address.substring(0, address.indexOf("::"));
-
                     let postcode = address.substring(address.lastIndexOf("::") + 2);
                     //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
                     ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {

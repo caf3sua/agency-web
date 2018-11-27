@@ -30,6 +30,10 @@
             'processPayment' : {
                 method : 'POST',
                 url : 'api/agency/payment/processPayment'
+            },
+            'paymentLater' : {
+                method : 'POST',
+                url : 'api/agency/payment/payment-later'
             }
         });
 

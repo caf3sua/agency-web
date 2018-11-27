@@ -2,7 +2,7 @@
     <p>1. Thông tin người yêu cầu bảo hiểm</p>
 </div>
 <div class="margin-top-10 required">
-    <p class="bv-title-from">Họ và tên</p>
+    <p class="bv-title-from" data-translate="global.contact.label.{{vm.policy.contactCategoryType || 'PERSON'}}.name">Họ và tên</p>
 </div>
 <div class="input-group date margin-top-5 display-flex"  data-date-autoclose="true">
     <div class="width-100" style="position: relative;" >
@@ -19,16 +19,30 @@
         </div>
     </div>
 </div>
-<div class="margin-top-10">
-    <p class="bv-title-from">Ngày sinh</p>
+<!-- Cá nhân -->
+<div ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Ngày sinh</p>
+	</div>
+	<div class="margin-right-5 width-100">
+	    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" readonly="readonly" disabled="disabled">
+	        <div class="width-100">
+	            <input type="text" name="contactDob" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.contactDob" readonly="readonly" disabled="disabled">
+	        </div>
+	        <div class="input-group-addon bv-date-icon">
+	            <span class="glyphicon glyphicon-th"></span>
+	        </div>
+	    </div>
+	</div>
+		
 </div>
-<div class="margin-right-5 width-100">
-    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" readonly="readonly" disabled="disabled">
-        <div class="width-100">
-            <input type="text" name="contactDob" class="bv-input" placeholder="Ngày sinh" ng-model="vm.policy.contactDob" readonly="readonly" disabled="disabled">
-        </div>
-        <div class="input-group-addon bv-date-icon">
-            <span class="glyphicon glyphicon-th"></span>
-        </div>
-    </div>
+<!-- Tổ chức -->
+<div ng-show="vm.policy.contactCategoryType == 'ORGANIZATION'">
+	<div class="margin-top-10">
+	    <p class="bv-title-from">Địa chỉ</p>
+	</div>
+	<div class="margin-right-5 width-100">
+	    <input type="text" name="contactAddress" class="bv-input" ng-model="vm.policy.contactAddress" placeholder="Địa chỉ tổ chức" readonly="readonly" disabled="disabled" />
+	</div>
 </div>
+

@@ -5,10 +5,10 @@
         .controller('ContactNewController', ContactNewController);
 
 
-    	ContactNewController.$inject = ['$rootScope', '$state', '$scope', '$http', '$filter',
-    		'ContactService','$controller', 'ContactCommonDialogService', '$ngConfirm', '$uibModalInstance'];
-        function ContactNewController($rootScope, $state, $scope, $http, $filter
-        		, ContactService, $controller, ContactCommonDialogService, $ngConfirm, $uibModalInstance) {
+    	ContactNewController.$inject = ['$rootScope', '$stateParams', '$state', '$scope', '$http', '$filter',
+    		'ContactService','$controller', 'ContactCommonDialogService', '$ngConfirm'];
+        function ContactNewController($rootScope, $stateParams, $state, $scope, $http, $filter
+        		, ContactService, $controller, ContactCommonDialogService, $ngConfirm) {
         	
         	var vm = this;
         	
@@ -60,6 +60,7 @@
         	vm.content = "";
         	vm.dateReminder = "";
         	vm.contact = {
+        		  "categoryType": "PERSON",
       			  "contactName": "",
       			  "contactSex": "1",
       			  "dateOfBirth": "",
@@ -96,6 +97,11 @@
       			// instantiate base controller
       		    console.log('Init ContactNewController');
       		    getAllCategoryReminder();
+      		    
+      		    let categoryType = $stateParams.categoryType;
+      		    if (isNotEmptyString(categoryType)) {
+      		    	vm.contact.categoryType = categoryType;
+      		    }
       		})();
       		
       		$scope.$on('selectedContactChange', function() {
@@ -233,7 +239,7 @@
                         	text: 'Đóng',
                             btnClass: "btn-blue",
                             action: function(scope, button){
-                            	$uibModalInstance.dismiss('cancel');
+                            	$state.go("app.contact", {categoryType: vm.contact.categoryType});
     	                    }
                         }
                     },

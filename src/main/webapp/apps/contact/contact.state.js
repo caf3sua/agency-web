@@ -10,7 +10,7 @@
     function stateConfig($stateProvider, $urlRouterProvider, MODULE_CONFIG) {
         $stateProvider
 	        .state('app.contact', {
-	            url: '/contact?groupType&selected',
+	            url: '/contact?groupType&selected&categoryType',
 	            templateUrl: 'apps/contact/contact.html',
 	            data : { 
             		title: 'CONTACT',
@@ -29,7 +29,7 @@
 	            }
 	        })
 	        .state('app.contact-new', {
-	            url: '/contact-new',
+	            url: '/contact-new?categoryType',
 	            templateUrl: 'apps/contact/contact-new.html',
 	            data : { title: 'CONTACT_NEW' },
 	            controller: "ContactNewController",
