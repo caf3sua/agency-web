@@ -40,7 +40,6 @@
                         <option value="HOM">Bảo hiểm nhà tư nhân</option>
                         <option value="KHC">Bảo hiểm kết hợp con người</option>
                         <option value="TNC">Bảo hiểm tai nạn con người</option>
-                        <!-- <option value="HHV">Bảo hiểm Hàng hóa vận chuyển nội địa</option> -->
                     </select>
                 </div>
             </div>
@@ -94,11 +93,10 @@
                     <p>Trạng thái</p>
                 </div>
                 <div class="margin-top-5">
-                    <select class="bv-select-box-kh form-control" ng-model="vm.searchCriterial.lstStatusPolicy[0]">
+                    <select class="bv-select-box-kh form-control" ng-model="vm.searchCriterial.statusPolicy">
                     	<option value="">-- Trạng thái hợp đồng --</option>
-                    	<option value="91">Chờ Bảo Việt cấp đơn</option>
+                    	<option value="91">Thanh toán sau</option>
                     	<option value="100">Hoàn thành</option>
-                        <option value="92">Chờ Bảo Việt cấp GCNBH (bản cứng)</option>
                     </select>
                 </div>
             </div>

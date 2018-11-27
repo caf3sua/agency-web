@@ -29,9 +29,7 @@
   			  "email": "",
   			  "fromDate": "",
   			  "gycbhNumber": "",
-  			  "lstStatusPolicy": [
-  			    ""
-  			  ],
+  			  "statusPolicy": "",
   			  "phone": "",
   			  "productCode": "",
   			  "toDate": "",
