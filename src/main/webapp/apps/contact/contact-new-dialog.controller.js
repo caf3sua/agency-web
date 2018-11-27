@@ -60,6 +60,7 @@
         	vm.content = "";
         	vm.dateReminder = "";
         	vm.contact = {
+				  "categoryType" : "PERSON",
       			  "contactName": "",
       			  "contactSex": "1",
       			  "dateOfBirth": "",

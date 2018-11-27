@@ -8,21 +8,21 @@
     <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 padding0">
         <div class="bv-btn-groud-header">
             <div class="nav-item dropdown display-inline-block" has-any-authority="PERM_PRODUCT_BVP_CREATE,PERM_PRODUCT_CAR_CREATE,PERM_PRODUCT_HOM_CREATE,PERM_PRODUCT_KCR_CREATE,PERM_PRODUCT_MOT_CREATE,PERM_PRODUCT_KHC_CREATE,PERM_PRODUCT_TNC_CREATE,PERM_PRODUCT_TVC_CREATE,PERM_PRODUCT_TVI_CREATE,PERM_PRODUCT_HHV_CREATE">
-	            <div  class="bv-btn-header-title"  data-toggle="dropdown">
+	            <div  class="bv-btn-header-title" data-toggle="dropdown" tooltip-placement="bottom" uib-tooltip="Tạo đơn hàng mới">
 	              <i class="icon-documentation"></i>
                 	<span>Tạo đơn hàng mới</span>
 	            </div>
 	            <div ui-include="'views/theme/blocks/widget.products.html'"></div>
          	</div>
-            <div class="bv-btn-header-title" ng-click="openAddContact('PERSON')" has-authority="PERM_CONTACT_VIEW">
+            <div class="bv-btn-header-title" ng-click="openAddContact('PERSON')" has-authority="PERM_CONTACT_VIEW" tooltip-placement="bottom" uib-tooltip="Tạo khách hàng cá nhân">
                 <i class="icon-employees-01"></i>
                 <span>Tạo khách hàng cá nhân</span>
             </div>
-            <div class="bv-btn-header-title" ng-click="openAddContact('ORGANIZATION')" has-authority="PERM_CONTACT_VIEW">
+            <div class="bv-btn-header-title" ng-click="openAddContact('ORGANIZATION')" has-authority="PERM_CONTACT_VIEW" tooltip-placement="bottom" uib-tooltip="Tạo khách hàng tổ chức">
                 <i class="icon-employees"></i>
                 <span>Tạo khách hàng tổ chức</span>
             </div>
-            <div class="bv-btn-header-title" ng-click="vm.isCollapsedQuickPremium = !vm.isCollapsedQuickPremium">
+            <div class="bv-btn-header-title" ng-click="vm.isCollapsedQuickPremium = !vm.isCollapsedQuickPremium" tooltip-placement="bottom" uib-tooltip="Tính phí nhanh">
                 <i class="icon-calculator"></i>
                 <span>Tính phí nhanh</span>
             </div>
