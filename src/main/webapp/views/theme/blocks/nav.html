@@ -322,9 +322,8 @@
     <!-- Giỏ hàng -->
     <li ui-sref-active="active" has-authority="PERM_CART_VIEW">
         <a ui-sref="app.cart"  class="bv-left-menu">
-            <i class="icon-cart"></i>
+            <i class="icon-cart"><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countCart}}</span></i>
             <span class="nav-text">Giỏ hàng</span>
-            <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countCart}}</span>
         </a>
     </li>
     
@@ -338,8 +337,53 @@
             <span class="nav-text">Đơn hàng</span>
         </a>
         <ul class="nav-sub">
+        	<li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="app.cart">
+                    <i class="icon-cart "><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countCart}}</span></i>
+                    <span class="nav-text">Chưa thanh toán</span>
+                </a>
+            </li>
             <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
-                <a ui-sref="order.baoviet">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.me">
+                    <i class="fas fa-suitcase"><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countOrderMe}}</span></i>
+                    <span class="nav-text">Đơn hàng đã cấp</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.me">
+                    <i class="fas fa-anchor "><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countOrderMe}}</span></i>
+                    <span class="nav-text">Thanh toán sau</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.baoviet">
+                    <i class="fas fa-clock "><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countBvWaiting}}</span></i>
+                    <span class="nav-text">Chờ Bảo Việt giải quyết</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.agency">
+                    <i class="fas fa-clock"><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countAgencyWaiting}}</span></i>
+                    <span class="nav-text">Chờ đại lý giải quyết</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.expire">
+                    <i class="fas fa-spinner"><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countOrderExpire}}</span></i>
+                    <span class="nav-text">Đơn hàng quá hạn</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+            	<a class="bv-left-menu-sp icon-order" ui-sref="order.nophi">
+                    <i class="fas fa-dollar-sign"><span class="label rounded red bv-menu-label-sum">{{vm.countInfo.countOrderDebit}}</span></i>
+                    <span class="nav-text">Đơn hàng nợ phí</span>
+                </a>
+            </li>
+            <!-- 
+            
+            
+            <li ui-sref-active="active" has-authority="PERM_AGREEMENT_VIEW">
+                <a ui-sref="order.agency">
                 	<div class="bv-menu-container">
 	                    <span class="">Chờ Bảo Việt giải quyết</span>
 	                    <span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countBvWaiting}}</span>
@@ -385,7 +429,7 @@
                     	<span class="label rounded blue-100 bv-menu-label-sum">{{vm.countInfo.countOrderOther}}</span>
                 	</div>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </li>
     

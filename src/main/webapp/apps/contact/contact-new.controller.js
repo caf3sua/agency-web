@@ -205,9 +205,9 @@
         		ContactService.create(vm.contact, onSuccess, onError);
         		
         		function onSuccess(result) {
+        			$rootScope.createContact = result;
         			$rootScope.$broadcast('reminderChangeSuccess');
         			$rootScope.$broadcast('contactCreateSuccess');
-        			$rootScope.createContact = result;
         			showSaveContactSuccess();
         		}
         		
