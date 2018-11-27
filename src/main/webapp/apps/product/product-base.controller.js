@@ -112,6 +112,8 @@
     	vm.isImageFile = isImageFile;
     	vm.downloadAttachment = downloadAttachment;
     	
+    	vm.confirmOTP = confirmOTP;
+    	
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -574,6 +576,12 @@
   			function onError() {
   				toastr.error("Lỗi khi gửi lại otp đơn hàng!");
   			}
+  		}
+  		
+  		function confirmOTP(number) {
+  			console.log('resendOTP');
+  			$rootScope.gycbhNumber = number;
+  			showOTPSavePolicySuccessInfo();
   		}
         
         function showOTPSavePolicySuccessInfo() {
