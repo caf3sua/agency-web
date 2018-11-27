@@ -113,7 +113,7 @@
                 modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'apps/contact/contact-new-dialog.html',
-                    controller: 'ContactNewController',
+                    controller: 'ContactNewDialogController',
                     controllerAs: 'vm',
                     size: 'lg',
                     resolve: {
@@ -122,7 +122,7 @@
                             return $translate.refresh();
                         }],
                         loadPlugin: function ($ocLazyLoad) {
-    	            		return $ocLazyLoad.load(['apps/contact/contact-new.controller.js']);
+    	            		return $ocLazyLoad.load(['apps/contact/contact-new-dialog.controller.js']);
                         }
                     }
                 });
