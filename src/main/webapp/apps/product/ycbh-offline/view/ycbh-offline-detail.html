@@ -89,7 +89,7 @@
 
 		    <!-- Ảnh GKS - Upload -->
 		    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 ">
-		        <p class="bv-title-from">Giấy khai sinh</p>
+		        <p class="bv-title-from">{{vm.policy.maSanPham == 'MOT' ? 'Giấy tờ xe' : vm.policy.maSanPham == 'CAR' ? 'Giấy tờ xe' : 'Giấy khai sinh'}}</p>
 		    </div>
 		    <div class="margin-top-10 col-lg-12  col-md-12 col-sm-12 col-xs-12 ">
 		        <div class="" ng-repeat="f in vm.policy.imgKhaisinhContents">
