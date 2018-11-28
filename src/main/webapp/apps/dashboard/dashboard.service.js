@@ -14,13 +14,13 @@
 				url : 'api/agency/agency-report/report-dashboard'
 			},
 			'getAllWaitAgency' : {
-                method : 'GET',
-                url : 'api/agency/product/agreement/get-wait-agency',
+                method : 'POST',
+                url : 'api/agency/product/agreement/search-order-agency',
                 isArray : true
             },
 			'getAllWaitAgreement' : {
-                method : 'GET',
-                url : 'api/agency/product/agreement/get-wait-agreement',
+                method : 'POST',
+                url : 'api/agency/product/agreement/search-order-wait',
                 isArray : true
             }
 		});
