@@ -16,6 +16,20 @@
         <p class="bv-title-from-des margin-top-10">(Bỏ chọn ô này để xóa thông tin người yêu cầu bảo hiểm đã được điền sẵn bên dưới)</p>
     </label>
 </div>
+
+<!-- Tool bar -->
+<div class="product-toolbar" ng-show="vm.policy.travelWithId == '3'">
+	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Import excel" ng-click="vm.showImportExcelPopup()">
+		<i class="far fa-file-excel"></i>
+	</a>
+	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Tải xuống dữ liệu">
+		<i class="fas fa-download"></i>
+	</a>
+	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Toàn màn hình">
+		<i class="fas fa-arrows-alt"></i>
+	</a>
+</div>
+
 <div class="margin-top-10" ng-show="vm.policy.soNguoiThamGia > 0">
     <div class="table-responsive bv-home-block-left-table-responsive">
         <table class="table bv-tvc-block-left-table"  >

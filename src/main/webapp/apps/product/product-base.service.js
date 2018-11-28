@@ -176,6 +176,10 @@
             'resendOtp' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/resend-confirm-otp'
+            },
+            'processImportTvc' : {
+                method : 'POST',
+                url : 'api/agency/product/tvc/import-excel'
             }
         });
 

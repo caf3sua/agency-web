@@ -3088,3 +3088,20 @@ div#insideDiv{
 .icon-order {
 	position: relative;
 }
+
+.product-toolbar {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.product-btn-toolbar {
+	font-size: 20px;
+    margin-left: 10px;
+    color: #3368b770;
+}
+.product-btn-toolbar:hover {
+    color: #3368b7;
+}
+.color-337ab7 {
+	color: #337ab7;
+}

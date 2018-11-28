@@ -21,7 +21,7 @@
 				<p data-translate="global.contact.label.{{vm.contact.categoryType}}.name">Họ và tên</p>
 	        </div>
 	        <div class="margin-top-5">
-	            <input type="text" class="bv-input" placeholder="Họ và tên" ng-model="vm.contact.contactName" required/>
+	            <input type="text" class="bv-input" placeholder="{{vm.contact.categoryType == 'PERSON' ? 'Họ và tên' : 'Tên tổ chức'}}" ng-model="vm.contact.contactName" required/>
 	        </div>
 		</div>
 		<!--Ngày sinh -->

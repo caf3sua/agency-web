@@ -320,6 +320,17 @@
         function removePerson() {
             vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
+        
+        
+        $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
+        function tvcImportExcelSuccess() {
+        	console.log('TVC tvcImportExcelSuccess');
+        	// Display
+        	addOrRemovePerson();
+        	// Tinh lai phi
+        	getPremium();
+        }
+        
         // function checkNycbhcdc(idx) {
         //     if(idx == true){
         //         var personObj = {};

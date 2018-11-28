@@ -20,11 +20,11 @@
             }
         }]);
 
-    ProductBaseController.$inject = ['vm', '$state', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
+    ProductBaseController.$inject = ['vm', '$state', '$http', '$stateParams', '$rootScope', '$scope', '$window', '$compile', '$timeout'
     	, 'ContactCommonDialogService', 'ResponseValidateService', 'Principal'
     	, 'DateUtils', '$ngConfirm', 'ProductCommonService', '$filter', '$uibModal', '$localStorage', 'ContactService', 'API_SERVICE_URL'];
 
-    function ProductBaseController(vm, $state, $stateParams, $rootScope, $scope, $window, $compile, $timeout
+    function ProductBaseController(vm, $state, $http, $stateParams, $rootScope, $scope, $window, $compile, $timeout
     		, ContactCommonDialogService, ResponseValidateService, Principal
     		, DateUtils, $ngConfirm, ProductCommonService, $filter, $uibModal, $localStorage, ContactService, API_SERVICE_URL){
 		vm.message = { name: 'default entry from ProductBaseController' };
@@ -113,6 +113,7 @@
     	vm.downloadAttachment = downloadAttachment;
     	
     	vm.confirmOTP = confirmOTP;
+    	vm.showImportExcelPopup = showImportExcelPopup;
     	
     	// 15.08
     	vm.checkDate = checkDate;
@@ -1071,5 +1072,105 @@
                 $window.location = templateRoute;	
         	}
   		}
+        
+        function downloadTemplateTVC() {
+        	console.log('download template TVC');
+        	var templateRoute = API_SERVICE_URL + '/api/agency/document/download-template?filename=TVC_Template.xls';
+            $window.location = templateRoute;
+        }
+        
+        function doUploadExcel(file) {
+        	let uploadUrl = API_SERVICE_URL + '/api/agency/document/upload-file';
+        	var myFormData = new FormData();
+
+            myFormData.append('file', file);
+
+            $http.post(uploadUrl, myFormData, {
+                	transformRequest: angular.identity,
+                	headers: {'Content-Type': undefined}
+        	})
+            .success(function(result){
+            	console.log(result);
+            	requestProcessImportExcel(result);
+            })
+            .error(function(error){
+            	console.log(error);
+            	toastr.error("Upload file lỗi");
+            });
+        }
+        
+        function requestProcessImportExcel(result) {
+        	ProductCommonService.processImportTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
+        	
+        	function onProcessImportExcelSuccess(data) {
+        		if (data.error) {
+        			// Download file loi
+        			toastr.error("Lỗi khi xử lý file import");
+        			console.log('xu ly import loi');
+        			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-file?path=' + window.encodeURIComponent(data.path);
+                    $window.location = templateRoute;
+        		} else {
+            		vm.policy.soNguoiThamGia = data.data.length;
+            		vm.policy.listTvcAddBaseVM = data.data;
+            		
+            		$rootScope.$broadcast('tvcImportExcelSuccess');
+            		console.log(data);
+        		}
+        	}
+        	
+        	function onProcessImportExcelError(error) {
+        		console.log(error);
+        		toastr.error("Lỗi trong quá trình xử lý import");
+        	}
+        }
+        
+        function showImportExcelPopup() {
+        	$ngConfirm({
+    			title: 'Import Excel',
+                icon: 'far fa-file-excel',
+    			theme: 'modern',
+    			type: 'blue',
+    			contentUrl: 'apps/product/partial/partial.import-excel.html',
+                closeIcon: true,
+                buttons: {
+                    ok: {
+                    	text: 'Thực hiện',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	var fileInput = $('#importExcelId');
+                        	var input = fileInput.get(0);
+                        	var fileImport = input.files[0];
+                        	doUploadExcel(fileImport);
+                        }
+                    },
+                    close: {
+                    	text: 'Hủy'
+                    }
+                },
+                onScopeReady: function (scope) {
+    				var self = this;
+    				scope.downloadTemplate = function () {
+    					downloadTemplateTVC();
+    				}
+    				
+//    				scope.optionChange = function () {
+//    					if (scope.otpOptions == "0") {
+//    						self.buttons.complete.setDisabled(false);
+//    						scope.otp = "";
+//    					} else {
+//    						self.buttons.complete.setDisabled(true);
+//    					}
+//    				}
+//    				
+//    				scope.otpChange = function () {
+//                        if (scope.otp != null && scope.otp.length == 6)
+//                            self.buttons.complete.setDisabled(false);
+//                        else
+//                            self.buttons.complete.setDisabled(true);
+//                    }
+                }
+            });
+        }
+        
     }
 })();
