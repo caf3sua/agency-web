@@ -18,20 +18,11 @@
 </div>
 
 <!-- Tool bar -->
-<div class="product-toolbar" ng-show="vm.policy.travelWithId == '3'">
-	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Import excel" ng-click="vm.showImportExcelPopup()">
-		<i class="far fa-file-excel"></i>
-	</a>
-	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Tải xuống dữ liệu">
-		<i class="fas fa-download"></i>
-	</a>
-	<a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Toàn màn hình">
-		<i class="fas fa-arrows-alt"></i>
-	</a>
-</div>
+<div ng-include="'apps/product/tvc/view/partial.step1_toolbar.html'"></div>
 
 <div class="margin-top-10" ng-show="vm.policy.soNguoiThamGia > 0">
-    <div class="table-responsive bv-home-block-left-table-responsive">
+    <div ng-include="'apps/product/tvc/view/partial.step1_table_data.html'"></div>
+    <!-- <div class="table-responsive bv-home-block-left-table-responsive">
         <table class="table bv-tvc-block-left-table"  >
             <thead>
             <tr>
@@ -78,14 +69,14 @@
                         <option value="30">Bản thân</option>
                         <option value="31">Vợ/Chồng</option>
                         <option value="32">Con</option>
-                        <option value="34">Bố/Me</option>
-                        <option value="39">Bố Me của vợ/chồng</option>
+                        <option value="34">Bố/Mẹ</option>
+                        <option value="39">Bố Mẹ của vợ/chồng</option>
                     </select>
                 </td>
             </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 </div>
 <div class="margin-top-5 padding-bottom-35">
     <button class="bv-btn-step3" type="submit">Tiếp theo</button>

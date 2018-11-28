@@ -3091,7 +3091,7 @@ div#insideDiv{
 
 .product-toolbar {
 	margin-top: 10px;
-	text-align: right;
+	/* text-align: right; */
 }
 
 .product-btn-toolbar {
@@ -3104,4 +3104,19 @@ div#insideDiv{
 }
 .color-337ab7 {
 	color: #337ab7;
+}
+.color-5cb85c {
+    color: #5cb85c9e !important;
+}
+
+.color-d9534f {
+    color: #d9534f96 !important;
+}
+
+.m-w-190 {
+    min-width: 190px;
+}
+
+.tvc-checkbox {
+    margin-bottom: 0px  !important;
 }

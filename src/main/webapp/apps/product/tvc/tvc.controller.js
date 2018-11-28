@@ -60,6 +60,7 @@
 	            travelWithId: "",
 	            tvcPackage: ""
         };
+        vm.listTvcAddBaseInit = [];
         vm.product = {};
         vm.getPremium = getPremium;
         vm.onchangePlan = onchangePlan;
