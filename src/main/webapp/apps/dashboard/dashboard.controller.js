@@ -35,14 +35,27 @@
 	        		  "waitBaoviet" : []
     		};
 	        
+	        vm.searchBaoViet = {
+		  			  "pageable": {
+		  			    "page": 0,
+		  			    "size": 3
+		  			  },
+	    			  "contactCode": "",
+	    			  "contactName": "",
+	    			  "email": "",
+	    			  "fromDate": "",
+	    			  "gycbhNumber": "",
+	    			  "statusPolicy": "",
+	    			  "phone": "",
+	    			  "productCode": "",
+	    			  "toDate": "",
+	    			  "createType": "",
+	    			  "agentId": "",
+		  			  "departmentId": ""
+		    	};
 	        
 	        vm.chartIncomeOptions = chartIncomeOptions;
-//	        vm.chartIncomeOptions.yAxis[0].show = false;
-//	        vm.chartIncomeOptions.xAxis[0].show = false;
-	        
 	        vm.chartCommissionOptions = chartCommissionOptions;
-//	        vm.chartCommissionOptions.yAxis[0].show = false;
-//	        vm.chartCommissionOptions.xAxis[0].show = false;
 	        
 	        // paging
 	        vm.page = 1;
@@ -141,10 +154,7 @@
 	  		
 	  		function getAllWaitAgency() {
 	    		vm.AllWaitAgency = [];
-	    		DashboardService.getAllWaitAgency({
-	    			page: vm.page - 1,
-	                size: vm.itemsPerPage
-	            }, onSuccess, onError);
+	    		DashboardService.getAllWaitAgency(vm.searchBaoViet, onSuccess, onError);
 	    		
 	    		function onSuccess(result, headers) {
 	    			vm.totalItemsAgency = headers('X-Total-Count');
@@ -158,10 +168,7 @@
 	  		
 	  		function getAllWaitAgreement() {
 	    		vm.AllWaitAgreement = [];
-	    		DashboardService.getAllWaitAgreement({
-	    			page: vm.page - 1,
-	                size: vm.itemsPerPage
-	            }, onSuccess, onError);
+	    		DashboardService.getAllWaitAgreement(vm.searchBaoViet, onSuccess, onError);
 	    		
 	    		function onSuccess(result, headers) {
 	    			vm.totalItemsAgreement = headers('X-Total-Count');
@@ -169,7 +176,6 @@
 	            }
 
 	            function onError(result) {
-	            	
 	            }
 	  		}
 	  		
