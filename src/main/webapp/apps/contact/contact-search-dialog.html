@@ -79,6 +79,7 @@
 		        	<th>Họ tên</th>
 			        <th>CMT</th>
 			        <th>Ngày sinh</th>
+			        <th style="width: 100px">Khách hàng</th>
 			        <th>Địa chỉ</th>
 			        <th></th>
 	            </tr>
@@ -89,6 +90,16 @@
 		          	<td><a ng-click="vm.selectedContact(row)"><p class="bv-table-text-colorBlue">{{row.contactName}}</p></a></td>
 		          	<td>{{row.idNumber}}</td>
 		          	<td>{{row.dateOfBirth}}</td>
+		          	<td>
+			          	<div ng-switch="row.categoryType">
+			              <div ng-switch-when ="PERSON">
+			                  <p class="">Cá nhân</p>
+			              </div>
+			              <div ng-switch-when ="CATEGORY">
+			                  <p class="">Tổ chức</p>
+			              </div>
+			            </div>
+			        </td>
 		         	<td>{{row.homeAddress | address}}</td>
 		          	<td>
 			        	<a ng-click="vm.selectedContact(row)" class="customer-check">

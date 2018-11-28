@@ -97,7 +97,6 @@
   	  				// Paging
   	  				vm.contacts = result;
   	  				vm.isLoading = false;
-  	                
   	  				vm.totalItems = headers('X-Total-Count');
   	                vm.queryCount = vm.totalItems;
   	  	        }
