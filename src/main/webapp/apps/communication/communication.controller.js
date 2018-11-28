@@ -51,6 +51,7 @@
 	  			function onSuccess(data) {
 	  				vm.policy = data;
 	  				vm.policy.maSanPham = data.lineId;
+	  				vm.policy.title = "Đại lý: Trả lời Giám định đơn hàng " + vm.gycbhNumber;
 	  				
 	  				CommunicationService.getOrderTransactions({gycbhNumber: vm.gycbhNumber}, onOrderSuccess, onError);
 	  				
@@ -59,6 +60,14 @@
 	  				
 	  				function onOrderSuccess(result) {
 	  					vm.hisOrder = result;
+	  					angular.element('#conversationContent').focus();
+	  					if (result[1].fromEmail != null && result[1].fromEmail != ""){
+	  						vm.policy.sendEmail = result[1].fromEmail;	
+	  					} else if (result[0].fromEmail != null && result[0].fromEmail != ""){
+	  						vm.policy.sendEmail = result[0].fromEmail;
+	  					} else {
+	  						
+	  					}
 	  				}
 	  				
 	  			}
@@ -146,13 +155,13 @@
       			
       			function onError(data) {
       				vm.isLoading = false;
-      				toastr.error("Lỗi khi tạo trao đổi thông tin.");
+      				toastr.error("Lỗi khi gửi trao đổi thông tin.");
       			}
 	  		}
   		}
   		
   		function showSaveSuccess(data) {
-        	var message = "Trao đổi hợp đồng bảo hiểm đã tạo thành công";
+        	var message = "Trao đổi hợp đồng bảo hiểm đã gửi thành công";
         	
         	$ngConfirm({
                 title: 'Thông báo',

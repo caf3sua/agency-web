@@ -5,7 +5,7 @@
 		</div>
         <span class="bv-detail-text-table">Xem</span>
 	</div>
-	<div ng-show="order.statusPolicyId == 80 || order.statusPolicyId == 81" ng-click="vm.confirmEditAgreement(order)">
+	<div ng-click="vm.confirmEditAgreement(order)">
         <div class="bv-detail-icon-table">
             <i class="icon-pencil"></i>
         </div>
@@ -22,5 +22,11 @@
             <i class="fas fa-key"></i>
         </div>
         <span class="bv-detail-text-table">Nhập OTP</span>
+    </div>
+    <div ng-click="vm.confirmCommunication(order)" ng-show="order.statusPolicyId == 83">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-comments"></i>
+        </div>
+        <span class="bv-detail-text-table">Trao đổi</span>
     </div>
 </div>
