@@ -33,7 +33,7 @@
                 loaitien: "USD",
                 netPremium: 0,
                 paymentMethod:"paymentMethod",
-                planId:"1",
+                planId:"2",
                 policyNumber: "",
                 premium: 0,
                 propserCellphone: "",
@@ -207,6 +207,9 @@
             	vm.policy.soNguoiThamGia = 2;
             	addOrRemovePerson();
             	vm.isShowChangeTravel = false;
+            }
+            if (vm.policy.expiredDate != "" && vm.policy.expiredDate != null){
+            	getPremium();	
             }
         }
         

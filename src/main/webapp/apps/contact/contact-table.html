@@ -1,0 +1,54 @@
+<div class="col-lg-12 margin-top-20  col-md-12 col-sm-12 col-xs-12 padding0">
+	<p class="bv-result-search-dh">Tìm thấy <span>{{vm.contacts.length}}</span> đơn hàng phù hợp</p>
+</div>
+<div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">
+    <table class="table bv-home-block-left-table bv-table-kh">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Tên khách hàng</th>
+                <th>Ngày sinh</th>
+                <th>Số CMT/MST</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Loại khách hàng</th>
+                <th>Khách hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+	        <tr ng-repeat-start="row in vm.contacts track by $index" ng-click="row.expand = !row.expand">
+	            <td>
+	                <p class="bv-home-table-stt margin-0">{{$index + 1}}</p>
+	            </td>
+	            <td>
+	                <p class="bv-table-text-colorBlue">{{row.contactName}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.dateOfBirth}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.idNumber}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.email}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.phone}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.groupType}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{row.categoryType}}</p>
+	            </td>
+	        </tr>
+	        <tr ng-if="row.expand" ng-repeat-end="">
+           		<td colspan="9"><div ng-include="'apps/contact/contact-context-menu.html'"></div></td>
+          	</tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+    	<bv-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage" ng-show="vm.totalItems > 0"></bv-item-count>
+		<uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
