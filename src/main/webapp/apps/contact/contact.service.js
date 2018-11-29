@@ -22,7 +22,7 @@
 
         return service;
 
-        function openSearchDialog () {
+        function openSearchDialog (type) {
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,
@@ -31,6 +31,9 @@
                 controllerAs: 'vm',
                 size: 'lg',
                 resolve: {
+                	dialogType : function () {
+		    			return type;
+                	},
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();

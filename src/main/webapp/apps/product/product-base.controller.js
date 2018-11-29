@@ -778,7 +778,7 @@
 
         function openSearchContact() {
         	console.log('openSearchContact');
-        	ContactCommonDialogService.openSearchDialog();
+        	ContactCommonDialogService.openSearchDialog('NYCBH');
         }
         
         function openAddContact() {

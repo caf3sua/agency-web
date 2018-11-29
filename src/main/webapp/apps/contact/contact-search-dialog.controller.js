@@ -6,9 +6,9 @@
 
 
     	ContactSearchDialogController.$inject = ['$rootScope', '$scope', '$state', '$http', '$filter', '$uibModalInstance'
-    		, 'ContactService', '$uibModal', '$ngConfirm', 'PAGINATION_CONSTANTS'];
+    		, 'ContactService', '$uibModal', '$ngConfirm', 'PAGINATION_CONSTANTS', 'dialogType'];
         function ContactSearchDialogController($rootScope, $scope, $state, $http, $filter, $uibModalInstance
-        		, ContactService, $uibModal, $ngConfirm, PAGINATION_CONSTANTS) {
+        		, ContactService, $uibModal, $ngConfirm, PAGINATION_CONSTANTS, dialogType) {
         	var vm = this;
         	// paging
         	vm.page = 1;
@@ -20,6 +20,7 @@
         	vm.searchContact = searchContact;
         	vm.addNewContact = addNewContact;
         	vm.selectedContact = selectedContact;
+        	vm.dialogType = dialogType;
         	
         	vm.searchCriterial = {
     			"pageable": {
