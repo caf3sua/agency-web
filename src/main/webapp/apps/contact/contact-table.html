@@ -12,7 +12,7 @@
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Loại khách hàng</th>
-                <th>Khách hàng</th>
+                <th>Nhóm khách hàng</th>
             </tr>
         </thead>
         <tbody>
@@ -36,10 +36,10 @@
 	                <p class="">{{row.phone}}</p>
 	            </td>
 	            <td>
-	                <p class="">{{row.groupType}}</p>
+	                <p class="" data-translate="global.contact.label.group.{{row.groupType}}">{{row.groupType}}</p>
 	            </td>
 	            <td>
-	                <p class="">{{row.categoryType}}</p>
+	                <span class="rounded label label-contact" ng-class="row.categoryType == 'ORGANIZATION' ? 'red-500' : 'primary'" data-translate="global.contact.label.category.{{row.categoryType}}">{{row.categoryType}}</span>
 	            </td>
 	        </tr>
 	        <tr ng-if="row.expand" ng-repeat-end="">

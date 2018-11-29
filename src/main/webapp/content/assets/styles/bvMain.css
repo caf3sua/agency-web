@@ -3131,3 +3131,7 @@ div#insideDiv{
 .m-w-200 {
 	min-width: 200px;
 }
+
+.label-contact {
+	font-size : 14px   !important;
+}

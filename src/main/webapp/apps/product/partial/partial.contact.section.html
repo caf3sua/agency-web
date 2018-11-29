@@ -2,14 +2,14 @@
     <p>{{title}}</p>
 </div>
 <div class="margin-right-5 width-100 margin-top-5">
-	<div class="margin-top-10 required">
+	<div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}">
 	    <p class="bv-title-from">Họ và tên</p>
 	</div>
     <div class="input-group display-flex margin-top-5" >
         <div class="width-100">
             <input type="text" name="{{name}}-contactName" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
                    required-message="'Chựa chọn thông tin người yêu cầu bảo hiểm!'"
-                   required/>
+                   ng-required="isRequired"/>
         </div>
         <div class="input-group-addon bv-date-icon" ng-click="openSearchContact()">
             <i class="fa fa-plus"></i>

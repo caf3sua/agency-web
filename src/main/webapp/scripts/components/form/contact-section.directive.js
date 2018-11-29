@@ -15,6 +15,7 @@
                 title: '@',
                 contactName: '=',
                 contactDob: '=',
+                isRequired: '=',
                 contactExtendInfo: '=',
                 openSearchContact: '&'
             },
