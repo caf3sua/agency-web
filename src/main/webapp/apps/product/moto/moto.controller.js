@@ -345,7 +345,7 @@
         	if(!vm.policy.nntxCheck) {
         		return true;
         	}
-        	if(!vm.policy.nntxSoNguoi) {
+        	if (vm.policy.nntxSoNguoi == 0 || vm.policy.nntxSoNguoi == ""){
         		vm.policy.nntxSoNguoi = 1;
         		return false;
         	}
