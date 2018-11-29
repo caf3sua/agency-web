@@ -19,7 +19,7 @@
     	// paging
         vm.page = 1;
         vm.totalItems = null;
-        vm.itemsPerPage = 5;
+        vm.itemsPerPage = 10;
         vm.transition = transition;
         
     	// Function declare
@@ -29,7 +29,22 @@
     	vm.openMailDialog = openMailDialog;
 		vm.confirmDeleteContact = confirmDeleteContact;
 		vm.lstReminder = [];
-    	
+    	vm.searchContact = searchContact;
+		
+		vm.searchCriterial = {
+			"pageable": {
+			    "page": 0,
+			    "size": vm.itemsPerPage
+			},
+			"contactName": "",
+			"email": "",
+			"phone": "",
+			"idNumber": "",
+			"dateOfBirth": "",
+			"groupType": "",
+			"categoryType" : ""
+    	}
+		
     	angular.element(document).ready(function () {
         });
 
@@ -37,10 +52,56 @@
   		(function initController() {
   			$controller('AgreementBaseController', { vm: vm, $scope: $scope });
   			
-  			loadAll();
+  			//loadAll();
   		})();
   		
     	// Implement function
+  		function searchContact() {
+    		vm.totalItems = null;
+  			vm.isLoading = true;
+  			vm.contacts = [];
+
+  			ContactService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
+  			function onSearchSuccess(result, headers) {
+  				// Paging
+  				vm.contacts = result;
+  				vm.isLoading = false;
+  				vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                toastr.success('Tìm thấy ' + vm.contacts.length + ' khách hàng phù hợp');
+  	        }
+  	        function onSearchError() {
+  	        	vm.isLoading = false;
+  	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
+  	        }
+    	}
+  		
+  		function search(page) {
+  			console.log('transition, page:' + vm.page);
+  			vm.isLoading = true;
+  			
+  			var contact = {};
+  			contact = vm.searchCriterial;
+  			contact.pageable.page = vm.page - 1;
+        	console.log('searchAllTransition, page: ' + contact.pageable.page);
+        	
+        	ContactService.search(contact, onSearchSuccess, onSearchError);
+  			function onSearchSuccess(result, headers) {
+  				// Paging
+  				vm.contacts = result;
+  				vm.isLoading = false;
+  				toastr.success('Tìm thấy ' + vm.contacts.length + ' khách hàng phù hợp');
+  	        }
+  	        function onSearchError() {
+  	        	vm.isLoading = false;
+  	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
+  	        }
+  		}
+  		
+  		function transition () {
+    		search();
+        }
+  		
   		function openMailDialog() {
   			ContactCommonDialogService.openMailDialog();
   		}
@@ -136,11 +197,6 @@
             function onGetAgrementError(result) {
             }
   		}
-    	
-    	function transition () {
-    		getAgrement();
-        }
-    	
     	
     	function deleteContact(selContact) {
     		console.log(vm.selectedContact);
