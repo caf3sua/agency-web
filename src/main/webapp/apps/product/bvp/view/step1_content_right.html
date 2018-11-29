@@ -5,7 +5,7 @@
                 is-show-extend-info="false"
                 title="1. Thông tin người yêu cầu bảo hiểm"
                 contact-name="vm.policy.nguoiycName" contact-dob="vm.policy.nguoiycNgaysinh"
-                contact-id-number="vm.policy.nguoiycCmnd" contact-relation="vm.policy.nguoiycQuanhe"
+                contact-id-number="vm.policy.nguoiycCmnd" contact-relation="vm.policy.nguoiycQuanhe" is-required="true"
                 open-search-contact="vm.openSearchContactForPanel('contact')"></contact-section>
 
 			<div class="margin-top-20 text-header-sp">
@@ -143,7 +143,8 @@
             
             <!-- <div class=" col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10 ng-scope">
     		<table class="table bv-home-block-left-table bv-table-kh"> -->
-            <div class="scroll-container-outer" ng-show="vm.policy.q3 == 1">
+            <div class="scroll-container-outer" ng-show="vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1">
+	            <div class="margin-top-20 required"><p>Nếu trả lời là “Có” cho bất kì câu hỏi nào từ (1) tới (3), xin cung cấp thêm chi tiết:</p></div>
 	            <div class="scroll-container">
 		            <div id="myWorkContent">
 					    <div id="insideDiv">
@@ -180,21 +181,24 @@
 					</div><!-- end myWorkContent -->
 				</div>
 			</div>
+			<div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTableNTH = true" ng-click="vm.isCollapsedTableNTH = !vm.isCollapsedTableNTH">
+			  	<p class="header-border-bottom">4. Thông tin người thụ hưởng bảo hiểm
+			  		<i class="pull-right fas" ng-class="vm.isCollapsedTableNTH ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
+			  	</p>
+			</div>
+			<div uib-collapse="vm.isCollapsedTableNTH">
+	            <contact-section
+	            	name="nguoithName"
+	                is-show-extend-info-nth="true"
+	                contact-name="vm.policy.nguoithName" contact-dob="vm.policy.nguoithNgaysinh"
+	                contact-cmnd="vm.policy.nguoithCmnd"
+	                contact-extend-info="nguoith"
+	                open-search-contact="vm.openSearchContactForPanel('requirement')"></contact-section>
+	         </div>
             
             <div class="margin-top-20"/>
-		
-            <contact-section
-            	name="nguoithName"
-                is-show-extend-info-nth="true"
-                title="4. Thông tin người thụ hưởng bảo hiểm"
-                contact-name="vm.policy.nguoithName" contact-dob="vm.policy.nguoithNgaysinh"
-                contact-cmnd="vm.policy.nguoithCmnd"
-                contact-extend-info="nguoith"
-                open-search-contact="vm.openSearchContactForPanel('requirement')"></contact-section>
             
-            <div class="margin-top-20"/>
-            
-            <div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTable = false" ng-click="vm.isCollapsedTable = !vm.isCollapsedTable">
+            <div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedTable = true" ng-click="vm.isCollapsedTable = !vm.isCollapsedTable">
 			  	<p class="header-border-bottom">5. THÔNG TIN NGƯỜI NHẬN TIỀN BẢO HIỂM 
 			  		<i class="pull-right fas" ng-class="vm.isCollapsedTable ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
 			  	</p>

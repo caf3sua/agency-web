@@ -161,6 +161,30 @@
         vm.gksFile = null;
         vm.gksFileModel;
         
+        vm.lstAdd = [
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		},
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		},
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		}
+		];
+        
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
             {id: '2', name: 'Bạc'},

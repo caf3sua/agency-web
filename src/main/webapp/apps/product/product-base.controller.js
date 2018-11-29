@@ -944,7 +944,7 @@
         }
         
         function validatorBVP() {
-        	if(vm.policy.q3 == 1) {
+        	if(vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1) {
         		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
         			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu 1 dòng)");
         			return false
@@ -958,6 +958,11 @@
                 		}
             		} 
         		}
+        	}
+        	
+        	if(vm.policy.q1 == "" || vm.policy.q2 == "" || vm.policy.q3 == "") {
+    			toastr.error("Cần trả lời các câu hỏi Thông tin tình trạng sức khỏe");
+    			return false
         	}
             return true;
         }
@@ -1003,7 +1008,7 @@
   		// FOR VALIDATOR
         // Date of birth validator
         function dobValidator(dobStr) {
-            if(!dobStr){return;}
+        	if(!dobStr){return;}
 
             var now = new Date();
             var nowStr = DateUtils.convertDate(now);
