@@ -177,9 +177,13 @@
                 method : 'POST',
                 url : 'api/agency/product/agreement/resend-confirm-otp'
             },
-            'processImportTvc' : {
+            'processImportExcelTvc' : {
                 method : 'POST',
                 url : 'api/agency/product/tvc/import-excel'
+            },
+            'processExportExcelTvc' : {
+                method : 'POST',
+                url : 'api/agency/product/tvc/export-excel'
             }
         });
 

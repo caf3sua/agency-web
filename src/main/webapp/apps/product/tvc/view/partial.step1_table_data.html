@@ -11,7 +11,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <th st-sort="id">
+                    <th>
                         <div class="bv-gh-checkbox">
                             <label for="tvc-check-all" class="label-cbx margin-right-5">
                                 <input id="tvc-check-all" type="checkbox" class="invisible"
@@ -27,7 +27,7 @@
                             </label>
                         </div>
                     </th>
-                    <th st-sort="insuredName" class="m-w-150">Họ và tên</th>
+                    <th st-sort="insuredName" class="m-w-200">Họ và tên</th>
                     <th st-sort="idPasswport" class="m-w-150">Số hộ chiếu/CMND</th>
                     <th st-sort="dob" class="m-w-190">Ngày sinh</th>
                     <th st-sort="relationship" class="m-w-150">Quan hệ</th>
@@ -35,13 +35,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="person in vm.policy.listTvcAddBaseVM track by $index">
+                <tr ng-repeat="person in vm.docsInit track by $index">
                     <td>
                         <!-- <p class="bv-home-table-stt margin-0">{{$index + 1}}</p> -->
                         <div class="bv-gh-checkbox">
                             <label for="cart{{$index}}" class="label-cbx margin-right-5">
                                 <input id="cart{{$index}}" type="checkbox" class="invisible"
-                                ng-model="order.check" ng-change="vm.selectCheckBoxCart(order)">
+                                ng-model="person.check" ng-change="vm.selectCheckBoxTableData(person)">
                                 <div class="checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                             <path
@@ -83,18 +83,19 @@
                     <td>
                         <select name="relationship{{$index}}" class="bv-select-box form-control" ng-model ="person.relationship"
                             required-message="'Chưa chọn mối quan hệ!'"
-                            required  ng-disabled="$index == 0 && vm.ngYcbhDicung"
-                        >
+                            required  ng-disabled="($index == 0 && vm.ngYcbhDicung) || vm.policy.travelWithId == '3'">
                             <option value="30">Bản thân</option>
                             <option value="31">Vợ/Chồng</option>
                             <option value="32">Con</option>
-                            <option value="34">Bố/Mẹ</option>
-                            <option value="39">Bố Mẹ của vợ/chồng</option>
+                            <option value="33">Bố/Mẹ</option>
+                            <option value="34">Bố Mẹ của vợ/chồng</option>
+                            <option value="99">Khác</option>
+                            <option value="39" ng-show="vm.policy.travelWithId == '3'">Khách đoàn</option>
                         </select>
                     </td>
                     <td>
-                        <button class="md-btn md-fab m-b-sm blue-600 bv-btn" ng-click="vm.downloadDocument(doc)">
-                            <i class="fas fa-download"></i>
+                        <button type="button" class="md-btn md-fab m-b-sm red-500 bv-btn-s" ng-click="vm.removeRow($index)">
+                            <i class="fas fa-times"></i>
                         </button>
                     </td>
                 </tr>
