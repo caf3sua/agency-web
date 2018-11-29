@@ -20,8 +20,10 @@
         		"30" : "Bản thân",
         		"31" : "Vợ/Chồng",
         		"32" : "Con",
-        		"34" : "Bố/Me",
-        		"39" : "Bố Me của vợ/chồng",
+        		"33" : "Bố/Me",
+        		"34" : "Bố Me của vợ/chồng",
+        		"39" : "Khách đoàn",
+        		"99" : "Khác",
         		"00" : "Không xác định"
         	}
         },
@@ -63,6 +65,12 @@
         		"TNC" : "Bảo hiểm tai nạn con người",
         		"TVC" : "Bảo hiểm du lịch quốc tế",
         		"TVI" : "Bảo hiểm du lịch Việt Nam"
+        	},
+        	"tvc" : {
+        		"label" : {
+        			"contact_name_PERSON" : "Họ tên người yêu cầu bảo hiểm",
+        			"contact_name_ORGANIZATION" : "Tên tổ chức yêu cầu bảo hiểm" 
+        		}
         	}
         },
         "page" : {

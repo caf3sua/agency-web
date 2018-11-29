@@ -12,6 +12,7 @@
     		, $stateParams, DateUtils) {
     	var vm = this;
     	vm.lineId = 'TVC';
+    	vm.docsInit = [];
     	
     	vm.policy = {
     			// premium
@@ -71,6 +72,7 @@
         vm.addOrRemovePerson =addOrRemovePerson;
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
+        vm.removeRow = removeRow;
         vm.isShowChangePremium = false;
         vm.onchangeTravel = onchangeTravel;
         vm.isShowChangeTravel = false;
@@ -196,6 +198,7 @@
         }
         
         function onchangeTravel() {
+        	vm.policy.listTvcAddBaseVM = [];
             if (vm.policy.travelWithId == '1'){
             	vm.policy.soNguoiThamGia = 1;
             	addOrRemovePerson();
@@ -308,19 +311,35 @@
 
         function addNewPerson() {
             var lineAdd = vm.policy.soNguoiThamGia- vm.policy.listTvcAddBaseVM.length;
+            let relationship = "";
+            // Check khach doan 3
+            if (vm.policy.travelWithId == '3') {
+            	relationship = "20";
+            }
+            
             for (var i=0; i < lineAdd; i++) {
                 vm.policy.listTvcAddBaseVM.push({
                     "dob": "",
                     "insuredName": "",
                     "idPasswport": null,
-                    "relationship" : "",
-            });
+                    "relationship" : relationship,
+                });
             }
         };
 
         function removePerson() {
             vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
+        
+        function removeRow(index) {
+        	vm.policy.listTvcAddBaseVM.splice(index, 1);
+        	console.log(vm.policy.listTvcAddBaseVM);
+        	
+        	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+    		
+        	// Tinh lai phi
+        	getPremium();
+    	}
         
         
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);

@@ -114,6 +114,7 @@
     	
     	vm.confirmOTP = confirmOTP;
     	vm.showImportExcelPopup = showImportExcelPopup;
+    	vm.exportExcel = exportExcel;
     	
     	// 15.08
     	vm.checkDate = checkDate;
@@ -1079,6 +1080,36 @@
             $window.location = templateRoute;
         }
         
+        function exportExcel(lineId) {
+        	switch(lineId){
+		  	    case "TVC":
+		  	    	let obj = {
+		  	    		data : vm.policy.listTvcAddBaseVM
+		  	    	};
+		  	    	ProductCommonService.processExportExcelTvc(obj, onExportExcelSuccess, onExportExcelError);
+	  	            break;
+	  	        default: 
+	  	            console.log('invalid product code');
+	  	        break;
+	  	    }
+        	
+        	function onExportExcelSuccess(result) {
+        		if (result.error) {
+        			// Download file loi
+        			toastr.error("Lỗi khi xử lý xuất dữ liệu");
+        			console.log('xu ly export loi');
+        		} else {
+        			toastr.success("Xuất dữ liệu thành công");
+        			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-file?path=' + window.encodeURIComponent(result.path);
+                    $window.location = templateRoute;
+        		}
+        	}
+        	function onExportExcelError(result) {
+        		console.log(result);
+        		toastr.error("Lỗi khi xử lý xuất dữ liệu");
+        	}
+        }
+        
         function doUploadExcel(file) {
         	let uploadUrl = API_SERVICE_URL + '/api/agency/document/upload-file';
         	var myFormData = new FormData();
@@ -1100,7 +1131,7 @@
         }
         
         function requestProcessImportExcel(result) {
-        	ProductCommonService.processImportTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
+        	ProductCommonService.processImportExcelTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
         	
         	function onProcessImportExcelSuccess(data) {
         		if (data.error) {

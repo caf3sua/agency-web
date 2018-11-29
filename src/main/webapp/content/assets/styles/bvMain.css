@@ -2861,6 +2861,13 @@ body {
    line-height: 30px !important;
 }
 
+.bv-btn-s {
+	width: 35px !important;
+    height: 35px !important;
+   line-height: 18px !important;
+}
+
+
 .bv-product-icon {
 	font-size: 20px;
     margin-bottom: 5px;
@@ -3119,4 +3126,8 @@ div#insideDiv{
 
 .tvc-checkbox {
     margin-bottom: 0px  !important;
+}
+
+.m-w-200 {
+	min-width: 200px;
 }
