@@ -52,7 +52,7 @@
   		(function initController() {
   			$controller('AgreementBaseController', { vm: vm, $scope: $scope });
   			
-  			//loadAll();
+  			searchContact();
   		})();
   		
     	// Implement function
