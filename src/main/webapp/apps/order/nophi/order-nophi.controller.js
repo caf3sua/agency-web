@@ -53,6 +53,8 @@
   		(function initController() {
   			// instantiate base controller
   		    $controller('AgreementBaseController', { vm: vm, $scope: $scope });
+  		    
+  		    searchOrderNophi();
   		})();
   		
   		// Function

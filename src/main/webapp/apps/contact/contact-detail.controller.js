@@ -2,19 +2,20 @@
     'use strict';
     angular
         .module('app')
-        .controller('ContactController', ContactController);
+        .controller('ContactDetailController', ContactDetailController);
 
 
-	ContactController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', 'ContactService'
-		, 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm', 'ReminderService', '$controller'];
-	function ContactController($rootScope, $scope, $stateParams, $http, $filter, ContactService
-		, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm, ReminderService, $controller) {
+    ContactDetailController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$http', '$filter', 'ContactService'
+		, 'ContactCommonDialogService', 'PAGINATION_CONSTANTS', '$ngConfirm', 'ReminderService', '$controller', 'entity'];
+	function ContactDetailController($rootScope, $scope, $state, $stateParams, $http, $filter, ContactService
+		, ContactCommonDialogService, PAGINATION_CONSTANTS, $ngConfirm, ReminderService, $controller, entity) {
     	var vm = this;
     	vm.contacts = [];
-    	vm.selectedContact = null;
+    	vm.selectedContact = entity;
     	vm.groupType = 'POTENTIAL';
     	vm.Agreements = [];
     	vm.AgreementsInit = [];
+    	vm.goBack = goBack;
     	
     	// paging
         vm.page = 1;
@@ -25,25 +26,9 @@
     	// Function declare
     	vm.changeGroupType = changeGroupType;
     	vm.getAgrement = getAgrement;
-    	vm.selectContact = selectContact;
     	vm.openMailDialog = openMailDialog;
 		vm.confirmDeleteContact = confirmDeleteContact;
 		vm.lstReminder = [];
-    	vm.searchContact = searchContact;
-		
-		vm.searchCriterial = {
-			"pageable": {
-			    "page": 0,
-			    "size": vm.itemsPerPage
-			},
-			"contactName": "",
-			"email": "",
-			"phone": "",
-			"idNumber": "",
-			"dateOfBirth": "",
-			"groupType": "",
-			"categoryType" : ""
-    	}
 		
     	angular.element(document).ready(function () {
         });
@@ -52,55 +37,11 @@
   		(function initController() {
   			$controller('AgreementBaseController', { vm: vm, $scope: $scope });
   			
-  			searchContact();
+  			getAgrement();
+  			getReminderByContact();
   		})();
   		
     	// Implement function
-  		function searchContact() {
-    		vm.totalItems = null;
-  			vm.isLoading = true;
-  			vm.contacts = [];
-
-  			ContactService.search(vm.searchCriterial, onSearchSuccess, onSearchError);
-  			function onSearchSuccess(result, headers) {
-  				// Paging
-  				vm.contacts = result;
-  				vm.isLoading = false;
-  				vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                toastr.success('Tìm thấy ' + vm.contacts.length + ' khách hàng phù hợp');
-  	        }
-  	        function onSearchError() {
-  	        	vm.isLoading = false;
-  	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
-  	        }
-    	}
-  		
-  		function search(page) {
-  			console.log('transition, page:' + vm.page);
-  			vm.isLoading = true;
-  			
-  			var contact = {};
-  			contact = vm.searchCriterial;
-  			contact.pageable.page = vm.page - 1;
-        	console.log('searchAllTransition, page: ' + contact.pageable.page);
-        	
-        	ContactService.search(contact, onSearchSuccess, onSearchError);
-  			function onSearchSuccess(result, headers) {
-  				// Paging
-  				vm.contacts = result;
-  				vm.isLoading = false;
-  				toastr.success('Tìm thấy ' + vm.contacts.length + ' khách hàng phù hợp');
-  	        }
-  	        function onSearchError() {
-  	        	vm.isLoading = false;
-  	            toastr.error("Lỗi khi tìm kiếm khách hàng!");
-  	        }
-  		}
-  		
-  		function transition () {
-    		search();
-        }
   		
   		function openMailDialog() {
   			ContactCommonDialogService.openMailDialog();
@@ -120,17 +61,6 @@
   			});
   		}
   		
-  		function selectContact(contact){
-  			resetSelectContact();
-      		vm.selectedContact = contact;
-  			vm.selectedContact.selected = true;
-  			
-  			// Call service to get agreement by contactcode
-			  getAgrement();
-			  
-			  getReminderByContact();
-		  };
-		  
 		function getReminderByContact() {
 			vm.lstReminder = [];
 			ReminderService.search({active: '1', contactId: vm.selectedContact.contactId}, onSuccess, onError);
@@ -143,23 +73,6 @@
     		}
 		}
   		
-    	function loadAll() {
-    		console.log('searchContact');
-    		
-    		ContactService.getAll({}, onSuccess, onError);
-    		
-    		function onSuccess(result) {
-    			vm.contacts = result;
-    			changeGroupType('POTENTIAL');
-    			// load state
-    			loadSelectedContact()
-    		}
-    		
-    		function onError(result) {
-    			
-    		}
-    	}
-    	
     	function findSelectedContact(selectedId) {
     		let selContact;
     		angular.forEach(vm.contacts, function(contact) {
@@ -199,10 +112,10 @@
   		}
     	
     	function deleteContact(selContact) {
-    		ContactService.delete({contactId: selContact.contactId}, onSucess, onError);
+    		console.log(vm.selectedContact);
+    		ContactService.delete({contactId: vm.selectedContact.contactId}, onSucess, onError);
     		
     		function onSucess() {
-    			searchContact();
     			toastr.success('Xóa khách hàng thành công!');
     		}
     		
@@ -210,8 +123,16 @@
     			toastr.error('Xóa khách hàng lỗi!');
     		}
     	}
+
+    	function transition () {
+    		getAgrement();
+        }
     	
-    	function confirmDeleteContact(contact) {
+    	function goBack() {
+    		$state.go("app.contact");
+    	}
+    	
+    	function confirmDeleteContact() {
   			$ngConfirm({
                 title: 'Xác nhận',
                 icon: 'fa fa-times',
@@ -225,7 +146,7 @@
                     	text: 'Đồng ý',
                         btnClass: "btn-blue",
                         action: function(scope, button){
-                        	deleteContact(contact);
+                        	deleteContact();
 	                    }
                     },
                     close: {

@@ -1,9 +1,23 @@
 <div class="bv-context-menu">
-	<div class="" ng-click="">
+	<!-- Xem -->
+	<div class="" ng-click="" ui-sref="app.contact-detail({id: row.contactId})">
 		<div class="bv-detail-icon-table">
 			<i class="icon-eye"></i>
 		</div>
         <span class="bv-detail-text-table">Xem</span>
 	</div>
-	
+	<!-- Sửa -->
+	<div class="" ui-sref="app.contact-edit({id: row.contactId})">
+		<div class="bv-detail-icon-table">
+			<i class="icon-pencil"></i>
+		</div>
+        <span class="bv-detail-text-table">Sửa</span>
+	</div>
+	<!-- Xóa -->
+	<div class="" ng-click="vm.confirmDeleteContact(row)" ng-show="row.groupType == 'POTENTIAL'">
+		<div class="bv-detail-icon-table">
+			<i class="icon-cancel"></i>
+		</div>
+        <span class="bv-detail-text-table">Xóa</span>
+	</div>
 </div>
