@@ -1147,13 +1147,18 @@
         	function onProcessImportExcelSuccess(data) {
         		if (data.error) {
         			// Download file loi
-        			toastr.error("Lỗi khi xử lý file import");
+        			toastr.error("Có lỗi import, mở file excel xem chi tiết");
         			console.log('xu ly import loi');
         			var templateRoute = API_SERVICE_URL + '/api/agency/document/download-file?path=' + window.encodeURIComponent(data.path);
                     $window.location = templateRoute;
         		} else {
             		vm.policy.soNguoiThamGia = data.data.length;
             		vm.policy.listTvcAddBaseVM = data.data;
+            		
+            		// generate code
+            		angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+                		item.serial = generateId();
+        		 	});
             		
             		$rootScope.$broadcast('tvcImportExcelSuccess');
             		console.log(data);
@@ -1162,7 +1167,7 @@
         	
         	function onProcessImportExcelError(error) {
         		console.log(error);
-        		toastr.error("Lỗi trong quá trình xử lý import");
+        		toastr.error("Có lỗi trong quá trình xử lý file import");
         	}
         }
         

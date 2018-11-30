@@ -13,6 +13,7 @@
     	var vm = this;
     	vm.lineId = 'TVC';
     	vm.docsInit = [];
+    	vm.docsInitSummary = [];
     	
     	vm.policy = {
     			// premium
@@ -73,6 +74,7 @@
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
         vm.removeRow = removeRow;
+        vm.addNewRow = addNewRow;
         vm.isShowChangePremium = false;
         vm.onchangeTravel = onchangeTravel;
         vm.isShowChangeTravel = false;
@@ -81,6 +83,14 @@
         vm.changeLoaitien = changeLoaitien;
         vm.ngYcbhDicung = true;
         vm.changeNgYcbhDicung = changeNgYcbhDicung;
+        
+        // check all on data table
+        vm.checkAllDataTable = false;
+        vm.checkBoxAllChange = checkBoxAllChange;
+        vm.btnRemoveAllDisabled = true;
+        vm.selectCheckBoxTableData = selectCheckBoxTableData;
+        vm.lstPersonRemove = [];
+        vm.removeAllRow = removeAllRow;
         
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
@@ -326,13 +336,59 @@
                     "insuredName": "",
                     "idPasswport": null,
                     "relationship" : relationship,
+                    "serial" : generateId()
                 });
             }
         };
 
+        function addNewRow() {
+            let relationship = "";
+            // Check khach doan 3
+            if (vm.policy.travelWithId == '3') {
+            	relationship = "20";
+            }
+            
+            vm.policy.listTvcAddBaseVM.push({
+                "dob": "",
+                "insuredName": "",
+                "idPasswport": null,
+                "relationship" : relationship,
+                "serial" : generateId()
+            });
+            
+            vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+    		
+        	// Tinh lai phi
+        	getPremium();
+        };
+        
         function removePerson() {
             vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
+        
+        function removeItemInArray(array, key) {
+        	for (var i=0; i < array.length; i++) {
+        		if (array[i].serial == key) {
+    				vm.policy.listTvcAddBaseVM.splice(i, 1);
+    				break;
+    			}
+        	}
+        }
+        
+        function removeAllRow() {
+        	if (vm.checkAllDataTable) {
+        		vm.policy.listTvcAddBaseVM = [];
+        	} else {
+        		angular.forEach(vm.lstPersonRemove, function(item, key) {
+        			removeItemInArray(vm.policy.listTvcAddBaseVM, item);
+    		 	});
+        	}
+
+        	vm.lstPersonRemove = [];
+        	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+        	// Tinh lai phi
+        	getPremium();
+        }
         
         function removeRow(index) {
         	vm.policy.listTvcAddBaseVM.splice(index, 1);
@@ -344,6 +400,49 @@
         	getPremium();
     	}
         
+        function calculateCheckAll() {
+        	// != 100
+        	let value = true;
+        	vm.btnRemoveAllDisabled = true;
+        	angular.forEach(vm.policy.listTvcAddBaseVM, function(order, key) {
+    			if (order.check != true) {
+    				value = false;
+    			} else {
+    				vm.btnRemoveAllDisabled = false;
+    			}
+		 	});
+        	vm.checkAllDataTable = value;
+        	console.log(vm.lstPersonRemove);
+        }
+        
+        function selectCheckBoxTableData(data) {
+        	if(data.check == true){
+                vm.lstPersonRemove.push(data.serial);
+            }else {
+                var index = vm.lstPersonRemove.indexOf(data.serial);
+                if (index !== -1) {
+            		vm.lstPersonRemove.splice(index, 1);
+                }
+            }
+            calculateCheckAll();
+        }
+        
+        function checkBoxAllChange() {
+        	let value = vm.checkAllDataTable;
+        	vm.lstPersonRemove = [];
+        	if (value == true) {
+        		vm.btnRemoveAllDisabled = false;
+        		angular.forEach(vm.policy.listTvcAddBaseVM, function(order, key) {
+        			vm.lstPersonRemove.push(order.serial);
+    		 	});
+        	} else {
+        		vm.btnRemoveAllDisabled = true;
+        	}
+        	
+        	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        		item.check = value;
+		 	});
+        }
         
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
         function tvcImportExcelSuccess() {
