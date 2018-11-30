@@ -11,10 +11,11 @@
         </a>
     </div>
     <div class="pull-left">
-        <a class="product-btn-toolbar color-5cb85c" tooltip-placement="bottom" uib-tooltip="Thêm dòng dữ liệu">
+        <a class="product-btn-toolbar color-5cb85c" tooltip-placement="bottom" uib-tooltip="Thêm dòng dữ liệu" ng-click="vm.addNewRow()">
             <i class="fas fa-plus"></i>
         </a>
-        <a class="product-btn-toolbar color-d9534f" tooltip-placement="bottom" uib-tooltip="Xóa bản ghi">
+        <a type="button" class="product-btn-toolbar color-d9534f" tooltip-placement="bottom" uib-tooltip="Xóa nhiều bản ghi" 
+        		ng-show="!vm.btnRemoveAllDisabled" ng-click="vm.removeAllRow()">
             <i class="fas fa-trash-alt"></i>
         </a>
     </div>
