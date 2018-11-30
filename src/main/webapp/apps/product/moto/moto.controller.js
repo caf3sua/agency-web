@@ -164,7 +164,16 @@
         	vm.policy.insuredAddressDistrict = "";
 	      	if (vm.copyFromNguoiycbh) {
 	      		vm.policy.insuredName = vm.policy.contactName;
-	      		vm.policy.insuredAddress = vm.policy.contactAddress;
+//	      		vm.policy.insuredAddress = vm.policy.contactAddress;
+
+	      		let insuredAddress = vm.policy.contactAddress;
+	      		let typeAddress = vm.policy.contactAddress.indexOf("::");
+	      		if (typeAddress < 0){
+	        		vm.policy.insuredAddress = insuredAddress.substring(0, insuredAddress.indexOf(","));	
+	      		} else {
+	      			vm.policy.insuredAddress = insuredAddress.substring(0, insuredAddress.indexOf("::"));
+	      		}
+	      		
 	      		vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
 	      	}
         }

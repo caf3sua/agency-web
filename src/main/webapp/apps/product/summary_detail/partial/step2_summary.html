@@ -32,7 +32,6 @@
             <p>Địa chỉ người nhận</p>
         </div>
         <div>
-        	<pre>{{vm.policy.receiverUser | json}}</pre>
             <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.receiverUser.address | address}}</p>
             <p class="bv-tile-templateSummary none-edit-mode" ng-show="!vm.isEditMode()">{{vm.policy.receiverUser.address + ', ' + vm.policy.receiverUser.addressDistrictData.pkDistrict | address}}</p>
         </div>

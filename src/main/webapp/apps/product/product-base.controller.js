@@ -199,7 +199,16 @@
 		      		
 	      		} else {
 	      			vm.policy.receiverUser.name = vm.policy.contactName;
-		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+//		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+	      			
+	      			let addressReceiver = vm.policy.contactAddress;
+		      		let typeAddress = vm.policy.contactAddress.indexOf("::");
+		      		if (typeAddress < 0){
+		      			vm.policy.receiverUser.address = addressReceiver.substring(0, addressReceiver.indexOf(","));	
+		      		} else {
+		      			vm.policy.receiverUser.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
+		      		}
+	      			
 		      		vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
 		      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
 		      		vm.policy.receiverUser.email = vm.policy.contactEmail;
@@ -223,7 +232,16 @@
 		      		
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
-		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
+//		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
+		      		
+	      			let addressInvoice = vm.policy.contactAddress;
+		      		let typeAddress = vm.policy.contactAddress.indexOf("::");
+		      		if (typeAddress < 0){
+		      			vm.policy.invoiceInfo.address = addressInvoice.substring(0, addressInvoice.indexOf(","));	
+		      		} else {
+		      			vm.policy.invoiceInfo.address = addressInvoice.substring(0, addressInvoice.indexOf("::"));
+		      		}
+		      		
 		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      		}
 	      	}
@@ -677,6 +695,7 @@
         			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
 //        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
         			
+        			debugger
         			let addressReceiver = $rootScope.selectedContact.homeAddress;
             		vm.policy.invoiceInfo.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
 
