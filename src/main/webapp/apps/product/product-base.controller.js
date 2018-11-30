@@ -73,6 +73,7 @@
         vm.closeOpenStepMobile = closeOpenStepMobile;
         vm.calculateToDate = calculateToDate;
         vm.openSearchContact = openSearchContact;
+        vm.openSearchContactOther = openSearchContactOther;
 		vm.openAddContact = openAddContact;
 
 		vm.getName = getName;
@@ -780,6 +781,11 @@
         function openSearchContact() {
         	console.log('openSearchContact');
         	ContactCommonDialogService.openSearchDialog('NYCBH');
+        }
+        
+        function openSearchContactOther() {
+        	console.log('openSearchContactOther');
+        	ContactCommonDialogService.openSearchDialog();
         }
         
         function openAddContact() {
