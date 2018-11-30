@@ -686,7 +686,11 @@
         
         function openSearchContactForPanel(type) {
             vm.panelType = type;
-            vm.openSearchContact();
+            if (type == 'contact'){
+            	vm.openSearchContact();	
+            } else {
+            	vm.openSearchContactOther();            	
+            }
         }
 
         function onGetPolicyNumberSuccess(result) {
