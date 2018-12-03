@@ -60,16 +60,13 @@
                            required/>
                     </td>
                     <td>
-                        <input  name="idPasswport{{$index}}"  type="text" class="bv-input" ng-model="person.idPasswport"
-                            required-message="'Chưa thêm số hộ chiếu/CMND!'" required/>
+                        <input name="idPasswport{{$index}}"  type="text" class="bv-input" ng-model="person.idPasswport"/>
                     </td>
                     <td>
                         <div class=" width-100">
                             <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d">
                                 <div class="width-100">
-                                    <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
-                                        required-message="'Chưa thêm ngày sinh!'"
-                                        required>
+                                    <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob">
                                 </div>
                                 <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
