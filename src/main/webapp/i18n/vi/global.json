@@ -44,6 +44,7 @@
 		},
 		"policy" : {
         	"status" : {
+        		"00" : "Không xác định trạng thái",
         		"80" : "Đang soạn",
         		"81" : "Chờ OTP",
         		"83" : "Yêu cầu bổ sung thông tin",
