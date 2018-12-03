@@ -103,6 +103,7 @@
   		vm.getCarModelError = getCarModelError;
   		vm.getCarNamSanXuatMax = getCarNamSanXuatMax;
   		vm.getCarNamSanXuatMin = getCarNamSanXuatMin;
+  		vm.changeCopyFromNycbh = changeCopyFromNycbh;
   		
   		vm.tndsSoChoOptions = [
   	      {id: '1', name: 'Loại xe dưới 6 chỗ ngồi'},
@@ -209,6 +210,17 @@
             // Load contact
   		    vm.selectedContactMode();
   		}
+  		
+  		function changeCopyFromNycbh() {
+        	vm.policy.insuredName = "";
+        	vm.policy.insuredAddress = "";
+        	vm.policy.insuredAddressDistrict = "";
+	      	if (vm.copyFromNguoiycbh) {
+	      		vm.policy.insuredName = vm.policy.contactName;
+	      		vm.policy.insuredAddress = vm.policy.contactAddress;
+	      		vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+	      	}
+        }
   		
   		function formatEditData(result) {
   			if (result.makeName) {

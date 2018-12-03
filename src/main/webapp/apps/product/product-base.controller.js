@@ -132,7 +132,15 @@
                 vm.policy.contactEmail = $rootScope.createContact.email;
                 vm.policy.contactIdNumber = $rootScope.createContact.idNumber;
                 vm.policy.contactCategoryType = $rootScope.createContact.categoryType;
-                vm.policy.contactAddress = $rootScope.createContact.homeAddress;
+//                vm.policy.contactAddress = $rootScope.createContact.homeAddress;
+                vm.policy.contactAddress = $rootScope.createContact.homeAddress.substring(0, $rootScope.createContact.homeAddress.indexOf("::"));
+                
+                let postcode = $rootScope.createContact.homeAddress.substring($rootScope.createContact.homeAddress.lastIndexOf("::") + 2);
+                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+                	vm.policy.contactAddressDistrictData = data;
+                });
+                
+                
         	}
         });
     	
@@ -199,15 +207,7 @@
 		      		
 	      		} else {
 	      			vm.policy.receiverUser.name = vm.policy.contactName;
-//		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
-	      			
-	      			let addressReceiver = vm.policy.contactAddress;
-		      		let typeAddress = vm.policy.contactAddress.indexOf("::");
-		      		if (typeAddress < 0){
-		      			vm.policy.receiverUser.address = addressReceiver.substring(0, addressReceiver.indexOf(","));	
-		      		} else {
-		      			vm.policy.receiverUser.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
-		      		}
+		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
 	      			
 		      		vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
 		      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
@@ -232,16 +232,7 @@
 		      		
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
-//		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
-		      		
-	      			let addressInvoice = vm.policy.contactAddress;
-		      		let typeAddress = vm.policy.contactAddress.indexOf("::");
-		      		if (typeAddress < 0){
-		      			vm.policy.invoiceInfo.address = addressInvoice.substring(0, addressInvoice.indexOf(","));	
-		      		} else {
-		      			vm.policy.invoiceInfo.address = addressInvoice.substring(0, addressInvoice.indexOf("::"));
-		      		}
-		      		
+		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
 		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      		}
 	      	}
@@ -770,9 +761,9 @@
                     	
                     	// Xy ly load THÔNG TIN CHỦ XE cho rieng CAR
                         if (vm.lineId == 'CAR') {
-                        	vm.policy.insuredName = vm.policy.contactName;
-                        	vm.policy.insuredAddress = vm.policy.contactAddress;
-                        	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+//                        	vm.policy.insuredName = vm.policy.contactName;
+//                        	vm.policy.insuredAddress = vm.policy.contactAddress;
+//                        	vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
                         } else if (vm.lineId == 'TVI') {
                         	// Bảo hiểm du lịch Việt Nam
                         	vm.policy.listTviAdd[0].insuredName = vm.policy.contactName;
