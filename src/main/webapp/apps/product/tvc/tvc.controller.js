@@ -297,7 +297,7 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-            vm.validateResponse(result, 'getPremium');
+             vm.validateResponse(result, 'getPremium');
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -330,6 +330,8 @@
             } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {
                 removePerson();
             }
+            // Tinh lai phi
+        	getPremium();
         }
 
         function addNewPerson() {
