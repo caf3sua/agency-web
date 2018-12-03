@@ -981,6 +981,17 @@
     			toastr.error("Cần trả lời các câu hỏi Thông tin tình trạng sức khỏe");
     			return false
         	}
+        	
+        	if(vm.policy.nguointNgaysinh != "" && vm.policy.nguointNgaysinh != null && vm.policy.nguointNgaysinh != undefined) {
+        		var now = new Date();
+                var nowStr = DateUtils.convertDate(now);
+                var tuoi = DateUtils.yearDiff(vm.policy.nguointNgaysinh, nowStr);
+                if (tuoi < 18){
+                	toastr.error("Người nhận tiền bảo hiểm phải trên 18 tuổi.");
+        			return false
+                }
+        	}
+        	
             return true;
         }
         
