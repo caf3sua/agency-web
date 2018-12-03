@@ -6,10 +6,10 @@
         .controller('ProductTvcController', ProductTvcController);
 
     ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
-    	, '$stateParams' , 'DateUtils'];
+    	, '$stateParams' , 'DateUtils', '$ngConfirm', '$timeout'];
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
-    		, $stateParams, DateUtils) {
+    		, $stateParams, DateUtils, $ngConfirm, $timeout) {
     	var vm = this;
     	vm.lineId = 'TVC';
     	vm.docsInit = [];
@@ -200,14 +200,20 @@
         
   		// Function
         function changeNgYcbhDicung() {
+        	console.log('changeNgYcbhDicung');
         	if (vm.ngYcbhDicung) {
         		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
         		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
         		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
         		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
         	} else {
-        		vm.policy.listTvcAddBaseVM[0] = {};
+        		vm.policy.listTvcAddBaseVM[0].insuredName = "";
+        		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
+        		vm.policy.listTvcAddBaseVM[0].dob = "";
+        		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
         	}
+        	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
+        	vm.policy.listTvcAddBaseVM = temp;
         }
         
         function onchangeTravel() {
@@ -284,6 +290,7 @@
             }
 
             vm.clearResponseError();
+            vm.changeNgYcbhDicung();
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
         }
@@ -447,13 +454,91 @@
 		 	});
         }
         
+//        vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+//		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+//		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+//		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+		
+        // Check nguoi yeu cau bao hiem di cung
+        function checkNgycbhDiCungInArrayTVC() {
+        	if (vm.ngYcbhDicung) {
+        		let isExit = false;
+        		angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        			// Case CMND trung -> Thong bao da co nguoi nay trong danh sach -> focus
+        			if (item.idPasswport == vm.policy.contactIdNumber) {
+        				isExit = true;
+        			}
+        			
+        			// Case Ten + Ngay sinh trung: -> Thong bao da co nguoi nay trong danh sach ban co muon them vao khong -> focus
+        			if (item.insuredName == vm.policy.contactName && item.dob == vm.policy.contactDob) {
+        				isExit = true;
+        			}
+    		 	});
+        		
+        		if (isExit) {
+        			toastr.success("Người yêu cầu bảo hiểm đã có trong danh sách");
+        		} else {
+        			// ng-confirm 
+        			$ngConfirm({
+                        title: 'Xác nhận!',
+                        content: '<div class="text-center">Người yêu cầu bảo hiểm chưa có trong danh sách, Có muốn bổ xung vào danh sách không ?</div>',
+                        animation: 'scale',
+                        closeAnimation: 'scale',
+                        buttons: {
+                            ok: {
+                            	text: 'Đồng ý',
+                                btnClass: "btn-blue",
+                                action: function(scope, button){
+                                	//$state.go('app.cart');
+                                	let arr = [{
+                                		insuredName : vm.policy.contactName,
+                                		idPasswport : vm.policy.contactIdNumber,
+                                		dob : vm.policy.contactDob,
+                                		relationship : "30" // Ban than
+                                	}];
+                                	vm.policy.listTvcAddBaseVM = arr.concat(vm.policy.listTvcAddBaseVM); 
+                                	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	
+                                	// Display
+                                	addOrRemovePerson();
+                                	// Tinh lai phi
+                                	getPremium();
+        	                    }
+                            },
+                            close: {
+                            	text: 'Không',
+                                action: function(scope, button){
+                                	let temp = {
+                                		insuredName : vm.policy.listTvcAddBaseVM[0].insuredName,
+                                		idPasswport : vm.policy.listTvcAddBaseVM[0].idPasswport,
+                                		dob : vm.policy.listTvcAddBaseVM[0].dob,
+                                		relationship : vm.policy.listTvcAddBaseVM[0].relationship // Ban than
+                                	};
+                                	vm.ngYcbhDicung = false;
+                                	//$state.go('app.cart');
+                                	
+                                	// Display
+                                	// addOrRemovePerson();
+                                	// Tinh lai phi
+                                	getPremium();
+                                	$timeout(function (){
+                            			vm.policy.listTvcAddBaseVM[0] = temp;
+                                		let tempArr = [].concat(vm.policy.listTvcAddBaseVM); 
+                                    	vm.policy.listTvcAddBaseVM = tempArr;
+                        			} , 500);
+        	                    }
+                            }
+                        },
+                    });
+        		}
+        	}
+        }
+        
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
         function tvcImportExcelSuccess() {
         	console.log('TVC tvcImportExcelSuccess');
-        	// Display
-        	addOrRemovePerson();
-        	// Tinh lai phi
-        	getPremium();
+        	
+        	checkNgycbhDiCungInArrayTVC();
         }
         
         function goFullScreenViaWatcher() {

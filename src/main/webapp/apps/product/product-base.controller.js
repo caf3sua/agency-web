@@ -770,10 +770,12 @@
                     		vm.policy.listTviAdd[0].relationshipId = "30"; // Ban than
                         } else if (vm.lineId == 'TVC') {
                         	// Bảo hiểm du lịch Quoc te
-                        	vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
-                    		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
-                    		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
-                    		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+                        	if (vm.ngYcbhDicung) {
+                        		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+                        		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+                        		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+                        		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+                        	}
                         } else if (vm.lineId == 'TNC') {
                         	// Bảo hiểm tai nạn con người
                         	vm.policy.listTncAdd[0].insuredName = vm.policy.contactName;
