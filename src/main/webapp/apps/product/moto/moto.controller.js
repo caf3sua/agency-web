@@ -202,6 +202,12 @@
     		vm.getAddressByPostCode(insuredAddress).then(function (data) {
     			vm.policy.insuredAddressDistrict = data;
     		});
+    		
+    		var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
+    		});
   		}
         
         function checkedChange() {
