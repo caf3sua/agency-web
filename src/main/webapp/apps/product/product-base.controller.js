@@ -695,7 +695,6 @@
         			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
 //        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
         			
-        			debugger
         			let addressReceiver = $rootScope.selectedContact.homeAddress;
             		vm.policy.invoiceInfo.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
 
@@ -760,7 +759,9 @@
                     vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
                     vm.policy.contactCategoryType = $rootScope.selectedContact.categoryType;
 
-                    vm.policy.contactAddress = $filter('address')($rootScope.selectedContact.homeAddress);
+                    // vm.policy.contactAddress = $filter('address')($rootScope.selectedContact.homeAddress);
+            		vm.policy.contactAddress = $rootScope.selectedContact.homeAddress.substring(0, $rootScope.selectedContact.homeAddress.indexOf("::"));
+            		
                     let address = $rootScope.selectedContact.homeAddress;
                     let postcode = address.substring(address.lastIndexOf("::") + 2);
                     //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;

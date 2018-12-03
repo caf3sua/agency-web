@@ -25,14 +25,15 @@
 </div>
 
 <!-- Tool bar -->
-<div ng-show="vm.policy.contactCode">
-	<div ng-include="'apps/product/tvc/view/partial.step1_toolbar.html'"></div>
-	
-	<div class="margin-top-10" ng-show="vm.policy.soNguoiThamGia > 0">
-	    <div ng-include="'apps/product/tvc/view/partial.step1_table_data.html'"></div>
+<div fullscreen="vm.isFullScreen" only-watched-property>
+	<div ng-show="vm.policy.contactCode">
+		<div ng-include="'apps/product/tvc/view/partial.step1_toolbar.html'"></div>
+		
+		<div class="margin-top-10" ng-show="vm.policy.soNguoiThamGia > 0">
+		    <div ng-include="'apps/product/tvc/view/partial.step1_table_data.html'"></div>
+		</div>
 	</div>
 </div>
-
 <div class="margin-top-5 padding-bottom-35">
     <button class="bv-btn-step3" type="submit">Tiếp theo</button>
 </div>
