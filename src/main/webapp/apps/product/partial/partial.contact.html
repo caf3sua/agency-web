@@ -42,7 +42,7 @@
 	    <p class="bv-title-from">Địa chỉ</p>
 	</div>
 	<div class="margin-right-5 width-100">
-		<span>{{vm.policy.contactAddress}}</span>
+		<span>{{vm.policy.contactAddress + ', ' + vm.policy.contactAddressDistrictData.pkDistrict | address}}</span>
 	</div>
 </div>
 

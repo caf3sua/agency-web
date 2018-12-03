@@ -23,7 +23,8 @@
 	                    <p class="bv-title-from">Địa chỉ</p>
 	                </div>
 	                <div>
-	                    <p class="bv-tile-templateSummary">{{vm.policy.contactAddress | address}}</p>
+	                    <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.contactAddress | address}}</p>
+            			<p class="bv-tile-templateSummary none-edit-mode" ng-show="!vm.isEditMode()">{{vm.policy.contactAddress + ', ' + vm.policy.contactAddressDistrictData.pkDistrict | address}}</p>
 	                </div>
                 </div>
             </div>

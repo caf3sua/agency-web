@@ -309,8 +309,6 @@
     			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
         	}
         	
-//        	obj.departmentId = $localStorage.current_department_id;
-        	
         	// Save or update
         	if (obj.agreementId != null && obj.agreementId != "") {
         		// Update
