@@ -313,8 +313,8 @@
         }
         
         function onProcessPaymentError(result) {
-        	debugger
-        	let message = result.message || "Có lỗi xảy ra khi thanh toán!";
+        	vm.isLoading = false;
+        	let message = result.data.message || "Có lỗi xảy ra khi thanh toán!";
         	toastr.error(message);
         }
         
