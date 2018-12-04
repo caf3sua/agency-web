@@ -3107,10 +3107,11 @@ div#insideDiv{
     position: absolute;
     top: 0;
     right: 10px;
+    margin-left: 10px;
 }
 
-.product-toolbar-right {
-    margin-left: 10px;
+.product-toolbar-left {
+    min-height: 28px;
 }
 
 .product-btn-toolbar {

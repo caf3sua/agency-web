@@ -354,6 +354,13 @@
         };
 
         function addNewRow() {
+        	// Validate
+        	// Check khach ca nhan
+            if (vm.policy.travelWithId == '1') {
+            	return;
+            }
+        	
+        	
             let relationship = "";
             // Check khach doan 3
             if (vm.policy.travelWithId == '3') {
@@ -388,6 +395,12 @@
         }
         
         function removeAllRow() {
+        	let numberRemove = vm.lstPersonRemove.length;
+        	if (vm.policy.listTvcAddBaseVM.length - numberRemove < 2) {
+        		toastr.error("Số người tham gia phải từ 2 người");
+            	return;
+        	}
+        	
         	if (vm.checkAllDataTable) {
         		vm.policy.listTvcAddBaseVM = [];
         	} else {
@@ -402,7 +415,27 @@
         	getPremium();
         }
         
+        function validateRemoveOneRow() {
+        	// Check khach ca nhan
+            if (vm.policy.travelWithId == '1') {
+            	toastr.error("Số người tham gia phải = 1");
+            	return false;
+            }
+            
+            if (vm.policy.listTvcAddBaseVM.length == 2) {
+            	toastr.error("Số người tham gia phải từ 2 người");
+            	return false;
+            }
+            
+            return true;
+        }
+        
+        
         function removeRow(index) {
+        	if (validateRemoveOneRow() == false) {
+        		return;
+        	}
+        	
         	vm.policy.listTvcAddBaseVM.splice(index, 1);
         	console.log(vm.policy.listTvcAddBaseVM);
         	
