@@ -298,6 +298,7 @@
         		return;
         	}
     		
+        	vm.isLoading = true;
         	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
         }
         
