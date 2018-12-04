@@ -36,7 +36,7 @@
             </div>
             <div class="">
                 <input type="number" name="soNguoiThamGia" class="bv-input" ng-model="vm.policy.soNguoiThamGia" placeholder="Nhập tổng số người tham gia" ng-blur="vm.addOrRemovePerson()"
-                       min="1" step="1" max="20" ng-disabled="vm.isShowChangeTravel" required-message="'Chưa thêm tổng số người tham gia!'"
+                       min="1" step="1" max="5000" ng-disabled="vm.isShowChangeTravel" required-message="'Chưa thêm tổng số người tham gia!'"
                        required/>
                 <div ng-show="myForm.soNguoiThamGia.$dirty && myForm.soNguoiThamGia.$invalid">
                 	<p class="help-block" ng-show="myForm.soNguoiThamGia.$error.required">
