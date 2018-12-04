@@ -116,6 +116,7 @@
     	vm.confirmOTP = confirmOTP;
     	vm.showImportExcelPopup = showImportExcelPopup;
     	vm.exportExcel = exportExcel;
+    	vm.openConfirmDialog = openConfirmDialog;
     	
     	// 15.08
     	vm.checkDate = checkDate;
@@ -1255,6 +1256,29 @@
 //                            self.buttons.complete.setDisabled(true);
 //                    }
                 }
+            });
+        }
+        
+        function openConfirmDialog(message, callback) {
+        	$ngConfirm({
+                title: 'Xác nhận!',
+                content: '<div class="text-center">' + message + '</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	callback;
+	                    }
+                    },
+                    close: {
+                    	text: 'Không',
+                        action: function(scope, button){
+	                    }
+                    }
+                },
             });
         }
         

@@ -40,7 +40,6 @@
     		};
         
   		vm.processPayment = processPayment;
-//  		vm.getAllOrder = getAllOrder;
         vm.newDate = null;
         vm.cartWarning = false;
         vm.cartCheckBox = false;
@@ -86,7 +85,7 @@
         // Init controller
         (function initController() {
         	$controller('AgreementBaseController', { vm: vm, $scope: $scope });
-//            getAllOrder();
+
         	searchCart();
             vm.newDate = new Date();
             
@@ -109,19 +108,7 @@
   		});
         
   		// Function
-//        function getAllOrder() {
-//            CartService.getAll({
-//            	page: $stateParams.page - 1,
-//                size: vm.itemsPerPage
-////                sort: sort()
-//            }, onGetAllOrderSuccess, onGetAllOrderError);
-//        }
-        
         function transition () {
-//            $state.transitionTo($state.$current, {
-//                page: vm.page,
-//                search: vm.currentSearch
-//            });
         	vm.isLoading = true;
         	vm.searchCriterial.pageable.page = vm.page - 1;
         	searchCart();
@@ -352,7 +339,6 @@
   			OrderService.cancelOrder({gycbhNumber: number}, onSuccess, onError);
   			
   			function onSuccess(result) {
-//  				getAllOrder();
   				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
   				$rootScope.$broadcast('agreementChangeSuccess');
   			}

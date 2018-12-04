@@ -412,13 +412,7 @@
         	}
         }
         
-        function removeAllRow() {
-        	let numberRemove = vm.lstPersonRemove.length;
-        	if (vm.policy.listTvcAddBaseVM.length - numberRemove < 2) {
-        		toastr.error("Số người tham gia phải từ 2 người");
-            	return;
-        	}
-        	
+        function dooRemoveAllRow() {
         	if (vm.checkAllDataTable) {
         		vm.policy.listTvcAddBaseVM = [];
         	} else {
@@ -431,6 +425,35 @@
         	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
         	// Tinh lai phi
         	getPremium();
+        }
+        
+        function removeAllRow() {
+        	let numberRemove = vm.lstPersonRemove.length;
+        	if (vm.policy.listTvcAddBaseVM.length - numberRemove < 2) {
+        		toastr.error("Số người tham gia phải từ 2 người");
+            	return;
+        	}
+        	
+        	$ngConfirm({
+                title: 'Xác nhận!',
+                content: '<div class="text-center">Bạn chắc chắn xóa những người được bảo hiểm này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	dooRemoveAllRow();
+	                    }
+                    },
+                    close: {
+                    	text: 'Không',
+                        action: function(scope, button){
+	                    }
+                    }
+                },
+            });
         }
         
         function validateRemoveOneRow() {
@@ -448,12 +471,7 @@
             return true;
         }
         
-        
-        function removeRow(index) {
-        	if (validateRemoveOneRow() == false) {
-        		return;
-        	}
-        	
+        function doRemoveRow(index) {
         	vm.policy.listTvcAddBaseVM.splice(index, 1);
         	console.log(vm.policy.listTvcAddBaseVM);
         	
@@ -461,6 +479,33 @@
     		
         	// Tinh lai phi
         	getPremium();
+        }
+        
+        function removeRow(index) {
+        	if (validateRemoveOneRow() == false) {
+        		return;
+        	}
+        	
+        	$ngConfirm({
+                title: 'Xác nhận!',
+                content: '<div class="text-center">Bạn chắc chắn xóa người được bảo hiểm này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	doRemoveRow(index);
+	                    }
+                    },
+                    close: {
+                    	text: 'Không',
+                        action: function(scope, button){
+	                    }
+                    }
+                },
+            });
     	}
         
         function calculateCheckAll() {
