@@ -206,11 +206,13 @@
         		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
         		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
         		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+        		vm.policy.listTvcAddBaseVM[0].isOwer = true;
         	} else {
         		vm.policy.listTvcAddBaseVM[0].insuredName = "";
         		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
         		vm.policy.listTvcAddBaseVM[0].dob = "";
         		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
+        		vm.policy.listTvcAddBaseVM[0].isOwer = false;
         	}
         	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
         	vm.policy.listTvcAddBaseVM = temp;
@@ -512,11 +514,13 @@
         		angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
         			// Case CMND trung -> Thong bao da co nguoi nay trong danh sach -> focus
         			if (item.idPasswport == vm.policy.contactIdNumber) {
+        				item.isOwer = true;
         				isExit = true;
         			}
         			
         			// Case Ten + Ngay sinh trung: -> Thong bao da co nguoi nay trong danh sach ban co muon them vao khong -> focus
         			if (item.insuredName == vm.policy.contactName && item.dob == vm.policy.contactDob) {
+        				item.isOwer = true;
         				isExit = true;
         			}
     		 	});
@@ -540,7 +544,8 @@
                                 		insuredName : vm.policy.contactName,
                                 		idPasswport : vm.policy.contactIdNumber,
                                 		dob : vm.policy.contactDob,
-                                		relationship : "30" // Ban than
+                                		relationship : "30", // Ban than
+                                		isOwer : true
                                 	}];
                                 	vm.policy.listTvcAddBaseVM = arr.concat(vm.policy.listTvcAddBaseVM); 
                                 	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;

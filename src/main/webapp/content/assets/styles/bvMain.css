@@ -3138,7 +3138,7 @@ div#insideDiv{
 }
 
 .tvc-checkbox {
-    margin-bottom: 0px  !important;
+    margin-bottom: 0px !important;
 }
 
 .m-w-200 {
@@ -3146,5 +3146,9 @@ div#insideDiv{
 }
 
 .label-contact {
-	font-size : 14px   !important;
+	font-size : 14px !important;
+}
+
+.bg-ower {
+	background-color: #a3d5ed !important;
 }
