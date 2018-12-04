@@ -311,8 +311,10 @@
         	$rootScope.$broadcast('agreementChangeSuccess');
         }
         
-        function onProcessPaymentError() {
-        	toastr.error("Có lỗi xảy ra khi thanh toán!");
+        function onProcessPaymentError(result) {
+        	debugger
+        	let message = result.message || "Có lỗi xảy ra khi thanh toán!";
+        	toastr.error(message);
         }
         
         function loadPage (page) {
