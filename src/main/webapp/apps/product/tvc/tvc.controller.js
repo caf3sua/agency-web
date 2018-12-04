@@ -201,21 +201,23 @@
   		// Function
         function changeNgYcbhDicung() {
         	console.log('changeNgYcbhDicung');
-        	if (vm.ngYcbhDicung) {
-        		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
-        		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
-        		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
-        		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
-        		vm.policy.listTvcAddBaseVM[0].isOwer = true;
-        	} else {
-        		vm.policy.listTvcAddBaseVM[0].insuredName = "";
-        		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
-        		vm.policy.listTvcAddBaseVM[0].dob = "";
-        		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
-        		vm.policy.listTvcAddBaseVM[0].isOwer = false;
+        	if (vm.policy.contactCategoryType != 'ORGANIZATION') {
+        		if (vm.ngYcbhDicung) {
+            		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+            		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+            		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+            		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+            		vm.policy.listTvcAddBaseVM[0].isOwer = true;
+            	} else {
+            		vm.policy.listTvcAddBaseVM[0].insuredName = "";
+            		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
+            		vm.policy.listTvcAddBaseVM[0].dob = "";
+            		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
+            		vm.policy.listTvcAddBaseVM[0].isOwer = false;
+            	}
+            	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
+            	vm.policy.listTvcAddBaseVM = temp;
         	}
-        	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
-        	vm.policy.listTvcAddBaseVM = temp;
         }
         
         function onchangeTravel() {
@@ -593,7 +595,6 @@
                             	text: 'Đồng ý',
                                 btnClass: "btn-blue",
                                 action: function(scope, button){
-                                	//$state.go('app.cart');
                                 	let arr = [{
                                 		insuredName : vm.policy.contactName,
                                 		idPasswport : vm.policy.contactIdNumber,
@@ -601,8 +602,14 @@
                                 		relationship : "30", // Ban than
                                 		isOwer : true
                                 	}];
-                                	vm.policy.listTvcAddBaseVM = arr.concat(vm.policy.listTvcAddBaseVM); 
-                                	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	// case : ca nhan
+                                	if (vm.policy.travelWithId == '1') {
+                                    	vm.policy.listTvcAddBaseVM = arr; 
+                                    	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	} else {
+                                    	vm.policy.listTvcAddBaseVM = arr.concat(vm.policy.listTvcAddBaseVM); 
+                                    	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	}
                                 	
                                 	// Display
                                 	addOrRemovePerson();

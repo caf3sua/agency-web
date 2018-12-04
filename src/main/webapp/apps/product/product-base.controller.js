@@ -786,7 +786,7 @@
                     		vm.policy.listTviAdd[0].relationshipId = "30"; // Ban than
                         } else if (vm.lineId == 'TVC') {
                         	// Bảo hiểm du lịch Quoc te
-                        	if (vm.ngYcbhDicung) {
+                        	if (vm.ngYcbhDicung && vm.policy.contactCategoryType != 'ORGANIZATION') {
                         		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
                         		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
                         		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
