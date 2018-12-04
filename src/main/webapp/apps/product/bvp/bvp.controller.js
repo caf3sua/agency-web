@@ -351,8 +351,8 @@
   		});
 
 		function loadFileInEditMode() {
-			if (vm.policy.files) {
-  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.files, 'gks.jpg');
+			if (vm.policy.imgGks.content) {
+  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGks.content, vm.policy.imgGks.filename);
   				vm.gksFileModel = docFile;
   			}
 		}

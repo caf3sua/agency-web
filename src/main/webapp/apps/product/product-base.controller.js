@@ -193,18 +193,25 @@
         	vm.policy.receiverUser = {};
 	      	if (vm.copyFromContact) {
 	      		if (vm.lineId == 'BVP') {
-	      			var dataBVP = $rootScope.saveNguoiYcBVP;
-	      			let address = dataBVP.homeAddress;
-	      			vm.policy.receiverUser.name = dataBVP.contactName;
-		      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
-		      		vm.policy.receiverUser.mobile = dataBVP.phone;
-		      		vm.policy.receiverUser.email = dataBVP.email;
+	      			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined && vm.policy.agreementId != ""){
+	      	    		vm.policy.receiverUser.name = vm.policy.contactName;
+			      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+			      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
+			      		vm.policy.receiverUser.email = vm.policy.contactEmail;
+	                	vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      			} else {
+	      				var dataBVP = $rootScope.saveNguoiYcBVP;
+		      			let address = dataBVP.homeAddress;
+		      			vm.policy.receiverUser.name = dataBVP.contactName;
+			      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
+			      		vm.policy.receiverUser.mobile = dataBVP.phone;
+			      		vm.policy.receiverUser.email = dataBVP.email;
 
-	                let postcode = address.substring(address.lastIndexOf("::") + 2);
-	                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-	                	vm.policy.receiverUser.addressDistrictData = data;
-	                });
-		      		
+		                let postcode = address.substring(address.lastIndexOf("::") + 2);
+		                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+		                	vm.policy.receiverUser.addressDistrictData = data;
+		                });
+	      			}
 	      		} else {
 	      			vm.policy.receiverUser.name = vm.policy.contactName;
 		      		vm.policy.receiverUser.address = vm.policy.contactAddress;
@@ -220,16 +227,21 @@
         	vm.policy.invoiceInfo = {};
 	      	if (vm.copyFromContactInvoice) {
 	      		if (vm.lineId == 'BVP') {
-	      			var dataBVP = $rootScope.saveNguoiYcBVP;
-	      			let address = dataBVP.homeAddress;
-	      			vm.policy.invoiceInfo.name = dataBVP.contactName;
-		      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
+	      			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined && vm.policy.agreementId != ""){
+	      				vm.policy.invoiceInfo.name = vm.policy.contactName;
+	      				vm.policy.invoiceInfo.address = vm.policy.contactAddress;
+			      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      			} else {
+	      				var dataBVP = $rootScope.saveNguoiYcBVP;
+		      			let address = dataBVP.homeAddress;
+		      			vm.policy.invoiceInfo.name = dataBVP.contactName;
+			      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
 
-	                let postcode = address.substring(address.lastIndexOf("::") + 2);
-	                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-	                	vm.policy.invoiceInfo.addressDistrictData = data;
-	                });
-		      		
+		                let postcode = address.substring(address.lastIndexOf("::") + 2);
+		                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+		                	vm.policy.invoiceInfo.addressDistrictData = data;
+		                });
+	      			}
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
 		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
