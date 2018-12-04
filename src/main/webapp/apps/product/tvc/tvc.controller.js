@@ -276,6 +276,13 @@
                 vm.product.premiumDiscount  = 0;
             }
             vm.product.songay  = 0;
+            
+            // check param
+//            if (isEmptyString(vm.product.destination) || isEmptyString(vm.product.ngayDi) 
+//            		|| isEmptyString(vm.product.ngayVe) || isEmptyString(vm.product.numberOfPerson) || isEmptyString( vm.product.planId)) {
+//            	return;
+//            }
+            
             ProductCommonService.getTvcPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
@@ -297,7 +304,7 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-             vm.validateResponse(result, 'getPremium');
+             //vm.validateResponse(result, 'getPremium');
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -496,6 +503,10 @@
 		
         // Check nguoi yeu cau bao hiem di cung
         function checkNgycbhDiCungInArrayTVC() {
+        	if (vm.policy.contactCategoryType == 'ORGANIZATION') {
+        		return;
+        	}
+        	
         	if (vm.ngYcbhDicung) {
         		let isExit = false;
         		angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {

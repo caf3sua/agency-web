@@ -1164,6 +1164,8 @@
         }
         
         function requestProcessImportExcel(result) {
+        	// Append more param
+        	result.travelWithId = vm.policy.travelWithId;
         	ProductCommonService.processImportExcelTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
         	
         	function onProcessImportExcelSuccess(data) {
