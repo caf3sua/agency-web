@@ -6,10 +6,10 @@
         .controller('ProductTvcController', ProductTvcController);
 
     ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
-    	, '$stateParams' , 'DateUtils', '$ngConfirm', '$timeout'];
+    	, '$stateParams' , 'DateUtils', '$ngConfirm', '$timeout', 'ResponseValidateService'];
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
-    		, $stateParams, DateUtils, $ngConfirm, $timeout) {
+    		, $stateParams, DateUtils, $ngConfirm, $timeout, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'TVC';
     	vm.docsInit = [];
@@ -254,7 +254,14 @@
         		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
         			getPremium();	
         		} else{
-        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+//        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+        	        resetDataPremium();
+        	        let data = {
+    	        		fieldName : "expiredDate",
+    	        		message : "Thời gian ngày khởi hành - ngày trở về không phù hợp"
+        	        };
+        	        
+        	        ResponseValidateService.validateResponse(data)
         		}
         	}
         }
@@ -306,7 +313,9 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-             //vm.validateResponse(result, 'getPremium');
+//             vm.validateResponse(result, 'getPremium');
+            resetDataPremium();
+            ResponseValidateService.validateResponse(result.data);
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -583,6 +592,12 @@
                     });
         		}
         	}
+        }
+        
+        function resetDataPremium() {
+        	vm.policy.netPremium = 0;
+            vm.sumPremiumDiscount = 0;
+            vm.policy.premium = 0;
         }
         
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);

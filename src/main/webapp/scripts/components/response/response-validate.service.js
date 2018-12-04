@@ -17,11 +17,12 @@
         return service;
         
         function cleanAllResponseError() {
+        	$("label").removeClass("has-error");
         	$('.validationMessage').remove();
         }
         
         function cleanResponseError(fieldName) {
-        	var modelName = 'vm.product.' + fieldName;
+        	var modelName = 'vm.policy.' + fieldName;
         	var element = angular.element('[ng-model="' + modelName + '"]');
         	
         	// Remove old validation message
@@ -30,7 +31,7 @@
         }
 
         function validateResponse(data) {
-        	var modelName = 'vm.product.' + data.fieldName;
+        	var modelName = 'vm.policy.' + data.fieldName;
         	var element = angular.element('[ng-model="' + modelName + '"]');
 
         	// Remove old validation message
@@ -55,6 +56,27 @@
         	}
 
         	return data.message;
+        }
+        
+        function appendErrorMessage(data) {
+        	cleanAllResponseError();
+        	$("label").removeClass("has-error");
+        	
+        	// Build and append new message
+//        	element.parent().addClass('has-error');
+//        	element.addClass('data-invalid');
+        	var elementName = "[name='" + data.fieldName + "']";
+        	var message = data.message;
+        	if(!message) {
+                message = "Dữ liệu không hợp lệ!";
+            }
+        	
+        	// tip-trick
+        	if ($(elementName).length > 1) {
+        		$(elementName).append("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>");
+        	} else {
+        		$("<label id='response-error-id' class='control-label has-error validationMessage'>" + message + "</label>").insertAfter(elementName);
+        	}
         }
     }
 })();
