@@ -58,8 +58,11 @@
             <div class="margin-top-5">
                 <input type="number" min="1" max="2" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi"
                        validator= "vm.validatorNntxSoNguoi() === true"
-                       invalid-message = "vm.validatorNntxSoNguoi()" ng-blur="vm.getPremium()"/>
+                       invalid-message = "vm.validatorNntxSoNguoi()" ng-blur="vm.getPremium()" required/>
                 <div ng-show="myForm.nntxSoNguoi.$dirty && myForm.nntxSoNguoi.$invalid">
+	                <p class="help-block" ng-show="myForm.nntxSoNguoi.$error.required">
+	                    Chưa thêm số chỗ tham gia bảo hiểm!
+	                </p>
 	                <p class="help-block" ng-show="myForm.nntxSoNguoi.$error.max">
 	                    Vượt quá số lượng người cho phép!
 	                </p>
