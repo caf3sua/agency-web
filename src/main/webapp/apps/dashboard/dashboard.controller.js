@@ -302,6 +302,7 @@
 	  			
 	  			function onSearchSuccess(data) {
 	  				vm.isLoading = false;
+	  				debugger
 	  				vm.report = data;
 //	  				toastr.remove();
 //	  				toastr.success("Dữ liệu đã được cập nhật");
