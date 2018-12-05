@@ -20,7 +20,7 @@
     			premiumDiscount: "",
     			//
                 agreementId: "",
-                changePremium: null,
+                changePremium: "",
                 contactCode: "",
                 destinationId: "",
                 expiredDate: "",
