@@ -359,7 +359,7 @@
             let relationship = "";
             // Check khach doan 3
             if (vm.policy.travelWithId == '3') {
-            	relationship = "20";
+            	relationship = "39";
             }
             
             for (var i=0; i < lineAdd; i++) {
@@ -384,7 +384,7 @@
             let relationship = "";
             // Check khach doan 3
             if (vm.policy.travelWithId == '3') {
-            	relationship = "20";
+            	relationship = "39";
             }
             
             vm.policy.listTvcAddBaseVM.push({
