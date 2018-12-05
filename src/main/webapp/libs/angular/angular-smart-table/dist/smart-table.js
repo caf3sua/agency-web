@@ -12,6 +12,27 @@ ng.module('smart-table', []).run(['$templateCache', function ($templateCache) {
         '</ul></nav>');
 }]);
 
+//ng.module('smart-table', []).run(['$templateCache', function ($templateCache) {
+//    $templateCache.put('template/smart-table/pagination.html',
+//        '<div class="pagination" ng-if="pages.length >= 2">' +
+//    	'	<ul class="pagination">' +
+//    '<li ng-if="currentPage > 1">' +
+//    '  <a ng-click="selectPage(1)">&lt;&lt;</a>' +
+//    '</li>' +
+//    '<li ng-if="currentPage > 1">' +
+//    '  <a ng-click="selectPage(currentPage-1)">&lt;</a>' +
+//    '</li>' +
+//    '<li ng-repeat="page in pages" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a>' +
+//    '</li>' +
+//    '<li ng-if="currentPage < numPages"><a ng-click="selectPage(currentPage+1)">></a>' +
+//    '</li>' +
+//    '<li ng-if="currentPage < numPages">' +
+//    '<a ng-click="selectPage(numPages)">>></a>' +
+//    '</li>' +
+//  '</ul>' +
+//'</div>');
+//}]);
+
 
 ng.module('smart-table')
   .constant('stConfig', {
