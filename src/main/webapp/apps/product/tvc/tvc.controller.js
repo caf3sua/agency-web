@@ -488,26 +488,37 @@
         		return;
         	}
         	
-        	$ngConfirm({
-                title: 'Xác nhận!',
-                content: '<div class="text-center">Bạn chắc chắn xóa người được bảo hiểm này ?</div>',
-                animation: 'scale',
-                closeAnimation: 'scale',
-                buttons: {
-                    ok: {
-                    	text: 'Đồng ý',
-                        btnClass: "btn-blue",
-                        action: function(scope, button){
-                        	doRemoveRow(index);
-	                    }
+//        	var r = confirm("Bạn chắc chắn xóa người được bảo hiểm này ?");
+//        	if (r == true) {
+//        		doRemoveRow(index);
+//        	}
+        	
+        	// Check empty data
+        	let item = vm.policy.listTvcAddBaseVM[index];
+        	if (isEmptyString(item.insuredName) && isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
+        		doRemoveRow(index);
+        	} else {
+        		$ngConfirm({
+                    title: 'Xác nhận!',
+                    content: '<div class="text-center">Bạn chắc chắn xóa người được bảo hiểm này ?</div>',
+                    animation: 'scale',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        ok: {
+                        	text: 'Đồng ý',
+                            btnClass: "btn-blue",
+                            action: function(scope, button){
+                            	doRemoveRow(index);
+    	                    }
+                        },
+                        close: {
+                        	text: 'Không',
+                            action: function(scope, button){
+    	                    }
+                        }
                     },
-                    close: {
-                    	text: 'Không',
-                        action: function(scope, button){
-	                    }
-                    }
-                },
-            });
+                });
+        	}
     	}
         
         function calculateCheckAll() {
