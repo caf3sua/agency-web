@@ -6,10 +6,10 @@
         .controller('ProductBvpController', ProductBvpController);
 
     ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService'
-    	, '$state', '$stateParams', 'ContactService'];
+    	, '$state', '$stateParams', 'ContactService', 'ResponseValidateService'];
 
     function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService
-    		, $state, $stateParams, ContactService) {
+    		, $state, $stateParams, ContactService, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'BVP';
     	
@@ -629,7 +629,8 @@
             vm.loading = false;
             vm.clearResponseError();
     		resetDataPremium();
-//            vm.validateResponse(result, 'getPremium');
+            // vm.validateResponse(result, 'getPremium');
+    		ResponseValidateService.validateResponse(result.data);
         }
         
         function resetDataPremium() {
