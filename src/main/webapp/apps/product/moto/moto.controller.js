@@ -6,10 +6,10 @@
         .controller('ProductMotoController', ProductMotoController);
 
     ProductMotoController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state'
-    	, '$rootScope', '$stateParams'];
+    	, '$rootScope', '$stateParams' , 'ResponseValidateService'];
 
     function ProductMotoController ($scope, $controller, DateUtils, ProductCommonService, $state
-    		, $rootScope, $stateParams) {
+    		, $rootScope, $stateParams, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'MOT';
     	
@@ -319,6 +319,7 @@
             vm.clearResponseError();
             resetDataPremium();
 //            vm.validateResponse(result, 'getPremium');
+            ResponseValidateService.validateResponse(result.data);
         }
         
         function resetDataPremium() {
