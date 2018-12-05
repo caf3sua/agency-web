@@ -82,18 +82,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="margin-top-10">
-                <p class="bv-title-from">Loại tiền trong bảng quyền lợi<span class="bv-req-red">&nbsp(*)</span></p>
-            </div>
-            <div>
-                <select class="bv-select-box form-control" name="loaitien" ng-model ="vm.policy.loaitien" ng-change="vm.changeLoaitien()"
-                        required-message="'Chưa chọn loại tiền !'"
-                        required
-                >
-                    <option value="USD">VND/USD</option>
-                    <option value="EUR">VND/EUR</option>
-                </select>
-            </div> -->
             <div class="margin-top-10">
                 <p class="bv-title-from">Chương trình bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
@@ -163,7 +151,7 @@
                                 <p class="bv-gh-text-sum-product">Giảm phí:</p>
                             </td>
                             <td class="text-right">
-                                <p class="">{{vm.sumPremiumDiscount | number:0}}</p>
+                                <p class="">({{vm.policy.changePremium | number:0}}%) {{vm.sumPremiumDiscount | number:0}}</p>
                             </td>
                         </tr>
                         <tr>
