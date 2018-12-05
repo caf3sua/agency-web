@@ -38,6 +38,12 @@
                 <div>
                     <p class="bv-tile-templateSummary">{{vm.policy.netPremium | number:0 }}</p>
                 </div>
+                <div class="margin-top-10" ng-show="vm.policy.changePremium > 0">
+                    <p class="bv-title-from">Giảm phí</p>
+                </div>
+                <div ng-show="vm.policy.changePremium > 0">
+                    <p class="bv-tile-templateSummary">{{vm.policy.changePremium | number:0 }} %</p>
+                </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Tổng phí cần thanh toán</p>
                 </div>
@@ -48,6 +54,12 @@
         </div>
         <div class="text-header-sp" style="margin-bottom: 10px">
             <p>Thông tin người được bảo hiểm</p>
+        </div>
+        <div class="margin-top-10">
+            <p class="bv-title-from">Số lượng người được bảo hiểm</p>
+        </div>
+        <div>
+            <p class="bv-tile-templateSummary">{{vm.policy.soNguoiThamGia}} người</p>
         </div>
         <div class="margin-top-10">
             <div class="table-responsive bv-home-block-left-table-responsive">
