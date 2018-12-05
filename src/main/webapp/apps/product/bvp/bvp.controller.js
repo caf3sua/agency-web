@@ -627,7 +627,14 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-            vm.validateResponse(result, 'getPremium');
+            vm.clearResponseError();
+    		resetDataPremium();
+//            vm.validateResponse(result, 'getPremium');
+        }
+        
+        function resetDataPremium() {
+        	vm.policy.phiBH = 0;
+        	vm.policy.premiumNet = 0;
         }
 
         function savePolicy() {

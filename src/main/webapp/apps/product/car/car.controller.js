@@ -567,10 +567,20 @@
     	function onGetPremiumError(result) {
             vm.loading = false;
     		vm.clearResponseError();
-            vm.validateResponse(result, 'getPremium');
+    		resetDataPremium();
+//            vm.validateResponse(result, 'getPremium');
     	}
     	
-//      function savePolicy(type) {		// TH để lưu tạm
+    	function resetDataPremium() {
+    		vm.policy.totalPremium = 0;
+        	vm.policy.chargeFree = 0;
+            vm.policy.premium = 0;
+            vm.policy.vcxPhi = 0;
+            vm.policy.nntxPhi = 0;
+            vm.policy.tndstnPhi = 0;
+            vm.policy.tndsbbPhi = 0;
+        }
+    	
         function savePolicy() {
 //      	if (type == "0"){
 //      		vm.policy.statusPolicy = "80"; // dang soan
