@@ -666,8 +666,10 @@
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
         function tvcImportExcelSuccess() {
         	console.log('TVC tvcImportExcelSuccess');
-        	
+
         	checkNgycbhDiCungInArrayTVC();
+        	
+        	getPremium();
         }
         
         function goFullScreenViaWatcher() {
