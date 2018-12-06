@@ -10,33 +10,60 @@
         	Thanh toán
         </button>
     </div>
-    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
-        <p>Danh sách đơn hàng thanh toán</p>
-    </div>
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
+		 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
+	        <p>Danh sách đơn hàng thanh toán</p>
+	    </div>
 		<table class="table bv-home-block-left-table bv-table-kh" id="tableOrder">
 	        <thead>
 	            <tr>
 	                <th>STT</th>
-	                <th>Đơn hàng</th>
-	                <th>Số tiền</th>
+	                <th>Mã đơn hàng</th>
+					<th>Tên khách hàng</th>
+					<th>Sản phẩm</th>
+					<th>Số điện thoại</th>
+					<th>Trạng thái</th>
+					<th>Hiệu lực từ</th>
+					<th>Hiệu lực đến</th>
+					<th>Phí bảo hiểm</th>
+					<th>Ngày tạo</th>
 	            </tr>
 	        </thead>
 	        <tbody>
-		        <tr ng-repeat="item in vm.agreementOrder track by $index">
+		        <tr ng-repeat="order in vm.agreementOrder track by $index">
 		            <td>
-		                <p class="margin-0">{{$index + 1}}</p>
+		                <p class="margin-0">{{$order + 1}}</p>
 		            </td>
 		            <td>
-		                <p class="">{{item.gycbhNumber}}</p>
-		            </td>
-		            <td>
-		                <p class="">{{item.totalPremium | number:0}}</p>
+	                     <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
+	                 </td>
+	                 <td>
+	                     <p class="">{{order.receiverName}}</p>
+	                 </td>
+	                 <td><i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+	                 </td>
+	                 <td>
+	                     <p class="">{{order.receiverMoible}}</p>
+	                 </td>
+	                 <td>
+	                     <p style="width: 150px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+	                </td>
+	                <td>
+	                    <p style="width: 80px">{{order.inceptionDate}}</p>
+	                </td>
+	                <td>
+	                    <p style="width: 80px">{{order.expiredDate}}</p>
+	                </td>
+	                <td>
+	                    <p style="width: 150px">{{order.totalPremium | number:0}}</p>
+	                </td>
+	                <td>
+	                	<p style="width: 80px">{{order.agreementSysdate}}</p>
 		            </td>
 		        </tr>
 		        <tr>
-		        <td colspan="2"><p class="bv-gh-text-sum" style="font-size: 20px">Tổng tiền</p></td>
-		        <td><p class="bv-gh-number-sum" style="font-size: 25px">{{vm.sumMoney | number:0 }} VNĐ</p></td>
+		        <td colspan="8"><p class="bv-gh-text-sum" style="font-size: 20px">Tổng tiền</p></td>
+		        <td colspan="2"><p class="bv-gh-number-sum" style="font-size: 25px">{{vm.sumMoney | number:0 }} VNĐ</p></td>
 		        </tr>
 	        </tbody>
 	   </table>
