@@ -910,7 +910,7 @@
                 vm.typeArrowTwo = "fa-angle-right";
                 checkCloseStepOne = true;
             }else if(type == "step2"){
-            	if (validatorBVP()) {
+            	if (validatorExtraInfo()) {
             		if(vm.nextCount >= 1) {
                         document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
                         document.getElementById("bv-step-1").className = 'bv-step-1  padding0 display-flex  closeStepOne';
@@ -983,6 +983,49 @@
                 checkCloseStepOne = false;
                 vm.typeArrowOne = "fa-angle-left";
             }
+        }
+        
+        function validatorExtraInfo() {
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	
+        	switch(vm.lineId){
+		  	    case "BVP":
+		  	    	return validatorBVP();
+	  	            break;
+		  	    case "TVC":
+		  	    	return validatorTVC();
+	  	            break;
+	  	        default: 
+	  	        	break;
+	  	    }
+        	
+        	return true;
+        }
+        
+        function validatorTVC() {
+        	console.log('validator extra TVC at step 2');
+        	
+        	// Validate CMND or Ngay sinh
+        	let result = true; 
+        	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
+        			result = false;
+        			// Show
+        			let data = {
+    	        		fieldName : "idPasswport" + key,
+    	        		message : "Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm"
+        	        };
+        	        
+        	        ResponseValidateService.validateResponse(data)
+        		}
+		 	});
+        	
+        	if (result == false) {
+        		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");
+        	}
+        	
+            return result;
         }
         
         function validatorBVP() {
