@@ -66,6 +66,7 @@
         vm.couponCode = null;
         vm.bankCode = null;
         vm.agreementIds = [];
+        vm.agreementOrder = [];
         vm.checkTypePay = 'agency';
   		
         vm.confirmCancelCart = confirmCancelCart;
@@ -228,6 +229,7 @@
         function resetCartValue() {
         	vm.sumMoney = 0;
             vm.agreementIds = [];
+            vm.agreementOrder = [];
         }
         
         function selectCheckBoxCart(data) {
@@ -235,12 +237,14 @@
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney + money;
                 vm.agreementIds.push(data.agreementId);
+                vm.agreementOrder.push(data);
             }else {
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney - money;
                 var index = vm.agreementIds.indexOf(data.agreementId);
                 if (index !== -1) {
             		vm.agreementIds.splice(index, 1);
+            		vm.agreementOrder.splice(index, 1);
                 }
             }
 

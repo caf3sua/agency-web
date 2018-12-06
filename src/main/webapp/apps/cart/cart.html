@@ -7,11 +7,35 @@
 	
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
 		<div class="col-lg-8 padding0">
-			<p class="bv-gh-text-sum">Tổng tiền</p>
+			<p class="bv-gh-text-sum" style="font-size: 25px">Tổng tiền</p>
 		</div>
 		<div class="col-lg-4 padding0 text-right">
-			<p class="bv-gh-number-sum">{{vm.sumMoney | number:0 }} VNĐ</p>
+			<p class="bv-gh-number-sum" style="font-size: 25px">{{vm.sumMoney | number:0 }} VNĐ</p>
 		</div>
+		<span>{{vm.agreementGycbh}}</span>
+		<table class="table bv-home-block-left-table bv-table-kh" id="tableOrder">
+	        <thead>
+	            <tr>
+	                <th>STT</th>
+	                <th>Đơn hàng</th>
+	                <th>Số tiền</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+		        <tr ng-repeat="item in vm.agreementOrder track by $index">
+		            <td>
+		                <p class="margin-0">{{$index + 1}}</p>
+		            </td>
+		            <td>
+		                <p class="">{{item.gycbhNumber}}</p>
+		            </td>
+		            <td>
+		                <p class="">{{item.totalPremium | number:0}}</p>
+		            </td>
+		        </tr>
+		        
+	        </tbody>
+	   </table>
 	</div>
 	<div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;" ng-show="vm.showPayment">
         <button class="bv-btn-step2" ng-click="vm.processPayment()" button-spinner="vm.isLoading" ng-disabled="vm.isLoading">
