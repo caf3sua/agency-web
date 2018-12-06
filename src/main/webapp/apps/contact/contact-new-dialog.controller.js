@@ -88,6 +88,7 @@
         	vm.goBack = goBack;
         	vm.dateBeforeShowDate = dateBeforeShowDate;
         	vm.getAllCategoryReminder = getAllCategoryReminder;
+        	vm.cancel = cancel;
         	
         	angular.element(document).ready(function () {
             });
@@ -116,6 +117,16 @@
       			ContactService.getAllCategoryReminder().$promise.then(function (data) {
       				vm.reminderProducts = data;
         		});
+      		}
+      		
+      		function cancel() {
+      			vm.contact.contactName = "";
+      			vm.contact.dateOfBirth = "";
+      			vm.contact.idNumber = "";
+      			vm.contact.phone = "";
+      			vm.contact.email = "";
+      			vm.contact.address = "";
+      			vm.contact.addressDistrict = "";
       		}
       		
       		function goBack() {
