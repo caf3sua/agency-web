@@ -1,6 +1,7 @@
+<div fullscreen="isFullScreen" only-watched-property>
 <div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-home-block-left-table-responsive">
     <!-- Table content -->
-    <table st-table="vm.docsInit" st-safe-src="vm.policy.listTvcAddBaseVM" class="table table-striped bv-home-block-left-table bv-table-kh">
+    <table st-table="vm.docsInit" st-safe-src="vm.policy.listTvcAddBaseVM" class="table bv-home-block-left-table bv-table-kh">
             <thead>
                 <tr>
                     <th colspan="6">
@@ -11,11 +12,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <th st-sort="id">
+                    <th>
                         <div class="bv-gh-checkbox">
                             <label for="tvc-check-all" class="label-cbx margin-right-5">
                                 <input id="tvc-check-all" type="checkbox" class="invisible"
-                                ng-model="order.checkAll" ng-change="vm.selectCheckBoxCart(order)">
+                                ng-model="vm.checkAllDataTable" ng-change="vm.checkBoxAllChange()">
                                 <div class="checkbox tvc-checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                             <path
@@ -27,7 +28,7 @@
                             </label>
                         </div>
                     </th>
-                    <th st-sort="insuredName" class="m-w-150">Họ và tên</th>
+                    <th st-sort="insuredName" class="m-w-200">Họ và tên</th>
                     <th st-sort="idPasswport" class="m-w-150">Số hộ chiếu/CMND</th>
                     <th st-sort="dob" class="m-w-190">Ngày sinh</th>
                     <th st-sort="relationship" class="m-w-150">Quan hệ</th>
@@ -35,13 +36,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="person in vm.policy.listTvcAddBaseVM track by $index">
+                <tr ng-repeat="person in vm.docsInit track by $index" ng-class="person.isOwer ? 'bg-ower' : ''">
                     <td>
                         <!-- <p class="bv-home-table-stt margin-0">{{$index + 1}}</p> -->
                         <div class="bv-gh-checkbox">
                             <label for="cart{{$index}}" class="label-cbx margin-right-5">
                                 <input id="cart{{$index}}" type="checkbox" class="invisible"
-                                ng-model="order.check" ng-change="vm.selectCheckBoxCart(order)">
+                                ng-model="person.check" ng-change="vm.selectCheckBoxTableData(person)">
                                 <div class="checkbox">
                                     <svg width="18px" height="18px" viewBox="0 0 20 20">
                                             <path
@@ -56,25 +57,18 @@
                     <td>
                         <input name="insuredName{{$index}}" type="text" class="bv-input" ng-model="person.insuredName"
                            required-message="'Chưa thêm họ và tên !'"
-                           required ng-disabled="$index == 0 && vm.ngYcbhDicung"
-                        />
+                           required/>
                     </td>
                     <td>
-                        <input  name="idPasswport{{$index}}"  type="text" class="bv-input" ng-model="person.idPasswport"
-                            required-message="'Chưa thêm số hộ chiếu/CMND!'" required ng-disabled="$index == 0 && vm.ngYcbhDicung"
-                        />
+                        <input name="idPasswport{{$index}}"  type="text" class="bv-input" ng-model="person.idPasswport"/>
                     </td>
                     <td>
                         <div class=" width-100">
-                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d" 
-                                ng-disabled="$index == 0 && vm.ngYcbhDicung">
+                            <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-end-date="0d">
                                 <div class="width-100">
-                                    <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob"
-                                        required-message="'Chưa thêm ngày sinh!'"
-                                        required ng-disabled="$index == 0 && vm.ngYcbhDicung"
-                                    >
+                                    <input type="text" name="dob{{$index}}" class="bv-input" placeholder="Ngày sinh" ng-model="person.dob">
                                 </div>
-                                <div class="input-group-addon bv-date-icon" ng-disabled="$index == 0 && vm.ngYcbhDicung">
+                                <div class="input-group-addon bv-date-icon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
@@ -83,21 +77,29 @@
                     <td>
                         <select name="relationship{{$index}}" class="bv-select-box form-control" ng-model ="person.relationship"
                             required-message="'Chưa chọn mối quan hệ!'"
-                            required  ng-disabled="$index == 0 && vm.ngYcbhDicung"
-                        >
+                            required > <!--  ng-disabled="($index == 0 && vm.ngYcbhDicung) || vm.policy.travelWithId == '3'" -->
                             <option value="30">Bản thân</option>
-                            <option value="31">Vợ/Chồng</option>
-                            <option value="32">Con</option>
-                            <option value="34">Bố/Mẹ</option>
-                            <option value="39">Bố Mẹ của vợ/chồng</option>
+                            <option value="31" ng-show="vm.policy.travelWithId != '3'">Vợ/Chồng</option>
+                            <option value="32" ng-show="vm.policy.travelWithId != '3'">Con</option>
+                            <option value="33" ng-show="vm.policy.travelWithId != '3'">Bố/Mẹ</option>
+                            <option value="34" ng-show="vm.policy.travelWithId != '3'">Bố Mẹ của vợ/chồng</option>
+                            <option value="99" ng-show="vm.policy.travelWithId != '3'">Khác</option>
+                            <option value="39" ng-show="vm.policy.travelWithId == '3'">Khách đoàn</option>
                         </select>
                     </td>
                     <td>
-                        <button class="md-btn md-fab m-b-sm blue-600 bv-btn" ng-click="vm.downloadDocument(doc)">
-                            <i class="fas fa-download"></i>
+                        <button type="button" class="md-btn md-fab m-b-sm red-500 bv-btn-s" ng-click="vm.removeRow($index)" ng-show="vm.policy.travelWithId != '1'">
+                            <i class="fas fa-times"></i>
                         </button>
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+				<tr>
+					<td colspan="5" class="text-left">
+		            	<div st-template="views/theme/components/pagination.html" st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
+		          	</td>
+		        </tr>
+			</tfoot>
     </table>
 </div>

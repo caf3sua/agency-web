@@ -17,16 +17,22 @@
 		          <th>Tên ấn chỉ</th>
 		          <th>Mã vạch</th>
 		          <th>Đơn vị</th>
+		          <th></th>
 		        </tr>
 		      </thead>
 		      <tbody>
 		        <tr ng-repeat="item in vm.printedPapersInit track by $index" ng-dblclick="vm.selectedAnchi(item)">
 		          <td>{{$index + 1}}</td>
-		          <td>{{item.ACHI_KYHIEU_ANCHI_ID}}</td>
-		          <td>{{item.ACHI_SO_ANCHI}}</td>
+		          <td><a ng-click="vm.selectedAnchi(item)"><p class="bv-table-text-colorBlue">{{item.ACHI_KYHIEU_ANCHI_ID}}</p></a></td>
+		          <td><a ng-click="vm.selectedAnchi(item)"><p class="bv-table-text-colorBlue">{{item.ACHI_SO_ANCHI}}</p></a></td>
 		          <td>{{item.ACHI_TEN_ANCHI}}</td>
 		          <td>{{item.ACHI_MAVACH}}</td>
 		          <td>{{item.ACHI_DLQL_NAME}}</td>
+		          <td>
+		        	<a ng-click="vm.selectedContact(row)" class="customer-check">
+		          		<i class="fas fa-check"></i>
+		        	</a>
+		          </td>
 		        </tr>
 		      </tbody>
 		      <tfoot>

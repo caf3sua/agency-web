@@ -1,20 +1,23 @@
 <div class="product-toolbar">
-    <div class="pull-right">
+    <div class="product-toolbar-right">
         <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Import excel" ng-click="vm.showImportExcelPopup()">
             <i class="far fa-file-excel"></i>
         </a>
-        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Tải xuống dữ liệu">
+        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Tải xuống dữ liệu" ng-click="vm.exportExcel('TVC')">
             <i class="fas fa-download"></i>
         </a>
-        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Toàn màn hình">
+        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Toàn màn hình" ng-click="vm.goFullScreenViaWatcher()">
             <i class="fas fa-arrows-alt"></i>
         </a>
     </div>
-    <div class="pull-left">
-        <a class="product-btn-toolbar color-5cb85c" tooltip-placement="bottom" uib-tooltip="Thêm dòng dữ liệu">
+    <div class="product-toolbar-left">
+        <a class="product-btn-toolbar color-5cb85c" 
+        		tooltip-placement="bottom" uib-tooltip="Thêm dòng dữ liệu" ng-click="vm.addNewRow()"
+        		ng-disabled="vm.policy.travelWithId == '1'" ng-show="vm.policy.travelWithId != '1'">
             <i class="fas fa-plus"></i>
         </a>
-        <a class="product-btn-toolbar color-d9534f" tooltip-placement="bottom" uib-tooltip="Xóa bản ghi">
+        <a type="button" class="product-btn-toolbar color-d9534f" tooltip-placement="bottom" uib-tooltip="Xóa nhiều bản ghi" 
+        		ng-show="!vm.btnRemoveAllDisabled && vm.policy.travelWithId != '1'" ng-click="vm.removeAllRow()">
             <i class="fas fa-trash-alt"></i>
         </a>
     </div>

@@ -31,33 +31,8 @@
         	vm.goBack = goBack;
         	
         	function goBack() {
-      			$state.go("app.contact", {selected: vm.contact.contactId, groupType: $rootScope.contactGroupType});
+      			$state.go("app.contact-detail", {id: vm.contact.contactId});
       		}
-        	
-//        	vm.map = {
-//                    center: {
-//                        latitude: 21.046018,
-//                        longitude: 105.800402
-//                    },
-//                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-//                    zoom: 14,
-//                    markers: [],
-//                    options : {
-//                    	streetViewControl: false,
-//                    	zoomControl: false,
-//                    	mapTypeControl: false,
-//                    	scaleControl: false,
-//                    	streetViewControl: false,
-//                    	rotateControl: false,
-//                    	fullscreenControl: true,
-//                    	fullscreenControlOptions: {
-//                            position: google.maps.ControlPosition.RIGHT_CENTER
-//                        }
-//                    },
-//                    clusterOptions : {
-//                    	maxZoom: 16
-//                    }
-//                };
         	
         	angular.element(document).ready(function () {
             });

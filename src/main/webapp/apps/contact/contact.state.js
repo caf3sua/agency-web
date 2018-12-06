@@ -44,6 +44,28 @@
 			        }
 	            }
 	        })
+	        .state('app.contact-detail', {
+	            url: '/contact-detail/{id}',
+	            templateUrl: 'apps/contact/contact-detail.html',
+	            data : { title: 'CONTACT_DETAIL' },
+	            controller: "ContactDetailController",
+	            controllerAs: 'vm',
+	            resolve: {
+	            		translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+	        				$translatePartialLoader.addPart('global');
+	        				return $translate.refresh();
+	            		}],
+	            		entity: ['$stateParams', 'ContactService', function($stateParams, ContactService) {
+	                        return ContactService.get({id : $stateParams.id}).$promise;
+	                    }],
+	            		loadPlugin: function ($ocLazyLoad) {
+		            		return $ocLazyLoad.load(['apps/order/order.service.js'
+		            			, 'apps/agreement-base.controller.js'
+		            			, 'apps/contact/contact-detail.controller.js'
+		            			, 'apps/contact/contact-mail-dialog.controller.js']);
+			        }
+	            }
+	        })
 	        .state('app.contact-edit', {
 	            url: '/contact-edit/{id}',
 	            templateUrl: 'apps/contact/contact-new.html',

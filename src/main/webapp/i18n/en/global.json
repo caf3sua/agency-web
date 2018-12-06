@@ -12,6 +12,15 @@
 	        		"name" : "Tên tổ chức",
 	        		"cmt_mst": "Mã số thuế",
 	        		"occupation": "Ngành nghề kinh doanh"
+	        	},
+	        	"category" : {
+	        		"PERSON" : "Cá nhân",
+	        		"ORGANIZATION" : "Tổ chức"
+	        	},
+	        	"group" : {
+	        		"POTENTIAL" : "Tiềm năng",
+	        		"FAMILIAR" : "Thân thiết",
+	        		"VIP" : "VIP"
 	        	}
         	}
         }, 
@@ -20,8 +29,10 @@
         		"30" : "Bản thân",
         		"31" : "Vợ/Chồng",
         		"32" : "Con",
-        		"34" : "Bố/Me",
-        		"39" : "Bố Me của vợ/chồng",
+        		"33" : "Bố/Me",
+        		"34" : "Bố Me của vợ/chồng",
+        		"39" : "Khách đoàn",
+        		"99" : "Khác",
         		"00" : "Không xác định"
         	}
         },
@@ -33,10 +44,11 @@
 		},
 		"policy" : {
         	"status" : {
+        		"00" : "Không xác định trạng thái",
         		"80" : "Đang soạn",
         		"81" : "Chờ OTP",
         		"83" : "Yêu cầu bổ sung thông tin",
-        		"84" : "Đơn quá  hạn thanh toán",
+        		"84" : "Đơn quá hạn thanh toán",
         		"89" : "Đại lý, Khách hàng hủy đơn",
         		"90" : "Chờ thanh toán",
         		"91" : "Chờ Bảo Việt cấp đơn",
@@ -63,6 +75,12 @@
         		"TNC" : "Bảo hiểm tai nạn con người",
         		"TVC" : "Bảo hiểm du lịch quốc tế",
         		"TVI" : "Bảo hiểm du lịch Việt Nam"
+        	},
+        	"tvc" : {
+        		"label" : {
+        			"contact_name_PERSON" : "Họ tên người yêu cầu bảo hiểm",
+        			"contact_name_ORGANIZATION" : "Tên tổ chức yêu cầu bảo hiểm" 
+        		}
         	}
         },
         "page" : {
@@ -89,6 +107,7 @@
         		"PRODUCT_TVC_EDIT" : "Sửa Bảo hiểm du lịch quốc tế",
         		"PRODUCT_TVI_EDIT" : "Sửa Bảo hiểm du lịch Việt Nam",
         		"CONTACT": "Danh sách khách hàng",
+        		"CONTACT_DETAIL": "Chi tiết khách hàng",
         		"CONTACT_LOSS" : "Thông tin tổn thất",
         		"CONTACT_MAP" : "Địa chỉ khách hàng",
         		"CONTACT_HISTORY_PURCHASE" : "Lịch sử mua hàng",
@@ -98,7 +117,7 @@
         		"ORDER_ME" : "Danh sách đơn hàng của tôi",
         		"ORDER_AGENCY" : "Danh sách đơn hàng chờ đại lý giải quyết",
         		"ORDER_BAOVIET" : "Danh sách đơn hàng chờ BV giải quyết",
-        		"ORDER_OTHER" : "Danh sách yêu cầu bảo hiểm khác",
+        		"ORDER_OTHER" : "Danh sách đơn hết hiệu lực",
         		"ORDER_EXPIRE" : "Danh sách đơn hàng quá hạn",
         		"ORDER_NOPHI" : "Danh sách đơn hàng nợ phí",
         		"ORDER_DETAIL" : "Chi tiết đơn hàng",
@@ -120,34 +139,34 @@
         	}
         },
         "menu": {
-        	"nav-home": "Home",
-        	"nav-request": "Request",
-        	"nav-work-basket": "Work basket",
-        	"nav-report": "Report",
-        	"nav-help": "Help",
-            "home": "Home",
-            "Dashboard": "Dashboard",
+        	"nav-home": "Trang chủ",
+        	"nav-request": "Yêu cầu",
+        	"nav-work-basket": "Giỏ công việc",
+        	"nav-report": "Báo cáo",
+        	"nav-help": "Trợ giúp",
+            "home": "Trang chủ",
+            "Dashboard": "Bảng điều khiển",
             "CellH": "Cell*H",
             "Sctd": "Sự cố truyền dẫn",
             "WO": "Work order",
             "GNOC_CR": "GNOC Change request",
             "CdbrPakh": "Cố định băng rộng - Phản ánh khách hàng",
-            "CdbrTkm": "Cố định băng rộng - New deploy",
+            "CdbrTkm": "Cố định băng rộng - Triển khai mới",
             "GdttCdbr": "Gián đoạn thông tin - Cố định băng rộng",
             "CdbrTgxl": "Cố định băng rộng - Thời gian xử lý",
             "CdbrScll": "Cố định băng rộng - Sự cố lặp lại",
             "Paclm": "Paclm",
             "Kiemtrahientruong": "Kiểm tra hiện trường",
             "Qlgt": "Quản lý giảm trừ",
-            "Report": "Report",
-            "Qltarget": "Management target",
+            "Report": "Báo cáo",
+            "Qltarget": "Quản lý target",
             "GROUP": "Quản lý nhóm",
             "DOMAIN": "Quản lý lĩnh vực",
             "INFORMATION": "Quản lý thông tin cơ bản",
-            "language": "Language"
+            "language": "Ngôn ngữ"
         },
         "placeholder" : {
-        		"search" : "Search..."
+        		"search" : "Tìm kiếm..."
         }
     },
     "footer": "This is your footer"

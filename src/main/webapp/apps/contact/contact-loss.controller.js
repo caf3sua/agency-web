@@ -31,7 +31,8 @@
       		
       		// function
       		function goBack() {
-      			$state.go("app.contact", {selected: vm.contactSelected.contactId, groupType: $rootScope.contactGroupType});
+      			// $state.go("app.contact", {selected: vm.contactSelected.contactId, groupType: $rootScope.contactGroupType});
+      			$state.go("app.contact-detail", {id: vm.contactSelected.contactId});
       		}
       		
       		function loadAll() {

@@ -6,10 +6,10 @@
         .controller('ProductMotoController', ProductMotoController);
 
     ProductMotoController.$inject = ['$scope', '$controller', 'DateUtils', 'ProductCommonService', '$state'
-    	, '$rootScope', '$stateParams'];
+    	, '$rootScope', '$stateParams' , 'ResponseValidateService'];
 
     function ProductMotoController ($scope, $controller, DateUtils, ProductCommonService, $state
-    		, $rootScope, $stateParams) {
+    		, $rootScope, $stateParams, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'MOT';
     	
@@ -202,12 +202,17 @@
     		vm.getAddressByPostCode(insuredAddress).then(function (data) {
     			vm.policy.insuredAddressDistrict = data;
     		});
+    		
+    		var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
+    		});
   		}
         
         function checkedChange() {
         	if (vm.policy.nntxCheck){
         		vm.policy.nntxSoNguoi = 1;
-        		angular.element('#nntxStbh').focus();
         	} else {
         		vm.policy.nntxSoNguoi = "";
         	}
@@ -215,6 +220,11 @@
             if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
                 vm.policy.nntxCheck = false;
             }
+            
+            if (!vm.policy.chaynoCheck){
+            	vm.policy.chaynoStbh = "";
+            }
+            
             getPremium();
         }
 
@@ -232,10 +242,9 @@
         function getPremium() {
         	// clean error message
         	vm.cleanAllResponseError();
-        	
-            vm.loading = true;
+    		vm.loading = true;
             var postData = getPostData(false);
-            ProductCommonService.getMotoPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+            ProductCommonService.getMotoPremium(postData, onGetPremiumSuccess, onGetPremiumError);	
         }
 
         function getPostData(isCreate) {
@@ -307,7 +316,18 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-            vm.validateResponse(result, 'getPremium');
+            vm.clearResponseError();
+            resetDataPremium();
+//            vm.validateResponse(result, 'getPremium');
+            ResponseValidateService.validateResponse(result.data);
+        }
+        
+        function resetDataPremium() {
+        	vm.policy.tongPhi = 0;
+        	vm.policy.chaynoPhi = 0;
+        	vm.policy.nntxPhi = 0;
+        	vm.policy.tndstnPhi = 0;
+        	vm.policy.tndsbbPhi = 0;
         }
 
 //      function savePolicy(type) {		// TH để lưu tạm
@@ -345,8 +365,7 @@
         	if(!vm.policy.nntxCheck) {
         		return true;
         	}
-        	if(!vm.policy.nntxSoNguoi) {
-        		vm.policy.nntxSoNguoi = 1;
+        	if (vm.policy.nntxSoNguoi == 0 || vm.policy.nntxSoNguoi == ""){
         		return false;
         	}
             return true;

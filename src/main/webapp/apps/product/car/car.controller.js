@@ -6,10 +6,10 @@
         .controller('ProductCarController', ProductCarController);
 
     ProductCarController.$inject = ['$rootScope', '$scope', '$controller', 'CarService', 'DateUtils', 'ProductCommonService', '$state'
-    	, '$stateParams'];
+    	, '$stateParams', 'ResponseValidateService'];
 
     function ProductCarController ($rootScope, $scope, $controller, CarService, DateUtils, ProductCommonService, $state
-    		, $stateParams) {
+    		, $stateParams, ResponseValidateService) {
         var vm = this;
         vm.lineId = 'CAR';
         
@@ -103,6 +103,7 @@
   		vm.getCarModelError = getCarModelError;
   		vm.getCarNamSanXuatMax = getCarNamSanXuatMax;
   		vm.getCarNamSanXuatMin = getCarNamSanXuatMin;
+  		vm.changeCopyFromNycbh = changeCopyFromNycbh;
   		
   		vm.tndsSoChoOptions = [
   	      {id: '1', name: 'Loại xe dưới 6 chỗ ngồi'},
@@ -210,6 +211,17 @@
   		    vm.selectedContactMode();
   		}
   		
+  		function changeCopyFromNycbh() {
+        	vm.policy.insuredName = "";
+        	vm.policy.insuredAddress = "";
+        	vm.policy.insuredAddressDistrict = "";
+	      	if (vm.copyFromNguoiycbh) {
+	      		vm.policy.insuredName = vm.policy.contactName;
+	      		vm.policy.insuredAddress = vm.policy.contactAddress;
+	      		vm.policy.insuredAddressDistrict = vm.policy.contactAddressDistrictData;
+	      	}
+        }
+  		
   		function formatEditData(result) {
   			if (result.makeName) {
   				CarService.getCarModel({model : result.makeName}, getCarModelSuccess, getCarModelError);
@@ -303,6 +315,12 @@
     		vm.policy.insuredAddress = vm.formatAddressEdit(insuredAddress);
     		vm.getAddressByPostCode(insuredAddress).then(function (data) {
     			vm.policy.insuredAddressDistrict = data;
+    		});
+    		
+    		var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
     		});
   		}
   		
@@ -549,10 +567,21 @@
     	function onGetPremiumError(result) {
             vm.loading = false;
     		vm.clearResponseError();
-            vm.validateResponse(result, 'getPremium');
+    		resetDataPremium();
+//            vm.validateResponse(result, 'getPremium');
+    		ResponseValidateService.validateResponse(result.data);
     	}
     	
-//      function savePolicy(type) {		// TH để lưu tạm
+    	function resetDataPremium() {
+    		vm.policy.totalPremium = 0;
+        	vm.policy.chargeFree = 0;
+            vm.policy.premium = 0;
+            vm.policy.vcxPhi = 0;
+            vm.policy.nntxPhi = 0;
+            vm.policy.tndstnPhi = 0;
+            vm.policy.tndsbbPhi = 0;
+        }
+    	
         function savePolicy() {
 //      	if (type == "0"){
 //      		vm.policy.statusPolicy = "80"; // dang soan

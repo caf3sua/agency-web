@@ -6,10 +6,10 @@
         .controller('ProductBvpController', ProductBvpController);
 
     ProductBvpController.$inject = ['$rootScope', '$scope', '$controller', 'DateUtils', 'ProductCommonService'
-    	, '$state', '$stateParams', 'ContactService'];
+    	, '$state', '$stateParams', 'ContactService', 'ResponseValidateService'];
 
     function ProductBvpController ($rootScope, $scope, $controller, DateUtils, ProductCommonService
-    		, $state, $stateParams, ContactService) {
+    		, $state, $stateParams, ContactService, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'BVP';
     	
@@ -160,6 +160,30 @@
         
         vm.gksFile = null;
         vm.gksFileModel;
+        
+        vm.lstAdd = [
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		},
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		},
+    		{
+	    		"benhvienorbacsy": "",
+	    		"chitietdieutri": "",
+	    		"chuandoan": "",
+	    		"ketqua": "",
+	    		"ngaydieutri": ""
+    		}
+		];
         
         vm.insuranceTypeOptions = [
             {id: '1', name: 'Đồng'},
@@ -327,8 +351,8 @@
   		});
 
 		function loadFileInEditMode() {
-			if (vm.policy.files) {
-  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.files, 'gks.jpg');
+			if (vm.policy.imgGks.content) {
+  				let docFile = dataURLtoFile('data:image/*;base64,' + vm.policy.imgGks.content, vm.policy.imgGks.filename);
   				vm.gksFileModel = docFile;
   			}
 		}
@@ -422,7 +446,11 @@
   	    		});
   			}
   			
-  			// extra
+  			var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
+    		});
   		}
         
         function onThoihanChange() {
@@ -599,7 +627,15 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-            vm.validateResponse(result, 'getPremium');
+            vm.clearResponseError();
+    		resetDataPremium();
+            // vm.validateResponse(result, 'getPremium');
+    		ResponseValidateService.validateResponse(result.data);
+        }
+        
+        function resetDataPremium() {
+        	vm.policy.phiBH = 0;
+        	vm.policy.premiumNet = 0;
         }
 
         function savePolicy() {
@@ -662,7 +698,11 @@
         
         function openSearchContactForPanel(type) {
             vm.panelType = type;
-            vm.openSearchContact();
+            if (type == 'contact'){
+            	vm.openSearchContact();	
+            } else {
+            	vm.openSearchContactOther();            	
+            }
         }
 
         function onGetPolicyNumberSuccess(result) {

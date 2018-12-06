@@ -15,6 +15,7 @@
                     <th>Ngày sử dụng</th>
                     <th>Phí bảo hiểm</th>
                     <th>Số tiền thanh toán</th>
+                    <th>Trạng thái </th>
                 </tr>
                 </thead>
                 <tr ng-repeat="item in vm.printedPapers track by $index">
@@ -71,6 +72,9 @@
                     </td>
                     <td>
                         <p class="">{{item.achiStienvn | number:0}}</p>
+                    </td>
+                    <td>
+                        <p class="" data-translate="global.policy.status.{{item.policyStatusId}}">{{item.policyStatusId}}</p>
                     </td>
                 </tr>
             </table>

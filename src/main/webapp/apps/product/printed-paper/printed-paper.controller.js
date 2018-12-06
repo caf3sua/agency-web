@@ -288,7 +288,14 @@
         }
   		
   		function cancel() {
-  			$state.go('app.order');
+  			vm.policy.contactName = "";
+  			vm.policy.tinhTrangCap = "TTCM";
+  			vm.policy.phiBaoHiem = "";
+  			
+  			vm.gcnFileModel = [];
+  			vm.gcnFiles = [];
+  			vm.gycbhFileModel = [];
+  			vm.gycbhFiles = [];
   		}
   		
   		function changeDate(){

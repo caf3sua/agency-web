@@ -2861,6 +2861,13 @@ body {
    line-height: 30px !important;
 }
 
+.bv-btn-s {
+	width: 35px !important;
+    height: 35px !important;
+   line-height: 18px !important;
+}
+
+
 .bv-product-icon {
 	font-size: 20px;
     margin-bottom: 5px;
@@ -3092,6 +3099,19 @@ div#insideDiv{
 .product-toolbar {
 	margin-top: 10px;
 	/* text-align: right; */
+	position: relative;
+    background: white;
+}
+
+.product-toolbar-right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin-left: 10px;
+}
+
+.product-toolbar-left {
+    min-height: 28px;
 }
 
 .product-btn-toolbar {
@@ -3118,5 +3138,17 @@ div#insideDiv{
 }
 
 .tvc-checkbox {
-    margin-bottom: 0px  !important;
+    margin-bottom: 0px !important;
+}
+
+.m-w-200 {
+	min-width: 200px;
+}
+
+.label-contact {
+	font-size : 14px !important;
+}
+
+.bg-ower {
+	background-color: #a3d5ed !important;
 }

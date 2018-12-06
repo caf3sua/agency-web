@@ -38,11 +38,11 @@
 </div>
 <!-- Tổ chức -->
 <div ng-show="vm.policy.contactCategoryType == 'ORGANIZATION'">
-	<div class="margin-top-10">
+	<div class="margin-top-10 required">
 	    <p class="bv-title-from">Địa chỉ</p>
 	</div>
 	<div class="margin-right-5 width-100">
-	    <input type="text" name="contactAddress" class="bv-input" ng-model="vm.policy.contactAddress" placeholder="Địa chỉ tổ chức" readonly="readonly" disabled="disabled" />
+		<span>{{vm.policy.contactAddress + ', ' + vm.policy.contactAddressDistrictData.pkDistrict | address}}</span>
 	</div>
 </div>
 

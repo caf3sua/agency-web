@@ -5,16 +5,27 @@
                     <p>Thông tin người yêu cầu bảo hiểm</p>
                 </div>
                 <div class="margin-top-10">
-                    <p class="bv-title-from">Họ tên người yêu cầu bảo hiểm</p>
+                    <p class="bv-title-from" data-translate="global.product.tvc.label.contact_name_{{vm.policy.contactCategoryType || 'PERSON'}}">Họ tên người yêu cầu bảo hiểm</p>
                 </div>
                 <div>
                     <p class="bv-tile-templateSummary">{{vm.policy.contactName}}</p>
                 </div>
-                <div class="margin-top-10">
-                    <p class="bv-title-from">Ngày sinh</p>
+                <div ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">
+					<div class="margin-top-10">
+	                    <p class="bv-title-from">Ngày sinh</p>
+	                </div>
+	                <div>
+	                    <p class="bv-tile-templateSummary">{{vm.policy.contactDob}}</p>
+	                </div>                
                 </div>
-                <div>
-                    <p class="bv-tile-templateSummary">{{vm.policy.contactDob}}</p>
+                <div ng-show="vm.policy.contactCategoryType == 'ORGANIZATION'">
+                	<div class="margin-top-10">
+	                    <p class="bv-title-from">Địa chỉ</p>
+	                </div>
+	                <div>
+	                    <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.contactAddress | address}}</p>
+            			<p class="bv-tile-templateSummary none-edit-mode" ng-show="!vm.isEditMode()">{{vm.policy.contactAddress + ', ' + vm.policy.contactAddressDistrictData.pkDistrict | address}}</p>
+	                </div>
                 </div>
             </div>
             <div class="bv-pading-30 width-100">
@@ -27,6 +38,12 @@
                 <div>
                     <p class="bv-tile-templateSummary">{{vm.policy.netPremium | number:0 }}</p>
                 </div>
+                <div class="margin-top-10" ng-show="vm.policy.changePremium > 0">
+                    <p class="bv-title-from">Giảm phí</p>
+                </div>
+                <div ng-show="vm.policy.changePremium > 0">
+                    <p class="bv-tile-templateSummary">{{vm.policy.changePremium | number:0 }} %</p>
+                </div>
                 <div class="margin-top-10">
                     <p class="bv-title-from">Tổng phí cần thanh toán</p>
                 </div>
@@ -36,37 +53,44 @@
             </div>
         </div>
         <div class="text-header-sp" style="margin-bottom: 10px">
-            <p>Thông tin người được bảo hiểm</p>
+            <p>Thông tin người được bảo hiểm (Số lượng người tham gia: {{vm.policy.listTvcAddBaseVM.length}})</p>
         </div>
         <div class="margin-top-10">
             <div class="table-responsive bv-home-block-left-table-responsive">
-                <table class="table bv-tvc-block-left-table" >
+                <table class="table" st-table="vm.docsInitSummary" st-safe-src="vm.policy.listTvcAddBaseVM">
                     <thead>
                     <tr>
                     	<th><p>STT</p></th>
-                        <th><p>Họ và tên</p></th>
+                        <th class="m-w-200"><p>Họ và tên</p></th>
                         <th><p>Số hộ chiếu/CMND</p></th>
                         <th><p>Ngày sinh</p></th>
                         <th><p class="bv-table-th-db">Quan hệ người yêu cầu bảo hiểm</p></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="person in  vm.policy.listTvcAddBaseVM">
-                        <td>{{$index + 1}}</td>
-                        <td>
-                            <p class="">{{person.insuredName}}</p>
-                        </td>
-                        <td>
-                            <p class="">{{person.idPasswport}}</p>
-                        </td>
-                        <td>
-                            <p class="">{{person.dob}}</p>
-                        </td>
-                        <td>
-                            <p class="" data-translate="global.person.relationship.{{person.relationship}}">Cá nhân</p>
-                        </td>
-                    </tr>
+	                    <tr ng-repeat="person in vm.docsInitSummary track by $index">
+	                        <td>{{$index + 1}}</td>
+	                        <td>
+	                            <p class="">{{person.insuredName}}</p>
+	                        </td>
+	                        <td>
+	                            <p class="">{{person.idPasswport}}</p>
+	                        </td>
+	                        <td>
+	                            <p class="">{{person.dob}}</p>
+	                        </td>
+	                        <td>
+	                            <p class="" data-translate="global.person.relationship.{{person.relationship}}">Cá nhân</p>
+	                        </td>
+	                    </tr>
                     </tbody>
+                    <tfoot>
+						<tr>
+							<td colspan="5" class="text-left">
+				            	<div st-template="views/theme/components/pagination.html" st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
+				          	</td>
+				        </tr>
+					</tfoot>
                 </table>
             </div>
         </div>

@@ -2,20 +2,20 @@
     <p>{{title}}</p>
 </div>
 <div class="margin-right-5 width-100 margin-top-5">
-	<div class="margin-top-10 required">
+	<div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}">
 	    <p class="bv-title-from">Họ và tên</p>
 	</div>
     <div class="input-group display-flex margin-top-5" >
         <div class="width-100">
             <input type="text" name="{{name}}-contactName" class="bv-input" placeholder="Họ và tên" ng-model="contactName" readonly="readonly"
                    required-message="'Chựa chọn thông tin người yêu cầu bảo hiểm!'"
-                   required/>
+                   ng-required="isRequired"/>
         </div>
         <div class="input-group-addon bv-date-icon" ng-click="openSearchContact()">
             <i class="fa fa-plus"></i>
         </div>
     </div>
-    <div class="margin-top-10 required">
+    <div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}">
 	    <p class="bv-title-from">Ngày sinh</p>
 	</div>
 
@@ -23,31 +23,31 @@
         <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" readonly="readonly" disabled="disabled">
             <div class="width-100">
                 <input name="{{name}}-contactDob" type="text" class="bv-input" placeholder="dd/MM/yyyy" ng-model="contactDob" readonly="readonly" disabled="disabled"
-                       validator = "vm.dobValidator('{{contactDob}}') === true"
+                       validator = "{{isRequired ? '"vm.dobValidator('{{contactDob}}') === true"' : ''}}"
                        invalid-message = "vm.dobValidator('{{contactDob}}')"
                        required-message="'Chưa chọn ngày sinh!'"
-                       required/>
+                       ng-required="isRequired"/>
             </div>
             <div class="input-group-addon bv-date-icon" readonly="readonly" disabled="disabled">
                 <span class="glyphicon glyphicon-th"></span>
             </div>
         </div>
     </div>
-	<div class="margin-top-10 required" ng-if="isShowExtendInfo">
+	<div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}" ng-if="isShowExtendInfo">
 	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
 	</div>
 	<div class="margin-top-5" ng-if="isShowExtendInfo">
         <input type="text" name="{{name}}-contactIdNumber" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactExtendInfo.cmnd"
             required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
-           	required/>
+           	ng-required="isRequired"/>
     </div>
-    <div class="margin-top-10 required" ng-if="isShowExtendInfo">
+    <div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}" ng-if="isShowExtendInfo">
         <p class="bv-title-from">Quan hệ với người yêu cầu bảo hiểm</p>
     </div>
     <div class="margin-top-5" ng-if="isShowExtendInfo">
         <select name="{{name}}-contactRelation" class="bv-select-box form-control" ng-model="contactExtendInfo.quanhe"
         	required-message="'Chưa lựa chọn quan hệ!'"
-           	required>
+           	ng-required="isRequired">
             <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>
             <option value="30">Bản thân</option>
             <option value="31">Vợ/Chồng</option>
@@ -58,25 +58,26 @@
     </div>
     
     <!-- Người thụ hưởng, người nhận tiền -->
-    <div class="margin-top-10 required" ng-if="isShowExtendInfoNth">
+    <div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}" ng-if="isShowExtendInfoNth">
 	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
 	</div>
 	<div class="margin-top-5" ng-if="isShowExtendInfoNth">
         <input type="text" name="{{name}}-contactIdNumber" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="contactExtendInfo.cmnd"
             required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
-           	required/>
+           	ng-required="isRequired"/>
     </div>
-    <div class="margin-top-10 required" ng-if="isShowExtendInfoNth">
+    <div class="margin-top-10" ng-class="{{isRequired ? 'required' : ''}}" ng-if="isShowExtendInfoNth">
         <p class="bv-title-from">Quan hệ với người được bảo hiểm</p>
     </div>
     <div class="margin-top-5" ng-if="isShowExtendInfoNth">
         <select name="{{name}}-contactRelation" class="bv-select-box form-control" ng-model="contactExtendInfo.quanhe"
         	required-message="'Chưa lựa chọn quan hệ!'"
-           	required>
+           	ng-required="isRequired">
             <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>
             <option value="31">Vợ/Chồng</option>
             <option value="32">Con</option>
             <option value="33">Bố/Mẹ</option>
+            <option value="99">Khác</option>
         </select>
     </div>
 </div>

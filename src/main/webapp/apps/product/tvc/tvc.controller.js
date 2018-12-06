@@ -6,19 +6,21 @@
         .controller('ProductTvcController', ProductTvcController);
 
     ProductTvcController.$inject = ['$scope', '$controller', 'Principal', '$state', '$rootScope', 'ProductCommonService'
-    	, '$stateParams' , 'DateUtils'];
+    	, '$stateParams' , 'DateUtils', '$ngConfirm', '$timeout', 'ResponseValidateService'];
 
     function ProductTvcController ($scope, $controller, Principal, $state, $rootScope, ProductCommonService
-    		, $stateParams, DateUtils) {
+    		, $stateParams, DateUtils, $ngConfirm, $timeout, ResponseValidateService) {
     	var vm = this;
     	vm.lineId = 'TVC';
+    	vm.docsInit = [];
+    	vm.docsInitSummary = [];
     	
     	vm.policy = {
     			// premium
     			premiumDiscount: "",
     			//
                 agreementId: "",
-                changePremium: null,
+                changePremium: "",
                 contactCode: "",
                 destinationId: "",
                 expiredDate: "",
@@ -32,7 +34,7 @@
                 loaitien: "USD",
                 netPremium: 0,
                 paymentMethod:"paymentMethod",
-                planId:"1",
+                planId:"2",
                 policyNumber: "",
                 premium: 0,
                 propserCellphone: "",
@@ -71,6 +73,8 @@
         vm.addOrRemovePerson =addOrRemovePerson;
         vm.addNewPerson = addNewPerson;
         vm.removePerson = removePerson;
+        vm.removeRow = removeRow;
+        vm.addNewRow = addNewRow;
         vm.isShowChangePremium = false;
         vm.onchangeTravel = onchangeTravel;
         vm.isShowChangeTravel = false;
@@ -79,6 +83,17 @@
         vm.changeLoaitien = changeLoaitien;
         vm.ngYcbhDicung = true;
         vm.changeNgYcbhDicung = changeNgYcbhDicung;
+        
+        // check all on data table
+        vm.checkAllDataTable = false;
+        vm.checkBoxAllChange = checkBoxAllChange;
+        vm.btnRemoveAllDisabled = true;
+        vm.selectCheckBoxTableData = selectCheckBoxTableData;
+        vm.lstPersonRemove = [];
+        vm.removeAllRow = removeAllRow;
+        
+        vm.isFullScreen = false;
+        vm.goFullScreenViaWatcher = goFullScreenViaWatcher;
         
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
@@ -185,17 +200,28 @@
         
   		// Function
         function changeNgYcbhDicung() {
-        	if (vm.ngYcbhDicung) {
-        		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
-        		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
-        		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
-        		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
-        	} else {
-        		vm.policy.listTvcAddBaseVM[0] = {};
+        	console.log('changeNgYcbhDicung');
+        	if (vm.policy.contactCategoryType != 'ORGANIZATION') {
+        		if (vm.ngYcbhDicung) {
+            		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+            		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+            		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+            		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+            		vm.policy.listTvcAddBaseVM[0].isOwer = true;
+            	} else {
+            		vm.policy.listTvcAddBaseVM[0].insuredName = "";
+            		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
+            		vm.policy.listTvcAddBaseVM[0].dob = "";
+            		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
+            		vm.policy.listTvcAddBaseVM[0].isOwer = false;
+            	}
+            	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
+            	vm.policy.listTvcAddBaseVM = temp;
         	}
         }
         
         function onchangeTravel() {
+        	vm.policy.listTvcAddBaseVM = [];
             if (vm.policy.travelWithId == '1'){
             	vm.policy.soNguoiThamGia = 1;
             	addOrRemovePerson();
@@ -204,6 +230,9 @@
             	vm.policy.soNguoiThamGia = 2;
             	addOrRemovePerson();
             	vm.isShowChangeTravel = false;
+            }
+            if (vm.policy.expiredDate != "" && vm.policy.expiredDate != null){
+            	getPremium();	
             }
         }
         
@@ -227,7 +256,14 @@
         		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
         			getPremium();	
         		} else{
-        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+//        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
+        	        resetDataPremium();
+        	        let data = {
+    	        		fieldName : "expiredDate",
+    	        		message : "Thời gian ngày khởi hành - ngày trở về không phù hợp"
+        	        };
+        	        
+        	        ResponseValidateService.validateResponse(data)
         		}
         	}
         }
@@ -251,6 +287,13 @@
                 vm.product.premiumDiscount  = 0;
             }
             vm.product.songay  = 0;
+            
+            // check param
+//            if (isEmptyString(vm.product.destination) || isEmptyString(vm.product.ngayDi) 
+//            		|| isEmptyString(vm.product.ngayVe) || isEmptyString(vm.product.numberOfPerson) || isEmptyString( vm.product.planId)) {
+//            	return;
+//            }
+            
             ProductCommonService.getTvcPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
         function onGetPremiumSuccess(result) {
@@ -265,13 +308,16 @@
             }
 
             vm.clearResponseError();
+            vm.changeNgYcbhDicung();
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
         }
 
         function onGetPremiumError(result) {
             vm.loading = false;
-            vm.validateResponse(result, 'getPremium');
+//             vm.validateResponse(result, 'getPremium');
+            resetDataPremium();
+            ResponseValidateService.validateResponse(result.data);
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -304,50 +350,331 @@
             } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {
                 removePerson();
             }
+            // Tinh lai phi
+        	getPremium();
         }
 
         function addNewPerson() {
             var lineAdd = vm.policy.soNguoiThamGia- vm.policy.listTvcAddBaseVM.length;
+            let relationship = "";
+            // Check khach doan 3
+            if (vm.policy.travelWithId == '3') {
+            	relationship = "39";
+            }
+            
             for (var i=0; i < lineAdd; i++) {
                 vm.policy.listTvcAddBaseVM.push({
                     "dob": "",
                     "insuredName": "",
                     "idPasswport": null,
-                    "relationship" : "",
-            });
+                    "relationship" : relationship,
+                    "serial" : generateId()
+                });
             }
         };
 
+        function addNewRow() {
+        	// Validate
+        	// Check khach ca nhan
+            if (vm.policy.travelWithId == '1') {
+            	return;
+            }
+        	
+        	
+            let relationship = "";
+            // Check khach doan 3
+            if (vm.policy.travelWithId == '3') {
+            	relationship = "39";
+            }
+            
+            vm.policy.listTvcAddBaseVM.push({
+                "dob": "",
+                "insuredName": "",
+                "idPasswport": null,
+                "relationship" : relationship,
+                "serial" : generateId()
+            });
+            
+            vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+    		
+        	// Tinh lai phi
+        	getPremium();
+        };
+        
         function removePerson() {
             vm.policy.listTvcAddBaseVM.splice(vm.policy.soNguoiThamGia, vm.policy.listTvcAddBaseVM.length)
         };
         
+        function removeItemInArray(array, key) {
+        	for (var i=0; i < array.length; i++) {
+        		if (array[i].serial == key) {
+    				vm.policy.listTvcAddBaseVM.splice(i, 1);
+    				break;
+    			}
+        	}
+        }
         
-        $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
-        function tvcImportExcelSuccess() {
-        	console.log('TVC tvcImportExcelSuccess');
-        	// Display
-        	addOrRemovePerson();
+        function dooRemoveAllRow() {
+        	if (vm.checkAllDataTable) {
+        		vm.policy.listTvcAddBaseVM = [];
+        	} else {
+        		angular.forEach(vm.lstPersonRemove, function(item, key) {
+        			removeItemInArray(vm.policy.listTvcAddBaseVM, item);
+    		 	});
+        	}
+
+        	vm.lstPersonRemove = [];
+        	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
         	// Tinh lai phi
         	getPremium();
         }
         
-        // function checkNycbhcdc(idx) {
-        //     if(idx == true){
-        //         var personObj = {};
-        //         personObj.dob = vm.contactDob;
-        //         personObj.idPasswport ="";
-        //         personObj.insuredName = vm.contactName;
-        //         personObj.relationship = "30";
-        //         vm.policy.listTvcAddBaseVM.push(personObj);
-        //     }else{
-        //         for (var i= 0; i< vm.policy.listTvcAddBaseVM.length; i++){
-        //             if(vm.policy.listTvcAddBaseVM[i].insuredName == vm.contactName){
-        //                 vm.policy.listTvcAddBaseVM.splice(i);
-        //             }
-        //         }
-        //     }
-        //
-        // }
+        function removeAllRow() {
+        	let numberRemove = vm.lstPersonRemove.length;
+        	if (vm.policy.listTvcAddBaseVM.length - numberRemove < 2) {
+        		toastr.error("Số người tham gia phải từ 2 người");
+            	return;
+        	}
+        	
+        	$ngConfirm({
+                title: 'Xác nhận!',
+                content: '<div class="text-center">Bạn chắc chắn xóa những người được bảo hiểm này ?</div>',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                buttons: {
+                    ok: {
+                    	text: 'Đồng ý',
+                        btnClass: "btn-blue",
+                        action: function(scope, button){
+                        	dooRemoveAllRow();
+	                    }
+                    },
+                    close: {
+                    	text: 'Không',
+                        action: function(scope, button){
+	                    }
+                    }
+                },
+            });
+        }
+        
+        function validateRemoveOneRow() {
+        	// Check khach ca nhan
+            if (vm.policy.travelWithId == '1') {
+            	toastr.error("Số người tham gia phải = 1");
+            	return false;
+            }
+            
+            if (vm.policy.listTvcAddBaseVM.length == 2) {
+            	toastr.error("Số người tham gia phải từ 2 người");
+            	return false;
+            }
+            
+            return true;
+        }
+        
+        function doRemoveRow(index) {
+        	vm.policy.listTvcAddBaseVM.splice(index, 1);
+        	console.log(vm.policy.listTvcAddBaseVM);
+        	
+        	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+    		
+        	// Tinh lai phi
+        	getPremium();
+        }
+        
+        function removeRow(index) {
+        	if (validateRemoveOneRow() == false) {
+        		return;
+        	}
+        	
+//        	var r = confirm("Bạn chắc chắn xóa người được bảo hiểm này ?");
+//        	if (r == true) {
+//        		doRemoveRow(index);
+//        	}
+        	
+        	// Check empty data
+        	let item = vm.policy.listTvcAddBaseVM[index];
+        	if (isEmptyString(item.insuredName) && isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
+        		doRemoveRow(index);
+        	} else {
+        		$ngConfirm({
+                    title: 'Xác nhận!',
+                    content: '<div class="text-center">Bạn chắc chắn xóa người được bảo hiểm này ?</div>',
+                    animation: 'scale',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        ok: {
+                        	text: 'Đồng ý',
+                            btnClass: "btn-blue",
+                            action: function(scope, button){
+                            	doRemoveRow(index);
+    	                    }
+                        },
+                        close: {
+                        	text: 'Không',
+                            action: function(scope, button){
+    	                    }
+                        }
+                    },
+                });
+        	}
+    	}
+        
+        function calculateCheckAll() {
+        	// != 100
+        	let value = true;
+        	vm.btnRemoveAllDisabled = true;
+        	angular.forEach(vm.policy.listTvcAddBaseVM, function(order, key) {
+    			if (order.check != true) {
+    				value = false;
+    			} else {
+    				vm.btnRemoveAllDisabled = false;
+    			}
+		 	});
+        	vm.checkAllDataTable = value;
+        	console.log(vm.lstPersonRemove);
+        }
+        
+        function selectCheckBoxTableData(data) {
+        	if(data.check == true){
+                vm.lstPersonRemove.push(data.serial);
+            }else {
+                var index = vm.lstPersonRemove.indexOf(data.serial);
+                if (index !== -1) {
+            		vm.lstPersonRemove.splice(index, 1);
+                }
+            }
+            calculateCheckAll();
+        }
+        
+        function checkBoxAllChange() {
+        	let value = vm.checkAllDataTable;
+        	vm.lstPersonRemove = [];
+        	if (value == true) {
+        		vm.btnRemoveAllDisabled = false;
+        		angular.forEach(vm.policy.listTvcAddBaseVM, function(order, key) {
+        			vm.lstPersonRemove.push(order.serial);
+    		 	});
+        	} else {
+        		vm.btnRemoveAllDisabled = true;
+        	}
+        	
+        	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        		item.check = value;
+		 	});
+        }
+        
+//        vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+//		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+//		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+//		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+		
+        // Check nguoi yeu cau bao hiem di cung
+        function checkNgycbhDiCungInArrayTVC() {
+        	if (vm.policy.contactCategoryType == 'ORGANIZATION') {
+        		return;
+        	}
+        	
+        	if (vm.ngYcbhDicung) {
+        		let isExit = false;
+        		angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        			// Case CMND trung -> Thong bao da co nguoi nay trong danh sach -> focus
+        			if (item.idPasswport == vm.policy.contactIdNumber) {
+        				item.isOwer = true;
+        				isExit = true;
+        			}
+        			
+        			// Case Ten + Ngay sinh trung: -> Thong bao da co nguoi nay trong danh sach ban co muon them vao khong -> focus
+        			if (item.insuredName == vm.policy.contactName && item.dob == vm.policy.contactDob) {
+        				item.isOwer = true;
+        				isExit = true;
+        			}
+    		 	});
+        		
+        		if (isExit) {
+        			toastr.success("Người yêu cầu bảo hiểm đã có trong danh sách");
+        		} else {
+        			// ng-confirm 
+        			$ngConfirm({
+                        title: 'Xác nhận!',
+                        content: '<div class="text-center">Người yêu cầu bảo hiểm chưa có trong danh sách, Có muốn bổ xung vào danh sách không ?</div>',
+                        animation: 'scale',
+                        closeAnimation: 'scale',
+                        buttons: {
+                            ok: {
+                            	text: 'Đồng ý',
+                                btnClass: "btn-blue",
+                                action: function(scope, button){
+                                	let arr = [{
+                                		insuredName : vm.policy.contactName,
+                                		idPasswport : vm.policy.contactIdNumber,
+                                		dob : vm.policy.contactDob,
+                                		relationship : "30", // Ban than
+                                		isOwer : true
+                                	}];
+                                	// case : ca nhan
+                                	if (vm.policy.travelWithId == '1') {
+                                    	vm.policy.listTvcAddBaseVM = arr; 
+                                    	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	} else {
+                                    	vm.policy.listTvcAddBaseVM = arr.concat(vm.policy.listTvcAddBaseVM); 
+                                    	vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+                                	}
+                                	
+                                	// Display
+                                	addOrRemovePerson();
+                                	// Tinh lai phi
+                                	getPremium();
+        	                    }
+                            },
+                            close: {
+                            	text: 'Không',
+                                action: function(scope, button){
+                                	let temp = {
+                                		insuredName : vm.policy.listTvcAddBaseVM[0].insuredName,
+                                		idPasswport : vm.policy.listTvcAddBaseVM[0].idPasswport,
+                                		dob : vm.policy.listTvcAddBaseVM[0].dob,
+                                		relationship : vm.policy.listTvcAddBaseVM[0].relationship // Ban than
+                                	};
+                                	vm.ngYcbhDicung = false;
+                                	//$state.go('app.cart');
+                                	
+                                	// Display
+                                	// addOrRemovePerson();
+                                	// Tinh lai phi
+                                	getPremium();
+                                	$timeout(function (){
+                            			vm.policy.listTvcAddBaseVM[0] = temp;
+                                		let tempArr = [].concat(vm.policy.listTvcAddBaseVM); 
+                                    	vm.policy.listTvcAddBaseVM = tempArr;
+                        			} , 500);
+        	                    }
+                            }
+                        },
+                    });
+        		}
+        	}
+        }
+        
+        function resetDataPremium() {
+        	vm.policy.netPremium = 0;
+            vm.sumPremiumDiscount = 0;
+            vm.policy.premium = 0;
+        }
+        
+        $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);
+        function tvcImportExcelSuccess() {
+        	console.log('TVC tvcImportExcelSuccess');
+
+        	checkNgycbhDiCungInArrayTVC();
+        	
+        	getPremium();
+        }
+        
+        function goFullScreenViaWatcher() {
+            vm.isFullScreen = !vm.isFullScreen;
+         }
+        
     }
 })();

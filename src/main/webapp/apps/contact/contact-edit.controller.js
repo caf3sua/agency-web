@@ -5,9 +5,9 @@
         .controller('ContactEditController', ContactEditController);
 
 
-    	ContactEditController.$inject = ['$rootScope', '$scope', '$http', '$filter', '$state',
+    	ContactEditController.$inject = ['$rootScope', '$scope', '$stateParams', '$http', '$filter', '$state',
     		'ContactService', '$controller', 'ContactCommonDialogService', 'entity', 'ProductCommonService'];
-        function ContactEditController($rootScope, $scope, $http, $filter, $state
+        function ContactEditController($rootScope, $scope, $stateParams, $http, $filter, $state
         		, ContactService, $controller, ContactCommonDialogService, entity, ProductCommonService) {
         	
         	var vm = this;
@@ -87,6 +87,8 @@
       		    
       		    // Get object Contact
       		    vm.contact = entity;
+      		    $stateParams.categoryType = vm.contact.categoryType;
+      		    
 	      		if (vm.contact.listRelationship == null){
 	      			vm.contact.listRelationship = [];
 	      		}

@@ -40,7 +40,6 @@
     		};
         
   		vm.processPayment = processPayment;
-//  		vm.getAllOrder = getAllOrder;
         vm.newDate = null;
         vm.cartWarning = false;
         vm.cartCheckBox = false;
@@ -67,6 +66,7 @@
         vm.couponCode = null;
         vm.bankCode = null;
         vm.agreementIds = [];
+        vm.agreementOrder = [];
         vm.checkTypePay = 'agency';
   		
         vm.confirmCancelCart = confirmCancelCart;
@@ -86,7 +86,7 @@
         // Init controller
         (function initController() {
         	$controller('AgreementBaseController', { vm: vm, $scope: $scope });
-//            getAllOrder();
+
         	searchCart();
             vm.newDate = new Date();
             
@@ -109,19 +109,7 @@
   		});
         
   		// Function
-//        function getAllOrder() {
-//            CartService.getAll({
-//            	page: $stateParams.page - 1,
-//                size: vm.itemsPerPage
-////                sort: sort()
-//            }, onGetAllOrderSuccess, onGetAllOrderError);
-//        }
-        
         function transition () {
-//            $state.transitionTo($state.$current, {
-//                page: vm.page,
-//                search: vm.currentSearch
-//            });
         	vm.isLoading = true;
         	vm.searchCriterial.pageable.page = vm.page - 1;
         	searchCart();
@@ -241,6 +229,7 @@
         function resetCartValue() {
         	vm.sumMoney = 0;
             vm.agreementIds = [];
+            vm.agreementOrder = [];
         }
         
         function selectCheckBoxCart(data) {
@@ -248,12 +237,14 @@
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney + money;
                 vm.agreementIds.push(data.agreementId);
+                vm.agreementOrder.push(data);
             }else {
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney - money;
                 var index = vm.agreementIds.indexOf(data.agreementId);
                 if (index !== -1) {
             		vm.agreementIds.splice(index, 1);
+            		vm.agreementOrder.splice(index, 1);
                 }
             }
 
@@ -298,6 +289,7 @@
         		return;
         	}
     		
+        	vm.isLoading = true;
         	CartService.processPayment(paymentData, onProcessPaymentSuccess, onProcessPaymentError)
         }
         
@@ -311,8 +303,10 @@
         	$rootScope.$broadcast('agreementChangeSuccess');
         }
         
-        function onProcessPaymentError() {
-        	toastr.error("Có lỗi xảy ra khi thanh toán!");
+        function onProcessPaymentError(result) {
+        	vm.isLoading = false;
+        	let message = result.data.message || "Có lỗi xảy ra khi thanh toán!";
+        	toastr.error(message);
         }
         
         function loadPage (page) {
@@ -349,7 +343,6 @@
   			OrderService.cancelOrder({gycbhNumber: number}, onSuccess, onError);
   			
   			function onSuccess(result) {
-//  				getAllOrder();
   				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
   				$rootScope.$broadcast('agreementChangeSuccess');
   			}

@@ -5,37 +5,68 @@
 	<!-- Cart search -->	
 	<div ng-include="'apps/cart/cart-search.html'" ng-hide="vm.showPayment"></div>
 	
-	<!-- Promotion -->
-	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0" ng-hide="vm.showPayment">
-		<div class="col-lg-8 padding0">
-			<p class="bv-gh-text-sum">Áp dụng mã khuyến mãi:</p>
-		</div>
-		<div class="col-lg-4 padding0 text-right">
-			<input type="text" class="bv-input" placeholder="Nhập mã giảm giá!"
-				ng-model="vm.couponCode" />
-		</div>
-	</div>
-	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-hide="vm.showPayment">
-		<div class="col-lg-8 padding0">
-			<p class="bv-gh-text-sum">Tổng tiền</p>
-		</div>
-		<div class="col-lg-4 padding0 text-right">
-			<p class="bv-gh-number-sum">{{vm.sumMoney | number:0 }} VNĐ</p>
-			<button class="bv-gh-tt" ng-click="vm.nextStep()" ng-disabled="vm.sumMoney == 0">Tiếp tục</button>
-		</div>
-	</div>
-	<!-- <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
-		<div class="col-lg-8 padding0">
-		</div
-		<div class="col-lg-4 padding0 text-right">
-			<button class="bv-btn-step2" ng-click="vm.processPayment()" ng-disabled="vm.sumMoney == 0">Thanh toán</button>
-		</div>
-	</div> -->
 	<div class="col-lg-3 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;" ng-show="vm.showPayment">
-        <button class="bv-btn-step2" ng-click="vm.processPayment()" ng-disabled="vm.sumMoney == 0">
+        <button class="bv-btn-step2" ng-click="vm.processPayment()" button-spinner="vm.isLoading" ng-disabled="vm.isLoading">
         	Thanh toán
         </button>
-        </div>
     </div>
+	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
+		 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
+	        <p>Danh sách đơn hàng thanh toán</p>
+	    </div>
+		<table class="table bv-home-block-left-table bv-table-kh" id="tableOrder">
+	        <thead>
+	            <tr>
+	                <th>STT</th>
+	                <th>Mã đơn hàng</th>
+					<th>Tên khách hàng</th>
+					<th>Sản phẩm</th>
+					<th>Số điện thoại</th>
+					<th>Trạng thái</th>
+					<th>Hiệu lực từ</th>
+					<th>Hiệu lực đến</th>
+					<th>Phí bảo hiểm</th>
+					<th>Ngày tạo</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+		        <tr ng-repeat="order in vm.agreementOrder track by $index">
+		            <td>
+		                <p class="margin-0">{{$order + 1}}</p>
+		            </td>
+		            <td>
+	                     <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
+	                 </td>
+	                 <td>
+	                     <p class="">{{order.receiverName}}</p>
+	                 </td>
+	                 <td><i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+	                 </td>
+	                 <td>
+	                     <p class="">{{order.receiverMoible}}</p>
+	                 </td>
+	                 <td>
+	                     <p style="width: 150px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+	                </td>
+	                <td>
+	                    <p style="width: 80px">{{order.inceptionDate}}</p>
+	                </td>
+	                <td>
+	                    <p style="width: 80px">{{order.expiredDate}}</p>
+	                </td>
+	                <td>
+	                    <p style="width: 150px">{{order.totalPremium | number:0}}</p>
+	                </td>
+	                <td>
+	                	<p style="width: 80px">{{order.agreementSysdate}}</p>
+		            </td>
+		        </tr>
+		        <tr>
+		        <td colspan="8"><p class="bv-gh-text-sum" style="font-size: 20px">Tổng tiền</p></td>
+		        <td colspan="2"><p class="bv-gh-number-sum" style="font-size: 25px">{{vm.sumMoney | number:0 }} VNĐ</p></td>
+		        </tr>
+	        </tbody>
+	   </table>
+	</div>
 </div>
 
