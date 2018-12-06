@@ -46,7 +46,7 @@
 	        </thead>
 	        <tbody>
 		        <tr ng-repeat="row in vm.contacts track by $index" ng-dblclick="vm.selectedContact(row)">
-		            <td>{{$index + 1}}</td>
+		            <td>{{(vm.page -1)*vm.itemsPerPage+$index + 1}}</td>
 		          	<td><a ng-click="vm.selectedContact(row)"><p class="bv-table-text-colorBlue">{{row.contactName}}</p></a></td>
 		          	<td>{{row.idNumber}}</td>
 		          	<td>{{row.dateOfBirth}}</td>
