@@ -941,13 +941,12 @@
 	                    vm.typeArrowTwo = "fa-angle-right";
 	                }
             	} else{
-            		if (vm.policy.invoiceInfo.name == ""){
+            		if (vm.policy.invoiceInfo.name == "" || vm.policy.invoiceInfo.name == undefined){
         				angular.element('#invoiceInfoName').focus();
         				toastr.error("Cần nhập Họ và tên người mua");
         				return false;
         			}
-        			
-        			if (vm.policy.invoiceInfo.company == ""){
+        			if (vm.policy.invoiceInfo.company == "" || vm.policy.invoiceInfo.company == undefined){
         				angular.element('#invoiceInfoCompany').focus();
         				toastr.error("Cần nhập Tên đơn vị");
         				return false;
@@ -959,7 +958,7 @@
         				return false;
         			}
         			
-        			if (vm.policy.invoiceInfo.address == ""){
+        			if (vm.policy.invoiceInfo.address == "" || vm.policy.invoiceInfo.address == undefined){
         				angular.element('#invoiceInfoAddress').focus();
         				toastr.error("Cần nhập Địa chỉ đơn vị");
         				return false;
