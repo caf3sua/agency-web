@@ -230,6 +230,9 @@
 	      		if (vm.lineId == 'BVP') {
 	      			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined && vm.policy.agreementId != ""){
 	      				vm.policy.invoiceInfo.name = vm.policy.contactName;
+	      				if (vm.policy.contactCategoryType == "ORGANIZATION"){
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      			}
 	      				vm.policy.invoiceInfo.address = vm.policy.contactAddress;
 	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 			      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
@@ -237,6 +240,9 @@
 	      				var dataBVP = $rootScope.saveNguoiYcBVP;
 		      			let address = dataBVP.homeAddress;
 		      			vm.policy.invoiceInfo.name = dataBVP.contactName;
+		      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      			}
 		      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 			      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
 
@@ -247,6 +253,9 @@
 	      			}
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
+	      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
+	      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+	      			}
 	      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
 		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
