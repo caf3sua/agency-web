@@ -314,7 +314,7 @@
             }
 
             vm.clearResponseError();
-            vm.changeNgYcbhDicung();
+//            vm.changeNgYcbhDicung(); // duclm comment 07/12 Issue #316 
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
         }
