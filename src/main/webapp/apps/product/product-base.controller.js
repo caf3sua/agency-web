@@ -1233,6 +1233,8 @@
         function requestProcessImportExcel(result) {
         	// Append more param
         	result.travelWithId = vm.policy.travelWithId;
+        	result.contactCategoryType = vm.policy.contactCategoryType;
+        	debugger
         	ProductCommonService.processImportExcelTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
         	
         	function onProcessImportExcelSuccess(data) {
