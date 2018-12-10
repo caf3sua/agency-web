@@ -99,7 +99,7 @@
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
-
+        
     	// Init controller
   		(function initController() {
   			// instantiate base controller
@@ -225,6 +225,14 @@
             	vm.policy.listTvcAddBaseVM = temp;
         	}
         }
+        
+        $rootScope.$on('contactCreateSuccess', function() {
+        	vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+    		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+    		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+    		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+    		vm.policy.listTvcAddBaseVM[0].isOwer = true;
+        });
         
         function onchangeTravel() {
         	vm.policy.listTvcAddBaseVM = [];
