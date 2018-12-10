@@ -96,6 +96,9 @@
         vm.goFullScreenViaWatcher = goFullScreenViaWatcher;
         vm.blankTableContent = blankTableContent;
         
+        vm.showLeftSidebar = true;
+        vm.toogleSidebar = toogleSidebar;
+        
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
         });
@@ -165,6 +168,10 @@
   		    vm.selectedContactMode();
             
   		})();
+  		
+  		function toogleSidebar() {
+  			vm.showLeftSidebar = !vm.showLeftSidebar;
+  		}
   		
   		function formatAddressEdit() {
   			// Address at step 2
