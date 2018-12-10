@@ -51,15 +51,15 @@
                      <p class="bv-table-text-colorBlue">{{order.policyNumber}}</p>
                  </td>
                  <td>
-                     <p class="">{{order.receiverName}}</p>
+                     <p style="width: 200px">{{order.receiverName}}</p>
                  </td>
                  <td><i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
                  </td>
                  <td>
-                     <p class="">{{order.receiverMoible}}</p>
+                     <p style="width: 80px">{{order.receiverMoible}}</p>
                  </td>
                  <td>
-                     <p style="width: 150px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+                     <p style="width: 100px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
                 </td>
                 <td>
                     <p style="width: 80px">{{order.inceptionDate}}</p>
@@ -68,7 +68,7 @@
                     <p style="width: 80px">{{order.expiredDate}}</p>
                 </td>
                 <td>
-                    <p style="width: 150px">{{order.totalPremium | number:0}}</p>
+                    <p style="width: 80px">{{order.totalPremium | number:0}}</p>
                 </td>
                 <td>
                 	<p style="width: 80px">{{order.agreementSysdate}}</p>
