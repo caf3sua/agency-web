@@ -6,8 +6,8 @@
         <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Tải xuống dữ liệu" ng-click="vm.exportExcel('TVC')">
             <i class="fas fa-download"></i>
         </a>
-        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Toàn màn hình" ng-click="vm.goFullScreenViaWatcher()">
-            <i class="fas fa-arrows-alt"></i>
+        <a class="product-btn-toolbar" tooltip-placement="bottom" uib-tooltip="Mở/thu hẹp màn hình" ng-click="vm.toogleSidebar()">
+            <i class="fas" ng-class="vm.showLeftSidebar ? 'fa-arrow-left' : 'fa-arrow-right'"></i>
         </a>
     </div>
     <div class="product-toolbar-left">
