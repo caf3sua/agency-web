@@ -231,19 +231,21 @@
 	      			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined && vm.policy.agreementId != ""){
 	      				vm.policy.invoiceInfo.name = vm.policy.contactName;
 	      				if (vm.policy.contactCategoryType == "ORGANIZATION"){
-		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+		      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 		      			}
+	      				
 	      				vm.policy.invoiceInfo.address = vm.policy.contactAddress;
-	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 			      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      			} else {
 	      				var dataBVP = $rootScope.saveNguoiYcBVP;
 		      			let address = dataBVP.homeAddress;
 		      			vm.policy.invoiceInfo.name = dataBVP.contactName;
 		      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
-		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+		      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 		      			}
-		      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+		      			
 			      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
 
 		                let postcode = address.substring(address.lastIndexOf("::") + 2);
@@ -254,9 +256,10 @@
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
 	      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
-	      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+	      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 	      			}
-	      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+	      			
 		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
 		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      		}
@@ -707,7 +710,10 @@
         				vm.policy.invoiceInfo = {};
         			}
         			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
-//        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
+        			if ($rootScope.selectedContact.categoryType == "ORGANIZATION"){
+	      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+	      			}
         			
         			let addressReceiver = $rootScope.selectedContact.homeAddress;
             		vm.policy.invoiceInfo.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
