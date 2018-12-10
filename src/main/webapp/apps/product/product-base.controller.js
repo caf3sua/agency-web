@@ -164,12 +164,12 @@
     		if (vm.policy.invoiceInfo != null){
     			if (isNotEmptyString(vm.policy.invoiceInfo.name) && isNotEmptyString(vm.policy.invoiceInfo.company) 
     					&& isNotEmptyString(vm.policy.invoiceInfo.taxNo) && isNotEmptyString(vm.policy.invoiceInfo.address) 
-    					&& isNotEmptyString(vm.policy.invoiceInfo.accountNo) && vm.policy.invoiceInfo.addressDistrictData != undefined){
+    					&& vm.policy.invoiceInfo.addressDistrictData != undefined){
     				return true;        				
     			}
     			if (isEmptyString(vm.policy.invoiceInfo.name) && isEmptyString(vm.policy.invoiceInfo.company)
     					&& isEmptyString(vm.policy.invoiceInfo.taxNo) && isEmptyString(vm.policy.invoiceInfo.address) 
-    					&& isEmptyString(vm.policy.invoiceInfo.accountNo) && isEmptyString(vm.policy.invoiceInfo.addressDistrictData)){
+    					&& isEmptyString(vm.policy.invoiceInfo.addressDistrictData)){
     				return true;        				
     			}
     			
@@ -975,11 +975,11 @@
         				return false;
         			}
         			
-        			if (vm.policy.invoiceInfo.accountNo == "" || vm.policy.invoiceInfo.accountNo == null || vm.policy.invoiceInfo.accountNo == undefined){
+        			/*if (vm.policy.invoiceInfo.accountNo == "" || vm.policy.invoiceInfo.accountNo == null || vm.policy.invoiceInfo.accountNo == undefined){
         				angular.element('#invoiceInfoAccountNo').focus();
         				toastr.error("Cần nhập Số tài khoản");
         				return false;
-        			}
+        			}*/
             	}
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';

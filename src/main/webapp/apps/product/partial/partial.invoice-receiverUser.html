@@ -53,12 +53,12 @@
 		<input type="hidden" name="invoiceInfo.addressDistrict" id="invoiceInfoAddressDistrict" class="bv-input" placeholder="Tên phường xã" ng-model="vm.policy.invoiceInfo.addressDistrictData"
 					 />
 	</div>
-	<div class="margin-top-10 required">
+	<!-- <div class="margin-top-10 required">
 	    <p class="bv-title-from">Số tài khoản</p>
 	</div>
 	<div class="margin-top-5">
 	    <input type="text" name="invoiceInfo.accountNo" id="invoiceInfoAccountNo" class="bv-input" placeholder="Số tài khoản" ng-model="vm.policy.invoiceInfo.accountNo"/>
-	</div>
+	</div> -->
 </div>
 
 <!-- Thông tin nhận đơn bảo hiểm -->
@@ -130,8 +130,8 @@
 		    <p class="bv-title-from">Số điện thoại liên hệ</p>
 		</div>
 		<div class="margin-top-5">
-		    <input type="text" name="receiverUserData.mobile" min="10" maxlength="11" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUser.mobile"
-		    	ng-pattern = "/^[0-9]{10,11}$/"
+		    <input type="text" name="receiverUserData.mobile" min="10" maxlength="10" class="bv-input" placeholder="Số điện thoại liên hệ" ng-model="vm.policy.receiverUser.mobile"
+		    	ng-pattern = "/^[0-9]{10}$/"
 		    	validate-on="blur"
 		        invalid-message = "'Số điện thoại không đúng định dạng'"
 		    	required-message="'Chưa nhập số điện thoại liên hệ!'"
