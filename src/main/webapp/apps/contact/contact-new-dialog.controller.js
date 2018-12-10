@@ -89,6 +89,7 @@
         	vm.dateBeforeShowDate = dateBeforeShowDate;
         	vm.getAllCategoryReminder = getAllCategoryReminder;
         	vm.cancel = cancel;
+        	vm.exit = exit;
         	
         	angular.element(document).ready(function () {
             });
@@ -251,5 +252,11 @@
                     },
                 });
             }
+        	
+        	function exit() {
+        		$uibModalInstance.dismiss('cancel');
+      		}
+        	
+        	
         }
 })();

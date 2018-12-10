@@ -11,6 +11,10 @@
         </a>
     </div>
     <div class="product-toolbar-left">
+    	<a class="product-btn-toolbar color-5cb85c" 
+        		tooltip-placement="bottom" uib-tooltip="Xóa tất cả dữ liệu" ng-click="vm.blankTableContent()">
+            <i class="fas fa-sync-alt"></i>
+        </a>
         <a class="product-btn-toolbar color-5cb85c" 
         		tooltip-placement="bottom" uib-tooltip="Thêm dòng dữ liệu" ng-click="vm.addNewRow()"
         		ng-disabled="vm.policy.travelWithId == '1'" ng-show="vm.policy.travelWithId != '1'">

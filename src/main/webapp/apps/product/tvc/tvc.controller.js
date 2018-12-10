@@ -94,6 +94,7 @@
         
         vm.isFullScreen = false;
         vm.goFullScreenViaWatcher = goFullScreenViaWatcher;
+        vm.blankTableContent = blankTableContent;
         
         // vm.checkNycbhcdc = checkNycbhcdc;
         angular.element(document).ready(function () {
@@ -183,6 +184,11 @@
   			}
   			
   			// extra
+  			var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
+    		});
   		}
   		
         function showChangePremium() {
@@ -308,7 +314,7 @@
             }
 
             vm.clearResponseError();
-            vm.changeNgYcbhDicung();
+//            vm.changeNgYcbhDicung(); // duclm comment 07/12 Issue #316 
             // "premiumTvc": 104500,
             //     "premiumNet": 110000,sumPremiumDiscount
         }
@@ -661,6 +667,48 @@
         	vm.policy.netPremium = 0;
             vm.sumPremiumDiscount = 0;
             vm.policy.premium = 0;
+        }
+        
+        function blankTableContent() {
+        	vm.ngYcbhDicung = false;
+        	vm.policy.listTvcAddBaseVM = [];
+        	
+        	// Check khach doan 3
+        	let relationship = "";
+            if (vm.policy.travelWithId == '3') {
+            	relationship = "39";
+            }
+            
+        	// Check khach ca nhan
+            if (vm.policy.travelWithId == '1') {
+            	vm.policy.listTvcAddBaseVM.push({
+                    "dob": "",
+                    "insuredName": "",
+                    "idPasswport": null,
+                    "relationship" : relationship,
+                    "serial" : generateId()
+                });
+            } else {
+            	vm.policy.listTvcAddBaseVM.push({
+                    "dob": "",
+                    "insuredName": "",
+                    "idPasswport": null,
+                    "relationship" : relationship,
+                    "serial" : generateId()
+                });
+            	vm.policy.listTvcAddBaseVM.push({
+                    "dob": "",
+                    "insuredName": "",
+                    "idPasswport": null,
+                    "relationship" : relationship,
+                    "serial" : generateId()
+                });
+            }
+        	
+            vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+    		
+        	// Tinh lai phi
+        	getPremium();
         }
         
         $rootScope.$on('tvcImportExcelSuccess', tvcImportExcelSuccess);

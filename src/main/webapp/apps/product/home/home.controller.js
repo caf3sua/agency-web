@@ -175,6 +175,12 @@
     		vm.getAddressByPostCode(insuredLocation).then(function (data) {
     			vm.policy.insuredLocationDistrict = data;
     		});
+    		
+    		var contactAddress = vm.policy.contactAddress;
+    		vm.policy.contactAddress = vm.formatAddressEdit(contactAddress);
+    		vm.getAddressByPostCode(contactAddress).then(function (data) {
+    			vm.policy.contactAddressDistrictData = data;
+    		});
   		}
   		
   		function getPremium() {
