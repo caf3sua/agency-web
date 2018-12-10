@@ -611,7 +611,7 @@
         			// ng-confirm 
         			$ngConfirm({
                         title: 'Xác nhận!',
-                        content: '<div class="text-center">Người yêu cầu bảo hiểm chưa có trong danh sách, Có muốn bổ xung vào danh sách không ?</div>',
+                        content: '<div class="text-center">Người yêu cầu bảo hiểm chưa có trong danh sách, Có muốn bổ sung vào danh sách không ?</div>',
                         animation: 'scale',
                         closeAnimation: 'scale',
                         buttons: {
