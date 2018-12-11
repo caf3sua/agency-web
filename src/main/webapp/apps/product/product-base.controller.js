@@ -331,7 +331,8 @@
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
         	
-        	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.accountNo != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
+        	debugger
+        	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" ){
         		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
     			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
