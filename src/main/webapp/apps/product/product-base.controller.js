@@ -118,6 +118,9 @@
     	vm.exportExcel = exportExcel;
     	vm.openConfirmDialog = openConfirmDialog;
     	
+    	vm.rembemberCurrentPage = rembemberCurrentPage;
+    	vm.current_page = 1;
+    	
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -327,15 +330,18 @@
         
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
+//        	if (vm.policy.receiverUser.address.indexOf('::') == -1) {
+        		vm.policy.receiverUser.address = vm.policy.receiverUser.address 
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
+//        	}
         	
-        	debugger
         	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" ){
-        		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
-    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
-    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
+//        		if (vm.policy.invoiceInfo.address.indexOf('::') == -1) {
+        			vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
+        			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
+        			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;
+//        		}
         	}
         	
         	// Save or update
@@ -352,6 +358,9 @@
                 	// Add new
                 	createNewPolicy(productCode, obj);
                 }).catch(function(data, status) {
+                	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+                	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
+                	
         			console.log('Error get gychbhNumber');
         			vm.clearResponseError();
         			vm.validateResponse(data, 'getPolicyNumber');
@@ -420,6 +429,9 @@
 	        }
 				
 	        function onCreatePolicyError(error) {
+	        	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+            	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
+            	
 	            vm.loading = false;
 	            vm.validateResponse(error, 'createPolicy');
 	        }
@@ -481,6 +493,8 @@
 	        }
 				
 	        function onUpdatePolicyError(error) {
+	        	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+            	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
 	            vm.loading = false;
 	            vm.validateResponse(error, 'updatePolicy');
 	        }
@@ -1339,6 +1353,10 @@
                     }
                 },
             });
+        }
+        
+        function rembemberCurrentPage(p) {
+        	vm.current_page = p;
         }
         
     }

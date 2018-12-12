@@ -69,7 +69,7 @@
                     </thead>
                     <tbody>
 	                    <tr ng-repeat="person in vm.docsInitSummary track by $index">
-	                        <td>{{$index + 1}}</td>
+	                        <td>{{(vm.current_page-1)*5 + $index + 1}}</td>
 	                        <td>
 	                            <p class="">{{person.insuredName}}</p>
 	                        </td>
@@ -87,7 +87,7 @@
                     <tfoot>
 						<tr>
 							<td colspan="5" class="text-left">
-				            	<div st-template="views/theme/components/pagination.html" st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
+				            	<div st-page-change="vm.rembemberCurrentPage(newPage)" st-template="views/theme/components/pagination.html" st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0"></div>
 				          	</td>
 				        </tr>
 					</tfoot>
