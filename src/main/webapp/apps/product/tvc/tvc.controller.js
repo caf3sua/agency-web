@@ -34,7 +34,7 @@
                 loaitien: "USD",
                 netPremium: 0,
                 paymentMethod:"paymentMethod",
-                planId:"2",
+                planId:"1",
                 policyNumber: "",
                 premium: 0,
                 propserCellphone: "",

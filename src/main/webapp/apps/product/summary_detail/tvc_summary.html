@@ -108,6 +108,9 @@
         </div>
         <div>
             <div ng-switch="vm.policy.destinationId">
+            	<div ng-switch-when="1">
+                    <p class="bv-tile-templateSummary">Việt Nam</p>
+                </div>
                 <div ng-switch-when="2">
                     <p class="bv-tile-templateSummary">ASEAN</p>
                 </div>
@@ -140,6 +143,9 @@
         </div>
         <div>
         	<div ng-switch="vm.policy.planId">
+                <div ng-switch-when="1">
+                    <p class="bv-tile-templateSummary">Chương trình bảo hiểm Đồng</p>
+                </div>
                 <div ng-switch-when="2">
                     <p class="bv-tile-templateSummary">Chương trình bảo hiểm Bạc</p>
                 </div>
