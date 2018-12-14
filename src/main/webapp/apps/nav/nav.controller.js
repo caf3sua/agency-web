@@ -26,7 +26,7 @@
     		{"lineId": "CAR", "lineName" : "Bảo hiểm ô tô"}, 
     		{"lineId": "BVP", "lineName" : "Bảo Việt An Gia"},
     		{"lineId": "KCARE", "lineName" : "Bảo hiểm bệnh ung thu"},
-    		{"lineId": "TVC", "lineName" : "Bảo hiểm du lịch quốc tế"},
+    		{"lineId": "TVC", "lineName" : "Bảo hiểm du lịch Flexi"},
     		{"lineId": "TVI", "lineName" : "Bảo hiểm du lịch Việt Nam"},
     		{"lineId": "MOTO", "lineName" : "Bảo hiểm xe máy"},
     		{"lineId": "HOME", "lineName" : "Bảo hiểm nhà tư nhân"},

@@ -33,7 +33,7 @@
         		{"productCode": "CAR", "productName" : "Bảo hiểm ô tô"}, 
         		{"productCode": "BVP", "productName" : "Bảo hiểm An Gia"},
         		{"productCode": "KCR", "productName" : "Bảo hiểm bệnh ung thư"},
-        		{"productCode": "TVC", "productName" : "Bảo hiểm du lịch quốc tế"},
+        		{"productCode": "TVC", "productName" : "Bảo hiểm du lịch Flexi"},
         		{"productCode": "TVI", "productName" : "Bảo hiểm du lịch Việt Nam"},
         		{"productCode": "MOT", "productName" : "Bảo hiểm xe máy"},
         		{"productCode": "HOM", "productName" : "Bảo hiểm nhà tư nhân"},
