@@ -1027,22 +1027,64 @@
         	console.log('validator extra TVC at step 2');
         	
         	// Validate CMND or Ngay sinh
-        	let result = true; 
+        	let result = true;
+        	let resultName = true;
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
         			result = false;
         			// Show
         			let data = {
     	        		fieldName : "idPasswport" + key,
-    	        		message : "Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm"
+    	        		message : "Thiếu số hộ chiếu/CMND hoặc ngày sinh của người được bảo hiểm"
         	        };
         	        
         	        ResponseValidateService.validateResponse(data)
         		}
+        		
+        		debugger
+        		if (vm.ngYcbhDicung){
+        			if (item.relationship == 30){
+        				if (item.insuredName != vm.policy.contactName){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "insuredName" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.idPasswport != vm.policy.contactIdNumber){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "idPasswport" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.dob != vm.policy.contactDob){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "dob" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        			}
+        		}
+        		
 		 	});
         	
         	if (result == false) {
         		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");
+        		return result;
+        	}
+        	
+        	if (resultName == false) {
+        		return resultName;
         	}
         	
             return result;
