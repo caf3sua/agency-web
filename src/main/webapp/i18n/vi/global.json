@@ -67,13 +67,13 @@
         		"HHV" : "Bảo hiểm vận chuyển hàng hóa",
         		"HOME" : "Bảo hiểm nhà tư nhân",
         		"HOM" : "Bảo hiểm nhà tư nhân",
-        		"KCARE" : "Bảo hiểm bệnh ung thu",
-        		"KCR" : "Bảo hiểm bệnh ung thu",
+        		"KCARE" : "Bảo hiểm bệnh ung thư",
+        		"KCR" : "Bảo hiểm bệnh ung thư",
         		"KHC" : "Bảo hiểm kết hợp con người",
         		"MOTO" : "Bảo hiểm xe máy",
         		"MOT" : "Bảo hiểm xe máy",
         		"TNC" : "Bảo hiểm tai nạn con người",
-        		"TVC" : "Bảo hiểm du lịch quốc tế",
+        		"TVC" : "Bảo hiểm du lịch Flexi",
         		"TVI" : "Bảo hiểm du lịch Việt Nam"
         	},
         	"tvc" : {
