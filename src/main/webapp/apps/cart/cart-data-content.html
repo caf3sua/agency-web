@@ -53,7 +53,10 @@
                  <td>
                      <p style="width: 200px">{{order.contactName}}</p>
                  </td>
-                 <td><i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+                 <td>
+                 	<span uib-tooltip="{{order.lineName}}">
+                 		<i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+                 	</span>
                  </td>
                  <td>
                      <p style="width: 80px">{{order.contactPhone}}</p>
