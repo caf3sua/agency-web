@@ -15,6 +15,7 @@
                 <th>Hiệu lực đến</th>
                 <th>Phí bảo hiểm</th>
                 <th>Ngày tạo</th>
+                <th>Phương thức TT</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +60,9 @@
 	            </td>
 	            <td>
 	                <p class="">{{order.agreementSysdate}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{order.paymentGateway}}</p>
 	            </td>
 	        </tr>
 	        <tr ng-if="order.expand" ng-repeat-end="">

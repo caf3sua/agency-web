@@ -136,7 +136,6 @@
                 vm.policy.contactEmail = $rootScope.createContact.email;
                 vm.policy.contactIdNumber = $rootScope.createContact.idNumber;
                 vm.policy.contactCategoryType = $rootScope.createContact.categoryType;
-//                vm.policy.contactAddress = $rootScope.createContact.homeAddress;
                 vm.policy.contactAddress = $rootScope.createContact.homeAddress.substring(0, $rootScope.createContact.homeAddress.indexOf("::"));
                 
                 let postcode = $rootScope.createContact.homeAddress.substring($rootScope.createContact.homeAddress.lastIndexOf("::") + 2);
@@ -1041,40 +1040,37 @@
         	        ResponseValidateService.validateResponse(data)
         		}
         		
-        		debugger
-        		if (vm.ngYcbhDicung){
-        			if (item.relationship == 30){
-        				if (item.insuredName != vm.policy.contactName){
-                			resultName = false;
-                			let data = {
-            	        		fieldName : "insuredName" + key,
-            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
-                	        };
-                    	        
-                	        ResponseValidateService.validateResponse(data)
-                		}
-        				
-        				if (item.idPasswport != vm.policy.contactIdNumber){
-                			resultName = false;
-                			let data = {
-            	        		fieldName : "idPasswport" + key,
-            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
-                	        };
-                    	        
-                	        ResponseValidateService.validateResponse(data)
-                		}
-        				
-        				if (item.dob != vm.policy.contactDob){
-                			resultName = false;
-                			let data = {
-            	        		fieldName : "dob" + key,
-            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
-                	        };
-                    	        
-                	        ResponseValidateService.validateResponse(data)
-                		}
-        			}
-        		}
+    			if (item.relationship == 30){
+    				if (item.insuredName != vm.policy.contactName){
+            			resultName = false;
+            			let data = {
+        	        		fieldName : "insuredName" + key,
+        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+            		}
+    				
+    				if (item.idPasswport != vm.policy.contactIdNumber){
+            			resultName = false;
+            			let data = {
+        	        		fieldName : "idPasswport" + key,
+        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+            		}
+    				
+    				if (item.dob != vm.policy.contactDob){
+            			resultName = false;
+            			let data = {
+        	        		fieldName : "dob" + key,
+        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+            		}
+    			}
         		
 		 	});
         	

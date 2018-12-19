@@ -83,6 +83,12 @@
                     </div>
                 </div>
             </div>
+            <div class="bv-margin-botton-10 margin-top-10" ng-show="vm.policy.songay > 0">
+                <p class="bv-title-from margin-bottom-0">Số ngày bảo hiểm</p>
+            </div>
+            <div class="margin-right-5 width-100" ng-show="vm.policy.songay > 0">
+	            <input type="number" name="soNgay" class="bv-input" ng-model="vm.policy.songay" ng-disabled="true"/>
+            </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Chương trình bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
