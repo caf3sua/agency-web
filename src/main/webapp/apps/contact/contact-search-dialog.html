@@ -15,7 +15,7 @@
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12 ">Ngày sinh</div>
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12  padding0"><input type="text"  class="bv-input-contact" placeholder="Ngày sinh" ng-model="vm.searchCriterial.dateOfBirth"/></div>
 	</div>
-	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5">
+	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-5" ng-hide="vm.dialogType == 'PERSON'">
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12 ">Khách hàng là</div>
 		<div class="col-lg-3  col-md-12 col-sm-12 col-xs-12  padding0">
 			<select class="bv-input-contact" ng-model="vm.searchCriterial.categoryType"  >
@@ -28,7 +28,7 @@
 	
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 text-right margin-top-10">
 		<button class="btn btn-primary" type="button" ng-click="vm.searchContact()">Tìm</button>
-    	<button class="btn btn-warning" type="button" ng-click="vm.addNewContact()" ng-show="vm.dialogType == 'NYCBH'">Thêm mới</button>
+    	<button class="btn btn-warning" type="button" ng-click="vm.addNewContact()" ng-show="vm.dialogType == 'NYCBH' || vm.dialogType == 'PERSON'">Thêm mới</button>
 	</div>
 	
 	<div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0">

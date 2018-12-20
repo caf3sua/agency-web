@@ -836,7 +836,15 @@
 
         function openSearchContact() {
         	console.log('openSearchContact');
-        	ContactCommonDialogService.openSearchDialog('NYCBH');
+        	if (vm.policy.travelWithId != undefined && vm.policy.travelWithId != null){	// dùng cho TH lọc của TVC
+        		if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
+        			ContactCommonDialogService.openSearchDialog('PERSON');	
+        		} else {
+        			ContactCommonDialogService.openSearchDialog('NYCBH');
+        		}
+        	} else {
+        		ContactCommonDialogService.openSearchDialog('NYCBH');	
+        	}
         }
         
         function openSearchContactOther() {

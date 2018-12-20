@@ -55,6 +55,13 @@
         	
         	// Init controller
       		(function initController() {
+      			if (vm.dialogType != undefined && vm.dialogType != null){
+      				if (vm.dialogType == 'PERSON'){
+      					vm.searchCriterial.categoryType = "PERSON";
+      				} else {
+      					
+      				}
+      			}
       			searchContact();
       		})();
 
