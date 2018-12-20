@@ -1028,6 +1028,7 @@
         	// Validate CMND or Ngay sinh
         	let result = true;
         	let resultName = true;
+        	let resultDob = true;
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
         			result = false;
@@ -1038,6 +1039,24 @@
         	        };
         	        
         	        ResponseValidateService.validateResponse(data)
+        		}
+        		
+        		if (!isEmptyString(item.dob)) {
+        			var now = new Date();
+        			var nowStr = DateUtils.convertDate(now);
+                    let tuoiYear = DateUtils.yearDiff(item.dob, nowStr);
+                    let tuoiMonth = DateUtils.getMonth(item.dob, nowStr);
+                    
+                    if (tuoiYear > 85 || tuoiMonth < 6){
+                    	resultDob = false;
+            			// Show
+            			let data = {
+        	        		fieldName : "dob" + key,
+        	        		message : "Người được bảo hiểm phải từ 6 tháng đến 85 tuổi"
+            	        };
+            	        
+            	        ResponseValidateService.validateResponse(data)	
+                    }
         		}
         		
     			if (item.relationship == 30){
@@ -1070,6 +1089,16 @@
                 	        
             	        ResponseValidateService.validateResponse(data)
             		}
+    			} else {
+    				if (item.idPasswport === vm.policy.contactIdNumber){
+            			resultName = false;
+            			let data = {
+        	        		fieldName : "idPasswport" + key,
+        	        		message : "Thông tin CMT/HC trùng với Người yêu cầu bảo hiểm"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+            		}
     			}
         		
 		 	});
@@ -1081,6 +1110,10 @@
         	
         	if (resultName == false) {
         		return resultName;
+        	}
+        	
+        	if (resultDob == false) {
+        		return resultDob;
         	}
         	
             return result;

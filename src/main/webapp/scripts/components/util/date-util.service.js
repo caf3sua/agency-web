@@ -16,6 +16,7 @@
             dateformat: dateformat,
             convertDate: convertDate,
             monthDiff : monthDiff,
+            getMonth : getMonth,
             yearDiff : yearDiff,
             dateDiff : dateDiff,
             parseDate : parseDate,
@@ -73,6 +74,17 @@
             months -= d1.getMonth() + 1;
             months += d2.getMonth();
             return months <= 0 ? 0 : months;
+        }
+        
+        function getMonth(date1, date2) {
+            var from = date1.split("/");
+            var to = date2.split("/");
+            var d1 = new Date(from[2], from[1] - 1, from[0]);
+            var d2 = new Date(to[2], to[1] - 1, to[0]);
+        	
+            var m= (d2.getFullYear()-d1.getFullYear())*12+(d2.getMonth()-d1.getMonth());
+        	if(d2.getDate()<d1.getDate()) --m;
+        	return m;
         }
 
         function yearDiff(date1, date2) {
