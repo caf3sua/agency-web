@@ -73,7 +73,8 @@
       			  "listReminders": [],
       			  "occupation": "",
       			  "phone": "",
-      			  "facebookId": ""
+      			  "facebookId": "",
+      			  "handPhone": ""
       			}
         	
         	// function
