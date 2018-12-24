@@ -324,6 +324,9 @@
 //            		|| isEmptyString(vm.product.ngayVe) || isEmptyString(vm.product.numberOfPerson) || isEmptyString( vm.product.planId)) {
 //            	return;
 //            }
+            if (vm.policy.destinationId == 1){
+            	vm.policy.destinationDetail = "";
+            }
             
             ProductCommonService.getTvcPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }

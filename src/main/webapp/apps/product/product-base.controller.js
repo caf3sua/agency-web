@@ -1108,8 +1108,24 @@
             	        ResponseValidateService.validateResponse(data)
             		}
     			}
+    			
+    			if (vm.ngYcbhDicung){
+        			if (item.relationship != 30){
+        				resultName = false;
+            			let data = {
+        	        		fieldName : "relationship" + key,
+        	        		message : "Mối quan hệ phải là Bản thân"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+        			}
+        		}
         		
 		 	});
+        	if (vm.policy.contactCategoryType == "ORGANIZATION"){
+        		toastr.error("Du lịch cá nhân hoặc gia đình người yêu cầu bảo hiểm phải là: Cá nhân");
+        		return false;
+        	}
         	
         	if (result == false) {
         		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");
