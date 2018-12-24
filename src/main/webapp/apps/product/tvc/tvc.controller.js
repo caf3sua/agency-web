@@ -61,7 +61,8 @@
 	            travelCareId: 1,
 	            travelWithId: "",
 	            tvcPackage: "",
-	            songay: 0
+	            songay: 0,
+	            destinationDetail: ""
         };
         vm.listTvcAddBaseInit = [];
         vm.product = {};
