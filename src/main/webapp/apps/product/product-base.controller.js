@@ -121,6 +121,7 @@
     	vm.rembemberCurrentPage = rembemberCurrentPage;
     	vm.current_page = 1;
     	
+    	vm.checkDongYHD = true;
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -1033,11 +1034,20 @@
         function validatorTVC() {
         	console.log('validator extra TVC at step 2');
         	
+        	if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
+        		if (vm.policy.contactCategoryType == "ORGANIZATION"){
+            		toastr.error("Du lịch cá nhân hoặc gia đình người yêu cầu bảo hiểm phải là: Cá nhân");
+            		return false;
+            	}	
+        	}
+        	
         	// Validate CMND or Ngay sinh
         	let result = true;
         	let resultName = true;
         	let resultDob = true;
+        	let resultRelationship = true;
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        		// thieu thong tin
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
         			result = false;
         			// Show
@@ -1049,6 +1059,7 @@
         	        ResponseValidateService.validateResponse(data)
         		}
         		
+        		// check tuoi
         		if (!isEmptyString(item.dob)) {
         			var now = new Date();
         			var nowStr = DateUtils.convertDate(now);
@@ -1067,46 +1078,63 @@
                     }
         		}
         		
-    			if (item.relationship == 30){
-    				if (item.insuredName != vm.policy.contactName){
-            			resultName = false;
+        		if (vm.policy.contactCategoryType != "ORGANIZATION"){
+        			if (item.relationship == 30){
+        				if (item.insuredName != vm.policy.contactName){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "insuredName" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.idPasswport != vm.policy.contactIdNumber){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "idPasswport" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.dob != vm.policy.contactDob){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "dob" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        			}
+        		} else {
+        			if (item.relationship == 30) {
+        				resultRelationship = false;
             			let data = {
-        	        		fieldName : "insuredName" + key,
-        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+        	        		fieldName : "relationship" + key,
+        	        		message : "Người yêu cầu là tổ chức thì quan hệ phải là: Khách đoàn"
             	        };
                 	        
             	        ResponseValidateService.validateResponse(data)
-            		}
-    				
-    				if (item.idPasswport != vm.policy.contactIdNumber){
-            			resultName = false;
-            			let data = {
-        	        		fieldName : "idPasswport" + key,
-        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
-            	        };
-                	        
-            	        ResponseValidateService.validateResponse(data)
-            		}
-    				
-    				if (item.dob != vm.policy.contactDob){
-            			resultName = false;
-            			let data = {
-        	        		fieldName : "dob" + key,
-        	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
-            	        };
-                	        
-            	        ResponseValidateService.validateResponse(data)
-            		}
-    			} else {
-    				if (item.idPasswport === vm.policy.contactIdNumber){
-            			resultName = false;
-            			let data = {
-        	        		fieldName : "idPasswport" + key,
-        	        		message : "Thông tin CMT/HC trùng với Người yêu cầu bảo hiểm"
-            	        };
-                	        
-            	        ResponseValidateService.validateResponse(data)
-            		}
+        			}
+            	}
+    			
+        		
+    			if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2) {
+    				if (item.relationship != 30) {
+    					if (item.idPasswport === vm.policy.contactIdNumber){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "idPasswport" + key,
+            	        		message : "Thông tin CMT/HC trùng với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+    				}
     			}
     			
     			if (vm.ngYcbhDicung){
@@ -1122,14 +1150,14 @@
         		}
         		
 		 	});
-        	if (vm.policy.contactCategoryType == "ORGANIZATION"){
-        		toastr.error("Du lịch cá nhân hoặc gia đình người yêu cầu bảo hiểm phải là: Cá nhân");
-        		return false;
-        	}
         	
         	if (result == false) {
         		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");
         		return result;
+        	}
+
+        	if (resultRelationship == false) {
+        		return resultRelationship;
         	}
         	
         	if (resultName == false) {
