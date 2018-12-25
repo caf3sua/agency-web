@@ -1137,17 +1137,19 @@
     				}
     			}
     			
-    			if (vm.ngYcbhDicung){
-        			if (item.relationship != 30){
-        				resultName = false;
-            			let data = {
-        	        		fieldName : "relationship" + key,
-        	        		message : "Mối quan hệ phải là Bản thân"
-            	        };
-                	        
-            	        ResponseValidateService.validateResponse(data)
-        			}
-        		}
+    			if (vm.policy.travelWithId == 1){
+    				if (vm.ngYcbhDicung){
+            			if (item.relationship != 30){
+            				resultName = false;
+                			let data = {
+            	        		fieldName : "relationship" + key,
+            	        		message : "Mối quan hệ phải là Bản thân"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+            			}
+            		}
+    			}
         		
 		 	});
         	
