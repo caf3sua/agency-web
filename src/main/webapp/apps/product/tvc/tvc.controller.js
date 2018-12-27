@@ -297,6 +297,10 @@
         	        ResponseValidateService.validateResponse(data)
         		}
         	}
+        	
+        	if (vm.policy.destinationId == 1){
+        		vm.policy.planId = 1;
+        	}
         }
         
         function getPremium() {

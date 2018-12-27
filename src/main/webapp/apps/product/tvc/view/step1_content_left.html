@@ -110,7 +110,7 @@
                         </div>
                         <span>Đồng</span>
                     </label>
-                    <label for="cbx13" class="label-cbx margin-right-5">
+                    <label for="cbx13" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx13" name="planId-2" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
@@ -120,7 +120,7 @@
                         </div>
                         <span>Bạc</span>
                     </label>
-                    <label for="cbx12" class="label-cbx margin-right-5">
+                    <label for="cbx12" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx12" name="planId-3" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
@@ -130,7 +130,7 @@
                         </div>
                         <span>Vàng</span>
                     </label>
-                    <label for="cbx11" class="label-cbx margin-right-5">
+                    <label for="cbx11" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx11" type="radio"  name="planId-4" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
