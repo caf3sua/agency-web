@@ -74,6 +74,7 @@
         vm.searchCart = searchCart;
         vm.showPayment;
         vm.nextStep = nextStep;
+        vm.checkBoxCartAllChange = checkBoxCartAllChange;
         
         vm.selectedDepartmentId;
         
@@ -117,6 +118,15 @@
         
         function nextStep() {
         	vm.showPayment = true;
+        }
+        
+        function checkBoxCartAllChange() {
+        	let value = vm.checkAll;
+        	resetCartValue();
+        	angular.forEach(vm.allOrder, function(order, key) {
+        		order.check = value;
+        		selectCheckBoxCart(order);
+		 	});
         }
         
         function changeDate(){
@@ -241,6 +251,9 @@
             }else {
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney - money;
+                if (vm.sumMoney < 0){
+                	vm.sumMoney = 0;	
+                }
                 var index = vm.agreementIds.indexOf(data.agreementId);
                 if (index !== -1) {
             		vm.agreementIds.splice(index, 1);

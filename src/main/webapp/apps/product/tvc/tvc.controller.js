@@ -60,7 +60,9 @@
 	            soNguoiThamGia: 0,
 	            travelCareId: 1,
 	            travelWithId: "",
-	            tvcPackage: ""
+	            tvcPackage: "",
+	            songay: 0,
+	            destinationDetail: ""
         };
         vm.listTvcAddBaseInit = [];
         vm.product = {};
@@ -81,7 +83,7 @@
         vm.isShowUSD = true;
         vm.isShowEUR = false;
         vm.changeLoaitien = changeLoaitien;
-        vm.ngYcbhDicung = true;
+        vm.ngYcbhDicung = false;
         vm.changeNgYcbhDicung = changeNgYcbhDicung;
         
         // check all on data table
@@ -196,6 +198,10 @@
     		vm.getAddressByPostCode(contactAddress).then(function (data) {
     			vm.policy.contactAddressDistrictData = data;
     		});
+    		
+    		var a = moment(vm.policy.inceptionDate, 'DD/MM/YYYY');
+			var b = moment(vm.policy.expiredDate, 'DD/MM/YYYY');
+			vm.policy.songay = b.diff(a, 'days') + 1;
   		}
   		
         function showChangePremium() {
@@ -275,6 +281,10 @@
         function onchangePlan() {
         	if (vm.policy.expiredDate != ""){
         		if (vm.checkDate(vm.policy.inceptionDate, vm.policy.expiredDate)){
+        			
+        			var a = moment(vm.policy.inceptionDate, 'DD/MM/YYYY');
+        			var b = moment(vm.policy.expiredDate, 'DD/MM/YYYY');
+        			vm.policy.songay = b.diff(a, 'days') + 1;
         			getPremium();	
         		} else{
 //        	        toastr.error('Thời gian ngày khởi hành - ngày trở về không phù hợp');
@@ -286,6 +296,10 @@
         	        
         	        ResponseValidateService.validateResponse(data)
         		}
+        	}
+        	
+        	if (vm.policy.destinationId == 1){
+        		vm.policy.planId = 1;
         	}
         }
         
@@ -307,13 +321,16 @@
             }else{
                 vm.product.premiumDiscount  = 0;
             }
-            vm.product.songay  = 0;
+            vm.product.songay = 0;
             
             // check param
 //            if (isEmptyString(vm.product.destination) || isEmptyString(vm.product.ngayDi) 
 //            		|| isEmptyString(vm.product.ngayVe) || isEmptyString(vm.product.numberOfPerson) || isEmptyString( vm.product.planId)) {
 //            	return;
 //            }
+            if (vm.policy.destinationId == 1){
+            	vm.policy.destinationDetail = "";
+            }
             
             ProductCommonService.getTvcPremium(vm.product, onGetPremiumSuccess, onGetPremiumError);
         }
@@ -486,11 +503,19 @@
             	return false;
             }
             
-            if (vm.policy.listTvcAddBaseVM.length == 2) {
-            	toastr.error("Số người tham gia phải từ 2 người");
-            	return false;
+            if (vm.policy.travelWithId == '2') {
+	            if (vm.policy.listTvcAddBaseVM.length == 2) {
+	            	toastr.error("Số người tham gia phải từ 2 người");
+	            	return false;
+	            }
             }
             
+            if (vm.policy.travelWithId == '3') {
+	            if (vm.policy.listTvcAddBaseVM.length < 1) {
+	            	toastr.error("Số người tham gia phải từ 1 người");
+	            	return false;
+	            }
+            }
             return true;
         }
         

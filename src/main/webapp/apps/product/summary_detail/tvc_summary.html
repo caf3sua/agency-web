@@ -104,6 +104,12 @@
             <p class="bv-tile-templateSummary">Từ {{vm.policy.inceptionDate}} đến {{vm.policy.expiredDate}}</p>
         </div>
         <div class="margin-top-10">
+            <p class="bv-title-from">Số ngày bảo hiểm</p>
+        </div>
+        <div>
+            <p class="bv-tile-templateSummary">{{vm.policy.songay}} ngày</p>
+        </div>
+        <div class="margin-top-10">
             <p class="bv-title-from">Phạm vi lãnh thổ được bảo hiểm</p>
         </div>
         <div>
@@ -121,6 +127,12 @@
                     <p class="bv-tile-templateSummary">Toàn cầu</p>
                 </div>
             </div>
+        </div>
+        <div class="margin-top-10" ng-show="vm.policy.destinationDetail != '' && vm.policy.destinationDetail != null">
+            <p class="bv-title-from">Nước đến</p>
+        </div>
+        <div ng-show="vm.policy.destinationDetail != '' && vm.policy.destinationDetail != null">
+            <p class="bv-tile-templateSummary">{{vm.policy.destinationDetail}}</p>
         </div>
         <div class="margin-top-10">
             <p class="bv-title-from">Gói bảo hiểm</p>

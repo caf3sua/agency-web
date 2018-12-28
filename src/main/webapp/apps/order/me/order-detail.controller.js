@@ -141,6 +141,9 @@
   		}
   		
   		function formatTvcData(data) {
+  			var a = moment(vm.policy.inceptionDate, 'DD/MM/YYYY');
+			var b = moment(vm.policy.expiredDate, 'DD/MM/YYYY');
+			vm.policy.songay = b.diff(a, 'days') + 1;
   		}
   		
   		function formatTviData(data) {
