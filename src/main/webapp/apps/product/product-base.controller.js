@@ -1041,11 +1041,20 @@
             	}	
         	}
         	
+        	if (vm.ngYcbhDicung){
+        		if (vm.policy.listTvcAddBaseVM[0].relationship != 30){
+        			toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
+            		return false;
+        		}
+			}
+        	
         	// Validate CMND or Ngay sinh
         	let result = true;
         	let resultName = true;
         	let resultDob = true;
         	let resultRelationship = true;
+        	let countBanthan = 0;
+        	let countVochong = 0;
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
         		// thieu thong tin
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
@@ -1150,8 +1159,24 @@
             			}
             		}
     			}
-        		
+    			
+    			if (item.relationship == 30){
+    				countBanthan++;
+    			}
+    			if (item.relationship == 31){
+    				countVochong++;
+    			}
+    			
 		 	});
+        	if (countBanthan > 1){
+        		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là Bản thân");
+        		return false;
+        	}
+        	
+        	if (countVochong > 1){
+        		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là vợ/chồng");
+        		return false;
+        	}
         	
         	if (result == false) {
         		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");

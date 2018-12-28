@@ -30,7 +30,7 @@ spring:
 #        keyAlias: blast
 # ===================================================================
 server:
-    port: 8084
+    port: 7780
     ssl:
         key-store: classpath:pte.p12
         key-store-password: pte123
