@@ -306,7 +306,7 @@
 //	  				toastr.remove();
 //	  				toastr.success("Dữ liệu đã được cập nhật");
 	  				loadReportIncome();
-	  				loadReportCommission();
+//	  				loadReportCommission();
 	  			}
 	  			
 	  			function onSearchError() {
