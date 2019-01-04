@@ -118,6 +118,16 @@
         
         function nextStep() {
         	vm.showPayment = true;
+        	let baovietCompanyId = vm.agreementOrder[0].baovietCompanyId;
+        	if (vm.agreementOrder.length > 0){
+        		for (var i = 0; i <  vm.agreementOrder.length; i++) {
+        			if (baovietCompanyId != vm.agreementOrder[i].baovietCompanyId){
+        				toastr.error("Danh sách đơn thanh toán có nhiều hơn 1 đơn vị, đề nghị lọc đơn hàng.");
+        				vm.showPayment = false;
+        				break;
+        			}
+                }	
+        	}
         }
         
         function checkBoxCartAllChange() {
