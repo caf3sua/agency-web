@@ -1030,9 +1030,28 @@
         	
         	return true;
         }
+//        idPasswport
+//        function deduplicate(arr) {
+//        	debugger
+//
+//    	  let ans = [];
+//    	  arr.forEach(element => {
+//    	    if(ans.indexOf(element.idPasswport) > -1){
+//    	    	ans.push(element);
+//    	    }
+//    	  });
+//    	  
+//    	  arr.forEach(element => {
+//    		    if(!isExist(ans, element)) ans.push(element);
+//    		  });
+//    	  
+//    	  return ans;
+//    	}
         
         function validatorTVC() {
         	console.log('validator extra TVC at step 2');
+        	
+//        	let ans = deduplicate(vm.policy.listTvcAddBaseVM);
         	
         	if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
         		if (vm.policy.contactCategoryType == "ORGANIZATION"){
@@ -1052,9 +1071,11 @@
         	let result = true;
         	let resultName = true;
         	let resultDob = true;
+        	let resultCMT = true;
         	let resultRelationship = true;
         	let countBanthan = 0;
         	let countVochong = 0;
+        	let listIdPasswport = [];
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
         		// thieu thong tin
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
@@ -1166,7 +1187,19 @@
     			if (item.relationship == 31){
     				countVochong++;
     			}
-    			
+    			// check trùng CMT
+    	         var idPasswport = item.idPasswport;
+    	         if(listIdPasswport.indexOf(idPasswport) === -1) {
+    	        	 listIdPasswport.push(idPasswport); 
+    	         } else {
+    	        	resultCMT = false;
+         			let data = {
+     	        		fieldName : "idPasswport" + key,
+     	        		message : "Thông tin CMT/HC trùng nhau"
+         	        };
+             	        
+         	        ResponseValidateService.validateResponse(data)
+    	         }
 		 	});
         	if (countBanthan > 1){
         		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là Bản thân");
@@ -1193,6 +1226,10 @@
         	
         	if (resultDob == false) {
         		return resultDob;
+        	}
+        	
+        	if (resultCMT == false){
+        		return resultCMT;
         	}
         	
             return result;
