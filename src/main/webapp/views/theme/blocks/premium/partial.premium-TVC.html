@@ -8,15 +8,30 @@
    	<option value="1">Việt Nam</option>
 	</select>
 </div>
-<div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
-    <select class="bv-select-box form-control" ng-model="vm.tvc.premiumPackage">
+<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2 padding0 bv-kh-padding-left">
+    <select class="bv-select-box form-control" ng-model="vm.tvc.premiumPackage" ng-change="vm.onchangeTravel()">
     <option value="">Gói bảo hiểm (*)</option>
    	<option value="1">Cá nhân</option>
    	<option value="2">Gia đình</option>
    	<option value="3">Khách đoàn</option>
 	</select>
 </div>
-<div class="col-lg-3 col-sm-3 col-xs-3 col-md-3 padding0 bv-kh-padding-left">
+<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2 padding0 bv-kh-padding-left">
+    <input type="number" min="1" step="1" max="5000" name="numberOfPerson" id="numberOfPerson" class="bv-input-tp" placeholder="Số người (*)" ng-model="vm.tvc.numberOfPerson" ng-disabled="vm.isShowChangeTravel" required-message="'Chưa thêm số người!'" ng-blur="vm.onchangeNumberOfPerson()"
+                       required/>
+    <div ng-show="myFormTvc.numberOfPerson.$dirty && myFormTvc.numberOfPerson.$invalid">
+       	 <p class="help-block" ng-show="myFormTvc.numberOfPerson.$error.required">
+             Chưa thêm số người du lịch!
+         </p>
+         <p class="help-block" ng-show="myFormTvc.numberOfPerson.$error.max">
+             Quá số người quy định
+         </p>
+         <p class="help-block" ng-show="myFormTvc.numberOfPerson.$error.min">
+             Số người tối thiểu phải bằng 1
+         </p>
+     </div>
+</div>
+<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2 padding0 bv-kh-padding-left">
     <input type="number" min="1" step="1" max="180" name="soNgay" class="bv-input-tp" placeholder="Số ngày (*)" ng-model="vm.tvc.songay" required-message="'Chưa thêm số ngày!'"
                        required/>
     <div ng-show="myFormTvc.soNgay.$dirty && myFormTvc.soNgay.$invalid">

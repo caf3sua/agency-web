@@ -7,7 +7,7 @@
             <tr>
                 <th></th>
                 <th>Mã đơn hàng</th>
-                <th style="width: 100px">Số Hợp đồng/ Số GCNBH</th>
+                <th style="width: 115px">Số HĐ/GCNBH</th>
                 <th>Tên khách hàng</th>
                 <th>Sản phẩm</th>
                 <th>Số điện thoại</th>
@@ -16,7 +16,9 @@
                 <th>Hiệu lực đến</th>
                 <th>Phí bảo hiểm</th>
                 <th>Ngày tạo</th>
+                <th>Mã thanh toán</th>
                 <th>Phương thức TT</th>
+                <th>Đơn vị</th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +30,7 @@
 	                <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
 	            </td>
 	            <td>
-	                <p class="bv-table-text-colorBlue">{{order.policyNumber}}</p>
+	                <p class="bv-table-text-colorBlue" ng-show="order.gycbhNumber != order.policyNumber">{{order.policyNumber}}</p>
 	            </td>
 	            <td>
 	                <p class="">{{order.contactName}}</p>
@@ -66,7 +68,13 @@
 	                <p class="">{{order.agreementSysdate}}</p>
 	            </td>
 	            <td>
+	                <p class="">{{order.mciAddId}}</p>
+	            </td>
+	            <td>
 	                <p class="">{{order.paymentGateway}}</p>
+	            </td>
+	            <td>
+	                <p class="">{{order.baovietDepartmentName}}</p>
 	            </td>
 	        </tr>
 	        <tr ng-if="order.expand" ng-repeat-end="">

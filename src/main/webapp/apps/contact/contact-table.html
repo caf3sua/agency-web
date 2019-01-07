@@ -24,7 +24,7 @@
 	                <p class="bv-table-text-colorBlue">{{row.contactName}}</p>
 	            </td>
 	            <td>
-	                <p class="">{{row.dateOfBirth}}</p>
+	                <p class="" ng-show="row.categoryType != 'ORGANIZATION'">{{row.dateOfBirth}}</p>
 	            </td>
 	            <td>
 	                <p class="">{{row.idNumber}}</p>

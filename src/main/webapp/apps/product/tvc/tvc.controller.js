@@ -40,7 +40,7 @@
                 propserCellphone: "",
                 propserName: "",
                 propserNgaysinh: "",
-                receiveMethod: "2",
+                receiveMethod: "",
                 receiverUser: {
                     address: "",
                     addressDistrict: "",
@@ -128,6 +128,7 @@
             		
             		vm.loading = false;
             		vm.policy = result;
+            		debugger
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;
@@ -220,22 +221,41 @@
   		// Function
         function changeNgYcbhDicung() {
         	console.log('changeNgYcbhDicung');
-        	if (vm.policy.contactCategoryType != 'ORGANIZATION') {
-        		if (vm.ngYcbhDicung) {
-            		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
-            		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
-            		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
-            		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
-            		vm.policy.listTvcAddBaseVM[0].isOwer = true;
-            	} else {
-            		vm.policy.listTvcAddBaseVM[0].insuredName = "";
-            		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
-            		vm.policy.listTvcAddBaseVM[0].dob = "";
-            		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
-            		vm.policy.listTvcAddBaseVM[0].isOwer = false;
+        	if (vm.policy.travelWithId == '1') {
+        		if (vm.policy.contactCategoryType != 'ORGANIZATION') {
+            		if (vm.ngYcbhDicung) {
+                		vm.policy.listTvcAddBaseVM[0].insuredName = vm.policy.contactName;
+                		vm.policy.listTvcAddBaseVM[0].idPasswport = vm.policy.contactIdNumber;
+                		vm.policy.listTvcAddBaseVM[0].dob = vm.policy.contactDob;
+                		vm.policy.listTvcAddBaseVM[0].relationship = "30"; // Ban than
+                		vm.policy.listTvcAddBaseVM[0].isOwer = true;
+                	} else {
+                		vm.policy.listTvcAddBaseVM[0].insuredName = "";
+                		vm.policy.listTvcAddBaseVM[0].idPasswport = "";
+                		vm.policy.listTvcAddBaseVM[0].dob = "";
+                		vm.policy.listTvcAddBaseVM[0].relationship = ""; // Ban than
+                		vm.policy.listTvcAddBaseVM[0].isOwer = false;
+                	}
+                	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
+                	vm.policy.listTvcAddBaseVM = temp;
             	}
-            	let temp = [].concat(vm.policy.listTvcAddBaseVM); 
-            	vm.policy.listTvcAddBaseVM = temp;
+        	} else {
+        		if (vm.ngYcbhDicung) {
+        			vm.policy.listTvcAddBaseVM.push({
+                        "dob": vm.policy.contactDob,
+                        "insuredName": vm.policy.contactName,
+                        "idPasswport": vm.policy.contactIdNumber,
+                        "relationship" : "30",
+                        "serial" : generateId()
+                    });
+                    
+                    vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+            		
+                	// Tinh lai phi
+                	getPremium();
+        		} else {
+        			
+        		}
         	}
         }
         

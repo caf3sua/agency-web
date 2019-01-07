@@ -194,7 +194,9 @@
     	vm.onCarMakesSel = onCarMakesSel;
     	vm.onCarModelSel = onCarModelSel;
     	vm.onYearSel = onYearSel;
-    	
+    	vm.onchangeTravel = onchangeTravel;
+    	vm.onchangeNumberOfPerson = onchangeNumberOfPerson;
+    	vm.isShowChangeTravel = false;
     	vm.isCollapsedQuickPremium = true;
     	
     	// Init controller
@@ -254,6 +256,32 @@
   			})
     	}
   		
+  		function onchangeTravel() {
+            if (vm.tvc.premiumPackage == '1'){
+            	vm.tvc.numberOfPerson = 1;
+            	vm.isShowChangeTravel = true;
+            } else{
+            	vm.tvc.numberOfPerson = 2;
+            	vm.isShowChangeTravel = false;
+            }
+        }
+  		
+  		function onchangeNumberOfPerson() {
+            if (vm.tvc.premiumPackage == '2'){
+            	if (vm.tvc.numberOfPerson < 2 || vm.tvc.numberOfPerson > 5){
+            		angular.element('#numberOfPerson').focus();
+            		vm.tvc.numberOfPerson = 2;
+            		toastr.error("Số người đi du lịch theo gia đình phải từ 2-5 người");
+            	}
+            }
+            if (vm.tvc.premiumPackage == '3'){
+            	if (vm.tvc.numberOfPerson < 1){
+            		angular.element('#numberOfPerson').focus();
+            		vm.tvc.numberOfPerson = 1;
+            		toastr.error("Số người đi du lịch theo đoàn phải lớn hơn hoặc bằng 1");
+            	}
+            }
+        }
     	
     	function getCarBranchesError(error) {
     	}
@@ -373,9 +401,7 @@
 		  	    	
 		  	    	if (vm.tvc.premiumPackage == 1){
 		  	    		vm.tvc.numberOfPerson = 1;
-		  	    	} else {
-		  	    		vm.tvc.numberOfPerson = 2;
-		  	    	}
+		  	    	} 
 	  	            NavCommonService.getTvcPremium(vm.tvc, function (data) {
 		  	            	vm.isCanPremium = true;
 		  	            	vm.premium = data.premiumTvc;
