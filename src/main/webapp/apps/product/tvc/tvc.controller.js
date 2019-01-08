@@ -254,7 +254,15 @@
                 	// Tinh lai phi
                 	getPremium();
         		} else {
-        			
+        			for(var i = 0; i < vm.policy.listTvcAddBaseVM.length; i++) {
+        		        if (vm.policy.listTvcAddBaseVM[i].relationship == 30) {
+        		        	vm.policy.listTvcAddBaseVM.splice(i, 1);
+        		        }
+        		    }
+        			vm.policy.soNguoiThamGia = vm.policy.listTvcAddBaseVM.length;
+             		
+                 	// Tinh lai phi
+                 	getPremium();
         		}
         	}
         }
