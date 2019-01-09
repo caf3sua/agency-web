@@ -215,6 +215,7 @@
   		// Properties & function declare
 
         function formatEditData(result) {
+        	vm.copyFromContact = false;
         	result.contactDob = result.propserNgaysinh;
   		}
         
@@ -381,9 +382,9 @@
 
         function onGetPremiumError(result) {
             vm.loading = false;
-//             vm.validateResponse(result, 'getPremium');
+             vm.validateResponse(result, 'getPremium');
             resetDataPremium();
-            ResponseValidateService.validateResponse(result.data);
+//            ResponseValidateService.validateResponse(result.data);
         }
         function infoPerson() {
             vm.policy.listTvcAddBaseVM.push(vm.tvcAddBaseVM);
@@ -416,8 +417,10 @@
             } else if(vm.policy.soNguoiThamGia< vm.policy.listTvcAddBaseVM.length) {
                 removePerson();
             }
-            // Tinh lai phi
-        	getPremium();
+            if (vm.policy.expiredDate != "" && vm.policy.expiredDate != null){
+            	// Tinh lai phi
+            	getPremium();	
+            }
         }
 
         function addNewPerson() {

@@ -122,6 +122,7 @@
     	vm.current_page = 1;
     	
     	vm.checkDongYHD = true;
+    	vm.copyFromContact = true;
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -939,6 +940,10 @@
                 vm.typeArrowTwo = "fa-angle-right";
                 checkCloseStepOne = true;
             }else if(type == "step2"){
+            	if (vm.copyFromContact){
+            		vm.changeCopyFromContact();	
+            	}
+            	
             	if (validatorExtraInfo()) {
             		if(vm.nextCount >= 1) {
                         document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
@@ -1060,12 +1065,15 @@
             	}	
         	}
         	
-        	if (vm.ngYcbhDicung){
-        		if (vm.policy.listTvcAddBaseVM[0].relationship != 30){
-        			toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
-            		return false;
-        		}
-			}
+        	if (vm.policy.travelWithId == 1){
+        		if (vm.ngYcbhDicung){
+            		if (vm.policy.listTvcAddBaseVM[0].relationship != 30){
+            			toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
+                		return false;
+            		}
+    			}
+        	}
+        	
         	
         	// Validate CMND or Ngay sinh
         	let result = true;
@@ -1203,6 +1211,10 @@
 		 	});
         	if (countBanthan > 1){
         		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là Bản thân");
+        		return false;
+        	}
+        	if (countBanthan < 1){
+        		toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
         		return false;
         	}
         	
