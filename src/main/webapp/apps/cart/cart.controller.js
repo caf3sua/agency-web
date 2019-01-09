@@ -93,7 +93,6 @@
 
         	searchCart();
             vm.newDate = new Date();
-            debugger
             var paymentResult = $location.search().paymentStatus;
             vm.paymentPay = $location.search().paymentPay;
             vm.paymentPolicy = $location.search().paymentPolicy;
@@ -375,6 +374,7 @@
   			function onSuccess(result) {
   				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
   				$rootScope.$broadcast('agreementChangeSuccess');
+  				searchCart();
   			}
   			
   			function onError() {
