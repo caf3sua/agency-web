@@ -22,6 +22,7 @@
     		"content": ""
 	    };
     	vm.isShowPolicyParent = false;
+    	vm.checkDongYHD = false;
     	
         angular.element(document).ready(function () {
         });
@@ -71,7 +72,7 @@
 					default:
 						break;
   				}
-  				
+  				vm.checkDongYHD = false;
   				toastr.success('Tải thông tin chi tiết hợp đồng thành công');
   			}
   			
