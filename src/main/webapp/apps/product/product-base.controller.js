@@ -1035,28 +1035,9 @@
         	
         	return true;
         }
-//        idPasswport
-//        function deduplicate(arr) {
-//        	debugger
-//
-//    	  let ans = [];
-//    	  arr.forEach(element => {
-//    	    if(ans.indexOf(element.idPasswport) > -1){
-//    	    	ans.push(element);
-//    	    }
-//    	  });
-//    	  
-//    	  arr.forEach(element => {
-//    		    if(!isExist(ans, element)) ans.push(element);
-//    		  });
-//    	  
-//    	  return ans;
-//    	}
         
         function validatorTVC() {
         	console.log('validator extra TVC at step 2');
-        	
-//        	let ans = deduplicate(vm.policy.listTvcAddBaseVM);
         	
         	if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
         		if (vm.policy.contactCategoryType == "ORGANIZATION"){
@@ -1213,9 +1194,11 @@
         		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là Bản thân");
         		return false;
         	}
-        	if (countBanthan < 1){
-        		toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
-        		return false;
+        	if (vm.ngYcbhDicung){
+        		if (countBanthan < 1){
+            		toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
+            		return false;
+            	}	
         	}
         	
         	if (countVochong > 1){
