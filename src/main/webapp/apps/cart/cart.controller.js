@@ -77,7 +77,10 @@
         vm.checkBoxCartAllChange = checkBoxCartAllChange;
         
         vm.selectedDepartmentId;
+        vm.paymentPay = "";
+        vm.paymentPolicy = "";
         
+        vm.paymentShow = false;
         vm.flagInit = true;
         vm.selectedGycbhNumber;
         
@@ -90,13 +93,17 @@
 
         	searchCart();
             vm.newDate = new Date();
-            
+            debugger
             var paymentResult = $location.search().paymentStatus;
+            vm.paymentPay = $location.search().paymentPay;
+            vm.paymentPolicy = $location.search().paymentPolicy;
             if(paymentResult) {
             	if(paymentResult == '3') {
-            		toastr.success("Thanh toán thành công!");
+            		vm.paymentShow = true;
+//            		toastr.success("Thanh toán thành công!");
             	} else {
-            		toastr.error("Thanh toán thất bại!");
+            		vm.paymentShow = false;
+//            		toastr.error("Thanh toán thất bại!");
             	}
             }
         })();

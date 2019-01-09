@@ -34,6 +34,24 @@
         				}
 	        		}
         		})
+        		
+        		.state('access.returnPayment', {
+        			url: '/returnPayment',
+        			templateUrl: 'views/misc/payment-landing.html',
+        			data : { 
+    					title: '',
+    					authorities : []
+        			},
+        			controller: "CartController",
+        			controllerAs: 'vm',
+        			resolve: {
+        				loadPlugin: function ($ocLazyLoad) {
+        					return $ocLazyLoad.load(['apps/cart/cart.service.js', 'apps/cart/cart.controller.js', 'apps/agreement-base.controller.js', 'apps/order/order.service.js',
+    	            			'apps/product/printed-paper/printed-paper.service.js']);
+        				}
+	        		}
+        		})
+        		
 //        		.state('access.signup', {
 //        			url: '/signup',
 //        			templateUrl: 'apps/access/signup/signup.html'
