@@ -97,7 +97,7 @@
             vm.paymentPay = $location.search().paymentPay;
             vm.paymentPolicy = $location.search().paymentPolicy;
             if(paymentResult) {
-            	if(paymentResult == '3') {
+            	if(paymentResult == '00') {
             		vm.paymentShow = true;
 //            		toastr.success("Thanh toán thành công!");
             	} else {
