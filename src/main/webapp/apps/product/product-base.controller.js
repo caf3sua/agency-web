@@ -123,6 +123,8 @@
     	
     	vm.checkDongYHD = true;
     	vm.copyFromContact = true;
+    	
+    	vm.changeReceive = changeReceive;
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -192,6 +194,13 @@
     		console.log('openSearchContactReceiver');
     		vm.loadContactForReceiver = true;
         	ContactCommonDialogService.openSearchDialog();
+    	}
+    	
+    	function changeReceive() {
+    		if (vm.policy.receiveMethod == 1){
+        		vm.copyFromContact = true;
+        		vm.changeCopyFromContact();
+        	}
     	}
     	
         function changeCopyFromContact() {
@@ -940,6 +949,10 @@
                 vm.typeArrowTwo = "fa-angle-right";
                 checkCloseStepOne = true;
             }else if(type == "step2"){
+            	if (vm.policy.receiveMethod == 1){
+            		vm.copyFromContact = true;
+            	}
+            	
             	if (vm.copyFromContact){
             		vm.changeCopyFromContact();	
             	}

@@ -128,7 +128,6 @@
             		
             		vm.loading = false;
             		vm.policy = result;
-            		debugger
             		// Open view and step - calculate premium again
             		getPremium();
             		vm.nextCount = 2;

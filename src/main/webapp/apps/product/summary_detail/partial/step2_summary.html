@@ -1,4 +1,4 @@
-<div class="bv-pading-30">
+<div class="bv-pading-30" ng-show="vm.policy.receiveMethod == 2">
         <div class="text-header-sp">
             <p class="header-border-bottom">Thông tin giao nhận giấy chứng nhận bảo hiểm</p>
         </div>
@@ -85,12 +85,6 @@
         <div>
             <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.invoiceInfo.address | address}}</p>
             <p class="bv-tile-templateSummary none-edit-mode" ng-show="!vm.isEditMode()">{{vm.policy.invoiceInfo.address + ', ' + vm.policy.invoiceInfo.addressDistrictData.pkDistrict | address}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Số tài khoản</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary display-inline-block">{{vm.policy.invoiceInfo.accountNo}}</p>
         </div>
 </div>
 <div class="bv-pading-30">
