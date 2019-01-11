@@ -118,6 +118,13 @@
     	vm.exportExcel = exportExcel;
     	vm.openConfirmDialog = openConfirmDialog;
     	
+    	vm.rembemberCurrentPage = rembemberCurrentPage;
+    	vm.current_page = 1;
+    	
+    	vm.checkDongYHD = true;
+    	vm.copyFromContact = true;
+    	
+    	vm.changeReceive = changeReceive;
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
@@ -133,7 +140,6 @@
                 vm.policy.contactEmail = $rootScope.createContact.email;
                 vm.policy.contactIdNumber = $rootScope.createContact.idNumber;
                 vm.policy.contactCategoryType = $rootScope.createContact.categoryType;
-//                vm.policy.contactAddress = $rootScope.createContact.homeAddress;
                 vm.policy.contactAddress = $rootScope.createContact.homeAddress.substring(0, $rootScope.createContact.homeAddress.indexOf("::"));
                 
                 let postcode = $rootScope.createContact.homeAddress.substring($rootScope.createContact.homeAddress.lastIndexOf("::") + 2);
@@ -164,12 +170,12 @@
     		if (vm.policy.invoiceInfo != null){
     			if (isNotEmptyString(vm.policy.invoiceInfo.name) && isNotEmptyString(vm.policy.invoiceInfo.company) 
     					&& isNotEmptyString(vm.policy.invoiceInfo.taxNo) && isNotEmptyString(vm.policy.invoiceInfo.address) 
-    					&& isNotEmptyString(vm.policy.invoiceInfo.accountNo) && vm.policy.invoiceInfo.addressDistrictData != undefined){
+    					&& vm.policy.invoiceInfo.addressDistrictData != undefined){
     				return true;        				
     			}
     			if (isEmptyString(vm.policy.invoiceInfo.name) && isEmptyString(vm.policy.invoiceInfo.company)
     					&& isEmptyString(vm.policy.invoiceInfo.taxNo) && isEmptyString(vm.policy.invoiceInfo.address) 
-    					&& isEmptyString(vm.policy.invoiceInfo.accountNo) && isEmptyString(vm.policy.invoiceInfo.addressDistrictData)){
+    					&& isEmptyString(vm.policy.invoiceInfo.addressDistrictData)){
     				return true;        				
     			}
     			
@@ -188,6 +194,13 @@
     		console.log('openSearchContactReceiver');
     		vm.loadContactForReceiver = true;
         	ContactCommonDialogService.openSearchDialog();
+    	}
+    	
+    	function changeReceive() {
+    		if (vm.policy.receiveMethod == 1){
+        		vm.copyFromContact = true;
+        		vm.changeCopyFromContact();
+        	}
     	}
     	
         function changeCopyFromContact() {
@@ -231,19 +244,21 @@
 	      			if (vm.policy.agreementId != null && vm.policy.agreementId != undefined && vm.policy.agreementId != ""){
 	      				vm.policy.invoiceInfo.name = vm.policy.contactName;
 	      				if (vm.policy.contactCategoryType == "ORGANIZATION"){
-		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+		      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 		      			}
+	      				
 	      				vm.policy.invoiceInfo.address = vm.policy.contactAddress;
-	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 			      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      			} else {
 	      				var dataBVP = $rootScope.saveNguoiYcBVP;
 		      			let address = dataBVP.homeAddress;
 		      			vm.policy.invoiceInfo.name = dataBVP.contactName;
 		      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
-		      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+		      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+		      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 		      			}
-		      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+		      			
 			      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
 
 		                let postcode = address.substring(address.lastIndexOf("::") + 2);
@@ -254,9 +269,10 @@
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
 	      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
-	      				vm.policy.invoiceInfo.company = vm.policy.contactName;	
+	      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
 	      			}
-	      			vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+	      			
 		      		vm.policy.invoiceInfo.address = vm.policy.contactAddress;
 		      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      		}
@@ -324,14 +340,18 @@
         
         function savePolicyBase(productCode, obj) {
         	vm.loading = true;
-        	vm.policy.receiverUser.address = vm.policy.receiverUser.address 
+//        	if (vm.policy.receiverUser.address.indexOf('::') == -1) {
+        		vm.policy.receiverUser.address = vm.policy.receiverUser.address 
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkDistrict
     			+ "::" + vm.policy.receiverUser.addressDistrictData.pkPostcode;
+//        	}
         	
-        	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.accountNo != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" && vm.policy.invoiceInfo.accountNo != ""){
-        		vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
-    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
-    			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;	
+        	if (vm.policy.invoiceInfo.name != null && vm.policy.invoiceInfo.company != null && vm.policy.invoiceInfo.taxNo != null && vm.policy.invoiceInfo.address != null && vm.policy.invoiceInfo.name != "" && vm.policy.invoiceInfo.company != "" && vm.policy.invoiceInfo.taxNo != "" && vm.policy.invoiceInfo.address != "" ){
+//        		if (vm.policy.invoiceInfo.address.indexOf('::') == -1) {
+        			vm.policy.invoiceInfo.address = vm.policy.invoiceInfo.address 
+        			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkDistrict
+        			+ "::" + vm.policy.invoiceInfo.addressDistrictData.pkPostcode;
+//        		}
         	}
         	
         	// Save or update
@@ -348,6 +368,9 @@
                 	// Add new
                 	createNewPolicy(productCode, obj);
                 }).catch(function(data, status) {
+                	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+                	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
+                	
         			console.log('Error get gychbhNumber');
         			vm.clearResponseError();
         			vm.validateResponse(data, 'getPolicyNumber');
@@ -416,6 +439,9 @@
 	        }
 				
 	        function onCreatePolicyError(error) {
+	        	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+            	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
+            	
 	            vm.loading = false;
 	            vm.validateResponse(error, 'createPolicy');
 	        }
@@ -477,6 +503,8 @@
 	        }
 				
 	        function onUpdatePolicyError(error) {
+	        	vm.policy.receiverUser.address = $filter('shortAddress')(vm.policy.receiverUser.address);
+            	vm.policy.invoiceInfo.address = $filter('shortAddress')(vm.policy.invoiceInfo.address);
 	            vm.loading = false;
 	            vm.validateResponse(error, 'updatePolicy');
 	        }
@@ -707,7 +735,10 @@
         				vm.policy.invoiceInfo = {};
         			}
         			vm.policy.invoiceInfo.name = $rootScope.selectedContact.contactName;
-//        			vm.policy.invoiceInfo.address = $filter('address')($rootScope.selectedContact.homeAddress);
+        			if ($rootScope.selectedContact.categoryType == "ORGANIZATION"){
+	      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+	      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+	      			}
         			
         			let addressReceiver = $rootScope.selectedContact.homeAddress;
             		vm.policy.invoiceInfo.address = addressReceiver.substring(0, addressReceiver.indexOf("::"));
@@ -816,7 +847,15 @@
 
         function openSearchContact() {
         	console.log('openSearchContact');
-        	ContactCommonDialogService.openSearchDialog('NYCBH');
+        	if (vm.policy.travelWithId != undefined && vm.policy.travelWithId != null){	// dùng cho TH lọc của TVC
+        		if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
+        			ContactCommonDialogService.openSearchDialog('PERSON');	
+        		} else {
+        			ContactCommonDialogService.openSearchDialog('NYCBH');
+        		}
+        	} else {
+        		ContactCommonDialogService.openSearchDialog('NYCBH');	
+        	}
         }
         
         function openSearchContactOther() {
@@ -910,6 +949,14 @@
                 vm.typeArrowTwo = "fa-angle-right";
                 checkCloseStepOne = true;
             }else if(type == "step2"){
+            	if (vm.policy.receiveMethod == 1){
+            		vm.copyFromContact = true;
+            	}
+            	
+            	if (vm.copyFromContact){
+            		vm.changeCopyFromContact();	
+            	}
+            	
             	if (validatorExtraInfo()) {
             		if(vm.nextCount >= 1) {
                         document.getElementById("bv-step-2").className = 'bv-step-2  col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex  widthStep98 OpenStepTwo';
@@ -969,11 +1016,11 @@
         				return false;
         			}
         			
-        			if (vm.policy.invoiceInfo.accountNo == "" || vm.policy.invoiceInfo.accountNo == null || vm.policy.invoiceInfo.accountNo == undefined){
+        			/*if (vm.policy.invoiceInfo.accountNo == "" || vm.policy.invoiceInfo.accountNo == null || vm.policy.invoiceInfo.accountNo == undefined){
         				angular.element('#invoiceInfoAccountNo').focus();
         				toastr.error("Cần nhập Số tài khoản");
         				return false;
-        			}
+        			}*/
             	}
             }else{
                 document.getElementById("bv-step-1").className = 'bv-step-1 col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 display-flex widthStep98';
@@ -1005,23 +1052,192 @@
         function validatorTVC() {
         	console.log('validator extra TVC at step 2');
         	
+        	if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2){
+        		if (vm.policy.contactCategoryType == "ORGANIZATION"){
+            		toastr.error("Du lịch cá nhân hoặc gia đình người yêu cầu bảo hiểm phải là: Cá nhân");
+            		return false;
+            	}	
+        	}
+        	
+        	if (vm.policy.travelWithId == 1){
+        		if (vm.ngYcbhDicung){
+            		if (vm.policy.listTvcAddBaseVM[0].relationship != 30){
+            			toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
+                		return false;
+            		}
+    			}
+        	}
+        	
+        	
         	// Validate CMND or Ngay sinh
-        	let result = true; 
+        	let result = true;
+        	let resultName = true;
+        	let resultDob = true;
+        	let resultCMT = true;
+        	let resultRelationship = true;
+        	let countBanthan = 0;
+        	let countVochong = 0;
+        	let listIdPasswport = [];
         	angular.forEach(vm.policy.listTvcAddBaseVM, function(item, key) {
+        		// thieu thong tin
         		if (isEmptyString(item.idPasswport) && isEmptyString(item.dob)) {
         			result = false;
         			// Show
         			let data = {
     	        		fieldName : "idPasswport" + key,
-    	        		message : "Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm"
+    	        		message : "Thiếu số hộ chiếu/CMND hoặc ngày sinh của người được bảo hiểm"
         	        };
         	        
         	        ResponseValidateService.validateResponse(data)
         		}
+        		
+        		// check tuoi
+        		if (!isEmptyString(item.dob)) {
+        			var now = new Date();
+        			var nowStr = DateUtils.convertDate(now);
+                    let tuoiYear = DateUtils.yearDiff(item.dob, nowStr);
+                    let tuoiMonth = DateUtils.getMonth(item.dob, nowStr);
+                    
+                    if (tuoiYear > 85 || tuoiMonth < 6){
+                    	resultDob = false;
+            			// Show
+            			let data = {
+        	        		fieldName : "dob" + key,
+        	        		message : "Người được bảo hiểm phải từ 6 tháng đến 85 tuổi"
+            	        };
+            	        
+            	        ResponseValidateService.validateResponse(data)	
+                    }
+        		}
+        		
+        		if (vm.policy.contactCategoryType != "ORGANIZATION"){
+        			if (item.relationship == 30){
+        				if (item.insuredName != vm.policy.contactName){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "insuredName" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.idPasswport != vm.policy.contactIdNumber){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "idPasswport" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        				
+        				if (item.dob != vm.policy.contactDob){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "dob" + key,
+            	        		message : "Thông tin khác với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+        			}
+        		} else {
+        			if (item.relationship == 30) {
+        				resultRelationship = false;
+            			let data = {
+        	        		fieldName : "relationship" + key,
+        	        		message : "Người yêu cầu là tổ chức thì quan hệ phải là: Khách đoàn"
+            	        };
+                	        
+            	        ResponseValidateService.validateResponse(data)
+        			}
+            	}
+    			
+        		
+    			if (vm.policy.travelWithId == 1 || vm.policy.travelWithId == 2) {
+    				if (item.relationship != 30) {
+    					if (item.idPasswport === vm.policy.contactIdNumber){
+                			resultName = false;
+                			let data = {
+            	        		fieldName : "idPasswport" + key,
+            	        		message : "Thông tin CMT/HC trùng với Người yêu cầu bảo hiểm"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+                		}
+    				}
+    			}
+    			
+    			if (vm.policy.travelWithId == 1){
+    				if (vm.ngYcbhDicung){
+            			if (item.relationship != 30){
+            				resultName = false;
+                			let data = {
+            	        		fieldName : "relationship" + key,
+            	        		message : "Mối quan hệ phải là Bản thân"
+                	        };
+                    	        
+                	        ResponseValidateService.validateResponse(data)
+            			}
+            		}
+    			}
+    			
+    			if (item.relationship == 30){
+    				countBanthan++;
+    			}
+    			if (item.relationship == 31){
+    				countVochong++;
+    			}
+    			// check trùng CMT
+    	         var idPasswport = item.idPasswport;
+    	         if(listIdPasswport.indexOf(idPasswport) === -1) {
+    	        	 listIdPasswport.push(idPasswport); 
+    	         } else {
+    	        	resultCMT = false;
+         			let data = {
+     	        		fieldName : "idPasswport" + key,
+     	        		message : "Thông tin CMT/HC trùng nhau"
+         	        };
+             	        
+         	        ResponseValidateService.validateResponse(data)
+    	         }
 		 	});
+        	if (countBanthan > 1){
+        		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là Bản thân");
+        		return false;
+        	}
+        	if (vm.ngYcbhDicung){
+        		if (countBanthan < 1){
+            		toastr.error("Mối quan hệ của người yêu cầu bảo hiểm đi cùng phải là: Bản thân");
+            		return false;
+            	}	
+        	}
+        	
+        	if (countVochong > 1){
+        		toastr.error("Danh sách NĐBH tồn tại hơn 1 người có quan hệ là vợ/chồng");
+        		return false;
+        	}
         	
         	if (result == false) {
         		toastr.error("Thiếu số hộ chiếu/CMND hoặc ngày sinh củangười được bảo hiểm");
+        		return result;
+        	}
+
+        	if (resultRelationship == false) {
+        		return resultRelationship;
+        	}
+        	
+        	if (resultName == false) {
+        		return resultName;
+        	}
+        	
+        	if (resultDob == false) {
+        		return resultDob;
+        	}
+        	
+        	if (resultCMT == false){
+        		return resultCMT;
         	}
         	
             return result;
@@ -1233,6 +1449,7 @@
         function requestProcessImportExcel(result) {
         	// Append more param
         	result.travelWithId = vm.policy.travelWithId;
+        	result.contactCategoryType = vm.policy.contactCategoryType;
         	ProductCommonService.processImportExcelTvc(result, onProcessImportExcelSuccess, onProcessImportExcelError);
         	
         	function onProcessImportExcelSuccess(data) {
@@ -1331,6 +1548,10 @@
                     }
                 },
             });
+        }
+        
+        function rembemberCurrentPage(p) {
+        	vm.current_page = p;
         }
         
     }

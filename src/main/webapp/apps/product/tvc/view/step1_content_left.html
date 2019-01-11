@@ -11,10 +11,17 @@
                         required
                 >
                     <option value="" selected disabled>--- Chọn nơi đến ---</option>
-                    <option value="4">Toàn cầu</option>
-                    <option value="3">Châu Á - Thái Bình Dương</option>
+                    <option value="1">Việt Nam</option>
                     <option value="2">ASEAN</option>
+                    <option value="3">Châu Á - Thái Bình Dương</option>
+                    <option value="4">Toàn cầu</option>
                 </select>
+            </div>
+            <div class="margin-top-10" ng-show="vm.policy.destinationId != 1">
+                <p class="bv-title-from">Nơi đến</p>
+            </div>
+			<div class="margin-top-5" ng-show="vm.policy.destinationId != 1">
+                <input type="text" id ="destinationDetail" name="destinationDetail" class="bv-input" placeholder="Nhập tên nước đến" ng-model="vm.policy.destinationDetail"/>
             </div>
 
             <div class="margin-top-10">
@@ -82,6 +89,12 @@
                     </div>
                 </div>
             </div>
+            <div class="bv-margin-botton-10 margin-top-10" ng-show="vm.policy.songay > 0">
+                <p class="bv-title-from margin-bottom-0">Số ngày bảo hiểm</p>
+            </div>
+            <div class="margin-right-5 width-100" ng-show="vm.policy.songay > 0">
+	            <input type="number" name="soNgay" class="bv-input" ng-model="vm.policy.songay" ng-disabled="true"/>
+            </div>
             <div class="margin-top-10">
                 <p class="bv-title-from">Chương trình bảo hiểm<span class="bv-req-red">&nbsp(*)</span></p>
             </div>
@@ -97,7 +110,7 @@
                         </div>
                         <span>Đồng</span>
                     </label>
-                    <label for="cbx13" class="label-cbx margin-right-5">
+                    <label for="cbx13" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx13" name="planId-2" type="radio" class="invisible" ng-model="vm.policy.planId" value="2" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
@@ -107,7 +120,7 @@
                         </div>
                         <span>Bạc</span>
                     </label>
-                    <label for="cbx12" class="label-cbx margin-right-5">
+                    <label for="cbx12" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx12" name="planId-3" type="radio" class="invisible" ng-model="vm.policy.planId" value="3" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">
@@ -117,7 +130,7 @@
                         </div>
                         <span>Vàng</span>
                     </label>
-                    <label for="cbx11" class="label-cbx margin-right-5">
+                    <label for="cbx11" class="label-cbx margin-right-5" ng-show="vm.policy.destinationId != 1">
                         <input id="cbx11" type="radio"  name="planId-4" class="invisible" ng-model="vm.policy.planId" value="4" ng-change="vm.onchangePlan()">
                         <div class="checkbox">
                             <svg width="18px" height="18px" viewBox="0 0 20 20">

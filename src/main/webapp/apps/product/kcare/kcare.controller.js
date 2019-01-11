@@ -112,7 +112,7 @@
   				"qresultTre": "0",
   				"qtreatment": "0",
   				"qtypeCancer": "0",
-  				"receiveMethod": "2",
+  				"receiveMethod": "",
   				"thoihanden": "",
   				"thoihantu": "",
   				"totalPremium": 0.0,

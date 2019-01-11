@@ -22,10 +22,10 @@
                 <i class="icon-employees"></i>
                 <span>Tạo khách hàng tổ chức</span>
             </div>
-            <div class="bv-btn-header-title" ng-click="vm.isCollapsedQuickPremium = !vm.isCollapsedQuickPremium" tooltip-placement="bottom" uib-tooltip="Tính phí nhanh">
+            <!-- <div class="bv-btn-header-title" ng-click="vm.isCollapsedQuickPremium = !vm.isCollapsedQuickPremium" tooltip-placement="bottom" uib-tooltip="Tính phí nhanh">
                 <i class="icon-calculator"></i>
                 <span>Tính phí nhanh</span>
-            </div>
+            </div> -->
         </div>
     </div>
     
@@ -76,7 +76,7 @@
         	<script type="text/ng-template" id="premium-tpl.html">
       			<div class="popover-content" ng-switch="vm.isCanPremium">
         			<div ng-switch-when="false" class="bv-background-premium">
-          				Không đủ dữ liệu tính phí
+          				Chưa có dữ liệu phù hợp để tính phí
         			</div>
 					<div ng-switch-when="true">
 						<div class="bv-premium-title">PHÍ BẢO HIỂM DỰ KIẾN</div>

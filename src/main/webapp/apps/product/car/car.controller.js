@@ -65,7 +65,7 @@
   				"policyNumber":"",
   				"premium":0,
   				"purposeOfUsageId":"15",
-  				"receiveMethod" : "2",
+  				"receiveMethod" : "",
   			   	"registrationNumber":"",
   			   	"thirdPartyPremium":0,
   			   	"thoihanden":"",

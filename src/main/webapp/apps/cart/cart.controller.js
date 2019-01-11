@@ -74,9 +74,13 @@
         vm.searchCart = searchCart;
         vm.showPayment;
         vm.nextStep = nextStep;
+        vm.checkBoxCartAllChange = checkBoxCartAllChange;
         
         vm.selectedDepartmentId;
+        vm.paymentPay = "";
+        vm.paymentPolicy = "";
         
+        vm.paymentShow = false;
         vm.flagInit = true;
         vm.selectedGycbhNumber;
         
@@ -89,13 +93,16 @@
 
         	searchCart();
             vm.newDate = new Date();
-            
             var paymentResult = $location.search().paymentStatus;
+            vm.paymentPay = $location.search().paymentPay;
+            vm.paymentPolicy = $location.search().paymentPolicy;
             if(paymentResult) {
-            	if(paymentResult == '3') {
-            		toastr.success("Thanh toán thành công!");
+            	if(paymentResult == '00') {
+            		vm.paymentShow = true;
+//            		toastr.success("Thanh toán thành công!");
             	} else {
-            		toastr.error("Thanh toán thất bại!");
+            		vm.paymentShow = false;
+//            		toastr.error("Thanh toán thất bại!");
             	}
             }
         })();
@@ -117,6 +124,25 @@
         
         function nextStep() {
         	vm.showPayment = true;
+        	let baovietCompanyId = vm.agreementOrder[0].baovietCompanyId;
+        	if (vm.agreementOrder.length > 0){
+        		for (var i = 0; i <  vm.agreementOrder.length; i++) {
+        			if (baovietCompanyId != vm.agreementOrder[i].baovietCompanyId){
+        				toastr.error("Danh sách đơn thanh toán có nhiều hơn 1 đơn vị, đề nghị lọc đơn hàng.");
+        				vm.showPayment = false;
+        				break;
+        			}
+                }	
+        	}
+        }
+        
+        function checkBoxCartAllChange() {
+        	let value = vm.checkAll;
+        	resetCartValue();
+        	angular.forEach(vm.allOrder, function(order, key) {
+        		order.check = value;
+        		selectCheckBoxCart(order);
+		 	});
         }
         
         function changeDate(){
@@ -241,6 +267,9 @@
             }else {
                 var money = data.totalPremium;
                 vm.sumMoney = vm.sumMoney - money;
+                if (vm.sumMoney < 0){
+                	vm.sumMoney = 0;	
+                }
                 var index = vm.agreementIds.indexOf(data.agreementId);
                 if (index !== -1) {
             		vm.agreementIds.splice(index, 1);
@@ -345,6 +374,7 @@
   			function onSuccess(result) {
   				toastr.success('Đã hủy đơn hàng với mã: ' + result.gycbhNumber);
   				$rootScope.$broadcast('agreementChangeSuccess');
+  				searchCart();
   			}
   			
   			function onError() {

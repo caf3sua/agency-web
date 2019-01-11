@@ -42,7 +42,7 @@
             "hieuxe":"",
             "insuredAddress":"",
             "insuredName":"",
-            "receiveMethod":"2",
+            "receiveMethod":"",
             "registrationNumber":"",
             "sokhung":"",
             "somay":"",

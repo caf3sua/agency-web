@@ -43,7 +43,7 @@
   				"premiumNet": 0,
   				"premiumsi": 0,
   				"premiumsiin": 0,
-  				"receiveMethod": "2",
+  				"receiveMethod": "",
   				"si": "",
   				"siPremium": 0,
   				"siin": "",

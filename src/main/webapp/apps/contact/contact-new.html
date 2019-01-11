@@ -50,7 +50,7 @@
 	        <div class="margin-top-5">
 	            <div class="input-group display-flex">
 	            	<div class="width-100">
-	                	<input type="text" name="idNumber" class="bv-input" placeholder="Số CMT/MST" 
+	                	<input type="text" name="idNumber" class="bv-input" placeholder="Số CMT/MST" maxlength="20"
 	                 		ng-model="vm.contact.idNumber" required>
 	             	</div>
 		             <div class="input-group-addon bv-date-icon">
@@ -125,6 +125,27 @@
 	        </div>
 	        <div class="margin-top-5">
 	            <input rows="5" type="text" class="bv-input" placeholder="Link facebook" ng-model="vm.contact.facebookId" />
+	        </div>
+	    </div>
+	    <div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">
+	        <div class="bv-title-from">
+	            <p>Số máy bàn</p>
+	        </div>
+	        <div class="margin-top-5">
+	        	<div class="input-group display-flex">
+	            	<div class="width-100">
+	                	<input type="text" name="handPhone" class="bv-input" placeholder="Số điện thoại bàn" ng-model="vm.contact.handPhone" min="11" maxlength="11"
+	                	ng-pattern = "/^[0-9]{11}$/"
+				    	validate-on="blur"
+				        invalid-message = "'Số điện thoại không đúng định dạng'"
+	                	>
+	             	</div>
+	            </div>
+	            <div ng-show="form.handPhone.$dirty && form.handPhone.$invalid">
+	                <p class="help-block" ng-show="form.handPhone.$error.pattern">
+	                    Số điện thoại không đúng định dạng!
+	                </p>
+	            </div>
 	        </div>
 	    </div>
 		<div class="col-lg-3   bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top-20">

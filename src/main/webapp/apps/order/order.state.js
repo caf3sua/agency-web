@@ -70,7 +70,7 @@
             url: '/later',
             templateUrl: 'apps/order/me-later/order.html',
             data : { 
-            	title: 'ORDER_ME',
+            	title: 'ORDER_LATER',
             	authorities : ['PERM_AGREEMENT_VIEW']
             },
             controller: "OrderLaterController",

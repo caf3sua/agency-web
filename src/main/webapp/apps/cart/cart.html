@@ -10,11 +10,20 @@
         	Thanh toán
         </button>
     </div>
-	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
-		 <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
+	<div class="table-responsive col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 margin-top-10" ng-show="vm.showPayment">
+		<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 bv-cart-text-header margin-top-10">
 	        <p>Danh sách đơn hàng thanh toán</p>
 	    </div>
 		<table class="table bv-home-block-left-table bv-table-kh" id="tableOrder">
+			<col width="3%">
+			<col width="18%">
+			<col width="15%">
+			<col width="10%">
+			<col width="10%">
+			<col width="10%">
+			<col width="10%">
+			<col width="10%">
+			<col width="10%">
 	        <thead>
 	            <tr>
 	                <th>STT</th>
@@ -38,15 +47,18 @@
 	                     <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
 	                 </td>
 	                 <td>
-	                     <p class="">{{order.receiverName}}</p>
-	                 </td>
-	                 <td><i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+	                     <p style="width: 200px">{{order.contactName}}</p>
 	                 </td>
 	                 <td>
-	                     <p class="">{{order.receiverMoible}}</p>
+	                 	<span uib-tooltip="{{order.lineName}}">
+	                 		<i class="icon-{{order.lineId}} bv-table-text-colorBlue txt-{{order.createType}}"></i>
+	                 	</span>
 	                 </td>
 	                 <td>
-	                     <p style="width: 150px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
+	                     <p style="width: 80px">{{order.contactPhone}}</p>
+	                 </td>
+	                 <td>
+	                     <p style="width: 100px"><span data-translate="global.policy.status.{{order.statusPolicyId}}">Đã thanh toán</span></p>
 	                </td>
 	                <td>
 	                    <p style="width: 80px">{{order.inceptionDate}}</p>
@@ -55,7 +67,7 @@
 	                    <p style="width: 80px">{{order.expiredDate}}</p>
 	                </td>
 	                <td>
-	                    <p style="width: 150px">{{order.totalPremium | number:0}}</p>
+	                    <p style="width: 80px">{{order.totalPremium | number:0}}</p>
 	                </td>
 	                <td>
 	                	<p style="width: 80px">{{order.agreementSysdate}}</p>
