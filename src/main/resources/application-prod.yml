@@ -28,13 +28,13 @@ spring:
 # ===================================================================
 server:
     port: 7780
-    ssl:
-        key-store: classpath:pte.p12
-        key-store-password: pte123
-        keyStoreType: PKCS12
-        keyAlias: pte
-    http:
-        port: ${PORT:8282}
+#    ssl:
+#        key-store: classpath:pte.p12
+#        key-store-password: pte123
+#        keyStoreType: PKCS12
+#        keyAlias: pte
+#    http:
+#        port: ${PORT:8282}
 
 # ===================================================================
 # Application specific properties

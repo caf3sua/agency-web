@@ -109,9 +109,9 @@
         
         $scope.$watch('vm.checkTypePay', function () {
   			if (vm.checkTypePay == 'agency') {
-  				vm.typeBank = 'ViettelPay';
+  				vm.typeBank = 'VnPay';
   			} else {
-  				vm.typeBank = 'Momo';
+  				vm.typeBank = '';
   			}
   		});
         
