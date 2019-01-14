@@ -110,6 +110,7 @@
         $scope.$watch('vm.checkTypePay', function () {
   			if (vm.checkTypePay == 'agency') {
   				vm.typeBank = 'VnPay';
+  				getListBank();
   			} else {
   				vm.typeBank = '';
   			}
