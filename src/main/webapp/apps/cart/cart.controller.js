@@ -5,9 +5,9 @@
         .module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', '$stateParams', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils', 'PAGINATION_CONSTANTS', '$controller', '$ngConfirm', 'OrderService'];
+    CartController.$inject = ['$scope', '$stateParams', '$http', '$location', '$window', 'Principal', '$state', '$rootScope', 'CartService', 'DateUtils', 'PAGINATION_CONSTANTS', '$controller', '$ngConfirm', 'OrderService'];
 
-    function CartController ($scope, $stateParams, $location, $window, Principal, $state, $rootScope, CartService, DateUtils, PAGINATION_CONSTANTS, $controller, $ngConfirm, OrderService) {
+    function CartController ($scope, $stateParams, $http, $location, $window, Principal, $state, $rootScope, CartService, DateUtils, PAGINATION_CONSTANTS, $controller, $ngConfirm, OrderService) {
     	var vm = this;
         
         // paging
@@ -93,16 +93,62 @@
 
         	searchCart();
             vm.newDate = new Date();
-            var paymentResult = $location.search().paymentStatus;
             vm.paymentPay = $location.search().paymentPay;
             vm.paymentPolicy = $location.search().paymentPolicy;
-            if(paymentResult) {
-            	if(paymentResult == '00') {
-            		vm.paymentShow = true;
-//            		toastr.success("Thanh toán thành công!");
-            	} else {
-            		vm.paymentShow = false;
-//            		toastr.error("Thanh toán thất bại!");
+            
+            let paymentStatus = $location.search().paymentStatus;; //NEED_VALIDATE_TRANSACTION
+            if (paymentStatus == 'NEED_VALIDATE_TRANSACTION') {
+            	vm.paymentShow = true;
+            	let linkValidate = $location.search().validateTransactionLink;
+            	let transRef = $location.search().transRef;
+            	let policy = $location.search().paymentPolicy;
+            	linkValidate = linkValidate.replace(/@@@/g, '&');
+            	console.log(linkValidate);
+            	let obj = {
+            			link : linkValidate
+            	}
+            	
+            	$http.post('/api/trans/get-transaction-status', obj).then(function(result) {
+                	let response = result.data.response;
+            		
+            		// Call API update status
+            		let obj = {
+            				responseString : response,
+            				transRef : transRef
+            		};
+            		
+            		OrderService.updatePaymentStatusVnPay(obj, onUpdateStatusSuccess, onUpdateStatusError);
+                });
+            	
+            	function onUpdateStatusSuccess(result) {
+            		// Xu ly thanh cong
+            		console.log(result);
+            		if (checkResult){
+            			vm.paymentPay = transRef;
+            			vm.paymentPolicy = policy;
+                		// Xu ly loi        
+                		vm.paymentShow = true;
+            		} else {
+            			vm.paymentPay = transRef;
+            			vm.paymentPolicy = policy;
+                		// Xu ly loi        
+                		vm.paymentShow = false;	
+            		}
+            	}
+            	
+            	function onUpdateStatusError(result) {
+            		let checkResult = result.data.result;
+            		if (checkResult){
+            			vm.paymentPay = transRef;
+            			vm.paymentPolicy = policy;
+                		// Xu ly loi        
+                		vm.paymentShow = true;
+            		} else {
+            			vm.paymentPay = transRef;
+            			vm.paymentPolicy = policy;
+                		// Xu ly loi        
+                		vm.paymentShow = false;	
+            		}
             	}
             }
         })();

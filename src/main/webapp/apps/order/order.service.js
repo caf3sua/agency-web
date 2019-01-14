@@ -77,6 +77,10 @@
             'resendOtp' : {
                 method : 'POST',
                 url : 'api/agency/product/agreement/resend-confirm-otp'
+            },
+            'updatePaymentStatusVnPay' : {
+                method : 'POST',
+                url : 'api/agency/payment/update-status-vnpay'
             }
         });
 

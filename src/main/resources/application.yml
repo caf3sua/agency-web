@@ -9,6 +9,16 @@
 spring:
     application:
         name: Baoviet Agency WebApp
+        proxy:
+            enable: true
+            #address: 172.29.1.24
+            #port: 8080
+            #username: vuhoangchien
+            #password: chien@123
+            address: 172.29.1.25
+            port: 8080
+            username: thaihuychuong
+            password: 12345678
     profiles:
         # The commented value for `active` can be replaced with valid Spring profiles to load.
         # Otherwise, it will be filled in by maven when building the WAR file
