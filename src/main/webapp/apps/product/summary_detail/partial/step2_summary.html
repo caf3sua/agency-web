@@ -83,7 +83,7 @@
             <p>Địa chỉ công ty</p>
         </div>
         <div>
-            <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.invoiceInfo.address | address}}</p>
+            <p class="bv-tile-templateSummary edit-mode" ng-show="vm.isEditMode()">{{vm.policy.invoiceInfo.address + ', ' + vm.policy.invoiceInfo.addressDistrictData.pkDistrict | address}}</p>
             <p class="bv-tile-templateSummary none-edit-mode" ng-show="!vm.isEditMode()">{{vm.policy.invoiceInfo.address + ', ' + vm.policy.invoiceInfo.addressDistrictData.pkDistrict | address}}</p>
         </div>
 </div>
