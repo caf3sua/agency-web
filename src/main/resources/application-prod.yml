@@ -8,6 +8,9 @@
 # ===================================================================
 
 spring:
+    url:
+        urlService: "https://esb.baoviet.com.vn:8005/api/agency/payment"
+#        urlService: "https://appuat.baoviet.com.vn:7778/api/agency/payment"
 
 # ===================================================================
 # To enable SSL, generate a certificate using:

@@ -1,24 +1,33 @@
 package com.baoviet.app.rest;
 
-import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.baoviet.app.rest.vm.PaymentResultVnPay;
+import com.baoviet.app.rest.vm.PaymentValidateResult;
 import com.baoviet.app.rest.vm.TransactionVM;
+import com.baoviet.app.util.Constants;
+
 
 /**
  * REST controller for managing users.
@@ -64,7 +73,10 @@ public class TransactionResource {
 	
 	@Value("${spring.application.proxy.password}")
 	private String proxyPassword;
-
+	
+	@Value("${spring.url.urlService}")
+	private String urlService;
+	
     /**
      * POST  /users  : Creates a new user.
      * <p>
@@ -89,12 +101,82 @@ public class TransactionResource {
     	RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(param.getLink(), String.class);
         
-//		RequestEntity<?> requestEntity = new RequestEntity<>(HttpMethod.GET, URI.create(param.getLink()));
-//		ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-//    	String result = responseEntity.getBody();
-    	
     	param.setResponse(result);
     	return new ResponseEntity<>(param, HttpStatus.OK);
     }
+    
+    @GetMapping("/notify-returnVnPay")
+	public ResponseEntity<PaymentResultVnPay> returnVnPay(@RequestParam(value = "vnp_Amount", required=false) String vnpAmount,
+			@RequestParam("vnp_BankCode") String vnpBankCode, @RequestParam(value = "vnp_BankTranNo", required=false) String vnpBankTranNo,
+			@RequestParam("vnp_CardType") String vnpCardType, @RequestParam("vnp_OrderInfo") String vnpOrderInfo,
+			@RequestParam("vnp_PayDate") String vnpPayDate, @RequestParam("vnp_ResponseCode") String vnpResponseCode,
+			@RequestParam("vnp_TmnCode") String vnpTmnCode, @RequestParam("vnp_TransactionNo") String vnpTransactionNo,
+			@RequestParam("vnp_TxnRef") String vnpTxnRef, @RequestParam("vnp_SecureHash") String vnpSecureHash)
+			throws URISyntaxException {
+		log.info("START REST request to returnVnPay, {}");
 
+		PaymentResultVnPay paymentResult = new PaymentResultVnPay();
+		
+		RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        String urlGetLink = urlService + "/returnVnPayWeb";
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(urlGetLink)
+                .queryParam(Constants.VNPAY_PARAM_AMOUNT, vnpAmount)
+                .queryParam(Constants.VNPAY_PARAM_BANK_CODE, vnpBankCode)
+                .queryParam(Constants.VNPAY_PARAM_BANK_TRAN_NO, vnpBankTranNo)
+                .queryParam(Constants.VNPAY_PARAM_CARD_TYPE, vnpCardType)
+                .queryParam(Constants.VNPAY_PARAM_ORDER_INFO, vnpOrderInfo)
+                .queryParam(Constants.VNPAY_PARAM_PAY_DATE, vnpPayDate)
+                .queryParam(Constants.VNPAY_PARAM_RESPONSE_CODE, vnpResponseCode)
+                .queryParam(Constants.VNPAY_PARAM_TMN_CODE, vnpTmnCode)
+                .queryParam(Constants.VNPAY_PARAM_TRANSACTION_NO, vnpTransactionNo)
+                .queryParam(Constants.VNPAY_PARAM_TXN_REF, vnpTxnRef)
+                .queryParam(Constants.VNPAY_PARAM_SECURE_HASH, vnpSecureHash);
+
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+        // get link check
+        HttpEntity<String> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, String.class);
+        
+        if (response.getBody() != null) {
+        	String linkCheck = response.getBody().replace("@@@", "&");	
+        	
+        	if (proxyEnable) {
+    			System.getProperties().put("http.proxyHost", proxyAddress);
+    			System.getProperties().put("http.proxyPort", proxyPort);
+    			System.getProperties().put("http.proxyUser", proxyUsername);
+    			System.getProperties().put("http.proxyPassword", proxyPassword);
+    		}
+        	
+            String result = restTemplate.getForObject(linkCheck, String.class);
+            
+            TransactionVM transaction = new TransactionVM();
+            transaction.setResponse(result);
+            
+        	// call API update
+        	HttpHeaders headersUpdate = new HttpHeaders();
+
+        	String urlUpdate = urlService + "/update-status-vnpayWeb";
+            UriComponentsBuilder builderUpdate = UriComponentsBuilder.fromHttpUrl(urlUpdate)
+                    .queryParam("trans_Ref", vnpTxnRef)
+                    .queryParam("response_String", transaction.getResponse());
+
+            HttpEntity<?> entityUpdate = new HttpEntity<>(headersUpdate);
+
+            // get link check
+            HttpEntity<PaymentResultVnPay> responseUpdate = restTemplate.exchange(builderUpdate.toUriString(), HttpMethod.GET, entityUpdate, PaymentResultVnPay.class);
+            if (responseUpdate.getBody() != null) {
+            	paymentResult.setRspCode(responseUpdate.getBody().getRspCode());
+            	paymentResult.setMessage(responseUpdate.getBody().getMessage());	
+            } else {
+            	paymentResult.setRspCode("99");
+            }
+            
+        } else {
+        	paymentResult.setRspCode("97");
+        	paymentResult.setMessage("Chu ky khong hop le");
+        }
+		return new ResponseEntity<>(paymentResult, HttpStatus.OK);
+	}
 }
