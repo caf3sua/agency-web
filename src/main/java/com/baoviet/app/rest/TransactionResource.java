@@ -1,8 +1,6 @@
 package com.baoviet.app.rest;
 
 import java.net.URISyntaxException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -24,7 +22,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.baoviet.app.rest.vm.PaymentResultVnPay;
-import com.baoviet.app.rest.vm.PaymentValidateResult;
 import com.baoviet.app.rest.vm.TransactionVM;
 import com.baoviet.app.util.Constants;
 
