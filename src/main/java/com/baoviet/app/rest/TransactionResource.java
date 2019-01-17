@@ -22,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.baoviet.app.rest.vm.PaymentResultVnPay;
+import com.baoviet.app.rest.vm.PaymentValidateResult;
 import com.baoviet.app.rest.vm.TransactionVM;
 import com.baoviet.app.util.Constants;
 
@@ -138,7 +139,7 @@ public class TransactionResource {
         
         if (response.getBody() != null) {
         	String linkCheck = response.getBody().replace("@@@", "&");	
-        	
+//        	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr&vnp_CreateDate=20190117114421&vnp_IpAddr=%3A%3A1&vnp_Merchant=VNPAY&vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.223&vnp_TmnCode=BVTCT001&vnp_TransDate=20190117000000&vnp_TxnRef=BVGI.PAY.19.223&vnp_Version=2.0.0&vnp_SecureHash=33cd967f5883a20ba359502239efc203";
         	if (proxyEnable) {
     			System.getProperties().put("http.proxyHost", proxyAddress);
     			System.getProperties().put("http.proxyPort", proxyPort);
@@ -148,31 +149,25 @@ public class TransactionResource {
         	
             String result = restTemplate.getForObject(linkCheck, String.class);
             
-            TransactionVM transaction = new TransactionVM();
-            transaction.setResponse(result);
-            
+            PaymentValidateResult input = new PaymentValidateResult();
+        	input.setResponseString(result);
+        	input.setTransRef(vnpTxnRef);
         	// call API update
-        	HttpHeaders headersUpdate = new HttpHeaders();
-
         	String urlUpdate = urlService + "/update-status-vnpayWeb";
-            UriComponentsBuilder builderUpdate = UriComponentsBuilder.fromHttpUrl(urlUpdate)
-                    .queryParam("trans_Ref", vnpTxnRef)
-                    .queryParam("response_String", transaction.getResponse());
-
-            HttpEntity<?> entityUpdate = new HttpEntity<>(headersUpdate);
 
             // get link check
-            HttpEntity<PaymentResultVnPay> responseUpdate = restTemplate.exchange(builderUpdate.toUriString(), HttpMethod.GET, entityUpdate, PaymentResultVnPay.class);
-            if (responseUpdate.getBody() != null) {
-            	paymentResult.setRspCode(responseUpdate.getBody().getRspCode());
-            	paymentResult.setMessage(responseUpdate.getBody().getMessage());	
+        	PaymentResultVnPay responseUpdate = restTemplate.postForObject(urlUpdate, input, PaymentResultVnPay.class);
+            
+        	if (responseUpdate != null) {
+            	paymentResult.setRspCode(responseUpdate.getRspCode());
+            	paymentResult.setMessage(responseUpdate.getMessage());	
             } else {
             	paymentResult.setRspCode("99");
             }
             
-        } else {
-        	paymentResult.setRspCode("97");
-        	paymentResult.setMessage("Chu ky khong hop le");
+//        } else {
+//        	paymentResult.setRspCode("97");
+//        	paymentResult.setMessage("Chu ky khong hop le");
         }
 		return new ResponseEntity<>(paymentResult, HttpStatus.OK);
 	}
