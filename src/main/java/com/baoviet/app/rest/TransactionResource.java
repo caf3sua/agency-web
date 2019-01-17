@@ -139,7 +139,7 @@ public class TransactionResource {
         
         if (response.getBody() != null) {
         	String linkCheck = response.getBody().replace("@@@", "&");	
-//        	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr&vnp_CreateDate=20190117114421&vnp_IpAddr=%3A%3A1&vnp_Merchant=VNPAY&vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.223&vnp_TmnCode=BVTCT001&vnp_TransDate=20190117000000&vnp_TxnRef=BVGI.PAY.19.223&vnp_Version=2.0.0&vnp_SecureHash=33cd967f5883a20ba359502239efc203";
+//        	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr@@@vnp_CreateDate=20190117130816@@@vnp_IpAddr=%3A%3A1@@@vnp_Merchant=VNPAY@@@vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.225@@@vnp_TmnCode=BVTCT001@@@vnp_TransDate=20190117000000@@@vnp_TxnRef=BVGI.PAY.19.225@@@vnp_Version=2.0.0@@@vnp_SecureHash=f874a9a6a6d7c2592a46a5480784d347".replace("@@@", "&");
         	if (proxyEnable) {
     			System.getProperties().put("http.proxyHost", proxyAddress);
     			System.getProperties().put("http.proxyPort", proxyPort);
@@ -165,9 +165,9 @@ public class TransactionResource {
             	paymentResult.setRspCode("99");
             }
             
-//        } else {
-//        	paymentResult.setRspCode("97");
-//        	paymentResult.setMessage("Chu ky khong hop le");
+        } else {
+        	paymentResult.setRspCode("97");
+        	paymentResult.setMessage("Chu ky khong hop le");
         }
 		return new ResponseEntity<>(paymentResult, HttpStatus.OK);
 	}
