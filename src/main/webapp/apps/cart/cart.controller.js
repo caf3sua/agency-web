@@ -64,7 +64,7 @@
         vm.type99 = false;
         vm.type100 = false;
         vm.couponCode = null;
-        vm.bankCode = null;
+        vm.paymentBankCode = null;
         vm.agreementIds = [];
         vm.agreementOrder = [];
         vm.checkTypePay = 'agency';
@@ -346,7 +346,7 @@
         	
         	var paymentData = {
     			"agreementIds" : vm.agreementIds,
-    			"bankCode": vm.bankCode,
+    			"bankCode": vm.paymentBankCode,
     			"couponCode": vm.couponCode,
     			"paymentFee": vm.sumMoney,
     			"paymentType": vm.typeBank
@@ -356,7 +356,7 @@
         		toastr.error("Bạn cần chọn phương thức thanh toán");
         		return;
         	} else if(vm.typeBank == '123pay' || vm.typeBank == 'VnPay') {
-        		if(!vm.bankCode) {
+        		if(!vm.paymentBankCode) {
         			toastr.error("Bạn cần chọn ngân hàng hỗ trợ!");
             		return;
         		}
