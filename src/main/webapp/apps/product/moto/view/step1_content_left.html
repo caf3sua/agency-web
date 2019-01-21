@@ -58,7 +58,7 @@
             <div class="margin-top-5">
                 <input type="number" min="1" max="2" name="nntxSoNguoi" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số chỗ tham gia bảo hiểm" ng-model="vm.policy.nntxSoNguoi"
                        validator= "vm.validatorNntxSoNguoi() === true"
-                       invalid-message = "vm.validatorNntxSoNguoi()" ng-blur="vm.getPremium()" required/>
+                       invalid-message = "vm.validatorNntxSoNguoi()" ng-blur="vm.getPremium()"/>
                 <div ng-show="myForm.nntxSoNguoi.$dirty && myForm.nntxSoNguoi.$invalid">
 	                <p class="help-block" ng-show="myForm.nntxSoNguoi.$error.required">
 	                    Chưa thêm số chỗ tham gia bảo hiểm!
@@ -74,7 +74,7 @@
             <div class="margin-top-5">
                 <input type="text" format="number" name="nntxStbh" id="nntxStbh" ng-show="vm.policy.nntxCheck" class="bv-input" placeholder="Số tiền bảo hiểm với số tiền tối thiểu từ 3 triệu đồng đến tối đa 500 triệu đồng" ng-model="vm.policy.nntxStbh"
                        validate-on="blur" validator= "vm.validatorNntxStbh() === true"
-                       invalid-message = "vm.validatorNntxStbh()" required-message="'Chưa nhập số tiền bảo hiểm!'" ng-blur="vm.getPremium()" required/>
+                       invalid-message = "vm.validatorNntxStbh()" required-message="'Chưa nhập số tiền bảo hiểm!'" ng-blur="vm.getPremium()"/>
             </div>
             <div class="cntr margin-top-5">
                 <label for="cbx5" class="label-cbx">
