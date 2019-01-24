@@ -184,6 +184,10 @@
             'processExportExcelTvc' : {
                 method : 'POST',
                 url : 'api/agency/product/tvc/export-excel'
+            },
+            'processExportExcelMoto' : {
+                method : 'POST',
+                url : 'api/agency/agency-report/export-excel'
             }
         });
 

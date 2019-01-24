@@ -1404,6 +1404,12 @@
 		  	    	};
 		  	    	ProductCommonService.processExportExcelTvc(obj, onExportExcelSuccess, onExportExcelError);
 	  	            break;
+		  	  case "MOT":
+		  	    	let objMOT = {
+		  	    		data : vm.orders
+		  	    	};
+		  	    	ProductCommonService.processExportExcelMoto(objMOT, onExportExcelSuccess, onExportExcelError);
+	  	            break;
 	  	        default: 
 	  	            console.log('invalid product code');
 	  	        break;

@@ -23,6 +23,11 @@
 				method : 'POST',
 				url : 'api/agency/agency-report/report-income'
 			},
+			'getReportMoto' : {
+				method : 'POST',
+				url : 'api/agency/agency-report/report-moto',
+				isArray: true
+			},
 			'getReportDashboard' : {
 				method : 'POST',
 				url : 'api/agency/agency-report/report-dashboard'
