@@ -276,6 +276,7 @@
         });
         
         function onchangeTravel() {
+        	vm.ngYcbhDicung = false;
         	vm.policy.listTvcAddBaseVM = [];
             if (vm.policy.travelWithId == '1'){
             	vm.policy.soNguoiThamGia = 1;

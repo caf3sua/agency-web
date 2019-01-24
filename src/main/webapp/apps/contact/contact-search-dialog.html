@@ -49,7 +49,9 @@
 		            <td>{{(vm.page -1)*vm.itemsPerPage+$index + 1}}</td>
 		          	<td><a ng-click="vm.selectedContact(row)"><p class="bv-table-text-colorBlue">{{row.contactName}}</p></a></td>
 		          	<td>{{row.idNumber}}</td>
-		          	<td>{{row.dateOfBirth}}</td>
+		          	<td>
+	                	<p class="" ng-show="row.categoryType != 'ORGANIZATION'">{{row.dateOfBirth}}</p>
+	            	</td>
 		          	<td>
 			          	<div ng-switch="row.categoryType">
 			              <div ng-switch-when ="PERSON">
