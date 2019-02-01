@@ -31,41 +31,7 @@
     </div>
 	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
         <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 padding0 text-center">
-            
-            <!-- <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
-	            <label for="cbx17" class="label-cbx margin-right-5"> <input
-	                    id="cbx17" type="radio" class="invisible" ng-model="vm.typeBank"
-	                    value="ViettelPay">
-	                <div class="checkbox">
-	                    <svg width="18px" height="18px" viewBox="0 0 20 20">
-	                        <path
-	                                d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-	                        <polyline points="4 11 8 15 16 6"></polyline>
-	                    </svg>
-	                </div> <span>Viettel Payment</span>
-	                <p class="margin-top-10 bv-img-pay">
-	                    <img src="../../content/assets/images/viettelpay.jpg">
-	                </p>
-	            </label>
-	        </div>
-	        
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0">
-                <label for="cbx15" class="label-cbx margin-right-5"> <input
-                        id="cbx15" type="radio" class="invisible" ng-model="vm.typeBank"
-                        value="Momo">
-                    <div class="checkbox">
-                        <svg width="18px" height="18px" viewBox="0 0 20 20">
-                            <path
-                                    d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
-                            <polyline points="4 11 8 15 16 6"></polyline>
-                        </svg>
-                    </div> <span>Ví điện tử MoMo</span>
-                    <p class="margin-top-10 bv-img-pay">
-                        <img src="../../content/assets/images/momo.png">
-                    </p>
-                </label>
-            </div> -->
-            
+            <!-- vnpay -->
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0" has-authority="PERM_PAY_VNPAY">
                 <label for="cbx16" class="label-cbx margin-right-5"> <input
                         id="cbx16" type="radio" class="invisible" ng-model="vm.typeBank"
@@ -82,6 +48,7 @@
                     </p>
                 </label>
             </div>
+            <!-- thanh toán sau -->
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0" has-authority="PERM_PAY_THANHTOAN_SAU">
                 <label for="cbx18" class="label-cbx margin-right-5"> 
                 <input id="cbx18" type="radio" class="invisible" ng-model="vm.typeBank"
@@ -98,6 +65,41 @@
                     </p>
                 </label>
             </div>
+            <!-- viettel pay -->
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0" has-authority="PERM_PAY_VIETTEL">
+	            <label for="cbx17" class="label-cbx margin-right-5"> <input
+	                    id="cbx17" type="radio" class="invisible" ng-model="vm.typeBank"
+	                    value="ViettelPay">
+	                <div class="checkbox">
+	                    <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                        <path
+	                                d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                        <polyline points="4 11 8 15 16 6"></polyline>
+	                    </svg>
+	                </div> <span>Viettel Payment</span>
+	                <p class="margin-top-10 bv-img-pay">
+	                    <img src="../../content/assets/images/viettelpay.jpg">
+	                </p>
+	            </label>
+	        </div>
+	        <!-- momo -->
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0" has-authority="PERM_PAY_MOMO">
+                <label for="cbx15" class="label-cbx margin-right-5"> <input
+                        id="cbx15" type="radio" class="invisible" ng-model="vm.typeBank"
+                        value="Momo">
+                    <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+                                    d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+                    </div> <span>Ví điện tử MoMo</span>
+                    <p class="margin-top-10 bv-img-pay">
+                        <img src="../../content/assets/images/momo.png">
+                    </p>
+                </label>
+            </div>
+            
             <!-- Ví việt -->
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 padding0" >
 	            <label for="cbx19" class="label-cbx margin-right-5"> <input
