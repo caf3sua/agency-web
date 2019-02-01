@@ -97,11 +97,13 @@
             vm.paymentPolicy = $location.search().paymentPolicy;
             
             let paymentStatus = $location.search().paymentStatus;; //NEED_VALIDATE_TRANSACTION
+            let transRef = $location.search().transRef;
+        	let policy = $location.search().paymentPolicy;
+        	
             if (paymentStatus == 'NEED_VALIDATE_TRANSACTION') {
             	vm.paymentShow = true;
             	let linkValidate = $location.search().validateTransactionLink;
-            	let transRef = $location.search().transRef;
-            	let policy = $location.search().paymentPolicy;
+            	
             	linkValidate = linkValidate.replace(/@@@/g, '&');
             	console.log(linkValidate);
             	let obj = {
@@ -150,7 +152,16 @@
                 		vm.paymentShow = false;	
             		}
             	}
+            } else if (paymentStatus == 'SUCCESS'){
+    			vm.paymentPolicy = policy;
+        		vm.paymentShow = true;
+            } else if (paymentStatus == 'ERROR') {
+    			vm.paymentPolicy = policy;
+        		vm.paymentShow = false;
+            } else {
+            	
             }
+            
         })();
         
         $scope.$watch('vm.checkTypePay', function () {
