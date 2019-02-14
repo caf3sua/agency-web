@@ -41,7 +41,7 @@
 	        <tbody>
 		        <tr ng-repeat="order in vm.agreementOrder track by $index">
 		            <td>
-		                <p class="margin-0">{{$order + 1}}</p>
+		                <p class="margin-0">{{$index + 1}}</p>
 		            </td>
 		            <td>
 	                     <p class="bv-table-text-colorBlue">{{order.gycbhNumber}}</p>
@@ -67,7 +67,7 @@
 	                    <p style="width: 80px">{{order.expiredDate}}</p>
 	                </td>
 	                <td>
-	                    <p style="width: 80px">{{order.totalPremium | number:0}}</p>
+	                    <p style="width: 80px; text-align: right;">{{order.totalPremium | number:0}}</p>
 	                </td>
 	                <td>
 	                	<p style="width: 80px">{{order.agreementSysdate}}</p>

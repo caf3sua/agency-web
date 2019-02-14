@@ -111,7 +111,156 @@
                 </div>
             </div>
         </div>
-        <div class="bv-title-from">
+        
+        
+        <div>
+        <div class="bv-pading-30 margin-top-20 text-header-sp">
+            <p>Mức trách nhiệm và phí bảo hiểm</p>
+        </div>
+        <div style="background: #fafafa">
+            <div class="bv-pading-table-templateSummary">
+                <table class="width-100">
+                    <thead>
+                    <tr>
+                        <th class="text-header-sp" style="text-align: center; font-weight: bold; width: 60%">PHẠM VI BẢO HIỂM</th>
+                        <th class="text-header-sp" style="text-align: center; font-weight: bold; width: 20%">HẠN MỨC TRÁCH NHIỆM</th>
+                        <th class="text-header-sp" style="text-align: center; font-weight: bold; width: 20%">PHÍ BẢO HIỂM</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <tr>
+                        <td>
+                            <p class="bv-tile-templateSummary">QUYỀN LỢI CHÍNH - Điều trị nội trú do ốm bệnh,tai nạn</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">93,8 triệu/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">137,6 triệu/người/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">230 triệu/người/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">342 triệu/người/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">454 triệu/người/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <span>{{vm.policy.qlChinhPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr ng-show="vm.policy.ngoaitruPhi > 0">
+                        <td>
+                            <p class="bv-tile-templateSummary">Điều trị ngoại trú do ốm bệnh, tai nạn</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">6,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">6,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">6,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">10,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">15,000,000 VND/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <span>{{vm.policy.ngoaitruPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr ng-show="vm.policy.tncnPhi > 0">
+                        <td>
+                            <p class="bv-tile-templateSummary">Bảo hiểm Tai nạn cá nhân</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">1,000,000,000 VND/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <span>{{vm.policy.tncnPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr ng-show="vm.policy.sinhmangPhi > 0">
+                        <td>
+                            <p class="bv-tile-templateSummary">Bảo hiểm Sinh mạng cá nhân</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">1,000,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">1,000,000,000 VND/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                            	<span>{{vm.policy.sinhmangPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr ng-show="vm.policy.nhakhoaPhi > 0">
+                        <td>
+                            <p class="bv-tile-templateSummary">Bảo hiểm Nha khoa</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">2,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">2,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">5,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">10,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">15,000,000 VND/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <span>{{vm.policy.nhakhoaPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr ng-show="vm.policy.thaisanPhi > 0">
+                        <td>
+                            <p class="bv-tile-templateSummary">Bảo hiểm Thai sản</p></td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <p ng-show="vm.policy.chuongtrinhBh == 1">0 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 2">0 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 3">0 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 4">21,000,000 VND/năm</p>
+					            <p ng-show="vm.policy.chuongtrinhBh == 5">31,500,000 VND/năm</p>
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="bv-tile-templateSummary">
+                                <span>{{vm.policy.thaisanPhi | number:0 }}</span><span> VND</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td class="text-header-sp" style="text-align: right;">
+                            <p class="bv-title-from">Tổng phí bảo hiểm</p>
+                        </td>
+                        <td style="text-align: right;">
+                            <p class="bv-tile-templateSummary"><span>{{vm.policy.phiBH | number:0 }}</span><span> VND</span></p></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+        
+        
+        <!-- <div class="bv-title-from">
             <p>Tổng phí bảo hiểm (đã bao gồm VAT)</p>
         </div>
         <div>
@@ -122,7 +271,7 @@
         </div>
         <div>
             <p class="bv-tile-templateSummary">{{vm.policy.phiBH | number:0 }}</p>
-        </div>
+        </div> -->
     </div>
     <div class="bv-pading-30">
         <div class="text-header-sp">

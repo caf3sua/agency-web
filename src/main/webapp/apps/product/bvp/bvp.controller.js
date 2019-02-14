@@ -157,6 +157,8 @@
         vm.checkGycbh = checkGycbh;
         vm.checkGycbhParent = checkGycbhParent;
 //        vm.validatorTTKB = validatorTTKB;
+        vm.checkCMT = checkCMT;
+        vm.checkBanthan = checkBanthan;
         
         vm.gksFile = null;
         vm.gksFileModel;
@@ -523,7 +525,9 @@
         }
         
         function onDobChange() {
-        	vm.policy.nguoidbhNgaysinh = vm.policy.ngaySinh;
+        	if (vm.copyFromNdbh == false || vm.copyFromNdbh == undefined){
+        		vm.policy.nguoidbhNgaysinh = vm.policy.ngaySinh;	
+        	}
         	
         	var now = new Date();
             var nowStr = DateUtils.convertDate(now);
@@ -534,6 +538,7 @@
             } else{
             	vm.isShowPolicyParent = false;
             }
+
             if(vm.policy.chuongTrinh) {
             	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
             		if (vm.policy.nguoidbhNgaysinh != vm.policy.ngaySinh){
@@ -612,7 +617,7 @@
             vm.policy.nhakhoaPhi = result.nhakhoaPhi;
             vm.policy.sinhmangPhi = result.smcnPhi;
             vm.policy.chuongtrinhBh = result.chuongTrinh;
-
+            vm.policy.thaisanPhi = result.thaisanPhi;
 
             if(vm.policy.chuongTrinh) {
                 vm.isShowPremium = true;
@@ -649,7 +654,6 @@
         		vm.policy.q2 = "0";
         		vm.policy.q3 = "0";
         	}
-            
             vm.policy.chuongtrinhBh = postData.chuongTrinh;
             vm.policy.chuongtrinhPhi = vm.policy.qlChinhPhi;
             vm.policy.expiredDate = postData.thoihanbhDen;
@@ -659,6 +663,7 @@
             vm.policy.smcnPhi =vm.policy.smcnPhi;
             vm.policy.nhakhoaPhi =vm.policy.nhakhoaPhi;
             vm.policy.sinhmangPhi = postData.sinhmangPhi;
+            vm.policy.thaisanPhi = postData.thaisanPhi;
 
             if(vm.policy.ngoaitruChk) {
             	vm.policy.ngoaitru = '1';
@@ -670,6 +675,12 @@
             	vm.policy.nhakhoa = '1';
             } else {
             	vm.policy.nhakhoa = '0';
+            }
+            
+            if(vm.policy.thaisanChk) {
+            	vm.policy.thaisan = '1';
+            } else {
+            	vm.policy.thaisan = '0';
             }
             
             if(vm.policy.smcnChk) {
@@ -754,15 +765,24 @@
 	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
+	      	} else {
+	      		vm.policy.nguoinhanExtend = {
+	        			cmnd : "",
+	        			quanhe: ""
+	        	}
 	      	}
         }
         
         function changeCopyFromNdbh() {
         	vm.policy.nguoidbhName = "";
+        	vm.policy.nguoidbhCmnd = "";
+        	vm.policy.nguoidbhQuanhe = "";
         	vm.policy.nguoidbhNgaysinh = vm.policy.ngaySinh;
 	      	if (vm.copyFromNdbh) {
 	      		vm.policy.nguoidbhName = vm.policy.nguoiycName;
 	        	vm.policy.nguoidbhNgaysinh = vm.policy.nguoiycNgaysinh;
+	        	vm.policy.nguoidbhQuanhe = "30";
+	        	vm.policy.nguoidbhCmnd = vm.policy.contactIdNumber;
 	        	$rootScope.nguoidbh = {
 	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
 	        			quanhe: "30"
@@ -791,6 +811,22 @@
     				toastr.error("Số hợp đồng bảo hiểm cũ không tồn tại");
     				angular.element('#policyNumber').focus();
     			}
+            } 
+        }
+        
+        function checkCMT() {
+            if(vm.copyFromNdbh == undefined ||vm.copyFromNdbh == false) {
+    			if (vm.policy.nguoidbhCmnd == vm.policy.contactIdNumber) {
+    				toastr.error("Thông tin CMT/Hộ chiếu trùng với Người yêu cầu bảo hiểm");
+    				angular.element('#nguoidbhCmnd').focus();
+    			}
+            } 
+        }
+        
+        function checkBanthan() {
+            if(vm.policy.nguoidbhQuanhe == 30) {
+            	vm.copyFromNdbh = true;
+            	vm.changeCopyFromNdbh();
             } 
         }
         

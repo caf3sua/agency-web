@@ -176,6 +176,43 @@
                     </label>
                 </div>
             </div>
+            
+            <div class="bv-title-from" ng-show="vm.policy.qlChinhPhi > 0">
+                <p>Phí Quyền lợi chính:</p>
+            </div>
+            <div ng-show="vm.policy.qlChinhPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.qlChinhPhi | number:0}}</p>
+            </div>
+            <div class="bv-title-from" ng-show="vm.policy.ngoaitruPhi > 0">
+                <p>Phí Điều trị ngoại trú:</p>
+            </div>
+            <div ng-show="vm.policy.ngoaitruPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.ngoaitruPhi | number:0}}</p>
+            </div>
+            <div class="bv-title-from" ng-show="vm.policy.tncnPhi > 0">
+                <p>Phí Bảo hiểm Tai nạn cá nhân:</p>
+            </div>
+            <div ng-show="vm.policy.tncnPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.tncnPhi | number:0}}</p>
+            </div>
+            <div class="bv-title-from" ng-show="vm.policy.sinhmangPhi > 0">
+                <p>Phí Bảo hiểm Sinh mạng cá nhân:</p>
+            </div>
+            <div ng-show="vm.policy.sinhmangPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.sinhmangPhi | number:0}}</p>
+            </div>
+            <div class="bv-title-from" ng-show="vm.policy.nhakhoaPhi > 0">
+                <p>Phí Bảo hiểm Nha khoa:</p>
+            </div>
+            <div ng-show="vm.policy.nhakhoaPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.nhakhoaPhi | number:0}}</p>
+            </div>
+            <div class="bv-title-from" ng-show="vm.policy.thaisanPhi > 0">
+                <p>Phí Bảo hiểm Thai sản:</p>
+            </div>
+            <div ng-show="vm.policy.thaisanPhi > 0">
+                <p class="bv-tile-templateSummary">{{vm.policy.thaisanPhi | number:0}}</p>
+            </div>
             <div class="bv-title-from" ng-show="vm.isShowPremium">
                 <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
             </div>

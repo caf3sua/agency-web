@@ -2,195 +2,172 @@
     <table class="table table-bordered table-detail" style="">
         <tbody>
         <tr>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Chương trình bảo hiểm</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Đồng</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Vàng</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Bạc </th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Bạch kim</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;">Kim Cương</th>
+            <td  style="text-align: left !important; width: 250px; background-color: #f4f4f4 !important;font-weight: bold">CHƯƠNG TRÌNH BẢO HIỂM</td>
+            <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 1">Đồng</td>
+            <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 2">Bạc</td>
+            <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 3">Vàng</td>
+            <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 4">Bạch kim</td>
+            <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 5">Kim Cương</td>
         </tr>
         <tr>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold">QUYỀN LỢI CHÍNH</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"> </th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"> </th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
+            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">A. ĐIỀU KHOẢN BẢO HIỂM CHÍNH – Điều trị nội trú do ốm bệnh, tai nạn</td>
         </tr>
         <tr>
-            <th  style="text-align: center !important;">Phí chương trình chính</th>
-            <th  style="text-align: center !important;"></th>
-            <th  style="text-align: center !important;"></th>
-            <th  style="text-align: center !important;"> </th>
-            <th  style="text-align: center !important;"> </th>
-            <th  style="text-align: center !important;"></th>
-        </tr>
-        <!--<tr>-->
-        <!--<th style="text-align: center !important; background-color: #f4f4f4 !important;">1. Chết do tai nạn*</th>-->
-        <!--<th style="text-align: center !important; background-color: #f4f4f4 !important; color: #1964af !important;">140.000 VND</th>-->
-        <!--<th style="text-align: center !important; background-color: #f4f4f4 !important;color: #1964af !important;">180.000 VND</th>-->
-        <!--<th style="text-align: center !important; background-color: #f4f4f4 !important;color: #1964af !important;">300.000 VND</th>-->
-        <!--</tr>-->
-        <tr>
-            <td style="text-align: center"><p style="width: 150px;">Tổng hạn mức trách nhiệm</p></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>93,8 triệu/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>137,6 triệu/người/năm</div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>230 triệu/người/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>342 triệu/người/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>454 triệu/người/năm</p></div></td>
+            <td style="text-align: left"><p style="width: 250px;">Tổng hạn mức quyền lợi bảo hiểm chính/ng/năm</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>93.800.000 /ng/năm</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>137.600.000 /ng/năm</td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>230.000.000 /ng/năm</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>342.000.000 /ng/năm</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>454.000.000 /ng/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">2.Thương tật toàn bộ vĩnh viễn do tai nạn*</p></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>100 triệu</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>200 triệu</div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>300 triệu</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>400 triệu</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>500 triệu</p></div></td>
+            <td style="text-align: left"><p style="width: 250px;">Phạm vi lãnh thổ</p>
+            </td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Việt Nam</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Việt Nam</td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Việt Nam</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Việt Nam</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Việt Nam</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Chi phí nằm viện</p></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>2 triệu/ngày Lên đến 40 triệu/năm không quá 60 ngày/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>3 triệu/ngày Lên đến 60 triệu/năm không quá 60 ngày/năm</div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>5 triệu/ngày Lên đến 100 triệu/năm không quá 60 ngày/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>7,5 triệu/ngày Lên đến 150 triệu/năm không quá 60 ngày/năm</p></div></td>
-            <td style="text-align: center"><div style="width: 150px;"><p>10 triệu/ngày Lên đến 200 triệu/năm không quá 60 ngày/năm</p></div></td>
+            <td style="text-align: left"><p style="width: 250px;">1. Chi phí nằm viện</p>
+            <p> - Chi phí phòng, giường bệnh</p>
+			<p> - Chi phí phòng chăm sóc đặc biệt</p>
+			<p> - Các chi phí bệnh viện tổng hợp</p>
+            </td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>2.000.000/ngày Lên đến 40.000.000/năm không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>3.000.000/ngày Lên đến 60.000.000/năm không quá 60 ngày/năm</td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/ngày Lên đến 100.000.000/năm không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>7.500.000/ngày Lên đến 150.000.000/năm không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>10.000.000/ngày Lên đến 200.000.000/năm không quá 60 ngày/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Chi phí phẫu thuật</p></td>
-            <td style="text-align: center"><p style="width: 150px;">40 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">60 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">100 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">150 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">200 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">2. Chi phí khám và điều trị trong vòng 30 ngày trước khi nhập viện</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>2.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>3.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>7.500.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>10.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Chi phí khám và điều trị</p></td>
-            <td style="text-align: center"><p style="width: 150px;">2 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">3 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">7,5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">3. Chi phí tái khám và điều trị trong vòng 30 ngày sau khi xuất viện</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>2.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>3.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>7.500.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>10.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Chi phí tái khám và điều trị</p></td>
-            <td style="text-align: center"><p style="width: 150px;">2 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">3 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">7,5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">4. Dịch vụ xe cứu thương, xe cấp cứu bằng đường bộ</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>5.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>5.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>10.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>10.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;"> Dịch vụ xe cứu thương</p></td>
-            <td style="text-align: center"><p style="width: 150px;">5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">5 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">5. Chi phí Phẫu thuật (không bảo hiểm chi phí mua các bộ phận nội tạng và chi phí hiến các bộ phận nội tạng)</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>40.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>60.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>100.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>150.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>200.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Phục hồi chức năng</p></td>
-            <td style="text-align: center"><p style="width: 150px;">4 triệu/năm	</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">15 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">20 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">6. Phục hồi chức năng</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>4.000.000/năm	</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>6.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>10.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>15.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>20.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Trợ cấp bệnh viện công</p></td>
-            <td style="text-align: center"><p style="width: 150px;">80.000/ngày Không quá 60 ngày/năm	</p></td>
-            <td style="text-align: center"><p style="width: 150px;">120.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">200.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">300.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">400.000/ngày Không quá 60 ngày/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">7. Trợ cấp bệnh viện công</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>80.000/ngày Không quá 60 ngày/năm	</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>120.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>200.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>300.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>400.000/ngày Không quá 60 ngày/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">Trợ cấp mai táng phí</p></td>
-            <td style="text-align: center"><p style="width: 150px;">500.000/vụ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">500.000/vụ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">500.000/vụ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">500.000/vụ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">500.000/vụ</p></td>
+            <td style="text-align: left"><p style="width: 250px;">8. Trợ cấp mai táng phí trong trường hợp tử vong tại bênh viện</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>500.000/vụ</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>500.000/vụ</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>500.000/vụ</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>500.000/vụ</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>500.000/vụ</p></td>
         </tr>
         <tr>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold">QUYỀN LỢI BỔ SUNG</th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"> </th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"> </th>
-            <th  style="text-align: center !important; background-color: #f4f4f4 !important;"></th>
+            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">B. ĐIỀU KHOẢN BẢO HIỂM BỔ SUNG </td>
         </tr>
         <tr>
-            <th  style="text-align: center !important;font-weight: bold">Tổng phí bổ sung</th>
-            <th  style="text-align: center !important;"></th>
-            <th  style="text-align: center !important;"></th>
-            <th  style="text-align: center !important;"> </th>
-            <th  style="text-align: center !important;"> </th>
-            <th  style="text-align: center !important;"></th>
+            <td style="text-align: left"><p style="width: 250px;">1. Điều trị ngoại trú do ốm bệnh, tai nạn</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>6.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>6.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>6.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>10.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>15.000.000/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">1. Điều trị ngoại trú do ốm bệnh, tai nạn</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">- Giới hạn /lần khám</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>1.200.000/lần Không quá 10 lần/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>1.200.000/lần Không quá 10 lần/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>1.200.000/lần Không quá 10 lần/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>2.000.000/lần Không quá 10 lần/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>3.000.000/lần Không quá 10 lần/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">1. Điều trị ngoại trú do ốm bệnh, tai nạn</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">6 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">- Điều trị vật lý trị liệu  </p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>50.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>50.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>50.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>100.000/ngày Không quá 60 ngày/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>150.000/ngày Không quá 60 ngày/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">- Giới hạn /lần khám</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1.200.000/lần Không quá 10 lần/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1.200.000/lần Không quá 10 lần/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1.200.000/lần Không quá 10 lần/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">2 triệu/lần Không quá 10 lần/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">3 triệu/lần Không quá 10 lần/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">2. Bảo hiểm Tai nạn cá nhân STBH /người/năm</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Tối đa 1 tỷ đồng</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">- Điều trị vật lý trị liệu  </p></td>
-            <td style="text-align: center"><p style="width: 150px;">50.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">50.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">50.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">100.000/ngày Không quá 60 ngày/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">150.000/ngày Không quá 60 ngày/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">3. Bảo hiểm Sinh mạng cá nhân STBH/người/vụ</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Tối đa 1 tỷ đồng</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Tối đa 1 tỷ đồng</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">2. Bảo hiểm Tai nạn cá nhân</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
+            <td style="text-align: left"><p style="width: 250px;"> 4. Bảo hiểm nha khoa</p>
+            <p>- Khám và chẩn đoán bệnh về răng</p>
+            <p>- Lấy cao răng</p>
+            <p>- Trám răng bằng các chất liệu thông thường</p>
+            <p>- Nhổ răng bệnh lý </p>
+            <p>- Lấy u vôi răng (lấy vôi răng sâu dưới nướu)</p>
+            <p>- Phẫu thuật cắt chóp răng</p>
+            <p>- Chữa tủy răng</p>
+            <p>- Điều trị viêm nướu, viêm nha chu</p>
+            </td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>2.000.000/năm</p><p>1.000.000/lần khám</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>2.000.000/năm</p><p>1.000.000/lần khám</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/năm</p><p>2.500.000/lần khám</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>10.000.000/năm</p><p>5.000.000/lần khám</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>15.000.000/năm</p><p>7.500.000/lần khám</p></td>
         </tr>
         <tr>
-            <td style="text-align: center"><p style="width: 150px;">3. Bảo hiểm Sinh mạng cá nhân</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-            <td style="text-align: center"><p style="width: 150px;">1 tỷ</p></td>
-        </tr>
-        <tr>
-            <td style="text-align: center"><p style="width: 150px;"> 4. Bảo hiểm nha khoa</p></td>
-            <td style="text-align: center"><p style="width: 150px;">2 triệu/năm 1 triệu/lần khám</p></td>
-            <td style="text-align: center"><p style="width: 150px;">2 triệu/năm 1 triệu/lần khám</p></td>
-            <td style="text-align: center"><p style="width: 150px;">5 triệu/năm 2.500.000/lần khám</p></td>
-            <td style="text-align: center"><p style="width: 150px;">10 triệu/năm 5 triệu/lần khám</p></td>
-            <td style="text-align: center"><p style="width: 150px;">15 triệu/năm 7.500.000/lần khám</p></td>
-        </tr>
-        <tr>
-            <td style="text-align: center"><p style="width: 150px;">5. Bảo hiểm thai sản</p></td>
-            <td style="text-align: center"><p style="width: 150px;">Không</p></td>
-            <td style="text-align: center"><p style="width: 150px;">Không</p></td>
-            <td style="text-align: center"><p style="width: 150px;">Không</p></td>
-            <td style="text-align: center"><p style="width: 150px;">21 triệu/năm</p></td>
-            <td style="text-align: center"><p style="width: 150px;">31.500.000/năm</p></td>
+            <td style="text-align: left"><p style="width: 250px;">5. Bảo hiểm thai sản</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Không</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Không</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Không</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>21.000.000/năm</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>31.500.000/năm</p></td>
         </tr>
         </tbody>
     </table>
+    <div><p>QUY ĐỊNH ĐỒNG CHI TRẢ ĐỐI VỚI TRẺ EM TỪ 15 NGÀY TUỔI ĐẾN 3 TUỔI</p></div>
+    <div><p>- Tỷ lệ áp đồng chi trả : 70/30 ( Bảo Việt chi trả 70%, Người được bảo hiểm tự chi trả 30%)</p></div>
+    <div><p>- Quy định này không áp dụng trong trường hợp Người được bảo hiểm khám và điều trị tại các cơ sở y tế/bệnh viện công lập ( trừ các khoa điều trị tự nguyện/điều trị theo yêu cầu của Bệnh viện công lập)</p></div>
 </div>

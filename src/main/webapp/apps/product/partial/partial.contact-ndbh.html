@@ -35,15 +35,15 @@
 	    <p class="bv-title-from">Số CMT/Hộ chiếu</p>
 	</div>
 	<div class="margin-top-5">
-        <input type="text" name="nguoidbhCmnd" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="vm.policy.nguoidbhCmnd"
-            required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'"
+        <input type="text" name="nguoidbhCmnd" id="nguoidbhCmnd" class="bv-input" placeholder="Số CMT/Hộ chiếu" ng-model="vm.policy.nguoidbhCmnd"
+            required-message="'Chưa nhập thông tin số CMT/Hộ chiếu!'" ng-blur="vm.checkCMT()"
            	required/>
     </div>
     <div class="margin-top-10 required">
         <p class="bv-title-from">Quan hệ với người yêu cầu bảo hiểm</p>
     </div>
     <div class="margin-top-5">
-        <select name="nguoidbhQuanhe" class="bv-select-box form-control" ng-model="vm.policy.nguoidbhQuanhe"
+        <select name="nguoidbhQuanhe" class="bv-select-box form-control" ng-model="vm.policy.nguoidbhQuanhe" ng-change="vm.checkBanthan()"
         	required-message="'Chưa lựa chọn quan hệ!'"
            	required>
             <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>

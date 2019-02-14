@@ -99,9 +99,8 @@
             let paymentStatus = $location.search().paymentStatus;; //NEED_VALIDATE_TRANSACTION
             let transRef = $location.search().transRef;
         	let policy = $location.search().paymentPolicy;
-        	
             if (paymentStatus == 'NEED_VALIDATE_TRANSACTION') {
-            	vm.paymentShow = true;
+            	vm.paymentShow = false;
             	let linkValidate = $location.search().validateTransactionLink;
             	
             	linkValidate = linkValidate.replace(/@@@/g, '&');
@@ -153,7 +152,8 @@
             		}
             	}
             } else if (paymentStatus == 'SUCCESS'){
-    			vm.paymentPolicy = policy;
+    			debugger
+            	vm.paymentPolicy = policy;
         		vm.paymentShow = true;
             } else if (paymentStatus == 'ERROR') {
     			vm.paymentPolicy = policy;
