@@ -10,7 +10,7 @@
             <td  style="text-align: center !important; background-color: #f4f4f4 !important;font-weight: bold" ng-show="vm.policy.chuongTrinh == 5">Kim Cương</td>
         </tr>
         <tr>
-            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">A. ĐIỀU KHOẢN BẢO HIỂM CHÍNH – Điều trị nội trú do ốm bệnh, tai nạn</td>
+            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">A. QUYỀN LỢI BẢO HIỂM CHÍNH - Chi phí y tế nội trú do ốm bệnh, tai nạn</td>
         </tr>
         <tr>
             <td style="text-align: left"><p style="width: 250px;">Tổng hạn mức quyền lợi bảo hiểm chính/ng/năm</p></td>
@@ -98,7 +98,7 @@
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>500.000/vụ</p></td>
         </tr>
         <tr>
-            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">B. ĐIỀU KHOẢN BẢO HIỂM BỔ SUNG </td>
+            <td colspan="6" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">B. QUYỀN LỢI BẢO HIỂM BỔ SUNG</td>
         </tr>
         <tr>
             <td style="text-align: left"><p style="width: 250px;">1. Điều trị ngoại trú do ốm bệnh, tai nạn</p></td>
@@ -125,32 +125,23 @@
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>150.000/ngày Không quá 60 ngày/năm</p></td>
         </tr>
         <tr>
-            <td style="text-align: left"><p style="width: 250px;">2. Bảo hiểm Tai nạn cá nhân STBH /người/năm</p></td>
-            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Tối đa 1 tỷ đồng</p></td>
+            <td style="text-align: left"><p style="width: 250px;">2. BH Tai nạn cá nhân (TNCN)</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
         </tr>
         <tr>
-            <td style="text-align: left"><p style="width: 250px;">3. Bảo hiểm Sinh mạng cá nhân STBH/người/vụ</p></td>
-            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Tối đa 1 tỷ đồng</p></td>
-			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Tối đa 1 tỷ đồng</p></td>
+            <td style="text-align: left"><p style="width: 250px;">3. BH Sinh mạng cá nhân (SMCN)</p></td>
+            <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 4"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
+			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>Theo Số tiền bảo hiểm lựa chọn</p></td>
         </tr>
         <tr>
-            <td style="text-align: left"><p style="width: 250px;"> 4. Bảo hiểm nha khoa</p>
-            <p>- Khám và chẩn đoán bệnh về răng</p>
-            <p>- Lấy cao răng</p>
-            <p>- Trám răng bằng các chất liệu thông thường</p>
-            <p>- Nhổ răng bệnh lý </p>
-            <p>- Lấy u vôi răng (lấy vôi răng sâu dưới nướu)</p>
-            <p>- Phẫu thuật cắt chóp răng</p>
-            <p>- Chữa tủy răng</p>
-            <p>- Điều trị viêm nướu, viêm nha chu</p>
-            </td>
+            <td style="text-align: left"><p style="width: 250px;"> 4. Bảo hiểm Nha khoa</p></td>
             <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>2.000.000/năm</p><p>1.000.000/lần khám</p></td>
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>2.000.000/năm</p><p>1.000.000/lần khám</p></td>
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>5.000.000/năm</p><p>2.500.000/lần khám</p></td>
@@ -158,7 +149,7 @@
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 5"><p>15.000.000/năm</p><p>7.500.000/lần khám</p></td>
         </tr>
         <tr>
-            <td style="text-align: left"><p style="width: 250px;">5. Bảo hiểm thai sản</p></td>
+            <td style="text-align: left"><p style="width: 250px;">5. Bảo hiểm Thai sản</p></td>
             <td style="text-align: center" ng-show="vm.policy.chuongTrinh == 1"><p>Không</p></td>
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 2"><p>Không</p></td>
 			<td style="text-align: center" ng-show="vm.policy.chuongTrinh == 3"><p>Không</p></td>
@@ -167,7 +158,14 @@
         </tr>
         </tbody>
     </table>
-    <div><p>QUY ĐỊNH ĐỒNG CHI TRẢ ĐỐI VỚI TRẺ EM TỪ 15 NGÀY TUỔI ĐẾN 3 TUỔI</p></div>
-    <div><p>- Tỷ lệ áp đồng chi trả : 70/30 ( Bảo Việt chi trả 70%, Người được bảo hiểm tự chi trả 30%)</p></div>
-    <div><p>- Quy định này không áp dụng trong trường hợp Người được bảo hiểm khám và điều trị tại các cơ sở y tế/bệnh viện công lập ( trừ các khoa điều trị tự nguyện/điều trị theo yêu cầu của Bệnh viện công lập)</p></div>
+    <div><p style="text-align: left; font-weight: bold">QUY ĐỊNH ĐỒNG CHI TRẢ ĐỐI VỚI TRẺ EM TỪ 15 NGÀY TUỔI ĐẾN 3 TUỔI</p></div>
+    <div><p>&nbsp - Tỷ lệ áp đồng chi trả : 70/30 ( Bảo Việt chi trả 70%, Người được bảo hiểm tự chi trả 30%)</p></div>
+    <div><p>&nbsp - Quy định này không áp dụng trong trường hợp Người được bảo hiểm khám và điều trị tại các cơ sở y tế/bệnh viện công lập ( trừ các khoa điều trị tự nguyện/điều trị theo yêu cầu của Bệnh viện công lập)</p></div>
+    <div><p style="text-align: left; font-weight: bold">THỦ TỤC HỒ SƠ YÊU CẦU CHI TRẢ TIỀN BẢO HIỂM</p></div>
+    <div><p>Khi yêu cầu Bảo hiểm Bảo Việt trả tiền bảo hiểm, Người được bảo hiểm và/hoặc người thừa kế hợp pháp phải gửi các chứng từ sau đây cho Bảo hiểm Bảo Việt trong vòng 60 ngày kể từ ngày điều trị cuối cùng của một đợt điều trị hoặc tử vong và không quá 01 năm kể từ ngày xảy ra sự kiện bảo hiểm:</p></div>
+    <div><p>&nbsp a. Giấy yêu cầu trả tiền bảo hiểm.</p></div>
+    <div><p>&nbsp b. Biên bản tai nạn / Bản tường trình tai nạn.</p></div>
+    <div><p>&nbsp c. Các chứng từ liên quan đến việc điều trị.</p></div>
+    <div><p>&nbsp d. Các chứng từ liên quan đến việc thanh toán chi phí y tế.</p></div>
+    <div><p>&nbsp e. Trường hợp tử vong: Hồ sơ chứng từ y tế trước khi tử vong, Giấy chứng tử, Giấy xác nhận quyền thừa kế hợp pháp.</p></div>
 </div>
