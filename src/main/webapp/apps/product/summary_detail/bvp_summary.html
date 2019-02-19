@@ -1,96 +1,102 @@
-    <div class="bv-pading-30">
-        <div class="text-header-sp">
-            <p>1. Thông tin người yêu cầu bảo hiểm</p>
+    <div class="display-flex">
+        <div class="border-right-ccc bv-pading-30 width-100">
+            <div class="text-header-sp" style="margin-bottom: 10px">
+                <p>1. Thông tin người yêu cầu bảo hiểm</p>
+            </div>
+            <div class="margin-top-10">
+	            <p class="bv-title-from">Họ tên</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoiycName}}</p>
+	        </div>
+	        <div class="bv-title-from" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">
+	            <p>Ngày sinh</p>
+	        </div>
+	        <div ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoiycNgaysinh}}</p>
+	        </div>
         </div>
-        <div class="bv-title-from">
-            <p>Họ tên</p>
+        <div class="border-right-ccc bv-pading-30 width-100">
+            <div class="text-header-sp" style="margin-bottom: 10px">
+                <p>2. Thông tin người được bảo hiểm</p>
+            </div>
+            <div class="margin-top-10">
+                <p class="bv-title-from">Họ tên</p>
+            </div>
+            <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhName}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Ngày sinh</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhNgaysinh}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Số CMT/Hộ chiếu</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhCmnd}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Quan hệ với người yêu cầu bảo hiểm</p>
+	        </div>
+	        <div>
+	            <div ng-switch="vm.policy.nguoidbhQuanhe">
+	                <div ng-switch-when="30">
+	                    <p class="bv-tile-templateSummary">Bản thân</p>
+	                </div>
+	                <div ng-switch-when="31">
+	                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+	                </div>
+	                <div ng-switch-when="32">
+	                    <p class="bv-tile-templateSummary">Con</p>
+	                </div>
+	                <div ng-switch-when="33">
+	                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+	                </div>
+	                <div ng-switch-when="34">
+	                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+	                </div>
+	                <div ng-switch-when="99">
+	                    <p class="bv-tile-templateSummary">Khác</p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
+	            <p>Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ)</p>
+	        </div>
+	        <div ng-show="vm.isShowPolicyParent">
+	        	<p class="bv-tile-templateSummary">{{vm.policy.policyParent}}</p>
+	        </div>
+	        <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
+	            <p>Giấy khai sinh</p>
+	        </div>
+	        <div ng-show="vm.isShowPolicyParent">
+	        	<a ng-click="vm.downloadAttachment(vm.policy.imgGks)" ng-show="!vm.isImageFile(vm.policy.imgGks)">
+					<span>{{vm.policy.imgGks.filename}}</span> <i class="fas fa-paperclip"></i>		                	
+	           	</a>
+	            <a ng-click="vm.downloadAttachment(vm.policy.imgGks)" ng-show="vm.isImageFile(vm.policy.imgGks)">
+					<img src="data:image/*;base64,{{vm.policy.imgGks.content}}" height="150px" ng-show="vm.isImageFile(vm.policy.imgGks)">		                	
+	            </a>
+	        </div>
         </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoiycName}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Ngày sinh</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoiycNgaysinh}}</p>
-        </div>
-    </div>
-    <div class="bv-pading-30">
-        <div class="text-header-sp">
-            <p>2. Thông tin người được bảo hiểm</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Họ tên</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhName}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Ngày sinh</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhNgaysinh}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Số CMT/Hộ chiếu</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoidbhCmnd}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Quan hệ với người yêu cầu bảo hiểm</p>
-        </div>
-        <div>
-            <div ng-switch="vm.policy.nguoidbhQuanhe">
-                <div ng-switch-when="30">
-                    <p class="bv-tile-templateSummary">Bản thân</p>
-                </div>
-                <div ng-switch-when="31">
-                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
-                </div>
-                <div ng-switch-when="32">
-                    <p class="bv-tile-templateSummary">Con</p>
-                </div>
-                <div ng-switch-when="33">
-                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
-                </div>
-                <div ng-switch-when="34">
-                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
-                </div>
+        <div class="width-100 bv-pading-30">
+            <div class="text-header-sp" style="margin-bottom: 10px">
+                <p>Thời gian bảo hiểm</p>
+            </div>
+            <div>
+                <p class="bv-tile-templateSummary">Từ {{vm.policy.inceptionDate}} Đến {{vm.policy.expiredDate}}</p>
             </div>
         </div>
-        <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
-            <p>Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ)</p>
-        </div>
-        <div ng-show="vm.isShowPolicyParent">
-        	<p class="bv-tile-templateSummary">{{vm.policy.policyParent}}</p>
-        </div>
-        <div class="bv-title-from" ng-show="vm.isShowPolicyParent">
-            <p>Giấy khai sinh</p>
-        </div>
-        <div ng-show="vm.isShowPolicyParent">
-        	<a ng-click="vm.downloadAttachment(vm.policy.imgGks)" ng-show="!vm.isImageFile(vm.policy.imgGks)">
-				<span>{{vm.policy.imgGks.filename}}</span> <i class="fas fa-paperclip"></i>		                	
-           	</a>
-            <a ng-click="vm.downloadAttachment(vm.policy.imgGks)" ng-show="vm.isImageFile(vm.policy.imgGks)">
-				<img src="data:image/*;base64,{{vm.policy.imgGks.content}}" height="150px" ng-show="vm.isImageFile(vm.policy.imgGks)">		                	
-            </a>
-        </div>
     </div>
+    
     <div class="bv-pading-30">
-        <div class="text-header-sp">
-            <p>3. Thời hạn bảo hiểm</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">Từ {{vm.policy.inceptionDate}} Đến {{vm.policy.expiredDate}}</p>
-        </div>
-    </div>
-    <div class="bv-pading-30">
-        <div class="text-header-sp">
+        <div class="text-header-sp" style="margin-bottom: 10px">
             <p>4. Thông tin bảo hiểm</p>
         </div>
-        <div class="bv-title-from">
-            <p>Chương trình bảo hiểm</p>
+        <div class="margin-top-10">
+            <p class="bv-title-from">Chương trình bảo hiểm</p>
         </div>
         <div>
             <div ng-switch="vm.policy.chuongtrinhBh">
@@ -274,7 +280,7 @@
         </div> -->
     </div>
     <div class="bv-pading-30">
-        <div class="text-header-sp">
+        <div class="text-header-sp" style="margin-bottom: 10px">
             <p>5. Thông tin tình trạng sức khỏe</p>
         </div>
      <div class="margin-top-10">
@@ -396,98 +402,100 @@
      	</table>
      </div>
     </div>
-    <div class="bv-pading-30" ng-show="vm.policy.nguoithName != '' && vm.policy.nguoithName != null">
-        <div class="text-header-sp">
-            <p>6. Thông tin người thụ hưởng bảo hiểm</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Họ tên</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoithName}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Ngày sinh</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoithNgaysinh}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Số CMT/Hộ chiếu</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoithCmnd}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Quan hệ với người yêu cầu bảo hiểm</p>
-        </div>
-        <div>
-        	<div ng-switch="vm.policy.nguoithQuanhe">
-                <div ng-switch-when="30">
-                    <p class="bv-tile-templateSummary">Bản thân</p>
-                </div>
-                <div ng-switch-when="31">
-                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
-                </div>
-                <div ng-switch-when="32">
-                    <p class="bv-tile-templateSummary">Con</p>
-                </div>
-                <div ng-switch-when="33">
-                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
-                </div>
-                <div ng-switch-when="34">
-                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <div class="bv-pading-30" ng-show="vm.policy.nguoinhanName != '' && vm.policy.nguoinhanName != null">
-        <div class="text-header-sp">
-            <p>7. Thông tin người nhận tiền bảo hiểm</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Họ tên</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoinhanName}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Ngày sinh</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguointNgaysinh}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Số CMT/Hộ chiếu</p>
-        </div>
-        <div>
-            <p class="bv-tile-templateSummary">{{vm.policy.nguoinhanCmnd}}</p>
-        </div>
-        <div class="bv-title-from">
-            <p>Quan hệ với người yêu cầu bảo hiểm</p>
-        </div>
-        <div>
-        	<div ng-switch="vm.policy.nguoinhanQuanhe">
-                <div ng-switch-when="30">
-                    <p class="bv-tile-templateSummary">Bản thân</p>
-                </div>
-                <div ng-switch-when="31">
-                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
-                </div>
-                <div ng-switch-when="32">
-                    <p class="bv-tile-templateSummary">Con</p>
-                </div>
-                <div ng-switch-when="33">
-                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
-                </div>
-                <div ng-switch-when="34">
-                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="display-flex margin-top-20">
+	    <div class="border-right-ccc bv-pading-30 width-100" ng-show="vm.policy.nguoithName != '' && vm.policy.nguoithName != null">
+	        <div class="text-header-sp" style="margin-bottom: 10px">
+	            <p>6. Thông tin người thụ hưởng bảo hiểm</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Họ tên</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoithName}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Ngày sinh</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoithNgaysinh}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Số CMT/Hộ chiếu</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoithCmnd}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Quan hệ với người yêu cầu bảo hiểm</p>
+	        </div>
+	        <div>
+	        	<div ng-switch="vm.policy.nguoithQuanhe">
+	                <div ng-switch-when="30">
+	                    <p class="bv-tile-templateSummary">Bản thân</p>
+	                </div>
+	                <div ng-switch-when="31">
+	                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+	                </div>
+	                <div ng-switch-when="32">
+	                    <p class="bv-tile-templateSummary">Con</p>
+	                </div>
+	                <div ng-switch-when="33">
+	                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+	                </div>
+	                <div ng-switch-when="34">
+	                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
     
+    	<div class="border-right-ccc bv-pading-30 width-100" ng-show="vm.policy.nguoinhanName != '' && vm.policy.nguoinhanName != null">
+	        <div class="text-header-sp" style="margin-bottom: 10px">
+	            <p>7. Thông tin người nhận tiền bảo hiểm</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Họ tên</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoinhanName}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Ngày sinh</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguointNgaysinh}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Số CMT/Hộ chiếu</p>
+	        </div>
+	        <div>
+	            <p class="bv-tile-templateSummary">{{vm.policy.nguoinhanCmnd}}</p>
+	        </div>
+	        <div class="bv-title-from">
+	            <p>Quan hệ với người yêu cầu bảo hiểm</p>
+	        </div>
+	        <div>
+	        	<div ng-switch="vm.policy.nguoinhanQuanhe">
+	                <div ng-switch-when="30">
+	                    <p class="bv-tile-templateSummary">Bản thân</p>
+	                </div>
+	                <div ng-switch-when="31">
+	                    <p class="bv-tile-templateSummary">Vợ/Chồng</p>
+	                </div>
+	                <div ng-switch-when="32">
+	                    <p class="bv-tile-templateSummary">Con</p>
+	                </div>
+	                <div ng-switch-when="33">
+	                    <p class="bv-tile-templateSummary">Bố/Mẹ</p>
+	                </div>
+	                <div ng-switch-when="34">
+	                    <p class="bv-tile-templateSummary">Bố mẹ của vợ/chồng</p>
+	                </div>
+	            </div>
+	        </div>
+    	</div>
+    </div>
 <!-- Include Thông tin giao nhận giấy chứng nhận bảo hiểm và Thông tin hóa đơn giá trị gia tăng -->
 <div ng-include="'apps/product/summary_detail/partial/step2_summary.html'"></div>
 

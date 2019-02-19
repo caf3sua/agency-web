@@ -521,6 +521,10 @@
         		vm.policy.q1 = "0";
         		vm.policy.q2 = "0";
         		vm.policy.q3 = "0";
+        	} else {
+        		vm.policy.q1 = "";
+        		vm.policy.q2 = "";
+        		vm.policy.q3 = "";
         	}
         }
         

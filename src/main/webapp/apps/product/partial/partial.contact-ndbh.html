@@ -47,11 +47,11 @@
         	required-message="'Chưa lựa chọn quan hệ!'"
            	required>
             <option value="" selected disabled>--- Lựa chọn quan hệ ---</option>
-            <option value="30">Bản thân</option>
-            <option value="31">Vợ/Chồng</option>
-            <option value="32">Con</option>
-            <option value="33">Bố/Mẹ</option>
-            <option value="34">Bố mẹ của Vợ/Chồng</option>
+            <option value="30" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">Bản thân</option>
+            <option value="31" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">Vợ/Chồng</option>
+            <option value="32" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">Con</option>
+            <option value="33" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">Bố/Mẹ</option>
+            <option value="34" ng-show="vm.policy.contactCategoryType != 'ORGANIZATION'">Bố mẹ của Vợ/Chồng</option>
             <option value="99">Khác</option>
         </select>
     </div>
