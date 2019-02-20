@@ -243,7 +243,6 @@
             vm.policy.expiredDate = vm.policy.thoihanbhDen;
 
             vm.registerDisableContactInfoValue('vm.policy.phiBH');
-
             // Edit
             if (vm.isEditMode()) {
             	vm.loading = true;
@@ -256,7 +255,6 @@
             		
             		vm.loading = false;
             		vm.policy = result;
-            		
             		vm.policy.nguoinhanExtend = {
     	        			cmnd : vm.policy.nguoinhanCmnd,
     	        			quanhe: vm.policy.nguoinhanQuanhe
@@ -622,6 +620,7 @@
             vm.policy.sinhmangPhi = result.smcnPhi;
             vm.policy.chuongtrinhBh = result.chuongTrinh;
             vm.policy.thaisanPhi = result.thaisanPhi;
+            vm.policy.chuongtrinhPhi = result.qlChinhPhi;
 
             if(vm.policy.chuongTrinh) {
                 vm.isShowPremium = true;
