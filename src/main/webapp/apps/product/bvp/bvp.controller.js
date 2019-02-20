@@ -367,6 +367,7 @@
   		}
         
         function formatEditData(result) {
+
         	result.pagencyRole = "1";
         	result.chuongTrinh = result.chuongtrinhBh;
         	if (result.ngoaitru == 1){
@@ -818,7 +819,7 @@
         }
         
         function checkCMT() {
-            if(vm.copyFromNdbh == undefined ||vm.copyFromNdbh == false) {
+            if((vm.copyFromNdbh == undefined || vm.copyFromNdbh == false) && vm.policy.nguoidbhQuanhe != 30) {
     			if (vm.policy.nguoidbhCmnd == vm.policy.contactIdNumber) {
     				toastr.error("Thông tin CMT/Hộ chiếu trùng với Người yêu cầu bảo hiểm");
     				angular.element('#nguoidbhCmnd').focus();

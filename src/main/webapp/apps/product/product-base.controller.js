@@ -1247,7 +1247,7 @@
         	if(vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1) {
         		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
         			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu 1 dòng)");
-        			return false
+        			return false;
         		}
         		
         		for (var i = 1; i < vm.policy.lstAdd.length; i ++ ){
@@ -1262,7 +1262,7 @@
         	
         	if(vm.policy.q1 == "" || vm.policy.q2 == "" || vm.policy.q3 == "") {
     			toastr.error("Cần trả lời các câu hỏi Thông tin tình trạng sức khỏe");
-    			return false
+    			return false;
         	}
         	
         	if(vm.policy.nguointNgaysinh != "" && vm.policy.nguointNgaysinh != null && vm.policy.nguointNgaysinh != undefined) {
@@ -1271,8 +1271,27 @@
                 var tuoi = DateUtils.yearDiff(vm.policy.nguointNgaysinh, nowStr);
                 if (tuoi < 18){
                 	toastr.error("Người nhận tiền bảo hiểm phải trên 18 tuổi.");
-        			return false
+        			return false;
                 }
+        	}
+        	
+        	if (vm.policy.nguoidbhQuanhe == 30){
+        		if (vm.policy.nguoidbhCmnd != vm.policy.contactIdNumber) {
+    				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
+    				angular.element('#nguoidbhCmnd').focus();
+    				return false;
+    			}
+        		
+        		if (vm.policy.nguoidbhNgaysinh != vm.policy.nguoiycNgaysinh){
+            		toastr.error("Ngày sinh người được BH không trùng với Người yêu cầu bảo hiểm");
+            		return false;
+            	}
+        		
+        		if (vm.policy.nguoidbhName != vm.policy.nguoiycName){
+            		toastr.error("Họ và tên người được BH không trùng với Người yêu cầu bảo hiểm");
+            		angular.element('#nguoidbhName').focus();
+            		return false;
+            	}
         	}
         	
             return true;
