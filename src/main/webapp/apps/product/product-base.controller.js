@@ -1262,7 +1262,7 @@
         
         function validatorBVP() {
         	if(vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1) {
-        		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
+        		if (vm.policy.lstAdd[0].ngaydieutri == "" || vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == "" || vm.policy.lstAdd[0].benhvienorbacsy == ""){
         			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu dòng đầu tiên)");
         			return false;
         		}
