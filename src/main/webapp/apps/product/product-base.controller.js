@@ -773,7 +773,24 @@
             	}
         		// xử lý trường hợp chọn contact ở BVP và KCR khi có nhiều selectedContactChange
         		if (vm.lineId == 'BVP' && vm.policy.nguoiycName != ""){
-        			
+        			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+            		vm.policy.contactName = $rootScope.selectedContact.contactName;
+                    vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
+                    vm.policy.contactPhone = $rootScope.selectedContact.phone;
+                    vm.policy.contactEmail = $rootScope.selectedContact.email;
+                    vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
+                    vm.policy.contactCategoryType = $rootScope.selectedContact.categoryType;
+
+                    // vm.policy.contactAddress = $filter('address')($rootScope.selectedContact.homeAddress);
+            		vm.policy.contactAddress = $rootScope.selectedContact.homeAddress.substring(0, $rootScope.selectedContact.homeAddress.indexOf("::"));
+            		
+                    let address = $rootScope.selectedContact.homeAddress;
+                    let postcode = address.substring(address.lastIndexOf("::") + 2);
+                    //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
+                    ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+                    	vm.policy.contactAddressDistrictData = data;
+                    });
+                    return;
         		} else if (vm.lineId == 'KCR' && vm.policy.contactCode != "" && vm.policy.contactCode != null && vm.policy.contactCode != undefined){
         			
         		} else if (vm.lineId == 'ANC'){
@@ -1246,7 +1263,7 @@
         function validatorBVP() {
         	if(vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1) {
         		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
-        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu 1 dòng)");
+        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu dòng đầu tiên)");
         			return false;
         		}
         		
@@ -1292,6 +1309,22 @@
             		angular.element('#nguoidbhName').focus();
             		return false;
             	}
+        	}
+        	
+        	if (vm.policy.nguoithName != "" && vm.policy.nguoithName != null && vm.policy.nguoithName != undefined
+        			&& vm.policy.nguoithCmnd != "" && vm.policy.nguoithCmnd != null && vm.policy.nguoithCmnd != undefined){
+        		if(vm.policy.nguoithQuanhe == "" || vm.policy.nguoithQuanhe == null || vm.policy.nguoithQuanhe == undefined) {
+        			toastr.error("Cần lựa chọn quan hệ của Người thụ hưởng bảo hiểm");
+            		return false;
+        		}
+        	}
+        	
+        	if (vm.policy.nguoinhanName != "" && vm.policy.nguoinhanName != null && vm.policy.nguoinhanName != undefined
+        			&& vm.policy.nguoinhanCmnd != "" && vm.policy.nguoinhanCmnd != null && vm.policy.nguoinhanCmnd != undefined){
+        		if(vm.policy.nguoinhanQuanhe == "" || vm.policy.nguoinhanQuanhe == null || vm.policy.nguoinhanQuanhe == undefined) {
+        			toastr.error("Cần lựa chọn quan hệ của Người nhận tiền bảo hiểm");
+            		return false;
+        		}
         	}
         	
             return true;

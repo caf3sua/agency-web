@@ -138,36 +138,46 @@ public class TransactionResource {
         HttpEntity<String> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, String.class);
         
         if (response.getBody() != null) {
-        	String linkCheck = response.getBody().replace("@@@", "&");	
-//        	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr@@@vnp_CreateDate=20190117130816@@@vnp_IpAddr=%3A%3A1@@@vnp_Merchant=VNPAY@@@vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.225@@@vnp_TmnCode=BVTCT001@@@vnp_TransDate=20190117000000@@@vnp_TxnRef=BVGI.PAY.19.225@@@vnp_Version=2.0.0@@@vnp_SecureHash=f874a9a6a6d7c2592a46a5480784d347".replace("@@@", "&");
-        	if (proxyEnable) {
-    			System.getProperties().put("http.proxyHost", proxyAddress);
-    			System.getProperties().put("http.proxyPort", proxyPort);
-    			System.getProperties().put("http.proxyUser", proxyUsername);
-    			System.getProperties().put("http.proxyPassword", proxyPassword);
-    		}
-        	
-            String result = restTemplate.getForObject(linkCheck, String.class);
-            
-            PaymentValidateResult input = new PaymentValidateResult();
-        	input.setResponseString(result);
-        	input.setTransRef(vnpTxnRef);
-        	// call API update
-        	String urlUpdate = urlService + "/update-status-vnpayWeb";
+        	String body = response.getBody();
+        	if (body.equals("02")) {
+        		paymentResult.setRspCode("02");
+            	paymentResult.setMessage("Order already confirmed");
+        	} else if (body.equals("01")) {
+        		paymentResult.setRspCode("01");
+        		paymentResult.setMessage("Order not found");
+        	} else if (body.equals("97")) {
+        		paymentResult.setRspCode("97");
+        		paymentResult.setMessage("Chu ky khong hop le");
+        	} else {
+        		String linkCheck = response.getBody().replace("@@@", "&");	
+//            	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr@@@vnp_CreateDate=20190117130816@@@vnp_IpAddr=%3A%3A1@@@vnp_Merchant=VNPAY@@@vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.225@@@vnp_TmnCode=BVTCT001@@@vnp_TransDate=20190117000000@@@vnp_TxnRef=BVGI.PAY.19.225@@@vnp_Version=2.0.0@@@vnp_SecureHash=f874a9a6a6d7c2592a46a5480784d347".replace("@@@", "&");
+            	if (proxyEnable) {
+        			System.getProperties().put("http.proxyHost", proxyAddress);
+        			System.getProperties().put("http.proxyPort", proxyPort);
+        			System.getProperties().put("http.proxyUser", proxyUsername);
+        			System.getProperties().put("http.proxyPassword", proxyPassword);
+        		}
+            	
+                String result = restTemplate.getForObject(linkCheck, String.class);
+                
+                PaymentValidateResult input = new PaymentValidateResult();
+            	input.setResponseString(result);
+            	input.setTransRef(vnpTxnRef);
+            	// call API update
+            	String urlUpdate = urlService + "/update-status-vnpayWeb";
 
-            // get link check
-        	PaymentResultVnPay responseUpdate = restTemplate.postForObject(urlUpdate, input, PaymentResultVnPay.class);
-            
-        	if (responseUpdate != null) {
-            	paymentResult.setRspCode(responseUpdate.getRspCode());
-            	paymentResult.setMessage(responseUpdate.getMessage());	
-            } else {
-            	paymentResult.setRspCode("99");
-            }
-            
+                // get link check
+            	PaymentResultVnPay responseUpdate = restTemplate.postForObject(urlUpdate, input, PaymentResultVnPay.class);
+                
+            	if (responseUpdate != null) {
+                	paymentResult.setRspCode(responseUpdate.getRspCode());
+                	paymentResult.setMessage(responseUpdate.getMessage());	
+                } else {
+                	paymentResult.setRspCode("99");
+                }        		
+        	}
         } else {
-        	paymentResult.setRspCode("97");
-        	paymentResult.setMessage("Chu ky khong hop le");
+        	paymentResult.setRspCode("99");
         }
 		return new ResponseEntity<>(paymentResult, HttpStatus.OK);
 	}

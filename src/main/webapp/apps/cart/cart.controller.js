@@ -101,7 +101,6 @@
         	let policy = $location.search().paymentPolicy;
             
         	if (paymentStatus == 'NEED_VALIDATE_TRANSACTION') {
-            	vm.paymentShow = false;
             	vm.paymentPay = transRef;
     			vm.paymentPolicy = policy;
     			

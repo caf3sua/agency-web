@@ -160,6 +160,7 @@
         vm.checkCMT = checkCMT;
         vm.checkBanthan = checkBanthan;
         
+        vm.checkAgeNDBH = false;
         vm.gksFile = null;
         vm.gksFileModel;
         
@@ -565,22 +566,31 @@
         }
 
         function getPremium() {
-        	// clean error message
-        	vm.cleanAllResponseError();
         	
-            var postData = getPostData(false);
+        	if (vm.policy.tuoi < 18) {
+        		checkGycbhParent();
+        	} else {
+        		vm.checkAgeNDBH = true;
+        	}
+        	
+        	if (vm.checkAgeNDBH){
+        		// clean error message
+            	vm.cleanAllResponseError();
+            	
+                var postData = getPostData(false);
 
-            if (vm.isShowPolicyParent == true){
-            	vm.policy.imgGks = vm.gksFile;
-            }
-            
-            if(postData.chuongTrinh) {
-            	vm.loading = true;
-            	ProductCommonService.getBvpPremium(postData, onGetPremiumSuccess, onGetPremiumError);
-            } else {
-                vm.policy.premiumNet = 0;
-                vm.policy.phiBH = 0;
-            }
+                if (vm.isShowPolicyParent == true){
+                	vm.policy.imgGks = vm.gksFile;
+                }
+                
+                if(postData.chuongTrinh) {
+                	vm.loading = true;
+                	ProductCommonService.getBvpPremium(postData, onGetPremiumSuccess, onGetPremiumError);
+                } else {
+                    vm.policy.premiumNet = 0;
+                    vm.policy.phiBH = 0;
+                }
+        	}
         }
 
         function getPostData() {
@@ -843,11 +853,12 @@
 		    ProductCommonService.getByGycbhNumber({gycbhNumber: vm.gycbhNumber}, onSuccess, onError);
 			
 			function onSuccess() {
+				vm.checkAgeNDBH = true;
 			}
 			
 			function onError() {
+				vm.checkAgeNDBH = false;
 				toastr.error("Số HĐBH/GCNBH/Thẻ/Mã đơn hàng Bố(Mẹ) không tồn tại");
-				angular.element('#policyParent').focus();
 			}
         }
         
