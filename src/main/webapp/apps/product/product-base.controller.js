@@ -730,7 +730,6 @@
   		}
 		
         function selectedContactChange() {
-        	debugger
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		if (vm.loadContactForInvoice) {
         			if (vm.policy.invoiceInfo == null || vm.policy.invoiceInfo == undefined) {

@@ -148,6 +148,11 @@ public class TransactionResource {
         	} else if (body.equals("97")) {
         		paymentResult.setRspCode("97");
         		paymentResult.setMessage("Chu ky khong hop le");
+        	} else if (body.equals("00")) {
+        		paymentResult.setRspCode("00");
+        		paymentResult.setMessage("Confirm Success");
+        	} else if (body.equals("99")) {
+        		paymentResult.setRspCode("99");
         	} else {
         		String linkCheck = response.getBody().replace("@@@", "&");	
 //            	String linkCheck = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html?vnp_Command=querydr@@@vnp_CreateDate=20190117130816@@@vnp_IpAddr=%3A%3A1@@@vnp_Merchant=VNPAY@@@vnp_OrderInfo=Call+api+lay+thong+tin+don+hang+voi+ma+%3D+BVGI.PAY.19.225@@@vnp_TmnCode=BVTCT001@@@vnp_TransDate=20190117000000@@@vnp_TxnRef=BVGI.PAY.19.225@@@vnp_Version=2.0.0@@@vnp_SecureHash=f874a9a6a6d7c2592a46a5480784d347".replace("@@@", "&");
