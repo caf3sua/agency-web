@@ -26,6 +26,8 @@
   		
   		// Properties & function declare
         vm.policy = {
+        		// check sp BVP
+        		"lineId": "BVP",
   				// premium
   				"chuongTrinh": "",
   				"ngaySinh": "",
@@ -732,11 +734,11 @@
         function openSearchContactForPanel(type) {
             vm.panelType = type;
             if (type == 'contact'){
-            	vm.openSearchContact();	
+            	vm.openSearchContact();
             } else {
 //        		vm.openSearchContactOther();	// comment 26/02/2019
             	// add 26/02/2019
-            	if (type == 'receive' || type == 'requirement' || type == 'contactBVP'){
+            	if (type == 'receive' || type == 'requirement'){
             		vm.openSearchContactPerson();	
             	} else {
             		vm.openSearchContactOther();

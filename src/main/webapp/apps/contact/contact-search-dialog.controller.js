@@ -58,6 +58,8 @@
       			if (vm.dialogType != undefined && vm.dialogType != null){
       				if (vm.dialogType == 'PERSON'){
       					vm.searchCriterial.categoryType = "PERSON";
+      				} else if (vm.dialogType == 'PERSON_BVP'){	// add 26/02/2019 người thụ hưởng
+      					vm.searchCriterial.categoryType = "PERSON";
       				} else {
       					
       				}

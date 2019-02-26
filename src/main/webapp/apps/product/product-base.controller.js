@@ -74,6 +74,7 @@
         vm.calculateToDate = calculateToDate;
         vm.openSearchContact = openSearchContact;
         vm.openSearchContactOther = openSearchContactOther;
+        vm.openSearchContactPerson = openSearchContactPerson;
 		vm.openAddContact = openAddContact;
 
 		vm.getName = getName;
@@ -729,6 +730,7 @@
   		}
 		
         function selectedContactChange() {
+        	debugger
         	if ($rootScope.selectedContact != undefined && $rootScope.selectedContact != null) {
         		if (vm.loadContactForInvoice) {
         			if (vm.policy.invoiceInfo == null || vm.policy.invoiceInfo == undefined) {
@@ -773,24 +775,7 @@
             	}
         		// xử lý trường hợp chọn contact ở BVP và KCR khi có nhiều selectedContactChange
         		if (vm.lineId == 'BVP' && vm.policy.nguoiycName != ""){
-        			vm.policy.contactCode = $rootScope.selectedContact.contactCode;
-            		vm.policy.contactName = $rootScope.selectedContact.contactName;
-                    vm.policy.contactDob = $rootScope.selectedContact.dateOfBirth;
-                    vm.policy.contactPhone = $rootScope.selectedContact.phone;
-                    vm.policy.contactEmail = $rootScope.selectedContact.email;
-                    vm.policy.contactIdNumber = $rootScope.selectedContact.idNumber;
-                    vm.policy.contactCategoryType = $rootScope.selectedContact.categoryType;
 
-                    // vm.policy.contactAddress = $filter('address')($rootScope.selectedContact.homeAddress);
-            		vm.policy.contactAddress = $rootScope.selectedContact.homeAddress.substring(0, $rootScope.selectedContact.homeAddress.indexOf("::"));
-            		
-                    let address = $rootScope.selectedContact.homeAddress;
-                    let postcode = address.substring(address.lastIndexOf("::") + 2);
-                    //vm.policy.contactAddressDistrictData = $rootScope.selectedContact.homeAddress;
-                    ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-                    	vm.policy.contactAddressDistrictData = data;
-                    });
-                    return;
         		} else if (vm.lineId == 'KCR' && vm.policy.contactCode != "" && vm.policy.contactCode != null && vm.policy.contactCode != undefined){
         			
         		} else if (vm.lineId == 'ANC'){
@@ -871,13 +856,23 @@
         			ContactCommonDialogService.openSearchDialog('NYCBH');
         		}
         	} else {
-        		ContactCommonDialogService.openSearchDialog('NYCBH');	
+        		if (vm.policy.lineId == 'BVP'){
+        			ContactCommonDialogService.openSearchDialog('PERSON');
+        		} else {
+        			ContactCommonDialogService.openSearchDialog('NYCBH');	
+        		}
         	}
         }
         
         function openSearchContactOther() {
         	console.log('openSearchContactOther');
         	ContactCommonDialogService.openSearchDialog();
+        }
+        
+        // add 26/02/2019: nguoi YCBH, người thụ hưởng, người nhận tiền để là cá nhân
+        function openSearchContactPerson() {
+        	console.log('openSearchContactPerson');
+        	ContactCommonDialogService.openSearchDialog('PERSON_BVP');
         }
         
         function openAddContact() {
@@ -1294,6 +1289,7 @@
         	
         	if (vm.policy.nguoidbhQuanhe == 30){
         		if (vm.policy.nguoidbhCmnd != vm.policy.contactIdNumber) {
+        			debugger
     				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
     				angular.element('#nguoidbhCmnd').focus();
     				return false;
@@ -1322,7 +1318,6 @@
         	if (vm.policy.nguoinhanName != "" && vm.policy.nguoinhanName != null && vm.policy.nguoinhanName != undefined
         			&& vm.policy.nguoinhanCmnd != "" && vm.policy.nguoinhanCmnd != null && vm.policy.nguoinhanCmnd != undefined){
         		if(vm.policy.nguoinhanQuanhe == "" || vm.policy.nguoinhanQuanhe == null || vm.policy.nguoinhanQuanhe == undefined) {
-        			debugger
         			toastr.error("Cần lựa chọn quan hệ của Người nhận tiền bảo hiểm");
             		return false;
         		}
