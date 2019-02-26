@@ -142,6 +142,11 @@
 			"cmnd" : "", 
 			"quanhe" : ""
 		}
+        
+        $rootScope.nguoint = {
+    			"cmnd" : "", 
+    			"quanhe" : ""
+    		}
 
   		vm.onDobChange = onDobChange;
         vm.isHealthyPersonChange = isHealthyPersonChange;
@@ -256,7 +261,7 @@
             		
             		vm.loading = false;
             		vm.policy = result;
-            		vm.policy.nguoinhanExtend = {
+            		$rootScope.nguoint = {
     	        			cmnd : vm.policy.nguoinhanCmnd,
     	        			quanhe: vm.policy.nguoinhanQuanhe
     	        	}
@@ -293,7 +298,7 @@
             		vm.policy.gycbhId = null;
             		vm.policy.gycbhNumber =  null;
             		
-            		vm.policy.nguoinhanExtend = {
+            		$rootScope.nguoint = {
     	        			cmnd : vm.policy.nguoinhanCmnd,
     	        			quanhe: vm.policy.nguoinhanQuanhe
     	        	}
@@ -424,6 +429,9 @@
             $rootScope.nguoith.cmnd = result.nguoithCmnd;
             $rootScope.nguoith.quanhe = result.nguoithQuanhe;
             
+            $rootScope.nguoint.cmnd = result.nguoinhanCmnd;
+            $rootScope.nguoint.quanhe = result.nguoinhanQuanhe;
+            
             $rootScope.nguoidbh.cmnd = result.nguoidbhCmnd;
             $rootScope.nguoidbh.quanhe = result.nguoidbhQuanhe;
             
@@ -469,6 +477,11 @@
         	vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
   		}, true);
         
+        $scope.$watch('$root.nguoint', function () {
+        	vm.policy.nguoinhanCmnd = $rootScope.nguoint.cmnd;
+        	vm.policy.nguoinhanQuanhe = $rootScope.nguoint.quanhe;
+  		}, true);
+        
         $scope.$watch('$root.nguoidbh', function () {
         	vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
         	vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
@@ -505,7 +518,7 @@
                     case 'receive':
                     	vm.policy.nguoinhanName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguointNgaysinh = $rootScope.selectedContact.dateOfBirth;
-                    	vm.policy.nguoinhanExtend = {
+                    	$rootScope.nguoint = {
         	        			cmnd : $rootScope.selectedContact.idNumber
         	        	}
                     	vm.policy.nguoinhanCmnd = $rootScope.selectedContact.idNumber;
@@ -713,11 +726,6 @@
             	vm.policy.tncnSotienbh = 0;
             }
             
-//            vm.policy.nguoidbhCmnd = $rootScope.nguoidbh.cmnd;
-//            vm.policy.nguoidbhQuanhe = $rootScope.nguoidbh.quanhe;
-//            vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
-//            vm.policy.nguoithQuanhe = $rootScope.nguoith.quanhe;
-
             vm.savePolicyBase("BVP", vm.policy);
         }
         
@@ -726,7 +734,13 @@
             if (type == 'contact'){
             	vm.openSearchContact();	
             } else {
-            	vm.openSearchContactOther();            	
+//        		vm.openSearchContactOther();	// comment 26/02/2019
+            	// add 26/02/2019
+            	if (type == 'receive' || type == 'requirement' || type == 'contactBVP'){
+            		vm.openSearchContactPerson();	
+            	} else {
+            		vm.openSearchContactOther();
+            	}
             }
         }
 
@@ -773,14 +787,14 @@
 	      	if (vm.copyFromNth) {
 	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
 	        	vm.policy.nguointNgaysinh = vm.policy.nguoithNgaysinh;
-	        	vm.policy.nguoinhanExtend = {
+	        	$rootScope.nguoint = {
 	        			cmnd : vm.policy.nguoithCmnd,
 	        			quanhe: vm.policy.nguoithQuanhe
 	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
 	      	} else {
-	      		vm.policy.nguoinhanExtend = {
+	      		$rootScope.nguoint = {
 	        			cmnd : "",
 	        			quanhe: ""
 	        	}
