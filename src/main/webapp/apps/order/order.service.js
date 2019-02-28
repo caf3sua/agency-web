@@ -81,6 +81,10 @@
             'updatePaymentStatusVnPay' : {
                 method : 'POST',
                 url : 'api/agency/payment/update-status-vnpay'
+            },
+            'downloadOrder' : {
+                method : 'GET',
+                url : 'api/agency/product/bvp/download-order/:id'
             }
         });
 

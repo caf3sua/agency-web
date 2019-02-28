@@ -5,9 +5,9 @@
         .module('app')
         .controller('OrderController', OrderController);
 
-    OrderController.$inject = ['$scope', '$stateParams', '$controller', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS', '$uibModal'];
+    OrderController.$inject = ['$scope', '$stateParams', '$controller', '$state', '$rootScope', 'OrderService', '$ngConfirm', '$timeout', 'PAGINATION_CONSTANTS', '$uibModal', 'API_SERVICE_URL', '$window'];
 
-    function OrderController ($scope, $stateParams, $controller, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS, $uibModal) {
+    function OrderController ($scope, $stateParams, $controller, $state, $rootScope, OrderService, $ngConfirm, $timeout, PAGINATION_CONSTANTS, $uibModal, API_SERVICE_URL, $window) {
     	var vm = this;
         
     	// Properties & function declare
@@ -44,6 +44,8 @@
   		vm.changeDate = changeDate;
   		vm.selectedDepartmentId;
   		
+  		vm.downloadOrder = downloadOrder;
+  		
         angular.element(document).ready(function () {
         });
 
@@ -66,6 +68,21 @@
   			}
   			return true;
   		}
+  		
+  		function downloadOrder(order) {
+  			var templateRoute = API_SERVICE_URL + '/api/agency/document/download/bvp/' + order.agreementId;
+            $window.location = templateRoute;
+  		}
+  		
+  		function dataURLtoFile(dataurl, filename) {
+  		    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+  		        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  		    while(n--){
+  		        u8arr[n] = bstr.charCodeAt(n);
+  		    }
+  		    return new File([u8arr], filename, {type:mime});
+  		}
+  		
   		
   		function searchOrder() {
   			if (changeDate()) {
