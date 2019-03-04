@@ -45,6 +45,7 @@
   		vm.selectedDepartmentId;
   		
   		vm.downloadOrder = downloadOrder;
+  		vm.downloadOrderGYCBH = downloadOrderGYCBH;
   		
         angular.element(document).ready(function () {
         });
@@ -71,6 +72,11 @@
   		
   		function downloadOrder(order) {
   			var templateRoute = API_SERVICE_URL + '/api/agency/document/download/bvp/' + order.agreementId;
+            $window.location = templateRoute;
+  		}
+  		
+  		function downloadOrderGYCBH(order) {
+  			var templateRoute = API_SERVICE_URL + '/api/agency/document/download/bvpGYCBH/' + order.agreementId;
             $window.location = templateRoute;
   		}
   		
