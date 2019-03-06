@@ -24,6 +24,18 @@
   		
   		// Properties & function declare
   		vm.policy = {
+  				// add 01.03.2019
+  				"categoryType": "",
+  				"packageType": "", // gois bao hiem
+  				"monthOfMake": "2",
+  				"khauTruSoTien": "",
+  				"premiumCB":0,
+  				"totalPremiumCB":0,
+  				"premiumNC":0,
+  				"totalPremiumNC":0,
+  				"premiumTC":0,
+  				"totalPremiumTD":0,
+  				
   				// Premium
   	  			"agencyRole": "1",
   	  			"garage": false,
@@ -71,7 +83,7 @@
   			   	"thoihanden":"",
   			   	"thoihantu":"",
   			   	"tndsSocho":"",
-  			   	"tndsbbCheck":false,
+  			   	"tndsbbCheck":true,
   			   	"tndstnCheck":false,
   			   	"tndstnPhi":0,
   			    "tndstnSoTien": "",
@@ -127,6 +139,30 @@
   	      {id: '150000000', name: '150 triệu đồng/người/vụ'},
   	      {id: '200000000', name: '200 triệu đồng/người/vụ'}
   	    ];
+  		
+  		vm.vatChatXeKhauTruOptions = [
+    	      {id: '500000', name: '500.000'},
+    	      {id: '1000000', name: '1.000.000'}
+    	    ];
+  		vm.categoryTypeOptions = [
+    	      {id: 'PERSON', name: 'Khách hàng cá nhân'},
+    	      {id: 'ORGANIZATION', name: 'Khách hàng tổ chức'}
+    	    ];
+  		vm.monthOptions = [
+	  	    {id: '1', name: '1'},
+	  	    {id: '2', name: '2'},
+	  	    {id: '3', name: '3'},
+	  	    {id: '4', name: '4'},
+	  	    {id: '5', name: '5'},
+	  	    {id: '6', name: '6'},
+	  	    {id: '7', name: '7'},
+	  	    {id: '8', name: '8'},
+	  	    {id: '9', name: '9'},
+	  	    {id: '10', name: '10'},
+	  	    {id: '11', name: '11'},
+	  	    {id: '12', name: '12'}
+  	    ];
+  		
   		vm.manufacturerOptions = [];
   		vm.modelOptions = [];
   		vm.yearOptions = [];
@@ -138,6 +174,18 @@
   		vm.isShowChangePremium = false;
   		vm.isShowPremium = false;
   		vm.isShowTotalPremium = false;
+  		
+  		vm.changePackage1 = changePackage1;
+  		vm.changePackage2 = changePackage2;
+  		vm.isCollapsedCommonCar = false;
+  		vm.isShowPackage1 = false;
+  		vm.isShowPackage2 = false;
+  		vm.nextPackage1 = nextPackage1;
+  		vm.nextPackage2 = nextPackage2;
+  		vm.isShowCollapsedContact = false;
+  		vm.checkReuse = checkReuse;
+  		vm.onchangePlan = onchangePlan;
+  		vm.typePlan = "";
   		
   		// Initialize
   		init();
@@ -169,9 +217,12 @@
             	ProductCommonService.getById({id : $stateParams.id}).$promise.then(function(result) {
             		// Format to display and calculate premium again
             		formatEditData(result);
-            		
             		vm.loading = false;
             		vm.policy = result;
+            		
+            		if (vm.policy.packageType == 1){
+            			initPremium();
+            		}
             		
             		// Open view and step - calculate premium again
             		getPremium();
@@ -193,6 +244,11 @@
             		formatEditData(result);
             		vm.loading = false;
             		vm.policy = result;
+            		
+            		if (vm.policy.packageType == 1){
+            			initPremium();
+            		}
+            		
             		// copy
             		vm.policy.agreementId = null;
             		vm.policy.gycbhId = null;
@@ -209,6 +265,128 @@
             
             // Load contact
   		    vm.selectedContactMode();
+  		}
+  		
+  		function initPremium(){
+  			getPremiumInit(1);
+  		}
+  		
+  		function onchangePlan(type) {
+  			vm.policy.tndsbbCheck = true;
+			vm.policy.nntxCheck = true;
+			vm.policy.tndstnCheck = true;
+			vm.policy.vcxCheck = true;
+			vm.policy.khauHao = true;
+			vm.policy.garage = true;
+			vm.policy.ngapNuoc = true;
+			vm.policy.matCap = false;
+			vm.policy.khauTru = true;
+			
+			if (type == 1){
+  				vm.policy.nntxSoTien = 10000000;
+  				vm.policy.tndstnSoTien = 50000000;
+  				vm.policy.ngapNuoc = false;
+  				vm.policy.khauTruSoTien = 500000;
+  			} else if (type == 2){
+  				vm.policy.nntxSoTien = 20000000;
+  				vm.policy.tndstnSoTien = 100000000;
+  				vm.policy.khauTruSoTien = 1000000;
+  			} else if (type == 3){
+  				vm.policy.nntxSoTien = 50000000;
+  				vm.policy.tndstnSoTien = 150000000;
+  				vm.policy.matCap = true;
+  				vm.policy.khauTruSoTien = 2000000;
+  			}
+  			getPremium();
+        }
+  		
+  		function checkReuse(){
+  			vm.policy.insuranceTargetReuse = "";
+  			toastr.error('Hiện tại phần mềm chưa hỗ trợ Tái tục trên kênh này, vui lòng liên hệ phòng Hỗ trợ kinh doanh để được tiếp tục.');
+  		}
+  		
+  		function nextPackage1(type) {
+			onchangePlan(type);
+			vm.isCollapsedContact = false;
+			vm.isCollapsedCommonCar = true;
+			vm.isCollapsedPackage1 = true;
+			vm.isShowCollapsedContact = true;
+			vm.isShowPackage2 = false;
+			vm.isShowPackage1 = true;
+        }
+  		
+  		function nextPackage2() {
+  			if (validatorInputCar()){
+  				vm.isCollapsedContact = false;
+  				vm.isCollapsedCommonCar = true;
+				vm.isCollapsedPackage2 = true;
+				vm.isShowCollapsedContact = true;
+				vm.isShowPackage2 = true;
+				vm.isShowPackage1 = false;
+  			}
+        }
+  		
+  		function changePackage1() {
+  			vm.policy.packageType = 1;
+  			if (validatorInputCar()){
+  				// tính phí các gói cơ bản trước
+  	  		    initPremium();
+  	  		    if (vm.isCollapsedCommonCar == false){
+  					vm.isCollapsedCommonCar = true;
+  	  				vm.isCollapsedContact = true;
+  	  				vm.isShowPackage1 = true;
+  	  				vm.isShowPackage2 = false;
+  	  				vm.isCollapsedPackage1 = false;
+  	  			}	
+  			}
+        }
+  		
+  		function changePackage2() {
+  			vm.policy.packageType = 2;
+  			resetDataPremium();
+  			if (validatorInputCar()){
+  				vm.policy.tndsbbCheck = true;
+  				vm.policy.nntxCheck = false;
+  				vm.policy.tndstnCheck = false;
+  				vm.policy.vcxCheck = false;
+  				getPremium();
+  				if (vm.isCollapsedCommonCar == false){
+  	  				vm.isCollapsedCommonCar = true;
+  	  				vm.isCollapsedContact = true;
+  	  				vm.isShowPackage2 = true;
+  	  				vm.isShowPackage1 = false;
+  	  				vm.isCollapsedPackage2 = false;
+  	  			}	
+  			}
+        }
+  		
+  		function validatorInputCar(){
+  			if(!vm.policy.categoryType) {
+  				toastr.error('Chưa lựa chọn loại khách hàng!');
+	        	return false;
+	        }
+  			if(!vm.policy.tndsSoCho) {
+  				toastr.error('Chưa lựa chọn số chỗ/trọng tải xe!');
+	        	return false;
+	        }
+  			if(!vm.policy.manufacturer) {
+  				toastr.error('Cần lựa chọn hãng xe!');
+	        	return false;
+	        }
+  			if(vm.policy.manufacturer && !vm.policy.model) {
+  				toastr.error('Cần lựa chọn dòng xe!');
+	        	return false;
+	        }
+  			if(vm.policy.model && !vm.policy.namSX) {
+  				toastr.error('Cần lựa chọn năm sản xuất!');
+	        	return false;
+        	}
+  			if(vm.policy.namSX && !vm.policy.vcxSoTien) {
+  				toastr.error('Chưa điền giá trị xe tham gia bảo hiểm!');
+	        	return false;
+        	}
+  			
+  			return true;
   		}
   		
   		function changeCopyFromNycbh() {
@@ -250,6 +428,22 @@
   			} else {
   				result.insuranceTarget = "Reuse";
   			}
+  			
+  			if(result.packageType == 1){
+  				vm.isCollapsedContact = false;
+  				vm.isCollapsedCommonCar = false;
+  				vm.isCollapsedPackage1 = false;
+  				vm.isShowCollapsedContact = true;
+  				vm.isShowPackage2 = false;
+  				vm.isShowPackage1 = true;
+  			} else if(result.packageType == 2){
+  				vm.isCollapsedContact = false;
+  				vm.isCollapsedCommonCar = false;
+				vm.isCollapsedPackage2 = false;
+				vm.isShowCollapsedContact = true;
+				vm.isShowPackage2 = true;
+				vm.isShowPackage1 = false;
+  			} else{}
   		}
   		
   		function getCarNamSanXuatMax(modelId) {
@@ -341,38 +535,7 @@
     	}
     	
     	function checkedChange() {
-    		if((!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && !vm.policy.vcxCheck)) {
-    			vm.policy.nntxCheck = false;
-    		}
-    		
-    		// tnds bb
-    		if (!vm.policy.tndsbbCheck && !vm.policy.tndstnCheck) {
-    			vm.policy.tndsSoCho = "";
-    			getPremium();
-    		}
-    		if (vm.policy.tndsbbCheck && !vm.policy.tndstnCheck && vm.policy.tndsSoCho != undefined && vm.policy.tndsSoCho != null && vm.policy.tndsSoCho != "") {
-        		getPremium();
-    		}
-    		// tnds tn
-    		if ((!vm.policy.tndstnCheck || vm.policy.tndstnCheck) && vm.policy.tndstnSoTien != "") {
-        		getPremium();
-    		}
-    		// tn nntx
-    		if (!vm.policy.nntxCheck && vm.policy.nntxSoTien != "") {
-    			getPremium();
-    		}
-    		
-    		if (!vm.policy.vcxCheck) {
-    			vm.policy.vcxSoTien = "";
-    		}
-    		
-    		if (vm.policy.vcxCheck && vm.policy.vcxSoTien == "" && vm.policy.namSX != ""){
-    			angular.element('#vcxSoTien').focus();
-    		}
-    		
-    		if ((vm.policy.vcxCheck == false || vm.policy.vcxCheck == true) && vm.policy.vcxSoTien != "") {
-    			getPremium();
-    		}
+    		getPremium();
     	}
   		
   		function showChangePremium() {
@@ -397,7 +560,12 @@
   		function processComboResult(data, type) {
   			console.log(data);
   			switch(type){
-	            case 'car-tndstn-sotien':
+	  			case 'car-vatChatXeKhauTru-sotien':
+	            	if(vm.policy.khauTruSoTien != "") {
+//	            		getPremium();	
+	            		break;
+	            	}
+  				case 'car-tndstn-sotien':
 	            	if(vm.policy.tndstnSoTien != "") {
 	            		getPremium();	
 	            		break;
@@ -452,7 +620,46 @@
 	            	vm.policy.khauHao = true;
 	            	getPremium();
 	                break;
+	            case 'car-month':
+	                break;
 	        }
+  		}
+  		
+  		function getPremiumInit(type) {
+  			vm.policy.tndsbbCheck = true;
+			vm.policy.nntxCheck = true;
+			vm.policy.tndstnCheck = true;
+			vm.policy.vcxCheck = true;
+			vm.policy.khauHao = true;
+			vm.policy.garage = true;
+			vm.policy.ngapNuoc = true;
+			vm.policy.matCap = false;
+			vm.policy.khauTru = true;
+  			
+        	// clean error message
+        	vm.cleanAllResponseError();
+        	if (type == 1){
+        		vm.typePlan = 1;
+  				vm.policy.nntxSoTien = 10000000;
+  				vm.policy.tndstnSoTien = 50000000;
+  				vm.policy.ngapNuoc = false;
+  				vm.policy.khauTruSoTien = 500000;
+  			} else if (type == 2){
+  				vm.typePlan = 2;
+  				vm.policy.nntxSoTien = 20000000;
+  				vm.policy.tndstnSoTien = 100000000;
+  				vm.policy.khauTruSoTien = 1000000;
+  			} else if (type == 3){
+  				vm.typePlan = 3;
+  				vm.policy.nntxSoTien = 50000000;
+  				vm.policy.tndstnSoTien = 150000000;
+  				vm.policy.matCap = true;
+  				vm.policy.khauTruSoTien = 2000000;
+  			}
+        	
+            vm.loading = true;
+  			var postData = getPostData(false);
+  			ProductCommonService.getCarPremium(postData, onGetPremiumSuccessInit, onGetPremiumError);
   		}
   		
   		function getPremium() {
@@ -560,6 +767,84 @@
           		vm.policy.premium = result.premium;
           		vm.policy.totalPremium = result.totalPremium;
     		}
+    		
+            vm.clearResponseError();
+    	}
+  		
+  		function onGetPremiumSuccessInit(result) {
+            vm.loading = false;
+    		if(vm.policy.tndsbbCheck && vm.policy.tndsSoCho) {
+    			vm.isShowTndsbbPhi = true;
+    			vm.policy.tndsbbPhi = result.tndsbbPhi;
+    		}
+    		if(vm.policy.tndsbbCheck == false) {
+    			vm.isShowTndsbbPhi = false;
+    			vm.policy.tndsbbPhi = 0;
+    		}
+    		if(vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) {
+    			vm.isShowTndstnPhi = true;
+    			vm.policy.tndstnPhi = result.tndstnPhi;
+    		}
+    		if(vm.policy.tndstnCheck == false) {
+    			vm.isShowTndstnPhi = false;
+    			vm.policy.tndstnPhi = 0;
+    		}
+    		if(vm.policy.nntxCheck && vm.policy.nntxSoTien) {
+    			vm.isShowNntxPhi = true;
+    			vm.policy.nntxPhi = result.nntxPhi;
+    		}
+    		if(vm.policy.nntxCheck == false) {
+    			vm.isShowNntxPhi = false;
+    			vm.policy.nntxPhi = 0;
+    		}
+    		if(vm.policy.vcxCheck && vm.policy.namSX && vm.policy.vcxSoTien) {
+    			vm.isShowVcxPhi = true;
+    			vm.policy.vcxPhi = result.vcxPhi;
+    		}
+    		if(vm.policy.vcxCheck == false) {
+    			vm.isShowVcxPhi = false;
+    			vm.policy.vcxPhi = 0;
+    		}
+    		if(vm.policy.changePremium) {
+    			vm.isShowChangePremium = true;
+    			if(result.changePremium != 0) {
+    				vm.policy.chargeFree = Math.round((result.totalPremium * result.changePremium) / 100);
+    			} else {
+    				vm.policy.chargeFree = 0;
+    			}
+    		} else {
+    			vm.isShowChangePremium = false;
+    			vm.policy.chargeFree = 0;
+    		}
+    		if((vm.policy.tndsbbCheck && vm.policy.tndsSoCho)
+    				|| (vm.policy.tndstnCheck && vm.policy.tndsSoCho && vm.policy.tndstnSoTien) || (vm.policy.vcxCheck && vm.policy.vcxSoTien)) {
+    			vm.isShowPremium = true;
+          		vm.isShowTotalPremium = true;
+          		vm.policy.premium = result.premium;
+          		vm.policy.totalPremium = result.totalPremium;
+    		} else{
+    			vm.isShowPremium = false;
+          		vm.isShowTotalPremium = false;
+          		vm.policy.premium = result.premium;
+          		vm.policy.totalPremium = result.totalPremium;
+    		}
+    		
+    		debugger
+    		// add 05.03.2019
+    		if (vm.typePlan == 1){
+    			vm.policy.premiumCB = vm.policy.premium;
+    			vm.policy.totalPremiumCB = vm.policy.totalPremium;
+    			getPremiumInit(2);
+    		} else if (vm.typePlan == 2){
+    			vm.policy.premiumNC = vm.policy.premium;
+    			vm.policy.totalPremiumNC = vm.policy.totalPremium;
+    			getPremiumInit(3);
+    		} else if (vm.typePlan == 3){
+    			vm.policy.premiumTD = vm.policy.premium;
+    			vm.policy.totalPremiumTD = vm.policy.totalPremium;
+    		} else {
+    			
+    		}
 
             vm.clearResponseError();
     	}
@@ -628,6 +913,7 @@
     	}
     	
         function validatorNntxSoCho() {
+        	debugger
         	if(!vm.policy.nntxCheck) {
         		return true;
         	}
@@ -638,6 +924,7 @@
         }
         
         function validatorVcxSoTien() {
+        	debugger
         	if(!vm.policy.vcxCheck) {
         		return true;
         	}
@@ -652,7 +939,12 @@
         
         function validatorCombo(name) {
   			switch(name) {
-	  			case "tndsSoCho":
+	  			case "categoryType":
+	  	        	if(!vm.policy.categoryType) {
+	  	        		return "Chưa lựa chọn loại khách hàng!";
+	  	        	}
+	  	            return true;
+  				case "tndsSoCho":
 	  				if(!vm.policy.tndsbbCheck) {
 	  	        		return true;
 	  	        	}
@@ -677,27 +969,23 @@
 	  	        	}
 	  	            return true;
 	  			case "manufacturer":
-	  				if(!vm.policy.vcxCheck) {
-	  	        		return true;
-	  	        	}
 	  	        	if(!vm.policy.manufacturer) {
 	  	        		return "Cần lựa chọn hãng xe!";
 	  	        	}
 	  	            return true;
 	  			case "model":
-	  				if(!vm.policy.vcxCheck) {
-	  	        		return true;
-	  	        	}
 	  	        	if(vm.policy.manufacturer && !vm.policy.model) {
 	  	        		return "Cần lựa chọn dòng xe!";
 	  	        	}
 	  	            return true;
 	  			case "namSX":
-	  				if(!vm.policy.vcxCheck) {
-	  	        		return true;
-	  	        	}
 	  	        	if(vm.policy.model && !vm.policy.namSX) {
 	  	        		return "Cần lựa chọn năm sản xuất!";
+	  	        	}
+	  	            return true;
+	  			case "monthOfMake":
+	  	        	if(vm.policy.model && !vm.policy.monthOfMake) {
+	  	        		return "Cần lựa chọn tháng sản xuất!";
 	  	        	}
 	  	            return true;
   			}

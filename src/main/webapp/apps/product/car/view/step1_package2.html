@@ -1,0 +1,196 @@
+<div class="cntr margin-top-5">
+	<label for="cbx2" class="label-cbx"> <input id="cbx2"
+		name="tndsbbCheck" type="checkbox" class="invisible"
+		ng-model="vm.policy.tndsbbCheck" ng-change="vm.checkedChange()">
+		<div class="checkbox">
+			<svg width="18px" height="18px" viewBox="0 0 20 20">
+                <path
+					d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                <polyline points="4 11 8 15 16 6"></polyline>
+            </svg>
+		</div> <span>Bảo hiểm bắt buộc</span>
+	</label>
+</div>
+
+<div class="cntr margin-top-5">
+	<label for="cbx3" class="label-cbx"> <input id="cbx3"
+		name="tndstnCheck" type="checkbox" class="invisible"
+		ng-model="vm.policy.tndstnCheck" ng-change="vm.checkedChange()">
+		<div class="checkbox">
+			<svg width="18px" height="18px" viewBox="0 0 20 20">
+                           <path
+					d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                           <polyline points="4 11 8 15 16 6"></polyline>
+                       </svg>
+		</div> <span>Bảo hiểm trách nhiệm dân sự tự nguyện</span>
+	</label>
+</div>
+<div class="margin-top-10 required" ng-show="vm.policy.tndstnCheck">
+	<p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
+</div>
+<div class="margin-top-5" ng-show="vm.policy.tndstnCheck">
+	<relation-combo name="tndstnSoTien" type="car-tndstn-sotien"
+		ng-model="vm.policy.tndstnSoTien" options="vm.tndstnSoTienOptions"
+		onfinished="vm.processComboResult(data, type)" />
+</div>
+
+<div class="cntr margin-top-5">
+	<label for="cbx4" class="label-cbx"> <input id="cbx4"
+		type="checkbox" name="nntxCheck" class="invisible"
+		ng-model="vm.policy.nntxCheck"
+		ng-change="vm.getPremium()">
+		<div class="checkbox">
+			<svg width="18px" height="18px" viewBox="0 0 20 20">
+                           <path
+					d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                           <polyline points="4 11 8 15 16 6"></polyline>
+                       </svg>
+		</div> <span>Bảo hiểm tai nạn người ngồi trên xe</span>
+	</label>
+</div>
+
+<div class="margin-top-10 required" ng-show="vm.policy.nntxCheck">
+	<p class="bv-title-from">Số tiền tham gia bảo hiểm</p>
+</div>
+<div class="margin-top-5" ng-show="vm.policy.nntxCheck">
+	<relation-combo name="nntxSoTien" type="car-nntx-sotien"
+		ng-model="vm.policy.nntxSoTien" options="vm.nntxSoTienOptions"
+		onfinished="vm.processComboResult(data, type)" />
+</div>
+
+<div class="cntr margin-top-5">
+	<label for="cbx5" class="label-cbx"> <input id="cbx5"
+		name="vcxCheck" type="checkbox" class="invisible"
+		ng-model="vm.policy.vcxCheck" ng-change="vm.checkedChange()">
+		<div class="checkbox">
+			<svg width="18px" height="18px" viewBox="0 0 20 20">
+                           <path
+					d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                           <polyline points="4 11 8 15 16 6"></polyline>
+                       </svg>
+		</div> <span>Bảo hiểm vật chất xe</span>
+	</label>
+</div>
+
+<div class="margin-top-10" style="margin-left: 10px" ng-show="vm.policy.vcxCheck">
+	<p class="bv-title-from">Điều khoản bổ sung</p>
+</div>
+<div class="cntr margin-top-5" style="margin-left: 10px" ng-show="vm.policy.vcxCheck">
+	<div>
+		<label for="cbx7" class="label-cbx"> <input id="cbx7"
+			name="khauHao" type="checkbox" class="invisible"
+			ng-model="vm.policy.khauHao" ng-change="vm.getPremium()">
+			<div class="checkbox">
+				<svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+						d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+			</div> <span>Bảo hiểm không khấu hao thay mới</span>
+		</label>
+	</div>
+	
+	<div>
+		<label for="cbx10" class="label-cbx"> <input id="cbx10"
+			name="garage" type="checkbox" class="invisible"
+			ng-model="vm.policy.garage" ng-change="vm.getPremium()">
+			<div class="checkbox">
+				<svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+						d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+			</div> <span>Bảo hiểm sửa chữa tại gara chính hãng <p class="bv-title-from">(Chỉ áp dụng cho xe dưới 10 năm sản xuất )</p></span>
+		</label>
+	</div>
+	
+	<div>
+		<label for="cbx9" class="label-cbx"> <input id="cbx9"
+			name="ngapNuoc" type="checkbox" class="invisible"
+			ng-model="vm.policy.ngapNuoc" ng-change="vm.getPremium()">
+			<div class="checkbox">
+				<svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+						d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+			</div> <span>Bảo hiểm xe bị ngập nước</span>
+		</label>
+	</div>
+	<div>
+		<label for="cbx8" class="label-cbx"> <input id="cbx8"
+			name="matCap" type="checkbox" class="invisible"
+			ng-model="vm.policy.matCap" ng-change="vm.getPremium()">
+			<div class="checkbox">
+				<svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+						d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+			</div> <span>Bảo hiểm mất cắp bộ phận</span>
+		</label>
+	</div>
+	
+	<div>
+		<label for="cbx6" class="label-cbx"> <input id="cbx6"
+			name="khauTru" type="checkbox" class="invisible"
+			ng-model="vm.policy.khauTru" ng-change="vm.getPremium()">
+			<div class="checkbox">
+				<svg width="18px" height="18px" viewBox="0 0 20 20">
+                            <path
+						d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                            <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+			</div> <span>Bảo hiểm trách nhiệm mức khấu trừ</span>
+		</label>
+	</div>
+	
+</div>
+
+<!-- hiển thị phí -->
+<div class="bv-title-from margin-top-20" ng-show="vm.isShowTndsbbPhi">
+    <p>Phí bảo hiểm trách nhiệm dân sự bắt buộc (đã bao gồm VAT):</p>
+</div>
+<div ng-show="vm.isShowTndsbbPhi">
+    <p class="bv-tile-templateSummary">{{vm.policy.tndsbbPhi | number:0 }}</p>
+</div>
+<div class="bv-title-from" ng-show="vm.isShowTndstnPhi">
+    <p>Phí bảo hiểm trách nhiệm dân sự tự nguyện (đã bao gồm VAT):</p>
+</div>
+<div ng-show="vm.isShowTndstnPhi">
+    <p class="bv-tile-templateSummary">{{vm.policy.tndstnPhi | number:0 }}</p>
+</div>
+<div class="bv-title-from" ng-show="vm.isShowNntxPhi">
+    <p>Phí bảo hiểm người ngồi trên xe:</p>
+</div>
+<div ng-show="vm.isShowNntxPhi">
+    <p class="bv-tile-templateSummary">{{vm.policy.nntxPhi | number:0 }}</p>
+</div>
+<div class="bv-title-from" ng-show="vm.isShowVcxPhi">
+    <p>Phí bảo hiểm Vật chất xe tạm tính (đã bao gồm VAT):</p>
+</div>
+<div ng-show="vm.isShowVcxPhi">
+    <p class="bv-tile-templateSummary">{{vm.policy.vcxPhi | number:0 }}</p>
+</div>
+<div class="bv-title-from" ng-show="vm.isShowPremium">
+    <p>Tổng phí bảo hiểm (đã bao gồm VAT):</p>
+</div>
+<div ng-show="vm.isShowPremium">
+    <p class="bv-tile-templateSummary">{{vm.policy.premium | number:0 }}</p>
+</div>
+<div class="bv-title-from" ng-show="vm.isShowChangePremium">
+    <p>Giảm phí:</p>
+</div>
+<div ng-show="vm.isShowChangePremium">
+    <p class="bv-tile-templateSummary">{{vm.policy.chargeFree | number:0 }}</p>
+</div>
+<div class="bv-gh-text-sum-product" ng-show="vm.isShowTotalPremium">
+    <p>Tổng phí thanh toán (đã bao gồm VAT):</p>
+</div>
+<div ng-show="vm.isShowTotalPremium">
+    <p class="bv-gh-number-sum-product">{{vm.policy.totalPremium | number:0 }}</p>
+</div>
+
+<div class=" display-flex margin-top-10">
+    <button type="button" ng-click="vm.nextPackage2()" class="bv-btn-step3">Tiếp theo</button>
+</div>

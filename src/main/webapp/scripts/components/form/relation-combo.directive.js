@@ -66,6 +66,9 @@
 	            case 'car-socho':
 	            	defaultOption = "--- Lựa chọn số chỗ/trọng tải xe ---";
 	                break;
+	            case 'car-loaiKH':
+	            	defaultOption = "--- Lựa chọn loại Khách hàng ---";
+	                break;
                 case 'moto-tndstn-sotien':
 	            case 'car-tndstn-sotien':
 	            	defaultOption = "--- Cần lựa chọn mức trách nhiệm ---";
@@ -81,6 +84,9 @@
                     break;
                 case 'car-year':
                 	defaultOption = "--- Cần lựa năm sản xuất ---";
+                    break;
+                case 'car-month':
+                	defaultOption = "--- Cần lựa tháng sản xuất ---";
                     break;
             }
 
@@ -121,6 +127,7 @@
                     case 'tnc-money':
                     case 'moto-type':
 	                case 'car-socho':
+	                case 'car-month':
                     case 'moto-tndstn-sotien':
 	                case 'car-tndstn-sotien':
 	                case 'car-nntx-sotien':

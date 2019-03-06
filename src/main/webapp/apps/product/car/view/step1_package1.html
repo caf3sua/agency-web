@@ -1,0 +1,104 @@
+<div class="table-responsive bv-home-block-left-table-responsive">
+    <table class="table table-bordered table-detail" style="">
+        <tbody>
+        <tr>
+            <td  style="text-align: left !important; width: 280px; background-color: #f4f4f4 !important;font-weight: bold">THÔNG TIN GÓI BẢO HIỂM</td>
+            <td  style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold" >GÓI CƠ BẢN</td>
+            <td  style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold" >GÓI NÂNG CAO</td>
+            <td  style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold" >GÓI TOÀN DIỆN</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">1. Bảo Hiểm Bắt buộc</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">2. Bảo Hiểm Tai nạn người ngồi trên xe</p>
+            </td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 10.000.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 20.000.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 50.000.000 )</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">3. Bảo Hiểm Tai nạn dân sự tự nguyện</p>
+            </td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 50.000.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 100.000.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Số tiền BH 150.000.000 )</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">4. Bảo Hiểm Vật chất xe</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">&nbsp&nbsp&nbsp&nbsp>> Điều khoản bổ sung</p></td>
+            <td style="text-align: left"><p>>> Điều khoản bổ sung</p></td>
+            <td style="text-align: left"><p>>> Điều khoản bổ sung</td>
+            <td style="text-align: left"><p>>> Điều khoản bổ sung</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">&nbsp&nbsp&nbsp&nbsp 4.1 Bảo Hiểm không khấu hao thay mới</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 290px;">&nbsp&nbsp&nbsp&nbsp 4.2 Bảo Hiểm sửa chữa tại gara chính hãng</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">&nbsp&nbsp&nbsp&nbsp 4.3 Bảo Hiểm Xe bị ngập nước</p></td>
+            <td style="text-align: left"><p>Không</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">&nbsp&nbsp&nbsp&nbsp 4.4 Bảo Hiểm mất cắp bộ phận</p></td>
+            <td style="text-align: left"><p>Không</p></td>
+            <td style="text-align: left"><p>Không</p></td>
+            <td style="text-align: left"><p>Có</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;">&nbsp&nbsp&nbsp&nbsp 4.5 Bảo Hiểm Trách nhiệm mức khấu trừ</p></td>
+            <td style="text-align: left"><p>Có ( Mức KT 500.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Mức KT 1.000.000 )</p></td>
+            <td style="text-align: left"><p>Có ( Mức KT 2.000.000 )</p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;"><b>Tổng phí Bảo Hiểm</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.premiumCB | number:0 }}</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.premiumNC | number:0 }}</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.premiumTD | number:0 }}</b></p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;"><b>Mã giảm phí</b></p></td>
+            <td style="text-align: left"><input type="text" class="bv-input" ng-model="vm.policy.maGiamPhiCB" placeholder="Mã giảm phí"/></td>
+            <td style="text-align: left"><input type="text" class="bv-input" ng-model="vm.policy.maGiamPhiNC" placeholder="Mã giảm phí"/></td>
+            <td style="text-align: left"><input type="text" class="bv-input" ng-model="vm.policy.maGiamPhiTD" placeholder="Mã giảm phí"/></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;"><b>Phí giảm</b></p></td>
+            <td style="text-align: left"><p><b>0 VND</b></p></td>
+            <td style="text-align: left"><p><b>0 VND</b></p></td>
+            <td style="text-align: left"><p><b>0 VND</b></p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><p style="width: 280px;"><b>Tổng phí thanh toán</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.totalPremiumCB | number:0 }}</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.totalPremiumNC | number:0 }}</b></p></td>
+            <td style="text-align: left"><p><b>{{vm.policy.totalPremiumTD | number:0 }}</b></p></td>
+        </tr>
+        <tr>
+            <td style="text-align: left"></td>
+            <td style="text-align: left"><button type="button" ng-click="vm.nextPackage1(1)" class="bv-btn-step3">CHỌN GÓI CƠ BẢN</button></td>
+            <td style="text-align: left"><button type="button" ng-click="vm.nextPackage1(2)" class="bv-btn-step3">CHỌN GÓI NÂNG CAO</button></td>
+            <td style="text-align: left"><button type="button" ng-click="vm.nextPackage1(3)" class="bv-btn-step3">CHỌN GÓI TOÀN DIỆN</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
