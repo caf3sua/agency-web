@@ -97,6 +97,7 @@
     		"nguoithQuanhe": "",
     		"nguoiycName": "",
     		"nguoiycNgaysinh": "",
+    		"nguoiycCmnd": "",	// add 06/03/2019
     		"nhakhoa": "0",
     		"nhakhoaPhi": 0,
     		"policyNumber": "",
@@ -486,15 +487,13 @@
         	}
         	
         	if (vm.policy.nhakhoaChk){
-        		if (vm.policy.tuoi == 1) {
-        			var now = new Date();
-                    var nowStr = DateUtils.convertDate(now);
-                    var month = DateUtils.monthDiff(vm.policy.ngaySinh, nowStr);
-                    if (month < 12){
-                    	vm.policy.nhakhoaChk = false;
-            			toastr.error("Người được BH nằm ngoài độ tuổi tham gia BH nha khoa");	
-                    }
-            	} else {
+    			var now = new Date();
+                var nowStr = DateUtils.convertDate(now);
+                var month = DateUtils.monthDiff(vm.policy.ngaySinh, nowStr);
+                if (month < 12){
+                	vm.policy.nhakhoaChk = false;
+        			toastr.error("Người được BH nằm ngoài độ tuổi tham gia BH nha khoa");	
+                } else {
             		getPremium();
             	}	
         	}
@@ -522,6 +521,10 @@
                     case 'contact':
                     	vm.policy.nguoiycName = $rootScope.selectedContact.contactName;
                     	vm.policy.nguoiycNgaysinh = $rootScope.selectedContact.dateOfBirth;
+                    	vm.policy.nguoiycCmnd = $rootScope.selectedContact.idNumber;
+                    	vm.policy.contactCode = $rootScope.selectedContact.contactCode;
+                		vm.policy.contactName = $rootScope.selectedContact.contactName;
+                		vm.policy.dateOfBirth = $rootScope.selectedContact.dateOfBirth;
                     	$rootScope.saveNguoiYcBVP = $rootScope.selectedContact;
                         break;
                     case 'insured':
