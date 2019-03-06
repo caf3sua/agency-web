@@ -1287,8 +1287,7 @@
         	}
         	
         	if (vm.policy.nguoidbhQuanhe == 30){
-        		if (vm.policy.nguoidbhCmnd != vm.policy.contactIdNumber) {
-        			debugger
+        		if (vm.policy.nguoidbhCmnd != $rootScope.saveNguoiYcBVP.idNumber) {
     				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
     				angular.element('#nguoidbhCmnd').focus();
     				return false;
@@ -1321,6 +1320,20 @@
             		return false;
         		}
         	}
+        	
+        	if (vm.policy.nguoithName != "" && vm.policy.nguoithName != null && vm.policy.nguoithName != undefined
+        			&& vm.policy.nguoithCmnd != "" && vm.policy.nguoithCmnd != null && vm.policy.nguoithCmnd != undefined
+        			&& vm.policy.nguoinhanName != "" && vm.policy.nguoinhanName != null && vm.policy.nguoinhanName != undefined
+        			&& vm.policy.nguoinhanCmnd != "" && vm.policy.nguoinhanCmnd != null && vm.policy.nguoinhanCmnd != undefined) {
+        		if (vm.policy.nguoinhanCmnd == vm.policy.nguoithCmnd && vm.policy.nguoithName == vm.policy.nguoinhanName){
+        			if (vm.policy.nguoinhanQuanhe != vm.policy.nguoithQuanhe){
+        				toastr.error("Quan hệ của Người thụ hưởng BH và Người nhận tiền BH phải trùng nhau");
+                		return false;
+        			}
+        		}
+        		
+        	}
+        	
         	
             return true;
         }

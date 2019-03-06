@@ -167,6 +167,8 @@
         vm.checkCMT = checkCMT;
         vm.checkBanthan = checkBanthan;
         
+        vm.checkThaiSanNhaKhoa = checkThaiSanNhaKhoa;
+        
         vm.checkAgeNDBH = false;
         vm.gksFile = null;
         vm.gksFileModel;
@@ -473,6 +475,31 @@
         	vm.policy.expiredDate = vm.policy.thoihanbhDen;
         }
         
+        function checkThaiSanNhaKhoa() {
+        	if (vm.policy.thaisanChk){
+        		if (vm.policy.tuoi < 18 || vm.policy.tuoi > 45) {
+        			vm.policy.thaisanChk = false;
+        			toastr.error("Người được BH nằm ngoài độ tuổi tham gia thai sản");
+            	} else {
+            		getPremium();
+            	}	
+        	}
+        	
+        	if (vm.policy.nhakhoaChk){
+        		if (vm.policy.tuoi == 1) {
+        			var now = new Date();
+                    var nowStr = DateUtils.convertDate(now);
+                    var month = DateUtils.monthDiff(vm.policy.ngaySinh, nowStr);
+                    if (month < 12){
+                    	vm.policy.nhakhoaChk = false;
+            			toastr.error("Người được BH nằm ngoài độ tuổi tham gia BH nha khoa");	
+                    }
+            	} else {
+            		getPremium();
+            	}	
+        	}
+        }
+        
         // watch
         $scope.$watch('$root.nguoith', function () {
         	vm.policy.nguoithCmnd = $rootScope.nguoith.cmnd;
@@ -663,7 +690,7 @@
             vm.loading = false;
             vm.clearResponseError();
     		resetDataPremium();
-            // vm.validateResponse(result, 'getPremium');
+//            vm.validateResponse(result, 'getPremium');
     		ResponseValidateService.validateResponse(result.data);
         }
         
@@ -812,7 +839,7 @@
 	      		vm.policy.nguoidbhName = vm.policy.nguoiycName;
 	        	vm.policy.nguoidbhNgaysinh = vm.policy.nguoiycNgaysinh;
 	        	vm.policy.nguoidbhQuanhe = "30";
-	        	vm.policy.nguoidbhCmnd = vm.policy.contactIdNumber;
+	        	vm.policy.nguoidbhCmnd = $rootScope.saveNguoiYcBVP.idNumber; //vm.policy.contactIdNumber;
 	        	$rootScope.nguoidbh = {
 	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
 	        			quanhe: "30"
