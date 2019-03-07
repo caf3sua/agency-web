@@ -577,10 +577,8 @@
         	if (vm.copyFromNdbh == false || vm.copyFromNdbh == undefined){
         		vm.policy.nguoidbhNgaysinh = vm.policy.ngaySinh;	
         	}
-        	
-        	var now = new Date();
-            var nowStr = DateUtils.convertDate(now);
-            vm.policy.tuoi = DateUtils.yearDiff(vm.policy.ngaySinh, nowStr);
+
+            vm.policy.tuoi = DateUtils.yearDiff(vm.policy.ngaySinh, vm.policy.inceptionDate);
             
             if (vm.policy.tuoi < 18){
             	vm.isShowPolicyParent = true;
