@@ -91,10 +91,16 @@
     		"nguoinhanName": "",
     		"nguoinhanQuanhe": "",
     		"nguointNgaysinh": "",
+    		"nguointDienthoai": "",	// add 08/03/2019
+    		"nguointDiachi": "",	// add 08/03/2019
+    		"nguointEmail": "",		// add 08/03/2019
     		"nguoithCmnd": "",
     		"nguoithName": "",
     		"nguoithNgaysinh": "",
     		"nguoithQuanhe": "",
+    		"nguoithDienthoai": "",	// add 08/03/2019
+    		"nguoithDiachi": "",	// add 08/03/2019
+    		"nguoithEmail": "",	// add 08/03/2019
     		"nguoiycName": "",
     		"nguoiycNgaysinh": "",
     		"nguoiycCmnd": "",	// add 06/03/2019
@@ -546,6 +552,11 @@
         	        			cmnd : $rootScope.selectedContact.idNumber
         	        	}
                     	vm.policy.nguoithCmnd = $rootScope.selectedContact.idNumber;
+                    	// add 08/03/2019
+                    	vm.policy.nguoithDienthoai = $rootScope.selectedContact.phone;
+        	        	vm.policy.nguoithDiachi = $rootScope.selectedContact.homeAddress;
+        	        	vm.policy.nguoithEmail = $rootScope.selectedContact.email;
+                    	
                         break;
                     case 'receive':
                     	vm.policy.nguoinhanName = $rootScope.selectedContact.contactName;
@@ -554,6 +565,11 @@
         	        			cmnd : $rootScope.selectedContact.idNumber
         	        	}
                     	vm.policy.nguoinhanCmnd = $rootScope.selectedContact.idNumber;
+                    	// add 08/03/2019
+                    	vm.policy.nguointDienthoai = $rootScope.selectedContact.phone;
+        	        	vm.policy.nguointDiachi = $rootScope.selectedContact.homeAddress;
+        	        	vm.policy.nguointEmail = $rootScope.selectedContact.email;
+                    	
                         break;
                 }
             }
@@ -814,6 +830,9 @@
         	vm.policy.nguointNgaysinh = "";
         	vm.policy.nguoinhanCmnd = "";
         	vm.policy.nguoinhanQuanhe = "";
+        	vm.policy.nguointDienthoai = "";
+        	vm.policy.nguointDiachi = "";
+        	vm.policy.nguointEmail = "";
 	      	if (vm.copyFromNth) {
 	      		vm.policy.nguoinhanName = vm.policy.nguoithName;
 	        	vm.policy.nguointNgaysinh = vm.policy.nguoithNgaysinh;
@@ -823,6 +842,10 @@
 	        	}
 	        	vm.policy.nguoinhanCmnd = vm.policy.nguoithCmnd;
 	        	vm.policy.nguoinhanQuanhe = vm.policy.nguoithQuanhe;
+	        	
+	        	vm.policy.nguointDienthoai = vm.policy.nguoithDienthoai;
+	        	vm.policy.nguointDiachi = vm.policy.nguoithDiachi;
+	        	vm.policy.nguointEmail = vm.policy.nguoithEmail;
 	      	} else {
 	      		$rootScope.nguoint = {
 	        			cmnd : "",
