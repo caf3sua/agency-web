@@ -87,6 +87,10 @@
     		"nguoidbhName": "",
     		"nguoidbhNgaysinh": "",
     		"nguoidbhQuanhe": "",
+    		"nguoidbhGioitinh": "",		// add 08/03/2019
+    		"nguoidbhDiachi": "",		// add 08/03/2019
+    		"nguoidbhDienthoai": "",	// add 08/03/2019
+    		"nguoidbhEmail": "",		// add 08/03/2019
     		"nguoinhanCmnd": "",
     		"nguoinhanName": "",
     		"nguoinhanQuanhe": "",
@@ -859,6 +863,11 @@
         	vm.policy.nguoidbhCmnd = "";
         	vm.policy.nguoidbhQuanhe = "";
         	vm.policy.nguoidbhNgaysinh = vm.policy.ngaySinh;
+        	vm.policy.nguoidbhGioitinh = ""; // add 08/03/2019
+        	vm.policy.nguoidbhDiachi = "";	// add 08/03/2019
+        	vm.policy.nguoidbhDienthoai = "";	// add 08/03/2019
+        	vm.policy.nguoidbhEmail = "";	// add 08/03/2019
+        	
 	      	if (vm.copyFromNdbh) {
 	        	if (vm.policy.nguoidbhNgaysinh != undefined && vm.policy.nguoidbhNgaysinh != null && vm.policy.nguoidbhNgaysinh != "") {
             		if (vm.policy.nguoiycNgaysinh != vm.policy.ngaySinh){
@@ -874,6 +883,11 @@
         	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
         	        			quanhe: "30"
         	        	}
+        	        	debugger
+        	        	vm.policy.nguoidbhGioitinh = $rootScope.saveNguoiYcBVP.contactSex; // add 08/03/2019
+        	        	vm.policy.nguoidbhDiachi = $rootScope.saveNguoiYcBVP.homeAddress;	// add 08/03/2019
+        	        	vm.policy.nguoidbhDienthoai = $rootScope.saveNguoiYcBVP.phone;	// add 08/03/2019
+        	        	vm.policy.nguoidbhEmail = $rootScope.saveNguoiYcBVP.email;	// add 08/03/2019
                 	}
             	}
 	      	}
