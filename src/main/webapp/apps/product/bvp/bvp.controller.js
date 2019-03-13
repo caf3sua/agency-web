@@ -630,13 +630,13 @@
 
         function getPremium() {
         	
-        	if (vm.policy.tuoi < 18) {
-        		checkGycbhParent();
-        	} else {
-        		vm.checkAgeNDBH = true;
-        	}
-        	
-        	if (vm.checkAgeNDBH){
+//        	if (vm.policy.tuoi < 18) {
+//        		checkGycbhParent();
+//        	} else {
+//        		vm.checkAgeNDBH = true;
+//        	}
+//        	
+//        	if (vm.checkAgeNDBH){
         		// clean error message
             	vm.cleanAllResponseError();
             	
@@ -653,7 +653,7 @@
                     vm.policy.premiumNet = 0;
                     vm.policy.phiBH = 0;
                 }
-        	}
+//        	}
         }
 
         function getPostData() {
