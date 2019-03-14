@@ -129,6 +129,7 @@
     	// 15.08
     	vm.checkDate = checkDate;
     	var modalInstance = null;
+    	vm.showImagePolicySuccessInfo = showImagePolicySuccessInfo;
     	
     	$scope.$on('selectedContactChange', selectedContactChange);
     	
@@ -205,6 +206,7 @@
     	}
     	
         function changeCopyFromContact() {
+        	debugger
         	vm.policy.receiverUser = {};
 	      	if (vm.copyFromContact) {
 	      		if (vm.lineId == 'BVP') {
@@ -216,16 +218,24 @@
 	                	vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      			} else {
 	      				var dataBVP = $rootScope.saveNguoiYcBVP;
-		      			let address = dataBVP.homeAddress;
-		      			vm.policy.receiverUser.name = dataBVP.contactName;
-			      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
-			      		vm.policy.receiverUser.mobile = dataBVP.phone;
-			      		vm.policy.receiverUser.email = dataBVP.email;
-
-		                let postcode = address.substring(address.lastIndexOf("::") + 2);
-		                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-		                	vm.policy.receiverUser.addressDistrictData = data;
-		                });
+	      				if (dataBVP != null && dataBVP != undefined){
+			      			let address = dataBVP.homeAddress;
+			      			vm.policy.receiverUser.name = dataBVP.contactName;
+				      		vm.policy.receiverUser.address = address.substring(0, address.indexOf("::"));
+				      		vm.policy.receiverUser.mobile = dataBVP.phone;
+				      		vm.policy.receiverUser.email = dataBVP.email;
+	
+			                let postcode = address.substring(address.lastIndexOf("::") + 2);
+			                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+			                	vm.policy.receiverUser.addressDistrictData = data;
+			                });
+	      				} else {
+	      					vm.policy.receiverUser.name = vm.policy.contactName;
+				      		vm.policy.receiverUser.address = vm.policy.contactAddress;
+				      		vm.policy.receiverUser.mobile = vm.policy.contactPhone;
+				      		vm.policy.receiverUser.email = vm.policy.contactEmail;
+		                	vm.policy.receiverUser.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      				}
 	      			}
 	      		} else {
 	      			vm.policy.receiverUser.name = vm.policy.contactName;
@@ -253,19 +263,30 @@
 			      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
 	      			} else {
 	      				var dataBVP = $rootScope.saveNguoiYcBVP;
-		      			let address = dataBVP.homeAddress;
-		      			vm.policy.invoiceInfo.name = dataBVP.contactName;
-		      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
-		      				vm.policy.invoiceInfo.company = vm.policy.contactName;
-		      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
-		      			}
-		      			
-			      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
+	      				if (dataBVP != null && dataBVP != undefined){
+	      					let address = dataBVP.homeAddress;
+			      			vm.policy.invoiceInfo.name = dataBVP.contactName;
+			      			if (vm.policy.contactCategoryType == "ORGANIZATION"){
+			      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+			      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+			      			}
+			      			
+				      		vm.policy.invoiceInfo.address = address.substring(0, address.indexOf("::"));
 
-		                let postcode = address.substring(address.lastIndexOf("::") + 2);
-		                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
-		                	vm.policy.invoiceInfo.addressDistrictData = data;
-		                });
+			                let postcode = address.substring(address.lastIndexOf("::") + 2);
+			                ProductCommonService.getAddressByPostcode({code: postcode}).$promise.then(function(data) {
+			                	vm.policy.invoiceInfo.addressDistrictData = data;
+			                });
+	      				} else {
+	      					vm.policy.invoiceInfo.name = vm.policy.contactName;
+		      				if (vm.policy.contactCategoryType == "ORGANIZATION"){
+			      				vm.policy.invoiceInfo.company = vm.policy.contactName;
+			      				vm.policy.invoiceInfo.taxNo = vm.policy.contactIdNumber;
+			      			}
+		      				
+		      				vm.policy.invoiceInfo.address = vm.policy.contactAddress;
+				      		vm.policy.invoiceInfo.addressDistrictData = vm.policy.contactAddressDistrictData;
+	      				}
 	      			}
 	      		} else {
 	      			vm.policy.invoiceInfo.name = vm.policy.contactName;
@@ -425,18 +446,23 @@
 			function onCreatePolicySuccess(data, headers) {
 				vm.clearResponseError();
 	            vm.loading = false;
-				// kiểm tra nếu TH đang soạn thì ko bật otp
-//				if (data.statusPolicy == "90"){
-					var checkOTP = vm.currentAccount.sendOtp;
-		            if (checkOTP == 1){
-		            	$rootScope.gycbhNumber = data.gycbhNumber;
-		            	vm.showOTPSavePolicySuccessInfo();
-		            } else {
-		            	vm.showSavePolicySuccessInfo(obj);	
-		            }	
-//				} else {
-//					vm.showSavePolicySuccessInfo(obj);
-//				}
+	            
+	            if (data.lineId == 'CAR'){
+	            	showImagePolicySuccessInfo(data);
+	            } else{
+					// kiểm tra nếu TH đang soạn thì ko bật otp
+//					if (data.statusPolicy == "90"){
+						var checkOTP = vm.currentAccount.sendOtp;
+			            if (checkOTP == 1){
+			            	$rootScope.gycbhNumber = data.gycbhNumber;
+			            	vm.showOTPSavePolicySuccessInfo();
+			            } else {
+			            	vm.showSavePolicySuccessInfo(obj);	
+			            }	
+//					} else {
+//						vm.showSavePolicySuccessInfo(obj);
+//					}
+	            }
 	        }
 				
 	        function onCreatePolicyError(error) {
@@ -603,6 +629,23 @@
             });	            
   		}
 		
+		function showImagePolicySuccessInfo(order) {
+  			$rootScope.gycbhNumber = order.gycbhNumber;
+            modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'apps/product/car/view/step1_uploadFile.html',
+                controller: 'CarUpdateController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            });	            
+  		}
+		
 		function confirmResendOTP(gycbhNumber) {
   			$ngConfirm({
                 title: 'Xác nhận',
@@ -647,7 +690,7 @@
   			$rootScope.gycbhNumber = number;
   			showOTPSavePolicySuccessInfo();
   		}
-        
+  		
         function showOTPSavePolicySuccessInfo() {
 			$ngConfirm({
 					title: 'Xác thực OTP',
@@ -1287,7 +1330,7 @@
         	}
         	
         	if (vm.policy.nguoidbhQuanhe == 30){
-        		if (vm.policy.nguoidbhCmnd != $rootScope.saveNguoiYcBVP.idNumber) {
+        		if (vm.policy.nguoidbhCmnd != vm.policy.nguoiycCmnd) {
     				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
     				angular.element('#nguoidbhCmnd').focus();
     				return false;
