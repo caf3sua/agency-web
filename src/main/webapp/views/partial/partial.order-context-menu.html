@@ -62,6 +62,12 @@
         </div>
         <span class="bv-detail-text-table">Gửi lại OTP</span>
     </div>
+    <div ng-click="vm.showImagePolicySuccessInfo(order)" ng-show="(order.statusPolicyId == 80 || order.statusPolicyId == 81) && order.lineId == 'CAR'"">
+        <div class="bv-detail-icon-table">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span class="bv-detail-text-table">Chụp/Gắn lại ảnh xe</span>
+    </div>
     <div ng-click="vm.confirmOTP(order.gycbhNumber)" ng-show="order.statusPolicyId == 81">
         <div class="bv-detail-icon-table">
             <i class="fas fa-key"></i>

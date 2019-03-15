@@ -195,7 +195,28 @@
          </div>
      </div>
  </div>
-    
+ 
+<div style="display: inherit;">
+   <div class="bv-pading-30 margin-top-20 text-header-sp" style="margin-bottom: 10px" style="display:inline-block;">
+       <p>Ảnh Giám Định</p>
+   </div>
+   <div class="margin-top-10 bv-pading-30" ng-show="vm.isImageFile(vm.policy.imgPDau)" style="display:inline-block;">
+       <img src="data:image/*;base64,{{vm.policy.imgPDau.content}}" height="150px">
+   </div>
+   <div class="margin-top-10 bv-pading-30" ng-show="vm.isImageFile(vm.policy.imgTDau)" style="display:inline-block;">
+       <img src="data:image/*;base64,{{vm.policy.imgTDau.content}}" height="150px">
+   </div>
+   <div class="margin-top-10 bv-pading-30" ng-show="vm.isImageFile(vm.policy.imgPDuoi)" style="display:inline-block;">
+       <img src="data:image/*;base64,{{vm.policy.imgPDuoi.content}}" height="150px">
+   </div>
+   <div class="margin-top-10 bv-pading-30" ng-show="vm.isImageFile(vm.policy.imgTDuoi)" style="display:inline-block;">
+       <img src="data:image/*;base64,{{vm.policy.imgTDuoi.content}}" height="150px">
+   </div>
+   <div class="margin-top-10 bv-pading-30" ng-show="vm.isImageFile(vm.policy.imgDKiem)" style="display:inline-block;">
+       <img src="data:image/*;base64,{{vm.policy.imgDKiem.content}}" height="150px">
+   </div>
+ 
+</div>
 <!-- Include Thông tin giao nhận giấy chứng nhận bảo hiểm và Thông tin hóa đơn giá trị gia tăng -->
 <div ng-include="'apps/product/summary_detail/partial/step2_summary.html'"></div>
 

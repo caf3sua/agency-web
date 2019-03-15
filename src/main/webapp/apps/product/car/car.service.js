@@ -56,6 +56,10 @@
 			'createNewPolicy' : {
 				method : 'POST',
 				url : 'api/agency/product/car/createPolicy'
+			},
+			'updateImagesPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/car/updateImagesPolicy'
 			}
 		});
 

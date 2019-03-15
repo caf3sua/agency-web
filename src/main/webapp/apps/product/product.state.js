@@ -35,6 +35,8 @@
 		            			, 'apps/product/product-base.controller.js'
 		            			, 'apps/communication/communication.controller.js'
 		            			, 'apps/communication/communication.state.js'
+		            			, 'apps/product/car/car-update.controller.js'
+		            			, 'apps/product/car/car.state.js'
 		            			]);
 			        }
 		        }

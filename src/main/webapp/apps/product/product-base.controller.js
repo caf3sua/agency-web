@@ -206,7 +206,6 @@
     	}
     	
         function changeCopyFromContact() {
-        	debugger
         	vm.policy.receiverUser = {};
 	      	if (vm.copyFromContact) {
 	      		if (vm.lineId == 'BVP') {
@@ -448,6 +447,7 @@
 	            vm.loading = false;
 	            
 	            if (data.lineId == 'CAR'){
+	            	$rootScope.lineId = 'CAR';
 	            	showImagePolicySuccessInfo(data);
 	            } else{
 					// kiểm tra nếu TH đang soạn thì ko bật otp
@@ -579,7 +579,7 @@
         		}
     				
     	        function onError(error) {
-    	        	toastr.error('Mã xác thực không chính xác. Đề nghị kiểm tra lại');
+    	        	toastr.error('Mã xác nhận không chính xác. Đề nghị kiểm tra lại');
 				}
 			} else {
 //				$state.go('app.cart', {sel: $rootScope.gycbhNumber});
@@ -693,7 +693,7 @@
   		
         function showOTPSavePolicySuccessInfo() {
 			$ngConfirm({
-					title: 'Xác thực OTP',
+					title: 'Xác nhận OTP',
                     icon: 'fa fa-info',
 					theme: 'modern',
 					type: 'blue',
@@ -1149,15 +1149,28 @@
         		if (!isEmptyString(item.dob)) {
         			var now = new Date();
         			var nowStr = DateUtils.convertDate(now);
-                    let tuoiYear = DateUtils.yearDiff(item.dob, nowStr);
-                    let tuoiMonth = DateUtils.getMonth(item.dob, nowStr);
+                    let tuoiYear = DateUtils.calculateAge2(item.dob, vm.policy.expiredDate);
+                    let tuoiMonth = DateUtils.getMonth(item.dob, vm.policy.inceptionDate);
                     
-                    if (tuoiYear > 85 || tuoiMonth < 6){
+                    let tuoiYearMonth = DateUtils.calculateAge2(item.dob, vm.policy.inceptionDate);
+                    
+                    if (tuoiYear >= 85 || tuoiMonth < 6){
                     	resultDob = false;
             			// Show
             			let data = {
         	        		fieldName : "dob" + key,
         	        		message : "Người được bảo hiểm phải từ 6 tháng đến 85 tuổi"
+            	        };
+            	        
+            	        ResponseValidateService.validateResponse(data)	
+                    }
+                    
+                    if (tuoiYearMonth < 11 || tuoiMonth < 6){
+                    	resultDob = false;
+            			// Show
+            			let data = {
+        	        		fieldName : "dob" + key,
+        	        		message : "Người được bảo hiểm ngoài tuổi tham gia"
             	        };
             	        
             	        ResponseValidateService.validateResponse(data)	

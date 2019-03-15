@@ -18,6 +18,7 @@
             monthDiff : monthDiff,
             getMonth : getMonth,
             calculateAge : calculateAge,
+            calculateAge2 : calculateAge2,
             yearDiff : yearDiff,
             dateDiff : dateDiff,
             parseDate : parseDate,
@@ -102,6 +103,19 @@
         function calculateAge(strBirthday) {
         	var birthday = parseDate(strBirthday);
             var today = new Date();
+            var thisYear = 0;
+            if (today.getMonth() < birthday.getMonth()) {
+                thisYear = 1;
+            } else if ((today.getMonth() == birthday.getMonth()) && today.getDate() < birthday.getDate()) {
+                thisYear = 1;
+            }
+            var age = today.getFullYear() - birthday.getFullYear() - thisYear;
+            return age;
+        }
+        
+        function calculateAge2(strBirthday, date) {
+        	var birthday = parseDate(strBirthday);
+            var today = parseDate(date);
             var thisYear = 0;
             if (today.getMonth() < birthday.getMonth()) {
                 thisYear = 1;

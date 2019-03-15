@@ -1,0 +1,72 @@
+<div class="row modal-body">
+<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 margin-top-10">
+	<form name="vm.form" role="form" show-validation>
+	
+<div class="modal-header">
+    <h3 class="modal-title">GIÁM ĐỊNH XE</h3>
+</div>
+<div class=" display-flex margin-top-5">
+    <div class="margin-right-5 width-100">
+        <bv-fileupload input-id="upload-phaiDau" label="Ảnh chụp Góc phải đầu xe" is-required="true" multiple="false" place-holder="Chọn ảnh chụp Góc phải đầu xe" file-model="vm.phaiDauFileModel"></bv-fileupload>
+    </div>
+
+    <div class="">
+        <input type="hidden" name="giamDinhPhaiDau" ng-model="vm.phaiDauFile">
+    </div>
+</div>
+
+<div class=" display-flex margin-top-5">
+    <div class="margin-right-5 width-100">
+        <bv-fileupload input-id="upload-traiDau" label="Ảnh chụp Góc trái đầu xe" is-required="true" multiple="false" place-holder="Chọn ảnh chụp Góc trái đầu xe" file-model="vm.traiDauFileModel"></bv-fileupload>
+    </div>
+
+    <div class="">
+        <input type="hidden" name="giamDinhTraiDau" ng-model="vm.traiDauFile">
+    </div>
+</div>
+
+<div class=" display-flex margin-top-5">
+    <div class="margin-right-5 width-100">
+        <bv-fileupload input-id="upload-phaiDuoi" label="Ảnh chụp Góc phải đuôi xe" is-required="true" multiple="false" place-holder="Chọn ảnh chụp Góc phải đuôi xe" file-model="vm.phaiDuoiFileModel"></bv-fileupload>
+    </div>
+
+    <div class="">
+        <input type="hidden" name="giamDinhPhaiDuoi" ng-model="vm.phaiDuoiFile">
+    </div>
+</div>
+
+<div class=" display-flex margin-top-5">
+    <div class="margin-right-5 width-100">
+        <bv-fileupload input-id="upload-traiDuoi" label="Ảnh chụp Góc trái đuôi xe" is-required="true"multiple="false" place-holder="Chọn ảnh chụp Góc trái đuôi xe" file-model="vm.traiDuoiFileModel"></bv-fileupload>
+    </div>
+
+    <div class="">
+        <input type="hidden" name="giamDinhTraiDuoi" ng-model="vm.traiDuoiFile">
+    </div>
+</div>
+
+<div class=" display-flex margin-top-5">
+    <div class="margin-right-5 width-100">
+        <bv-fileupload input-id="upload-dangkiem" label="Ảnh chụp Đăng kiểm/Số khung" is-required="true" multiple="false" place-holder="Chọn ảnh chụp Đăng kiểm/Số khung" file-model="vm.dangKiemFileModel"></bv-fileupload>
+    </div>
+
+    <div class="">
+        <input type="hidden" name="dangKiem" ng-model="vm.dangKiemFile">
+    </div>
+</div>
+
+<!-- Button -->
+		<div class="col-lg-2 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;">
+            <button class="bv-btn-step2" ng-click="vm.cancel()">
+            	Chụp lại sau
+            </button>
+        </div>
+
+	    <div class="col-lg-2 bv-kh-padding-left col-md-12 col-sm-12 col-xs-12 padding0 margin-top30" style="float: right;">
+            <button class="bv-btn-step2" ng-click="vm.updateImage()" ng-disabled="vm.form.$invalid">
+            	Hoàn thành
+            </button>
+        </div>
+	</form>
+</div>
+</div>
