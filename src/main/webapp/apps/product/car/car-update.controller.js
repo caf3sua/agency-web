@@ -248,7 +248,8 @@
   		function cancel() {
   			let lineId = $rootScope.lineId;
   			if (lineId != null && lineId != undefined && lineId == 'CAR'){
-  				$state.go('order.baoviet');
+  				$uibModalInstance.dismiss('cancel');
+  				$state.go('order.agency');
   			} else {
   				$uibModalInstance.dismiss('cancel');		
   			}

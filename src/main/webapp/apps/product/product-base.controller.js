@@ -515,18 +515,23 @@
 			function onUpdatePolicySuccess(data, headers) {
 				vm.clearResponseError();
 	            vm.loading = false;
-	            // kiểm tra nếu TH đang soạn thì ko bật otp
-//				if (data.statusPolicy == "90"){
-					var checkOTP = vm.currentAccount.sendOtp;
-		            if (checkOTP == 1){
-		            	$rootScope.gycbhNumber = data.gycbhNumber;
-		            	vm.showOTPSavePolicySuccessInfo();
-		            } else {
-		            	vm.showSavePolicySuccessInfo(obj);	
-		            }	
-//				} else {
-//					vm.showSavePolicySuccessInfo(obj);
-//				}
+	            if (data.lineId == 'CAR'){
+	            	$rootScope.lineId = 'CAR';
+	            	showImagePolicySuccessInfo(data);
+	            } else{
+		            // kiểm tra nếu TH đang soạn thì ko bật otp
+//					if (data.statusPolicy == "90"){
+						var checkOTP = vm.currentAccount.sendOtp;
+			            if (checkOTP == 1){
+			            	$rootScope.gycbhNumber = data.gycbhNumber;
+			            	vm.showOTPSavePolicySuccessInfo();
+			            } else {
+			            	vm.showSavePolicySuccessInfo(obj);	
+			            }	
+//					} else {
+//						vm.showSavePolicySuccessInfo(obj);
+//					}
+	            }
 	        }
 				
 	        function onUpdatePolicyError(error) {
