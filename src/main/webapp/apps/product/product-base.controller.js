@@ -1317,15 +1317,15 @@
         
         function validatorBVP() {
         	if(vm.policy.q1 == 1 || vm.policy.q2 == 1 || vm.policy.q3 == 1) {
-        		if (vm.policy.lstAdd[0].ngaydieutri == "" || vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == "" || vm.policy.lstAdd[0].benhvienorbacsy == ""){
-        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Ngày điều trị, chẩn đoán, chi tiết điều trị, kết quả, bác sĩ/bệnh viện (tối thiểu dòng đầu tiên)");
+        		if (vm.policy.lstAdd[0].chuandoan == "" || vm.policy.lstAdd[0].chitietdieutri == "" || vm.policy.lstAdd[0].ketqua == ""){
+        			toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả (tối thiểu dòng đầu tiên)");
         			return false;
         		}
         		
         		for (var i = 1; i < vm.policy.lstAdd.length; i ++ ){
-        			if (vm.policy.lstAdd[i].ngaydieutri != "" || vm.policy.lstAdd[i].chuandoan != "" || vm.policy.lstAdd[i].chitietdieutri != "" || vm.policy.lstAdd[i].ketqua != "" || vm.policy.lstAdd[i].benhvienorbacsy != ""){
-        				if (vm.policy.lstAdd[i].ngaydieutri == "" || vm.policy.lstAdd[i].chuandoan == "" || vm.policy.lstAdd[i].chitietdieutri == "" || vm.policy.lstAdd[i].ketqua == "" || vm.policy.lstAdd[i].benhvienorbacsy == ""){
-        					toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Ngày điều trị, chẩn đoán, chi tiết điều trị, kết quả, bác sĩ/bệnh viện dòng thứ " + (i+1));
+        			if (vm.policy.lstAdd[i].chuandoan != "" || vm.policy.lstAdd[i].chitietdieutri != "" || vm.policy.lstAdd[i].ketqua != ""){
+        				if (vm.policy.lstAdd[i].chuandoan == "" || vm.policy.lstAdd[i].chitietdieutri == "" || vm.policy.lstAdd[i].ketqua == ""){
+        					toastr.error("Cần nhập đầy đủ thông tin trả lời tại các cột: Chẩn đoán, chi tiết điều trị, kết quả dòng thứ " + (i+1));
         					return false;
                 		}
             		} 
@@ -1393,6 +1393,42 @@
         			}
         		}
         		
+        	}
+        	
+        	// check người thụ hưởng
+        	if (vm.policy.nguoithQuanhe == 30){
+        		if (vm.policy.nguoithName != vm.policy.nguoiycName){
+            		toastr.error("Họ và tên người thụ hưởng không trùng với Người yêu cầu bảo hiểm");
+            		return false;
+            	}
+        		
+        		if (vm.policy.nguoithNgaysinh != vm.policy.nguoiycNgaysinh){
+            		toastr.error("Ngày sinh người thụ hưởng không trùng với Người yêu cầu bảo hiểm");
+            		return false;
+            	}
+        		
+        		if (vm.policy.nguoithCmnd != vm.policy.nguoiycCmnd) {
+    				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
+    				return false;
+    			}
+        	}
+        	
+        	// check người nhận tiền
+        	if (vm.policy.nguoinhanQuanhe == 30){
+        		if (vm.policy.nguoinhanName != vm.policy.nguoiycName){
+            		toastr.error("Họ và tên người nhận tiền không trùng với Người yêu cầu bảo hiểm");
+            		return false;
+            	}
+        		
+        		if (vm.policy.nguointNgaysinh != vm.policy.nguoiycNgaysinh){
+            		toastr.error("Ngày sinh người nhận tiền không trùng với Người yêu cầu bảo hiểm");
+            		return false;
+            	}
+        		
+        		if (vm.policy.nguoinhanCmnd != vm.policy.nguoiycCmnd) {
+    				toastr.error("Thông tin CMT/Hộ chiếu không trùng với Người yêu cầu bảo hiểm");
+    				return false;
+    			}
         	}
         	
         	

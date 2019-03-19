@@ -276,6 +276,16 @@
             		
             		vm.loading = false;
             		vm.policy = result;
+            		
+            		for (var i = 0; i < result.lstAdd.length; i ++ ){
+            			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
+            			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
+            			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
+            			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
+            			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+            		}
+            		vm.policy.lstAdd = vm.lstAdd;
+            		
             		$rootScope.nguoint = {
     	        			cmnd : vm.policy.nguoinhanCmnd,
     	        			quanhe: vm.policy.nguoinhanQuanhe
@@ -307,6 +317,15 @@
             		
             		vm.loading = false;
             		vm.policy = result;
+            		
+            		for (var i = 0; i < result.lstAdd.length; i ++ ){
+            			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
+            			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
+            			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
+            			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
+            			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+            		}
+            		vm.policy.lstAdd = vm.lstAdd;
             		
             		// copy
             		vm.policy.agreementId = null;
@@ -883,7 +902,7 @@
         	        			cmnd : $rootScope.saveNguoiYcBVP.idNumber,
         	        			quanhe: "30"
         	        	}
-        	        	debugger
+        	        	
         	        	vm.policy.nguoidbhGioitinh = $rootScope.saveNguoiYcBVP.contactSex; // add 08/03/2019
         	        	vm.policy.nguoidbhDiachi = $rootScope.saveNguoiYcBVP.homeAddress;	// add 08/03/2019
         	        	vm.policy.nguoidbhDienthoai = $rootScope.saveNguoiYcBVP.phone;	// add 08/03/2019
