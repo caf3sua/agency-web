@@ -277,13 +277,16 @@
             		vm.loading = false;
             		vm.policy = result;
             		
-            		for (var i = 0; i < result.lstAdd.length; i ++ ){
-            			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
-            			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
-            			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
-            			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
-            			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+            		if (result.lstAdd != null && result.lstAdd != undefined && result.lstAdd.length > 0 ){
+            			for (var i = 0; i < result.lstAdd.length; i ++ ){
+                			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
+                			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
+                			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
+                			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
+                			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+                		}	
             		}
+            		
             		vm.policy.lstAdd = vm.lstAdd;
             		
             		$rootScope.nguoint = {
@@ -318,13 +321,16 @@
             		vm.loading = false;
             		vm.policy = result;
             		
-            		for (var i = 0; i < result.lstAdd.length; i ++ ){
-            			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
-            			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
-            			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
-            			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
-            			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+            		if (result.lstAdd != null && result.lstAdd != undefined && result.lstAdd.length > 0 ){
+            			for (var i = 0; i < result.lstAdd.length; i ++ ){
+                			vm.lstAdd[i].chuandoan = result.lstAdd[i].chuandoan;
+                			vm.lstAdd[i].chitietdieutri = result.lstAdd[i].chitietdieutri;
+                			vm.lstAdd[i].ketqua = result.lstAdd[i].ketqua;
+                			vm.lstAdd[i].benhvienorbacsy= result.lstAdd[i].benhvienorbacsy;
+                			vm.lstAdd[i].ngaydieutri = result.lstAdd[i].ngaydieutri;
+                		}	
             		}
+            		
             		vm.policy.lstAdd = vm.lstAdd;
             		
             		// copy
