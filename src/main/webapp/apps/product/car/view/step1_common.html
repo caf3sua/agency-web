@@ -76,10 +76,10 @@
 	    </div>
 	    <div class=" display-flex margin-top-5">
 	        <div class="width-100" ng-show="vm.policy.model">
-	            <relation-combo name="monthOfMake" type="car-month" ng-model="vm.policy.monthOfMake" options="vm.monthOptions" onfinished="vm.processComboResult(data, type)"/>
+	            <relation-combo name="namSX" type="car-year" ng-model="vm.policy.namSX" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
 	        </div>
 	        <div class="width-100" ng-show="vm.policy.model">
-	            <relation-combo name="namSX" type="car-year" ng-model="vm.policy.namSX" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
+	            <relation-combo name="monthOfMake" type="car-month" ng-model="vm.policy.monthOfMake" options="vm.monthOptions" onfinished="vm.processComboResult(data, type)"/>
 	        </div>
         </div>
         
