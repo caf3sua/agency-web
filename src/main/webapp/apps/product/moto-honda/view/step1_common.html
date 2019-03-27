@@ -1,0 +1,82 @@
+        <div class="margin-top-10 required" >
+	        <p class="bv-title-from">Năm sử dụng</p>
+	    </div>
+	    <div class=" display-flex margin-top-5">
+	        <div class="width-100" >
+	            <relation-combo name="year" type="moto-year" ng-model="vm.policy.namSd" options="vm.yearOptions" onfinished="vm.processComboResult(data, type)"/>
+	        </div>
+        </div>
+        
+        <div>
+           <div class="margin-top-10 required">
+            	<p class="bv-title-from">Hãng xe</p>
+        	</div>
+           <select name="carType" class="bv-select-box form-control">
+               <option disabled selected>Honda</option>
+           </select>
+        </div>
+        
+        <div class="margin-top-10 required">
+            <p class="bv-title-from">Mẫu xe</p>
+        </div>
+        <div class="margin-top-5">
+            <relation-combo name="model" type="moto-model" ng-model="vm.policy.idModel" options="vm.modelOptions" onfinished="vm.processComboResult(data, type)"/>
+        </div>
+        
+        <div class="margin-top-10 required" >
+            <p class="bv-title-from" ng-show="vm.policy.idModel">Giá trị xe tham gia bảo hiểm</p>
+        </div>
+        <div class="margin-top-5">
+        	   <p class="bv-tile-templateSummary" ng-show="vm.policy.idModel">{{vm.policy.soTienBh | number:0 }} VND</p>
+        </div>
+        <div class="table-responsive bv-home-block-left-table-responsive">
+			<table class="table table-bordered table-detail" style="">
+	        <tbody>
+	        <tr>
+	            <td colspan="4" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">THÔNG TIN BẢO HIỂM</td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>1. Tổn thất toàn bộ do: </p></td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.1 Mất trộm, cướp.</p></td>
+	        </tr>
+	        <tr>
+	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.2 Mất không rõ nguyên nhân.</p></td>
+	        </tr>
+	        <tr>
+	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.3 Tai nạn.</p></td>
+	        </tr>
+	        <tr>
+	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.4 Cháy, nổ.</p></td>
+	        </tr>
+	        <tr>
+	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.5 Lũ lụt, sạt lở, động đất, sóng thần, sét đánh.</p></td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>2. Tổn thất bộ phận do tai nạn khi va chạm với đối tượng đang di chuyển khác. Bảo Việt sẽ bồi thường cho xe máy được sửa chữa, khắc phục thiệt hại tại các cửa hàng bán xe và dịch vụ do Honda Ủy nhiệm (HEAD)</p></td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.1 Giới hạn trách nhiệm bồi thường: Bảo Việt chi trả bồi thường số tiền sửa chữa tối đa đến 50% số tiền bảo hiểm cho toàn bộ thời hạn bảo hiểm.</p></td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.2 Mức khấu trừ: áp dụng mức khấu trừ bằng 10% số tiền bảo hiểm trên mỗi vụ tổn thất. </p></td>
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align: left"><p>3. Tử vong của Người được bảo hiểm trong khi đang sử dụng Xe máy sở hữu bởi Người được Bảo hiểm (người được bảo hiểm đang điều khiển hoặc ngồi sau). Khoản bồi thường này được Công ty Bảo hiểm chi trả cho người thụ hưởng hợp pháp và duy nhất một lần trong thời hạn bảo hiểm.</p></td>
+	        </tr>
+	        <tr>
+	        	<td style="text-align: left; width: 250px"><p>Phí Bảo Hiểm </p> </td>
+	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi1">{{vm.policy.phi1 | number:0 }} VND</p></b></td>
+	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi2">{{vm.policy.phi2 | number:0 }} VND</p></b></td>
+	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi3">{{vm.policy.phi3 | number:0 }} VND</p></b></td>
+	        </tr>
+	        <tr>
+	            <td style="text-align: left; width: 250px"><p>Gói Bảo Hiểm </p> </td>
+	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(1)" class="bv-btn-step3" ng-show="vm.policy.phi1">CHỌN GÓI 1 năm</button></td>
+	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(2)" class="bv-btn-step3" ng-show="vm.policy.phi2">CHỌN GÓI 2 năm</button></td>
+	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(3)" class="bv-btn-step3" ng-show="vm.policy.phi3">CHỌN GÓI 3 năm</button></td>
+        	</tr>
+	        </tbody>
+    	</table>
+    </div>

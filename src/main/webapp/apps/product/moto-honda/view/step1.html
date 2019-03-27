@@ -1,0 +1,26 @@
+<form class="bv-from" angular-validator-submit="vm.closeOpenStep('step2', true)" name="myForm" novalidate angular-validator>
+<div class="bv-step-content">
+
+	<div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedCommonCar" ng-click="vm.isCollapsedCommonCar = !vm.isCollapsedCommonCar">
+	  	<p class="header-border-bottom">Thông tin xe tham gia bảo hiểm
+	  		<i class="pull-right fas" ng-class="vm.isCollapsedCommonCar ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
+	  	</p>
+	</div>
+	<div uib-collapse="vm.isCollapsedCommonCar">
+	    <div ng-include="'apps/product/moto-honda/view/step1_common.html'" class="bv-step-content" id="bv-step-1-content"></div> 
+	</div>
+	
+ 		
+	<div class="margin-top-20 text-header-sp" ng-init="vm.isCollapsedContact = false" ng-click="vm.isCollapsedContact = !vm.isCollapsedContact">
+	  	<p class="header-border-bottom">Thông tin người yêu cầu bảo hiểm
+	  		<i class="pull-right fas" ng-class="vm.isCollapsedContact ? 'fa-angle-down' : 'fa-angle-up'" style="color: #1964af !important;font-size: 20px;"></i> 
+	  	</p>
+	</div>
+	<div uib-collapse="vm.isCollapsedContact">
+		<div ng-include="'apps/product/moto-honda/view/step1_content_right.html'" id="contact-info" class="bv-step-content disable-all" disable-all="vm.policy.tongPhi == 0"></div>	     
+	</div>
+	<div class="margin-top-5 padding-bottom-35" disable-all="vm.policy.tongPhi == 0">
+        <button type="submit" class="bv-btn-step3">Tiếp theo</button>
+    </div>
+</div>
+</form>
