@@ -437,6 +437,9 @@
 		  	    case "HHV":
 		  	    	ProductCommonService.createHhvcPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
 		            break;
+		  	    case "MOH":
+		  	    	ProductCommonService.createMohPolicy(obj, onCreatePolicySuccess, onCreatePolicyError);
+		            break;
 	  	        default: 
 	  	            console.log('invalid product code');
 	  	        break;
@@ -506,6 +509,9 @@
 		            break;
 		  	    case "HHV":
 		  	    	ProductCommonService.updateHhvcPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
+		            break;
+		  	    case "MOH":
+		  	    	ProductCommonService.updateMohPolicy(obj, onUpdatePolicySuccess, onUpdatePolicyError);
 		            break;
 	  	        default: 
 	  	            console.log('invalid product code');

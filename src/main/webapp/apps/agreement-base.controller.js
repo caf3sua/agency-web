@@ -302,6 +302,15 @@
 		  				$state.go("product.ycbh-offline-edit", {id: order.gycbhNumber, copy: copy});
 		  			}
 					break;
+				case 'MOH':
+					if (order.createType == "0"){
+						$state.go("product.honda", {id: order.agreementId, copy: copy});
+					} else if (order.createType == "2"){
+						$state.go("product.printed-paper-edit", {id: order.gycbhNumber, copy: copy});
+		  			} else{
+		  				$state.go("product.ycbh-offline-edit", {id: order.gycbhNumber, copy: copy});
+		  			}
+					break;
 				case 'TNC':
 					if (order.createType == "0"){
 						$state.go("product.tnc", {id: order.agreementId, copy: copy});

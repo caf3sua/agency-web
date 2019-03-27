@@ -9,6 +9,12 @@
 
 	function CarService($resource) {
 		var service = $resource('', {}, {
+			// xe moto Honda
+        	'getMauXe' : {
+                method : 'GET',
+                url : 'api/agency/product/honda/get-mau-xe/:id',
+                isArray : true
+            },
 			'getCarBranches' : {
 				method : 'POST',
 				url : 'api/agency/product/car/getCarMakes',

@@ -24,7 +24,7 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/order/order.service.js', 'apps/agreement-base.controller.js', 'apps/report/report-base.service.js', 'apps/dashboard/dashboard.service.js', 'apps/dashboard/dashboard.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/communication/communication.controller.js', 'apps/communication/communication.service.js']);
+	            		return $ocLazyLoad.load(['apps/product/moto-honda/honda.state.js' , 'apps/order/order.service.js', 'apps/agreement-base.controller.js', 'apps/report/report-base.service.js', 'apps/dashboard/dashboard.service.js', 'apps/dashboard/dashboard.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/communication/communication.controller.js', 'apps/communication/communication.service.js']);
 		        }
             }
         });

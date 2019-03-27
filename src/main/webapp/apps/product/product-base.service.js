@@ -9,6 +9,29 @@
 
     function ProductCommonService ($resource) {
         var service = $resource('api/agency/product/', {}, {
+        	// xe moto Honda
+        	'getMOHPremium' : {
+                method : 'POST',
+                url : 'api/agency/product/honda/premium'
+            },
+            'getGiaTriXe' : {
+                method : 'GET',
+                url : 'api/agency/product/honda/get-gia-tri-xe/:id',
+            },
+            'createMohPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/honda/createPolicy'
+			},
+			'updateMohPolicy' : {
+				method : 'POST',
+				url : 'api/agency/product/honda/update'
+			},
+			'getMauXe' : {
+                method : 'GET',
+                url : 'api/agency/product/honda/get-mau-xe/:id',
+                isArray : true
+            },
+        	
         	// Address
         	'getAddressByPostcode' : {
                 method : 'GET',

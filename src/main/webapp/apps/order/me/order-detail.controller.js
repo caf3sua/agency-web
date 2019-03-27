@@ -54,6 +54,9 @@
   					case 'MOT':
   						formatMotoData(data);
   						break;
+  					case 'MOH':
+  						formatHondaData(data);
+  						break;
   					case 'TNC':
   						formatTncData(data);
   						break;
@@ -136,6 +139,9 @@
   		
   		function formatMotoData(data) {
   			vm.policy.tndsBbPhi = data.tndsbbPhi;
+  		}
+  		
+  		function formatHondaData(data) {
   		}
   		
   		function formatTncData(data) {

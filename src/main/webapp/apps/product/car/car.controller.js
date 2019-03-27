@@ -891,6 +891,7 @@
 	            	getPremium();
 	            	break;
 	            case 'car-manufacturer':
+	            	debugger
 	            	vm.modelOptions = [];
 	            	vm.policy.model = '';
 	            	vm.policy.namSX = '';
@@ -901,6 +902,7 @@
 	      			})
 	                break;
 	            case 'car-model':
+	            	debugger
 	            	vm.yearOptions = [];
 	            	vm.policy.namSX = '';
 	            	vm.policy.actualValue = '';

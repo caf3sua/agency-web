@@ -127,7 +127,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/product/car/car.service.js', 'apps/product/car/car-update.controller.js', 'apps/order/agency-wait/order-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/communication/communication.controller.js', 'apps/communication/communication.service.js'
+	            			'apps/product/moto-honda/honda.state.js', 'apps/product/car/car.service.js', 'apps/product/car/car-update.controller.js', 'apps/order/agency-wait/order-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js', 'apps/communication/communication.controller.js', 'apps/communication/communication.service.js'
 	            		]);
 		        }
             }

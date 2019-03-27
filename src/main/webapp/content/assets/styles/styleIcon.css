@@ -36,6 +36,9 @@
 .icon-MOT:before, .icon-MOTO:before, .icon-motorbike:before {
     content: "\e92b";
 }
+.icon-MOH:before, .icon-MOH:before, .icon-motorbike:before {
+    content: "\e92b";
+}
 .icon-TVC:before, .icon-airplane:before {
     content: "\e92c";
 }

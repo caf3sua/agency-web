@@ -88,6 +88,12 @@
                 case 'car-month':
                 	defaultOption = "--- Cần lựa tháng sản xuất ---";
                     break;
+                case 'moto-year':
+                	defaultOption = "--- Cần lựa năm sử dụng ---";
+                    break;
+                case 'moto-model':
+                	defaultOption = "--- Cần lựa mẫu xe ---";
+                    break;
             }
 
             if(attrs.type == 'hhvc-money-type') {
@@ -147,6 +153,12 @@
 	                case 'car-year':
 	                	var data = scope.selectedItem.split(":");
 	                	CarService.getCarPriceWithYear({year : data[0], carId : data[1]}, onSuccess, onError);
+	                    break;
+	                case 'moto-year':
+	                	CarService.getMauXe({id : scope.selectedItem}, onSuccess, onError);
+	                    break;
+	                case 'moto-model':
+	                	onSuccess(null);
 	                    break;
 	            }
             }
