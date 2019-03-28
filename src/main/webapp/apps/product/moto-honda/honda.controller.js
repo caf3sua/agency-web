@@ -228,6 +228,18 @@
         }
         
         function formatAddressEdit() {
+        	 
+        	// nếu thời hạn từ nhỏ hơn ngày hiện tại thì set = ngày hiện tại
+        	 var now = new Date();
+             var nowStr = DateUtils.convertDate(now);
+             var dateNow = DateUtils.parseDate(nowStr).getTime();
+             var fromDate = DateUtils.parseDate(vm.policy.thoihantu).getTime();
+             
+             if (dateNow > fromDate) {
+            	 vm.policy.thoihantu = DateUtils.convertDate(now);
+            	 onThoihanChange();
+             }
+        	
   			// Address at step 2
   			var receiverAddress = vm.policy.receiverUser.address;
   			vm.policy.receiverUser.address = vm.formatAddressEdit(receiverAddress);
