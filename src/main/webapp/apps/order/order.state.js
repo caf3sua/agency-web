@@ -59,7 +59,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/me/order.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
+	            			'apps/product/moto-honda/honda.state.js', 'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/me/order.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -161,7 +161,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/order/baoviet-wait/order-BV-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
+	            			'apps/product/moto-honda/honda.state.js', 'apps/order/baoviet-wait/order-BV-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -195,7 +195,7 @@
             		}],
             		loadPlugin: function ($ocLazyLoad) {
 	            		return $ocLazyLoad.load([
-	            			'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
+	            			'apps/product/moto-honda/honda.state.js' ,'apps/communication/communication.service.js', 'apps/communication/communication.controller.js', 'apps/order/other/order-other-wait.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 	            		]);
 		        }
             }
@@ -282,7 +282,7 @@
 	            		}],
 	            		loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load([
-		            			'apps/order/me/order-detail.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
+		            			'apps/product/moto-honda/honda.state.js', 'apps/order/me/order-detail.controller.js', 'apps/product/product-base.controller.js', 'apps/product/product-base.service.js'
 		            	]);
 			        }
 	            }

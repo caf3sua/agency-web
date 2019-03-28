@@ -31,7 +31,10 @@
                 url : 'api/agency/product/honda/get-mau-xe/:id',
                 isArray : true
             },
-        	
+            'getChiTietXe' : {
+                method : 'GET',
+                url : 'api/agency/product/honda/get-mau-xe-chi-tiet/:id'
+            },
         	// Address
         	'getAddressByPostcode' : {
                 method : 'GET',

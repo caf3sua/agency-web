@@ -33,49 +33,75 @@
 			<table class="table table-bordered table-detail" style="">
 	        <tbody>
 	        <tr>
-	            <td colspan="4" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">THÔNG TIN BẢO HIỂM</td>
+	            <td colspan="4" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">Quyền lợi bảo hiểm</td>
 	        </tr>
 	        <tr>
-	            <td colspan="4" style="text-align: left"><p>1. Tổn thất toàn bộ do: </p></td>
+	            <td colspan="4" style="text-align: left"><p>1. Tổn thất toàn bộ do: Mất trộm, cướp; Mất không rõ nguyên nhân; Tai nạn; Cháy nổ; Lũ lụt, sạt lở, động đất, sóng thần, sét đánh.</p></td>
 	        </tr>
 	        <tr>
-	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.1 Mất trộm, cướp.</p></td>
+	            <td colspan="4" style="text-align: left"><p>2. Tổn thất bộ phận do tai nạn khi va chạm với đối tượng đang di chuyển khác. Bảo Việt sẽ bồi thường cho xe máy được sửa chữa, khắc phục thiệt hại tại các cửa hàng bán xe và  dịch vụ do Honda Ủy nhiệm (HEAD)</p></td>
 	        </tr>
 	        <tr>
-	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.2 Mất không rõ nguyên nhân.</p></td>
+	            <td colspan="4" style="text-align: left"><p>2.1 Giới hạn trách nhiệm bồi thường: Bảo Việt chi trả bồi thường số tiền sửa chữa tối đa đến 50% số tiền bảo hiểm cho toàn bộ thời hạn bảo hiểm.</p></td>
 	        </tr>
 	        <tr>
-	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.3 Tai nạn.</p></td>
-	        </tr>
-	        <tr>
-	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.4 Cháy, nổ.</p></td>
-	        </tr>
-	        <tr>
-	            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.5 Lũ lụt, sạt lở, động đất, sóng thần, sét đánh.</p></td>
-	        </tr>
-	        <tr>
-	            <td colspan="4" style="text-align: left"><p>2. Tổn thất bộ phận do tai nạn khi va chạm với đối tượng đang di chuyển khác. Bảo Việt sẽ bồi thường cho xe máy được sửa chữa, khắc phục thiệt hại tại các cửa hàng bán xe và dịch vụ do Honda Ủy nhiệm (HEAD)</p></td>
-	        </tr>
-	        <tr>
-	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.1 Giới hạn trách nhiệm bồi thường: Bảo Việt chi trả bồi thường số tiền sửa chữa tối đa đến 50% số tiền bảo hiểm cho toàn bộ thời hạn bảo hiểm.</p></td>
-	        </tr>
-	        <tr>
-	            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.2 Mức khấu trừ: áp dụng mức khấu trừ bằng 10% số tiền bảo hiểm trên mỗi vụ tổn thất. </p></td>
+	            <td colspan="4" style="text-align: left"><p>2.2 Mức khấu trừ: áp dụng mức khấu trừ bằng 10% số tiền bảo hiểm trên mỗi vụ tổn thất.</p></td>
 	        </tr>
 	        <tr>
 	            <td colspan="4" style="text-align: left"><p>3. Tử vong của Người được bảo hiểm trong khi đang sử dụng Xe máy sở hữu bởi Người được Bảo hiểm (người được bảo hiểm đang điều khiển hoặc ngồi sau). Khoản bồi thường này được Công ty Bảo hiểm chi trả cho người thụ hưởng hợp pháp và duy nhất một lần trong thời hạn bảo hiểm.</p></td>
 	        </tr>
-	        <tr>
-	        	<td style="text-align: left; width: 250px"><p>Phí Bảo Hiểm </p> </td>
-	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi1">{{vm.policy.phi1 | number:0 }} VND</p></b></td>
-	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi2">{{vm.policy.phi2 | number:0 }} VND</p></b></td>
-	            <td style="text-align: right; width: 30%"><b><p ng-show="vm.policy.phi3">{{vm.policy.phi3 | number:0 }} VND</p></b></td>
+	        <tr ng-show="vm.policy.phi1">
+	        	<td style="text-align: left;"><p>Phí Bảo Hiểm </p> </td>
+	            <td style="text-align: center; width: 27%"><b><p ng-show="vm.policy.phi1">{{vm.policy.phi1 | number:0 }} VND</p></b></td>
+	            <td style="text-align: center; width: 27%"><b><p ng-show="vm.policy.phi2">{{vm.policy.phi2 | number:0 }} VND</p></b></td>
+	            <td style="text-align: center; width: 27%"><b><p ng-show="vm.policy.phi3">{{vm.policy.phi3 | number:0 }} VND</p></b></td>
 	        </tr>
 	        <tr>
-	            <td style="text-align: left; width: 250px"><p>Gói Bảo Hiểm </p> </td>
-	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(1)" class="bv-btn-step3" ng-show="vm.policy.phi1">CHỌN GÓI 1 năm</button></td>
-	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(2)" class="bv-btn-step3" ng-show="vm.policy.phi2">CHỌN GÓI 2 năm</button></td>
-	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(3)" class="bv-btn-step3" ng-show="vm.policy.phi3">CHỌN GÓI 3 năm</button></td>
+	            <td></td>
+	            <td style="text-align: center;">
+						<div class="cntr" ng-show="vm.policy.phi1">
+						<label for="cbx13" class="label-cbx">
+	                       <input id="cbx13" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.policy.goi" value="1" ng-click="vm.changePackage()">
+	                       <div class="checkbox">
+	                           <svg width="18px" height="18px" viewBox="0 0 20 20">
+	                               <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+	                               <polyline points="4 11 8 15 16 6"></polyline>
+	                           </svg>
+	                       </div>
+	                       <span>Gói 1 năm</span>
+	                   </label>
+	                   </div>
+	            </td>
+	            <td style="text-align: center;">
+	            <div class="cntr" ng-show="vm.policy.phi2">
+					<label for="cbx14" class="label-cbx">
+                       <input id="cbx14" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.policy.goi" value="2" ng-click="vm.changePackage()">
+                       <div class="checkbox">
+                           <svg width="18px" height="18px" viewBox="0 0 20 20">
+                               <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                               <polyline points="4 11 8 15 16 6"></polyline>
+                           </svg>
+                       </div>
+                       <span>Gói 2 năm</span>
+                   </label>
+                   </div>
+	            </td>
+	            <td style="text-align: center;">
+	            <div class="cntr" ng-show="vm.policy.phi3">
+					<label for="cbx15" class="label-cbx">
+                       <input id="cbx15" name="insuranceTarget" type="radio" class="invisible" ng-model="vm.policy.goi" value="3" ng-click="vm.changePackage()">
+                       <div class="checkbox">
+                           <svg width="18px" height="18px" viewBox="0 0 20 20">
+                               <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                               <polyline points="4 11 8 15 16 6"></polyline>
+                           </svg>
+                       </div>
+                       <span>Gói 3 năm</span>
+                   </label>
+                   </div>
+	            </td>
+	            <!-- <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage()" class="bv-btn-step3" ng-show="vm.policy.phi2" >GÓI 2 năm</button></td>
+	            <td style="text-align: left; width: 30%"><button type="button" ng-click="vm.changePackage(3)" class="bv-btn-step3" ng-show="vm.policy.phi3" >GÓI 3 năm</button></td> -->
         	</tr>
 	        </tbody>
     	</table>

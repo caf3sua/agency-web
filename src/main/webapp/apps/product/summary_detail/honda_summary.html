@@ -16,25 +16,31 @@
             	<p class="bv-tile-templateSummary" ng-show="vm.isEditMode()">{{vm.policy.insuredAddress | address}}</p>
 	            <p class="bv-tile-templateSummary" ng-show="!vm.isEditMode()">{{vm.policy.insuredAddress + ', ' + vm.policy.insuredAddressDistrict.pkDistrict | address}}</p>
             </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Điện thoại</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.receiverUser.mobile}}</p>
-            </div>
         </div>
         <div class="border-right-ccc bv-pading-30 width-100">
             <div class="text-header-sp" style="margin-bottom: 10px">
                 <p>Thông tin về xe tham gia bảo hiểm</p>
             </div>
-            <div class="margin-top-10">
-                <p class="bv-title-from">Biển số</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.registrationNumber}}</p>
+            <div class="display-flex">
+	            <div class="margin-right-30" style="width: 50%">
+                    <div class="">
+                        <p class="bv-title-from" ng-show="vm.policy.registrationNumber">Biển số</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.registrationNumber}}</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p class="bv-title-from">Nhãn hiệu xe</p>
+                    </div>
+                    <div>
+                        <p class="bv-tile-templateSummary">{{vm.policy.hieuxe}}</p>
+                    </div>
+                </div>
             </div>
             <div class="display-flex">
-                <div class="margin-right-30">
+                <div class="margin-right-30" style="width: 50%">
                     <div class="">
                         <p class="bv-title-from">Số khung</p>
                     </div>
@@ -43,19 +49,13 @@
                     </div>
                 </div>
                 <div>
-                    <div class="-10">
+                    <div>
                         <p class="bv-title-from">Số máy</p>
                     </div>
                     <div>
                         <p class="bv-tile-templateSummary">{{vm.policy.somay}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="">
-                <p class="bv-title-from">Nhãn hiệu xe</p>
-            </div>
-            <div>
-                <p class="bv-tile-templateSummary">{{vm.policy.hieuxe}}</p>
             </div>
             <div class="" ng-show="vm.policy.chaynoStbh > 0">
                 <p class="bv-title-from">Giá trị bảo hiểm</p>
@@ -64,12 +64,19 @@
                 <p class="bv-tile-templateSummary">{{vm.policy.chaynoStbh | number : 0}} VND</p>
             </div>
         </div>
-        <div class="width-100 bv-pading-30">
-            <div class="text-header-sp">
+    </div>
+     <div class="border-right-ccc bv-pading-30 width-100">
+            <div class="text-header-sp" style="margin-bottom: 10px">
                 <p>Phí và Thời gian bảo hiểm</p>
             </div>
             <div>
                 <p class="bv-tile-templateSummary">Từ ngày {{vm.policy.thoihantu}} đến ngày {{vm.policy.thoihanden}}</p>
+            </div>
+            <div class="">
+                <p class="bv-title-from">Gói bảo hiểm</p>
+            </div>
+            <div>
+                <p class="bv-tile-templateSummary">{{vm.policy.goi | number : 0}} năm</p>
             </div>
             <div class="">
                 <p class="bv-title-from">Phí bảo hiểm</p>
@@ -78,41 +85,25 @@
                 <p class="bv-tile-templateSummary">{{vm.policy.tongPhi | number : 0}} VND</p>
             </div>
         </div>
-    </div>
     <div>
         <div style="background: #fafafa">
             <div class="bv-pading-table-templateSummary">
                 <table class="table table-bordered table-detail" style="">
 			        <tbody>
 			        <tr>
-			            <td colspan="4" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">THÔNG TIN BẢO HIỂM</td>
+			            <td colspan="4" style="text-align: left !important; background-color: #f4f4f4 !important;font-weight: bold">Quyền lợi bảo hiểm</td>
 			        </tr>
 			        <tr>
-			            <td colspan="4" style="text-align: left"><p>1. Tổn thất toàn bộ do: </p></td>
+			            <td colspan="4" style="text-align: left"><p>1. Tổn thất toàn bộ do: Mất trộm, cướp; Mất không rõ nguyên nhân; Tai nạn; Cháy nổ; Lũ lụt, sạt lở, động đất, sóng thần, sét đánh.</p></td>
 			        </tr>
 			        <tr>
-			            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.1 Mất trộm, cướp.</p></td>
+			            <td colspan="4" style="text-align: left"><p>2. Tổn thất bộ phận do tai nạn khi va chạm với đối tượng đang di chuyển khác. Bảo Việt sẽ bồi thường cho xe máy được sửa chữa, khắc phục thiệt hại tại các cửa hàng bán xe và  dịch vụ do Honda Ủy nhiệm (HEAD)</p></td>
 			        </tr>
 			        <tr>
-			            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.2 Mất không rõ nguyên nhân.</p></td>
+			            <td colspan="4" style="text-align: left"><p>2.1 Giới hạn trách nhiệm bồi thường: Bảo Việt chi trả bồi thường số tiền sửa chữa tối đa đến 50% số tiền bảo hiểm cho toàn bộ thời hạn bảo hiểm.</p></td>
 			        </tr>
 			        <tr>
-			            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.3 Tai nạn.</p></td>
-			        </tr>
-			        <tr>
-			            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.4 Cháy, nổ.</p></td>
-			        </tr>
-			        <tr>
-			            <td  colspan="4" style="text-align: left"><p>&nbsp&nbsp 1.5 Lũ lụt, sạt lở, động đất, sóng thần, sét đánh.</p></td>
-			        </tr>
-			        <tr>
-			            <td colspan="4" style="text-align: left"><p>2. Tổn thất bộ phận do tai nạn khi va chạm với đối tượng đang di chuyển khác. Bảo Việt sẽ bồi thường cho xe máy được sửa chữa, khắc phục thiệt hại tại các cửa hàng bán xe và dịch vụ do Honda Ủy nhiệm (HEAD)</p></td>
-			        </tr>
-			        <tr>
-			            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.1 Giới hạn trách nhiệm bồi thường: Bảo Việt chi trả bồi thường số tiền sửa chữa tối đa đến 50% số tiền bảo hiểm cho toàn bộ thời hạn bảo hiểm.</p></td>
-			        </tr>
-			        <tr>
-			            <td colspan="4" style="text-align: left"><p>&nbsp&nbsp 2.2 Mức khấu trừ: áp dụng mức khấu trừ bằng 10% số tiền bảo hiểm trên mỗi vụ tổn thất. </p></td>
+			            <td colspan="4" style="text-align: left"><p>2.2 Mức khấu trừ: áp dụng mức khấu trừ bằng 10% số tiền bảo hiểm trên mỗi vụ tổn thất.</p></td>
 			        </tr>
 			        <tr>
 			            <td colspan="4" style="text-align: left"><p>3. Tử vong của Người được bảo hiểm trong khi đang sử dụng Xe máy sở hữu bởi Người được Bảo hiểm (người được bảo hiểm đang điều khiển hoặc ngồi sau). Khoản bồi thường này được Công ty Bảo hiểm chi trả cho người thụ hưởng hợp pháp và duy nhất một lần trong thời hạn bảo hiểm.</p></td>
@@ -126,7 +117,7 @@
 <!-- Include Thông tin giao nhận giấy chứng nhận bảo hiểm và Thông tin hóa đơn giá trị gia tăng -->
 <div ng-include="'apps/product/summary_detail/partial/step2_summary.html'"></div>
 
-<div class="bv-pading-30">
+<!-- <div class="bv-pading-30">
 	<label for="checkDongY" class="label-cbx">
     	<input id="checkDongY" name="checkDongY" type="checkbox" class="invisible" ng-model="vm.checkDongYHD" ng-true-value="false" ng-false-value="true">
         <div class="checkbox">
@@ -142,4 +133,4 @@
 	    <p class="bv-tile-templateSummary display-inline-block">- Tất cả những thông tin khai nêu trên là đúng và sẽ thông báo cho Bảo hiểm Bảo Việt khi có bất kỳ thông tin nào thay đổi.</p>
 	    <p class="bv-tile-templateSummary display-inline-block">- Quy tắc bảo hiểm sẽ là cơ sở của hợp đồng giữa tôi và Bảo hiểm Bảo Việt và tôi sẽ chấp nhận tất cả các điều khoản mà Bảo hiểm Bảo Việt quy định trong Quy tắc bảo hiểm.</p>
     </div>
-</div>
+</div> -->

@@ -87,13 +87,18 @@
         vm.validatorCombo = validatorCombo;
 		vm.modelOptions = [];
 		vm.yearOptions = [
-        	{id: '0', name: 'Xe mới(dưới 46 ngày)'},
-            {id: '1', name: '1 năm (từ 46 ngày đến dưới 1 năm)'},
-            {id: '2', name: '2 năm (từ 1 năm đến dưới 2 năm)'},
-            {id: '3', name: '3 năm (từ 2 năm đến dưới 3 năm)'}
+        	{id: '0', name: 'Xe mới (< 90 ngày)'},
+            {id: '1', name: 'Xe cũ (90 ngày đến dưới 1 năm)'},
+            {id: '2', name: 'Xe cũ (1 năm đến dưới 2 năm)'},
+            {id: '3', name: 'Xe cũ (2 năm đến dưới 3 năm)'}
         ];
 		vm.changePackage = changePackage;
+		vm.isShow1 = true;
+		vm.isShow1 = true;
+		vm.isShow1 = true;
 
+		vm.checkDongYHD = false;
+		
         // Initialize
         init();
 
@@ -101,7 +106,7 @@
         function init() {
         	var startDate = new Date();
             // add a day
-            startDate.setDate(startDate.getDate() + 1);
+            startDate.setDate(startDate.getDate());
             vm.policy.thoihantu = DateUtils.convertDate(startDate);
 
             var endDate = moment(vm.policy.thoihantu, "DD/MM/YYYY").add(1, 'years').add(-1, 'days').format("DD/MM/YYYY");
@@ -253,7 +258,8 @@
     		});
   		}
         
-        function changePackage (type){
+        function changePackage (){
+        	let type = vm.policy.goi;
         	if (type == 1){
         		vm.policy.goi = type;   
         		vm.policy.tongPhi = vm.policy.phi1;
@@ -280,15 +286,34 @@
 	            	vm.policy.phi1 = '';
 	            	vm.policy.phi2 = '';
 	            	vm.policy.phi3 = '';
+	            	vm.policy.goi = 0;
 	            	data.forEach(function(item, index, arr) {
 	      				vm.modelOptions.push({id: item.id, name: item.tenHienThi});
 	      			})
 	                break;
                 case 'moto-model':
+                	vm.policy.soTienBh = '';
+                	vm.policy.phi1 = '';
+	            	vm.policy.phi2 = '';
+	            	vm.policy.phi3 = '';
+	            	vm.policy.goi = 0;
+	            	vm.policy.tongPhi = 0;
+                	if (vm.policy.idModel){
+                		ProductCommonService.getChiTietXe({id : vm.policy.idModel}, getChiTietXeSuccess, getChiTietXeError);	
+                	}
+                	
                 	getPremium();
                     break;
             }
         }
+        
+        function getChiTietXeSuccess(data) {
+        	vm.policy.hieuxe = data.mauXe;
+    	}
+    	
+    	function getChiTietXeError(data) {
+    		toastr.error('Không thể lấy thông tin mẫu xe');
+    	}
 
         function getPremium() {
         	// clean error message

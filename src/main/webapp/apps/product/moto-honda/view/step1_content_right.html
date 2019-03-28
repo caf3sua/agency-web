@@ -48,11 +48,10 @@
             <div class=" display-flex margin-top-5">
                 <div class="margin-right-5 width-100">
                     <input type="text" name="registrationNumber" class="bv-input" placeholder="Biển kiểm soát" ng-model="vm.policy.registrationNumber"
-                           required-message="'Chưa nhập biển kiểm soát!'"
-                           required accepted-character maxlength="20"/>
+                           accepted-character maxlength="20"/>
                 </div>
                 <div class="width-100">
-                    <input type="text" name="hieuxe" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe"
+                    <input type="text" name="hieuxe" class="bv-input" placeholder="Nhãn hiệu xe" ng-model="vm.policy.hieuxe" ng-disabled="true"
                            required-message="'Chưa nhập nhãn hiệu xe!'"
                            required accepted-character maxlength="20" />
                 </div>
@@ -74,7 +73,7 @@
             </div>
             <div class=" display-flex margin-top-5">
                 <div class="margin-right-5 width-100">
-                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="+1d">
+                    <div class="input-group date display-flex" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-start-date="d">
                         <div class="width-100">
                             <input type="text" name="thoihantu" class="bv-input" placeholder="Từ ngày" ng-model="vm.policy.thoihantu"
                             		ng-change="vm.onThoihanChange('')"
