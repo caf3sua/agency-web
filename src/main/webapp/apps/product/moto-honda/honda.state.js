@@ -13,7 +13,7 @@
             url: '/honda?id&copy&selContactId',
             templateUrl: 'apps/product/layout.html',
             data: {
-                authorities: ['PERM_PRODUCT_MOT_CREATE'],
+                authorities: ['PERM_PRODUCT_MOH_CREATE'],
                 title: 'PRODUCT_MOTO'
             },
             controller: "ProductMotoHondaController",
