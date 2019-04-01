@@ -216,6 +216,18 @@
     	}
         
         function onThoihanChange(year) {
+        	
+        	var now = new Date();
+            var nowStr = DateUtils.convertDate(now);
+            var dateNow = DateUtils.parseDate(nowStr).getTime();
+            var fromDate = DateUtils.parseDate(vm.policy.thoihantu).getTime();
+            
+            if (dateNow > fromDate) {
+				toastr.error("Thời hạn bảo hiểm phải >= Ngày hiện tại");
+				angular.element('#thoihantu').focus();
+				return flase;
+            }
+        	
         	let inputYear = '';
         	if (year != null && year != undefined && year != ""){
         		inputYear = year;
@@ -320,7 +332,7 @@
         }
         
         function getChiTietXeSuccess(data) {
-        	vm.policy.hieuxe = data.mauXe;
+        	vm.policy.hieuxe = data.tenHienThi;
     	}
     	
     	function getChiTietXeError(data) {
