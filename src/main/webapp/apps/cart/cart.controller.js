@@ -370,7 +370,7 @@
         		return;
         	} else if(vm.typeBank == '123pay' || vm.typeBank == 'VnPay') {
         		if(!vm.paymentBankCode) {
-        			toastr.error("Bạn cần chọn ngân hàng hỗ trợ!");
+        			toastr.error("Bạn cần chọn phương thức thanh toán, ngân hàng hỗ trợ!");
             		return;
         		}
         	} else if (vm.typeBank == 'PAYMENT_LATER') {
